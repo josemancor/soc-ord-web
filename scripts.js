@@ -1,0 +1,64 @@
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 70, // offset for fixed navbar
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Parallax effect for the hero particles background
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const particlesBg = document.getElementById('particles-bg');
+    
+    if (particlesBg && scrollY < window.innerHeight) {
+        particlesBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+        particlesBg.style.opacity = 1 - (scrollY / window.innerHeight);
+    }
+});
+
+// Simple intersection observer to animate elements fading in
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.feature-card, .showcase-item, .manual-content').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(el);
+});
+
+// Video placeholder interaction (for future videos)
+document.getElementById('video-overlay-1')?.addEventListener('click', function() {
+    // If user adds a real video later, this will hide the overlay and play the video
+    const video = this.previousElementSibling;
+    if (video && video.tagName === 'VIDEO') {
+        this.style.display = 'none';
+        video.style.display = 'block';
+        video.play().catch(e => {
+            console.log("Video source not found or playback prevented.", e);
+            this.style.display = 'flex'; // show overlay again if it fails
+            video.style.display = 'none';
+        });
+    }
+});

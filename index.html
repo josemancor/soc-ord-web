@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC_ORD | Sociometría Ordinal Computacional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <!-- Asumiendo que el logo copiado se llama logo_socord_base.png o logo_simulacion.png -->
+            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_simulacion.png'" class="nav-logo">
+            <span class="nav-title">SOC_ORD PLATINUM</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#about">Filosofía</a></li>
+            <li><a href="#modules">Módulos</a></li>
+            <li><a href="#showcase">Demos</a></li>
+            <li><a href="#glossary">Glosario</a></li>
+            <li><a href="#manual">Manual</a></li>
+            <li><a href="#community">Comunidad</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero" class="hero-section">
+        <div class="particles-bg" id="particles-bg"></div>
+        <div class="glass-card hero-content">
+            <div class="badge"><a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: inherit; text-decoration: none;">DOI: 10.5281/zenodo.18941691</a></div>
+            
+            <!-- LOGO CENTRAL -->
+            <div style="margin-bottom: 15px;">
+                <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo Oficial" onerror="this.src='assets/logo_simulacion.png'" style="height: 140px; filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.5)); background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; border: 2px solid #00A2FF;">
+            </div>
+
+            <h1 class="glitch" data-text="SOC_ORD">SOC_ORD</h1>
+            <h2>Sociometría Ordinal Computacional</h2>
+            <h3 style="color: #FFCC00; font-weight: 300; margin-top: -15px; margin-bottom: 20px; font-style: italic; letter-spacing: 2px; font-size: 1.4rem;">La Física de lo Grupal.</h3>
+            <p>La plataforma definitiva para el análisis clínico, termodinámico y estructural de ecosistemas humanos.</p>
+            <div class="hero-buttons">
+                <a href="#showcase" class="btn btn-primary">Ver Demostraciones</a>
+                <a href="#manual" class="btn btn-secondary">Leer Manual Oficial</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Ingeniería de Vínculos Humanos</h2>
+            <p class="section-text">
+                SOC_ORD es un ecosistema avanzado diseñado para desentrañar las dinámicas ocultas de los grupos. 
+                Abandona los enfoques bidimensionales clásicos y adopta un modelo computacional masivo que lee 
+                la realidad emitida, la recibida y la percepción subjetiva de las tensiones grupales.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚛️</div>
+                    <h3>Termodinámica Social</h3>
+                    <p>Mide la entropía y la densidad de la red para predecir si el grupo se encuentra en estado Sólido, Líquido, Plasma, Gas o Caos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h3>VISORD 3D</h3>
+                    <p>Un motor interactivo WebGL que renderiza ecosistemas humanos en tiempo real, permitiendo aislar nodos y rastrear su evolución estructural.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Rigor Científico</h3>
+                    <p>Plataforma avalada y registrada en los repositorios de ciencia abierta del CERN (Zenodo) para garantizar la solidez metodológica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MODULES SECTION (Dashboard) -->
+    <section id="modules" class="section">
+        <div class="container">
+            <h2 class="section-title" style="color: #00A2FF;">Acceso a Módulos</h2>
+            <p class="section-text">Accede directamente a los diferentes motores de análisis y visualización de la arquitectura SOC_ORD.</p>
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <a href="../04_Animaciones_VISORD/HUB_SOC_ORD_SMIb.html" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🎮</div>
+                    <h3 style="font-size: 1.2rem;">VISORDP 3D</h3>
+                    <p style="font-size: 0.9rem;">Simulador y renderizado termodinámico.</p>
+                </a>
+                <a href="../02_Data/02_Simulated/RESULT_SIM/" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">📊</div>
+                    <h3 style="font-size: 1.2rem;">Dossier de Tablas</h3>
+                    <p style="font-size: 0.9rem;">Matrices y raw data exportable.</p>
+                </a>
+                <a href="../02_Data/02_Simulated/RESULT_SIM/" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">📸</div>
+                    <h3 style="font-size: 1.2rem;">Gráficos y Cartografía</h3>
+                    <p style="font-size: 0.9rem;">Sociogramas, Rádar IAS y Mosaicos.</p>
+                </a>
+                <a href="#" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🧊</div>
+                    <h3 style="font-size: 1.2rem;">Proyección 6D (PCA)</h3>
+                    <p style="font-size: 0.9rem;">Análisis de Componentes Principales.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE SECTION -->
+    <section id="showcase" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">Visualización y Resultados</h2>
+            <p class="section-text" style="color: #A0AEC0;">
+                A continuación, demostraciones del motor VISORD en acción, junto con las tablas de resultados 
+                y el diagnóstico narrativo automático generado por el Pipeline de SOC_ORD.
+            </p>
+
+            <!-- REPRODUCTOR DE LOCUCIÓN -->
+            <div style="background: rgba(0, 162, 255, 0.1); border: 1px solid #00A2FF; border-radius: 8px; padding: 15px; margin-bottom: 30px; text-align: center;">
+                <h3 style="margin-top: 0; color: #FFF; font-size: 1.1rem;">🎧 Escuchar Audio Guía Oficial</h3>
+                <audio controls style="width: 100%; max-width: 500px;">
+                    <source src="assets/VOICEOVER_VISORD.m4a" type="audio/mp4">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+
+            <div class="showcase-grid">
+                <!-- VIDEO 1 -->
+                <div class="showcase-item full-width video-card glass-card">
+                    <div class="image-placeholder" style="background:#000;">
+                        <video src="assets/Video0_presen1.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Fases de Formación"></video>
+                    </div>
+                    <h3>1. Fases de Formación de un Grupo</h3>
+                    <p>Observa el motor en acción, mutando desde un estado inicial de 'Deshielo' hasta la cristalización estructural final.</p>
+                </div>
+
+                <!-- VIDEO 2 -->
+                <div class="showcase-item full-width video-card glass-card">
+                    <div class="image-placeholder" style="background:#000;">
+                        <video src="assets/Video_formac1.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Diagnóstico Termodinámico"></video>
+                    </div>
+                    <h3>2. Diagnóstico Termodinámico</h3>
+                    <p>Análisis en tiempo real de la entropía relacional y las densidades, generando un dictamen clínico automatizado.</p>
+                </div>
+
+                <!-- VIDEO 3 -->
+                <div class="showcase-item full-width video-card glass-card">
+                    <div class="image-placeholder" style="background:#000;">
+                        <video src="assets/Video_presen2.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Censo de Roles"></video>
+                    </div>
+                    <h3>3. Censo de Roles Estructurales</h3>
+                    <p>Identificación objetiva de líderes, fracciones, satélites y aislados, clasificados por su impacto y nivel de fricción.</p>
+                </div>
+
+                <!-- VIDEO 4 -->
+                <div class="showcase-item full-width video-card glass-card">
+                    <div class="image-placeholder" style="background:#000;">
+                        <video src="assets/Video_2.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Figuras Sociométricas"></video>
+                    </div>
+                    <h3>4. Figuras Sociométricas</h3>
+                    <p>Exploración inmersiva de subestructuras: díadas, tríadas y subgrupos. Análisis de la reciprocidad afectiva en 3D.</p>
+                </div>
+
+                <!-- VIDEO 5 -->
+                <div class="showcase-item full-width video-card glass-card">
+                    <div style="background: rgba(0, 162, 255, 0.05); border: 1px solid #00A2FF; border-radius: 8px; padding: 10px; margin-bottom: 15px; text-align: center;">
+                        <h4 style="margin: 0 0 10px 0; color: #FFF; font-size: 0.9rem;">🎧 Escuchar Explicación Clínica (Voz Jorge)</h4>
+                        <audio controls style="width: 100%; max-width: 400px; height: 30px;">
+                            <source src="assets/VOICEOVER_TABLAS.m4a" type="audio/mp4">
+                        </audio>
+                    </div>
+                    <div class="image-placeholder" style="background:#000;">
+                        <video src="assets/Video_3.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Matrices de Densidad"></video>
+                    </div>
+                    <h3>5. Matrices de Densidad Relacional</h3>
+                    <p>Dossier completo de matrices de preferencia, percepción y densidad, revelando las brechas termodinámicas ocultas del grupo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECOSYSTEM SECTION -->
+    <section id="ecosystem" class="section dark-section" style="background: #0f1219;">
+        <div class="container">
+            <h2 class="section-title" style="color: #FF0055;">Metodología y Resultados SOC_ORD</h2>
+            <p class="section-text" style="color: #A0AEC0;">
+                Más allá de la simulación 3D interactiva, SOC_ORD es un marco metodológico integral. 
+                A continuación, presentamos los fundamentos algorítmicos, matrices y cartografías del ecosistema analítico.
+            </p>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card">
+                    <img src="assets/imag1.png" alt="Ingesta de Datos" class="gallery-img">
+                    <div class="gallery-caption">Captura e Ingesta de Datos</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/Imag_2.png" alt="Fórmula Base" class="gallery-img">
+                    <div class="gallery-caption">Fundamentación Algorítmica</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/Imag_3.png" alt="SMIb" class="gallery-img">
+                    <div class="gallery-caption">Codificación SMIb de Preferencias</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/VISORDP_9x9_DEN.png" alt="Macro Meso Micro" class="gallery-img">
+                    <div class="gallery-caption">Análisis Multinivel: Macro, Meso y Micro</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/VISORDP_Frecuencias.png" alt="Resumen de Densidad" class="gallery-img">
+                    <div class="gallery-caption">Resumen Termodinámico (DGLOBAL)</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/VISORDResumen.png" alt="Paysage Social" class="gallery-img">
+                    <div class="gallery-caption">Topografía Estructural (Paysage Social)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- GLOSSARY & BIBLIOGRAPHY SECTION -->
+    <section id="glossary" class="section">
+        <div class="container">
+            <h2 class="section-title" style="color: #FFCC00;">Glosario Clínico y Bibliografía</h2>
+            <div class="showcase-grid">
+                <!-- Glosario -->
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="color: #00A2FF; margin-bottom: 20px;">Glosario de Términos</h3>
+                    <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Absoluta (SDA / BDA)</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Mide la concentración de vínculos directos y reales en el ecosistema, sin tener en cuenta las percepciones.</p>
+                    </details>
+                    <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Relacional (SDR / BDR)</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Integra tanto la realidad como la percepción subjetiva de los sujetos, ofreciendo una métrica termodinámica completa.</p>
+                    </details>
+                    <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Entropía Grupal</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Nivel de desorden, fricción o "frustración" latente derivado de percepciones erróneas o rechazos cruzados.</p>
+                    </details>
+                    <details style="margin-bottom:10px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Cismogénesis</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Proceso de división de la red en subgrupos o facciones debido a una polarización extrema de los vínculos.</p>
+                    </details>
+                </div>
+                
+                <!-- Bibliografía -->
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="color: #FF0055; margin-bottom: 20px;">Bibliografía Oficial</h3>
+                    <ul style="list-style:none; margin:0; padding:0;">
+                        <li style="margin-bottom:20px; background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #FF0055;">
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">Sociofísica y Termodinámica de Redes</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">Marco Teórico Fundamental del Modelo Platinum.</span>
+                            <a href="#" style="color:#00A2FF; font-size:0.9rem; text-decoration:none;">[🔗 Descargar PDF]</a>
+                        </li>
+                        <li style="margin-bottom:20px; background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #00A2FF;">
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">Codificación SMIb: El lenguaje de la Relación</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">Manual de codificación y lectura de matrices relacionales.</span>
+                            <a href="#" style="color:#00A2FF; font-size:0.9rem; text-decoration:none;">[🔗 Descargar PDF]</a>
+                        </li>
+                        <li style="background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #FFCC00;">
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">DOI de Referencia Científica</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">CERN Zenodo</span>
+                            <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color:#FFCC00; font-size:0.9rem; text-decoration:none;">🔗 10.5281/zenodo.18941691</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANUAL SECTION -->
+    <section id="manual" class="section">
+        <div class="container">
+            <h2 class="section-title">Manual Clínico Oficial</h2>
+            <div class="manual-content glass-card" id="manual-container">
+                <!-- El contenido del markdown se inyectará o se maquetará aquí -->
+                <h1 style="color: #00A2FF;">MANUAL DE USUARIO CLINICO | VISORD 3D INTERACTIVO</h1>
+                <p><strong>Versión de Norma:</strong> Platinum v6.0 | <strong>Despliegue:</strong> Sistema Interactivo Front-End HTML5/WebGL</p>
+                <div class="alert note">
+                    El entorno <strong>HUB VISORD 3D</strong> es el simulador y visualizador sociométrico definitivo. Opera de forma 100% autónoma en el navegador, renderizando grafos de fuerza tridimensionales que reflejan las tensiones, lealtades, percepciones y entropía de los grupos humanos mediante las leyes de la termodinámica social.
+                </div>
+                
+                <h2 style="color: #FF0055;">1. GESTIÓN DE SIMULACIONES Y HORIZONTES</h2>
+                <ul>
+                    <li><strong>NÚMERO DE SUJETOS (N):</strong> Determina el tamaño de la red.</li>
+                    <li><strong>INICIAR DESDE CERO:</strong> Reinicia por completo la simulación y elige aleatoriamente un Rumbo.</li>
+                    <li><strong>EVOLUCIONAR A HORIZONTE:</strong> Fuerza a la red actual a mutar sus vínculos aceleradamente hasta alcanzar las condiciones termodinámicas objetivo.</li>
+                </ul>
+
+                <h2 style="color: #FF0055;">2. PANEL INFERIOR Y CONTROLES VCR</h2>
+                <ul>
+                    <li>▶️ <strong>PLAY HISTORIA:</strong> Reproduce secuencialmente todas las mutaciones (Moviola).</li>
+                    <li>📸 <strong>CAPTURA:</strong> Genera y descarga instantáneamente un archivo PNG.</li>
+                    <li>💾 <strong>EXPORTAR EXCEL:</strong> Empaqueta y descarga la Matriz SMIb cruda en un archivo CSV.</li>
+                    <li>🔲 <strong>PANTALLA COMPLETA:</strong> Expande la interfaz y el motor 3D para lograr inmersión total.</li>
+                </ul>
+
+                <h2 style="color: #FF0055;">3. FILTROS Y AISLAMIENTO CLÍNICO</h2>
+                <p>Aísla instantáneamente a sujetos haciendo clic en la <strong>Barra Inferior de Sujetos</strong> o desde el <strong>Censo Analítico</strong>. Utiliza los Filtros Visuales para comparar la Realidad Emitida, la Recibida y las Percepciones.</p>
+
+                <h2 style="color: #FF0055;">4. MONITORIZACIÓN TERMODINÁMICA</h2>
+                <p>El <strong>ECG Vital</strong> traza en tiempo real el pulso de la red. La línea Azul representa la Densidad (SDR), y la línea Oro mide la Disonancia o Entropía latente del sistema. Picos en oro alertan de inminentes rupturas de vínculos.</p>
+
+                <br><br>
+                <div style="text-align: center; font-family: 'Roboto Mono', monospace; font-size: 0.8rem; color: #888;">
+                    © 2026 SOC_ORD Project - Arquitectura Consolidada Platinum<br>
+                    DOI Registro de Referencia: <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: inherit; text-decoration: underline;">10.5281/zenodo.18941691</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- COMMUNITY & FEEDBACK SECTION -->
+    <section id="community" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">Comunidad y Feedback</h2>
+            <p class="section-text">¿Tienes preguntas, sugerencias o reflexiones sobre el modelo SOC_ORD? Escríbenos directamente.</p>
+            <div class="glass-card" style="max-width:600px; margin:0 auto; padding: 2rem;">
+                <!-- Cambia 'tu_correo@ejemplo.com' por el ID de Formspree cuando crees la cuenta -->
+                <form action="mailto:josmancor@gmail.com" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:15px;">
+                    <input type="text" name="name" placeholder="Tu Nombre o Institución" required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem;">
+                    <input type="email" name="email" placeholder="Tu Correo Electrónico" required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem;">
+                    <textarea name="message" rows="5" placeholder="Tus reflexiones, preguntas o comentarios..." required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem; resize:vertical;"></textarea>
+                    <button type="submit" class="btn btn-primary" style="align-self:flex-start; border:none; padding:12px 30px; font-size:1rem; cursor:pointer;">Enviar Mensaje</button>
+                    <p style="font-size:0.8rem; color:#A0AEC0; margin-top:10px;">* Para recibir correos, crea una cuenta gratuita en <a href="https://formspree.io" target="_blank" style="color:#00A2FF;">Formspree</a> e introduce tu ID en el código HTML.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
+            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_simulacion.png'" class="nav-logo" style="height: 40px;">
+        </div>
+        <p>© 2026 SOC_ORD Project. Desarrollado para la investigación en sociometría computacional.</p>
+        <p style="font-family: 'Roboto Mono', monospace; font-size: 0.8rem; color: #666; margin-top: 10px;">CERN Zenodo DOI: <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: inherit; text-decoration: underline;">10.5281/zenodo.18941691</a></p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

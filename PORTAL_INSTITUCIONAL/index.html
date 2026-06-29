@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC_ORD | Scientific Innovation Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos Propios -->
+    <link rel="stylesheet" href="estilos_platinum.css">
+</head>
+<body>
+    <div class="bg-mesh"></div>
+
+    <nav class="navbar animate-slide-up">
+        <div class="logo">SOC<span>_ORD</span></div>
+        <div class="nav-links">
+            <a href="#" style="color: var(--accent-cyan); border-bottom: 2px solid var(--accent-cyan); padding-bottom: 5px;">Inicio</a>
+            <a href="#">Proyectos</a>
+            <a href="#">Noticias</a>
+            <a href="#">Soporte</a>
+        </div>
+        <div class="university-logo">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>Universidad de Barcelona<br><small>Fundació Bosch i Gimpera</small></span>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="hero-title animate-slide-up" style="animation-delay: 0.1s;">
+            <h1>SOC_ORD</h1>
+            <p>SCIENTIFIC INNOVATION PORTAL</p>
+        </div>
+
+        <div class="login-panel animate-slide-up" style="animation-delay: 0.2s;">
+            
+            <!-- Zona Investigador -->
+            <div class="login-section">
+                <h2>BIENVENIDO A SOC_ORD</h2>
+                <p class="subtitle">PORTAL DE ACCESO CIENTÍFICO<br>Plataforma avanzada para la gestión de proyectos de investigación sociométrica.</p>
+                
+                <h3 style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px; letter-spacing: 1px;">INVESTIGADOR PRINCIPAL</h3>
+                
+                <form id="form-ip">
+                    <div class="input-group">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" placeholder="Credencial Institucional (Email)" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Contraseña de Acceso" required>
+                    </div>
+                    
+                    <div class="forgot-pass">
+                        <label><input type="checkbox"> Recordarme</label>
+                        <a href="#">¿Olvidó su contraseña?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-login" style="width: 100%;">INICIAR SESIÓN</button>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="#" style="color: var(--text-secondary); font-size: 0.8rem; text-decoration: none;">SOLICITAR ACREDITACIÓN FBG</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Zona Estudiantes -->
+            <div class="login-section" style="justify-content: center;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <i class="fa-solid fa-network-wired" style="font-size: 4rem; color: var(--accent-magenta); opacity: 0.8;"></i>
+                </div>
+                
+                <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-size: 1.1rem; color: #FFF; margin-bottom: 5px;">ACCESO ESTUDIANTES</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">INTRODUCE TU "ID TELEMÁTICO"</p>
+                    
+                    <form id="form-student">
+                        <div class="input-group" style="margin-bottom: 10px;">
+                            <i class="fa-solid fa-hashtag"></i>
+                            <input type="text" id="student-id" placeholder="Ej. A12345678" required style="border-color: var(--accent-cyan);">
+                        </div>
+                        <button type="button" class="btn-student" onclick="abrirCuestionario()" style="width: 100%;">
+                            <span>Confirmar Acceso</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    
+                    <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 1.5rem; line-height: 1.4;">
+                        <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> 
+                        <strong>Escudo Ético:</strong> Tu participación es estrictamente anónima. Tus respuestas serán procesadas mediante encriptación de extremo a extremo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Documentación Adicional -->
+        <div class="docs-section animate-slide-up" style="animation-delay: 0.4s; grid-template-columns: repeat(5, 1fr);">
+            <a href="../../10_Documentacion_Fundacional/GLOSARIO_SOC_ORD_2026.md" class="doc-card" target="_blank">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Glosario Oficial</h3>
+                <p>Terminología y constructos matemáticos del modelo.</p>
+            </a>
+            
+            <a href="https://doi.org/10.5281/zenodo.19324001" class="doc-card" target="_blank">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>DOI Zenodo</h3>
+                <p>Manifiesto fundacional v6.0 y registro intelectual.</p>
+            </a>
+
+            <a href="../../10_Documentacion_Fundacional/BIBLIOGRAFIA_FUNDAMENTAL_SOC_ORD.md" class="doc-card" target="_blank">
+                <i class="fa-solid fa-bookmark"></i>
+                <h3>Bibliografía</h3>
+                <p>Fuentes metodológicas (Moreno, Lewin).</p>
+            </a>
+
+            <!-- Demo Oficial -->
+            <a href="../../04_Animaciones_VISORD/DEMO_1_VIDEO_OFICIAL.webp" class="doc-card" target="_blank">
+                <i class="fa-solid fa-circle-play" style="color: var(--btn-primary);"></i>
+                <h3>Video Oficial</h3>
+                <p>Demo narrativa del potencial diagnóstico.</p>
+            </a>
+
+            <!-- Abre VISORDP en pestaña nueva -->
+            <a href="../../04_Animaciones_VISORD/HUB_SOC_ORD_SMIb.html" class="doc-card" target="_blank" style="border-color: rgba(255, 0, 85, 0.3);">
+                <i class="fa-solid fa-cube" style="color: var(--accent-magenta);"></i>
+                <h3>VISORDP 3D</h3>
+                <p>Laboratorio In-Silico interactivo.</p>
+            </a>
+        </div>
+
+        <!-- Nueva Sección: Galería Científica y Características -->
+        <div class="features-section animate-slide-up" style="animation-delay: 0.6s;">
+            <h2 class="section-title">CAPACIDADES DEL MOTOR SOC_ORD</h2>
+            <div class="gallery-grid">
+                
+                <!-- Tarjeta 1: Tabla Analítica SMIb -->
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="../../05_Web_Promocional/SOC_ORD_JPG/SOC_ORD_6_SMIb.png" alt="Tabla Analítica SMIb">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Análisis Matricial (SMIb)</h3>
+                        <p>Visualización de la Estructura Sociométrica Instrumental. El motor transforma los vínculos cualitativos (elecciones y rechazos) en matrices algebraicas de alta densidad para detectar líderes y aislamientos.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Topología Grupal -->
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="../../05_Web_Promocional/SOC_ORD_JPG/SOC_ORD_7_group.png" alt="Topología Grupal 2D">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Topología Estructural 2D</h3>
+                        <p>Mapeo bidimensional de redes complejas. Identificación automática de "grumos" cohesivos, subgrupos enfrentados y flujos de influencia mediante algoritmos de centralidad.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Proyección 6D (VISORD) -->
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="../../05_Web_Promocional/SOC_ORD_JPG/VISORD_Captura_N12_T121.png" alt="Proyección 6D VISORD">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Proyección VISORDP 3D</h3>
+                        <p>El Laboratorio In-Silico. Renderizado físico-termodinámico en tiempo real que simula las tensiones psicosociales (rechazos y afinidades) como resortes gravitacionales en un espacio tridimensional.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--card-border); background: rgba(11, 17, 32, 0.9); position: relative; z-index: 1;">
+        <p>
+            <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px;">Privacidad</a> | 
+            <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px;">Términos</a> | 
+            <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px;">Contacto FBG</a>
+        </p>
+        <p style="margin-top: 10px;">SOC_ORD © 2026 - Dr. José Manuel Cornejo Álvarez</p>
+    </footer>
+
+    <!-- Overlay Cuestionario (Modal) -->
+    <div id="cuestionario-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(11, 17, 32, 0.95); z-index: 9999; backdrop-filter: blur(15px); align-items: center; justify-content: center;">
+        <div style="background: #1E293B; width: 90%; max-width: 800px; height: 80vh; border-radius: 12px; border: 1px solid var(--accent-cyan); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);">
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <h3 style="color: #FFF;"><i class="fa-solid fa-clipboard-question" style="color: var(--accent-cyan); margin-right: 10px;"></i> Cuestionario Sociométrico (SMI)</h3>
+                <button onclick="cerrarCuestionario()" style="background: transparent; border: none; color: #FFF; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                <div style="text-align: center;">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size: 3rem; color: var(--accent-cyan); margin-bottom: 1rem;"></i>
+                    <p>Cargando módulo de evaluación GxTyCz...</p>
+                    <p style="font-size: 0.8rem; margin-top: 10px;">(Aquí se inyectará el React Cuestionario Form)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
