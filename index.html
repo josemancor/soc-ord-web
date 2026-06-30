@@ -526,5 +526,45 @@
     </footer>
 
     <script src="scripts.js"></script>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Lightbox logic
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            // Trigger reflow
+            void lightbox.offsetWidth;
+            lightbox.classList.add('show');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('show');
+            setTimeout(() => lightbox.style.display = 'none', 300);
+        }
+
+        // Attach click events to all enlargeable images
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.bento-img, .blueprint-img');
+            images.forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', (e) => {
+                    // Prevent any parent links from firing
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightbox(img.src);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
