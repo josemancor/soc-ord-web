@@ -479,38 +479,71 @@ footer {
     text-align: center;
 }
 
-.theory-box {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px 40px;
+/* PÍLDORAS SOCIOMÉTRICAS ESTÁTICAS Y ASIMÉTRICAS */
+
+.micro-quote {
+    display: block;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #A0AEC0;
+    line-height: 1.5;
+    margin-top: 15px;
+    padding-left: 15px;
+    border-left: 2px solid var(--cyan);
+}
+
+.micro-quote-right {
+    display: block;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #A0AEC0;
+    line-height: 1.5;
+    margin-top: 15px;
+    padding-right: 15px;
+    border-right: 2px solid var(--cyan);
+    text-align: right;
+}
+
+.micro-quote-center {
+    display: block;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #A0AEC0;
+    line-height: 1.5;
+    margin-top: 15px;
+    text-align: center;
     position: relative;
-    background: rgba(10, 15, 25, 0.6);
-    border-left: 4px solid var(--cyan);
-    border-radius: 0 8px 8px 0;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-.theory-icon {
-    font-size: 2.5rem;
+.micro-quote-center::before {
+    content: "❝";
+    display: block;
+    font-size: 1.5rem;
     color: var(--cyan);
-    position: absolute;
-    top: -15px;
-    left: 20px;
     opacity: 0.4;
-    font-family: serif;
-    line-height: 1;
+    margin-bottom: 5px;
+    line-height: 0.5;
 }
 
-.theory-text {
-    font-size: 1.15rem;
+.transition-quote {
+    max-width: 800px;
+    margin: 60px auto;
+    text-align: center;
+    font-size: 1.2rem;
     font-weight: 300;
     font-style: italic;
     color: #E0E0E0;
-    line-height: 1.6;
-    transition: opacity 1s ease-in-out;
-    margin: 0;
-    display: block;
+    padding: 20px;
+    background: rgba(10, 15, 25, 0.4);
+    border-top: 1px solid rgba(0, 162, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 162, 255, 0.2);
+}
+
+.bento-overlay .micro-quote {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    border-left: 2px solid #FF0055;
+    color: #FFF;
 }
 
 /* BLUEPRINT SECTION */
