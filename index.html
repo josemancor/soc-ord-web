@@ -223,53 +223,59 @@
                 El motor SOC_ORD se alimenta de un protocolo de entrada riguroso. Esta matriz maestra codifica todas las dimensiones estructurales del ecosistema, listas para ser inyectadas al Simulador In Silico.
             </p>
             
-            <div class="blueprint-container">
-                <div class="blueprint-image-wrapper">
-                    <img src="assets/SOC_ORD_2_Datos.png" alt="Matriz de Datos SOC_ORD" class="blueprint-img">
-                    
-                    <!-- Pointers / Hotspots -->
-                    <div class="hotspot" style="top: 10%; left: 15%;">
-                        <span class="pulse"></span>
-                        <div class="hotspot-tooltip">
-                            <h4>A. Identificadores Base</h4>
-                            <p>Sujetos, nodos y delimitación del ecosistema.</p>
-                            <q class="micro-quote" style="font-size:0.8rem; margin-top:5px;">La metapercepción mide el grado de 'sincronía cuántica' del grupo: saber con certeza que el otro sabe lo que tú sabes.</q>
-                        </div>
+            <div class="data-pipeline">
+                <!-- Bloque 1 -->
+                <div class="pipeline-step glass-card" style="border-left: 4px solid #4CAF50;">
+                    <div class="step-num" style="background:#4CAF50;">1</div>
+                    <div class="step-header">
+                        <h3 style="color:#4CAF50;">Identificación y Metadatos</h3>
                     </div>
-                    
-                    <div class="hotspot" style="top: 30%; left: 35%;">
-                        <span class="pulse" style="background:#FF0055;"></span>
-                        <div class="hotspot-tooltip">
-                            <h4>B. Core Sociométrico</h4>
-                            <p>Ordenación BREVE (E1, E2, E3...) y datos cruzados clásicos MORENO.</p>
-                            <q class="micro-quote-right" style="font-size:0.8rem; margin-top:5px;">El orden de elección es el mensaje. La sociometría ordinal abandona el reduccionismo binario: no basta con ser elegido, importa en qué estrato del deseo habitas.</q>
-                        </div>
-                    </div>
-                    
-                    <div class="hotspot" style="top: 50%; left: 55%;">
-                        <span class="pulse" style="background:#FFCC00;"></span>
-                        <div class="hotspot-tooltip">
-                            <h4>C. Visión Tridimensional</h4>
-                            <p>Meta-percepciones (mE y mR). ¿Quién creo que me elige y a quién creo que rechazan?</p>
-                            <q class="micro-quote-center" style="font-size:0.8rem; margin-top:5px;">El formato BREVE despoja al cuestionario de la violencia de preguntar explícitamente a quién rechazas, logrando capturar la estructura social real sin generar desgaste cognitivo ni social.</q>
-                        </div>
-                    </div>
-                    
-                    <div class="hotspot" style="top: 70%; left: 75%;">
-                        <span class="pulse" style="background:#00d2ff;"></span>
-                        <div class="hotspot-tooltip">
-                            <h4>D. Contexto y Vectores</h4>
-                            <p>Variables Complementarias (Género, Edad, Rol) y Adjetivos AAG.</p>
-                            <q class="micro-quote" style="font-size:0.8rem; margin-top:5px;">El adjetivo inyectado mediante el AAG es un vector de fuerza léxica que amplifica la gravedad de cada elección.</q>
-                        </div>
-                    </div>
+                    <div class="step-code"><code>[ ID: N14 | Sexo: M | Rol: T ]</code></div>
+                    <p>Definición del ecosistema y tokenización de sujetos. Los parámetros <strong>GxTyCz</strong> marcan el contexto de inyección al simulador (Grupo, Tiempo y Criterio).</p>
                 </div>
-                
-                <div class="blueprint-simulator-card glass-card">
-                    <h3 style="color:#00A2FF;">E. Parámetros del Simulador (GxTyCz)</h3>
-                    <p style="font-size:0.9rem; color:#A0AEC0; margin-top:10px;">
-                        Las variables <strong>Grupos (G)</strong>, <strong>Tiempos (T)</strong> y <strong>Criterios (C)</strong> dirigen el motor termodinámico de <em>VISORD 3D</em>. Permiten ejecutar estudios comparativos transversales, longitudinales y multicriterio, alimentando directamente al <strong>Banco Sociométrico (BSOC)</strong>.
-                    </p>
+
+                <!-- Bloque 2 -->
+                <div class="pipeline-step glass-card" style="border-left: 4px solid #00A2FF;">
+                    <div class="step-num" style="background:#00A2FF;">2</div>
+                    <div class="step-header">
+                        <h3 style="color:#00A2FF;">Core Sociométrico (El Vínculo)</h3>
+                    </div>
+                    <div class="step-code">
+                        <code style="color:#888;">MORENO:  [Elige: 3,4 | Rechaza: 1]</code>
+                        <code style="color:#FFF;">SOC_ORD: [Orden: 3, 4, 2, 1, 5]</code>
+                    </div>
+                    <p>Contraste metodológico: SOC_ORD sustituye la violencia de la extracción y el rechazo binario clásico (MORENO) por una <strong>ordenación ordinal fluida y pacífica (Formato Breve)</strong>, extrayendo la misma carga estructural sin desgaste.</p>
+                </div>
+
+                <!-- Bloque 3 -->
+                <div class="pipeline-step glass-card" style="border-left: 4px solid #FFCC00; background: rgba(255, 204, 0, 0.05);">
+                    <div class="step-num" style="background:#FFCC00; color:#000;">3</div>
+                    <div class="step-header">
+                        <h3 style="color:#FFCC00;">Meta-Percepción Triádica</h3>
+                    </div>
+                    <div class="step-code"><code style="color:#FFCC00;">[ mE: 2, 5 | mR: 1 ]</code></div>
+                    <p><strong>El núcleo termodinámico original de SOC_ORD.</strong> Capturamos la disonancia cognitiva estructural midiendo no lo que es, sino lo que se cree que es: ¿A quién creo yo que le caigo bien (mE)? ¿A quién creo que el grupo rechaza (mR)?</p>
+                    <q class="micro-quote-right" style="border-color:#FFCC00; font-size:0.8rem; margin-top:10px;">La metapercepción mide el grado de 'sincronía cuántica' del grupo: saber con certeza que el otro sabe lo que tú sabes.</q>
+                </div>
+
+                <!-- Bloque 4 -->
+                <div class="pipeline-step glass-card" style="border-left: 4px solid #9C27B0;">
+                    <div class="step-num" style="background:#9C27B0;">4</div>
+                    <div class="step-header">
+                        <h3 style="color:#9C27B0;">Variables Complementarias</h3>
+                    </div>
+                    <div class="step-code"><code>[ V1: Alto Rendi. | V2: Turno Noche | V3... ]</code></div>
+                    <p>Inyección de contexto periférico vital (hasta 10 variables). Es <strong>fundamental para homogeneizar datos</strong> y cruzar escenarios socio-demográficos a la hora de realizar investigaciones retrospectivas masivas en el Banco Sociométrico (BSOC).</p>
+                </div>
+
+                <!-- Bloque 5 -->
+                <div class="pipeline-step glass-card" style="border-left: 4px solid #00E5FF;">
+                    <div class="step-num" style="background:#00E5FF; color:#000;">5</div>
+                    <div class="step-header">
+                        <h3 style="color:#00E5FF;">Diferencial Semántico (AAG)</h3>
+                    </div>
+                    <div class="step-code"><code>[ AAG: Valiente (8) | Honesto (7) ]</code></div>
+                    <p>Los Adjetivos de Actividad Grupal inyectan un vector de fuerza léxica que contextualiza, homogeniza y amplifica la gravedad cualitativa de cada elección en la red.</p>
                 </div>
             </div>
             

@@ -781,3 +781,88 @@ footer {
         grid-column: 1 / -1; 
     }
 }
+
+/* DATA PIPELINE (Timeline) */
+.data-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 800px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.data-pipeline::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 30px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.pipeline-step {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+    margin-left: 80px;
+    padding: 25px;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.step-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.step-num {
+    position: absolute;
+    left: -67px;
+    top: 20px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #FFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+.step-code {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-code code {
+    display: block;
+    line-height: 1.4;
+}
+
+.pipeline-step p {
+    color: #A0AEC0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .data-pipeline::before { left: 15px; }
+    .pipeline-step { margin-left: 45px; padding: 15px; }
+    .step-num { left: -47px; top: 15px; width: 30px; height: 30px; }
+}
