@@ -47,60 +47,85 @@
             <a href="#" class="terminal-card">
                 <div class="card-header">
                     <span class="led green"></span>
-                    <span class="module-id">MOD-01 // VISORD</span>
+                    <span class="module-id">MOD-01 // SIMUL_LAB</span>
                 </div>
-                <div class="card-icon">🟢</div>
-                <h3>ARRANQUE IN-SILICO</h3>
-                <p>Encender motor gráfico VISORD 3D. Pruebas de estrés termodinámico y simulación topográfica.</p>
-                <div class="card-footer">EJECUTAR PROTOCOLO ➔</div>
+                <div class="card-icon">🧪</div>
+                <h3>SIMULACIÓN IN-SILICO</h3>
+                <p>Pruebas de estrés termodinámico y calibración experimental con matrices sintéticas antes del despliegue real.</p>
+                <div class="card-footer">INICIAR ENTORNO ➔</div>
             </a>
 
-            <!-- MODULE 2 -->
-            <a href="#" class="terminal-card">
+            <!-- MODULE 2 (WARNING) -->
+            <a href="#" class="terminal-card" style="border-color: rgba(255, 0, 85, 0.4);">
                 <div class="card-header">
-                    <span class="led blue"></span>
-                    <span class="module-id">MOD-02 // FIELD_OP</span>
+                    <span class="led" style="background: #FF0055; box-shadow: 0 0 5px #FF0055;"></span>
+                    <span class="module-id" style="color: #FF0055;">MOD-02 // FIELD_OP [LOCKED]</span>
                 </div>
-                <div class="card-icon">🔵</div>
-                <h3>DESPLIEGUE DE ESTUDIO</h3>
-                <p>Compilar formato BREVE, generar ID telemáticos y monitorizar recepción de datos en tiempo real.</p>
-                <div class="card-footer">NUEVO PROYECTO ➔</div>
+                <div class="card-icon">📡</div>
+                <h3 style="color: #FF0055;">ESTUDIO REAL DE CAMPO</h3>
+                <p>Despliegue telemático, generación de IDs y recolección en vivo.<br><br>
+                <span style="font-size: 0.75rem; color: #ff8ca3;">⚠️ REQUIERE AUTORIZACIÓN INSTITUCIONAL Y FIRMA DE COMPROMISO ÉTICO DEL IP.</span></p>
+                <div class="card-footer" style="color: #FF0055;">SOLICITAR DESBLOQUEO ➔</div>
             </a>
 
             <!-- MODULE 3 -->
             <a href="#" class="terminal-card">
                 <div class="card-header">
-                    <span class="led yellow"></span>
-                    <span class="module-id">MOD-03 // VAULT</span>
+                    <span class="led blue"></span>
+                    <span class="module-id">MOD-03 // DATA_PIPELINE</span>
                 </div>
-                <div class="card-icon">🟡</div>
-                <h3>ARCHIVO Y CARTOGRAFÍA</h3>
-                <p>Acceso a la bóveda local. Revisar matrices, Radares IAS, proyecciones 6D y dictámenes clínicos.</p>
-                <div class="card-footer">ABRIR BÓVEDA ➔</div>
+                <div class="card-icon">🧬</div>
+                <h3>SUMINISTRO DE DATOS CRUDOS</h3>
+                <p>Ingesta de matrices sociométricas externas formateadas bajo el estándar SOC_ORD para análisis y evaluación termodinámica inmediata.</p>
+                <div class="card-footer">ABRIR CANAL DE INGESTA ➔</div>
             </a>
 
             <!-- MODULE 4 -->
             <a href="#" class="terminal-card">
                 <div class="card-header">
                     <span class="led purple"></span>
-                    <span class="module-id">MOD-04 // BSOC</span>
+                    <span class="module-id">MOD-04 // BSOC_DONATION</span>
                 </div>
-                <div class="card-icon">🟣</div>
-                <h3>ENLACE BSOC GLOBAL</h3>
-                <p>Sincronización con el superordenador central. Donar matrices anonimizadas o descargar estudios multicriterio.</p>
-                <div class="card-footer">ESTABLECER ENLACE ➔</div>
+                <div class="card-icon">🏛️</div>
+                <h3>DONACIÓN AL BSOC</h3>
+                <p>Purgado automático de metadatos (Zero-Noise) y donación de matrices históricas al repositorio central del Banco Sociométrico.</p>
+                <div class="card-footer">INICIAR TRANSFERENCIA ➔</div>
             </a>
-
+            
             <!-- MODULE 5 -->
-            <a href="#" class="terminal-card config-card">
+            <a href="#" class="terminal-card">
+                <div class="card-header">
+                    <span class="led yellow"></span>
+                    <span class="module-id">MOD-05 // REPORT_GEN</span>
+                </div>
+                <div class="card-icon">📑</div>
+                <h3>GENERACIÓN DE INFORMES</h3>
+                <p>Obtención de dossieres clínicos automatizados (PDF/Raw Data) para distribución selectiva a comités, directivos o prensa científica.</p>
+                <div class="card-footer">SINTETIZAR DOSSIER ➔</div>
+            </a>
+            
+            <!-- MODULE 6 -->
+            <a href="#" class="terminal-card">
                 <div class="card-header">
                     <span class="led grey"></span>
-                    <span class="module-id">SYS // CONFIG</span>
+                    <span class="module-id">MOD-06 // MOVIOLA</span>
                 </div>
-                <div class="card-icon">⚙️</div>
-                <h3>PARAMETRIZACIÓN DEL NODO</h3>
-                <p>Configuración del servidor local, gestión de permisos para asistentes y validación de ética de datos.</p>
-                <div class="card-footer">ACCEDER A ROOT ➔</div>
+                <div class="card-icon">⏪</div>
+                <h3>REVISIÓN INTERACTIVA HISTÓRICA</h3>
+                <p>Reapertura de proyectos pasados para análisis retrospectivo. Los datos primarios caducan y se destruyen a los 5 años por seguridad.</p>
+                <div class="card-footer">ABRIR ARCHIVO ➔</div>
+            </a>
+            
+            <!-- MODULE 7 (NEW) -->
+            <a href="#" class="terminal-card" style="grid-column: 1 / -1; background: rgba(0, 162, 255, 0.05); border-color: #00A2FF;">
+                <div class="card-header">
+                    <span class="led" style="background: #00A2FF; box-shadow: 0 0 10px #00A2FF;"></span>
+                    <span class="module-id" style="color: #00A2FF;">MOD-07 // MACRO_RESEARCH</span>
+                </div>
+                <div class="card-icon" style="font-size: 2.5rem;">🌌</div>
+                <h3 style="color: #00A2FF;">INVESTIGACIONES RETROACTIVAS MASIVAS</h3>
+                <p style="color: #cbd5e0; font-size: 0.95rem;">Motor de procesamiento pesado. Prueba hipótesis sociométricas significativas contrastando y comparando múltiples sociomatrices en el espacio y en el tiempo a nivel global.</p>
+                <div class="card-footer" style="color: #00FF9D; font-size: 0.9rem;">INICIAR CLÚSTER DE CÁLCULO MÚLTIPLE ➔</div>
             </a>
 
         </div>
