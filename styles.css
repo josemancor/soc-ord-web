@@ -472,3 +472,39 @@ footer {
     font-size: 0.95rem;
     color: #A0AEC0;
 }
+
+/* QUOTE SECTION */
+.quote-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.quote-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    position: relative;
+    border: 1px solid rgba(0, 162, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 162, 255, 0.1);
+}
+
+.quote-icon {
+    font-size: 4rem;
+    color: #00A2FF;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    opacity: 0.3;
+    font-family: serif;
+    line-height: 1;
+}
+
+#dynamic-quote {
+    font-size: 1.3rem;
+    font-weight: 300;
+    font-style: italic;
+    color: #E0E0E0;
+    line-height: 1.6;
+    transition: opacity 1s ease-in-out;
+    margin: 0;
+}
