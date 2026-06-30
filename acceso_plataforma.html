@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC_ORD | Scientific Innovation Portal</title>
+    <meta name="description" content="Portal de Acceso Clínico y Científico de la plataforma SOC_ORD. Acceso para investigadores y participantes.">
+    <meta property="og:title" content="SOC_ORD | Scientific Innovation Portal">
+    <meta property="og:description" content="Portal de Acceso Clínico y Científico de la plataforma SOC_ORD.">
+    <link rel="stylesheet" href="acceso.css">
+</head>
+<body>
+
+    <div class="bg-effects"></div>
+    <div class="bg-grid"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <h1 style="color: #fff;">SOC_O<span style="color: #00A2FF;">Я</span>D</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="index.html#modules">Módulos</a></li>
+            <li><a href="index.html#arsenal">Arsenal Analítico</a></li>
+            <li><a href="index.html#manual">Soporte (Manual)</a></li>
+        </ul>
+        <div class="nav-inst">
+            <img src="assets/logo_cooperacion.png" alt="Universidad Científica" onerror="this.src='assets/logo_socord_base.png'">
+            <span>Universidad<br>Científica</span>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        
+        <div class="portal-header">
+            <h1 style="color: #fff;">SOC_O<span style="color: #00A2FF;">Я</span>D</h1>
+            <p>SCIENTIFIC INNOVATION PORTAL</p>
+        </div>
+
+        <div class="glass-panel">
+            
+            <!-- LEFT PANEL -->
+            <div class="left-panel">
+                <h2>BIENVENIDO A SOC_ORD</h2>
+                <h3>PORTAL DE ACCESO CIENTÍFICO</h3>
+                <p class="desc">Plataforma avanzada para la gestión de proyectos de investigación.</p>
+
+                <span class="label">INVESTIGADOR PRINCIPAL</span>
+                
+                <form action="#" method="POST">
+                    <div class="input-group">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </span>
+                        <input type="text" placeholder="Usuario / Email">
+                    </div>
+                    
+                    <div class="input-group">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </span>
+                        <input type="password" placeholder="Contraseña">
+                        <span class="input-icon-right">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </span>
+                    </div>
+
+                    <div class="form-options">
+                        <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
+                            <input type="checkbox" style="width:auto; margin:0;"> Recordarme
+                        </label>
+                        <a href="#">¿Olvidó su contraseña?</a>
+                    </div>
+
+                    <button type="button" class="btn-primary" onclick="window.location.href='index.html'">INICIAR SESIÓN</button>
+                    <a href="#" class="btn-link">CREAR CUENTA NUEVA</a>
+                </form>
+            </div>
+
+            <!-- RIGHT PANEL -->
+            <div class="right-panel">
+                <!-- SVG Polygon Icon simulating the mockup -->
+                <svg class="cube-icon" viewBox="0 0 24 24" fill="none" stroke="#e91e63" stroke-width="1.5">
+                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                    <line x1="12" y1="22" x2="12" y2="12"></line>
+                    <line x1="22" y1="8.5" x2="12" y2="12"></line>
+                    <line x1="2" y1="8.5" x2="12" y2="12"></line>
+                    <line x1="12" y1="2" x2="12" y2="12" stroke="#00A2FF"></line>
+                    <line x1="22" y1="15.5" x2="12" y2="12" stroke="#00A2FF"></line>
+                    <line x1="2" y1="15.5" x2="12" y2="12" stroke="#00A2FF"></line>
+                    <circle cx="12" cy="12" r="2" fill="#00A2FF"></circle>
+                </svg>
+
+                <h2 style="font-size:1.3rem;">ACCESO PARTICIPANTES</h2>
+                <h3>INTRODUCE TU "ID TELEMÁTICO"</h3>
+                
+                <div class="student-input">
+                    <input type="text" placeholder="ej. A12345678">
+                    <button type="button">Confirmar →</button>
+                </div>
+                
+                <p class="desc" style="font-size:0.75rem;">Info: Acceso a resultados y seguimiento del proyecto.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+        <span>SOC_ORD © 2026</span>
+    </footer>
+
+</body>
+</html>

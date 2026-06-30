@@ -91,7 +91,10 @@ const quotes = [
     "Si un sujeto es líder para unos y marginado para otros, estamos ante una 'Identidad Disputada' que fractura la realidad compartida.",
     "Garantizamos datos purgados de ruido estadístico (Zero-Noise). Mostramos solo la señal pura, protegiendo siempre la identidad del evaluado.",
     "No dibujamos las jerarquías impuestas por el organigrama oficial, sino las verdaderas jerarquías de influencia real.",
-    "Los números son representaciones abstractas de la realidad. La interpretación final requiere siempre del contexto y la empatía del clínico."
+    "Los números son representaciones abstractas de la realidad. La interpretación final requiere siempre del contexto y la empatía del clínico.",
+    "El diseño GxTyCz nos permite cartografiar la evolución en 4D, abriendo la puerta a estudios comparativos transversales, longitudinales y multicriterio.",
+    "SOC_ORD sienta las bases del BSOC (Banco Sociométrico), una bóveda para archivar y analizar el genoma relacional de miles de ecosistemas humanos.",
+    "Con el Banco Sociométrico avanzamos hacia los análisis retrospectivos multiculturales masivos, descubriendo las leyes universales de la termodinámica social."
 ];
 
 // Logic to rotate quotes

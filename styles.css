@@ -508,3 +508,174 @@ footer {
     transition: opacity 1s ease-in-out;
     margin: 0;
 }
+
+/* BLUEPRINT SECTION */
+.blueprint-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.blueprint-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 162, 255, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 162, 255, 0.1);
+}
+
+.blueprint-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.hotspot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.pulse {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #00A2FF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(0, 162, 255, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 162, 255, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 162, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 162, 255, 0); }
+}
+
+.hotspot-tooltip {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(11, 17, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.hotspot:hover .hotspot-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: 20px;
+}
+
+.hotspot-tooltip h4 {
+    color: #fff;
+    margin: 0 0 5px 0;
+    font-size: 0.95rem;
+}
+
+.hotspot-tooltip p {
+    color: #A0AEC0;
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.blueprint-simulator-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    border-top: 3px solid #00A2FF;
+}
+
+/* BENTO GRID (ARSENAL) */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+@media (min-width: 900px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .bento-item.wide {
+        grid-column: span 2;
+    }
+    
+    .bento-item.tall {
+        grid-row: span 2;
+    }
+}
+
+.bento-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 15px rgba(0, 162, 255, 0.2);
+}
+
+.bento-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+    transition: transform 0.5s ease;
+}
+
+.bento-item:hover .bento-img {
+    transform: scale(1.05);
+}
+
+.bento-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(8,13,22,1) 0%, rgba(8,13,22,0.8) 50%, transparent 100%);
+    padding: 30px 20px 20px 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.bento-item:hover .bento-overlay {
+    transform: translateY(0);
+}
+
+.bento-overlay h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.bento-overlay p {
+    color: #A0AEC0;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
