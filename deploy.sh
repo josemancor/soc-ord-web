@@ -7,20 +7,19 @@
 echo "🚀 Iniciando proceso de despliegue a GitHub..."
 echo "------------------------------------------------"
 
-# Verifica si hay cambios
-if [[ -z $(git status -s) ]]; then
-  echo "✅ No hay cambios pendientes. La web ya está actualizada."
-  exit 0
+# Verifica si hay cambios nuevos
+if [[ -n $(git status -s) ]]; then
+  # 1. Empaquetar todo
+  echo "📦 1. Empaquetando nuevos archivos..."
+  git add .
+
+  # 2. Confirmar cambios con fecha y hora
+  timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+  echo "📝 2. Guardando instantánea: $timestamp"
+  git commit -m "Auto-deploy: $timestamp"
+else
+  echo "✅ No hay archivos nuevos que empaquetar. Pasando directamente a subir actualizaciones pendientes..."
 fi
-
-# 1. Empaquetar todo
-echo "📦 1. Empaquetando nuevos archivos..."
-git add .
-
-# 2. Confirmar cambios con fecha y hora
-timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-echo "📝 2. Guardando instantánea: $timestamp"
-git commit -m "Auto-deploy: $timestamp"
 
 # 3. Subir a la nube
 echo "☁️ 3. Subiendo a GitHub Pages..."
