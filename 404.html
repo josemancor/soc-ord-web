@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada | SOC_ORD</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-color: #050810;
+        }
+        .error-container {
+            padding: 40px;
+        }
+        h1 {
+            font-size: 6rem;
+            color: #FF0055;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+        }
+        p {
+            color: #A0AEC0;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .logo {
+            height: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(0, 162, 255, 0.3));
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container glass-card">
+        <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_simulacion.png'" class="logo">
+        <h1>404</h1>
+        <h2 style="color: #E0E0E0; font-weight: 300;">Anomalía de Entropía Detectada</h2>
+        <p>Parece que te has salido del ecosistema. Esta ruta no existe en el mapa sociométrico.</p>
+        <a href="index.html" class="btn btn-primary">Volver a la Base de Control</a>
+    </div>
+</body>
+</html>
