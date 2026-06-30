@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC_ORD | Terminal del Servidor (IP)</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="acceso.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="terminal-body">
+
+    <div class="terminal-scanlines"></div>
+    <div class="terminal-bg-glow"></div>
+
+    <!-- TERMINAL HEADER -->
+    <header class="terminal-header">
+        <div class="telemetry">
+            <span class="status-indicator online"></span>
+            <span class="mono-text">[NODE: ONLINE]</span>
+            <span class="mono-text muted">|</span>
+            <span class="mono-text">[LATENCY: 12ms]</span>
+            <span class="mono-text muted">|</span>
+            <span class="mono-text">[SERVER: UNIVERSIDAD CIENTÍFICA / CERN_ZENODO]</span>
+        </div>
+        <div class="terminal-actions">
+            <button class="btn-disconnect" onclick="window.location.href='index.html'">DESCONECTAR ENLACE [X]</button>
+        </div>
+    </header>
+
+    <div class="terminal-container">
+        
+        <!-- SYSTEM IDENTIFICATION -->
+        <div class="system-id">
+            <h1 class="glitch-text" data-text="SOC_ORD CORE">SOC_ORD CORE</h1>
+            <h2>SESIÓN INICIADA: INVESTIGADOR PRINCIPAL (IP-4088)</h2>
+            <div class="sys-info">
+                <p>Nivel de Autorización: <strong>MÁXIMO (A1)</strong></p>
+                <p>Último acceso: <em>2026-06-30 16:32:17 +02:00</em></p>
+            </div>
+        </div>
+
+        <!-- OPERATIONAL GRID -->
+        <div class="terminal-grid">
+            
+            <!-- MODULE 1 -->
+            <a href="#" class="terminal-card">
+                <div class="card-header">
+                    <span class="led green"></span>
+                    <span class="module-id">MOD-01 // VISORD</span>
+                </div>
+                <div class="card-icon">🟢</div>
+                <h3>ARRANQUE IN-SILICO</h3>
+                <p>Encender motor gráfico VISORD 3D. Pruebas de estrés termodinámico y simulación topográfica.</p>
+                <div class="card-footer">EJECUTAR PROTOCOLO ➔</div>
+            </a>
+
+            <!-- MODULE 2 -->
+            <a href="#" class="terminal-card">
+                <div class="card-header">
+                    <span class="led blue"></span>
+                    <span class="module-id">MOD-02 // FIELD_OP</span>
+                </div>
+                <div class="card-icon">🔵</div>
+                <h3>DESPLIEGUE DE ESTUDIO</h3>
+                <p>Compilar formato BREVE, generar ID telemáticos y monitorizar recepción de datos en tiempo real.</p>
+                <div class="card-footer">NUEVO PROYECTO ➔</div>
+            </a>
+
+            <!-- MODULE 3 -->
+            <a href="#" class="terminal-card">
+                <div class="card-header">
+                    <span class="led yellow"></span>
+                    <span class="module-id">MOD-03 // VAULT</span>
+                </div>
+                <div class="card-icon">🟡</div>
+                <h3>ARCHIVO Y CARTOGRAFÍA</h3>
+                <p>Acceso a la bóveda local. Revisar matrices, Radares IAS, proyecciones 6D y dictámenes clínicos.</p>
+                <div class="card-footer">ABRIR BÓVEDA ➔</div>
+            </a>
+
+            <!-- MODULE 4 -->
+            <a href="#" class="terminal-card">
+                <div class="card-header">
+                    <span class="led purple"></span>
+                    <span class="module-id">MOD-04 // BSOC</span>
+                </div>
+                <div class="card-icon">🟣</div>
+                <h3>ENLACE BSOC GLOBAL</h3>
+                <p>Sincronización con el superordenador central. Donar matrices anonimizadas o descargar estudios multicriterio.</p>
+                <div class="card-footer">ESTABLECER ENLACE ➔</div>
+            </a>
+
+            <!-- MODULE 5 -->
+            <a href="#" class="terminal-card config-card">
+                <div class="card-header">
+                    <span class="led grey"></span>
+                    <span class="module-id">SYS // CONFIG</span>
+                </div>
+                <div class="card-icon">⚙️</div>
+                <h3>PARAMETRIZACIÓN DEL NODO</h3>
+                <p>Configuración del servidor local, gestión de permisos para asistentes y validación de ética de datos.</p>
+                <div class="card-footer">ACCEDER A ROOT ➔</div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- TERMINAL FOOTER -->
+    <footer class="terminal-footer">
+        <div class="terminal-log">
+            <span class="mono-text">>_ SYSTEM READY. ESPERANDO COMANDOS OPERATIVOS...</span>
+        </div>
+        <div class="terminal-branding">
+            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_simulacion.png'">
+            <span>SOC_ORD PLATINUM v6.0</span>
+        </div>
+    </footer>
+
+</body>
+</html>
