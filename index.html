@@ -4,17 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOC_ORD | Sociometría Ordinal Computacional</title>
-    <meta name="description" content="SOC_ORD es la plataforma definitiva para el análisis clínico, termodinámico y estructural de ecosistemas humanos. Simulación 3D y sociometría computacional.">
-    <meta name="keywords" content="sociometría, sociograma, análisis de redes sociales, termodinámica social, SOC_ORD, VISORD, dinámica de grupos">
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="SOC_ORD | Sociometría Ordinal Computacional">
-    <meta property="og:description" content="Plataforma avanzada para el análisis clínico y termodinámico de grupos humanos.">
-    <meta property="og:image" content="https://josemancor.github.io/soc-ord-web/assets/SOC_ORD_0__LOGO.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://josemancor.github.io/soc-ord-web/">
-    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -35,8 +24,6 @@
             <li><a href="#glossary">Glosario</a></li>
             <li><a href="#manual">Manual</a></li>
             <li><a href="#community">Comunidad</a></li>
-            <li><a href="institucional.html">Institucional y Licencias</a></li>
-            <li><a href="acceso_plataforma.html" style="background: #00A2FF; color: #000; padding: 6px 15px; border-radius: 20px; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; margin-left: 10px;">Portal de Acceso</a></li>
         </ul>
     </nav>
 
@@ -48,13 +35,13 @@
             
             <!-- LOGO CENTRAL -->
             <div style="margin-bottom: 15px;">
-                <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo Oficial" onerror="this.src='assets/logo_simulacion.png'" style="height: 140px; filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.5)); background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; border: 2px solid #00A2FF;">
+                <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo Oficial" onerror="this.src='assets/logo_simulacion.png'" style="height: 140px; filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.5)); background: rgba(11, 15, 25, 0.6); padding: 10px; border-radius: 12px; border: 2px solid #00A2FF;">
             </div>
 
             <h1 class="glitch" data-text="SOC_ORD">SOC_ORD</h1>
             <h2>Sociometría Ordinal Computacional</h2>
             <h3 style="color: #FFCC00; font-weight: 300; margin-top: -15px; margin-bottom: 20px; font-style: italic; letter-spacing: 2px; font-size: 1.4rem;">La Física de lo Grupal.</h3>
-            <p>La plataforma definitiva para el análisis clínico, termodinámico y estructural de ecosistemas humanos.</p>
+            <p>La plataforma para el análisis clínico, termodinámico y estructural de ecosistemas humanos.</p>
             <div class="hero-buttons">
                 <a href="#showcase" class="btn btn-primary">Ver Demostraciones</a>
                 <a href="#manual" class="btn btn-secondary">Leer Manual Oficial</a>
@@ -72,33 +59,113 @@
                 la realidad emitida, la recibida y la percepción subjetiva de las tensiones grupales.
             </p>
             <div class="features-grid">
-                <!-- Item 1: Termodinámica -->
-                <div class="feature-card" style="position:relative;">
+                <div class="feature-card">
                     <div class="feature-icon">⚛️</div>
-                    <h3 style="display:flex; justify-content:space-between; align-items:center;">
-                        Termodinámica Social
-                        <a href="termodinamica.html" style="font-size:0.75rem; background:rgba(0,162,255,0.1); color:#00A2FF; padding:4px 10px; border-radius:20px; text-decoration:none; border:1px solid rgba(0,162,255,0.3); transition:all 0.3s;">Profundizar &rarr;</a>
-                    </h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0;">Termodinámica Social</h3>
+                        <a href="#prof-termodinamica" class="btn-profundizar">Profundizar ➡️</a>
+                    </div>
                     <p>Mide la entropía y la densidad de la red para predecir si el grupo se encuentra en estado Sólido, Líquido, Plasma, Gas o Caos.</p>
-                    <q class="micro-quote">La Densidad Relacional es la termodinámica del grupo. Medimos el ruido, la fricción y el calor latente que determinan si el sistema colapsa o avanza.</q>
+                    <div class="feature-quote">
+                        "La Densidad Relacional es la termodinámica del grupo. Medimos el ruido, la fricción y el calor latente que determinan si el sistema colapsa o avanza."
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">👁️</div>
-                    <h3>VISORD 3D</h3>
-                    <p>Un motor interactivo WebGL que renderiza ecosistemas humanos en tiempo real, permitiendo aislar nodos y rastrear su evolución estructural.</p>
-                    <q class="micro-quote-right">Reemplazamos los clásicos sociogramas de flechas ilegibles por mapas topográficos de energía espacial.</q>
+                    <div class="feature-icon">🧩</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0;">Las 81 Figuras Sociométricas</h3>
+                        <a href="#prof-figuras" class="btn-profundizar">Profundizar ➡️</a>
+                    </div>
+                    <p>La cuantificación del orden preferencial. Pasamos de simples elecciones binarias al análisis estructural (desde &lt;Ee&gt; hasta [Rr]).</p>
+                    <div class="feature-quote">
+                        "Reemplazamos los clásicos sociogramas de flechas ilegibles por mapas topográficos de energía espacial y posiciones interactivas."
+                    </div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏛️</div>
-                    <h3>Rigor Científico</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0;">Rigor Científico</h3>
+                        <a href="#prof-rigor" class="btn-profundizar">Profundizar ➡️</a>
+                    </div>
                     <p>Plataforma avalada y registrada en los repositorios de ciencia abierta del CERN (Zenodo) para garantizar la solidez metodológica.</p>
-                    <q class="micro-quote-center">Garantizamos datos purgados de ruido estadístico (Zero-Noise). Mostramos solo la señal pura, protegiendo siempre la identidad del evaluado.</q>
+                    <div class="feature-quote">
+                        "Garantizamos datos purgados de ruido estadístico (Zero-Noise). Mostramos solo la señal pura, protegiendo siempre la identidad del evaluado."
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    
+    <!-- PROFUNDIZACION SECTIONS -->
+    <section id="prof-termodinamica" class="section dark-section" style="padding-top: 50px;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">La Termodinámica Social</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Trasladando las leyes de la física a la topología de los ecosistemas humanos. Entropía, Densidad y Cismogénesis en la arquitectura SOC_ORD.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">Durante décadas, el análisis de redes sociales (SNA) y la sociometría clásica han representado a los grupos humanos como mapas estáticos bidimensionales: líneas planas que conectan puntos. Sin embargo, las sociedades no son estructuras cristalizadas e inertes; son fluidos vivos que intercambian energía, acumulan calor latente y sufren cambios de estado.</p>
+                
+                <p style="margin-bottom: 3rem;">SOC_ORD (Sociometría Ordinal Computacional) abandona el modelo topográfico plano para abrazar un modelo tridimensional basado en la <strong>Termodinámica de Sistemas Fuera del Equilibrio</strong>, sustentado metodológicamente en las teorías de <em>Estructuras Disipativas</em> de Ilya Prigogine (Premio Nobel 1977) y la <em>Teoría de la Entropía Social</em> de Kenneth Bailey (1990).</p>
+                
+                <div style="background: rgba(0, 162, 255, 0.05); border: 1px solid rgba(0, 162, 255, 0.2); padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+                    <h3 style="color: var(--cyan); font-size: 1.4rem; font-style: italic; font-weight: 600; line-height: 1.5;">"No dibujamos las jerarquías que dicta el organigrama oficial. Cartografiamos los vectores de fuerza y la entropía relacional que deciden si el grupo avanza o colapsa."</h3>
+                </div>
+                
+                <h2 style="color: var(--magenta); font-size: 1.8rem; margin-bottom: 1rem;">1. Los Dos Motores: Densidad y Entropía</h2>
+                <p>En el motor SOC_ORD, cualquier grupo humano es auditado bajo dos parámetros físicos interdependientes:</p>
+                <ul style="margin-top: 1rem; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li style="margin-bottom: 10px;"><strong>Densidad Relacional (SDR):</strong> Mide la concentración gravitacional de vínculos. ¿Con qué fuerza se eligen o rechazan los miembros?</li>
+                    <li><strong>Entropía Grupal:</strong> Mide el desorden, la fricción y la energía desperdiciada en disonancias cognitivas o alucinaciones sociales.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="prof-figuras" class="section" style="padding-top: 50px;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Las 81 Figuras Sociométricas</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                La cuantificación del orden preferencial. La matriz SMIb y la anatomía exacta del Átomo Social.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">La sociometría binaria pregunta "¿Eliges a X? Sí/No". Esto empobrece dramáticamente la realidad. SOC_ORD implementa la cuantificación del orden preferencial, donde el rango de elección (1º, 2º, 3º lugar) determina el gradiente gravitacional exacto de la interacción. Aplicamos una función inversa donde las primeras elecciones aportan masa crítica al vínculo.</p>
+                
+                <p style="margin-bottom: 3rem;">Esta complejidad nos llevó a desarrollar la codificación <strong>SMIb</strong> (Sociomatriz Integrada Bipolar). Una notación de 4 posiciones que captura lo que se emite, lo que se percibe y lo que se recibe. Al cruzar todas estas dimensiones, el ecosistema desvela <strong>81 Figuras Relacionales</strong> únicas.</p>
+                
+                <div style="background: rgba(255, 0, 85, 0.05); border: 1px solid rgba(255, 0, 85, 0.2); padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+                    <h3 style="color: var(--magenta); font-size: 1.4rem; font-style: italic; font-weight: 600; line-height: 1.5;">"El vínculo humano no es un hilo, es un código genético relacional."</h3>
+                </div>
+                
+                <h2 style="color: var(--cyan); font-size: 1.8rem; margin-bottom: 1rem;">La Matriz QUATUOR</h2>
+                <p>Las 81 figuras abarcan todo el espectro posible de la relación diádica. Desde la Sinergia Perfecta <code>&lt;Ee&gt;</code>, pasando por la Perplejidad Absoluta <code>¡¿?!</code>, hasta el Antagonismo Mutuo Declarado <code>[Rr]</code>. Nuestro módulo QUATUOR condensa grupos enteros de cientos de personas en una cuadrícula fija de 9x9 para un diagnóstico forense instantáneo de la salud relacional.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="prof-rigor" class="section dark-section" style="padding-top: 50px;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Rigor Científico y Zero-Noise</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Fundamentos matemáticos y validación forense en la investigación psicosocial.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">En el análisis de redes humanas, un sesgo muestral o un algoritmo mal calibrado puede destruir la reputación de un individuo etiquetándolo injustamente como "Chivo Expiatorio". SOC_ORD nace con una premisa ética inquebrantable: proteger al individuo de los falsos positivos.</p>
+                
+                <p style="margin-bottom: 3rem;">Implementamos protocolos de validación <strong>Zero-Noise</strong>. Esto significa que nuestra algoritmia de densidades (SDA, SRC, BDR) aplica filtros de verosimilitud estadística para separar las tensiones reales de las fluctuaciones azarosas del grupo. Solo la señal pura sobrevive al renderizado final.</p>
+                
+                <div style="background: rgba(255, 204, 0, 0.05); border: 1px solid rgba(255, 204, 0, 0.2); padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+                    <h3 style="color: var(--gold); font-size: 1.4rem; font-style: italic; font-weight: 600; line-height: 1.5;">"La sociatría y el diagnóstico clínico no pueden permitirse el lujo del ruido estadístico."</h3>
+                </div>
+                
+                <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 1rem;">Validación Open Science</h2>
+                <p>La arquitectura consolidada Platinum v6.0 y el marco teórico que la sustenta no son cajas negras. Están rigurosamente documentados y depositados en los servidores de ciencia abierta del CERN (Zenodo). Cualquiera puede auditar el marco lógico de los Prismas de Cruce y los Planos de Proyección 6D (PCA) que estructuran el corazón analítico de SOC_ORD.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- MODULES SECTION (Dashboard) -->
     <section id="modules" class="section">
@@ -106,35 +173,29 @@
             <h2 class="section-title" style="color: #00A2FF;">Acceso a Módulos</h2>
             <p class="section-text">Accede directamente a los diferentes motores de análisis y visualización de la arquitectura SOC_ORD.</p>
             <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-                <a href="#showcase" class="feature-card" style="text-decoration:none; text-align:center;">
+                <a href="../04_Animaciones_VISORD/HUB_SOC_ORD_SMIb.html" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">🎮</div>
                     <h3 style="font-size: 1.2rem;">VISORDP 3D</h3>
                     <p style="font-size: 0.9rem;">Simulador y renderizado termodinámico.</p>
-                    <q class="micro-quote-center" style="font-size: 0.8rem; margin-top:10px;">El diseño GxTyCz nos permite cartografiar la evolución en 4D, abriendo la puerta a estudios comparativos transversales, longitudinales y multicriterio.</q>
                 </a>
-                <a href="#data-blueprint" class="feature-card" style="text-decoration:none; text-align:center;">
+                <a href="../02_Data/02_Simulated/RESULT_SIM/" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">📊</div>
                     <h3 style="font-size: 1.2rem;">Dossier de Tablas</h3>
                     <p style="font-size: 0.9rem;">Matrices y raw data exportable.</p>
-                    <q class="micro-quote-center" style="font-size: 0.8rem; margin-top:10px;">La estrategia de Difracción Relacional separa la energía social en su espectro puro, aislando quirúrgicamente las fuerzas de cohesión de la entropía.</q>
                 </a>
-                <a href="#arsenal" class="feature-card" style="text-decoration:none; text-align:center;">
+                <a href="../02_Data/02_Simulated/RESULT_SIM/" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">📸</div>
                     <h3 style="font-size: 1.2rem;">Gráficos y Cartografía</h3>
                     <p style="font-size: 0.9rem;">Sociogramas, Rádar IAS y Mosaicos.</p>
-                    <q class="micro-quote-center" style="font-size: 0.8rem; margin-top:10px;">Las ópticas Macro, Meso y Micro nos permiten hacer zoom: desde la atmósfera global del clima hasta el átomo diádico de cada individuo.</q>
                 </a>
-                <a href="#arsenal" class="feature-card" style="text-decoration:none; text-align:center;">
+                <a href="#" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">🧊</div>
                     <h3 style="font-size: 1.2rem;">Proyección 6D (PCA)</h3>
                     <p style="font-size: 0.9rem;">Análisis de Componentes Principales.</p>
-                    <q class="micro-quote-center" style="font-size: 0.8rem; margin-top:10px;">Ninguna visión es completa sin la operatividad de los 6 PRISMAS: cada rotación de la matriz revela una nueva dimensión del holograma grupal.</q>
                 </a>
             </div>
         </div>
     </section>
-
-    
 
     <!-- SHOWCASE SECTION -->
     <section id="showcase" class="section dark-section">
@@ -162,7 +223,6 @@
                     </div>
                     <h3>1. Fases de Formación de un Grupo</h3>
                     <p>Observa el motor en acción, mutando desde un estado inicial de 'Deshielo' hasta la cristalización estructural final.</p>
-                    <q class="micro-quote">La ley de decaimiento asintótico inverso asegura que la distancia afectiva atenúe el vínculo hacia la indiferencia, sin llegar jamás al cero absoluto.</q>
                 </div>
 
                 <!-- VIDEO 2 -->
@@ -172,7 +232,6 @@
                     </div>
                     <h3>2. Diagnóstico Termodinámico</h3>
                     <p>Análisis en tiempo real de la entropía relacional y las densidades, generando un dictamen clínico automatizado.</p>
-                    <q class="micro-quote-right">Aplicamos un decaimiento matemático para que un rechazo primario tenga un impacto estructural drásticamente superior a un descarte secundario.</q>
                 </div>
 
                 <!-- VIDEO 3 -->
@@ -182,7 +241,6 @@
                     </div>
                     <h3>3. Censo de Roles Estructurales</h3>
                     <p>Identificación objetiva de líderes, fracciones, satélites y aislados, clasificados por su impacto y nivel de fricción.</p>
-                    <q class="micro-quote-center">No dibujamos las jerarquías impuestas por el organigrama oficial, sino las verdaderas jerarquías de influencia real.</q>
                 </div>
 
                 <!-- VIDEO 4 -->
@@ -192,7 +250,6 @@
                     </div>
                     <h3>4. Figuras Sociométricas</h3>
                     <p>Exploración inmersiva de subestructuras: díadas, tríadas y subgrupos. Análisis de la reciprocidad afectiva en 3D.</p>
-                    <q class="micro-quote">La superposición relacional revela cómo múltiples estratos de vínculos (laborales, afectivos, cognitivos) coexisten en un mismo nodo, definiendo su densidad.</q>
                 </div>
 
                 <!-- VIDEO 5 -->
@@ -208,208 +265,143 @@
                     </div>
                     <h3>5. Matrices de Densidad Relacional</h3>
                     <p>Dossier completo de matrices de preferencia, percepción y densidad, revelando las brechas termodinámicas ocultas del grupo.</p>
-                    <q class="micro-quote-right">A través de la metapercepción triádica, desvelamos la arquitectura de lo invisible: no solo a quién eliges, sino a quién crees que los tuyos elegirán.</q>
                 </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#modules" class="btn btn-outline" style="padding: 10px 25px; border-color: #00A2FF; color: #00A2FF; font-family: 'Roboto Mono', monospace; letter-spacing: 1px;">↑ VOLVER AL MENÚ DE MÓDULOS</a>
             </div>
         </div>
     </section>
 
-    <!-- DATA BLUEPRINT SECTION -->
-    <section id="data-blueprint" class="section dark-section" style="background: #080d16; position: relative; overflow: hidden;">
-        <div class="bg-grid" style="opacity: 0.2;"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h2 class="section-title" style="color: #00A2FF;">Anatomía del Dato (El Genoma Sociométrico)</h2>
-            <p class="section-text" style="color: #A0AEC0;">
+    <!-- FRASE 1 -->
+    <div class="parallax-quote animate-slide-up">
+        <blockquote>
+            "El 'nosotros' es un fenómeno nuevo, diferente del 'yo' y del 'tú'."
+            <span class="author">Kurt Lewin</span>
+        </blockquote>
+    </div>
+
+    <!-- DATA ARCHITECTURE DIAGRAM -->
+    <section id="data-architecture" class="section dark-section" style="padding-top: 50px;">
+        <div class="container">
+            <h2 class="section-title" style="color: #E2E8F0; font-size: 2.2rem; margin-bottom: 10px;">La Matriz de Datos</h2>
+            <p class="section-text" style="color: #A0AEC0; font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px auto; text-align: center;">
                 El motor SOC_ORD se alimenta de un protocolo de entrada riguroso. Esta matriz maestra codifica todas las dimensiones estructurales del ecosistema, listas para ser inyectadas al Simulador In Silico.
             </p>
-            
-            <div class="data-pipeline">
-                <!-- Bloque 1 -->
-                <div class="pipeline-step glass-card" style="border-left: 4px solid #4CAF50;">
-                    <div class="step-num" style="background:#4CAF50;">1</div>
-                    <div class="step-header">
-                        <h3 style="color:#4CAF50;">Identificación y Metadatos</h3>
+
+            <div class="timeline">
+                <!-- Node 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #4ade80; color: #000;">1</div>
+                    <div class="timeline-content">
+                        <h3 style="color: #4ade80;">Identificación y Metadatos</h3>
+                        <div class="code-snippet">[ ID: N14 | Sexo: M | Rol: T ]</div>
+                        <p>Definición del ecosistema y tokenización de sujetos. Los parámetros <strong>GxTyCz</strong> marcan el contexto de inyección al simulador (Grupo, Tiempo y Criterio).</p>
                     </div>
-                    <div class="step-code"><code>[ ID: N14 | Sexo: M | Rol: T ]</code></div>
-                    <p>Definición del ecosistema y tokenización de sujetos. Los parámetros <strong>GxTyCz</strong> marcan el contexto de inyección al simulador (Grupo, Tiempo y Criterio).</p>
+                </div>
+                
+                <!-- Node 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #3b82f6; color: #000;">2</div>
+                    <div class="timeline-content">
+                        <h3 style="color: #3b82f6;">Core Sociométrico (El Vínculo)</h3>
+                        <div class="code-snippet">
+                            MORENO: [Elige: 3,4 | Rechaza: 1]<br>
+                            SOC_ORD: [Orden: 3, 4, 2, 1, 5]
+                        </div>
+                        <p>Contraste metodológico: SOC_ORD sustituye la violencia de la extracción y el rechazo binario clásico (MORENO) por una <strong>ordenación ordinal fluida y pacífica (Formato Breve)</strong>, extrayendo la misma carga estructural sin desgaste.</p>
+                    </div>
                 </div>
 
-                <!-- Bloque 2 -->
-                <div class="pipeline-step glass-card" style="border-left: 4px solid #00A2FF;">
-                    <div class="step-num" style="background:#00A2FF;">2</div>
-                    <div class="step-header">
-                        <h3 style="color:#00A2FF;">Core Sociométrico (El Vínculo)</h3>
+                <!-- Node 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #fbbf24; color: #000;">3</div>
+                    <div class="timeline-content">
+                        <h3 style="color: #fbbf24;">Meta-Percepción Triádica</h3>
+                        <div class="code-snippet">[ aE: 2, 5 | oE: 1 ]</div>
+                        <p><strong>El núcleo termodinámico original de SOC_ORD.</strong> Capturamos la disonancia cognitiva estructural midiendo las proyecciones: <strong>aE (alpha)</strong>: <em>¿A quiénes crees que habrá colocado en las primeras posiciones la persona que tú has elegido en el 1º lugar?</em> y <strong>oE (omega)</strong>: <em>¿A quiénes crees que habrá colocado en las primeras posiciones la persona que tú has elegido en el último lugar?</em></p>
+                        
+                        <div style="margin-top: 15px; background: rgba(251, 191, 36, 0.05); padding: 12px; border-radius: 6px; border-left: 2px solid #fbbf24;">
+                            <span style="font-size: 0.8rem; color: #fbbf24; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;">Innovación Clínica Exclusiva</span>
+                            <ul style="margin: 8px 0 0 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; padding-left: 5px;">
+                                <li style="margin-bottom: 4px;"><strong>Ansiedad de Infiltración:</strong> Detección algorítmica de sujetos que perciben amenazada su red de seguridad por sus propios rivales.</li>
+                                <li><strong>El Sujeto Broker:</strong> Identificación matemática del integrante con mayor "clarividencia" (ICM perfecto) de los movimientos del líder.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="step-code">
-                        <code style="color:#888;">MORENO:  [Elige: 3,4 | Rechaza: 1]</code>
-                        <code style="color:#FFF;">SOC_ORD: [Orden: 3, 4, 2, 1, 5]</code>
-                    </div>
-                    <p>Contraste metodológico: SOC_ORD sustituye la violencia de la extracción y el rechazo binario clásico (MORENO) por una <strong>ordenación ordinal fluida y pacífica (Formato Breve)</strong>, extrayendo la misma carga estructural sin desgaste.</p>
                 </div>
 
-                <!-- Bloque 3 -->
-                <div class="pipeline-step glass-card" style="border-left: 4px solid #FFCC00; background: rgba(255, 204, 0, 0.05);">
-                    <div class="step-num" style="background:#FFCC00; color:#000;">3</div>
-                    <div class="step-header">
-                        <h3 style="color:#FFCC00;">Meta-Percepción Triádica</h3>
+                <!-- Node 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #c084fc; color: #000;">4</div>
+                    <div class="timeline-content">
+                        <h3 style="color: #c084fc;">Variables Complementarias</h3>
+                        <div class="code-snippet">[ V1: Alto Rendi. | V2: Turno Noche | V3... ]</div>
+                        <p>Inyección de contexto periférico vital (hasta 10 variables). Es <strong>fundamental para homogeneizar datos</strong> y cruzar escenarios socio-demográficos a la hora de realizar investigaciones retrospectivas masivas en el Banco Sociométrico (BSOC).</p>
                     </div>
-                    <div class="step-code"><code style="color:#FFCC00;">[ mE: 2, 5 | mR: 1 ]</code></div>
-                    <p><strong>El núcleo termodinámico original de SOC_ORD.</strong> Capturamos la disonancia cognitiva estructural midiendo no lo que es, sino lo que se cree que es: ¿A quién creo yo que le caigo bien (mE)? ¿A quién creo que el grupo rechaza (mR)?</p>
-                    <q class="micro-quote-right" style="border-color:#FFCC00; font-size:0.8rem; margin-top:10px;">La metapercepción mide el grado de 'sincronía cuántica' del grupo: saber con certeza que el otro sabe lo que tú sabes.</q>
                 </div>
 
-                <!-- Bloque 4 -->
-                <div class="pipeline-step glass-card" style="border-left: 4px solid #9C27B0;">
-                    <div class="step-num" style="background:#9C27B0;">4</div>
-                    <div class="step-header">
-                        <h3 style="color:#9C27B0;">Variables Complementarias</h3>
+                <!-- Node 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #06b6d4; color: #000;">5</div>
+                    <div class="timeline-content">
+                        <h3 style="color: #06b6d4;">Diferencial Semántico (AAG)</h3>
+                        <div class="code-snippet">[ AAG: Valiente (8) | Honesto (7) ]</div>
+                        <p>Los Adjetivos de Actividad Grupal inyectan un vector de fuerza léxico que contextualiza, homogeniza y amplifica la gravedad cualitativa de cada elección en la red.</p>
                     </div>
-                    <div class="step-code"><code>[ V1: Alto Rendi. | V2: Turno Noche | V3... ]</code></div>
-                    <p>Inyección de contexto periférico vital (hasta 10 variables). Es <strong>fundamental para homogeneizar datos</strong> y cruzar escenarios socio-demográficos a la hora de realizar investigaciones retrospectivas masivas en el Banco Sociométrico (BSOC).</p>
                 </div>
-
-                <!-- Bloque 5 -->
-                <div class="pipeline-step glass-card" style="border-left: 4px solid #00E5FF;">
-                    <div class="step-num" style="background:#00E5FF; color:#000;">5</div>
-                    <div class="step-header">
-                        <h3 style="color:#00E5FF;">Diferencial Semántico (AAG)</h3>
-                    </div>
-                    <div class="step-code"><code>[ AAG: Valiente (8) | Honesto (7) ]</code></div>
-                    <p>Los Adjetivos de Actividad Grupal inyectan un vector de fuerza léxica que contextualiza, homogeniza y amplifica la gravedad cualitativa de cada elección en la red.</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#modules" class="btn btn-outline" style="padding: 10px 25px; border-color: #00A2FF; color: #00A2FF; font-family: 'Roboto Mono', monospace; letter-spacing: 1px;">↑ VOLVER AL MENÚ DE MÓDULOS</a>
             </div>
         </div>
     </section>
 
-    
+    <!-- FRASE 2 -->
+    <div class="parallax-quote animate-slide-up" style="background-image: radial-gradient(circle at center, rgba(255, 0, 85, 0.05) 0%, transparent 70%);">
+        <blockquote>
+            "El aislado sociométrico es una alarma social."
+            <span class="author">J.L. Moreno</span>
+        </blockquote>
+    </div>
 
-    <!-- ANALYTICAL ARSENAL SECTION -->
-    <section id="arsenal" class="section dark-section" style="background: #0f1219;">
+    <!-- ECOSYSTEM SECTION (Arsenal Analítico) -->
+    <section id="ecosystem" class="section dark-section" style="background: #0f1219;">
         <div class="container">
-            <h2 class="section-title" style="color: #FF0055;">Arsenal Analítico (Outputs Diagnósticos)</h2>
+            <h2 class="section-title" style="color: #FF0055;">Arsenal Analítico <span style="color: #c084fc;">(Outputs Diagnósticos)</span></h2>
             <p class="section-text" style="color: #A0AEC0;">
                 El análisis termodinámico genera un espectro completo de instrumentos clínicos y cartográficos para la toma de decisiones.
             </p>
-            
-            <div class="bento-grid">
-                
-                <!-- BENTO ITEM 1: Sociograma Global -->
-                <div class="bento-item glass-card tall">
-                    <img src="assets/soc_global_g2t2c1.png" alt="Sociograma Global" class="bento-img">
-                    <div class="bento-overlay">
-                        <h3>Sociograma de Tensión Global</h3>
-                        <p>Mapa de fuerzas atractivas y repulsivas en el ecosistema.</p>
-                        <q class="micro-quote">El ecosistema grupal se sostiene sobre las fuerzas estructurantes del entrelazamiento atractivo y repulsivo, donde incluso la animadversión teje la arquitectura.</q>
-                    </div>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card">
+                    <img src="assets/imag1.png" alt="Ingesta de Datos" class="gallery-img">
+                    <div class="gallery-caption">Captura e Ingesta de Datos</div>
                 </div>
-
-                <!-- BENTO ITEM 2: PCA -->
-                <div class="bento-item glass-card wide">
-                    <img src="assets/afc_mosaico_activa_g2t2c1.png" alt="Planos PCA 6D" class="bento-img" style="object-fit: cover;">
-                    <div class="bento-overlay">
-                        <h3>Planos Factoriales PCA 6D</h3>
-                        <p>Reducción de dimensionalidad para detectar estructuras latentes y variables de ruptura.</p>
-                        <q class="micro-quote">La lente MACRO diagnostica el clima; la MESO desvela los clústeres y coaliciones; la MICRO realiza la microcirugía de la identidad del sujeto.</q>
-                    </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/Imag_2.png" alt="Fórmula Base" class="gallery-img">
+                    <div class="gallery-caption">Fundamentación Algorítmica</div>
                 </div>
-
-                <!-- BENTO ITEM 3: DA RECIBE -->
-                <div class="bento-item glass-card">
-                    <img src="assets/da_recibe_main_g2t2c1.png" alt="DA-RECIBE" class="bento-img">
-                    <div class="bento-overlay">
-                        <h3>Ejes DA-RECIBE</h3>
-                        <p>Balance termodinámico entre energía invertida y energía recibida por nodo.</p>
-                        <q class="micro-quote">Aplicamos la Simetría Agencial: si inviertes mucho y recibes poco, es ostracismo; si recibes mucho sin invertir, es liderazgo orgánico.</q>
-                    </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/Imag_3.png" alt="SMIb" class="gallery-img">
+                    <div class="gallery-caption">Codificación SMIb de Preferencias</div>
                 </div>
-
-                <!-- BENTO ITEM 4: Pentagrama -->
-                <div class="bento-item glass-card">
-                    <img src="assets/SOC_ORD_10_penta.png" alt="Pentagrama" class="bento-img">
-                    <div class="bento-overlay">
-                        <h3>Pentagrama de Roles</h3>
-                        <p>Visión poliédrica de las valencias agenciales del sujeto.</p>
-                        <q class="micro-quote">Un sujeto con cero elecciones no es un simple aislado; es víctima de un ostracismo activo que anula su agencia social.</q>
-                    </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/VISORDP_9x9_DEN.png" alt="Macro Meso Micro" class="gallery-img">
+                    <div class="gallery-caption">Análisis Multinivel: Macro, Meso y Micro</div>
                 </div>
-
-                <!-- BENTO ITEM 5: Densidad Matriz -->
-                <div class="bento-item glass-card">
-                    <img src="assets/VISORDP_9x9_DEN.png" alt="Densidad Absoluta" class="bento-img">
-                    <div class="bento-overlay">
-                        <h3>Matrices de Densidad</h3>
-                        <p>Cálculo de Densidad Absoluta (BDA) y Relativa (BDR).</p>
-                        <q class="micro-quote">Si un sujeto es líder para unos y marginado para otros, estamos ante una 'Identidad Disputada' que fractura la realidad compartida.</q>
-                    </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/VISORDP_Frecuencias.png" alt="Resumen de Densidad" class="gallery-img">
+                    <div class="gallery-caption">Resumen Termodinámico (DGLOBAL)</div>
                 </div>
-
-                <!-- BENTO ITEM 6: Subgrupos (Dendrograma proxy) -->
-                <div class="bento-item glass-card">
-                    <img src="assets/SOC_ORD_7_group.png" alt="Cuadro de Subgrupos" class="bento-img">
-                    <div class="bento-overlay">
-                        <h3>Partición en Subgrupos</h3>
-                        <p>Detección algorítmica de clústeres, coaliciones y cismogénesis grupal.</p>
-                        <q class="micro-quote">SOC_ORD traza un paralelismo exacto entre el análisis clásico de MORENO y la velocidad del formato BREVE, logrando un escáner total con mínimo desgaste.</q>
-                    </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/VISORDResumen.png" alt="Paysage Social" class="gallery-img">
+                    <div class="gallery-caption">Topografía Estructural (Paysage Social)</div>
                 </div>
-
-                <!-- BENTO ITEM 7: Mapa Tendre -->
-                <div class="bento-item glass-card wide">
-                    <img src="assets/carte_tendre_map_base.png" alt="Paysage Social" class="bento-img" style="object-fit: cover;">
-                    <div class="bento-overlay">
-                        <h3>Topografía Social Alegórica</h3>
-                        <p>Traducción de los vectores PCA al "País de Tendre", un marco amable para la devolución ética.</p>
-                        <q class="micro-quote">Los números son representaciones abstractas de la realidad. La interpretación final requiere siempre del contexto y la empatía del clínico.</q>
-                    </div>
-                </div>
-                <!-- BENTO ITEM 8: FFT Frecuencias -->
-                <div class="bento-item glass-card">
-                    <img src="assets/SOC_ORD_9_FREQ.png" alt="Transformada FFT" class="bento-img">
-                    <div class="bento-overlay">
-                        <h3>Análisis de Frecuencias (FFT)</h3>
-                        <p>Descomposición espectral de las ondas de afinidad grupal.</p>
-                        <q class="micro-quote">Con el Banco Sociométrico avanzamos hacia los análisis retrospectivos multiculturales masivos, descubriendo las leyes universales de la termodinámica social.</q>
-                    </div>
-                </div>
-
-                <!-- BENTO ITEM 9: Markov -->
-                <div class="bento-item glass-card">
-                    <img src="assets/markov.png" alt="Cadenas de Markov" class="bento-img" style="filter: invert(1) hue-rotate(180deg);">
-                    <div class="bento-overlay">
-                        <h3>Cadenas de Markov</h3>
-                        <p>Probabilidades de transición y predicción de evolución de los vínculos.</p>
-                        <q class="micro-quote">Si los perfiles de Variables Complementarias coinciden, el sistema confía en que ese puente aguantará el peso de la reconciliación.</q>
-                    </div>
-                </div>
-
-                <!-- BENTO ITEM 10: Rejillas -->
-                <div class="bento-item glass-card wide">
-                    <img src="assets/rejilla.png" alt="Rejillas Interactivas" class="bento-img" style="object-fit: cover;">
-                    <div class="bento-overlay">
-                        <h3>Rejillas Interactivas (18, 27, 54)</h3>
-                        <p>Análisis matricial profundo de superposición relacional y simetría.</p>
-                        <q class="micro-quote">SOC_ORD sienta las bases del BSOC (Banco Sociométrico), una bóveda para archivar y analizar el genoma relacional de miles de ecosistemas humanos.</q>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#modules" class="btn btn-outline" style="padding: 10px 25px; border-color: #00A2FF; color: #00A2FF; font-family: 'Roboto Mono', monospace; letter-spacing: 1px;">↑ VOLVER AL MENÚ DE MÓDULOS</a>
             </div>
         </div>
     </section>
 
-    
-
+    <!-- FRASE 3 -->
+    <div class="parallax-quote animate-slide-up" style="background-image: radial-gradient(circle at center, rgba(255, 204, 0, 0.05) 0%, transparent 70%);">
+        <blockquote>
+            "Cada orden establecido tiende a producir la naturalización de su propia arbitrariedad."
+            <span class="author">Pierre Bourdieu</span>
+        </blockquote>
+    </div>
 
     <!-- GLOSSARY & BIBLIOGRAPHY SECTION -->
     <section id="glossary" class="section">
@@ -420,12 +412,12 @@
                 <div class="glass-card" style="padding: 2rem;">
                     <h3 style="color: #00A2FF; margin-bottom: 20px;">Conceptos Termodinámicos Clave</h3>
                     <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
-                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Absoluta (SDA / BDA)</summary>
-                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Mide la concentración de vínculos directos y reales en el ecosistema, sin tener en cuenta las percepciones.</p>
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Absoluta (BDA, BRC, BDR)</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Mide la energía o masa total consumida por el sistema relacional, con independencia del signo positivo/negativo. Se subdivide en <strong>BDA</strong> (Densidad DADA por el emisor), <strong>BRC</strong> (Densidad que el emisor RECIBE del grupo) y <strong>BDR</strong> (Densidad Relacional Absoluta).</p>
                     </details>
                     <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
-                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Relacional (SDR / BDR)</summary>
-                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Integra tanto la realidad como la percepción subjetiva de los sujetos, ofreciendo una métrica termodinámica completa.</p>
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Relativa (SDA, SRC, SDR)</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Mide la energía o masa realmente provechable entre atracción y repulsión. Se subdivide en <strong>SDA</strong> (dada), <strong>SRC</strong> (recibida) y <strong>SDR</strong> (Densidad Relacional Relativa).</p>
                     </details>
                     <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
                         <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Entropía Grupal</summary>
@@ -442,9 +434,9 @@
                     <h3 style="color: #FF0055; margin-bottom: 20px;">Bibliografía Oficial</h3>
                     <ul style="list-style:none; margin:0; padding:0;">
                         <li style="margin-bottom:20px; background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #FF0055;">
-                            <strong style="color:#E0E0E0; font-size:1.1rem;">Glosario Integral y Avanzado</strong><br>
-                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">Diccionario completo de Sociometría y Análisis Grupal.</span>
-                            <a href="assets/Glosario_Integral_SOC_ORD.pdf" target="_blank" style="color:#00A2FF; font-size:0.9rem; text-decoration:none;">[🔗 Descargar PDF Completo]</a>
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">Sociofísica y Termodinámica de Redes</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">Marco Teórico Fundamental del Modelo Platinum.</span>
+                            <a href="#" style="color:#00A2FF; font-size:0.9rem; text-decoration:none;">[🔗 Descargar PDF]</a>
                         </li>
                         <li style="margin-bottom:20px; background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #00A2FF;">
                             <strong style="color:#E0E0E0; font-size:1.1rem;">Codificación SMIb: El lenguaje de la Relación</strong><br>
@@ -504,8 +496,6 @@
         </div>
     </section>
 
-    
-
 
     <!-- COMMUNITY & FEEDBACK SECTION -->
     <section id="community" class="section dark-section">
@@ -514,17 +504,16 @@
             <p class="section-text">¿Tienes preguntas, sugerencias o reflexiones sobre el modelo SOC_ORD? Escríbenos directamente.</p>
             <div class="glass-card" style="max-width:600px; margin:0 auto; padding: 2rem;">
                 <!-- Cambia 'tu_correo@ejemplo.com' por el ID de Formspree cuando crees la cuenta -->
-                <form action="https://formspree.io/f/mykqddpj" method="POST" style="display:flex; flex-direction:column; gap:15px;">
+                <form action="mailto:josmancor@gmail.com" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:15px;">
                     <input type="text" name="name" placeholder="Tu Nombre o Institución" required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem;">
                     <input type="email" name="email" placeholder="Tu Correo Electrónico" required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem;">
                     <textarea name="message" rows="5" placeholder="Tus reflexiones, preguntas o comentarios..." required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem; resize:vertical;"></textarea>
                     <button type="submit" class="btn btn-primary" style="align-self:flex-start; border:none; padding:12px 30px; font-size:1rem; cursor:pointer;">Enviar Mensaje</button>
+                    <p style="font-size:0.8rem; color:#A0AEC0; margin-top:10px;">* Para recibir correos, crea una cuenta gratuita en <a href="https://formspree.io" target="_blank" style="color:#00A2FF;">Formspree</a> e introduce tu ID en el código HTML.</p>
                 </form>
             </div>
         </div>
     </section>
-
-    
 
     <!-- FOOTER -->
     <footer>
@@ -536,45 +525,5 @@
     </footer>
 
     <script src="scripts.js"></script>
-
-    <!-- LIGHTBOX MODAL -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
-
-    <!-- Scripts -->
-    <script>
-        // Lightbox logic
-        function openLightbox(src) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
-            // Trigger reflow
-            void lightbox.offsetWidth;
-            lightbox.classList.add('show');
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('show');
-            setTimeout(() => lightbox.style.display = 'none', 300);
-        }
-
-        // Attach click events to all enlargeable images
-        document.addEventListener('DOMContentLoaded', () => {
-            const images = document.querySelectorAll('.bento-img, .blueprint-img');
-            images.forEach(img => {
-                img.style.cursor = 'zoom-in';
-                img.addEventListener('click', (e) => {
-                    // Prevent any parent links from firing
-                    e.preventDefault();
-                    e.stopPropagation();
-                    openLightbox(img.src);
-                });
-            });
-        });
-    </script>
 </body>
 </html>

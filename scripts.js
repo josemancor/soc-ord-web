@@ -63,3 +63,40 @@ document.getElementById('video-overlay-1')?.addEventListener('click', function()
     }
 });
 
+// Lightbox logic
+document.addEventListener('DOMContentLoaded', () => {
+    // Create lightbox HTML and inject it
+    const lightboxHtml = `
+        <div id="lightbox" class="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-content" id="lightbox-img" src="" alt="Ampliada">
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', lightboxHtml);
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    // Make gallery images and showcase videos clickable
+    document.querySelectorAll('.gallery-img, .image-placeholder img, video').forEach(media => {
+        media.classList.add('clickable-media');
+        media.addEventListener('click', function(e) {
+            // only handle images for now (videos have controls)
+            if (this.tagName === 'IMG') {
+                lightbox.classList.add('active');
+                lightboxImg.src = this.src;
+            }
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg) {
+            lightbox.classList.remove('active');
+        }
+    });
+});
