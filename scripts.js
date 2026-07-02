@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Toggle profundizacion sections (Accordions)
-window.toggleProf = function(id) {
+window.toggleProf = function(id, returnId = 'about') {
     const targetSection = document.getElementById(id);
     const allSections = document.querySelectorAll('.prof-section');
     
@@ -122,10 +122,10 @@ window.toggleProf = function(id) {
             behavior: 'smooth'
         });
     } else {
-        // If it was visible, it's now hidden. Scroll back up to the cards.
-        const engineeringSection = targetSection.previousElementSibling;
+        // If it was visible, it's now hidden. Scroll back up to the specified section.
+        const returnSection = document.getElementById(returnId);
         window.scrollTo({
-            top: engineeringSection ? engineeringSection.offsetTop - 50 : 0,
+            top: returnSection ? returnSection.offsetTop - 50 : 0,
             behavior: 'smooth'
         });
     }

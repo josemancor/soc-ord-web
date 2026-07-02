@@ -7,7 +7,18 @@
 echo "🚀 Iniciando proceso de despliegue a GitHub..."
 echo "------------------------------------------------"
 
-# Verifica si hay cambios nuevos
+# Verifica si hay cambios nuevos o sincroniza el HUB
+echo "🔄 0. Sincronizando última versión de HUB_VISORDP..."
+SOURCE_HUB="/Users/jmcor/Desktop/SOC_ORD_Project/04_Animaciones_VISORD/HUB_SOC_ORD_SMIb.html"
+DEST_HUB="./HUB_SOC_ORD_SMIb.html"
+
+if [ -f "$SOURCE_HUB" ]; then
+    cp "$SOURCE_HUB" "$DEST_HUB"
+    echo "   ✅ HUB_VISORDP actualizado con éxito para el despliegue."
+else
+    echo "   ⚠️ Advertencia: No se encontró el archivo origen del HUB en Project. Se usará el existente."
+fi
+
 if [[ -n $(git status -s) ]]; then
   # 1. Empaquetar todo
   echo "📦 1. Empaquetando nuevos archivos..."

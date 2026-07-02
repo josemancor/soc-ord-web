@@ -89,7 +89,7 @@
                     <div class="feature-icon">🏛️</div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <h3 style="margin: 0;">Rigor Científico</h3>
-                        <a href="javascript:void(0)" onclick="toggleProf('prof-rigor')" class="btn-profundizar">Profundizar ➡️</a>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-rigor', 'modules')" class="btn-profundizar">Profundizar ➡️</a>
                     </div>
                     <p>Plataforma avalada y registrada en los repositorios de ciencia abierta del CERN (Zenodo) para garantizar la solidez metodológica.</p>
                     <div class="feature-quote">
@@ -126,7 +126,7 @@
                     <li><strong>Entropía Grupal:</strong> Mide el desorden, la fricción y la energía desperdiciada en disonancias cognitivas o alucinaciones sociales.</li>
                 </ul>
                 <div style="text-align: center; margin-top: 2rem;">
-                    <button onclick="toggleProf('prof-termodinamica')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
+                    <button onclick="toggleProf('prof-termodinamica', 'about')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                     <div style="color: #888; font-size: 0.9rem; margin-top: 10px; font-style: italic;">Matriz QUATUOR (9x9): Frecuencias absolutas de las 81 figuras sociométricas</div>
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
-                    <button onclick="toggleProf('prof-figuras')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
+                    <button onclick="toggleProf('prof-figuras', 'about')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
                 </div>
             </div>
         </div>
@@ -183,7 +183,7 @@
                 <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 1rem;">Validación Open Science</h2>
                 <p>La arquitectura consolidada Platinum v6.0 y el marco teórico que la sustenta no son cajas negras. Están rigurosamente documentados y depositados en los servidores de ciencia abierta del CERN (Zenodo). Cualquiera puede auditar el marco lógico de los Prismas de Cruce y los Planos de Proyección 6D (PCA) que estructuran el corazón analítico de SOC_ORD.</p>
                 <div style="text-align: center; margin-top: 2rem;">
-                    <button onclick="toggleProf('prof-rigor')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
+                    <button onclick="toggleProf('prof-rigor', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
                 </div>
             </div>
         </div>
@@ -192,106 +192,245 @@
     <!-- MODULES SECTION (Dashboard) -->
     <section id="modules" class="section">
         <div class="container">
-            <h2 class="section-title" style="color: #00A2FF;">Acceso a Módulos</h2>
-            <p class="section-text">Accede directamente a los diferentes motores de análisis y visualización de la arquitectura SOC_ORD.</p>
+            <h2 class="section-title" style="color: #00A2FF;">Escaparate SOC_ORD</h2>
+            <p class="section-text">Descubre la potencia del motor termodinámico a través de nuestros módulos interactivos y galerías forenses.</p>
             <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <!-- Tarjeta 1: Simulador -->
                 <a href="../04_Animaciones_VISORD/HUB_SOC_ORD_SMIb.html" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">🎮</div>
-                    <h3 style="font-size: 1.2rem;">VISORDP 3D</h3>
-                    <p style="font-size: 0.9rem;">Simulador y renderizado termodinámico.</p>
+                    <h3 style="font-size: 1.2rem;">Simulador 3D (HUB)</h3>
+                    <p style="font-size: 0.9rem;">Entra al motor de física y manipula las leyes de termodinámica en tiempo real.</p>
                 </a>
-                <a href="../02_Data/02_Simulated/RESULT_SIM/" class="feature-card" style="text-decoration:none; text-align:center;">
+                
+                <!-- Tarjeta 2: Vídeo Maestro -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-video-maestro', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🎬</div>
+                    <h3 style="font-size: 1.2rem;">El Motor en Acción</h3>
+                    <p style="font-size: 0.9rem;">Visualiza la cristalización de redes (N=6 a N=50) narrada paso a paso.</p>
+                </a>
+                
+                <!-- Tarjeta 3: Galería Forense -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-galeria', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">👁️</div>
+                    <h3 style="font-size: 1.2rem;">Galería Forense</h3>
+                    <p style="font-size: 0.9rem;">Explora las 5 capturas más espectaculares del ecosistema.</p>
+                </a>
+                
+                <!-- Tarjeta 4: Atlas PDF -->
+                <a href="assets/Atlas_Resultados_SOC_ORD.pdf" target="_blank" class="feature-card" style="text-decoration:none; text-align:center; background: rgba(0, 162, 255, 0.05); border-color: var(--cyan);">
+                    <div class="feature-icon" style="color: var(--cyan);">📘</div>
+                    <h3 style="font-size: 1.2rem; color: var(--cyan);">Atlas Científico</h3>
+                    <p style="font-size: 0.9rem;">Descarga el dossier completo con matrices (SMIb), densidades (9x9) y proyecciones 6D.</p>
+                </a>
+                <!-- Tarjeta 5: Protocolos de Datos -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-datos', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">📊</div>
-                    <h3 style="font-size: 1.2rem;">Dossier de Tablas</h3>
-                    <p style="font-size: 0.9rem;">Matrices y raw data exportable.</p>
+                    <h3 style="font-size: 1.2rem;">Protocolos de Datos</h3>
+                    <p style="font-size: 0.9rem;">Explora los datos crudos de entrada y las matrices y frecuencias generadas.</p>
                 </a>
-                <a href="../02_Data/02_Simulated/RESULT_SIM/" class="feature-card" style="text-decoration:none; text-align:center;">
-                    <div class="feature-icon">📸</div>
-                    <h3 style="font-size: 1.2rem;">Gráficos y Cartografía</h3>
-                    <p style="font-size: 0.9rem;">Sociogramas, Rádar IAS y Mosaicos.</p>
+                <!-- Tarjeta 6: Densidad Relacional -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-sdr', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🕸️</div>
+                    <h3 style="font-size: 1.2rem;">Densidad Relacional</h3>
+                    <p style="font-size: 0.9rem;">Condensación de la estructura del ecosistema (Tabla SDR y Matriz 9x9).</p>
                 </a>
-                <a href="#" class="feature-card" style="text-decoration:none; text-align:center;">
-                    <div class="feature-icon">🧊</div>
-                    <h3 style="font-size: 1.2rem;">Proyección 6D (PCA)</h3>
-                    <p style="font-size: 0.9rem;">Análisis de Componentes Principales.</p>
+                <!-- Tarjeta 7: Proyecciones y Óptica -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-opticas', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🔭</div>
+                    <h3 style="font-size: 1.2rem;">Proyecciones y Óptica</h3>
+                    <p style="font-size: 0.9rem;">Explora los planos topológicos, el paisaje alegórico y las lentes Macro-Meso-Micro.</p>
                 </a>
+                <!-- Tarjeta 8: Galería Analítica -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-galeria', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">📊</div>
+                    <h3 style="font-size: 1.2rem;">Galería Analítica</h3>
+                    <p style="font-size: 0.9rem;">Sociogramas avanzados, radares de alienación y mapas de densidad estructural.</p>
+                </a>
+    
+    
+    
+    
             </div>
         </div>
     </section>
 
-    <!-- SHOWCASE SECTION -->
-    <section id="showcase" class="section dark-section">
+    <!-- MODULE 2: VIDEO MAESTRO (Oculto por defecto) -->
+    <section id="prof-video-maestro" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
         <div class="container">
-            <h2 class="section-title">Visualización y Resultados</h2>
-            <p class="section-text" style="color: #A0AEC0;">
-                A continuación, demostraciones del motor VISORD en acción, junto con las tablas de resultados 
-                y el diagnóstico narrativo automático generado por el Pipeline de SOC_ORD.
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">La Cristalización del Ecosistema</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Observa cómo el algoritmo Zero-Noise y el motor termodinámico organizan a un grupo humano desde la incertidumbre hasta la solidez estructural.
             </p>
-
-            <!-- REPRODUCTOR DE LOCUCIÓN -->
-            <div style="background: rgba(0, 162, 255, 0.1); border: 1px solid #00A2FF; border-radius: 8px; padding: 15px; margin-bottom: 30px; text-align: center;">
-                <h3 style="margin-top: 0; color: #FFF; font-size: 1.1rem;">🎧 Escuchar Audio Guía Oficial</h3>
-                <audio controls style="width: 100%; max-width: 500px;">
-                    <source src="assets/VOICEOVER_VISORD.m4a" type="audio/mp4">
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-
-            <div class="showcase-grid">
-                <!-- VIDEO 1 -->
-                <div class="showcase-item full-width video-card glass-card">
-                    <div class="image-placeholder" style="background:#000;">
-                        <video src="assets/Video0_presen1.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Fases de Formación"></video>
-                    </div>
-                    <h3>1. Fases de Formación de un Grupo</h3>
-                    <p>Observa el motor en acción, mutando desde un estado inicial de 'Deshielo' hasta la cristalización estructural final.</p>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Audio Narrativo del Módulo -->
+                <div style="background: rgba(0, 162, 255, 0.1); border: 1px solid #00A2FF; border-radius: 8px; padding: 15px; margin-bottom: 20px; text-align: center;">
+                    <h3 style="margin-top: 0; color: #FFF; font-size: 1.1rem;">🎧 Escuchar Narración del Módulo</h3>
+                    <audio controls style="width: 100%; max-width: 500px;">
+                        <source src="assets/VOICEOVER_NUEVO.m4a" type="audio/mp4">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
                 </div>
 
-                <!-- VIDEO 2 -->
-                <div class="showcase-item full-width video-card glass-card">
-                    <div class="image-placeholder" style="background:#000;">
-                        <video src="assets/Video_formac1.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Diagnóstico Termodinámico"></video>
-                    </div>
-                    <h3>2. Diagnóstico Termodinámico</h3>
-                    <p>Análisis en tiempo real de la entropía relacional y las densidades, generando un dictamen clínico automatizado.</p>
+                <div class="image-placeholder" style="background:#000; padding: 10px; border-radius: 12px; border: 1px solid rgba(0, 162, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 162, 255, 0.15);">
+                    <video id="video-maestro" src="assets/VIDEO_MAESTRO.mp4" controls style="width: 100%; height: auto; border-radius: 8px; display: block;" title="Formación N=6 y N=50"></video>
                 </div>
-
-                <!-- VIDEO 3 -->
-                <div class="showcase-item full-width video-card glass-card">
-                    <div class="image-placeholder" style="background:#000;">
-                        <video src="assets/Video_presen2.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Censo de Roles"></video>
+                
+                <!-- Galería de Presentación: Nodos (Pequeña) -->
+                <h3 style="text-align: center; color: var(--cyan); margin-top: 40px; margin-bottom: 20px;">Disección de Vínculos del Nodo</h3>
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;">
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img src="assets/VISORDP_11._1 nodo.png" style="width: 100%; border-radius: 4px;" alt="1 Nodo">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">1 Solo Nodo</p>
                     </div>
-                    <h3>3. Censo de Roles Estructurales</h3>
-                    <p>Identificación objetiva de líderes, fracciones, satélites y aislados, clasificados por su impacto y nivel de fricción.</p>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img src="assets/VISORDP_12_2 nodos.png" style="width: 100%; border-radius: 4px;" alt="2 Nodos">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">2 Nodos</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img src="assets/VISORDP_13_3 nodos.png" style="width: 100%; border-radius: 4px;" alt="3 Nodos">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">3 Nodos</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img src="assets/VISORDP_14_todo.png" style="width: 100%; border-radius: 4px;" alt="Todos los nodos">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Todos (Red)</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img src="assets/VISORDP_18_12E.png" style="width: 100%; border-radius: 4px;" alt="Elección (E)">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Elección (E)</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img src="assets/VISORDP_19_12R.png" style="width: 100%; border-radius: 4px;" alt="Repulsión (R)">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Repulsión (R)</p>
+                    </div>
                 </div>
-
-                <!-- VIDEO 4 -->
-                <div class="showcase-item full-width video-card glass-card">
-                    <div class="image-placeholder" style="background:#000;">
-                        <video src="assets/Video_2.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Figuras Sociométricas"></video>
-                    </div>
-                    <h3>4. Figuras Sociométricas</h3>
-                    <p>Exploración inmersiva de subestructuras: díadas, tríadas y subgrupos. Análisis de la reciprocidad afectiva en 3D.</p>
-                </div>
-
-                <!-- VIDEO 5 -->
-                <div class="showcase-item full-width video-card glass-card">
-                    <div style="background: rgba(0, 162, 255, 0.05); border: 1px solid #00A2FF; border-radius: 8px; padding: 10px; margin-bottom: 15px; text-align: center;">
-                        <h4 style="margin: 0 0 10px 0; color: #FFF; font-size: 0.9rem;">🎧 Escuchar Explicación Clínica (Voz Jorge)</h4>
-                        <audio controls style="width: 100%; max-width: 400px; height: 30px;">
-                            <source src="assets/VOICEOVER_TABLAS.m4a" type="audio/mp4">
-                        </audio>
-                    </div>
-                    <div class="image-placeholder" style="background:#000;">
-                        <video src="assets/Video_3.mp4" controls style="width: 100%; height: auto; border-radius: 6px; display: block;" title="Matrices de Densidad"></video>
-                    </div>
-                    <h3>5. Matrices de Densidad Relacional</h3>
-                    <p>Dossier completo de matrices de preferencia, percepción y densidad, revelando las brechas termodinámicas ocultas del grupo.</p>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button onclick="toggleProf('prof-video-maestro', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MODULE 3: GALERÍA FORENSE (Oculta por defecto) -->
+    <section id="prof-galeria" class="section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Galería Visual SOC_ORD</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Un vistazo directo a la potencia diagnóstica de la plataforma. (Haz clic para ampliar).
+            </p>
+            
+            <div class="showcase-grid" style="max-width: 1100px; margin: 0 auto;">
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img src="assets/VISORDP_9x9_DEN.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/VISORDP_9x9_DEN.png'" class="gallery-img" alt="Matriz QUATUOR 9x9" style="width: 100%; border-radius: 6px; cursor: pointer;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--magenta);">Matriz QUATUOR (9x9)</h3>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img src="assets/SOC_ORD_10_penta.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_10_penta.png'" class="gallery-img" alt="Plano Pentagrama" style="width: 100%; border-radius: 6px; cursor: pointer;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--cyan);">Proyección en Pentagrama</h3>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img src="assets/Paysage social.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/Paysage social.png'" class="gallery-img" alt="Paisaje Social" style="width: 100%; border-radius: 6px; cursor: pointer;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--gold);">Paisaje Grupal Alegórico</h3>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img src="assets/VISORDP_4_Frecuencias.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/VISORDP_4_Frecuencias.png'" class="gallery-img" alt="Frecuencias" style="width: 100%; border-radius: 6px; cursor: pointer;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #A0AEC0;">Frecuencias Globales</h3>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img src="assets/SOC_ORD_22_RESUMEN DEN.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_22_RESUMEN DEN.png'" class="gallery-img" alt="Resumen de Densidades" style="width: 100%; border-radius: 6px; cursor: pointer;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #A0AEC0;">Resumen Densidades (BDR)</h3>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <button onclick="toggleProf('prof-galeria', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 4: DATOS Y PROTOCOLOS (Oculto por defecto) -->
+    <section id="prof-datos" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Protocolos de Datos y Resultados</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Transparencia total. Desde el ingreso de los datos sociométricos crudos (Raw Data) hasta la generación de las matrices primarias.
+            </p>
+            
+            <div style="max-width: 1000px; margin: 0 auto;">
+                
+                <h2 style="color: var(--cyan); margin-bottom: 5px;">1. Datos de Entrada (Raw Data)</h2>
+                <p style="color: #A0AEC0; margin-bottom: 20px; font-size: 0.95rem;">Muestra de las 4 primeras filas del protocolo de recolección de datos, segmentado por áreas de evaluación clínica.</p>
+                
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: stretch;">
+                    
+                    <!-- Columna Izquierda: Imagen Completa -->
+                    <div style="flex: 1 1 60%; text-align: center;">
+                        <img src="assets/SOC_ORD_2_Datos.png" alt="Protocolos de Entrada Excel" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    
+                    <!-- Columna Derecha: Descripciones Alineadas -->
+                    <div style="flex: 1 1 35%; display: flex; flex-direction: column; justify-content: space-between; gap: 15px;">
+                        
+                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #4CAF50; background: rgba(76, 175, 80, 0.05);">
+                            <h4 style="color: #4CAF50; margin: 0 0 5px 0;">1. Identificación y Metadatos</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Nombre, ID del sujeto y criterios de agrupación (Grumo, Tarea, etc.).</p>
+                        </div>
+                        
+                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #FFC107; background: rgba(255, 193, 7, 0.05);">
+                            <h4 style="color: #FFC107; margin: 0 0 5px 0;">2. SOC_ORD (Ordenación Breve)</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Orden jerárquico dictaminado por los miembros del ecosistema.</p>
+                        </div>
+                        
+                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #3F51B5; background: rgba(63, 81, 181, 0.05);">
+                            <h4 style="color: #6C7AFA; margin: 0 0 5px 0;">3. Moreno (Sociometría Clásica)</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Vínculos directos de Elección (E) y Repulsión (R), más su percepción (pE, pR).</p>
+                        </div>
+                        
+                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #FF9800; background: rgba(255, 152, 0, 0.05);">
+                            <h4 style="color: #FF9800; margin: 0 0 5px 0;">4. Meta_perc</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Metapercepciones: ¿Adivina quién te Elige? (aE) y ¿Adivina a quién Eliges? (oE).</p>
+                        </div>
+                        
+                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #00BCD4; background: rgba(0, 188, 212, 0.05);">
+                            <h4 style="color: #00BCD4; margin: 0 0 5px 0;">5. Variables Complementarias</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Métricas sociodemográficas y de contexto para cruzar con la red.</p>
+                        </div>
+                        
+                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #00FF00; background: rgba(0, 255, 0, 0.05);">
+                            <h4 style="color: #00FF00; margin: 0 0 5px 0;">6. Adjetivos (AAG)</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">16 rasgos de personalidad y atribución grupal asignados por la red.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <h2 style="color: var(--cyan); margin-bottom: 5px; margin-top: 50px;">2. Resultados Primarios Generados</h2>
+                <p style="color: #A0AEC0; margin-bottom: 20px; font-size: 0.95rem;">El pipeline procesa los protocolos de entrada y genera inmediatamente las matrices de trabajo y las frecuencias.</p>
+                
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div class="glass-card" style="padding: 15px; text-align: center;">
+                        <img src="assets/VISORDP_6_SMIa.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_5_SMIa.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Matriz SMIa">
+                        <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--gold);">Matriz SMIa</h3>
+                        <p style="font-size: 0.85rem; color: #A0AEC0;">Matriz Sociométrica Integrada Algebraica. Cuantifica los flujos de la red completa.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 15px; text-align: center;">
+                        <img src="assets/VISORDP_Frec.png" onerror="this.src='assets/VISORDP_4_Frecuencias.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Tabla de Frecuencias">
+                        <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--magenta);">Tabla de Frecuencias (%)</h3>
+                        <p style="font-size: 0.85rem; color: #A0AEC0;">Recuento estadístico de interacciones y densidades normalizadas.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;">
+                    <button onclick="toggleProf('prof-datos', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    
     <!-- FRASE 1 -->
     <div class="parallax-quote animate-slide-up">
         <blockquote>
@@ -526,6 +665,179 @@
     </section>
 
 
+    
+
+    <!-- MODULE 6: DENSIDAD RELACIONAL (Oculto por defecto) -->
+    <section id="prof-sdr" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Densidad Relacional (SDR)</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                El corazón de la termodinámica del grupo. La matriz sociométrica condensada en sus 9 macro-vínculos estructurales.
+            </p>
+            
+            <div style="max-width: 1100px; margin: 0 auto;">
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; align-items: center; justify-content: center;">
+                    
+                    <!-- Columna Izquierda: Tabla SDR -->
+                    <div class="glass-card" style="flex: 1 1 45%; padding: 20px; text-align: center;">
+                        <h3 style="color: var(--cyan); margin-top: 0; margin-bottom: 20px;">1. Tabla SDR (Sociometric Density Ratio)</h3>
+                        <img src="assets/SOC_ORD_18_SDR.png" alt="Tabla SDR" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #A0AEC0; text-align: left;">
+                            SDR = Densidad Relacional Relativa (significativa) global (Emisión de preferencias y percepciones + Recepción de preferencias y percepciones).
+                        </p>
+                    </div>
+                    
+                    <!-- Columna Derecha: Matriz 9x9 -->
+                    <div class="glass-card" style="flex: 1 1 45%; padding: 20px; text-align: center;">
+                        <h3 style="color: var(--gold); margin-top: 0; margin-bottom: 20px;">2. Matriz de Condensación 9x9</h3>
+                        <img src="assets/VISORDP_10_Condensación 9x9 Densi.png" alt="Matriz 9x9 Densidades" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #A0AEC0; text-align: left;">
+                            9x9 en lugar de nodos, estructura relacional.
+                        </p>
+                    </div>
+                    
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-sdr', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- MODULE 7: PROYECCIONES Y ÓPTICAS (Oculto por defecto) -->
+    <section id="prof-opticas" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Proyecciones y Óptica</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Del análisis espectral profundo a la visión global: cómo el modelo SOC_ORD proyecta la topología del ecosistema humano en múltiples dimensiones.
+            </p>
+            
+            <div style="max-width: 1200px; margin: 0 auto;">
+                
+                <!-- 1. Paisaje Social Alegórico -->
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <h2 style="color: var(--cyan); margin-bottom: 15px;">El Paisaje Social Alegórico (Carte du Tendre)</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <img src="assets/Paysage social.png" alt="Paisaje Grupal Alegórico" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                </div>
+
+                <!-- 2. Planos y Pentagrama -->
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <h2 style="color: var(--gold); margin-bottom: 15px;">Planos Topológicos: El Pentagrama 6D</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <img src="assets/SOC_ORD_10_penta.png" alt="Orquestación Factorial - Pentagrama" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
+                        Visión vertical y orquestación factorial N-D desacoplada por ejes analíticos.
+                    </p>
+                </div>
+                
+                <!-- 3. Onda de Estatus Líder -->
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <h2 style="color: var(--magenta); margin-bottom: 15px;">Onda de Estatus Líder (F0 Dominante)</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); max-width: 900px; margin: 0 auto;">
+                        <img src="assets/onda_lider_g1t1c2.png" alt="Onda Estatus Líder" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
+                        La tendencia estructural (Fundamental) frente a la fricción de la realidad clínica.
+                    </p>
+                </div>
+
+                <!-- 4. Lentes Macro, Meso, Micro -->
+                <div style="margin-bottom: 40px; text-align: center;">
+                    <h2 style="color: #4CAF50; margin-bottom: 15px;">Óptica Focal: Macro, Meso, Micro</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <img src="assets/SOC_ORD_9_MACRO_MESO_MICRO.jpeg" alt="Comparativa Macro Meso Micro" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
+                        Comparativa de proyecciones sociométricas filtradas por las tres lentes fundamentales de inercia y análisis grupal.
+                    </p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 4rem;">
+                    <button onclick="toggleProf('prof-opticas', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- MODULE 8: GALERÍA ANALÍTICA EXTENDIDA (Oculto por defecto) -->
+    <section id="prof-galeria" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Galería Analítica Extendida</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Un recorrido visual por los outputs gráficos más avanzados del motor SOC_ORD, abarcando desde mapas de densidad hasta sociogramas de alta complejidad.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                
+                <!-- 1. Mapa de Densidad Bruta -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--cyan); margin-bottom: 10px;">Dispersión de la Densidad Relacional</h3>
+                    <img src="assets/mapa_densidad_bruta_g1t1c2.png" alt="Dispersión Densidad Relacional" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Dispersión SDA/SRC con inercia.</p>
+                </div>
+
+                <!-- 2. Mapa de Densidad (SDA/SRC) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--cyan); margin-bottom: 10px;">Mapa de Densidad Relacional</h3>
+                    <img src="assets/mapa_densidad_g2t3c2.png" alt="Mapa de Densidad" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Evaluación de reciprocidad SDA vs SRC.</p>
+                </div>
+
+                <!-- 3. Radar de Alienación (IAS) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--magenta); margin-bottom: 10px;">Radar de Alienación (IAS)</h3>
+                    <img src="assets/radar_ias_g1t3c2.png" alt="Radar de Alienación" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Diferencial entre percepción y recepción real.</p>
+                </div>
+
+                <!-- 4. Sociograma Geométrico (PCA) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--gold); margin-bottom: 10px;">Sociograma Geométrico (PCA)</h3>
+                    <img src="assets/sociograma_F_g2t2c1.png" alt="Sociograma Geométrico" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Inercia acumulada en espacio dimensional.</p>
+                </div>
+
+                <!-- 5. Sociograma de Atracción -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #4CAF50; margin-bottom: 10px;">Sociograma de Atracción</h3>
+                    <img src="assets/soc_moreno_atraccion_g1t1c2.png" alt="Sociograma de Atracción" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Red de vínculos positivos.</p>
+                </div>
+
+                <!-- 6. Sociograma de Conflicto -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #FF5252; margin-bottom: 10px;">Sociograma de Conflicto / Oposición</h3>
+                    <img src="assets/soc_moreno_relegacion_g2t2c2.png" alt="Sociograma de Conflicto" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Red de tensiones y oposiciones.</p>
+                </div>
+
+                <!-- 7. Sociograma de Reciprocidades -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #9C27B0; margin-bottom: 10px;">Sociograma de Reciprocidades (SMIa)</h3>
+                    <img src="assets/SOCIOGRAMA_DE_RECIPROCIDADES_SMIa.png" alt="Sociograma de Reciprocidades" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Vínculos correspondidos y estables.</p>
+                </div>
+
+                <!-- 8. Dendrograma CAJ -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #FF9800; margin-bottom: 10px;">Dendrograma de Clasificación Jerárquica</h3>
+                    <img src="assets/dendrograma_g1t3c1.png" alt="Dendrograma CAJ" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Agrupamiento jerárquico según método de Ward.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <button onclick="toggleProf('prof-galeria', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+            </div>
+        </div>
+    </section>
     <!-- COMMUNITY & FEEDBACK SECTION -->
     <section id="community" class="section dark-section">
         <div class="container">
