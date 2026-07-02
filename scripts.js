@@ -100,3 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Toggle profundizacion sections (Accordions)
+window.toggleProf = function(id) {
+    const targetSection = document.getElementById(id);
+    const allSections = document.querySelectorAll('.prof-section');
+    
+    // Check if the target is already visible
+    const isVisible = targetSection.style.display === 'block';
+    
+    // Hide all sections first to prevent joint deployment
+    allSections.forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // If it wasn't visible before, show it and scroll to it
+    if (!isVisible) {
+        targetSection.style.display = 'block';
+        window.scrollTo({
+            top: targetSection.offsetTop - 80, // Offset for navbar
+            behavior: 'smooth'
+        });
+    } else {
+        // If it was visible, it's now hidden. Scroll back up to the cards.
+        const engineeringSection = targetSection.previousElementSibling;
+        window.scrollTo({
+            top: engineeringSection ? engineeringSection.offsetTop - 50 : 0,
+            behavior: 'smooth'
+        });
+    }
+};

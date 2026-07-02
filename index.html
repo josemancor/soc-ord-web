@@ -65,7 +65,7 @@
                     <div class="feature-icon">⚛️</div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <h3 style="margin: 0;">Termodinámica Social</h3>
-                        <a href="#prof-termodinamica" class="btn-profundizar">Profundizar ➡️</a>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-termodinamica')" class="btn-profundizar">Profundizar ➡️</a>
                     </div>
                     <p>Mide la entropía y la densidad de la red para predecir si el grupo se encuentra en estado Sólido, Líquido, Plasma, Gas o Caos.</p>
                     <div class="feature-quote">
@@ -76,7 +76,7 @@
                     <div class="feature-icon">🧩</div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <h3 style="margin: 0;">Las 81 Figuras Sociométricas</h3>
-                        <a href="#prof-figuras" class="btn-profundizar">Profundizar ➡️</a>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-figuras')" class="btn-profundizar">Profundizar ➡️</a>
                     </div>
                     <p>La cuantificación del orden preferencial. Pasamos de simples elecciones binarias al análisis estructural (desde &lt;Ee&gt; hasta [Rr]).</p>
                     <div class="feature-quote">
@@ -87,7 +87,7 @@
                     <div class="feature-icon">🏛️</div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <h3 style="margin: 0;">Rigor Científico</h3>
-                        <a href="#prof-rigor" class="btn-profundizar">Profundizar ➡️</a>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-rigor')" class="btn-profundizar">Profundizar ➡️</a>
                     </div>
                     <p>Plataforma avalada y registrada en los repositorios de ciencia abierta del CERN (Zenodo) para garantizar la solidez metodológica.</p>
                     <div class="feature-quote">
@@ -99,7 +99,7 @@
     </section>
 
     <!-- PROFUNDIZACION SECTIONS -->
-    <section id="prof-termodinamica" class="section dark-section" style="padding-top: 50px;">
+    <section id="prof-termodinamica" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
         <div class="container">
             <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">La Termodinámica Social</h1>
             <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
@@ -121,11 +121,14 @@
                     <li style="margin-bottom: 10px;"><strong>Densidad Relacional (SDR):</strong> Mide la concentración gravitacional de vínculos. ¿Con qué fuerza se eligen o rechazan los miembros?</li>
                     <li><strong>Entropía Grupal:</strong> Mide el desorden, la fricción y la energía desperdiciada en disonancias cognitivas o alucinaciones sociales.</li>
                 </ul>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-termodinamica')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="prof-figuras" class="section" style="padding-top: 50px;">
+    <section id="prof-figuras" class="section prof-section" style="padding-top: 50px; display: none;">
         <div class="container">
             <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Las 81 Figuras Sociométricas</h1>
             <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
@@ -143,11 +146,14 @@
                 
                 <h2 style="color: var(--cyan); font-size: 1.8rem; margin-bottom: 1rem;">La Matriz QUATUOR</h2>
                 <p>Las 81 figuras abarcan todo el espectro posible de la relación diádica. Desde la Sinergia Perfecta <code>&lt;Ee&gt;</code>, pasando por la Perplejidad Absoluta <code>¡¿?!</code>, hasta el Antagonismo Mutuo Declarado <code>[Rr]</code>. Nuestro módulo QUATUOR condensa grupos enteros de cientos de personas en una cuadrícula fija de 9x9 para un diagnóstico forense instantáneo de la salud relacional.</p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-figuras')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="prof-rigor" class="section dark-section" style="padding-top: 50px;">
+    <section id="prof-rigor" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
         <div class="container">
             <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Rigor Científico y Zero-Noise</h1>
             <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
@@ -165,6 +171,9 @@
                 
                 <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 1rem;">Validación Open Science</h2>
                 <p>La arquitectura consolidada Platinum v6.0 y el marco teórico que la sustenta no son cajas negras. Están rigurosamente documentados y depositados en los servidores de ciencia abierta del CERN (Zenodo). Cualquiera puede auditar el marco lógico de los Prismas de Cruce y los Planos de Proyección 6D (PCA) que estructuran el corazón analítico de SOC_ORD.</p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-rigor')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver</button>
+                </div>
             </div>
         </div>
     </section>
