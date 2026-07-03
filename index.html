@@ -20,7 +20,7 @@
             <li><a href="#hero">Inicio</a></li>
             <li><a href="#about">Filosofía</a></li>
             <li><a href="#modules">Módulos</a></li>
-            <li><a href="#showcase">Demos</a></li>
+            <li><a href="#modules">Demos</a></li>
             <li><a href="#glossary">Glosario</a></li>
             <li><a href="#manual">Manual</a></li>
             <li><a href="#community">Comunidad</a></li>
@@ -45,7 +45,7 @@
             <p>La plataforma para el análisis clínico, termodinámico y estructural de ecosistemas humanos.</p>
             <div class="hero-buttons">
                 <a href="acceso_plataforma.html" class="btn" style="background: linear-gradient(45deg, #00A2FF, #9C27B0); color: white; border: none; box-shadow: 0 0 15px rgba(0, 162, 255, 0.5);">Acceso a la Plataforma 🔐</a>
-                <a href="#showcase" class="btn btn-primary">Ver Demostraciones</a>
+                <a href="#modules" class="btn btn-primary">Ver Demostraciones</a>
                 <a href="#manual" class="btn btn-secondary">Leer Manual Oficial</a>
             </div>
         </div>
@@ -207,12 +207,6 @@
                 
 
                 
-                <!-- Tarjeta 4: Atlas PDF -->
-                <a href="assets/Atlas_Resultados_SOC_ORD.pdf" target="_blank" class="feature-card" style="text-decoration:none; text-align:center; background: rgba(0, 162, 255, 0.05); border-color: var(--cyan);">
-                    <div class="feature-icon" style="color: var(--cyan);">📘</div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan);">Atlas Científico</h3>
-                    <p style="font-size: 0.9rem;">Descarga el dossier completo con matrices (SMIb), densidades (9x9) y proyecciones 6D.</p>
-                </a>
                 <!-- Tarjeta 5: Protocolos de Datos -->
                 <a href="javascript:void(0)" onclick="toggleProf('prof-datos', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
                     <div class="feature-icon">📊</div>
@@ -236,6 +230,12 @@
                     <div class="feature-icon">📊</div>
                     <h3 style="font-size: 1.2rem;">Galería Analítica</h3>
                     <p style="font-size: 0.9rem;">Sociogramas avanzados, radares de alienación y mapas de densidad estructural.</p>
+                </a>
+                <!-- Tarjeta 4: Atlas PDF -->
+                <a href="assets/Atlas_Resultados_SOC_ORD.pdf" target="_blank" class="feature-card" style="text-decoration:none; text-align:center; background: rgba(0, 162, 255, 0.05); border-color: var(--cyan);">
+                    <div class="feature-icon" style="color: var(--cyan);">📘</div>
+                    <h3 style="font-size: 1.2rem; color: var(--cyan);">Atlas Científico</h3>
+                    <p style="font-size: 0.9rem;">Descarga el dossier completo con matrices (SMIb), densidades (9x9) y proyecciones 6D.</p>
                 </a>
     
     
@@ -297,7 +297,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 3rem;">
-                    <button onclick="toggleProf('prof-video-maestro', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                    <button onclick="toggleProf('prof-datos', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Protocolos de Datos ➡️</button>
                 </div>
             </div>
         </div>
@@ -423,7 +423,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 4rem;">
-                    <button onclick="toggleProf('prof-datos', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                    <button onclick="toggleProf('prof-sdr', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Densidad Relacional ➡️</button>
                 </div>
             </div>
         </div>
@@ -622,7 +622,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 2rem;">
-                    <button onclick="toggleProf('prof-sdr', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                    <button onclick="toggleProf('prof-opticas', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Proyecciones y Óptica ➡️</button>
                 </div>
             </div>
         </div>
@@ -681,7 +681,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 4rem;">
-                    <button onclick="toggleProf('prof-opticas', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+                    <button onclick="toggleProf('prof-galeria', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Galería Analítica ➡️</button>
                 </div>
             </div>
         </div>
