@@ -363,62 +363,77 @@
                 <p style="color: #A0AEC0; margin-bottom: 20px; font-size: 0.95rem;">Muestra de las 4 primeras filas del protocolo de recolección de datos, segmentado por áreas de evaluación clínica.</p>
                 
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: stretch;">
+                <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px;">
                     
-                    <!-- Columna Izquierda: Imagen Completa -->
-                    <div style="flex: 1 1 60%; text-align: center;">
-                        <img src="assets/SOC_ORD_2_Datos.png" alt="Protocolos de Entrada Excel" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-                    </div>
-                    
-                    <!-- Columna Derecha: Descripciones Alineadas -->
-                    <div style="flex: 1 1 35%; display: flex; flex-direction: column; justify-content: space-between; gap: 15px;">
-                        
-                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #4CAF50; background: rgba(76, 175, 80, 0.05);">
+                    <!-- Fila 1 -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                        <div style="flex: 1 1 50%;"><img src="assets/datos_crop_1.png" alt="Identificación" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                        <div style="flex: 1 1 45%; padding-left: 10px; border-left: 4px solid #4CAF50;">
                             <h4 style="color: #4CAF50; margin: 0 0 5px 0;">1. Identificación y Metadatos</h4>
-                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Nombre, ID del sujeto y criterios de agrupación (Grumo, Tarea, etc.).</p>
+                            <p style="margin: 0; font-size: 0.95rem; color: #A0AEC0;">Nombre, ID del sujeto y criterios de agrupación (Grumo, Tarea, etc.).</p>
                         </div>
-                        
-                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #FFC107; background: rgba(255, 193, 7, 0.05);">
-                            <h4 style="color: #FFC107; margin: 0 0 5px 0;">2. SOC_ORD (Ordenación Breve)</h4>
-                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Orden jerárquico dictaminado por los miembros del ecosistema.</p>
-                        </div>
-                        
-                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #3F51B5; background: rgba(63, 81, 181, 0.05);">
-                            <h4 style="color: #6C7AFA; margin: 0 0 5px 0;">3. Moreno (Sociometría Clásica)</h4>
-                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Vínculos directos de Elección (E) y Repulsión (R), más su percepción (pE, pR).</p>
-                        </div>
-                        
-                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #FF9800; background: rgba(255, 152, 0, 0.05);">
-                            <h4 style="color: #FF9800; margin: 0 0 5px 0;">4. Meta_perc</h4>
-                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Metapercepciones: ¿Adivina quién te Elige? (aE) y ¿Adivina a quién Eliges? (oE).</p>
-                        </div>
-                        
-                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #00BCD4; background: rgba(0, 188, 212, 0.05);">
-                            <h4 style="color: #00BCD4; margin: 0 0 5px 0;">5. Variables Complementarias</h4>
-                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Métricas sociodemográficas y de contexto para cruzar con la red.</p>
-                        </div>
-                        
-                        <div class="glass-card" style="padding: 15px; border-left: 4px solid #00FF00; background: rgba(0, 255, 0, 0.05);">
-                            <h4 style="color: #00FF00; margin: 0 0 5px 0;">6. Adjetivos (AAG)</h4>
-                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">16 rasgos de personalidad y atribución grupal asignados por la red.</p>
-                        </div>
-                        
                     </div>
+                    
+                    <!-- Fila 2 -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                        <div style="flex: 1 1 50%;"><img src="assets/datos_crop_2.png" alt="SOC_ORD" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                        <div style="flex: 1 1 45%; padding-left: 10px; border-left: 4px solid #FFC107;">
+                            <h4 style="color: #FFC107; margin: 0 0 5px 0;">2. SOC_ORD (Ordenación Breve)</h4>
+                            <p style="margin: 0; font-size: 0.95rem; color: #A0AEC0;">Orden jerárquico dictaminado por los miembros del ecosistema.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fila 3 -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                        <div style="flex: 1 1 50%;"><img src="assets/datos_crop_3.png" alt="Moreno" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                        <div style="flex: 1 1 45%; padding-left: 10px; border-left: 4px solid #3F51B5;">
+                            <h4 style="color: #6C7AFA; margin: 0 0 5px 0;">3. Moreno (Sociometría Clásica)</h4>
+                            <p style="margin: 0; font-size: 0.95rem; color: #A0AEC0;">Vínculos directos de Elección (E) y Repulsión (R), más su percepción (pE, pR).</p>
+                        </div>
+                    </div>
+
+                    <!-- Fila 4 -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                        <div style="flex: 1 1 50%;"><img src="assets/datos_crop_4.png" alt="Meta_perc" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                        <div style="flex: 1 1 45%; padding-left: 10px; border-left: 4px solid #FF9800;">
+                            <h4 style="color: #FF9800; margin: 0 0 5px 0;">4. Meta_perc</h4>
+                            <p style="margin: 0; font-size: 0.95rem; color: #A0AEC0;">Metapercepciones: ¿Adivina quién te Elige? (aE) y ¿Adivina a quién Eliges? (oE).</p>
+                        </div>
+                    </div>
+
+                    <!-- Fila 5 -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                        <div style="flex: 1 1 50%;"><img src="assets/datos_crop_5.png" alt="Variables" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                        <div style="flex: 1 1 45%; padding-left: 10px; border-left: 4px solid #00BCD4;">
+                            <h4 style="color: #00BCD4; margin: 0 0 5px 0;">5. Variables Complementarias</h4>
+                            <p style="margin: 0; font-size: 0.95rem; color: #A0AEC0;">Métricas sociodemográficas y de contexto para cruzar con la red.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fila 6 -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                        <div style="flex: 1 1 50%;"><img src="assets/datos_crop_6.png" alt="Adjetivos" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                        <div style="flex: 1 1 45%; padding-left: 10px; border-left: 4px solid #00FF00;">
+                            <h4 style="color: #00FF00; margin: 0 0 5px 0;">6. Adjetivos (AAG)</h4>
+                            <p style="margin: 0; font-size: 0.95rem; color: #A0AEC0;">16 rasgos de personalidad y atribución grupal asignados por la red.</p>
+                        </div>
+                    </div>
+
                 </div>
                 
                 <h2 style="color: var(--cyan); margin-bottom: 5px; margin-top: 50px;">2. Resultados Primarios Generados</h2>
                 <p style="color: #A0AEC0; margin-bottom: 20px; font-size: 0.95rem;">El pipeline procesa los protocolos de entrada y genera inmediatamente las matrices de trabajo y las frecuencias.</p>
                 
-                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                    <div class="glass-card" style="padding: 15px; text-align: center;">
+                <div class="features-grid" style="grid-template-columns: 1fr; gap: 40px;">
+                    <div class="glass-card" style="padding: 20px; text-align: center;">
                         <img src="assets/VISORDP_6_SMIa.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_5_SMIa.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Matriz SMIa">
-                        <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--gold);">Matriz SMIa</h3>
-                        <p style="font-size: 0.85rem; color: #A0AEC0;">Matriz Sociométrica Integrada Algebraica. Cuantifica los flujos de la red completa.</p>
+                        <h3 style="margin-top: 20px; font-size: 1.4rem; color: var(--gold);">Matriz SMIa</h3>
+                        <p style="font-size: 1rem; color: #A0AEC0;">Matriz Sociométrica Integrada Algebraica. Cuantifica los flujos de la red completa.</p>
                     </div>
-                    <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <div class="glass-card" style="padding: 20px; text-align: center;">
                         <img src="assets/VISORDP_Frec.png" onerror="this.src='assets/VISORDP_4_Frecuencias.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Tabla de Frecuencias">
-                        <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--magenta);">Tabla de Frecuencias (%)</h3>
-                        <p style="font-size: 0.85rem; color: #A0AEC0;">Recuento estadístico de interacciones y densidades normalizadas.</p>
+                        <h3 style="margin-top: 20px; font-size: 1.4rem; color: var(--magenta);">Tabla de Frecuencias (%)</h3>
+                        <p style="font-size: 1rem; color: #A0AEC0;">Recuento estadístico de interacciones y densidades normalizadas.</p>
                     </div>
                 </div>
 
@@ -691,7 +706,7 @@
                     <!-- Columna Derecha: Matriz 9x9 -->
                     <div class="glass-card" style="flex: 1 1 45%; padding: 20px; text-align: center;">
                         <h3 style="color: var(--gold); margin-top: 0; margin-bottom: 20px;">2. Matriz de Condensación 9x9</h3>
-                        <img src="assets/VISORDP_10_Condensación 9x9 Densi.png" alt="Matriz 9x9 Densidades" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <img src="assets/VISORDP_10_Condensacion_9x9_Densi.png" alt="Matriz 9x9 Densidades" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                         <p style="margin-top: 15px; font-size: 0.9rem; color: #A0AEC0; text-align: left;">
                             9x9 en lugar de nodos, estructura relacional.
                         </p>
