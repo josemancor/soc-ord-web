@@ -153,10 +153,22 @@
                 <p>Las 81 figuras abarcan todo el espectro posible de la relación diádica. Desde la Sinergia Perfecta <code>&lt;Ee&gt;</code>, pasando por la Perplejidad Absoluta <code>¡¿?!</code>, hasta el Antagonismo Mutuo Declarado <code>[Rr]</code>. Nuestro módulo QUATUOR condensa grupos enteros de cientos de personas en una cuadrícula fija de 9x9 para un diagnóstico forense instantáneo de la salud relacional.</p>
                 
                 <div style="margin: 3rem 0; text-align: center;">
-                    <div style="width: 100%; overflow-x: auto; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 162, 255, 0.3); background: #000;">
-                        <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras Sociométricas" class="gallery-img" style="min-width: 800px; width: 100%; display: block; cursor: zoom-in;" onclick="window.open(this.src, '_blank')">
-                        <img src="assets/Matriz_SMIa_Explicacion.png" alt="Explicación SMIa" class="gallery-img" style="min-width: 800px; width: 100%; display: block; cursor: zoom-in; border-top: 2px solid var(--cyan);" onclick="window.open(this.src, '_blank')">
+                    
+                    <!-- Modal para QUATUOR -->
+                    <div id="quatuor-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0;">
+                        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1;" onclick="document.getElementById('quatuor-modal').style.display='none'">&times;</div>
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;">
+                            <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras" style="width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto;">
+                            <img src="assets/Matriz_SMIa_Explicacion.png" alt="Explicación" style="width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto; border-top: 2px solid var(--cyan);">
+                            <div style="color: #aaa; margin-top: 15px; font-size: 1.1rem;">Haz clic en la X de arriba a la derecha para cerrar</div>
+                        </div>
                     </div>
+
+                    <div style="width: 100%; overflow-x: auto; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 162, 255, 0.3); background: #000; cursor: zoom-in;" onclick="document.getElementById('quatuor-modal').style.display='block'">
+                        <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras Sociométricas" class="gallery-img" style="min-width: 800px; width: 100%; display: block;">
+                        <img src="assets/Matriz_SMIa_Explicacion.png" alt="Explicación SMIa" class="gallery-img" style="min-width: 800px; width: 100%; display: block; border-top: 2px solid var(--cyan);">
+                    </div>
+
                     <div style="color: #888; font-size: 0.9rem; margin-top: 10px; font-style: italic;">Matriz QUATUOR: Estructura de las 81 figuras sociométricas numeralizadas jerárquicamente y Leyenda Explicativa de Símbolos (SMIa).</div>
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
