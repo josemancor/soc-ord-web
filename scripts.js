@@ -102,30 +102,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Toggle profundizacion sections (Accordions)
-window.toggleProf = function(id, returnId = 'about') {
+window.toggleProf = function(id, returnId = null) {
     const targetSection = document.getElementById(id);
     const allSections = document.querySelectorAll('.prof-section');
     
-    // Check if the target is already visible
     const isVisible = targetSection.style.display === 'block';
     
-    // Hide all sections first to prevent joint deployment
     allSections.forEach(section => {
         section.style.display = 'none';
     });
     
-    // If it wasn't visible before, show it and scroll to it
     if (!isVisible) {
         targetSection.style.display = 'block';
         window.scrollTo({
-            top: targetSection.offsetTop - 80, // Offset for navbar
+            top: targetSection.offsetTop - 80,
             behavior: 'smooth'
         });
     } else {
-        // If it was visible, it's now hidden. Scroll back up to the specified section.
-        const returnSection = document.getElementById(returnId);
+        if (returnId) {
+             const returnEl = document.getElementById(returnId);
+             if (returnEl) {
+                 window.scrollTo({
+                     top: returnEl.offsetTop - 80,
+                     behavior: 'smooth'
+                 });
+                 return;
+             }
+        }
+        
+        const engineeringSection = targetSection.previousElementSibling;
         window.scrollTo({
-            top: returnSection ? returnSection.offsetTop - 50 : 0,
+            top: engineeringSection ? engineeringSection.offsetTop - 50 : 0,
             behavior: 'smooth'
         });
     }
