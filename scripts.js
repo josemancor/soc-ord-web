@@ -137,3 +137,14 @@ window.toggleProf = function(id, returnId = null) {
         });
     }
 };
+
+
+window.openLightbox = function(src) {
+    const lightbox = document.getElementById('global-lightbox');
+    const img = document.getElementById('global-lightbox-img');
+    if (lightbox && img) {
+        img.src = src;
+        lightbox.style.display = 'flex';
+    }
+};
+

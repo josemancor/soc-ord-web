@@ -158,15 +158,15 @@
                     <div id="quatuor-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0;">
                         <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1;" onclick="document.getElementById('quatuor-modal').style.display='none'">&times;</div>
                         <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;">
-                            <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras" style="width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto;">
-                            <img src="assets/SMIa_Explicacion_Correcta.png" alt="Explicación" style="width: 100%; max-width: 500px; height: auto; display: block; margin: 20px auto; border: 2px solid var(--cyan); border-radius: 8px;">
+                            <img onclick="openLightbox(this.src)" src="assets/Matriz_81_Figuras.png" alt="81 Figuras" style="cursor: zoom-in; width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto;">
+                            <img onclick="openLightbox(this.src)" src="assets/SMIa_Explicacion_Correcta.png" alt="Explicación" style="cursor: zoom-in; width: 100%; max-width: 500px; height: auto; display: block; margin: 20px auto; border: 2px solid var(--cyan); border-radius: 8px;">
                             <div style="color: #aaa; margin-top: 15px; font-size: 1.1rem;">Haz clic en la X de arriba a la derecha para cerrar</div>
                         </div>
                     </div>
 
                     <div style="width: 100%; overflow-x: auto; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 162, 255, 0.3); background: #000; cursor: zoom-in;" onclick="document.getElementById('quatuor-modal').style.display='block'">
-                        <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras Sociométricas" class="gallery-img" style="min-width: 800px; width: 100%; display: block;">
-                        <div style="background: #000; text-align: center; padding: 20px 0; border-top: 2px solid var(--cyan);"><img src="assets/SMIa_Explicacion_Correcta.png" alt="Explicación SMIa" class="gallery-img" style="max-width: 500px; width: 100%; display: inline-block;"></div>
+                        <img onclick="openLightbox(this.src)" src="assets/Matriz_81_Figuras.png" alt="81 Figuras Sociométricas" class="gallery-img" style="cursor: zoom-in; min-width: 800px; width: 100%; display: block;">
+                        <div style="background: #000; text-align: center; padding: 20px 0; border-top: 2px solid var(--cyan);"><img onclick="openLightbox(this.src)" src="assets/SMIa_Explicacion_Correcta.png" alt="Explicación SMIa" class="gallery-img" style="cursor: zoom-in; max-width: 500px; width: 100%; display: inline-block;"></div>
                     </div>
 
                     <div style="color: #888; font-size: 0.9rem; margin-top: 10px; font-style: italic;">Matriz QUATUOR: Estructura de las 81 figuras sociométricas numeralizadas jerárquicamente y Leyenda Explicativa de Símbolos (SMIa).</div>
@@ -283,27 +283,27 @@
                 <h3 style="text-align: center; color: var(--cyan); margin-top: 40px; margin-bottom: 20px;">Disección de Vínculos del Nodo</h3>
                 <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;">
                     <div class="glass-card" style="padding: 10px; text-align: center;">
-                        <img src="assets/VISORDP_11._1 nodo.png" style="width: 100%; border-radius: 4px;" alt="1 Nodo">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_11._1 nodo.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="1 Nodo">
                         <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">1 Solo Nodo</p>
                     </div>
                     <div class="glass-card" style="padding: 10px; text-align: center;">
-                        <img src="assets/VISORDP_12_2 nodos.png" style="width: 100%; border-radius: 4px;" alt="2 Nodos">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_12_2 nodos.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="2 Nodos">
                         <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">2 Nodos</p>
                     </div>
                     <div class="glass-card" style="padding: 10px; text-align: center;">
-                        <img src="assets/VISORDP_13_3 nodos.png" style="width: 100%; border-radius: 4px;" alt="3 Nodos">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_13_3 nodos.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="3 Nodos">
                         <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">3 Nodos</p>
                     </div>
                     <div class="glass-card" style="padding: 10px; text-align: center;">
-                        <img src="assets/VISORDP_14_todo.png" style="width: 100%; border-radius: 4px;" alt="Todos los nodos">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_14_todo.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="Todos los nodos">
                         <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Todos (Red)</p>
                     </div>
                     <div class="glass-card" style="padding: 10px; text-align: center;">
-                        <img src="assets/VISORDP_18_12E.png" style="width: 100%; border-radius: 4px;" alt="Elección (E)">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_18_12E.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="Elección (E)">
                         <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Elección (E)</p>
                     </div>
                     <div class="glass-card" style="padding: 10px; text-align: center;">
-                        <img src="assets/VISORDP_19_12R.png" style="width: 100%; border-radius: 4px;" alt="Repulsión (R)">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_19_12R.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="Repulsión (R)">
                         <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Repulsión (R)</p>
                     </div>
                 </div>
@@ -325,32 +325,32 @@
             
             <div class="showcase-grid" style="max-width: 1100px; margin: 0 auto;">
                 <div class="showcase-item glass-card" style="text-align: center;">
-                    <img src="assets/dendrograma_g1t3c1.png" class="gallery-img" alt="Dendrograma" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <img onclick="openLightbox(this.src)" src="assets/dendrograma_g1t3c1.png" class="gallery-img" alt="Dendrograma" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
                     <h3 style="margin-top: 15px; font-size: 1.1rem; color: #4CAF50;">Dendrograma de Clustering</h3>
                     <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Clasificación jerárquica de subgrupos y facciones latentes.</p>
                 </div>
                 <div class="showcase-item glass-card" style="text-align: center;">
-                    <img src="assets/radar_ias_g1t3c2.png" class="gallery-img" alt="Radar IAS" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <img onclick="openLightbox(this.src)" src="assets/radar_ias_g1t3c2.png" class="gallery-img" alt="Radar IAS" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
                     <h3 style="margin-top: 15px; font-size: 1.1rem; color: #00BCD4;">Radar Diagnóstico (IAS)</h3>
                     <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Perfil multidimensional de riesgo y asimetría estructural.</p>
                 </div>
                 <div class="showcase-item glass-card" style="text-align: center;">
-                    <img src="assets/soc_moreno_atraccion_g1t1c2.png" class="gallery-img" alt="Atracción" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_atraccion_g1t1c2.png" class="gallery-img" alt="Atracción" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
                     <h3 style="margin-top: 15px; font-size: 1.1rem; color: #FF9800;">Sociograma de Atracción</h3>
                     <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Flujos de simpatía y alianzas productivas dentro del sistema.</p>
                 </div>
                 <div class="showcase-item glass-card" style="text-align: center;">
-                    <img src="assets/soc_moreno_relegacion_g2t2c2.png" class="gallery-img" alt="Repulsión" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_relegacion_g2t2c2.png" class="gallery-img" alt="Repulsión" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
                     <h3 style="margin-top: 15px; font-size: 1.1rem; color: #F44336;">Sociograma de Repulsión</h3>
                     <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Detección de focos de conflicto, aislamiento y rechazo activo.</p>
                 </div>
                 <div class="showcase-item glass-card" style="text-align: center;">
-                    <img src="assets/soc_global_g2t2c1.png" class="gallery-img" alt="Reciprocidad" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_global_g2t2c1.png" class="gallery-img" alt="Reciprocidad" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
                     <h3 style="margin-top: 15px; font-size: 1.1rem; color: #9C27B0;">Red Global de Reciprocidad</h3>
                     <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Vínculos correspondidos. El esqueleto real de soporte emocional.</p>
                 </div>
                 <div class="showcase-item glass-card" style="text-align: center;">
-                    <img src="assets/onda_lider_g1t1c2.png" class="gallery-img" alt="Transformada de Fourier" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <img onclick="openLightbox(this.src)" src="assets/onda_lider_g1t1c2.png" class="gallery-img" alt="Transformada de Fourier" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
                     <h3 style="margin-top: 15px; font-size: 1.1rem; color: #E91E63;">Transformada de Fourier (TFF)</h3>
                     <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Análisis de frecuencias espectrales del liderazgo. Detecta resonancias y perturbaciones invisibles en el tejido social.</p>
                 </div>
@@ -386,7 +386,7 @@
                     <div id="datos-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0;">
                         <div style="position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1; z-index: 10001;" onclick="document.getElementById('datos-modal').style.display='none'">&times;</div>
                         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-                            <img src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="width: 100%; max-width: 1000px; height: auto; border-radius: 8px; border: 1px solid rgba(0, 162, 255, 0.3);">
+                            <img onclick="openLightbox(this.src)" src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="cursor: zoom-in; width: 100%; max-width: 1000px; height: auto; border-radius: 8px; border: 1px solid rgba(0, 162, 255, 0.3);">
                         </div>
                     </div>
                     
@@ -431,12 +431,12 @@
                 
                 <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 2rem;">
                     <div class="glass-card" style="padding: 20px; text-align: center;">
-                        <img src="assets/VISORDP_6_SMIa.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_5_SMIa.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Matriz SMIa">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_6_SMIa.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_5_SMIa.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Matriz SMIa">
                         <h3 style="margin-top: 20px; font-size: 1.4rem; color: var(--gold);">Matriz SMIa</h3>
                         <p style="font-size: 1rem; color: #A0AEC0;">Matriz Sociométrica Integrada Algebraica. Cuantifica los flujos de la red completa.</p>
                     </div>
                     <div class="glass-card" style="padding: 20px; text-align: center;">
-                        <img src="assets/VISORDP_Frec.png" onerror="this.src='assets/VISORDP_4_Frecuencias.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Tabla de Frecuencias">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_Frec.png" onerror="this.src='assets/VISORDP_4_Frecuencias.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Tabla de Frecuencias">
                         <h3 style="margin-top: 20px; font-size: 1.4rem; color: var(--magenta);">Tabla de Frecuencias (%)</h3>
                         <p style="font-size: 1rem; color: #A0AEC0;">Recuento estadístico de interacciones y densidades normalizadas.</p>
                     </div>
@@ -470,27 +470,27 @@
             </p>
             <div class="gallery-grid">
                 <div class="gallery-item glass-card animate-slide-up">
-                    <img src="assets/SOC_ORD_2_Datos.png" alt="Ingesta de Datos" class="gallery-img">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/SOC_ORD_2_Datos.png" alt="Ingesta de Datos" class="gallery-img">
                     <div class="gallery-caption">Captura e Ingesta de Datos</div>
                 </div>
                 <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.1s;">
-                    <img src="assets/VISORD_Captura_N12_T4088.png" alt="Plano 6D Vertical" class="gallery-img">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/VISORD_Captura_N12_T4088.png" alt="Plano 6D Vertical" class="gallery-img">
                     <div class="gallery-caption">Fundamentación Algorítmica (Plano Vertical)</div>
                 </div>
                 <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.2s;">
-                    <img src="assets/Imag_3.png" alt="Diagnóstico" class="gallery-img">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/Imag_3.png" alt="Diagnóstico" class="gallery-img">
                     <div class="gallery-caption">Codificación SMIb de Preferencias</div>
                 </div>
                 <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.3s;">
-                    <img src="assets/SOC_ORD_7_group.png" alt="Topología Grupal 2D" class="gallery-img">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/SOC_ORD_7_group.png" alt="Topología Grupal 2D" class="gallery-img">
                     <div class="gallery-caption">Análisis Multinivel: Macro, Meso y Micro</div>
                 </div>
                 <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.4s;">
-                    <img src="assets/VISORD_Captura_N12_T121.png" alt="Motor Termodinámico 6D" class="gallery-img">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/VISORD_Captura_N12_T121.png" alt="Motor Termodinámico 6D" class="gallery-img">
                     <div class="gallery-caption">Resumen Termodinámico (DGLOBAL)</div>
                 </div>
                 <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.5s;">
-                    <img src="assets/Paysage social.png" alt="Topografía Paysage Social" class="gallery-img" onerror="this.src='assets/VISORDP_9x9_DEN.png'">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/Paysage social.png" alt="Topografía Paysage Social" class="gallery-img" onerror="this.src='assets/VISORDP_9x9_DEN.png'">
                     <div class="gallery-caption">Topografía Estructural (Paysage Social)</div>
                 </div>
             </div>
@@ -628,7 +628,7 @@
                     <!-- Columna Izquierda: Tabla SDR -->
                     <div class="glass-card" style="flex: 1 1 45%; padding: 30px; text-align: center; min-width: 400px;">
                         <h3 style="color: var(--cyan); margin-top: 0; margin-bottom: 25px; font-size: 1.5rem;">1. Tabla SDR (Sociometric Density Ratio)</h3>
-                        <img src="assets/SOC_ORD_18_SDR.png" alt="Tabla SDR" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
+                        <img onclick="openLightbox(this.src)" src="assets/SOC_ORD_18_SDR.png" alt="Tabla SDR" style="cursor: zoom-in; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
                         <p style="margin-top: 20px; font-size: 1.05rem; color: #A0AEC0; text-align: left; line-height: 1.6;">
                             <strong>SDR = Densidad Relacional Relativa (significativa) global</strong><br> (Emisión de preferencias y percepciones + Recepción de preferencias y percepciones).
                         </p>
@@ -637,7 +637,7 @@
                     <!-- Columna Derecha: Matriz 9x9 -->
                     <div class="glass-card" style="flex: 1 1 45%; padding: 30px; text-align: center; min-width: 400px;">
                         <h3 style="color: var(--gold); margin-top: 0; margin-bottom: 25px; font-size: 1.5rem;">2. Matriz de Condensación 9x9</h3>
-                        <img src="assets/VISORDP_10_Condensacion_9x9_Densi.png" alt="Matriz 9x9 Densidades" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_10_Condensacion_9x9_Densi.png" alt="Matriz 9x9 Densidades" style="cursor: zoom-in; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
                         <p style="margin-top: 20px; font-size: 1.05rem; color: #A0AEC0; text-align: left; line-height: 1.6;">
                             Estructura relacional condensada en 9x9 para un análisis termodinámico superior, superando las limitaciones visuales de nodos individuales.
                         </p>
@@ -667,7 +667,7 @@
                 <div style="margin-bottom: 60px; text-align: center;">
                     <h2 style="color: var(--cyan); margin-bottom: 15px;">El Paisaje Social Alegórico (Carte du Tendre)</h2>
                     <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                        <img src="assets/paysage_nodos.jpg" alt="Paisaje Grupal Alegórico" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <img onclick="openLightbox(this.src)" src="assets/paysage_nodos.jpg" alt="Paisaje Grupal Alegórico" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                     </div>
                 </div>
 
@@ -675,7 +675,7 @@
                 <div style="margin-bottom: 60px; text-align: center;">
                     <h2 style="color: var(--gold); margin-bottom: 15px;">Planos Topológicos: El Pentagrama 6D</h2>
                     <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                        <img src="assets/SOC_ORD_10_penta.png" alt="Orquestación Factorial - Pentagrama" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <img onclick="openLightbox(this.src)" src="assets/SOC_ORD_10_penta.png" alt="Orquestación Factorial - Pentagrama" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                     </div>
                     <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
                         Visión vertical y orquestación factorial N-D desacoplada por ejes analíticos.
@@ -686,7 +686,7 @@
                 <div style="margin-bottom: 60px; text-align: center;">
                     <h2 style="color: var(--magenta); margin-bottom: 15px;">Onda de Estatus Líder (F0 Dominante)</h2>
                     <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); max-width: 900px; margin: 0 auto;">
-                        <img src="assets/onda_lider_g1t1c2.png" alt="Onda Estatus Líder" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <img onclick="openLightbox(this.src)" src="assets/onda_lider_g1t1c2.png" alt="Onda Estatus Líder" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                     </div>
                     <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
                         <strong style="color: var(--cyan);">Transformada de Fourier (FFT):</strong> Extrae la tendencia estructural pura (Frecuencia Fundamental F0) filtrando el ruido estocástico y la fricción inherentes a la realidad clínica.
@@ -697,7 +697,7 @@
                 <div style="margin-bottom: 40px; text-align: center;">
                     <h2 style="color: #4CAF50; margin-bottom: 15px;">Óptica Focal: Macro, Meso, Micro</h2>
                     <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                        <img src="assets/SOC_ORD_9_MACRO_MESO_MICRO.jpeg" alt="Comparativa Macro Meso Micro" style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <img onclick="openLightbox(this.src)" src="assets/SOC_ORD_9_MACRO_MESO_MICRO.jpeg" alt="Comparativa Macro Meso Micro" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                     </div>
                     <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
                         Comparativa de proyecciones sociométricas filtradas por las tres lentes fundamentales de inercia y análisis grupal.
@@ -725,70 +725,70 @@
                 <!-- 1. Mapa de Densidad Bruta -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: var(--cyan); margin-bottom: 10px;">Dispersión de la Densidad Relacional</h3>
-                    <img src="assets/mapa_densidad_bruta_g1t1c2.png" alt="Dispersión Densidad Relacional" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/mapa_densidad_bruta_g1t1c2.png" alt="Dispersión Densidad Relacional" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Dispersión SDA/SRC con inercia.</p>
                 </div>
 
                 <!-- 2. Mapa de Densidad (SDA/SRC) -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: var(--cyan); margin-bottom: 10px;">Mapa de Densidad Relacional</h3>
-                    <img src="assets/mapa_densidad_g2t3c2.png" alt="Mapa de Densidad" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/mapa_densidad_g2t3c2.png" alt="Mapa de Densidad" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Evaluación de reciprocidad SDA vs SRC.</p>
                 </div>
 
                 <!-- 3. Radar de Alienación (IAS) -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: var(--magenta); margin-bottom: 10px;">Radar de Alienación (IAS)</h3>
-                    <img src="assets/radar_ias_g1t3c2.png" alt="Radar de Alienación" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/radar_ias_g1t3c2.png" alt="Radar de Alienación" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Diferencial entre percepción y recepción real.</p>
                 </div>
 
                 <!-- 4. Sociograma Geométrico (PCA) -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: var(--gold); margin-bottom: 10px;">Sociograma Geométrico (PCA)</h3>
-                    <img src="assets/sociograma_F_g2t2c1.png" alt="Sociograma Geométrico" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/sociograma_F_g2t2c1.png" alt="Sociograma Geométrico" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Inercia acumulada en espacio dimensional.</p>
                 </div>
 
                 <!-- 5. Sociograma de Atracción -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: #4CAF50; margin-bottom: 10px;">Sociograma de Atracción</h3>
-                    <img src="assets/soc_moreno_atraccion_g1t1c2.png" alt="Sociograma de Atracción" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_atraccion_g1t1c2.png" alt="Sociograma de Atracción" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Red de vínculos positivos.</p>
                 </div>
 
                 <!-- 6. Sociograma de Conflicto -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: #FF5252; margin-bottom: 10px;">Sociograma de Conflicto / Oposición</h3>
-                    <img src="assets/soc_moreno_relegacion_g2t2c2.png" alt="Sociograma de Conflicto" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_relegacion_g2t2c2.png" alt="Sociograma de Conflicto" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Red de tensiones y oposiciones.</p>
                 </div>
 
                 <!-- 7. Sociograma de Reciprocidades -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: #9C27B0; margin-bottom: 10px;">Sociograma de Reciprocidades (SMIa)</h3>
-                    <img src="assets/SOCIOGRAMA_DE_RECIPROCIDADES_SMIa.png" alt="Sociograma de Reciprocidades" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/SOCIOGRAMA_DE_RECIPROCIDADES_SMIa.png" alt="Sociograma de Reciprocidades" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Vínculos correspondidos y estables.</p>
                 </div>
 
                 <!-- 8. Dendrograma CAJ -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: #FF9800; margin-bottom: 10px;">Dendrograma de Clasificación Jerárquica</h3>
-                    <img src="assets/dendrograma_g1t3c1.png" alt="Dendrograma CAJ" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/dendrograma_g1t3c1.png" alt="Dendrograma CAJ" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Agrupamiento jerárquico según método de Ward.</p>
                 </div>
 
                 <!-- 9. PCA 6D (Contraste Maestro) -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: #E91E63; margin-bottom: 10px;">Plano PCA 6D (Contraste Maestro)</h3>
-                    <img src="assets/pca_6d.png" alt="PCA 6D" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/pca_6d.png" alt="PCA 6D" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Trazos rojos para elementos que sobrepasan las 2D.</p>
                 </div>
 
                 <!-- 10. PCA Planos Verticales y Contribuciones -->
                 <div class="glass-card" style="padding: 15px; text-align: center;">
                     <h3 style="color: #00BCD4; margin-bottom: 10px;">Planos Verticales y Contribuciones</h3>
-                    <img src="assets/pca_verticales.png" alt="PCA Verticales" style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <img onclick="openLightbox(this.src)" src="assets/pca_verticales.png" alt="PCA Verticales" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
                     <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Análisis de coordenadas y contribuciones de factores.</p>
                 </div>
             </div>
@@ -826,6 +826,15 @@
         <p style="font-family: 'Courier New', monospace; font-size: 0.7rem; color: #333; margin-top: 25px; letter-spacing: 2px;"><a href="HUB_SOC_ORD_SMIb.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00A2FF'" onmouseout="this.style.color='#333'">[ ⚗️ INICIAR ENTORNO EXPERIMENTAL 3D ]</a></p>
     </footer>
 
-    <script src="scripts.js?v=2"></script>
+    <script src="scripts.js?v=3"></script>
+
+    <!-- Global Lightbox Modal -->
+    <div id="global-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0; align-items: center; justify-content: center;">
+        <div style="position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1; z-index: 10001;" onclick="document.getElementById('global-lightbox').style.display='none'">&times;</div>
+        <div style="max-width: 95vw; margin: 0 auto; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 100%;">
+            <img onclick="openLightbox(this.src)" id="global-lightbox-img" src="" alt="Vista ampliada" style="cursor: zoom-in; max-width: 100%; height: auto; max-height: 90vh; border-radius: 8px; border: 1px solid rgba(0, 162, 255, 0.3);">
+        </div>
+    </div>
+
 </body>
 </html>
