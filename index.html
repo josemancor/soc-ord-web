@@ -379,7 +379,15 @@
                     
                     <!-- Columna Izquierda: Imagen Compacta -->
                     <div style="flex: 1 1 50%; min-width: 300px;">
-                        <img src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="width: 100%; height: 100%; object-fit: fill; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
+                        <img src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="width: 100%; height: 100%; object-fit: fill; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); cursor: zoom-in;" onclick="document.getElementById('datos-modal').style.display='block'">
+                    </div>
+                    
+                    <!-- Modal para Datos -->
+                    <div id="datos-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0;">
+                        <div style="position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1; z-index: 10001;" onclick="document.getElementById('datos-modal').style.display='none'">&times;</div>
+                        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                            <img src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="width: 100%; max-width: 1000px; height: auto; border-radius: 8px; border: 1px solid rgba(0, 162, 255, 0.3);">
+                        </div>
                     </div>
                     
                     <!-- Columna Derecha: Explicaciones -->
