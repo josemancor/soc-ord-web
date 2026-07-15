@@ -6473,6 +6473,26 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         applyFiltersToGraph();
     }
 
+    function getPrismaDisplayLabel(cat, pIdx) {
+        const p1Code = cat[1]; 
+        const p2Code = cat[2]; 
+        
+        let p1State = (p1Code === 'E') ? 0 : (p1Code === '¿' ? 1 : 2); 
+        let p2State = (p2Code === 'e') ? 0 : (p2Code === '?' ? 1 : 2); 
+        
+        const symbols = [
+            ['E', '¿', 'R'],
+            ['e', '?', 'r'],
+            ['<', 'i', '['],
+            ['>', '!', ']']
+        ];
+        
+        let d1 = PRISMA_DEFS[pIdx].d1;
+        let d2 = PRISMA_DEFS[pIdx].d2;
+        
+        return `.${symbols[d1][p1State]}${symbols[d2][p2State]}.`;
+    }
+
     function renderPrismaUI() {
         const container = document.getElementById('prisma-content');
         if (!container || !activePrismaMode || !currentPrismaStats) return;
@@ -6500,9 +6520,11 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             if (isMaxCount) badgesHtml += '<span style="background: #00A2FF; color: #FFF; padding: 2px 5px; border-radius: 3px; font-size: 10px; margin-right: 5px;">👑 MAX FREC</span>';
             if (isMaxDensity) badgesHtml += '<span style="background: #FF0055; color: #FFF; padding: 2px 5px; border-radius: 3px; font-size: 10px;">🔥 MAX DENS</span>';
             
+            let displayLabel = getPrismaDisplayLabel(cat, selectedPrismaIndex);
+            
             html += `
                 <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.2s; position: relative;" onclick="selectPrismaCategory('${cat}')">
-                    <div style="font-size: 18px; font-weight: bold; color: #FFF; text-align: center; margin-bottom: 5px; font-family: monospace;">${cat}</div>
+                    <div style="font-size: 18px; font-weight: bold; color: #FFF; text-align: center; margin-bottom: 5px; font-family: monospace;">${displayLabel}</div>
                     
                     <div style="text-align: center; margin-bottom: 10px; height: 16px;">
                         ${badgesHtml}
