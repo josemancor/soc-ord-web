@@ -1346,7 +1346,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     <!-- MAIN TITLE -->
     <div id="main-title" style="text-align: center; pointer-events: auto; display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
-        <div style="font-family: sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 4px; color: #fff; text-shadow: 0 0 15px rgba(0,162,255,0.8), 0 0 30px rgba(0,162,255,0.4); margin-bottom: 2px; margin-top: 5px;">VISORD</div>
+        <div style="font-family: sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 4px; color: #fff; text-shadow: 0 0 15px rgba(0,162,255,0.8), 0 0 30px rgba(0,162,255,0.4); margin-bottom: 2px; margin-top: 5px;">VISORDP</div>
         <div id="lang-flags" style="display: flex; gap: 6px; justify-content: center; margin-bottom: 2px;">
             <span onclick="setLanguage('es')" style="cursor: pointer; font-size: 14px; opacity: 1; transition: transform 0.2s;" class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
             <span onclick="setLanguage('en')" style="cursor: pointer; font-size: 14px; opacity: 1; transition: transform 0.2s;" class="lang-flag" data-lang="en" title="English">🇬🇧</span>
@@ -1397,6 +1397,25 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         <div data-i18n="click_to_close" style="text-align: center; margin-top: 30px; font-size: 14px; color: #888;">[ Haz clic en cualquier lugar para cerrar y volver al grafo ]</div>
     </div>
 </div>
+
+<!-- Overlay PCA SDR -->
+<div id="pca-sdr-overlay" onclick="this.style.display='none'" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 500; background: rgba(10, 15, 25, 0.95); backdrop-filter: blur(8px); overflow-y: auto; cursor: pointer; align-items: flex-start; justify-content: center; padding: 40px;">
+    <div style="max-width: 1200px; width: 100%; text-align: center;" onclick="event.stopPropagation()">
+        <h2 style="color: #00A2FF; font-size: 28px; margin-bottom: 20px; border-bottom: 1px solid #00A2FF; padding-bottom: 10px; text-shadow: 0 0 10px rgba(0,162,255,0.5);">PCA SDR: Planos Vertical y Ortogonal</h2>
+        <div style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px; background: #0B0F19; border: 1px solid #444; border-radius: 8px; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                <img onclick="openLightbox(this.src)" src="pca_vertical.png" alt="PCA Vertical no encontrada. Genera la imagen con el script Python." style="max-width: 100%; border-radius: 4px; cursor: zoom-in;" onerror="this.onerror=null; this.src='assets/logo_simulacion.png';">
+            </div>
+            <div style="flex: 2; min-width: 500px; background: #0B0F19; border: 1px solid #444; border-radius: 8px; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                <img onclick="openLightbox(this.src)" src="pca_ortogonal.png" alt="PCA Ortogonal no encontrada. Genera la imagen con el script Python." style="max-width: 100%; border-radius: 4px; cursor: zoom-in;" onerror="this.onerror=null; this.src='assets/logo_simulacion.png';">
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="document.getElementById('pca-sdr-overlay').style.display='none'" style="background: #FF0055; color: white; border: none; padding: 10px 30px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(255,0,85,0.5);">CERRAR MAPAS PCA</button>
+        </div>
+    </div>
+</div>
+
 <div id="node-tooltip"></div>
 <div id="debug-log" style="position: absolute; top: 10px; left: 10px; z-index: 9999; color: red; background: rgba(0,0,0,0.8); padding: 10px; font-family: monospace; display: none;"></div>
 
@@ -1437,7 +1456,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     </div>
 
     <div style="background:#111; padding:10px; border-radius:4px; margin-bottom:5px; border:1px solid #333;">
-        <label data-i18n="num_subjects" style="font-size: 10px; color:#888;">NÚMERO DE SUJETOS (N)</label>
+        <label data-i18n="num_subjects" style="font-size: 10px; color:#888;">NÚMERO DE EMISORES [DA] (N)</label>
         <input type="number" id="ctrl-n" value="12" min="5" max="50" style="width:100%; background:#000; border:1px solid #555; color:#FFF; padding:5px; box-sizing:border-box; margin-bottom:5px;">
         
         <label data-i18n="force_isolated" style="font-size: 10px; color:#888;">FORZAR NODOS AISLADOS</label>
@@ -1499,10 +1518,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     <div style="display: flex; gap: 10px; margin-bottom: 5px;">
         <button onclick="openMatricesMode()" data-i18n="tables_btn" style="flex: 1; padding: 8px; background: #E91E63; color: #FFF; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">📊 TABLAS</button>
         <button onclick="togglePresentationMode()" id="btn-presentation" data-i18n="presentation_btn" style="flex: 1; padding: 8px; background: #9C27B0; color: #FFF; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">🎬 PRES.</button>
+        <button onclick="openPCAOverlay()" style="flex: 1; padding: 8px; background: #00A2FF; color: #FFF; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 0 8px rgba(0,162,255,0.4);" title="Abrir Planos PCA">🗺️ PCA</button>
+        <button onclick="togglePrismaMode()" id="btn-prisma-mode" style="flex: 1; padding: 8px; background: #FF5722; color: #FFF; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 0 8px rgba(255,87,34,0.4);" title="Modo de Análisis Prismático">🔮 PRISMA</button>
     </div>
 
     <!-- Censo y Métricas por Nodo -->
-    <h2 data-i18n="subject_census" style="margin-top: 5px; margin-bottom: 5px;">CENSO DE SUJETOS</h2>
+    <h2 data-i18n="subject_census" style="margin-top: 5px; margin-bottom: 5px;">CENSO DE EMISORES [DA]</h2>
     <div data-i18n="isolate_hint" style="font-size: 10px; color:#888; margin-bottom: 5px;">Click en sujeto para aislar.</div>
     <div style="max-height: 50vh; overflow-y: auto;">
         <table id="tabla-censo">
@@ -1536,7 +1557,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     <div style="display:flex; gap: 5px; margin-bottom: 15px;">
         <button class="filter-btn active" onclick="toggleFilter(null, document.getElementById('btn-filter-all'))" id="btn-filter-all" data-i18n="show_all_links" style="flex: 1;">TODOS LOS ENLACES</button>
-        <button class="filter-btn" onclick="selectAllNodes()" style="width: 36px; background: #FFCC00; color: #000; border: none; font-weight: bold; font-family: monospace; padding:0; flex-shrink: 0;" title="Seleccionar Todos los Sujetos (Tecla T)">[T]</button>
+        <button class="filter-btn" onclick="selectAllNodes()" style="width: 36px; background: #FFCC00; color: #000; border: none; font-weight: bold; font-family: monospace; padding:0; flex-shrink: 0;" title="Seleccionar Todos los Emisores [DA] (Tecla T)">[T]</button>
     </div>
     
     <div data-i18n="emitted_reality" style="color:#00A2FF; font-size: 10px; font-weight: bold; margin-top: 5px; margin-bottom: 2px;">REALIDAD EMITIDA (E, ¿, R)</div>
@@ -1648,6 +1669,29 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 </div>
 
 
+
+<!-- OVERLAY PRISMA -->
+<div id="prisma-overlay" class="modal-overlay" style="display: none; z-index: 2500;">
+    <div class="modal-window" style="width: 80vw; max-width: 900px;">
+        <div class="modal-header">
+            <h2 style="margin:0; border:none; color:#FF5722;">🔮 Panel de Visualización Prismática</h2>
+            <div>
+                <select id="prisma-selector" style="background:#222; border:1px solid #555; color:#FF5722; font-size:14px; border-radius:4px; padding:6px; margin-right: 10px;" onchange="changePrismaMode(this.value)">
+                    <option value="0">PRISMA 1 - ACTIVO (A4 x A1)</option>
+                    <option value="1">PRISMA 2 - PASIVO (A2 x A3)</option>
+                    <option value="2">PRISMA 3 - EXTERNO (A4 x A2)</option>
+                    <option value="3">PRISMA 4 - INTERNO (A1 x A3)</option>
+                    <option value="4">PRISMA 5 - PERCEPTUAL (A4 x A3)</option>
+                    <option value="5" selected>PRISMA 6 - FACTUAL (A1 x A2)</option>
+                </select>
+                <button onclick="togglePrismaMode()" style="background:#444; color: white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">CERRAR</button>
+            </div>
+        </div>
+        <div id="prisma-content" style="padding: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-height: 60vh; overflow-y: auto;">
+            <!-- Contenido inyectado por JS -->
+        </div>
+    </div>
+</div>
 
 <!-- MODAL MATRICES ANALÍTICAS -->
 <div id="modal-matrices" class="modal-overlay">
@@ -1800,7 +1844,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             mode_basic: "1. BÁSICO (Estructural)",
             mode_advanced: "2. AVANZADO (Termodinámica)",
             guided_formation: "FORMACIÓN GUIADA",
-            num_subjects: "NÚMERO DE SUJETOS (N)",
+            num_subjects: "NÚMERO DE EMISORES [DA] (N)",
             target_horizon: "HORIZONTE OBJETIVO",
             start_formation: "🔄 INICIAR FORMACIÓN",
             external_data: "DATOS EXTERNOS",
@@ -1809,7 +1853,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             views: "VISTAS",
             tables_btn: "📊 TABLAS",
             presentation_btn: "🎬 PRES.",
-            subject_census: "CENSO DE SUJETOS",
+            subject_census: "CENSO DE EMISORES [DA]",
             isolate_hint: "Click en sujeto para aislar.",
             visual_filters: "FILTROS VISUALES",
             graph_indifference: "GRAFICAR INDIFERENCIA (Líneas grises punteadas)",
@@ -2480,11 +2524,11 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         }
     };
 
-    let currentLang = localStorage.getItem('visord_lang') || 'es';
+    let currentLang = localStorage.getItem('visordp_lang') || 'es';
 
     function setLanguage(lang) {
         currentLang = lang;
-        localStorage.setItem('visord_lang', lang);
+        localStorage.setItem('visordp_lang', lang);
         
         const dict = i18nDict[lang];
         if (!dict) return;
@@ -2524,6 +2568,8 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 </script>
 
 <script>
+/* injected main.js */
+
     // Estado Global de la App
     let isPlaying = true;
     let currentCycle = 0;
@@ -2543,7 +2589,10 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     let targetHorizon = 'LIQUIDO';
     let selectedNodes = new Set();
     let currentStats = null;
-    
+    let currentPrismaStats = null;
+    let activePrismaMode = false;
+    let selectedPrismaIndex = 5; // Default PRISMA 6 (Factual)
+    let selectedPrismaCategory = null;
     // Moviola y Tour
     let historyTracker = [];
     let isMoviolaPlayback = false;
@@ -2587,7 +2636,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     }
 
     const graphContainer = document.getElementById('3d-graph');
-    const Graph = window.Graph = ForceGraph3D({ rendererConfig: { preserveDrawingBuffer: true } })(graphContainer)
+    const Graph = ForceGraph3D({ rendererConfig: { preserveDrawingBuffer: true } })(graphContainer)
         .width(window.innerWidth)
         .height(window.innerHeight)
         .backgroundColor('#0E1117')
@@ -2626,8 +2675,17 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         })
 
         // --- ESTÉTICA DE CRISTAL (CABLES FINOS) + ELECTRONES ---
-        .linkWidth(link => link.isReal ? 0.6 : 0.1) // Finos cables de cristal
+        .linkWidth(link => {
+            if (activePrismaMode && selectedPrismaCategory) {
+                if (getLinkPrismaCategory(link, selectedPrismaIndex) !== selectedPrismaCategory) return 0.05;
+                return link.isReal ? 1.5 : 0.2; // Highlight!
+            }
+            return link.isReal ? 0.6 : 0.1;
+        })
         .linkColor(link => {
+            if (activePrismaMode && selectedPrismaCategory) {
+                if (getLinkPrismaCategory(link, selectedPrismaIndex) !== selectedPrismaCategory) return 'rgba(30,30,30,0.1)';
+            }
             if (link.isIndifference) return 'rgba(136,136,136,0.1)';
             if (link.color === '#FF0055') return 'rgba(255,0,85,0.4)';
             if (link.color === '#00FF9D') return 'rgba(0,255,157,0.4)';
@@ -2640,7 +2698,13 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         .linkDirectionalArrowColor(link => link.color) // Flecha opaca
         
         // Electrones brillantes circulando (pulsos de luz eléctrica)
-        .linkDirectionalParticles(link => link.isReal ? Math.floor(Math.random() * 3) + 2 : 0)
+        .linkDirectionalParticles(link => {
+            if (activePrismaMode && selectedPrismaCategory) {
+                if (getLinkPrismaCategory(link, selectedPrismaIndex) !== selectedPrismaCategory) return 0;
+                return link.isReal ? Math.floor(Math.random() * 4) + 4 : 0; // Más partículas
+            }
+            return link.isReal ? Math.floor(Math.random() * 3) + 2 : 0;
+        })
         .linkDirectionalParticleSpeed(link => link.isReal ? 0.006 + Math.random()*0.004 : 0)
         .linkDirectionalParticleWidth(link => link.isReal ? 1.5 : 0) // Diminutos para no ser "hormigas", sino fotones
         .linkDirectionalParticleColor(link => {
@@ -2734,6 +2798,38 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         // 4º Percepción recibida
         if (p4 === '0') res += '!'; else if (p4 >= 'A' && p4 <= 'Z') res += '>'; else res += ']';
         return res;
+    }
+
+    const PRISMA_CATEGORIES = ['.Ee.', '.E?.', '.Er.', '.¿e.', '.¿?.', '.¿r.', '.Re.', '.R?.', '.Rr.'];
+    const PRISMA_DEFS = [
+        { name: "PRISMA 1 - ACTIVO (A4 x A1)", d1: 3, d2: 0 },
+        { name: "PRISMA 2 - PASIVO (A2 x A3)", d1: 1, d2: 2 },
+        { name: "PRISMA 3 - EXTERNO (A4 x A2)", d1: 3, d2: 1 },
+        { name: "PRISMA 4 - INTERNO (A1 x A3)", d1: 0, d2: 2 },
+        { name: "PRISMA 5 - PERCEPTUAL (A4 x A3)", d1: 3, d2: 2 },
+        { name: "PRISMA 6 - FACTUAL (A1 x A2)", d1: 0, d2: 1 }
+    ];
+
+    function classifyPrismaHex(char1, char2) {
+        if (char1 === '0' && char2 === '0') return '.¿?.';
+        
+        let p1 = '¿';
+        if (char1 >= 'A' && char1 <= 'Z') p1 = 'E';
+        else if (char1 >= 'a' && char1 <= 'z') p1 = 'R';
+        
+        let p2 = '?';
+        if (char2 >= 'A' && char2 <= 'Z') p2 = 'e';
+        else if (char2 >= 'a' && char2 <= 'z') p2 = 'r';
+        
+        return `.${p1}${p2}.`;
+    }
+
+    function getLinkPrismaCategory(link, pIdx) {
+        if (!link.rawSmib || link.rawSmib.length < 4) return '.¿?.';
+        let pDef = PRISMA_DEFS[pIdx];
+        let c1 = link.rawSmib[pDef.d1];
+        let c2 = link.rawSmib[pDef.d2];
+        return classifyPrismaHex(c1, c2);
     }
 
     function getSMIaColor(smiaStr) {
@@ -3044,24 +3140,61 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             
             return { links, densidad, sda_emisores, sda_receptores, bda_emisores, brc_receptores, total_sdr, total_bda };
         }
+        
+        extraer_prismas(matriz) {
+            let stats = [];
+            for (let p = 0; p < PRISMA_DEFS.length; p++) {
+                let prismaStats = {};
+                PRISMA_CATEGORIES.forEach(cat => {
+                    prismaStats[cat] = { sdr: 0, bdr: 0, count: 0, links: [] };
+                });
+                stats.push(prismaStats);
+            }
+
+            for (let i = 0; i < this.n; i++) {
+                for (let j = 0; j < this.n; j++) {
+                    if (i === j) continue;
+                    let celda = matriz[i][j];
+                    if (celda.includes('000') || celda === '    ') continue;
+
+                    let smia_str = smibToSmia(celda);
+                    let nf = QUATUOR_MAP[smia_str] || 1.0;
+
+                    let a1 = 1.0 + (CF_WEIGHTS[smia_str[0]] * nf - 1.0) * getEmpiricalDistance(celda[0]);
+                    let a2 = 1.0 + (CF_WEIGHTS[smia_str[1]] * nf - 1.0) * getEmpiricalDistance(celda[1]);
+                    let a3 = 1.0 + (CF_WEIGHTS[smia_str[2]] * nf - 1.0) * getEmpiricalDistance(celda[2]);
+                    let a4 = 1.0 + (CF_WEIGHTS[smia_str[3]] * nf - 1.0) * getEmpiricalDistance(celda[3]);
+
+                    let v_bdr = a1 + a2 + a3 + a4; // BDR of the link
+                    let v_sdr = v_bdr - 4.0;       // SDR of the link
+                    
+                    let linkId = `${i}-${j}`;
+
+                    for (let p = 0; p < PRISMA_DEFS.length; p++) {
+                        let pDef = PRISMA_DEFS[p];
+                        let c1 = celda[pDef.d1];
+                        let c2 = celda[pDef.d2];
+                        let category = classifyPrismaHex(c1, c2);
+                        
+                        stats[p][category].sdr += v_sdr;
+                        stats[p][category].bdr += v_bdr;
+                        stats[p][category].count += 1;
+                        stats[p][category].links.push(linkId);
+                    }
+                }
+            }
+            return stats;
+        }
     }
 
     engine = new SOCORD_Engine_SMIb(n_nodes);
     let currentMatrix = [];
 
     function togglePlay() {
-        if (typeof moviolaPlaying !== 'undefined' && moviolaPlaying) {
-            // Si la moviola está reproduciéndose, la pausamos para no solapar relojes
-            if (typeof toggleMoviolaPlay === 'function') toggleMoviolaPlay();
-        }
-        
         isPlaying = !isPlaying;
         const btn = document.getElementById('btn-play');
         btn.innerHTML = isPlaying ? "⏸️ PAUSA" : "▶️ PLAY";
-        
-        if (window.loopTimeout) clearTimeout(window.loopTimeout);
-        
-        if (isPlaying) {
+        if(isPlaying) {
             btn.classList.remove('active');
             loopEngine();
         } else {
@@ -3125,6 +3258,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             }
             
             currentStats = engine.extraer_topologia(currentMatrix);
+            currentPrismaStats = engine.extraer_prismas(currentMatrix);
+            
+            // Render Prisma UI if active
+            if (activePrismaMode) {
+                renderPrismaUI();
+            }
             
             // Calcular Roles Sociométricos
             currentStats.roles = Array(n_nodes).fill('AISLADO');
@@ -3186,33 +3325,6 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             if (elPulso) elPulso.innerText = currentCycle;
             document.getElementById('disp-densidad').innerText = totalSDR.toFixed(2);
             document.getElementById('disp-entropia').innerText = entropia.toFixed(2);
-            
-            // Computar contadores de enlaces (+, -, ¿)
-            let posLinks = 0;
-            let negLinks = 0;
-            let neuLinks = 0;
-            if (currentMatrix) {
-                for(let i=0; i<n_nodes; i++) {
-                    for(let j=0; j<n_nodes; j++) {
-                        if (i !== j && currentMatrix[i] && currentMatrix[i][j]) {
-                            let rel = currentMatrix[i][j];
-                            if (rel[0] >= 'A' && rel[0] <= 'Z') posLinks++;
-                            else if (rel[0] >= 'a' && rel[0] <= 'z') negLinks++;
-                            else if (rel[0] === '0') neuLinks++;
-                            
-                            if (rel[2] >= 'A' && rel[2] <= 'Z') posLinks++;
-                            else if (rel[2] >= 'a' && rel[2] <= 'z') negLinks++;
-                            else if (rel[2] === '0') neuLinks++;
-                        }
-                    }
-                }
-            }
-            let elLinksPos = document.getElementById('disp-links-pos');
-            let elLinksNeu = document.getElementById('disp-links-neu');
-            let elLinksNeg = document.getElementById('disp-links-neg');
-            if (elLinksPos) elLinksPos.innerText = posLinks;
-            if (elLinksNeu) elLinksNeu.innerText = neuLinks;
-            if (elLinksNeg) elLinksNeg.innerText = negLinks;
             let bdrGlobal = document.getElementById('disp-bdr-global');
             if(bdrGlobal) bdrGlobal.innerText = totalBDR.toFixed(2);
             
@@ -3518,10 +3630,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             }
 
             
-            let existingGraphData = Graph.graphData();
-            let existingNodes = existingGraphData.nodes;
-            let existingLinks = existingGraphData.links;
-            
+            let existingNodes = Graph.graphData().nodes;
             let finalNodes = [];
             for (let iStr of visibleNodesList) {
                 let i = parseInt(iStr);
@@ -3547,34 +3656,9 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                 }
             }
             
-            let finalLinks = [];
-            for (let link of visibleLinks) {
-                let sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-                let targetId = typeof link.target === 'object' ? link.target.id : link.target;
-                
-                let existingL = existingLinks.find(l => {
-                    let lsId = typeof l.source === 'object' ? l.source.id : l.source;
-                    let ltId = typeof l.target === 'object' ? l.target.id : l.target;
-                    return lsId === sourceId && ltId === targetId;
-                });
-                
-                if (existingL) {
-                    // Update properties but preserve object reference so physics engine doesn't snap
-                    existingL.smia = link.smia;
-                    existingL.isReal = link.isReal;
-                    existingL.isIndifference = link.isIndifference;
-                    existingL.color = link.color;
-                    existingL.intensity = link.intensity;
-                    existingL.width = link.width;
-                    finalLinks.push(existingL);
-                } else {
-                    finalLinks.push(link);
-                }
-            }
-            
             Graph.graphData({
                 nodes: finalNodes,
-                links: finalLinks
+                links: visibleLinks
             });
         } catch (err) {
             let d = document.getElementById('debug-log');
@@ -3848,7 +3932,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                 else if (targetHorizon === 'CAOS') { targetFric = 0.95; targetCoh = 0.0; }
             }
             faseElem.innerText = faseText;
-            let lang = localStorage.getItem('visord_lang') || 'es';
+            let lang = localStorage.getItem('visordp_lang') || 'es';
             let baseText = (i18nDict[lang] && i18nDict[lang].auto_formation_progress) ? i18nDict[lang].auto_formation_progress : "⚙️ FORMACIÓN AUTOMÁTICA EN PROGRESO:";
             document.getElementById('banner-auto-formacion').innerText = `${baseText} ${faseText}`;
             
@@ -3933,15 +4017,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     }
 
     function loopEngine() {
-        if (!isPlaying || appMode === 'PRESENTACION') {
-            if (window.loopTimeout) clearTimeout(window.loopTimeout);
-            return;
-        }
-        
-        // Bloquear overlapping vaciando el timeout antes de ejecutar la carga computacional
-        if (window.loopTimeout) clearTimeout(window.loopTimeout);
+        if (!isPlaying || appMode === 'PRESENTACION') return;
         
         nextSimulationStep();
+        
+        // Clear previous timeout to avoid multiple loops
+        if (window.loopTimeout) clearTimeout(window.loopTimeout);
         
         // Calcular delay dinámicamente desde el slider (1 = 1000ms, 10 = 100ms)
         let sliderEl = document.getElementById('live-speed-slider');
@@ -4001,21 +4082,20 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         formationCycle = 0;
         formationMaxCycles = 120; // Damos más tiempo a la auto-formación
         
-        // Respetamos el horizonte que haya seleccionado el usuario
-        targetHorizon = document.getElementById('ctrl-horizonte').value;
+        // Horizonte fijo en LIQUIDO para evitar confusiones en la simulación automática
+        targetHorizon = 'LIQUIDO';
+        document.getElementById('ctrl-horizonte').value = targetHorizon;
         
         document.getElementById('disp-fase').style.display = 'block';
         document.getElementById('banner-auto-formacion').style.display = 'block';
         
-        document.getElementById('btn-formacion').innerText = '⏹️ DETENER SIMULACIÓN';
+        let tN = parseInt(document.getElementById('ctrl-n').value) || 12;
+        n_nodes = tN;
+        document.getElementById('btn-formacion').innerText = '⏹️ CANCELAR FORMACIÓN';
         document.getElementById('btn-formacion').style.background = '#FF0055';
         document.getElementById('fase-texto').innerText = '1. Exploración / Deshielo';
         setAppMode('advanced');
-        
-        // Inicializar desde cero
         initSimulation();
-        // Si no está en play, iniciamos automáticamente el motor al darle a INICIAR DESDE CERO
-        if (!isPlaying) togglePlay();
     }
 
     function startExternalFormation(matrix) {
@@ -4074,9 +4154,10 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         
         initHistory();
         updateSimulation();
-        
-        if (isPlaying) {
-            togglePlay(); // Pause automatically upon starting a new formation, wait for user
+        if (!isPlaying) {
+            togglePlay(); 
+        } else {
+            loopEngine(); // Explicitly start the loop
         }
     }
 
@@ -4100,7 +4181,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             btn.innerText = '🎬 MODO PRESENTACIÓN';
             
             // Descongelar nodos
-            Graph.graphData().nodes.forEach(n => {
+        Graph.graphData().nodes.forEach(n => {
                 n.fx = null;
                 n.fy = null;
                 n.fz = null;
@@ -4108,199 +4189,167 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         }
     }
 
-    // --- MODAL MATRICES ANALÍTICAS ---
-    let analiticas = null;
-    let currentMatrixViewMode = 'RADAR'; // RADAR, QUATUOR, NXN
-    let currentMatrixTab = 'SMIb';
+    // --- NUEVO: RENDERIZADO DEL RADAR DE PERFILES ---
+    function renderRadarMode() {
+        let n = currentMatrix.length;
+        let sda_sums = Array(n).fill(0);
+        let src_sums = Array(n).fill(0);
+        let sdr_sums = Array(n).fill(0);
+        let bdr_sums = Array(n).fill(0);
 
-    function setMatrixViewMode(mode) {
-        if (currentMatrixTab === 'GLOBAL' && mode === 'QUATUOR') return; 
-        currentMatrixViewMode = mode;
-        
-        document.querySelectorAll('.v-tab').forEach(t => {
-            t.style.background = '#444';
-            t.style.color = '#FFF';
-            t.classList.remove('active');
-        });
-        
-        let activeBtn;
-        if(mode === 'NXN') activeBtn = document.getElementById('btn-view-nxn');
-        if(mode === 'QUATUOR') activeBtn = document.getElementById('btn-view-quatuor');
-        if(mode === 'RADAR') activeBtn = document.getElementById('btn-view-radar');
-        
-        if(activeBtn) {
-            activeBtn.style.background = '#00A2FF';
-            activeBtn.style.color = '#000';
-            activeBtn.classList.add('active');
-        }
-        
-        renderMatrixTab(currentMatrixTab, true);
-    }
-
-
-    function renderRadarMode(type) {
-        let desc = {
-            'SMIb': "Radar: Codificación del orden de preferencias.",
-            'SMIa': "Radar: Sociomatriz Relacional Integrada.",
-            'A1': "Radar A1: Densidad Perceptiva Emitida.",
-            'A2': "Radar A2: Densidad Preferencial Emitida.",
-            'A3': "Radar A3: Densidad Preferencial Recibida.",
-            'A4': "Radar A4: Densidad Perceptiva Recibida.",
-            'SDA': "Radar SDA: Densidad Relacional Relativa Dada.",
-            'SRC': "Radar SRC: Densidad Relacional Relativa Recibida.",
-            'SDR': "Radar SDR: Densidad Relacional Relativa Total.",
-            'BDA': "Radar BDA: Densidad Relacional Absoluta (Bruta) Dada.",
-            'BRC': "Radar BRC: Densidad Relacional Absoluta (Bruta) Recibida.",
-            'BDR': "Radar BDR: Densidad Relacional Absoluta (Bruta) Total.",
-            'GLOBAL': "Radar GLOBAL: Resumen de Densidad Relacional Total."
-        };
-        let descHtml = `<div style="background:#222; padding:10px; margin-bottom:10px; border-left:4px solid #00A2FF; font-weight:bold; color:#00A2FF;">${desc[type] || ''}</div>`;
-        
-        let matrixToUse = [];
-        if (type === 'GLOBAL') {
-             matrixToUse = Array(n_nodes).fill(0).map(()=>Array(n_nodes).fill(0));
-             let keys = ['A1','A2','A3','A4','SDA','SRC','BDA','BRC'];
-             for(let i=0; i<n_nodes; i++) {
-                 for(let j=0; j<n_nodes; j++) {
-                     let sum = 0;
-                     keys.forEach(k => { sum += analiticas[k] ? analiticas[k][i][j] : 0; });
-                     matrixToUse[i][j] = sum;
-                 }
-             }
-        } else if (type === 'SMIb') {
-             matrixToUse = currentMatrix;
-        } else {
-             matrixToUse = analiticas[type] || currentMatrix;
-        }
-
-        window._currentRadarMatrix = matrixToUse;
-
-        let html = descHtml;
-        if (n_nodes <= 20) {
-            html += '<div style="width:100%; height:70vh; padding:20px; display:flex; flex-direction:column; align-items:center; background:#111; overflow-y:auto;">';
-            html += '<h3 style="color:#FFF; margin-bottom:20px;">RADAR GRUPAL (Todos los sujetos)</h3>';
-            html += '<div style="width:100%; max-width:800px; aspect-ratio:1; position:relative;"><canvas id="radar_group_full"></canvas></div>';
-            html += '</div>';
-        } else {
-            html += '<div style="width:100%; height:70vh; display:flex; background:#111;">';
-            html += '<div style="width:250px; background:#222; border-right:2px solid #444; padding:10px; overflow-y:auto; display:flex; flex-direction:column; gap:5px;">';
-            html += '<div style="color:#FFF; font-weight:bold; margin-bottom:10px; border-bottom:1px solid #555; padding-bottom:5px;">Seleccionar Sujetos (Máx 20)</div>';
-            for(let i=0; i<n_nodes; i++) {
-                html += `<label style="color:#DDD; display:flex; align-items:center; gap:8px; cursor:pointer; padding:4px; border-radius:4px; background:#333;"><input type="checkbox" class="radar-subject-cb" value="${i}" onchange="updateSelectiveRadar()"> ${i+1}</label>`;
-            }
-            html += '</div>';
-            html += '<div style="flex:1; padding:20px; display:flex; flex-direction:column; align-items:center; overflow-y:auto;">';
-            html += '<h3 style="color:#FFF; margin-bottom:20px;">RADAR SELECTIVO</h3>';
-            html += '<div style="width:100%; max-width:800px; aspect-ratio:1; position:relative;"><canvas id="radar_group_sel"></canvas></div>';
-            html += '</div></div>';
-        }
-        
-        document.getElementById('matrix-container').innerHTML = html;
-        
-        setTimeout(() => {
-            if (n_nodes <= 20) {
-                let allIndices = Array.from({length: n_nodes}, (_, i) => i);
-                let {labels, rowData, colData} = getMarginals(allIndices);
-                window.currentRadarChart = renderRadarChart('radar_group_full', labels, rowData, colData);
-            } else {
-                let initIndices = Array.from({length: Math.min(20, n_nodes)}, (_, i) => i);
-                document.querySelectorAll('.radar-subject-cb').forEach(cb => {
-                    if(initIndices.includes(parseInt(cb.value))) cb.checked = true;
-                });
-                let {labels, rowData, colData} = getMarginals(initIndices);
-                window.currentRadarChart = renderRadarChart('radar_group_sel', labels, rowData, colData);
-            }
-        }, 100);
-    }
-
-    function getMarginals(selectedIndices) {
-        let rowData = [];
-        let colData = [];
-        let labels = [];
-        let mat = window._currentRadarMatrix || currentMatrix;
-        for(let idx of selectedIndices) {
-            let i = parseInt(idx);
-            labels.push(String(i+1));
-            let rSum=0, cSum=0;
-            for(let j=0; j<n_nodes; j++) {
-                // Ensure numeric processing
-                let v1 = parseFloat(mat[i][j]);
-                let v2 = parseFloat(mat[j][i]);
-                if(!isNaN(v1)) rSum += v1;
-                if(!isNaN(v2)) cSum += v2;
-            }
-            rowData.push(rSum / n_nodes);
-            colData.push(cSum / n_nodes);
-        }
-        return { labels, rowData, colData };
-    }
-
-    window.updateSelectiveRadar = function() {
-        let selected = Array.from(document.querySelectorAll('.radar-subject-cb:checked')).map(cb => parseInt(cb.value));
-        if(selected.length > 20) {
-            alert("Máximo 20 sujetos simultáneos para no saturar el radar visualmente.");
-            event.target.checked = false;
-            return;
-        }
-        let {labels, rowData, colData} = getMarginals(selected);
-        if(window.currentRadarChart) {
-            window.currentRadarChart.data.labels = labels;
-            window.currentRadarChart.data.datasets[0].data = rowData;
-            window.currentRadarChart.data.datasets[1].data = colData;
-            window.currentRadarChart.update();
-        }
-    }
-
-    function renderRadarChart(canvasId, labels, rowData, colData) {
-        let canvas = document.getElementById(canvasId);
-        if(!canvas) return null;
-        if(window.currentRadarChart) window.currentRadarChart.destroy();
-        return new Chart(canvas.getContext('2d'), {
-            type: 'radar',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Promedio Emisión (Fila)',
-                        data: rowData,
-                        backgroundColor: 'rgba(255, 0, 85, 0.2)',
-                        borderColor: '#FF0055',
-                        pointBackgroundColor: '#FF0055',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Promedio Recepción (Columna)',
-                        data: colData,
-                        backgroundColor: 'rgba(0, 162, 255, 0.2)',
-                        borderColor: '#00A2FF',
-                        pointBackgroundColor: '#00A2FF',
-                        borderWidth: 2
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                        pointLabels: { color: '#FFF', font: { size: 12, weight: 'bold' } },
-                        ticks: { display: false, maxTicksLimit: 5 }
-                    }
-                },
-                plugins: {
-                    legend: { labels: { color: '#FFF' } }
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+                if (i !== j) {
+                    sda_sums[i] += analiticas.SDA[i][j];
+                    src_sums[i] += analiticas.SRC[i][j];
+                    sdr_sums[i] += analiticas.SDR[i][j];
+                    bdr_sums[i] += analiticas.BDR[i][j];
                 }
             }
+        }
+        
+        let avg_sda = sda_sums.reduce((a,b)=>a+b,0)/n;
+        let avg_src = src_sums.reduce((a,b)=>a+b,0)/n;
+
+        // Categorize
+        let quadrants = { A1:[], A2:[], A3:[], A4:[] };
+        let node_data = [];
+        for (let i = 0; i < n; i++) {
+            let label = (Graph.graphData().nodes[i]?.name || 'N'+(i+1));
+            let q = "";
+            if (sda_sums[i] >= avg_sda && src_sums[i] >= avg_src) q = "A1";
+            else if (sda_sums[i] >= avg_sda && src_sums[i] < avg_src) q = "A2";
+            else if (sda_sums[i] < avg_sda && src_sums[i] >= avg_src) q = "A3";
+            else q = "A4";
+            
+            quadrants[q].push(i);
+            node_data.push({ i, label, q, vals: [sda_sums[i], src_sums[i], sdr_sums[i], bdr_sums[i]] });
+        }
+        
+        // Build UI
+        let container = document.getElementById('matrix-container');
+        container.innerHTML = `
+            <div style="display:flex; height:100%; width:100%; color:#FFF; font-family:sans-serif;">
+                <div style="width:250px; background:#111; border-right:1px solid #333; overflow-y:auto; padding:15px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); z-index:2;">
+                    <h3 style="margin-top:0; color:#00FF9D; font-size:16px;">🎯 Radar (Selector)</h3>
+                    <div style="margin-bottom:15px; font-size:13px; color:#AAA;">
+                        Selecciona los nodos o cuadrantes a graficar. En grupos >10, se muestran solo los promedios por defecto.
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <b style="color:#FFF;">Cuadrantes (Promedios)</b><br>
+                        <label style="display:block; margin:4px 0;"><input type="checkbox" class="radar-cb-q" value="A1" ${n>10?'checked':''}> <span style="color:#FFCC00;">A1 Liderazgo [${quadrants.A1.length}]</span></label>
+                        <label style="display:block; margin:4px 0;"><input type="checkbox" class="radar-cb-q" value="A2" ${n>10?'checked':''}> <span style="color:#FF0055;">A2 Fricción [${quadrants.A2.length}]</span></label>
+                        <label style="display:block; margin:4px 0;"><input type="checkbox" class="radar-cb-q" value="A3" ${n>10?'checked':''}> <span style="color:#00A2FF;">A3 Satélites [${quadrants.A3.length}]</span></label>
+                        <label style="display:block; margin:4px 0;"><input type="checkbox" class="radar-cb-q" value="A4" ${n>10?'checked':''}> <span style="color:#888888;">A4 Aislados [${quadrants.A4.length}]</span></label>
+                    </div>
+                    <hr style="border-color:#333;">
+                    <div>
+                        <b style="color:#FFF;">Individuos Específicos</b><br>
+                        ${node_data.map(nd => `
+                            <label style="display:block; margin:4px 0; font-size:12px; cursor:pointer;">
+                                <input type="checkbox" class="radar-cb-n" value="${nd.i}" ${n<=10?'checked':''}> 
+                                <span style="color:${nd.q==='A1'?'#FFCC00':nd.q==='A2'?'#FF0055':nd.q==='A3'?'#00A2FF':'#888'}">[${nd.q}]</span> ${nd.label}
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+                <div id="radar-plot-area" style="flex-grow:1; position:relative; background:#000; display:flex; justify-content:center; align-items:center;"></div>
+            </div>
+        `;
+
+        function drawRadar() {
+            if(typeof Plotly === 'undefined') {
+                document.getElementById('radar-plot-area').innerHTML = '<div style="color:red;">Error: Plotly.js no está cargado.</div>';
+                return;
+            }
+
+            let selected_qs = Array.from(document.querySelectorAll('.radar-cb-q:checked')).map(cb => cb.value);
+            let selected_ns = Array.from(document.querySelectorAll('.radar-cb-n:checked')).map(cb => parseInt(cb.value));
+
+            let traces = [];
+            let axes = ['D. Emisora (SDA)', 'D. Receptora (SRC)', 'D. Neta (SDR)', 'D. Absoluta (BDR)', 'D. Emisora (SDA)'];
+            let colors = { A1: '#FFCC00', A2: '#FF0055', A3: '#00A2FF', A4: '#888888' };
+
+            selected_qs.forEach(q => {
+                let nodes_in_q = node_data.filter(nd => nd.q === q);
+                if (nodes_in_q.length > 0) {
+                    let avg_vals = [0,0,0,0];
+                    nodes_in_q.forEach(nd => {
+                        for(let k=0; k<4; k++) avg_vals[k] += nd.vals[k];
+                    });
+                    for(let k=0; k<4; k++) avg_vals[k] /= nodes_in_q.length;
+                    
+                    traces.push({
+                        type: 'scatterpolar',
+                        r: [...avg_vals, avg_vals[0]],
+                        theta: axes,
+                        fill: 'toself',
+                        name: `Promedio ${q}`,
+                        line: { color: colors[q], width: 3 },
+                        fillcolor: colors[q] + '44'
+                    });
+                }
+            });
+
+            selected_ns.forEach(idx => {
+                let nd = node_data[idx];
+                traces.push({
+                    type: 'scatterpolar',
+                    r: [...nd.vals, nd.vals[0]],
+                    theta: axes,
+                    fill: 'none',
+                    name: nd.label,
+                    line: { color: colors[nd.q], width: 2, dash: 'dot' }
+                });
+            });
+
+            Plotly.newPlot('radar-plot-area', traces, {
+                polar: {
+                    bgcolor: '#111',
+                    radialaxis: { visible: true, color: '#555', gridcolor: '#333' },
+                    angularaxis: { color: '#00FF9D', gridcolor: '#333' }
+                },
+                paper_bgcolor: '#000',
+                plot_bgcolor: '#000',
+                font: { color: '#FFF' },
+                showlegend: true,
+                legend: { orientation: 'h', y: -0.1 },
+                margin: { t: 50, b: 50, l: 50, r: 50 }
+            }, {responsive: true});
+        }
+
+        document.querySelectorAll('.radar-cb-q, .radar-cb-n').forEach(cb => {
+            cb.addEventListener('change', drawRadar);
         });
+
+        drawRadar();
+    }
+
+    // --- MODAL MATRICES ANALÍTICAS ---
+    let analiticas = null;
+    let isQuatuorMode = false;
+    let currentMatrixTab = 'SMIb';
+
+    function toggleQuatuorMode() {
+        if (currentMatrixTab === 'GLOBAL') return; // No tiene traducción QUATUOR
+        isQuatuorMode = !isQuatuorMode;
+        
+        let qBtn = document.getElementById('btn-quatuor-toggle');
+        if (isQuatuorMode) {
+            qBtn.style.background = '#00FF9D';
+            qBtn.innerText = 'QUATUOR (ON)';
+        } else {
+            qBtn.style.background = '#FFCC00';
+            qBtn.innerText = 'QUATUOR (9x9)';
+        }
+        renderMatrixTab(currentMatrixTab, true);
     }
 
     function openMatricesMode() {
         if (isPlaying) togglePlay();
         document.getElementById('modal-matrices').style.display = 'flex';
         analiticas = engine.extraer_matrices_analiticas(currentMatrix);
-        renderMatrixTab('SMIb');
+        renderMatrixTab('RADAR');
     }
 
     function closeMatricesMode() {
@@ -4311,129 +4360,66 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     function renderMatrixTab(type, keepActive = false) {
         currentMatrixTab = type;
         if (!keepActive) {
-            if(event && event.currentTarget && event.currentTarget.classList.contains('m-tab')) {
-                document.querySelectorAll('.m-tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-                event.currentTarget.classList.add('active');
-            } else {
-                // Caso de inicialización (primer render), buscar el botón manualmente
+            document.querySelectorAll('.m-tab').forEach(t => {
+                if (t.id !== 'btn-quatuor-toggle') t.classList.remove('active');
+                // Buscamos el botón que contenga el type (SMIb, RADAR, etc) o si es event click
+                if (t.innerText.includes(type) && type !== 'SDA' && type !== 'SDR') t.classList.add('active');
+                // Pequeño hack para SDA y SDR que se parecen
+                if (type === 'SDA' && t.innerText.trim() === 'SDA') t.classList.add('active');
+                if (type === 'SDR' && t.innerText.trim() === 'SDR') t.classList.add('active');
+            });
+            if (event && event.currentTarget && event.currentTarget.classList.contains('m-tab')) {
                 document.querySelectorAll('.m-tab').forEach(t => {
                     if (t.id !== 'btn-quatuor-toggle') t.classList.remove('active');
-                    if(t.innerText.includes(type)) t.classList.add('active');
                 });
+                event.currentTarget.classList.add('active');
             }
         }
         
-        let isBaseMatrix = (type === 'SMIa' || type === 'SMIb' || type === 'GLOBAL');
-        
-        // No alteramos la UI de botones. Simplemente derivamos el flujo internamente.
-        if (currentMatrixViewMode === 'DENSOGRAMA') return renderDensogramaMode(type);
-        if (!isBaseMatrix) {
-            if (currentMatrixViewMode === 'QUATUOR') return renderQuatuorMode(type);
-            if (currentMatrixViewMode === 'RADAR') return renderRadarMode(type);
+        let qBtn = document.getElementById('btn-quatuor-toggle');
+        if (type === 'GLOBAL' || type === 'RADAR') {
+            isQuatuorMode = false;
+            qBtn.style.background = '#444';
+            qBtn.style.color = '#888';
+            qBtn.innerText = 'QUATUOR (N/A)';
+            qBtn.style.pointerEvents = 'none';
+            if (type === 'RADAR') return renderRadarMode();
+        } else {
+            qBtn.style.pointerEvents = 'auto';
+            if (isQuatuorMode) {
+                qBtn.style.background = '#00FF9D';
+                qBtn.style.color = '#000';
+                qBtn.innerText = 'QUATUOR (ON)';
+            } else {
+                qBtn.style.background = '#FFCC00';
+                qBtn.style.color = '#000';
+                qBtn.innerText = 'QUATUOR (9x9)';
+            }
         }
-        // Si esBaseMatrix es TRUE, o el currentMatrixViewMode es NXN, el código 
-        // simplemente continúa hacia abajo y dibuja la tabla normal NxN.
+        
+        if (isQuatuorMode) return renderQuatuorMode(type);
         
         const descripciones = {
             'SMIb': "SMIb: Codificación del orden de preferencias.",
             'SMIa': "SMIa: Sociomatriz Relacional Integrada.",
-            'A1': "A1: Densidad Perceptiva Emitida.",
-            'A2': "A2: Densidad Preferencial Emitida.",
-            'A3': "A3: Densidad Preferencial Recibida.",
-            'A4': "A4: Densidad Perceptiva Recibida.",
-            'SDA': "SDA: Densidad Relacional Relativa Dada.",
-            'SRC': "SRC: Densidad Relacional Relativa Recibida.",
-            'SDR': "SDR: Densidad Relacional Relativa Total.",
-            'BDA': "BDA: Densidad Relacional Absoluta (Bruta) Dada.",
-            'BRC': "BRC: Densidad Relacional Absoluta (Bruta) Recibida.",
-            'BDR': "BDR: Densidad Relacional Absoluta (Bruta) Total.",
-            'GLOBAL': "GLOBAL: Resumen por semisuma de marginales de la DENSIDAD RELACIONAL TOTAL de cada miembro del grupo."
+            'A1': "A1: Densidad relacional de la percepción de preferencia del partner.",
+            'A2': "A2: Densidad relacional de la preferencia emitida.",
+            'A3': "A3: Densidad relacional de la preferencia recibida del partner.",
+            'A4': "A4: Densidad relacional de la percepción preferencial que el partner tiene del emisor.",
+            'SDA': "SDA: Densidad Relacional relativa aportada por el emisor al grupo.",
+            'SRC': "SRC: Densidad Relacional relativa que el emisor recibe del grupo.",
+            'SDR': "SDR: Densidad Relacional Relativa TOTAL Dada y Recibida.",
+            'BDA': "BDA: Densidad Relacional Absoluta (Energía bruta) aportada por el emisor al grupo.",
+            'BRC': "BRC: Densidad Relacional Absoluta (Energía bruta) que el emisor recibe del grupo.",
+            'BDR': "BDR: Densidad Relacional Absoluta (Energía bruta) TOTAL Dada y Recibida.",
+            'GLOBAL': "DGLOBAL: Resumen por semisuma de marginales de la DENSIDAD RELACIONAL TOTAL de cada miembro del grupo."
         };
         let descHtml = `<div style="background:rgba(0,0,0,0.4); color:#00A2FF; font-size:15px; font-weight:bold; padding:12px; margin-bottom:15px; border-left:4px solid #FF0055; border-radius:4px;">${descripciones[type] || ''}</div>`;
         
-        function renderDensogramaMode(type) {
-            let selectedNode = document.getElementById('select-node-matrix').value;
-            let targetIndices = [];
-            if (selectedNode === 'all') {
-                targetIndices = Array.from({length: n_nodes}, (_, i) => i);
-            } else {
-                targetIndices = [parseInt(selectedNode)];
-            }
-
-            let vals = { 'A1': 0, 'A2': 0, 'A3': 0, 'A4': 0, 'SDA': 0, 'SRC': 0, 'SDR': 0, 'BDA': 0, 'BRC': 0, 'BDR': 0 };
-            let count = 0;
-            let keys = Object.keys(vals);
-            
-            for (let i of targetIndices) {
-                for (let j = 0; j < n_nodes; j++) {
-                    if (i !== j) {
-                        keys.forEach(k => {
-                            if(analiticas[k] && analiticas[k][i]) {
-                                vals[k] += analiticas[k][i][j];
-                            }
-                        });
-                        count++;
-                    }
-                }
-            }
-            
-            if (count > 0) {
-                keys.forEach(k => { vals[k] = (vals[k] / count).toFixed(3); });
-            }
-
-            function getColor(val, key) {
-                let base = 0.0;
-                if (['A1','A2','A3','A4'].includes(key)) base = 1.0;
-                else if (['BDA','BRC'].includes(key)) base = 2.0;
-                else if (key === 'BDR') base = 4.0;
-                
-                let diff = val - base;
-                if (diff > 0.5) return '#00FF9D'; 
-                if (diff > 0.0) return '#00A2FF'; 
-                if (diff < -0.5) return '#FF0055'; 
-                if (diff < 0.0) return '#FF8800'; 
-                return '#888888'; 
-            }
-
-            let title = selectedNode === 'all' ? 'DENSOGRAMA GLOBAL (PROMEDIO)' : `DENSOGRAMA INDIVIDUAL: SUJETO ${parseInt(selectedNode)+1}`;
-            
-            let html = `<div style="width:100%; height:75vh; padding:20px; display:flex; flex-direction:column; align-items:center; background:#111; overflow-y:auto;">`;
-            html += `<h3 style="color:#FFF; margin-bottom:10px;">${title}</h3>`;
-            html += `<p style="color:#888; font-size:12px; margin-bottom:30px;">Azul/Verde: Termodinámica Positiva | Naranja/Rojo: Termodinámica Negativa</p>`;
-            
-            // Layout 6x7 Grid
-            html += `<div style="display:grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(6, 1fr); gap: 10px; width: 100%; max-width: 800px; margin: 0 auto; background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid #333; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">`;
-            
-            const cellStyle = "display:flex; align-items:center; justify-content:center; font-family:monospace; font-size:18px; font-weight:bold; padding:15px; border-radius:6px; background:#222;";
-            const lblStyle = "color:#FFCC00; background:#333; border:1px solid #555; text-shadow:0 0 5px rgba(255,204,0,0.5);";
-            
-            const renderLbl = (lbl) => `<div style="${cellStyle} ${lblStyle}">${lbl}</div>`;
-            const renderVal = (key) => `<div style="${cellStyle} border:1px solid ${getColor(vals[key], key)}; color:${getColor(vals[key], key)}; box-shadow:0 0 10px ${getColor(vals[key], key)}40;">${vals[key]}</div>`;
-            const renderEmpty = () => `<div></div>`;
-
-            // Row 1
-            html += renderLbl('A1') + renderVal('A1') + renderEmpty() + renderEmpty() + renderEmpty() + renderVal('A4') + renderLbl('A4');
-            // Row 2
-            html += renderEmpty() + renderLbl('SDA') + renderVal('SDA') + renderEmpty() + renderVal('SRC') + renderLbl('SRC') + renderEmpty();
-            // Row 3
-            html += renderEmpty() + renderEmpty() + renderLbl('SDR') + renderVal('SDR') + renderEmpty() + renderEmpty() + renderEmpty();
-            // Row 4
-            html += renderEmpty() + renderEmpty() + renderLbl('BDR') + renderVal('BDR') + renderEmpty() + renderEmpty() + renderEmpty();
-            // Row 5
-            html += renderEmpty() + renderLbl('BDA') + renderVal('BDA') + renderEmpty() + renderVal('BRC') + renderLbl('BRC') + renderEmpty();
-            // Row 6
-            html += renderLbl('A2') + renderVal('A2') + renderEmpty() + renderEmpty() + renderEmpty() + renderVal('A3') + renderLbl('A3');
-
-            html += `</div></div>`;
-            document.getElementById('matrix-container').innerHTML = html;
-        }
-
         function renderQuatuorMode(type) {
             let quatuorGrid = Array.from({length: 9}, () => Array(9).fill(0));
             let quatuorSum = Array.from({length: 9}, () => Array(9).fill(0));
-            const mapVal = (v) => (v >= 'A' && v <= 'Z') ? 0 : (v === '0' ? 1 : 2);
+            const mapVal = (v) => v > 0 ? 0 : (v === 0 ? 1 : 2);
             
             let matrixData = analiticas[type] || currentMatrix;
             let isFreqOnly = (type === 'SMIb' || type === 'SMIa');
@@ -4457,40 +4443,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             let rowLabels = ["<E", "<¿", "<R", "¡E", "¡¿", "¡R", "[E", "[¿", "[R"];
             let colLabels = ["e>", "e!", "e]", "?>", "?!", "?]", "r>", "r!", "r]"];
             
-            let maxLinks = n_nodes * (n_nodes - 1);
-            let figuresList = [];
-            for(let i=0; i<9; i++) {
-                for(let j=0; j<9; j++) {
-                    if(quatuorGrid[i][j] > 0) {
-                        let count = quatuorGrid[i][j];
-                        let val = isFreqOnly ? count : (quatuorSum[i][j] / count);
-                        figuresList.push({r: i, c: j, count: count, val: val, key: rowLabels[i] + colLabels[j]});
-                    }
-                }
-            }
-            // Mantenemos figuresList ordenado por frecuencia para los recuentos
-            figuresList.sort((a, b) => b.count - a.count);
-            let topFreqThreshold = figuresList.length > 0 ? figuresList[Math.min(2, figuresList.length - 1)].count : 0;
-            
-            let posList = [];
-            let negList = [];
-            let posThreshold = 999999;
-            let negThreshold = -999999;
-            
-            if (!isFreqOnly) {
-                posList = figuresList.filter(f => f.val > 0).sort((a, b) => b.val - a.val);
-                negList = figuresList.filter(f => f.val < 0).sort((a, b) => a.val - b.val); // Ascending (most negative first)
-                if(posList.length > 0) posThreshold = posList[Math.min(2, posList.length - 1)].val;
-                if(negList.length > 0) negThreshold = negList[Math.min(2, negList.length - 1)].val;
-            }
-            
-            let descTxt = isFreqOnly 
-                ? (i18nDict[currentLang].quatuor_desc_freq || "").replace("{type}", type)
-                : (i18nDict[currentLang].quatuor_desc_cent || "").replace("{type}", type);
+            let desc = isFreqOnly 
+                ? `QUATUOR (9x9) de ${type}: Frecuencias absolutas de las 81 figuras sociométricas.`
+                : `QUATUOR (9x9) de ${type}: Centroides Promedio Condensados por figura sociométrica.`;
                 
-            let html = `<div style="background:rgba(0,0,0,0.4); color:#FFCC00; font-size:15px; font-weight:bold; padding:12px; margin-bottom:15px; border-left:4px solid #FFCC00; border-radius:4px;">${descTxt}</div>`;
-            html += '<div style="width:100%; max-height:75vh; display:flex; flex-direction:row; align-items:flex-start; justify-content:center; gap: 20px;">';
-            html += '<div style="overflow:auto; box-shadow:inset 0 0 10px rgba(0,0,0,0.5); border-radius: 4px; padding: 5px; background: rgba(0,0,0,0.2);"><table class="dt-table" style="border-collapse: separate; border-spacing: 0; min-width:600px; text-align:center;">';
+            let html = `<div style="background:rgba(0,0,0,0.4); color:#FFCC00; font-size:15px; font-weight:bold; padding:12px; margin-bottom:15px; border-left:4px solid #FFCC00; border-radius:4px;">${desc}</div>`;
+            html += '<div style="width:100%; max-height:75vh; overflow:auto; box-shadow:inset 0 0 10px rgba(0,0,0,0.5); display:flex; justify-content:center;"><table class="dt-table" style="border-collapse: separate; border-spacing: 0; min-width:600px; text-align:center;">';
             html += `<style>
                 .t-q th, .t-q td { border: 1px solid #555; padding: 10px; font-size: 14px; }
                 .t-q th { background: #222; color: #fff; }
@@ -4506,7 +4464,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             let colSums = Array(9).fill(0);
             let colCentroidSums = Array(9).fill(0);
             let totalLinks = 0;
-            // maxLinks ya definido arriba
+            let maxLinks = n_nodes * (n_nodes - 1);
             let totalCentroidSum = 0;
             
             for(let i=0; i<9; i++) {
@@ -4554,28 +4512,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                         titleText = `Figura: ${figKey}\nCentroide Promedio de ${type}: ${cellVal.toFixed(3)}\nFrecuencia: ${count} sujetos`;
                     }
                     
-                    let isTopFreq = isFreqOnly && count > 0 && count >= topFreqThreshold;
-                    let isTopPos = !isFreqOnly && cellVal >= posThreshold && posThreshold !== 999999;
-                    let isTopNeg = !isFreqOnly && cellVal <= negThreshold && negThreshold !== -999999;
-                    
-                    let borderStyle = '';
-                    let topLabel = '';
-                    if (isTopFreq) {
-                        borderStyle = 'border: 2px solid #FFCC00;';
-                        topLabel = '<br><span style="color:#00FF9D; font-weight:bold; font-size:11px;">(TOP)</span><br>';
-                    } else if (isTopPos) {
-                        borderStyle = 'border: 2px solid #00FF9D;';
-                        topLabel = '<br><span style="color:#00FF9D; font-weight:bold; font-size:11px;">(MAX +)</span><br>';
-                    } else if (isTopNeg) {
-                        borderStyle = 'border: 2px solid #FF0055;';
-                        topLabel = '<br><span style="color:#FF0055; font-weight:bold; font-size:11px;">(MAX -)</span><br>';
-                    }
-                    
-                    if (topLabel !== '') {
-                        cellHtml = cellHtml.replace('<br>', topLabel);
-                    }
-                    
-                    html += `<td style="background:${bg}; color:${color}; line-height:1.2; ${borderStyle}" class="q-val" title="${titleText}">${cellHtml}</td>`;
+                    html += `<td style="background:${bg}; color:${color}; line-height:1.2;" class="q-val" title="${titleText}">${cellHtml}</td>`;
                 }
                 
                 let rowAvgCentroid = rowSum > 0 ? (isFreqOnly ? rowSum : (rowCentroidSum / rowSum).toFixed(3)) : "-";
@@ -4593,70 +4530,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             let totalTitle = isFreqOnly ? `Frecuencia Total: ${totalLinks}` : `Centroide Promedio Global: ${totalAvgCentroid}\nFrecuencia Total: ${totalLinks} de ${maxLinks}`;
             html += `<th style="background:#000; color:#00FF9D; font-size:16px; line-height:1.2; cursor:help;" title="${totalTitle}">${totalAvgCentroid}<br><span style="font-size:10px; color:#FFCC00; font-weight:normal; opacity:0.8;">&Sigma;f: ${totalLinks}</span></th></tr>`;
             
-            html += '</tbody></table></div>'; // Cierra la tabla
-            
-            // Build the side panels
-            html += `<div style="display: flex; flex-direction: column; gap: 15px; min-width: 250px;">`;
-            
-            let tTopFig = i18nDict[currentLang].quatuor_top_fig || "🏆 Top Figuras";
-            let tPos = i18nDict[currentLang].quatuor_top_pos || "📈 Top Valores Positivos";
-            let tNeg = i18nDict[currentLang].quatuor_top_neg || "📉 Top Valores Negativos";
-
-            if (isFreqOnly) {
-                if (figuresList.length > 0) {
-                    html += `<div style="padding: 15px; background: rgba(0,0,0,0.6); border: 1px solid #333; border-radius: 8px;">
-                        <h4 style="color: #00FF9D; margin-top: 0; margin-bottom: 10px; border-bottom: 1px dashed #555; padding-bottom: 5px;">${tTopFig}</h4>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">`;
-                    figuresList.slice(0, 10).forEach(f => {
-                        let pct = ((f.count / maxLinks) * 100).toFixed(1);
-                        html += `<div style="background: #1a1a1a; border-left: 3px solid #FFCC00; padding: 6px 10px; border-radius: 4px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 2px 4px rgba(0,0,0,0.5);">
-                            <span style="color: #FFCC00; font-weight: bold; font-size: 16px;">${f.key.replace('<', '&lt;').replace('>', '&gt;')}</span>
-                            <div style="text-align: right;">
-                                <span style="color: #ccc; font-size: 13px;">${f.count}</span>
-                                <span style="color: #00FF9D; font-size: 11px; margin-left:5px;">(${pct}%)</span>
-                            </div>
-                        </div>`;
-                    });
-                    html += `</div></div>`;
-                }
-            } else {
-                if (posList.length > 0) {
-                    html += `<div style="padding: 15px; background: rgba(0,0,0,0.6); border: 1px solid #333; border-radius: 8px;">
-                        <h4 style="color: #00FF9D; margin-top: 0; margin-bottom: 10px; border-bottom: 1px dashed #555; padding-bottom: 5px;">📈 Top Valores Positivos</h4>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">`;
-                    posList.slice(0, 8).forEach(f => {
-                        let pct = ((f.count / maxLinks) * 100).toFixed(1);
-                        html += `<div style="background: #1a1a1a; border-left: 3px solid #00FF9D; padding: 6px 10px; border-radius: 4px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 2px 4px rgba(0,0,0,0.5);">
-                            <div>
-                                <span style="color: #FFCC00; font-weight: bold; font-size: 16px;">${f.key.replace('<', '&lt;').replace('>', '&gt;')}</span><br>
-                                <span style="color: #666; font-size: 10px;">f: ${f.count} (${pct}%)</span>
-                            </div>
-                            <span style="color: #00FF9D; font-weight: bold; font-size: 14px;">+${f.val.toFixed(3)}</span>
-                        </div>`;
-                    });
-                    html += `</div></div>`;
-                }
-                
-                if (negList.length > 0) {
-                    html += `<div style="padding: 15px; background: rgba(0,0,0,0.6); border: 1px solid #333; border-radius: 8px;">
-                        <h4 style="color: #FF0055; margin-top: 0; margin-bottom: 10px; border-bottom: 1px dashed #555; padding-bottom: 5px;">📉 Top Valores Negativos</h4>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">`;
-                    negList.slice(0, 8).forEach(f => {
-                        let pct = ((f.count / maxLinks) * 100).toFixed(1);
-                        html += `<div style="background: #1a1a1a; border-left: 3px solid #FF0055; padding: 6px 10px; border-radius: 4px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 2px 4px rgba(0,0,0,0.5);">
-                            <div>
-                                <span style="color: #FFCC00; font-weight: bold; font-size: 16px;">${f.key.replace('<', '&lt;').replace('>', '&gt;')}</span><br>
-                                <span style="color: #666; font-size: 10px;">f: ${f.count} (${pct}%)</span>
-                            </div>
-                            <span style="color: #FF0055; font-weight: bold; font-size: 14px;">${f.val.toFixed(3)}</span>
-                        </div>`;
-                    });
-                    html += `</div></div>`;
-                }
-            }
-            
-            html += `</div></div>`; // Cierra columna side panel y contenedor principal flex-row
-            
+            html += '</tbody></table></div>';
             document.getElementById('matrix-container').innerHTML = html;
         }
         
@@ -4685,6 +4559,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                     <th class="s-top1" style="background:#fff;"></th>
                     <th class="s-top1" style="background:#e2efda; color:#000;">TOT</th>
                     <th colspan="3" class="s-top1" style="background:#cc0066; color:#fff;">BRECHAS TERMODINÁMICAS</th>
+                    ${n_nodes <= 20 ? '<th rowspan="3" class="s-top1" style="background:#1a1a1a; color:#00A2FF; min-width: 160px; z-index:12;">PERFIL (Radar)</th>' : ''}
                     <th rowspan="3" class="s-right s-top1" style="background:#ffe6cc; border: 1px solid #000;">Nº</th>
                 </tr>
                 <tr>
@@ -4791,6 +4666,14 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                 html += `<td style="background:${gapColor(flujo)}; font-weight:bold; color:#000;">${flujo.toFixed(2)}</td>`;
                 html += `<td style="background:${gapColor(entropia)}; font-weight:bold; color:#000;">${entropia.toFixed(2)}</td>`;
                 
+                if (n_nodes <= 20) {
+                    html += `<td style="background:#222; text-align:center; vertical-align:middle; padding:5px;">
+                                <div style="position:relative; width:150px; height:150px; margin:auto;">
+                                    <canvas id="radar_density_${i}"></canvas>
+                                </div>
+                             </td>`;
+                }
+                
                 html += `<th class="s-right" style="background:#ffe6cc; color:#cc6600;">${i+1}</th></tr>`;
             }
             
@@ -4822,6 +4705,9 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             html += `<th class="s-bot4" style="color:#000; position:sticky; bottom:96px; z-index:10; background:${gapColor(sum_espejismo)};">${sum_espejismo.toFixed(2)}</th>`;
             html += `<th class="s-bot4" style="color:#000; position:sticky; bottom:96px; z-index:10; background:${gapColor(sum_flujo)};">${sum_flujo.toFixed(2)}</th>`;
             html += `<th class="s-bot4" style="color:#000; position:sticky; bottom:96px; z-index:10; background:${gapColor(sum_entropia)};">${sum_entropia.toFixed(2)}</th>`;
+            if (n_nodes <= 20) {
+                html += `<th class="s-bot4" style="background:#1a1a1a; position:sticky; bottom:96px; z-index:10;"></th>`;
+            }
             html += `<th class="s-right s-bot4" style="color:#003366; background:#cce6ff; position:sticky; bottom:96px; z-index:15;" title="Densidad Media del Grupo">μ</th></tr>`;
 
             // Fila 1 bottom (coincide con top1)
@@ -4838,6 +4724,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                     <th class="s-bot1" style="background:#fff; position:sticky; bottom:64px; z-index:10;"></th>
                     <th class="s-bot1" style="background:#e2efda; color:#000; position:sticky; bottom:64px; z-index:10;">TOT</th>
                     <th colspan="3" class="s-bot1" style="background:#cc0066; color:#fff; position:sticky; bottom:64px; z-index:10;">BRECHAS TERMODINÁMICAS</th>
+                    ${n_nodes <= 20 ? '<th rowspan="3" class="s-bot1" style="background:#1a1a1a; position:sticky; bottom:64px; z-index:10;"></th>' : ''}
                     <th rowspan="3" class="s-right s-bot3" style="background:#ffe6cc; border: 1px solid #000; position:sticky; bottom:0; z-index:15;">Nº</th>
                 </tr>`;
             // Fila 2 bottom
@@ -4875,6 +4762,65 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             
             html += '</tbody></table></div>';
             document.getElementById('matrix-container').innerHTML = html;
+            
+            // Inicializar Radares si corresponde
+            if (n_nodes <= 20) {
+                // Precalcular máximos para normalizar el radar a escala unificada
+                let maxVal = 1;
+                for(let i=0; i<n_nodes; i++) {
+                    let vals = [
+                        semiSuma('A1', i), semiSuma('A2', i), semiSuma('A3', i), semiSuma('A4', i),
+                        semiSuma('SDA', i), semiSuma('SRC', i), semiSuma('BDA', i), semiSuma('BRC', i)
+                    ];
+                    let localMax = Math.max(...vals);
+                    if (localMax > maxVal) maxVal = localMax;
+                }
+                
+                for(let i=0; i<n_nodes; i++) {
+                    let canvas = document.getElementById(`radar_density_${i}`);
+                    if (!canvas) continue;
+                    
+                    let radarData = [
+                        semiSuma('A1', i), semiSuma('A2', i), semiSuma('A3', i), semiSuma('A4', i),
+                        semiSuma('SDA', i), semiSuma('SRC', i), semiSuma('BDA', i), semiSuma('BRC', i)
+                    ];
+                    
+                    new Chart(canvas.getContext('2d'), {
+                        type: 'radar',
+                        data: {
+                            labels: ['A1', 'A2', 'A3', 'A4', 'SDA', 'SRC', 'BDA', 'BRC'],
+                            datasets: [{
+                                label: `Sujeto ${i+1}`,
+                                data: radarData,
+                                backgroundColor: 'rgba(0, 162, 255, 0.2)',
+                                borderColor: '#00A2FF',
+                                pointBackgroundColor: '#00A2FF',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#00A2FF',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                r: {
+                                    angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                                    pointLabels: { color: '#888', font: { size: 9 } },
+                                    ticks: { display: false, max: maxVal, min: 0 }
+                                }
+                            },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            }
+                        }
+                    });
+                }
+            }
+            
             return;
         }
 
@@ -5066,14 +5012,14 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         return { rowSums, colSums, total, mean, stddev };
     }
 
-    // --- LÓGICA DE ENTRADA MANUAL ---
-    let chronologicalHistory = { p1: [], p2: [] };
-
     // Iniciar con un horizonte aleatorio balanceado (LÍQUIDO o SÓLIDO)
     let selHor = document.getElementById('ctrl-horizonte');
     // Índices: 0=LÍQUIDO, 1=SÓLIDO
     selHor.selectedIndex = Math.floor(Math.random() * 2);
     toggleFormacionGuiada();
+    
+    // --- LÓGICA DE ENTRADA MANUAL ---
+    let chronologicalHistory = { p1: [], p2: [] };
     
     function initHistory() {
         chronologicalHistory.p1 = Array.from({length: n_nodes}, () => []);
@@ -5417,7 +5363,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         // Capturar toda la pantalla tal como se ve (incluyendo ECG y controles)
         html2canvas(document.body, { backgroundColor: '#0E1117', useCORS: true }).then(canvas => {
             let link = document.createElement('a');
-            link.download = `VISORD_Captura_N${n_nodes}_T${currentCycle}.png`;
+            link.download = `VISORDP_Captura_N${n_nodes}_T${currentCycle}.png`;
             link.href = canvas.toDataURL("image/png");
             link.click();
         }).catch(err => {
@@ -5566,7 +5512,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         let html = `
             <div style="background:#111; padding:30px; border-radius:8px; border:1px solid #333; max-width:1400px; width:95%; max-height:90vh; overflow-y:auto; margin:auto; text-align:left; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
-                    <h2 style="color:#00A2FF; margin:0;">📊 ${i18nDict[currentLang]?.quatuor_title || "FRECUENCIAS SMIa GLOBALES (Ciclo:"} ${currentCycle})</h2>
+                    <h2 style="color:#00A2FF; margin:0;">📊 FRECUENCIAS SMIa GLOBALES (Ciclo: ${currentCycle})</h2>
                 </div>
 
                 <!-- Matriz Explicativa SMIa -->
@@ -5574,10 +5520,10 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                     <table style="width:100%; border-collapse:collapse; font-size:13px; text-align:center; border:2px solid #555;">
                         <thead>
                             <tr>
-                                <th rowspan="2" style="background:#E0E0E0; color:#333; border:1px solid #555; width:15%; padding:6px;">${i18nDict[currentLang]?.quatuor_type || "TIPO"}</th>
-                                <th colspan="2" style="background:#00A2FF; color:#FFF; border:1px solid #555; padding:6px;">${i18nDict[currentLang]?.quatuor_da_emits || "DA (Emite)"}</th>
-                                <th colspan="2" style="background:#00FF00; color:#000; border:1px solid #555; padding:6px;">${i18nDict[currentLang]?.quatuor_receives || "RECIBE"}</th>
-                                <th rowspan="2" style="background:#FFF; color:#333; border:1px solid #555; width:15%; padding:6px;">${i18nDict[currentLang]?.quatuor_code || "CÓDIGO"}</th>
+                                <th rowspan="2" style="background:#E0E0E0; color:#333; border:1px solid #555; width:15%; padding:6px;">TIPO</th>
+                                <th colspan="2" style="background:#00A2FF; color:#FFF; border:1px solid #555; padding:6px;">DA (Emite)</th>
+                                <th colspan="2" style="background:#00FF00; color:#000; border:1px solid #555; padding:6px;">RECIBE</th>
+                                <th rowspan="2" style="background:#FFF; color:#333; border:1px solid #555; width:15%; padding:6px;">CODE</th>
                             </tr>
                             <tr>
                                 <th style="background:#FFE6B3; color:#333; border:1px solid #555; padding:6px;">Percepción</th>
@@ -5621,25 +5567,25 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                         <div style="color:#FFF; font-weight:bold; font-size:16px;">${hudEstado}</div>
                     </div>
                     <div style="text-align:center;">
-                        <div style="color:#888; font-size:11px; text-transform:uppercase;">${i18nDict[currentLang]?.sdr_density || "SDR (Densidad)"}</div>
+                        <div style="color:#888; font-size:11px; text-transform:uppercase;">SDR (Densidad)</div>
                         <div style="color:#00FF9D; font-weight:bold; font-size:16px;">${hudSDR}</div>
                     </div>
                     <div style="text-align:center;">
-                        <div style="color:#888; font-size:11px; text-transform:uppercase;">${i18nDict[currentLang]?.entropy || "Entropía"}</div>
+                        <div style="color:#888; font-size:11px; text-transform:uppercase;">Entropía</div>
                         <div style="color:#FFCC00; font-weight:bold; font-size:16px;">${hudEntropia}</div>
                     </div>
                     <div style="text-align:center;">
-                        <div style="color:#888; font-size:11px; text-transform:uppercase;">${i18nDict[currentLang]?.bdr_global || "BDR Global"}</div>
+                        <div style="color:#888; font-size:11px; text-transform:uppercase;">BDR Global</div>
                         <div style="color:#00A2FF; font-weight:bold; font-size:16px;">${hudBDR}</div>
                     </div>
                     <div style="text-align:center;">
-                        <div style="color:#888; font-size:11px; text-transform:uppercase;">${i18nDict[currentLang]?.live_dyads || "Díadas Vivas"}</div>
+                        <div style="color:#888; font-size:11px; text-transform:uppercase;">Díadas Vivas</div>
                         <div style="color:#FFF; font-weight:bold; font-size:16px;">${totalDyads}</div>
                     </div>
                 </div>
 
                 <div style="margin-bottom: 10px; color: #FFF; font-size: 14px; text-align: center; background: #222; padding: 10px; border-radius: 6px; border: 1px solid #444;">
-                    <strong>${i18nDict[currentLang]?.total_dyads_eval || "Volumen Total de Díadas Evaluadas:"}</strong> <span style="color:#00FF9D; font-size:18px;">${totalDyads}</span>
+                    <strong>Volumen Total de Díadas Evaluadas:</strong> <span style="color:#00FF9D; font-size:18px;">${totalDyads}</span>
                 </div>
         `;
 
@@ -5650,13 +5596,13 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             { key: 'Ee', type: 'dyad' }, { key: 'E?', type: 'dyad' }, { key: 'Er', type: 'dyad' }, { key: 'E', type: 'sub' },
             { key: '¿e', type: 'dyad' }, { key: '¿?', type: 'dyad' }, { key: '¿r', type: 'dyad' }, { key: '¿', type: 'sub' },
             { key: 'Re', type: 'dyad' }, { key: 'R?', type: 'dyad' }, { key: 'Rr', type: 'dyad' }, { key: 'R', type: 'sub' },
-            { key: i18nDict[currentLang]?.total || 'TOTAL', type: 'tot' }
+            { key: 'TOTAL', type: 'tot' }
         ];
         let colDefs = [
             { key: '<>', type: 'dyad' }, { key: '<!', type: 'dyad' }, { key: '<]', type: 'dyad' }, { key: '<', type: 'sub' },
             { key: '¡>', type: 'dyad' }, { key: '¡!', type: 'dyad' }, { key: '¡]', type: 'dyad' }, { key: '¡', type: 'sub' },
             { key: '[>', type: 'dyad' }, { key: '[!', type: 'dyad' }, { key: '[]', type: 'dyad' }, { key: '[', type: 'sub' },
-            { key: i18nDict[currentLang]?.total || 'TOTAL', type: 'tot' }
+            { key: 'TOTAL', type: 'tot' }
         ];
 
         let mat = Array(13).fill(0).map(() => Array(13).fill(0));
@@ -5696,7 +5642,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                     <table style="width:100%; border-collapse:collapse; text-align:center; border:2px solid #555; min-width:1100px; font-size:14px;">
                         <thead>
                             <tr>
-                                <th style="background:#222; border:1px solid #555; color:#AAA; padding:8px; position:sticky; left:0; z-index:10; box-shadow: 2px 0 5px rgba(0,0,0,0.5);">${i18nDict[currentLang]?.acc_perc || "ACC \\ PERC"}</th>
+                                <th style="background:#222; border:1px solid #555; color:#AAA; padding:8px; position:sticky; left:0; z-index:10; box-shadow: 2px 0 5px rgba(0,0,0,0.5);">ACC \ PERC</th>
 `;
         // Cabeceras de columnas superiores
         colDefs.forEach(c => {
@@ -5706,7 +5652,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         });
         
         // Cabecera duplicada al final (a petición del usuario)
-        html += `<th style="background:#222; border:1px solid #555; color:#AAA; padding:8px; position:sticky; right:0; z-index:10; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">${i18nDict[currentLang]?.ref || "REF"}</th>`;
+        html += `<th style="background:#222; border:1px solid #555; color:#AAA; padding:8px; position:sticky; right:0; z-index:10; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">REF</th>`;
         html += `</tr></thead><tbody>`;
 
         rowDefs.forEach((r, i) => {
@@ -5753,8 +5699,8 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
         html += `
             <div style="margin-top:25px; display:flex; justify-content:flex-end; gap:10px;">
-                <button onclick="takeScreenshot()" style="padding:10px 20px; font-weight:bold; background:#E91E63; color:#FFF; border:none; border-radius:4px; cursor:pointer; box-shadow:0 0 8px rgba(233,30,99,0.5);" >${i18nDict[currentLang]?.btn_capture || "📸 CAPTURA"}</button>
-                <button onclick="document.getElementById('modal-overlay').style.display='none'" style="padding:10px 20px; font-weight:bold; background:#FF0055; color:#FFF; border:none; border-radius:4px; cursor:pointer;">${i18nDict[currentLang]?.btn_close_table || "CERRAR TABLA"}</button>
+                <button onclick="takeScreenshot()" style="padding:10px 20px; font-weight:bold; background:#E91E63; color:#FFF; border:none; border-radius:4px; cursor:pointer; box-shadow:0 0 8px rgba(233,30,99,0.5);">📸 CAPTURA</button>
+                <button onclick="document.getElementById('modal-overlay').style.display='none'" style="padding:10px 20px; font-weight:bold; background:#FF0055; color:#FFF; border:none; border-radius:4px; cursor:pointer;">CERRAR TABLA</button>
             </div>
         </div>
         `;
@@ -5873,7 +5819,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             let ws2 = XLSX.utils.aoa_to_sheet(ws_globales_data);
             XLSX.utils.book_append_sheet(wb, ws2, "Frec_Globales");
 
-            XLSX.writeFile(wb, `VISORD_FullTables_N${n_nodes}_T${currentCycle}.xlsx`);
+            XLSX.writeFile(wb, `VISORDP_FullTables_N${n_nodes}_T${currentCycle}.xlsx`);
         }
         
         // Lanzar reporte TXT en paralelo
@@ -5884,7 +5830,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         if (!currentMatrix || currentMatrix.length === 0) return;
         
         let report = "========================================================\n";
-        report += "   INFORME CLÍNICO AUTOMÁTICO - VISORD SOC_ORD\n";
+        report += "   INFORME CLÍNICO AUTOMÁTICO - VISORDP SOC_ORD\n";
         report += "========================================================\n\n";
         
         // 1. Diagnóstico Narrativo
@@ -5946,7 +5892,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         const encodedUri = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", `Informe_VISORD_N${n_nodes}_T${currentCycle}.txt`);
+        link.setAttribute("download", `Informe_VISORDP_N${n_nodes}_T${currentCycle}.txt`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -6022,8 +5968,8 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     }
 
     // Lógica del Reproductor de la Moviola (Video)
-    var moviolaPlaying = false;
-    var moviolaInterval = null;
+    let moviolaPlaying = false;
+    let moviolaInterval = null;
 
     function toggleMoviolaPlay() {
         const btn = document.getElementById('btn-moviola-play');
@@ -6091,12 +6037,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             // FORZAR despertar al motor de física 3D para que el grafo responda instantáneamente al scrub/playback
             try {
                 if (typeof Graph !== 'undefined' && Graph && typeof Graph.d3ReheatSimulation === 'function') {
-                    if (!moviolaPlaying) {
-                        Graph.d3ReheatSimulation(); // Fuerte re-despertar solo si hay arrastre manual
-                    } else {
-                        // Si está reproduciéndose (PLAY HISTORIA), no sobrecalentar bruscamente
-                        // La actualización de GraphData ya despierta mínimamente el motor
-                    }
+                    Graph.d3ReheatSimulation();
                 }
             } catch (err) {
                 console.warn("Moviola reheat simulation ignorado:", err);
@@ -6133,7 +6074,17 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                 }
             }
             tourAngle += 0.003;
-            const distance = 350;
+            
+            // Respetar el zoom manual del usuario leyendo la distancia actual
+            let currentCamPos = Graph.cameraPosition();
+            let dx = currentCamPos.x - center.x;
+            let dy = currentCamPos.y - center.y;
+            let dz = currentCamPos.z - center.z;
+            let currentDistance = Math.sqrt(dx*dx + dy*dy + dz*dz);
+            
+            // Mantener distancia actual, con límites por si se pierde
+            let distance = (currentDistance > 50 && currentDistance < 5000) ? currentDistance : 350;
+            
             Graph.cameraPosition({
                 x: center.x + distance * Math.sin(tourAngle),
                 y: center.y + (distance * 0.4) * Math.cos(tourAngle * 1.5), // Leve variación vertical
@@ -6195,35 +6146,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     // --- DIAGNÓSTICO NARRATIVO ---
     // --- DIAGNÓSTICO NARRATIVO ---
-    window.diagLang = null; // Se inicializa luego con currentLang
-    window.lastDiagParams = null;
-
-    function toggleDiagLang() {
-        if (!window.diagLang) window.diagLang = currentLang;
-        window.diagLang = (window.diagLang === 'es') ? 'en' : 'es';
-        
-        let flagEl = document.getElementById('diag-flag');
-        if (flagEl) {
-            flagEl.innerText = (window.diagLang === 'es') ? "🇪🇸" : "🇬🇧";
-            flagEl.title = (window.diagLang === 'es') ? "Translate to English" : "Traducir a Español";
-        }
-        
-        if (window.lastDiagParams) {
-            let elSmall = document.getElementById('narrativa-clinica');
-            let smallHTML = elSmall ? elSmall.innerHTML : "";
-            
-            updateNarrativa(window.lastDiagParams[0], window.lastDiagParams[1], window.lastDiagParams[2], window.lastDiagParams[3]);
-            
-            if (elSmall) {
-                elSmall.innerHTML = smallHTML;
-            }
-        }
-    }
-
     function updateNarrativa(estadoFisico, densidad, entropia, counts) {
-        window.lastDiagParams = [estadoFisico, densidad, entropia, counts];
-        if (!window.diagLang) window.diagLang = currentLang;
-
         let el = document.getElementById('narrativa-clinica');
         if (!el) return;
         
@@ -6235,7 +6158,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         let text = "";
         let extraDetails = "";
 
-        if (window.diagLang !== 'es') {
+        if ((window.diagLang || currentLang) === 'en') {
             let cohesionStr = "low";
             if (densidad > 0.5) cohesionStr = "very high";
             else if (densidad > -0.2) cohesionStr = "high";
@@ -6423,13 +6346,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         el.innerHTML = shortText;
         
         let longText = shortText + extraDetails;
-        let elLong = document.getElementById('large-diagnosis-content');
+        let elLong = document.getElementById('narrativa-clinica-long');
         if (elLong) {
             let fullLong = longText.replace(/\*\*(.*?)\*\*/g, '<span style="color:#FFCC00; font-weight:bold;">$1</span>');
             elLong.innerHTML = fullLong;
         }
     }
-
 
     function showLargeDiagnosis() {
         // Pausar si está corriendo
@@ -6475,11 +6397,11 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         let html = `
         <div style="display:flex; gap: 30px;">
             <div style="flex:1; background:rgba(0,0,0,0.5); padding:20px; border-radius:8px; border: 1px solid #333;">
-                <h3 style="color:#FFCC00; margin-top:0; border-bottom: 1px dashed #555; padding-bottom: 10px;">${i18nDict[currentLang]?.roles_summary || "Resumen Global"}</h3>
+                <h3 style="color:#FFCC00; margin-top:0; border-bottom: 1px dashed #555; padding-bottom: 10px;">Resumen Global</h3>
                 <div style="font-size: 16px; line-height: 2;">${summary}</div>
             </div>
             <div style="flex:2; background:rgba(0,0,0,0.5); padding:20px; border-radius:8px; border: 1px solid #333; max-height: 65vh; overflow-y:auto;">
-                <h3 style="color:#FFCC00; margin-top:0; border-bottom: 1px dashed #555; padding-bottom: 10px;">${i18nDict[currentLang]?.roles_detailed || "Censo Detallado (SDA, SRC, DIS)"}</h3>
+                <h3 style="color:#FFCC00; margin-top:0; border-bottom: 1px dashed #555; padding-bottom: 10px;">Censo Detallado (SDA, SRC, DIS)</h3>
                 <style>
                     #large-roles-content table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 14px; }
                     #large-roles-content th, #large-roles-content td { padding: 8px; border: 1px solid #444; text-align: center; color: #FFF; }
@@ -6510,7 +6432,128 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         }
     });
 
+    function togglePrismaMode() {
+        activePrismaMode = !activePrismaMode;
+        const overlay = document.getElementById('prisma-overlay');
+        const btn = document.getElementById('btn-prisma-mode');
+        if (activePrismaMode) {
+            overlay.style.display = 'flex';
+            if (btn) {
+                btn.style.boxShadow = '0 0 15px rgba(255,87,34,0.8)';
+                btn.style.background = '#E64A19';
+            }
+            selectedPrismaCategory = null;
+            document.getElementById('prisma-selector').value = selectedPrismaIndex;
+            renderPrismaUI();
+        } else {
+            overlay.style.display = 'none';
+            if (btn) {
+                btn.style.boxShadow = '0 0 8px rgba(255,87,34,0.4)';
+                btn.style.background = '#FF5722';
+            }
+            selectedPrismaCategory = null;
+        }
+        applyFiltersToGraph();
+    }
+
+    function changePrismaMode(val) {
+        selectedPrismaIndex = parseInt(val);
+        selectedPrismaCategory = null;
+        renderPrismaUI();
+        applyFiltersToGraph();
+    }
+
+    function selectPrismaCategory(cat) {
+        if (selectedPrismaCategory === cat) {
+            selectedPrismaCategory = null; // deselect
+        } else {
+            selectedPrismaCategory = cat;
+        }
+        renderPrismaUI();
+        applyFiltersToGraph();
+    }
+
+    function renderPrismaUI() {
+        const container = document.getElementById('prisma-content');
+        if (!container || !activePrismaMode || !currentPrismaStats) return;
+
+        let stats = currentPrismaStats[selectedPrismaIndex];
+        let html = '';
+        
+        // Find max values for relative bar width and highlighting
+        let maxCount = Math.max(...PRISMA_CATEGORIES.map(c => stats[c].count), 1);
+        let maxSDR = Math.max(...PRISMA_CATEGORIES.map(c => stats[c].sdr));
+        let maxBDR = Math.max(...PRISMA_CATEGORIES.map(c => stats[c].bdr));
+        
+        PRISMA_CATEGORIES.forEach(cat => {
+            let catStat = stats[cat];
+            let isSelected = selectedPrismaCategory === cat;
+            let bgColor = isSelected ? '#333' : '#111';
+            let borderColor = isSelected ? '#FF5722' : '#444';
+            let barWidth = (catStat.count / maxCount) * 100;
+            
+            // Badges
+            let isMaxCount = catStat.count === maxCount && catStat.count > 0;
+            let isMaxDensity = (catStat.sdr === maxSDR && catStat.sdr !== 0) || (catStat.bdr === maxBDR && catStat.bdr !== 0);
+            
+            let badgesHtml = '';
+            if (isMaxCount) badgesHtml += '<span style="background: #00A2FF; color: #FFF; padding: 2px 5px; border-radius: 3px; font-size: 10px; margin-right: 5px;">👑 MAX FREC</span>';
+            if (isMaxDensity) badgesHtml += '<span style="background: #FF0055; color: #FFF; padding: 2px 5px; border-radius: 3px; font-size: 10px;">🔥 MAX DENS</span>';
+            
+            html += `
+                <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.2s; position: relative;" onclick="selectPrismaCategory('${cat}')">
+                    <div style="font-size: 18px; font-weight: bold; color: #FFF; text-align: center; margin-bottom: 5px; font-family: monospace;">${cat}</div>
+                    
+                    <div style="text-align: center; margin-bottom: 10px; height: 16px;">
+                        ${badgesHtml}
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px;">
+                        <span style="color: #00A2FF; font-weight: ${catStat.sdr === maxSDR && catStat.sdr !== 0 ? 'bold' : 'normal'};">SDR: ${catStat.sdr.toFixed(2)}</span>
+                        <span style="color: #FF0055; font-weight: ${catStat.bdr === maxBDR && catStat.bdr !== 0 ? 'bold' : 'normal'};">BDR: ${catStat.bdr.toFixed(2)}</span>
+                    </div>
+                    
+                    <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 5px;">Enlaces: ${catStat.count}</div>
+                    
+                    <div style="width: 100%; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                        <div style="width: ${barWidth}%; height: 100%; background: ${isMaxCount ? '#00A2FF' : '#FF5722'};"></div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html;
+        
+        // Sub-texto de estado
+        let stateHtml = '';
+        if (selectedPrismaCategory) {
+            stateHtml = `<div style="grid-column: 1 / -1; text-align: center; color: #FF5722; font-size: 12px; margin-top: 10px;">Viendo enlaces de categoría ${selectedPrismaCategory}. Haz clic de nuevo para quitar el filtro.</div>`;
+        } else {
+            stateHtml = `<div style="grid-column: 1 / -1; text-align: center; color: #888; font-size: 12px; margin-top: 10px;">Haz clic en una tarjeta para aislar los enlaces correspondientes en el grafo 3D.</div>`;
+        }
+        container.innerHTML += stateHtml;
+    }
+
+
+    function toggleDiagLang() {
+        if (!window.diagLang) window.diagLang = currentLang;
+        window.diagLang = (window.diagLang === 'es') ? 'en' : 'es';
+        
+        let flagEl = document.getElementById('diag-flag');
+        if (flagEl) {
+            // Target flag: if currently Spanish, show English flag (GB) to switch TO english.
+            flagEl.innerText = (window.diagLang === 'es') ? "🇬🇧" : "🇪🇸";
+            flagEl.title = (window.diagLang === 'es') ? "Translate to English" : "Traducir a Español";
+        }
+        
+        // Regenerate diagnosis text if it's currently open
+        if (typeof showLargeDiagnosis === 'function') {
+            showLargeDiagnosis();
+        }
+    }
+    
 </script>
+
     <!-- MANIFESTO TICKER -->
     <div id="manifesto-quotes" style="position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); width: 80%; text-align: center; color: rgba(0, 162, 255, 0.4); font-family: 'Courier New', Courier, monospace; font-size: 13px; font-style: italic; z-index: 5; pointer-events: none; transition: opacity 2s ease-in-out;"></div>
     
@@ -6538,5 +6581,17 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             }, 12000);
         }
     </script>
+
+<!-- Global Lightbox -->
+<div id="global-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center; cursor: zoom-out;" onclick="this.style.display='none'">
+    <img id="global-lightbox-img" style="max-width: 90%; max-height: 90%; box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 4px;">
+    <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</div>
+</div>
+<script>
+function openLightbox(src) {
+    document.getElementById('global-lightbox-img').src = src;
+    document.getElementById('global-lightbox').style.display = 'flex';
+}
+</script>
 </body>
 </html>
