@@ -5012,14 +5012,14 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         return { rowSums, colSums, total, mean, stddev };
     }
 
+    // --- LÓGICA DE ENTRADA MANUAL ---
+    let chronologicalHistory = { p1: [], p2: [] };
+
     // Iniciar con un horizonte aleatorio balanceado (LÍQUIDO o SÓLIDO)
     let selHor = document.getElementById('ctrl-horizonte');
     // Índices: 0=LÍQUIDO, 1=SÓLIDO
     selHor.selectedIndex = Math.floor(Math.random() * 2);
     toggleFormacionGuiada();
-    
-    // --- LÓGICA DE ENTRADA MANUAL ---
-    let chronologicalHistory = { p1: [], p2: [] };
     
     function initHistory() {
         chronologicalHistory.p1 = Array.from({length: n_nodes}, () => []);
