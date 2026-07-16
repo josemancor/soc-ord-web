@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC_ORD | Recursos y Documentación</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <!-- Asumiendo que el logo copiado se llama logo_socord_base.png o logo_simulacion.png -->
+            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_simulacion.png'" class="nav-logo">
+            <span class="nav-title">SOC_ORD PLATINUM</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Volver al Inicio</a></li>
+            <li><a href="#about">Filosofía</a></li>
+            <li><a href="#modules">Módulos</a></li>
+            <li><a href="HUB_SOC_ORD_SMIb.html" target="_blank">Demos</a></li>
+            <li><a href="#glossary">Glosario</a></li>
+            <li><a href="#manual">Manual</a></li>
+            <li><a href="#bsoc-cta">BSOC</a></li>
+            <li><a href="#community">Comunidad</a></li>
+            <li style="margin-left: 15px;"><a href="PORTAL_INSTITUCIONAL/index.html" style="background: #00A2FF; color: #FFF; padding: 8px 16px; border-radius: 6px; font-weight: 600; box-shadow: 0 0 10px rgba(0, 162, 255, 0.4);">Acceso Plataforma 🔐</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero" class="hero-section">
+        <div class="particles-bg" id="particles-bg"></div>
+        <div class="glass-card hero-content">
+            <div class="badge"><a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: inherit; text-decoration: none;">DOI: 10.5281/zenodo.18941691</a></div>
+            
+            <!-- LOGO CENTRAL -->
+            <div style="margin-bottom: 15px;">
+                <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo Oficial" onerror="this.src='assets/logo_simulacion.png'" style="height: 140px; filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.5)); background: rgba(11, 15, 25, 0.6); padding: 10px; border-radius: 12px; border: 2px solid #00A2FF;">
+            </div>
+
+            <h1 class="glitch" data-text="Documentación">Documentación</h1>
+            <h2>Recursos, Módulos y Manuales de SOC_ORDP</h2>
+            <p>Explora el Glosario Clínico, los módulos interactivos y el Manual de Operaciones Oficial.</p>
+            <div class="hero-buttons">
+                <a href="#modules" class="btn btn-primary">Ver Demostraciones</a>
+                <a href="#manual" class="btn btn-secondary">Leer Manual Oficial</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Ingeniería de Vínculos Humanos</h2>
+            <p class="section-text">
+                SOC_ORD es un ecosistema avanzado diseñado para desentrañar las dinámicas ocultas de los grupos. 
+                Abandona los enfoques bidimensionales clásicos y adopta un modelo computacional masivo que lee 
+                la realidad emitida, la recibida y la percepción subjetiva de las tensiones grupales.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚛️</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0;">Termodinámica Social</h3>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-termodinamica')" class="btn-profundizar">Profundizar ➡️</a>
+                    </div>
+                    <p>Mide la entropía y la densidad de la red para predecir si el grupo se encuentra en estado Sólido, Líquido, Plasma, Gas o Caos.</p>
+                    <div class="feature-quote">
+                        "La Densidad Relacional es la termodinámica del grupo. Medimos el ruido, la fricción y el calor latente que determinan si el sistema colapsa o avanza."<br>
+                        <span style="display: block; margin-top: 10px; color: #00A2FF; font-style: italic; font-size: 0.85em; font-family: 'Roboto Mono', monospace;">"Relational Density becomes the measure of 'social mass'."</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0;">Las 81 Figuras Sociométricas</h3>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-figuras')" class="btn-profundizar">Profundizar ➡️</a>
+                    </div>
+                    <p>La cuantificación del orden preferencial. Pasamos de simples elecciones binarias al análisis estructural (desde &lt;Ee&gt; hasta [Rr]).</p>
+                    <div class="feature-quote">
+                        "Reemplazamos los clásicos sociogramas de flechas ilegibles por mapas topográficos de energía espacial y posiciones interactivas."<br>
+                        <span style="display: block; margin-top: 10px; color: #00A2FF; font-style: italic; font-size: 0.85em; font-family: 'Roboto Mono', monospace;">"Translating algorithmic density into direct topological maps."</span>
+                    </div>
+                </div>
+                <div class="feature-card" id="filosofia-3">
+                    <div class="feature-icon">🏛️</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0;">Rigor Científico</h3>
+                        <a href="javascript:void(0)" onclick="toggleProf('prof-rigor', 'modules')" class="btn-profundizar">Profundizar ➡️</a>
+                    </div>
+                    <p>Plataforma avalada y registrada en los repositorios de ciencia abierta del CERN (Zenodo) para garantizar la solidez metodológica.</p>
+                    <div class="feature-quote">
+                        "Garantizamos datos purgados de ruido estadístico (Zero-Noise). Mostramos solo la señal pura, protegiendo siempre la identidad del evaluado."<br>
+                        <span style="display: block; margin-top: 10px; color: #00A2FF; font-style: italic; font-size: 0.85em; font-family: 'Roboto Mono', monospace;">"Protecting the subject's integrity without losing scientific knowledge of the group."</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFUNDIZACION SECTIONS -->
+    <section id="prof-termodinamica" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">La Termodinámica Social</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Trasladando las leyes de la física a la topología de los ecosistemas humanos. Entropía, Densidad y Cismogénesis en la arquitectura SOC_ORD.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">Durante décadas, el análisis de redes sociales (SNA) y la sociometría clásica han representado a los grupos humanos como mapas estáticos bidimensionales: líneas planas que conectan puntos. Sin embargo, las sociedades no son estructuras cristalizadas e inertes; son fluidos vivos que intercambian energía, acumulan calor latente y sufren cambios de estado.</p>
+                
+                <p style="margin-bottom: 3rem;">SOC_ORD (Sociometría Ordinal Computacional) abandona el modelo topográfico plano para abrazar un modelo tridimensional basado en la <strong>Termodinámica de Sistemas Fuera del Equilibrio</strong>, sustentado metodológicamente en las teorías de <em>Estructuras Disipativas</em> de Ilya Prigogine (Premio Nobel 1977) y la <em>Teoría de la Entropía Social</em> de Kenneth Bailey (1990).</p>
+                
+                <div style="background: rgba(0, 162, 255, 0.05); border: 1px solid rgba(0, 162, 255, 0.2); padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+                    <h3 style="color: var(--cyan); font-size: 1.4rem; font-style: italic; font-weight: 600; line-height: 1.5;">"No dibujamos las jerarquías que dicta el organigrama oficial. Cartografiamos los vectores de fuerza y la entropía relacional que deciden si el grupo avanza o colapsa."</h3>
+                    <p style="color: var(--cyan); margin-top: 15px; font-style: italic; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; opacity: 0.8;">"If the asymmetry reaches a critical point, the inertia shatters, plunging the ecosystem into chaos."</p>
+                </div>
+                
+                <h2 style="color: var(--magenta); font-size: 1.8rem; margin-bottom: 1rem;">1. Los Dos Motores: Densidad y Entropía</h2>
+                <p>En el motor SOC_ORD, cualquier grupo humano es auditado bajo dos parámetros físicos interdependientes:</p>
+                <ul style="margin-top: 1rem; margin-left: 1.5rem; margin-bottom: 2rem;">
+                    <li style="margin-bottom: 10px;"><strong>Densidad Relacional (SDR):</strong> Mide la concentración gravitacional de vínculos. ¿Con qué fuerza se eligen o rechazan los miembros?</li>
+                    <li><strong>Entropía Grupal:</strong> Mide el desorden, la fricción y la energía desperdiciada en disonancias cognitivas o alucinaciones sociales.</li>
+                </ul>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-figuras')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente: Las 81 Figuras Sociométricas ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prof-figuras" class="section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Las 81 Figuras Sociométricas</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                La cuantificación del orden preferencial. La matriz SMIb y la anatomía exacta del Átomo Social.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">La sociometría binaria pregunta "¿Eliges a X? Sí/No". Esto empobrece dramáticamente la realidad. SOC_ORD implementa la cuantificación del orden preferencial, donde el rango de elección (1º, 2º, 3º lugar) determina el gradiente gravitacional exacto de la interacción. Aplicamos una función inversa donde las primeras elecciones aportan masa crítica al vínculo:<br><span style="display: block; text-align: center; margin: 1.5rem 0; font-family: 'Roboto Mono', monospace; font-size: 1.4rem; color: #00A2FF; background: rgba(0, 162, 255, 0.05); border: 1px solid rgba(0, 162, 255, 0.2); border-radius: 8px; padding: 10px; letter-spacing: 2px;">f(x) = 1 / x<sup>k</sup></span></p>
+                
+                <p style="margin-bottom: 3rem;">Esta complejidad nos llevó a desarrollar la codificación <strong>SMIb</strong> (Sociomatriz Integrada). Una notación de 4 posiciones que captura lo que se emite, lo que se percibe y lo que se recibe. <strong>SMIb recoge específicamente el orden de preferencia con que cada persona enumera a los miembros del grupo.</strong> Al cruzar todas estas dimensiones, el ecosistema desvela <strong>81 Figuras Relacionales</strong> únicas.</p>
+                
+                <div style="background: rgba(255, 0, 85, 0.05); border: 1px solid rgba(255, 0, 85, 0.2); padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+                    <h3 style="color: var(--magenta); font-size: 1.4rem; font-style: italic; font-weight: 600; line-height: 1.5;">"El vínculo humano no es un hilo, es un código genético relacional."</h3>
+                    <p style="color: var(--magenta); margin-top: 15px; font-style: italic; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; opacity: 0.8;">"Nodes can be modeled as social qubits, existing in superpositions of states."</p>
+                </div>
+                
+                <h2 style="color: var(--cyan); font-size: 1.8rem; margin-bottom: 1rem;">La Matriz QUATUOR</h2>
+                <p>Las 81 figuras abarcan todo el espectro posible de la relación diádica. Desde la Sinergia Perfecta <code>&lt;Ee&gt;</code>, pasando por la Perplejidad Absoluta <code>¡¿?!</code>, hasta el Antagonismo Mutuo Declarado <code>[Rr]</code>. Nuestro módulo QUATUOR condensa grupos enteros de cientos de personas en una cuadrícula fija de 9x9 para un diagnóstico forense instantáneo de la salud relacional.</p>
+                
+                <div style="margin: 3rem 0; text-align: center;">
+                    
+                    <!-- Modal para QUATUOR -->
+                    <div id="quatuor-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0;">
+                        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1;" onclick="document.getElementById('quatuor-modal').style.display='none'">&times;</div>
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;">
+                            <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras" style="width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto;">
+                            <img src="assets/SMIa_Explicacion_Correcta.png" alt="Explicación" style="width: 100%; max-width: 500px; height: auto; display: block; margin: 20px auto; border: 2px solid var(--cyan); border-radius: 8px;">
+                            <div style="color: #aaa; margin-top: 15px; font-size: 1.1rem;">Haz clic en la X de arriba a la derecha para cerrar</div>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; overflow-x: auto; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 162, 255, 0.3); background: #000; cursor: zoom-in;" onclick="document.getElementById('quatuor-modal').style.display='block'">
+                        <img src="assets/Matriz_81_Figuras.png" alt="81 Figuras Sociométricas" class="gallery-img" style="cursor: zoom-in; min-width: 800px; width: 100%; display: block;">
+                        <div style="background: #000; text-align: center; padding: 20px 0; border-top: 2px solid var(--cyan);"><img src="assets/SMIa_Explicacion_Correcta.png" alt="Explicación SMIa" class="gallery-img" style="cursor: zoom-in; max-width: 500px; width: 100%; display: inline-block;"></div>
+                    </div>
+
+                    <div style="color: #888; font-size: 0.9rem; margin-top: 10px; font-style: italic;">Matriz QUATUOR: Estructura de las 81 figuras sociométricas numeralizadas jerárquicamente y Leyenda Explicativa de Símbolos (SMIa).</div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-rigor')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente: Rigor Científico ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prof-rigor" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Rigor Científico y Zero-Noise</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Fundamentos matemáticos y validación forense en la investigación psicosocial.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">En el análisis de redes humanas, un sesgo muestral o un algoritmo mal calibrado puede destruir la reputación de un individuo etiquetándolo injustamente como "Chivo Expiatorio". SOC_ORD nace con una premisa ética inquebrantable: proteger al individuo de los falsos positivos.</p>
+                
+                <p style="margin-bottom: 3rem;">Implementamos protocolos de validación <strong>Zero-Noise</strong>. Esto significa que nuestra algoritmia de densidades (SDA, SRC, BDR) aplica filtros de verosimilitud estadística para separar las tensiones reales de las fluctuaciones azarosas del grupo. Solo la señal pura sobrevive al renderizado final.</p>
+                
+                <div style="background: rgba(255, 204, 0, 0.05); border: 1px solid rgba(255, 204, 0, 0.2); padding: 2.5rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+                    <h3 style="color: var(--gold); font-size: 1.4rem; font-style: italic; font-weight: 600; line-height: 1.5;">"La sociatría y el diagnóstico clínico no pueden permitirse el lujo del ruido estadístico."</h3>
+                    <p style="color: var(--gold); margin-top: 15px; font-style: italic; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; opacity: 0.8;">"Detecting structural 'cysts' before their clinical hatching."</p>
+                </div>
+                
+                <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 1rem;">Validación Open Science</h2>
+                <p>La arquitectura consolidada Platinum v6.0 y el marco teórico que la sustenta no son cajas negras. Están rigurosamente documentados y depositados en los servidores de ciencia abierta del CERN (Zenodo). Cualquiera puede auditar el marco lógico de los Prismas de Cruce y los Planos de Proyección 6D (PCA) que estructuran el corazón analítico de SOC_ORD.</p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-rigor', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Continuar a Módulos Principales ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULES SECTION (Dashboard) -->
+    <section id="modules" class="section">
+        <div class="container">
+            <h2 class="section-title" style="color: #00A2FF;">Escaparate SOC_ORD</h2>
+            <p class="section-text">Descubre la potencia del motor termodinámico a través de nuestros módulos interactivos y galerías forenses.</p>
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <!-- Tarjeta 1: Vídeo Maestro (Originalmente Tarjeta 2) -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-video-maestro', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🎬</div>
+                    <h3 style="font-size: 1.2rem;">El Motor en Acción</h3>
+                    <p style="font-size: 0.9rem;">Visualiza la cristalización de redes (N=6 a N=50) narrada paso a paso.</p>
+                </a>
+                
+
+                
+                <!-- Tarjeta 5: Protocolos de Datos -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-datos', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">📊</div>
+                    <h3 style="font-size: 1.2rem;">Protocolos de Datos</h3>
+                    <p style="font-size: 0.9rem;">Explora los datos crudos de entrada y las matrices y frecuencias generadas.</p>
+                </a>
+                <!-- Tarjeta 6: Densidad Relacional -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-sdr', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🕸️</div>
+                    <h3 style="font-size: 1.2rem;">Densidad Relacional</h3>
+                    <p style="font-size: 0.9rem;">Condensación de la estructura del ecosistema (Tabla SDR y Matriz 9x9).</p>
+                </a>
+                <!-- Tarjeta 7: Proyecciones y Óptica -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-opticas', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">🔭</div>
+                    <h3 style="font-size: 1.2rem;">Proyecciones y Óptica</h3>
+                    <p style="font-size: 0.9rem;">Explora los planos topológicos, el paisaje alegórico y las lentes Macro-Meso-Micro.</p>
+                </a>
+                <!-- Tarjeta 8: Galería Analítica -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-galeria', 'modules')" class="feature-card" style="text-decoration:none; text-align:center;">
+                    <div class="feature-icon">📊</div>
+                    <h3 style="font-size: 1.2rem;">Galería Analítica</h3>
+                    <p style="font-size: 0.9rem;">Sociogramas avanzados, radares de alienación y mapas de densidad estructural.</p>
+                </a>
+                <!-- Tarjeta 4: Atlas PDF -->
+                <a href="assets/Atlas_Resultados_SOC_ORD.pdf" target="_blank" class="feature-card" style="text-decoration:none; text-align:center; background: rgba(0, 162, 255, 0.05); border-color: var(--cyan);">
+                    <div class="feature-icon" style="color: var(--cyan);">📘</div>
+                    <h3 style="font-size: 1.2rem; color: var(--cyan);">Atlas Científico</h3>
+                    <p style="font-size: 0.9rem;">Descarga el dossier completo con matrices (SMIb), densidades (9x9) y proyecciones 6D.</p>
+                </a>
+                <!-- Tarjeta 9: Análisis Comparativo -->
+                <a href="javascript:void(0)" onclick="toggleProf('prof-comparativo', 'modules')" class="feature-card" style="text-decoration:none; text-align:center; border: 1px solid rgba(233, 30, 99, 0.4); box-shadow: 0 0 10px rgba(233, 30, 99, 0.2);">
+                    <div class="feature-icon" style="color: #E91E63; font-weight: bold; font-family: 'Courier New', monospace; font-size: 1.6rem; letter-spacing: -1px;">GxTyCz</div>
+                    <h3 style="font-size: 1.2rem; color: #E91E63;">Análisis Comparativo</h3>
+                    <p style="font-size: 0.9rem;">Proyecciones 2D(6D), planos verticales PCA y PRISMA 6.</p>
+                </a>
+    
+    
+    
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 2: VIDEO MAESTRO (Oculto por defecto) -->
+    <section id="prof-video-maestro" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">La Cristalización del Ecosistema</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Observa cómo el algoritmo Zero-Noise y el motor termodinámico organizan a un grupo humano desde la incertidumbre hasta la solidez estructural.
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Audio Narrativo del Módulo -->
+                <div style="background: rgba(0, 162, 255, 0.1); border: 1px solid #00A2FF; border-radius: 8px; padding: 15px; margin-bottom: 20px; text-align: center;">
+                    <h3 style="margin-top: 0; color: #FFF; font-size: 1.1rem;">🎧 Escuchar Narración del Módulo</h3>
+                    <audio controls style="width: 100%; max-width: 500px;">
+                        <source src="assets/VOICEOVER_NUEVO.m4a" type="audio/mp4">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+
+                <div class="image-placeholder" style="background:#000; padding: 10px; border-radius: 12px; border: 1px solid rgba(0, 162, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 162, 255, 0.15);">
+                    <video id="video-maestro" src="assets/VIDEO_MAESTRO.mp4" controls style="width: 100%; height: auto; border-radius: 8px; display: block;" title="Formación N=6 y N=50"></video>
+                </div>
+                
+                <!-- Galería de Presentación: Nodos (Pequeña) -->
+                <h3 style="text-align: center; color: var(--cyan); margin-top: 40px; margin-bottom: 20px;">Disección de Vínculos del Nodo</h3>
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;">
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_11._1 nodo.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="1 Nodo">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">1 Solo Nodo</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_12_2 nodos.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="2 Nodos">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">2 Nodos</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_13_3 nodos.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="3 Nodos">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">3 Nodos</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_14_todo.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="Todos los nodos">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Todos (Red)</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_18_12E.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="Elección (E)">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Elección (E)</p>
+                    </div>
+                    <div class="glass-card" style="padding: 10px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_19_12R.png" style="cursor: zoom-in; width: 100%; border-radius: 4px;" alt="Repulsión (R)">
+                        <p style="font-size: 0.8rem; margin: 10px 0 0 0; color: #A0AEC0;">Repulsión (R)</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button onclick="toggleProf('prof-datos', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Protocolos de Datos ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 3: GALERÍA FORENSE (Oculta por defecto) -->
+    <section id="prof-galeria" class="section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Galería Visual SOC_ORD</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Un vistazo directo a la potencia diagnóstica de la plataforma. (Haz clic para ampliar).
+            </p>
+            
+            <div class="showcase-grid" style="max-width: 1100px; margin: 0 auto;">
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img onclick="openLightbox(this.src)" src="assets/dendrograma_g1t3c1.png" class="gallery-img" alt="Dendrograma" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #4CAF50;">Dendrograma de Clustering</h3>
+                    <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Clasificación jerárquica de subgrupos y facciones latentes.</p>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img onclick="openLightbox(this.src)" src="assets/radar_ias_g1t3c2.png" class="gallery-img" alt="Radar IAS" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #00BCD4;">Radar Diagnóstico (IAS)</h3>
+                    <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Perfil multidimensional de riesgo y asimetría estructural.</p>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_atraccion_g1t1c2.png" class="gallery-img" alt="Atracción" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #FF9800;">Sociograma de Atracción</h3>
+                    <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Flujos de simpatía y alianzas productivas dentro del sistema.</p>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_relegacion_g2t2c2.png" class="gallery-img" alt="Repulsión" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #F44336;">Sociograma de Repulsión</h3>
+                    <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Detección de focos de conflicto, aislamiento y rechazo activo.</p>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img onclick="openLightbox(this.src)" src="assets/soc_global_g2t2c1.png" class="gallery-img" alt="Reciprocidad" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #9C27B0;">Red Global de Reciprocidad</h3>
+                    <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Vínculos correspondidos. El esqueleto real de soporte emocional.</p>
+                </div>
+                <div class="showcase-item glass-card" style="text-align: center;">
+                    <img onclick="openLightbox(this.src)" src="assets/onda_lider_g1t1c2.png" class="gallery-img" alt="Transformada de Fourier" style="width: 100%; border-radius: 6px; cursor: pointer; object-fit: contain; max-height: 250px;">
+                    <h3 style="margin-top: 15px; font-size: 1.1rem; color: #E91E63;">Transformada de Fourier (TFF)</h3>
+                    <p style="font-size: 0.85rem; color: #A0AEC0; margin-top: 8px;">Análisis de frecuencias espectrales del liderazgo. Detecta resonancias y perturbaciones invisibles en el tejido social.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <button onclick="toggleProf('prof-galeria', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬆️ Cerrar y Volver a Módulos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 4: DATOS Y PROTOCOLOS (Oculto por defecto) -->
+    <section id="prof-datos" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Protocolos de Datos y Resultados</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Transparencia total. Desde el ingreso de los datos sociométricos crudos (Raw Data) hasta la generación de las matrices primarias.
+            </p>
+            
+            <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+                
+                <h2 style="color: var(--cyan); margin-bottom: 5px;">1. Datos de Entrada (Raw Data)</h2>
+                <p style="color: #A0AEC0; margin-bottom: 20px; font-size: 0.95rem;">Muestra de las primeras filas del protocolo de recolección de datos, segmentado por áreas clínicas.</p>
+                
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; align-items: stretch;">
+                    
+                    <!-- Columna Izquierda: Imagen Compacta -->
+                    <div style="flex: 1 1 50%; min-width: 300px;">
+                        <img src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="width: 100%; height: 100%; object-fit: fill; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); cursor: zoom-in;" onclick="document.getElementById('datos-modal').style.display='block'">
+                    </div>
+                    
+                    <!-- Modal para Datos -->
+                    <div id="datos-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0;">
+                        <div style="position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1; z-index: 10001;" onclick="document.getElementById('datos-modal').style.display='none'">&times;</div>
+                        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                            <img onclick="openLightbox(this.src)" src="assets/Protocolos_Datos_Entrada_SuperFinal.png" alt="Protocolo de Datos de Entrada" style="cursor: zoom-in; width: 100%; max-width: 1000px; height: auto; border-radius: 8px; border: 1px solid rgba(0, 162, 255, 0.3);">
+                        </div>
+                    </div>
+                    
+                    <!-- Columna Derecha: Explicaciones -->
+                    <div style="flex: 1 1 40%; min-width: 300px; display: flex; flex-direction: column; justify-content: space-between; gap: 15px;">
+                        
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                            <h4 style="color: #4CAF50; margin: 0 0 5px 0; font-size: 1rem;">1. Identificación y Metadatos</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Definición del ecosistema y tokenización de sujetos. Los parámetros <strong>GxTyCz</strong> marcan el contexto de inyección al simulador.</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid #FFC107;">
+                            <h4 style="color: #FFC107; margin: 0 0 5px 0; font-size: 1rem;">2. Ordenación del Grupo (SOC_ORD BREVE)</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">La innovación principal: la extracción pacífica. Ordenación fluida que evita la violencia del rechazo binario clásico.</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid #3F51B5;">
+                            <h4 style="color: #6C7AFA; margin: 0 0 5px 0; font-size: 1rem;">3. Sociometría Clásica (MORENO)</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">El núcleo histórico. Se capturan las Elecciones (E), Rechazos (R), y sus percepciones (pE, pR).</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid #FF9800;">
+                            <h4 style="color: #FF9800; margin: 0 0 5px 0; font-size: 1rem;">4. Meta-Percepción Triádica</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;"><strong>Núcleo termodinámico.</strong> Mide la disonancia cognitiva, la Ansiedad de Infiltración y detecta al Sujeto Broker.</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid #00BCD4;">
+                            <h4 style="color: #00BCD4; margin: 0 0 5px 0; font-size: 1rem;">5. Variables Complementarias</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">Inyección de contexto periférico vital para homogeneizar datos y cruzar escenarios socio-demográficos (BSOC).</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid #00FF00;">
+                            <h4 style="color: #00FF00; margin: 0 0 5px 0; font-size: 1rem;">6. Adjetivos de Descripción Grupal (AAG)</h4>
+                            <p style="margin: 0; font-size: 0.85rem; color: #A0AEC0;">El Diferencial Semántico inyecta un vector de fuerza léxico que contextualiza y amplifica la gravedad cualitativa.</p>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <h2 style="color: var(--cyan); margin-bottom: 5px; margin-top: 50px;">2. Resultados Primarios Generados</h2>
+                <p style="color: #A0AEC0; margin-bottom: 20px; font-size: 0.95rem;">El pipeline procesa los protocolos de entrada y genera inmediatamente las matrices de trabajo y las frecuencias.</p>
+                
+                <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 2rem;">
+                    <div class="glass-card" style="padding: 20px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_6_SMIa.png" onerror="this.src='../02_Data/02_Simulated/RESULT_SIM/SOC_ORD_5_SMIa.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Matriz SMIa">
+                        <h3 style="margin-top: 20px; font-size: 1.4rem; color: var(--gold);">Matriz SMIa</h3>
+                        <p style="font-size: 1rem; color: #A0AEC0;">Matriz Sociométrica Integrada Algebraica. Cuantifica los flujos de la red completa.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 20px; text-align: center;">
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_Frec.png" onerror="this.src='assets/VISORDP_4_Frecuencias.png'" style="width: 100%; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" alt="Tabla de Frecuencias">
+                        <h3 style="margin-top: 20px; font-size: 1.4rem; color: var(--magenta);">Tabla de Frecuencias (%)</h3>
+                        <p style="font-size: 1rem; color: #A0AEC0;">Recuento estadístico de interacciones y densidades normalizadas.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;">
+                    <button onclick="toggleProf('prof-sdr', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Densidad Relacional ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    
+
+
+    <!-- FRASE 2 -->
+    <div class="parallax-quote animate-slide-up" style="background-image: radial-gradient(circle at center, rgba(255, 0, 85, 0.05) 0%, transparent 70%);">
+        <blockquote>
+            "El aislado sociométrico es una alarma social."
+            <span class="author">J.L. Moreno</span>
+        </blockquote>
+    </div>
+
+    <!-- ECOSYSTEM SECTION (Arsenal Analítico) -->
+    <section id="ecosystem" class="section dark-section" style="background: #0f1219;">
+        <div class="container">
+            <h2 class="section-title" style="color: #FF0055;">Arsenal Analítico <span style="color: #c084fc;">(Outputs Diagnósticos)</span></h2>
+            <p class="section-text" style="color: #A0AEC0;">
+                El análisis termodinámico genera un espectro completo de instrumentos clínicos y cartográficos para la toma de decisiones.
+            </p>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card animate-slide-up">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/SOC_ORD_2_Datos.png" alt="Ingesta de Datos" class="gallery-img">
+                    <div class="gallery-caption">Captura e Ingesta de Datos</div>
+                </div>
+                <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.1s;">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/SOC_ORD_6_SMIb.png" alt="SMIb" class="gallery-img">
+                    <div class="gallery-caption">Codificación SMIb de Preferencias</div>
+                </div>
+                <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.2s;">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/PCA_vertical_nuevo.png" alt="PCA Vertical" class="gallery-img">
+                    <div class="gallery-caption">Plano Vertical PCA (Eje de Poder / Intensidad Topológica)</div>
+                </div>
+                <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.3s;">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/SOC_ORD_9_MACRO_MESO_MICRO.jpeg" alt="Macro Meso Micro" class="gallery-img">
+                    <div class="gallery-caption">Análisis Multinivel: Macro, Meso y Micro</div>
+                </div>
+                <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.4s;">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/Imag_3.png" alt="Diagnóstico" class="gallery-img">
+                    <div class="gallery-caption">Resumen Termodinámico (DGLOBAL)</div>
+                </div>
+                <div class="gallery-item glass-card animate-slide-up" style="animation-delay: 0.5s;">
+                    <img onclick="openLightbox(this.src)" style="cursor: zoom-in;" src="assets/Paysage social.png" alt="Topografía Paysage Social" class="gallery-img" onerror="this.src='assets/paysage_nodos.jpg'">
+                    <div class="gallery-caption">Topografía Estructural (Paysage Social)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE 3 -->
+    <div class="parallax-quote animate-slide-up" style="background-image: radial-gradient(circle at center, rgba(255, 204, 0, 0.05) 0%, transparent 70%);">
+        <blockquote>
+            "Cada orden establecido tiende a producir la naturalización de su propia arbitrariedad."
+            <span class="author">Pierre Bourdieu</span>
+        </blockquote>
+    </div>
+
+    <!-- GLOSSARY & BIBLIOGRAPHY SECTION -->
+    <section id="glossary" class="section">
+        <div class="container">
+            <h2 class="section-title" style="color: #FFCC00;">Glosario Clínico y Bibliografía</h2>
+            <div class="showcase-grid">
+                <!-- Glosario -->
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="color: #00A2FF; margin-bottom: 20px;">Conceptos Termodinámicos Clave</h3>
+                    <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Absoluta (BDA, BRC, BDR)</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Mide la energía o masa total consumida por el sistema relacional, con independencia del signo positivo/negativo. Se subdivide en <strong>BDA</strong> (Densidad DADA por el emisor), <strong>BRC</strong> (Densidad que el emisor RECIBE del grupo) y <strong>BDR</strong> (Densidad Relacional Absoluta).</p>
+                    </details>
+                    <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Densidad Relativa (SDA, SRC, SDR)</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Mide la energía o masa realmente provechable entre atracción y repulsión. Se subdivide en <strong>SDA</strong> (dada), <strong>SRC</strong> (recibida) y <strong>SDR</strong> (Densidad Relacional Relativa).</p>
+                    </details>
+                    <details style="margin-bottom:15px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Entropía Grupal</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Nivel de desorden, fricción o "frustración" latente derivado de percepciones erróneas o rechazos cruzados.</p>
+                    </details>
+                    <details style="margin-bottom:10px; cursor:pointer; background: rgba(0,0,0,0.3); padding:10px; border-radius:8px;">
+                        <summary style="font-weight:bold; color:#E0E0E0; font-size:1.1rem;">Cismogénesis</summary>
+                        <p style="color:#A0AEC0; margin-top:10px; font-size:0.95rem; line-height:1.5;">Proceso de división de la red en subgrupos o facciones debido a una polarización extrema de los vínculos.</p>
+                    </details>
+                </div>
+                
+                <!-- Bibliografía -->
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="color: #FF0055; margin-bottom: 20px;">Bibliografía Oficial</h3>
+                    <ul style="list-style:none; margin:0; padding:0;">
+                        <li style="margin-bottom:20px; background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #FF0055;">
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">Sociofísica y Termodinámica de Redes</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">Marco Teórico Fundamental del Modelo Platinum.</span>
+                            <a href="assets/Glosario_de_Sociometria_Ordinal_Computacional.pdf" target="_blank" style="color:#00A2FF; font-size:0.9rem; text-decoration:none;">[🔗 Descargar PDF]</a>
+                        </li>
+                        <li style="margin-bottom:20px; background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #00A2FF;">
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">Codificación SMIb: El lenguaje de la Relación</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">Manual de codificación y lectura de matrices relacionales.</span>
+                            <a href="assets/Manual_Codificacion_SMIb.pdf" target="_blank" style="color:#00A2FF; font-size:0.9rem; text-decoration:none;">[🔗 Descargar PDF]</a>
+                        </li>
+                        <li style="background: rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:4px solid #FFCC00;">
+                            <strong style="color:#E0E0E0; font-size:1.1rem;">DOI de Referencia Científica</strong><br>
+                            <span style="font-size:0.9rem; color:#A0AEC0; display:block; margin:5px 0;">CERN Zenodo</span>
+                            <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color:#FFCC00; font-size:0.9rem; text-decoration:none;">🔗 10.5281/zenodo.18941691</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="document.getElementById('manual').scrollIntoView({ behavior: 'smooth' })" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">⬇️ Continuar al Manual Operativo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANUAL SECTION -->
+    <section id="manual" class="section">
+        <div class="container">
+            <h2 class="section-title">Manual de VISORDP</h2>
+            <div class="manual-content glass-card" id="manual-container">
+                <!-- El contenido del markdown se inyectará o se maquetará aquí -->
+                <p><strong>Versión de Norma:</strong> Platinum v6.0 | <strong>Despliegue:</strong> Sistema Interactivo Front-End HTML5/WebGL</p>
+                <div class="alert note">
+                    El entorno <strong>HUB VISORDP</strong> es el simulador y visualizador sociométrico definitivo. Opera de forma 100% autónoma en el navegador, renderizando grafos de fuerza tridimensionales que reflejan las tensiones, lealtades, percepciones y entropía de los grupos humanos mediante las leyes de la termodinámica social.
+                </div>
+                
+                <h2 style="color: #FF0055;">1. GESTIÓN DE SIMULACIONES Y HORIZONTES</h2>
+                <ul>
+                    <li><strong>NÚMERO DE SUJETOS (N):</strong> Determina el tamaño de la red.</li>
+                    <li><strong>INICIAR DESDE CERO:</strong> Reinicia por completo la simulación y elige aleatoriamente un Rumbo.</li>
+                    <li><strong>EVOLUCIONAR A HORIZONTE:</strong> Fuerza a la red actual a mutar sus vínculos aceleradamente hasta alcanzar las condiciones termodinámicas objetivo.</li>
+                </ul>
+
+                <h2 style="color: #FF0055;">2. PANEL INFERIOR Y CONTROLES VCR</h2>
+                <ul>
+                    <li>▶️ <strong>PLAY HISTORIA:</strong> Reproduce secuencialmente todas las mutaciones (Moviola).</li>
+                    <li>📸 <strong>CAPTURA:</strong> Genera y descarga instantáneamente un archivo PNG.</li>
+                    <li>💾 <strong>EXPORTAR EXCEL:</strong> Empaqueta y descarga la Matriz SMIb cruda en un archivo CSV.</li>
+                    <li>🔲 <strong>PANTALLA COMPLETA:</strong> Expande la interfaz y el motor 3D para lograr inmersión total.</li>
+                </ul>
+
+                <h2 style="color: #FF0055;">3. FILTROS Y AISLAMIENTO CLÍNICO</h2>
+                <p>Aísla instantáneamente a sujetos haciendo clic en la <strong>Barra Inferior de Sujetos</strong> o desde el <strong>Censo Analítico</strong>. Utiliza los Filtros Visuales para comparar la Realidad Emitida, la Recibida y las Percepciones.</p>
+
+                <h2 style="color: #FF0055;">4. MONITORIZACIÓN TERMODINÁMICA</h2>
+                <p>El <strong>ECG Vital</strong> traza en tiempo real el pulso de la red. La línea Azul representa la Densidad (SDR), y la línea Oro mide la Disonancia o Entropía latente del sistema. Picos en oro alertan de inminentes rupturas de vínculos.</p>
+
+                <br><br>
+                <div style="text-align: center; font-family: 'Roboto Mono', monospace; font-size: 0.8rem; color: #888;">
+                    © 2026 SOC_ORD Project - Arquitectura Consolidada Platinum<br>
+                    DOI Registro de Referencia: <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: inherit; text-decoration: underline;">10.5281/zenodo.18941691</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+                <div style="font-family: 'Roboto', sans-serif; font-size: 1.1rem; margin-bottom: 10px; z-index: 10; position: relative;">
+                    <a href="assets/Manual_Codificacion_SMIb.pdf" target="_blank" style="color: #FF0055; text-decoration: none; border-bottom: 1px solid rgba(255, 0, 85, 0.3); padding-bottom: 3px; transition: all 0.3s;" onmouseover="this.style.color='#fff'; this.style.borderBottomColor='#fff'; this.style.textShadow='0 0 10px #FF0055';" onmouseout="this.style.color='#FF0055'; this.style.borderBottomColor='rgba(255, 0, 85, 0.3)'; this.style.textShadow='none';">
+                        📖 Descargar Manual de Codificación (PDF)
+                    </a>
+                </div>
+                <div style="font-family: 'Roboto', sans-serif; font-size: 1.1rem; margin-bottom: 10px; z-index: 10; position: relative;">
+                    <a href="assets/Glosario_de_Sociometria_Ordinal_Computacional.pdf" target="_blank" style="color: #FF0055; text-decoration: none; border-bottom: 1px solid rgba(255, 0, 85, 0.3); padding-bottom: 3px; transition: all 0.3s;" onmouseover="this.style.color='#fff'; this.style.borderBottomColor='#fff'; this.style.textShadow='0 0 10px #FF0055';" onmouseout="this.style.color='#FF0055'; this.style.borderBottomColor='rgba(255, 0, 85, 0.3)'; this.style.textShadow='none';">
+                        📚 Descargar Glosario de Sociometría (PDF)
+                    </a>
+                </div>
+
+                <div style="font-family: 'Roboto', sans-serif; font-size: 1.1rem; margin-bottom: 20px; z-index: 10; position: relative;">
+                    <a href="HUB_SOC_ORD_SMIb.html" target="_blank" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0, 162, 255, 0.3); padding-bottom: 3px; transition: all 0.3s;" onmouseover="this.style.color='#fff'; this.style.borderBottomColor='#fff'; this.style.textShadow='0 0 10px var(--cyan)';" onmouseout="this.style.color='var(--cyan)'; this.style.borderBottomColor='rgba(0, 162, 255, 0.3)'; this.style.textShadow='none';">
+                        ⚗️ Abrir Entorno Experimental VISORDP
+                    </a>
+                </div>
+
+                <button onclick="document.getElementById('community').scrollIntoView({ behavior: 'smooth' })" class="btn" style="background: rgba(0, 255, 0, 0.1); color: #00FF00; border: 1px solid #00FF00; padding: 12px 30px; font-weight: bold; cursor: pointer;">⬇️ Ir a Comunidad y Contacto</button>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <!-- MODULE 6: DENSIDAD RELACIONAL (Oculto por defecto) -->
+    <section id="prof-sdr" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container" style="max-width: 95%;">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Densidad Relacional (SDR)</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                El corazón de la termodinámica del grupo. La matriz sociométrica condensada en sus 9 macro-vínculos estructurales.
+            </p>
+            
+            <div style="margin: 0 auto;">
+                
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; align-items: stretch; justify-content: center;">
+                    
+                    <!-- Columna Izquierda: Tabla SDR -->
+                    <div class="glass-card" style="flex: 1 1 45%; padding: 30px; text-align: center; min-width: 400px;">
+                        <h3 style="color: var(--cyan); margin-top: 0; margin-bottom: 25px; font-size: 1.5rem;">1. Tabla SDR (Sociometric Density Ratio)</h3>
+                        <img onclick="openLightbox(this.src)" src="assets/SOC_ORD_18_SDR.png" alt="Tabla SDR" style="cursor: zoom-in; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
+                        <p style="margin-top: 20px; font-size: 1.05rem; color: #A0AEC0; text-align: left; line-height: 1.6;">
+                            <strong>SDR = Densidad Relacional Relativa (significativa) global</strong><br> (Emisión de preferencias y percepciones + Recepción de preferencias y percepciones).
+                        </p>
+                    </div>
+                    
+                    <!-- Columna Derecha: Matriz 9x9 -->
+                    <div class="glass-card" style="flex: 1 1 45%; padding: 30px; text-align: center; min-width: 400px;">
+                        <h3 style="color: var(--gold); margin-top: 0; margin-bottom: 25px; font-size: 1.5rem;">2. Matriz de Condensación 9x9</h3>
+                        <img onclick="openLightbox(this.src)" src="assets/VISORDP_10_Condensacion_9x9_Densi.png" alt="Matriz 9x9 Densidades" style="cursor: zoom-in; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
+                        <p style="margin-top: 20px; font-size: 1.05rem; color: #A0AEC0; text-align: left; line-height: 1.6;">
+                            Estructura relacional condensada en 9x9 para un análisis termodinámico superior, superando las limitaciones visuales de nodos individuales.
+                        </p>
+                    </div>
+                    
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="toggleProf('prof-opticas', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Proyecciones y Óptica ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- MODULE 7: PROYECCIONES Y ÓPTICAS (Oculto por defecto) -->
+    <section id="prof-opticas" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Proyecciones y Óptica</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Del análisis espectral profundo a la visión global: cómo el modelo SOC_ORD proyecta la topología del ecosistema humano en múltiples dimensiones.
+            </p>
+            
+            <div style="max-width: 1200px; margin: 0 auto;">
+                
+                <!-- 1. Paisaje Social Alegórico -->
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <h2 style="color: var(--cyan); margin-bottom: 15px;">El Paisaje Social Alegórico (Carte du Tendre)</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <img onclick="openLightbox(this.src)" src="assets/paysage_nodos.jpg" alt="Paisaje Grupal Alegórico" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                </div>
+
+                <!-- 2. Planos y Pentagrama -->
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <h2 style="color: var(--gold); margin-bottom: 15px;">Planos Topológicos: El Pentagrama 6D</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <img onclick="openLightbox(this.src)" src="assets/SOC_ORD_10_penta.png" alt="Orquestación Factorial - Pentagrama" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
+                        Visión vertical y orquestación factorial N-D desacoplada por ejes analíticos.
+                    </p>
+                </div>
+                
+                <!-- 3. Onda de Estatus Líder -->
+                <div style="margin-bottom: 60px; text-align: center;">
+                    <h2 style="color: var(--magenta); margin-bottom: 15px;">Onda de Estatus Líder (F0 Dominante)</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); max-width: 900px; margin: 0 auto;">
+                        <img onclick="openLightbox(this.src)" src="assets/onda_lider_g1t1c2.png" alt="Onda Estatus Líder" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
+                        <strong style="color: var(--cyan);">Transformada de Fourier (FFT):</strong> Extrae la tendencia estructural pura (Frecuencia Fundamental F0) filtrando el ruido estocástico y la fricción inherentes a la realidad clínica.
+                    </p>
+                </div>
+
+                <!-- 4. Lentes Macro, Meso, Micro -->
+                <div style="margin-bottom: 40px; text-align: center;">
+                    <h2 style="color: #4CAF50; margin-bottom: 15px;">Óptica Focal: Macro, Meso, Micro</h2>
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <img onclick="openLightbox(this.src)" src="assets/SOC_ORD_9_MACRO_MESO_MICRO.jpeg" alt="Comparativa Macro Meso Micro" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    </div>
+                    <p style="margin-top: 15px; color: #A0AEC0; font-size: 0.95rem;">
+                        Comparativa de proyecciones sociométricas filtradas por las tres lentes fundamentales de inercia y análisis grupal.
+                    </p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 4rem;">
+                    <button onclick="toggleProf('prof-galeria', 'modules')" class="btn" style="background: rgba(0, 162, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente Módulo: Galería Analítica ➡️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- MODULE 8: GALERÍA ANALÍTICA EXTENDIDA (Oculto por defecto) -->
+    <section id="prof-galeria" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px;">Galería Analítica Extendida</h1>
+            <p style="text-align: center; color: #A0AEC0; font-size: 1.2rem; font-style: italic; max-width: 800px; margin: 0 auto 3rem auto;">
+                Un recorrido visual por los outputs gráficos más avanzados del motor SOC_ORD, abarcando desde mapas de densidad hasta sociogramas de alta complejidad.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                
+                <!-- 1. Mapa de Densidad Bruta -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--cyan); margin-bottom: 10px;">Dispersión de la Densidad Relacional</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/mapa_densidad_bruta_g1t1c2.png" alt="Dispersión Densidad Relacional" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Dispersión SDA/SRC con inercia.</p>
+                </div>
+
+                <!-- 2. Mapa de Densidad (SDA/SRC) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--cyan); margin-bottom: 10px;">Mapa de Densidad Relacional</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/mapa_densidad_g2t3c2.png" alt="Mapa de Densidad" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Evaluación de reciprocidad SDA vs SRC.</p>
+                </div>
+
+                <!-- 3. Radar de Alienación (IAS) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--magenta); margin-bottom: 10px;">Radar de Alienación (IAS)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/radar_ias_g1t3c2.png" alt="Radar de Alienación" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Diferencial entre percepción y recepción real.</p>
+                </div>
+
+                <!-- 4. Sociograma Geométrico (PCA) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: var(--gold); margin-bottom: 10px;">Sociograma Geométrico (PCA)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/sociograma_F_g2t2c1.png" alt="Sociograma Geométrico" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Inercia acumulada en espacio dimensional.</p>
+                </div>
+
+                <!-- 5. Sociograma de Atracción -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #4CAF50; margin-bottom: 10px;">Sociograma de Atracción</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_atraccion_g1t1c2.png" alt="Sociograma de Atracción" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Red de vínculos positivos.</p>
+                </div>
+
+                <!-- 6. Sociograma de Conflicto -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #FF5252; margin-bottom: 10px;">Sociograma de Conflicto / Oposición</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/soc_moreno_relegacion_g2t2c2.png" alt="Sociograma de Conflicto" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Red de tensiones y oposiciones.</p>
+                </div>
+
+                <!-- 7. Sociograma de Reciprocidades -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #9C27B0; margin-bottom: 10px;">Sociograma de Reciprocidades (SMIa)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/SOCIOGRAMA_DE_RECIPROCIDADES_SMIa.png" alt="Sociograma de Reciprocidades" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Vínculos correspondidos y estables.</p>
+                </div>
+
+                <!-- 8. Dendrograma CAJ -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #FF9800; margin-bottom: 10px;">Dendrograma de Clasificación Jerárquica</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/dendrograma_g1t3c1.png" alt="Dendrograma CAJ" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Agrupamiento jerárquico según método de Ward.</p>
+                </div>
+
+                <!-- 9. PCA 6D (Contraste Maestro) -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #E91E63; margin-bottom: 10px;">Plano PCA 6D (Contraste Maestro)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/PCA_6D_nuevo.png" alt="PCA 6D Algoritmo de Autor" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px;">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Trazos rojos para elementos que sobrepasan las 2D.</p>
+                </div>
+
+                <!-- 10. PCA Planos Verticales y Contribuciones -->
+                <div class="glass-card" style="padding: 15px; text-align: center;">
+                    <h3 style="color: #00BCD4; margin-bottom: 10px;">Espina Dorsal Dual (PCA 1D)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/pca_vertical_espina_dual_g2t3c2.png" alt="Espina Dorsal PCA" style="cursor: zoom-in; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Proyección en 1D: Coordenadas (COR), Calidad de Representación (CTA) y Contribuciones (CTR).</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <button onclick="toggleProf('prof-comparativo', 'modules')" class="btn" style="background: rgba(233, 30, 99, 0.1); color: #E91E63; border: 1px solid #E91E63; padding: 8px 20px; font-weight: bold; cursor: pointer;">Siguiente: Módulo 6 (GxTyCz) ➡️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 6: ANALISIS COMPARATIVO GxTyCz -->
+    <section id="prof-comparativo" class="section dark-section prof-section" style="padding-top: 50px; display: none;">
+        <div class="container">
+            <h1 class="section-title" style="font-size: 3rem; margin-bottom: 10px; color: #E91E63;">Análisis Comparativo GxTyCz</h1>
+            <p class="section-text" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 40px;">Inspección forense cruzada de las 12 sociomatrices (Diseño Completo G2T3C2). El motor Platinum procesa secuencialmente todas las topologías para extraer proyecciones tensoriales invariantes.</p>
+
+            <!-- Bloque 1: Tabla PRISMA 6 -->
+            <div class="glass-card" style="padding: 25px; margin-bottom: 40px; overflow-x: auto;">
+                <h3 style="color: #00BCD4; margin-bottom: 15px;">1) Matriz de Perfiles PRISMA 6 (Densidades SDR)</h3>
+                <p style="color: #A0AEC0; font-size: 0.9rem; margin-bottom: 20px;">Evolución de la Densidad SDR a través de los 9 vectores sociométricos del perfil de autor PRISMA 6 comparando todas las sociomatrices.</p>
+                
+                <table style="width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; font-size: 0.85rem; text-align: center;">
+                    <thead>
+                        <tr style="background: rgba(0, 162, 255, 0.1); border-bottom: 2px solid var(--cyan);">
+                            <th style="padding: 10px; color: var(--cyan); text-align: left;">PRISMA 6</th>
+                            <th style="padding: 10px;">G1T1C1</th><th style="padding: 10px;">G1T1C2</th>
+                            <th style="padding: 10px;">G1T2C1</th><th style="padding: 10px;">G1T2C2</th>
+                            <th style="padding: 10px;">G1T3C1</th><th style="padding: 10px;">G1T3C2</th>
+                            <th style="padding: 10px; border-left: 1px dashed #555;">G2T1C1</th><th style="padding: 10px;">G2T1C2</th>
+                            <th style="padding: 10px;">G2T2C1</th><th style="padding: 10px;">G2T2C2</th>
+                            <th style="padding: 10px;">G2T3C1</th><th style="padding: 10px;">G2T3C2</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color: #E2E8F0;">
+                        <!-- Fila 1: Ee -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #F9E2AF; text-align: left;">.Ee.</td>
+                            <td>0.31</td><td>0.34</td><td>0.29</td><td>0.36</td><td>0.41</td><td>0.45</td>
+                            <td style="border-left: 1px dashed #555;">0.28</td><td>0.31</td><td>0.30</td><td>0.35</td><td>0.42</td><td>0.48</td>
+                        </tr>
+                        <!-- Fila 2: E? -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #A6E3A1; text-align: left;">.E?.</td>
+                            <td>0.12</td><td>0.15</td><td>0.11</td><td>0.14</td><td>0.09</td><td>0.10</td>
+                            <td style="border-left: 1px dashed #555;">0.14</td><td>0.16</td><td>0.12</td><td>0.15</td><td>0.08</td><td>0.09</td>
+                        </tr>
+                        <!-- Fila 3: Er -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #FFAAAA; text-align: left;">.Er.</td>
+                            <td>0.05</td><td>0.04</td><td>0.06</td><td>0.03</td><td>0.02</td><td>0.01</td>
+                            <td style="border-left: 1px dashed #555;">0.08</td><td>0.07</td><td>0.09</td><td>0.05</td><td>0.03</td><td>0.02</td>
+                        </tr>
+                        <!-- Fila 4: ¿e -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #A6E3A1; text-align: left;">.¿e.</td>
+                            <td>0.15</td><td>0.13</td><td>0.16</td><td>0.12</td><td>0.11</td><td>0.09</td>
+                            <td style="border-left: 1px dashed #555;">0.18</td><td>0.15</td><td>0.17</td><td>0.14</td><td>0.10</td><td>0.08</td>
+                        </tr>
+                        <!-- Fila 5: ¿? -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #89B4FA; text-align: left;">.¿?.</td>
+                            <td>0.20</td><td>0.18</td><td>0.22</td><td>0.19</td><td>0.24</td><td>0.21</td>
+                            <td style="border-left: 1px dashed #555;">0.21</td><td>0.19</td><td>0.23</td><td>0.20</td><td>0.25</td><td>0.22</td>
+                        </tr>
+                        <!-- Fila 6: ¿r -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #FFAAAA; text-align: left;">.¿r.</td>
+                            <td>0.07</td><td>0.06</td><td>0.05</td><td>0.07</td><td>0.04</td><td>0.03</td>
+                            <td style="border-left: 1px dashed #555;">0.06</td><td>0.05</td><td>0.04</td><td>0.06</td><td>0.03</td><td>0.02</td>
+                        </tr>
+                        <!-- Fila 7: Re -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #FFAAAA; text-align: left;">.Re.</td>
+                            <td>0.04</td><td>0.03</td><td>0.05</td><td>0.02</td><td>0.02</td><td>0.01</td>
+                            <td style="border-left: 1px dashed #555;">0.05</td><td>0.04</td><td>0.06</td><td>0.03</td><td>0.02</td><td>0.01</td>
+                        </tr>
+                        <!-- Fila 8: R? -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #FFAAAA; text-align: left;">.R?.</td>
+                            <td>0.03</td><td>0.02</td><td>0.04</td><td>0.02</td><td>0.03</td><td>0.01</td>
+                            <td style="border-left: 1px dashed #555;">0.04</td><td>0.03</td><td>0.05</td><td>0.02</td><td>0.04</td><td>0.01</td>
+                        </tr>
+                        <!-- Fila 9: Rr -->
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 8px; font-weight: bold; color: #FF3333; text-align: left;">.Rr.</td>
+                            <td>0.03</td><td>0.05</td><td>0.02</td><td>0.12</td><td>0.04</td><td>0.09</td>
+                            <td style="border-left: 1px dashed #555;">0.04</td><td>0.06</td><td>0.03</td><td>0.15</td><td>0.05</td><td>0.11</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Gráficos -->
+            <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;">
+                <!-- Bloque 2: PCA Verticales -->
+                <div class="glass-card" style="padding: 20px; text-align: center;">
+                    <h3 style="color: #00BCD4; margin-bottom: 15px;">2) Ejes Verticales PCA (Dimensión 1 y 2)</h3>
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+                        <div style="text-align: center;">
+                            <img onclick="openLightbox(this.src)" src="assets/PCA_Eje1.png" alt="PCA Eje 1" style="cursor: zoom-in; max-width: 100%; max-height: 500px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                            <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Eje 1: Integración / Vínculo</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <img onclick="openLightbox(this.src)" src="assets/PCA_Eje2.png" alt="PCA Eje 2" style="cursor: zoom-in; max-width: 100%; max-height: 500px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                            <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Eje 2: Relieve de Poder / Prominencia</p>
+                        </div>
+                    </div>
+                    <div style="color: #A0AEC0; font-size: 0.95rem; margin-top: 20px; text-align: left; padding: 0 15px;">
+                        <p style="margin-bottom: 10px;"><strong>La Arquitectura del Poder (Intensidad Topológica):</strong> El eje vertical del PCA no es un artefacto matemático; representa el <em>Relieve de Poder</em> o <em>Prominencia</em> de la organización. A diferencia de las jerarquías orgánicas, este eje mide quién lidera realmente en función de la demanda relacional.</p>
+                        <p style="margin-bottom: 0;">Los individuos y bloques se separan verticalmente revelando la madurez termodinámica de la red: las cumbres (norte) son ocupadas por los perfiles de alta intensidad perceptiva y liderazgo (bloques aspiracionales), mientras que los nodos periféricos descienden hacia las zonas de indiferencia (sur).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;">
+                <!-- Bloque 3: 2D(6D) PCA a toda pantalla -->
+                <div class="glass-card" style="padding: 20px; text-align: center;">
+                    <h3 style="color: #E91E63; margin-bottom: 15px;">3) Atributos y Percepción (Cartesian Factual 6D)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/PCA_6D_real.png" alt="Plano 6D G2T3C2" style="cursor: zoom-in; width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(233,30,99,0.2);">
+                    <p style="color: #A0AEC0; font-size: 0.9rem; margin-top: 15px;">Proyección en el espacio de 6 dimensiones sobre plano 2D.</p>
+                </div>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;">
+                <!-- Bloque: Ejemplificación PCA (SDR) -->
+                <div class="glass-card" style="padding: 20px; text-align: center;">
+                    <h3 style="color: #FF9800; margin-bottom: 15px;">Ejemplificación Práctica: Mapas PCA (SDR)</h3>
+                    <p style="color: #A0AEC0; font-size: 0.9rem; margin-bottom: 20px;">Generación dinámica a partir de la Matriz de Densidad Relativa (SDR).</p>
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+                        <div style="text-align: center; flex: 1; min-width: 300px;">
+                            <img onclick="openLightbox(this.src)" src="assets/pca_vertical.png" alt="PCA Vertical" style="cursor: zoom-in; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                            <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Plano Vertical 1D (Jerarquía y Relieve de Poder)</p>
+                        </div>
+                        <div style="text-align: center; flex: 1; min-width: 300px;">
+                            <img onclick="openLightbox(this.src)" src="assets/pca_ortogonal.png" alt="PCA Ortogonal" style="cursor: zoom-in; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                            <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 10px;">Plano Ortogonal 2D (Tensiones y Facciones Estructurales)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;">
+                <!-- Bloque 4: Histograma Serial -->
+                <div class="glass-card" style="padding: 20px; text-align: center;">
+                    <h3 style="color: #00FF00; margin-bottom: 15px;">4) Histograma Serial (Variantes G T C)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/histograma_serial.png" alt="Histograma Serial" style="cursor: zoom-in; max-width: 100%; max-height: 400px; border-radius: 8px; border: 1px solid rgba(0,255,0,0.3);">
+                    <p style="color: #A0AEC0; font-size: 0.9rem; margin-top: 15px;">Despliegue Tensorial y Centroides de Integración Global.</p>
+                </div>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px;">
+                <!-- Bloque 5: Ópticas de Despliegue -->
+                <div class="glass-card" style="padding: 20px; text-align: center;">
+                    <h3 style="color: #FFA500; margin-bottom: 15px;">5) Las 3 Ópticas de Análisis (Macro, Meso, Micro)</h3>
+                    <img onclick="openLightbox(this.src)" src="assets/triptico_panoramico.png" alt="Tríptico Panorámico" style="cursor: zoom-in; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(255,165,0,0.2);">
+                    <p style="color: #A0AEC0; font-size: 0.9rem; margin-top: 15px;">Consenso (Base Macro), Evolución (Tensión Meso) y Contextos (Fricción Micro).</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="document.getElementById('bsoc-cta').scrollIntoView({ behavior: 'smooth' })" class="btn" style="background: rgba(233, 30, 99, 0.1); color: #E91E63; border: 1px solid #E91E63; padding: 12px 30px; font-weight: bold; cursor: pointer;">Siguiente: Banco de Datos (BSOC) ➡️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BSOC CALL TO ACTION -->
+    <section id="bsoc-cta" style="padding: 60px 20px; background: linear-gradient(180deg, #0A0F1A 0%, #111827 100%); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container" style="max-width: 900px; margin: 0 auto; text-align: center;">
+            
+            <!-- Icono Académico / Banco -->
+            <div style="font-size: 2.5rem; margin-bottom: 20px; opacity: 0.8;">🏛️</div>
+            
+            <h2 style="font-size: 2rem; color: #FFFFFF; font-weight: 300; letter-spacing: 1px; margin-bottom: 15px;">
+                Banco Internacional de Datos Sociométricos <span style="font-weight: bold; color: var(--cyan);">(BSOC)</span>
+            </h2>
+            
+            <p style="color: #A0AEC0; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; font-family: 'Inter', sans-serif;">
+                Hacemos un llamamiento a los <strong style="color: #E2E8F0;">equipos de investigación</strong> y a la comunidad científica internacional. Sus matrices históricas tienen el potencial clínico para revelar las constantes matemáticas de la convivencia humana. Done sus datos bajo el estricto protocolo de anonimización <strong style="color: #E2E8F0;">Q-GID</strong> y únase a la vanguardia de la <strong style="color: var(--cyan);">OPEN SCIENCE</strong> en este experimento global de macrosociometría.
+            </p>
+            
+            <a href="javascript:alert('El Portal Institucional BSOC está actualmente en construcción. Pronto habilitaremos la subida segura de matrices SMIb.')" 
+               style="display: inline-block; padding: 12px 35px; background: transparent; border: 1px solid #4A5568; color: #E2E8F0; text-decoration: none; border-radius: 4px; font-weight: bold; font-family: 'Courier New', monospace; transition: all 0.3s ease;"
+               onmouseover="this.style.borderColor='var(--cyan)'; this.style.color='var(--cyan)';"
+               onmouseout="this.style.borderColor='#4A5568'; this.style.color='#E2E8F0';">
+                LEER MANIFIESTO DE DONACIÓN ↗
+            </a>
+            
+            <p style="font-size: 0.75rem; color: #4A5568; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px;">
+                Garantía Ética Académica • Cifrado Tensorial SMIb
+            </p>
+        </div>
+    </section>
+
+    <!-- COMMUNITY & FEEDBACK SECTION -->
+    <section id="community" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">Comunidad y Feedback</h2>
+            <p class="section-text">¿Tienes preguntas, sugerencias o reflexiones sobre el modelo SOC_ORD? Escríbenos directamente.</p>
+            <div class="glass-card" style="max-width:600px; margin:0 auto; padding: 2rem;">
+                <!-- Cambia 'tu_correo@ejemplo.com' por el ID de Formspree cuando crees la cuenta -->
+                <form action="mailto:josmancor@gmail.com" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:15px;">
+                    <input type="text" name="name" placeholder="Tu Nombre o Institución" required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem;">
+                    <input type="email" name="email" placeholder="Tu Correo Electrónico" required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem;">
+                    <textarea name="message" rows="5" placeholder="Tus reflexiones, preguntas o comentarios..." required style="padding:12px; border-radius:6px; border:1px solid #4A5568; background:#1A202C; color:#FFF; font-family:'Inter', sans-serif; font-size:1rem; resize:vertical;"></textarea>
+                    <button type="submit" class="btn btn-primary" style="align-self:flex-start; border:none; padding:12px 30px; font-size:1rem; cursor:pointer;">Enviar Mensaje</button>
+                    <p style="font-size:0.8rem; color:#A0AEC0; margin-top:10px;">* Para recibir correos, crea una cuenta gratuita en <a href="https://formspree.io" target="_blank" style="color:#00A2FF;">Formspree</a> e introduce tu ID en el código HTML.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
+            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_simulacion.png'" class="nav-logo" style="height: 40px;">
+        </div>
+        <p>© 2026 SOC_ORD Project. Desarrollado para la investigación en sociometría computacional.</p>
+        <p style="font-family: 'Roboto Mono', monospace; font-size: 0.8rem; color: #666; margin-top: 10px;">CERN Zenodo DOI: <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: inherit; text-decoration: underline;">10.5281/zenodo.18941691</a></p>
+        <p style="font-family: 'Courier New', monospace; font-size: 0.7rem; color: #333; margin-top: 25px; letter-spacing: 2px;"><a href="HUB_SOC_ORD_SMIb.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00A2FF'" onmouseout="this.style.color='#333'">[ ⚗️ INICIAR ENTORNO EXPERIMENTAL VISORDP ]</a></p>
+    </footer>
+
+    <script src="scripts.js?v=3"></script>
+
+    <!-- Global Lightbox Modal -->
+    <div id="global-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0; align-items: center; justify-content: center;">
+        <div style="position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-weight: bold; line-height: 1; z-index: 10001;" onclick="document.getElementById('global-lightbox').style.display='none'">&times;</div>
+        <div style="max-width: 95vw; margin: 0 auto; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 100%;">
+            <img onclick="openLightbox(this.src)" id="global-lightbox-img" src="" alt="Vista ampliada" style="cursor: zoom-in; max-width: 100%; height: auto; max-height: 90vh; border-radius: 8px; border: 1px solid rgba(0, 162, 255, 0.3);">
+        </div>
+    </div>
+
+</body>
+</html>
