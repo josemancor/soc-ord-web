@@ -6345,7 +6345,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         el.innerHTML = shortText;
         
         let longText = shortText + extraDetails;
-        let elLong = document.getElementById('narrativa-clinica-long');
+        let elLong = document.getElementById('large-diagnosis-content');
         if (elLong) {
             let fullLong = longText.replace(/\*\*(.*?)\*\*/g, '<span style="color:#FFCC00; font-weight:bold;">$1</span>');
             elLong.innerHTML = fullLong;
