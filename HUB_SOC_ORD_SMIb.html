@@ -6147,6 +6147,8 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         let el = document.getElementById('narrativa-clinica');
         if (!el) return;
         
+        window.lastNarrativaArgs = { estado: estadoFisico, densidad: densidad, entropia: entropia, counts: counts };
+        
         let pctAislados = ((counts.AISLADO / n_nodes) * 100).toFixed(0);
         let pctAlpha = ((counts.ALPHA / n_nodes) * 100).toFixed(0);
         let pctOmega = ((counts.OMEGA / n_nodes) * 100).toFixed(0);
