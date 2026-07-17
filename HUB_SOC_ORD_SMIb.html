@@ -1404,10 +1404,10 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         <h2 style="color: #00A2FF; font-size: 28px; margin-bottom: 20px; border-bottom: 1px solid #00A2FF; padding-bottom: 10px; text-shadow: 0 0 10px rgba(0,162,255,0.5);">PCA SDR: Planos Vertical y Ortogonal</h2>
         <div style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 300px; background: #0B0F19; border: 1px solid #444; border-radius: 8px; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
-                <img onclick="openLightbox(this.src)" src="pca_vertical.png" alt="PCA Vertical no encontrada. Genera la imagen con el script Python." style="max-width: 100%; border-radius: 4px; cursor: zoom-in;" onerror="this.onerror=null; this.src='assets/logo_simulacion.png';">
+                <img onclick="openLightbox(this.src)" src="assets/pca_vertical.png" alt="PCA Vertical no encontrada. Genera la imagen con el script Python." style="max-width: 100%; border-radius: 4px; cursor: zoom-in;" onerror="this.onerror=null; this.src='assets/logo_simulacion.png';">
             </div>
             <div style="flex: 2; min-width: 500px; background: #0B0F19; border: 1px solid #444; border-radius: 8px; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
-                <img onclick="openLightbox(this.src)" src="pca_ortogonal.png" alt="PCA Ortogonal no encontrada. Genera la imagen con el script Python." style="max-width: 100%; border-radius: 4px; cursor: zoom-in;" onerror="this.onerror=null; this.src='assets/logo_simulacion.png';">
+                <img onclick="openLightbox(this.src)" src="assets/pca_ortogonal.png" alt="PCA Ortogonal no encontrada. Genera la imagen con el script Python." style="max-width: 100%; border-radius: 4px; cursor: zoom-in;" onerror="this.onerror=null; this.src='assets/logo_simulacion.png';">
             </div>
         </div>
         <div style="text-align: center; margin-top: 30px;">
@@ -1532,7 +1532,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                     <th title="Identificador único del sujeto.">#ID</th>
                     <th title="SDA (Densidad Activa): Nivel de sinergia neta que este sujeto emite hacia los demás.">SDA</th>
                     <th title="SRC (Densidad Receptiva): Nivel de sinergia neta que este sujeto recibe de los demás.">SRC</th>
-                    <th title="DIS (Disonancia): Desequilibrio entre lo emitido y lo recibido. Alta disonancia implica frustración o rechazo oculto.">DIS</th>
+                    <th title="DIF (Densidad Diferencial): Desequilibrio entre lo emitido y lo recibido. Alta diferencia implica frustración o rechazo oculto.">DIF</th>
                     <th title="Rol Sociométrico: Calculado a partir del balance entre actividad y recepción (Alpha, Omega, Satélite, Aislado).">ROL</th>
                 </tr>
             </thead>
@@ -1656,7 +1656,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     <div style="width: 1px; height: 16px; background: #555; margin: 0 4px;"></div>
     <button class="btn-vcr" onclick="takeScreenshot()" data-i18n="btn_capture" style="background: #E91E63; border-color: #E91E63; padding: 6px 12px; font-size: 10px; white-space: nowrap;">📸 CAPTURA</button>
     <button class="btn-vcr" onclick="exportData()" data-i18n="btn_export_csv" style="background: #00A2FF; border-color: #00A2FF; padding: 6px 12px; font-size: 10px; white-space: nowrap;">💾 REPORTE</button>
-    <button class="btn-vcr" onclick="openMatricesMode()" style="background: #00FF9D; color: #000; border-color: #00FF9D; font-weight:bold; padding: 6px 12px; font-size: 10px; white-space: nowrap;">📊 FRECUENCIAS / MATRICES</button>
+    <button class="btn-vcr" onclick="mostrarModalFrecuencias()" style="background: #00FF9D; color: #000; border-color: #00FF9D; font-weight:bold; padding: 6px 12px; font-size: 10px; white-space: nowrap;">📊 FRECUENCIAS</button>
     <button class="btn-vcr" onclick="toggleFullScreen()" id="btn-fullscreen" style="background: #444; border-color: #666; padding: 6px 12px; font-size: 10px; white-space: nowrap;">🔲 FULLSCREEN</button>
 </div>
 
@@ -1677,12 +1677,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             <h2 style="margin:0; border:none; color:#FF5722;">🔮 Panel de Visualización Prismática</h2>
             <div>
                 <select id="prisma-selector" style="background:#222; border:1px solid #555; color:#FF5722; font-size:14px; border-radius:4px; padding:6px; margin-right: 10px;" onchange="changePrismaMode(this.value)">
-                    <option value="0">PRISMA 1 - EMISOR (A1 x A2)</option>
-                    <option value="1">PRISMA 2 - RECEPTOR (A3 x A4)</option>
-                    <option value="2">PRISMA 3 - PASIVO (A1 x A3)</option>
-                    <option value="3">PRISMA 4 - ACTIVO (A2 x A4)</option>
-                    <option value="4">PRISMA 5 - PERCEPTUAL (A1 x A4)</option>
-                    <option value="5" selected>PRISMA 6 - FÁCTICO (A2 x A3)</option>
+                    <option value="0">PRISMA 1 - ACTIVO (A4 x A1)</option>
+                    <option value="1">PRISMA 2 - PASIVO (A2 x A3)</option>
+                    <option value="2">PRISMA 3 - EXTERNO (A4 x A2)</option>
+                    <option value="3">PRISMA 4 - INTERNO (A1 x A3)</option>
+                    <option value="4">PRISMA 5 - PERCEPTUAL (A4 x A3)</option>
+                    <option value="5" selected>PRISMA 6 - FACTUAL (A1 x A2)</option>
                 </select>
                 <button onclick="togglePrismaMode()" style="background:#444; color: white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">CERRAR</button>
             </div>
@@ -1722,7 +1722,6 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                 <button id="btn-view-radar" onclick="setMatrixViewMode('RADAR')" class="v-tab active" style="background:#00A2FF; color:#000; font-weight:bold; padding:8px 12px; border:none; cursor:pointer;">Radar Grupal</button>
                 <button id="btn-view-quatuor" onclick="setMatrixViewMode('QUATUOR')" class="v-tab" style="background:#444; color:#FFF; font-weight:bold; padding:8px 12px; border:none; cursor:pointer;">Quatuor 9x9</button>
                 <button id="btn-view-nxn" onclick="setMatrixViewMode('NXN')" class="v-tab" style="background:#444; color:#FFF; font-weight:bold; padding:8px 12px; border:none; cursor:pointer;">Matriz N x N</button>
-                <button onclick="closeMatricesMode(); togglePrismaMode();" class="v-tab" style="background:#FF5722; color:#FFF; font-weight:bold; padding:8px 12px; border:none; cursor:pointer; margin-left: 10px; box-shadow: 0 0 8px rgba(255,87,34,0.4);">🔮 PRISMAS</button>
             </div>
         </div>
         <div id="matrix-container" class="matrix-body">
@@ -2529,6 +2528,9 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     function setLanguage(lang) {
         currentLang = lang;
+        window.diagLang = lang;
+        if (typeof updateDiagFlag === 'function') updateDiagFlag();
+        
         localStorage.setItem('visordp_lang', lang);
         
         const dict = i18nDict[lang];
@@ -2803,12 +2805,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     const PRISMA_CATEGORIES = ['.Ee.', '.E?.', '.Er.', '.¿e.', '.¿?.', '.¿r.', '.Re.', '.R?.', '.Rr.'];
     const PRISMA_DEFS = [
-        { name: "PRISMA 1 - EMISOR (A1 x A2)", d1: 0, d2: 1 },
-        { name: "PRISMA 2 - RECEPTOR (A3 x A4)", d1: 2, d2: 3 },
-        { name: "PRISMA 3 - PASIVO (A1 x A3)", d1: 0, d2: 2 },
-        { name: "PRISMA 4 - ACTIVO (A2 x A4)", d1: 1, d2: 3 },
-        { name: "PRISMA 5 - PERCEPTUAL (A1 x A4)", d1: 0, d2: 3 },
-        { name: "PRISMA 6 - FÁCTICO (A2 x A3)", d1: 1, d2: 2 }
+        { name: "PRISMA 1 - ACTIVO (A4 x A1)", d1: 3, d2: 0 },
+        { name: "PRISMA 2 - PASIVO (A2 x A3)", d1: 1, d2: 2 },
+        { name: "PRISMA 3 - EXTERNO (A4 x A2)", d1: 3, d2: 1 },
+        { name: "PRISMA 4 - INTERNO (A1 x A3)", d1: 0, d2: 2 },
+        { name: "PRISMA 5 - PERCEPTUAL (A4 x A3)", d1: 3, d2: 2 },
+        { name: "PRISMA 6 - FACTUAL (A1 x A2)", d1: 0, d2: 1 }
     ];
 
     function classifyPrismaHex(char1, char2) {
@@ -3088,8 +3090,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                                 isIndifference: false,
                                 rawSmib: celda,
                                 smia: smia_str,
-                                force: sda_celda,
-                                sdr: sdr_celda
+                                force: sda_celda
                             });
                         }
                         // Enlace Fantasía (P0) si hay percepción sin emisión
@@ -3103,8 +3104,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                                 isIndifference: false,
                                 rawSmib: celda,
                                 smia: smia_str,
-                                force: sda_celda,
-                                sdr: sdr_celda
+                                force: sda_celda
                             });
                         }
                         // Indiferencia
@@ -3118,8 +3118,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                                 isIndifference: true,
                                 rawSmib: celda,
                                 smia: smia_str,
-                                force: sda_celda,
-                                sdr: sdr_celda
+                                force: sda_celda
                             });
                         }
                     }
@@ -3329,30 +3328,6 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             if (elPulso) elPulso.innerText = currentCycle;
             document.getElementById('disp-densidad').innerText = totalSDR.toFixed(2);
             document.getElementById('disp-entropia').innerText = entropia.toFixed(2);
-            
-            // Computar contadores de enlaces (+, -, ¿)
-            let posLinks = 0;
-            let negLinks = 0;
-            if (typeof currentStats !== 'undefined' && currentStats && currentStats.links) {
-                currentStats.links.forEach(l => {
-                    if (l.isReal) {
-                        if (l.type === 'E') posLinks++;
-                        else if (l.type === 'R') negLinks++;
-                    }
-                });
-            }
-
-            // neuLinks = todos los pares dirigidos posibles menos los reales positivos y negativos
-            // n*(n-1) es el máximo de aristas dirigidas sin auto-lazos.
-            let maxPosibles = n_nodes * (n_nodes - 1);
-            let neuLinks = maxPosibles - posLinks - negLinks;
-            let elLinksPos = document.getElementById('disp-links-pos');
-            let elLinksNeu = document.getElementById('disp-links-neu');
-            let elLinksNeg = document.getElementById('disp-links-neg');
-            if (elLinksPos) elLinksPos.innerText = posLinks;
-            if (elLinksNeu) elLinksNeu.innerText = neuLinks;
-            if (elLinksNeg) elLinksNeg.innerText = negLinks;
-
             let bdrGlobal = document.getElementById('disp-bdr-global');
             if(bdrGlobal) bdrGlobal.innerText = totalBDR.toFixed(2);
             
@@ -4357,7 +4332,6 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     let analiticas = null;
     let isQuatuorMode = false;
     let currentMatrixTab = 'SMIb';
-    let currentMatrixViewMode = 'RADAR'; // RADAR | QUATUOR | NXN
 
     function toggleQuatuorMode() {
         if (currentMatrixTab === 'GLOBAL') return; // No tiene traducción QUATUOR
@@ -4406,27 +4380,36 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         }
         
         let qBtn = document.getElementById('btn-quatuor-toggle');
-        if (type === 'GLOBAL' || type === 'RADAR') {
-            isQuatuorMode = false;
-            qBtn.style.background = '#444';
-            qBtn.style.color = '#888';
-            qBtn.innerText = 'QUATUOR (N/A)';
-            qBtn.style.pointerEvents = 'none';
-            if (type === 'RADAR') return renderRadarMode();
-        } else {
-            qBtn.style.pointerEvents = 'auto';
-            if (isQuatuorMode) {
-                qBtn.style.background = '#00FF9D';
-                qBtn.style.color = '#000';
-                qBtn.innerText = 'QUATUOR (ON)';
+        if (qBtn) {
+            if (type === 'GLOBAL' || type === 'RADAR') {
+                isQuatuorMode = false;
+                qBtn.style.background = '#444';
+                qBtn.style.color = '#888';
+                qBtn.innerText = 'QUATUOR (N/A)';
+                qBtn.style.pointerEvents = 'none';
             } else {
-                qBtn.style.background = '#FFCC00';
-                qBtn.style.color = '#000';
-                qBtn.innerText = 'QUATUOR (9x9)';
+                qBtn.style.pointerEvents = 'auto';
+                if (isQuatuorMode) {
+                    qBtn.style.background = '#00FF9D';
+                    qBtn.style.color = '#000';
+                    qBtn.innerText = 'QUATUOR (ON)';
+                } else {
+                    qBtn.style.background = '#FFCC00';
+                    qBtn.style.color = '#000';
+                    qBtn.innerText = 'QUATUOR (9x9)';
+                }
             }
         }
         
-        if (isQuatuorMode) return renderQuatuorMode(type);
+        if (type === 'RADAR' || (typeof currentMatrixViewMode !== 'undefined' && currentMatrixViewMode === 'RADAR')) {
+            return renderRadarMode();
+        }
+        
+        if (isQuatuorMode || (typeof currentMatrixViewMode !== 'undefined' && currentMatrixViewMode === 'QUATUOR')) {
+            if (type !== 'GLOBAL') {
+                return renderQuatuorMode(type);
+            }
+        }
         
         const descripciones = {
             'SMIb': "SMIb: Codificación del orden de preferencias.",
@@ -6093,31 +6076,16 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     setInterval(() => {
         if (tourActive && Graph) {
             let center = {x: 0, y: 0, z: 0};
-            if (currentStats && currentStats.roles) {
-                let liderIdx = currentStats.roles.indexOf('LIDER');
-                if (liderIdx !== -1) {
-                    let node = Graph.graphData().nodes.find(n => n.id === liderIdx.toString());
-                    if (node && node.x !== undefined) { 
-                        center = {x: node.x, y: node.y, z: node.z}; 
-                    }
-                }
-            }
             tourAngle += 0.003;
             
-            // Respetar el zoom manual del usuario leyendo la distancia actual
             let currentCamPos = Graph.cameraPosition();
-            let dx = currentCamPos.x - center.x;
-            let dy = currentCamPos.y - center.y;
-            let dz = currentCamPos.z - center.z;
-            let currentDistance = Math.sqrt(dx*dx + dy*dy + dz*dz);
-            
-            // Mantener distancia actual, con límites por si se pierde
-            let distance = (currentDistance > 50 && currentDistance < 5000) ? currentDistance : 350;
+            let distance = Math.sqrt(currentCamPos.x*currentCamPos.x + currentCamPos.y*currentCamPos.y + currentCamPos.z*currentCamPos.z);
+            distance = (distance > 50 && distance < 5000) ? distance : 350;
             
             Graph.cameraPosition({
-                x: center.x + distance * Math.sin(tourAngle),
-                y: center.y + (distance * 0.4) * Math.cos(tourAngle * 1.5), // Leve variación vertical
-                z: center.z + distance * Math.cos(tourAngle)
+                x: distance * Math.sin(tourAngle),
+                y: (distance * 0.4) * Math.cos(tourAngle * 1.5),
+                z: distance * Math.cos(tourAngle)
             }, center, 0);
         }
     }, 30);
@@ -6375,7 +6343,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         el.innerHTML = shortText;
         
         let longText = shortText + extraDetails;
-        let elLong = document.getElementById('large-diagnosis-content');
+        let elLong = document.getElementById('narrativa-clinica-long');
         if (elLong) {
             let fullLong = longText.replace(/\*\*(.*?)\*\*/g, '<span style="color:#FFCC00; font-weight:bold;">$1</span>');
             elLong.innerHTML = fullLong;
@@ -6386,6 +6354,8 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         // Pausar si está corriendo
         if (isPlaying) togglePlay();
         
+        if (typeof updateDiagFlag === 'function') updateDiagFlag();
+
         let overlay = document.getElementById('large-diagnosis-overlay');
         overlay.style.display = 'flex';
         // Force reflow
@@ -6393,33 +6363,28 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         overlay.style.opacity = '1';
         
         // Calcular centro de gravedad para Zoom In
-        if (Graph) {
-            let nData = Graph.graphData().nodes;
-            if (nData && nData.length > 0) {
-                let cgX = 0, cgY = 0, cgZ = 0;
-                let validNodes = 0;
-                nData.forEach(n => {
-                    if (n.x !== undefined && n.y !== undefined && n.z !== undefined) {
-                        cgX += n.x; cgY += n.y; cgZ += n.z;
-                        validNodes++;
-                    }
-                });
-                
-                if (validNodes > 0) {
-                    cgX /= validNodes;
-                    cgY /= validNodes;
-                    cgZ /= validNodes;
-                    
-                    let currentCam = Graph.cameraPosition();
-                    if (currentCam && currentCam.x !== undefined && currentCam.y !== undefined && currentCam.z !== undefined) {
-                        // Acercar la cámara un 40% hacia el centro de gravedad
-                        Graph.cameraPosition({
-                            x: cgX + (currentCam.x - cgX) * 0.6,
-                            y: cgY + (currentCam.y - cgY) * 0.6,
-                            z: cgZ + (currentCam.z - cgZ) * 0.6
-                        }, {x: cgX, y: cgY, z: cgZ}, 2000); // 2 segundos de animación suave
-                    }
+        if (Graph && currentStats && currentStats.nodes && currentStats.nodes.length > 0) {
+            let cgX = 0, cgY = 0, cgZ = 0;
+            let validNodes = 0;
+            currentStats.nodes.forEach(n => {
+                if (n.x !== undefined && n.y !== undefined && n.z !== undefined) {
+                    cgX += n.x; cgY += n.y; cgZ += n.z;
+                    validNodes++;
                 }
+            });
+            
+            if (validNodes > 0) {
+                cgX /= validNodes;
+                cgY /= validNodes;
+                cgZ /= validNodes;
+                
+                let currentCam = Graph.cameraPosition();
+                // Acercar la cámara un 40% hacia el centro de gravedad
+                Graph.cameraPosition({
+                    x: cgX + (currentCam.x - cgX) * 0.6,
+                    y: cgY + (currentCam.y - cgY) * 0.6,
+                    z: cgZ + (currentCam.z - cgZ) * 0.6
+                }, {x: cgX, y: cgY, z: cgZ}, 2000); // 2 segundos de animación suave
             }
         }
     }
@@ -6515,20 +6480,16 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         let p2State = (p2Code === 'e') ? 0 : (p2Code === '?' ? 1 : 2); 
         
         const symbols = [
-            ['<', '¡', '['], // A1
-            ['E', '¿', 'R'], // A2
-            ['e', '?', 'r'], // A3
-            ['>', '!', ']']  // A4
+            ['E', '¿', 'R'],
+            ['e', '?', 'r'],
+            ['<', 'i', '['],
+            ['>', '!', ']']
         ];
         
         let d1 = PRISMA_DEFS[pIdx].d1;
         let d2 = PRISMA_DEFS[pIdx].d2;
         
-        let labelArr = ['.', '.', '.', '.'];
-        labelArr[d1] = symbols[d1][p1State];
-        labelArr[d2] = symbols[d2][p2State];
-        
-        return labelArr.join('');
+        return `.${symbols[d1][p1State]}${symbols[d2][p2State]}.`;
     }
 
     function renderPrismaUI() {
@@ -6559,10 +6520,11 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             if (isMaxDensity) badgesHtml += '<span style="background: #FF0055; color: #FFF; padding: 2px 5px; border-radius: 3px; font-size: 10px;">🔥 MAX DENS</span>';
             
             let displayLabel = getPrismaDisplayLabel(cat, selectedPrismaIndex);
+            let safeLabel = displayLabel.replace(/</g, '&lt;').replace(/>/g, '&gt;');
             
             html += `
                 <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.2s; position: relative;" onclick="selectPrismaCategory('${cat}')">
-                    <div style="font-size: 18px; font-weight: bold; color: #FFF; text-align: center; margin-bottom: 5px; font-family: monospace;">${displayLabel}</div>
+                    <div style="font-size: 18px; font-weight: bold; color: #FFF; text-align: center; margin-bottom: 5px; font-family: monospace;">${safeLabel}</div>
                     
                     <div style="text-align: center; margin-bottom: 10px; height: 16px;">
                         ${badgesHtml}
@@ -6595,20 +6557,23 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     }
 
 
-    function toggleDiagLang() {
-        if (!window.diagLang) window.diagLang = currentLang;
-        window.diagLang = (window.diagLang === 'es') ? 'en' : 'es';
-        
+    function updateDiagFlag() {
         let flagEl = document.getElementById('diag-flag');
         if (flagEl) {
-            // Target flag: if currently Spanish, show English flag (GB) to switch TO english.
-            flagEl.innerText = (window.diagLang === 'es') ? "🇬🇧" : "🇪🇸";
-            flagEl.title = (window.diagLang === 'es') ? "Translate to English" : "Traducir a Español";
+            let l = window.diagLang || currentLang || 'es';
+            flagEl.innerText = (l === 'es') ? "🇬🇧" : "🇪🇸";
+            flagEl.title = (l === 'es') ? "Translate to English" : "Traducir a Español";
         }
+    }
+
+    function toggleDiagLang() {
+        if (!window.diagLang) window.diagLang = currentLang || 'es';
+        window.diagLang = (window.diagLang === 'es') ? 'en' : 'es';
         
-        // Regenerate diagnosis text if it's currently open
-        if (typeof showLargeDiagnosis === 'function') {
-            showLargeDiagnosis();
+        updateDiagFlag();
+        
+        if (window.lastNarrativaArgs) {
+            updateNarrativa(window.lastNarrativaArgs.estado, window.lastNarrativaArgs.densidad, window.lastNarrativaArgs.entropia, window.lastNarrativaArgs.counts);
         }
     }
 
@@ -6693,7 +6658,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         loadMatrixIntoHistory(currentMatrix);
         updateSimulation();
     }
-
+    
 </script>
 
     <!-- MANIFESTO TICKER -->

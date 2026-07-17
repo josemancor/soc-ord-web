@@ -9,7 +9,7 @@ echo "------------------------------------------------"
 
 # Verifica si hay cambios nuevos o sincroniza el HUB
 echo "🔄 0. Sincronizando última versión de HUB_VISORDP..."
-SOURCE_HUB="/Users/jmcor/Desktop/SOC_ORD_Project/04_Animaciones_VISORD/HUB_SOC_ORD_SMIb.html"
+SOURCE_HUB="/Users/jmcor/Desktop/SOC_ORD_Project/04_Animaciones_VISORDP/HUB_SOC_ORD_SMIb.html"
 DEST_HUB="./HUB_SOC_ORD_SMIb.html"
 
 if [ -f "$SOURCE_HUB" ]; then
