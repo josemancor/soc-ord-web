@@ -1,4 +1,4 @@
-cclass VisordApp {
+class VisordApp {
     constructor() {
         this.engine = null;
         this.uiPanels = null;
