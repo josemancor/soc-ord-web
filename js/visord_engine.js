@@ -1,4 +1,4 @@
-/**
+//**
  * SOC_ORD PROJECT - VISORD HUB (Omni-Visor)
  * Motor 3D Unificado basado en Super AFC
  */
@@ -56,6 +56,10 @@ class VisordHubEngine {
         if (!this.container) return;
         
         this.scene = new THREE.Scene();
+        
+        // 🌫️ Atmósfera 3D Instrumental: Niebla Termodinámica Reactiva
+        this.scene.fog = new THREE.FogExp2(0x0f172a, 0.005);
+
         // Add layers to scene
         Object.values(this.layers).forEach(layer => this.scene.add(layer));
         
@@ -84,7 +88,7 @@ class VisordHubEngine {
         // Custom Axes for AFC (Negative and Positive, Brighter Colors)
         const axisLength = 25; // Adaptado a la escala normalizada (span = 20)
         
-        const matX = new THREE.LineBasicMaterial({ color: 0xff4444, transparent: false }); // Rojo puro, sin opacidad para mayor visibilidad
+        const matX = new THREE.LineBasicMaterial({ color: 0xff4444, transparent: false });
         const geoX = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-axisLength, 0, 0), new THREE.Vector3(axisLength, 0, 0)]);
         this.scene.add(new THREE.LineSegments(geoX, matX));
         
@@ -96,12 +100,32 @@ class VisordHubEngine {
         const geoZ = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, -axisLength), new THREE.Vector3(0, 0, axisLength)]);
         this.scene.add(new THREE.LineSegments(geoZ, matZ));
         
+        // ✨ Polvo Cuántico Ambiental (Starfield Quantum Particles)
+        const particleGeo = new THREE.BufferGeometry();
+        const particleCount = 250;
+        const posArray = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 180;
+        }
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particleMat = new THREE.PointsMaterial({
+            size: 0.7,
+            color: 0x38bdf8,
+            transparent: true,
+            opacity: 0.35
+        });
+        this.quantumParticles = new THREE.Points(particleGeo, particleMat);
+        this.scene.add(this.quantumParticles);
+
         // Añadir Grid sutil en el plano base para dar percepción de profundidad
-        // Como el span de los datos es ~20 (de -10 a 10), ponemos el suelo justo debajo (y = -12)
         const gridHelper = new THREE.GridHelper(50, 50, 0x555555, 0x222222);
-        gridHelper.position.y = -12; // Suelo base pegado a los datos
+        gridHelper.position.y = -12;
         this.scene.add(gridHelper);
         
+        // Default Projection & View modes
+        this.projectionMode = 'freq'; // Por defecto: Frecuencias
+        this.viewMode = 'planos';       // Por defecto: Planos
+
         // Events
         window.addEventListener('resize', this.onWindowResize.bind(this));
         this.container.addEventListener('mousemove', this.onMouseMove.bind(this));
@@ -507,7 +531,6 @@ class VisordHubEngine {
         // 2. Capa MICRO (Sujetos Suplementarios -> Avatares 2D o Esferas)
         if (this.payload.subjects) {
             const geoMicro = new THREE.SphereGeometry(0.2, 16, 16);
-            const textureLoader = new THREE.TextureLoader();
             
             Object.entries(this.payload.subjects).forEach(([key, subject]) => {
                 // Saltar los puntos brutos temporales (ej. 1Aa1), porque esos los pinta el Slider (Trayectorias)
@@ -520,9 +543,8 @@ class VisordHubEngine {
                 
                 let mesh;
                 if (!this.isMultiGroup && num >= 1 && num <= 12) {
-                    // Usar textura de avatar
-                    const tex = textureLoader.load(`assets/faces/${num}.jpg`);
-                    tex.colorSpace = THREE.SRGBColorSpace;
+                    // Usar textura de avatar en recorte circular ajustado con anillo neón
+                    const tex = this.createCircularFaceTexture(`assets/faces/${num}.jpg`);
                     const matMicro = new THREE.SpriteMaterial({ map: tex });
                     mesh = new THREE.Sprite(matMicro);
                     
@@ -775,10 +797,10 @@ class VisordHubEngine {
         subjectIds.forEach(id => {
             const { points, labels } = extractTrajectory(this.payload.subjects, false, id, metaG, metaC);
             if (points.length >= 1) {
-                // Dibujar nodos estáticos para todos los seleccionados
+                // Dibujar nodos estáticos para todos los seleccionados en tamaño fino y nítido (radio 0.18)
                 points.forEach((p, idx) => {
                     const matNode = new THREE.MeshBasicMaterial({ color: 0xfbbf24 });
-                    const meshNode = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), matNode);
+                    const meshNode = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 16), matNode);
                     meshNode.position.copy(p);
                     meshNode.userData = { type: 'Trayectoria Nodo', name: labels[idx] };
                     layer.add(meshNode);
@@ -787,9 +809,9 @@ class VisordHubEngine {
                 // Añadir etiquetas en los vértices (Tamaño discreto: 0.75)
                 points.forEach((pt, idx) => {
                     const labelStr = labels[idx];
-                    const sprite = this.createTextSprite(labelStr, '#38bdf8', 0.75); // Azul claro discreto
+                    const sprite = this.createTextSprite(labelStr, '#38bdf8', 0.65); // Azul claro discreto
                     sprite.position.copy(pt);
-                    sprite.position.y += 0.8; // Por encima del vértice
+                    sprite.position.y += 0.45; // Ligeramente por encima del vértice
                     sprite.userData = { ...sprite.userData, type: 'Nodo Sujeto', name: labelStr };
                     layer.add(sprite);
                 });
@@ -805,7 +827,7 @@ class VisordHubEngine {
                         this.activeCurves.push({ curve, isAag: false, id });
                     }
                 }
-                this.labelsCache[id] = this.createTextSprite(id, '#ffffff', 0.6);
+                this.labelsCache[id] = this.createTextSprite(id, '#ffffff', 0.55);
             }
         });
         
@@ -820,7 +842,7 @@ class VisordHubEngine {
                 // Dibujar nodos
                 points.forEach((p, idx) => {
                     const matNode = new THREE.MeshBasicMaterial({ color: 0xffffff });
-                    const meshNode = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), matNode);
+                    const meshNode = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 16), matNode);
                     meshNode.position.copy(p);
                     layer.add(meshNode);
                 });
@@ -888,7 +910,10 @@ class VisordHubEngine {
             'C': ['C1', 'C2', 'C3'],
             'S': ['Sujeto', 'SUBJECT', 'Nodo Sujeto', 'Nodo Sujeto Base', 'Nodo Sociomatriz Cromático'],
             'E': ['Trayectoria', 'Evolucion', 'Evolución', 'EVOLUTION', 'Trayectoria Nodo'],
-            'D': ['CLUSTER', 'Dendrograma', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6']
+            'D': ['CLUSTER', 'Dendrograma', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+            'V': ['VAR', 'Variable', 'Modalidad', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10'],
+            'A': ['AAG', 'Adjetivo', 'Factor', 'AAG_PLUS', 'AAG_MINUS'],
+            'K': ['Cluster', 'K1', 'K2', 'K3', 'K4', 'Cluster Sujetos']
         };
 
         const targetTypes = mapKeyToType[key] || [key];
@@ -1031,12 +1056,11 @@ class VisordHubEngine {
             let mesh;
             if (!item.isAag) {
                 if (!this.isMultiGroup && parseInt(item.id) >= 1 && parseInt(item.id) <= 12) {
-                    // Avatar del sujeto
-                    const tex = textureLoader.load(`assets/faces/${item.id}.jpg`);
-                    tex.colorSpace = THREE.SRGBColorSpace;
+                    // Avatar del sujeto con recorte circular perfecto y anillo neón
+                    const tex = this.createCircularFaceTexture(`assets/faces/${item.id}.jpg`);
                     const mat = new THREE.SpriteMaterial({ map: tex });
                     mesh = new THREE.Sprite(mat);
-                    mesh.scale.set(1.5, 1.5, 1);
+                    mesh.scale.set(1.4, 1.4, 1);
                 } else {
                     const mat = new THREE.MeshBasicMaterial({ color: 0x10b981 }); // Verde neutro
                     mesh = new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 16), new THREE.MeshPhongMaterial({ color: 0xa3e635 }));
@@ -1490,6 +1514,12 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         this.abortTour = false;
         if (this.controls) this.controls.enabled = false;
         
+        // Ocultar bandas laterales y barras 3D para ejecutar el Tour a Pantalla Completa sin interferencias
+        ['left-sidebar', 'right-sidebar', 'top-bar', 'bottom-action-dock'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+
         Object.keys(this.state).forEach(k => this.state[k] = false);
         this.state['UNIVERSE'] = true;
         this.updateLayerVisibility();
@@ -1504,29 +1534,29 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         
         if (this.audio) this.audio.playDrone();
         
-        // Titulares flotando estratégicamente arriba para no tapar la escena 3D (Alta Visibilidad para Vista Cansada)
+        // Titulares flotando estratégicamente arriba en tamaño discreto y elegante para no tapar la escena 3D
         const titleOverlay = document.createElement('div');
         titleOverlay.id = 'tour-title-overlay';
         titleOverlay.style.position = 'absolute';
-        titleOverlay.style.top = '6%';
+        titleOverlay.style.top = '20px';
         titleOverlay.style.left = '50%';
         titleOverlay.style.transform = 'translateX(-50%)';
         titleOverlay.style.color = '#ffffff';
-        titleOverlay.style.fontSize = '30px';
-        titleOverlay.style.fontWeight = '800';
-        titleOverlay.style.textShadow = '0px 0px 20px rgba(0, 255, 157, 0.9)';
+        titleOverlay.style.fontSize = '16px';
+        titleOverlay.style.fontWeight = '700';
+        titleOverlay.style.textShadow = '0px 0px 10px rgba(0, 255, 157, 0.7)';
         titleOverlay.style.fontFamily = "'Outfit', 'Inter', sans-serif";
         titleOverlay.style.pointerEvents = 'none';
         titleOverlay.style.zIndex = '1000';
         titleOverlay.style.opacity = '0';
-        titleOverlay.style.transition = 'opacity 1.2s ease-in-out';
+        titleOverlay.style.transition = 'opacity 0.8s ease-in-out';
         titleOverlay.style.textAlign = 'center';
         titleOverlay.style.background = 'rgba(15, 23, 42, 0.92)';
-        titleOverlay.style.backdropFilter = 'blur(12px)';
-        titleOverlay.style.padding = '18px 36px';
-        titleOverlay.style.borderRadius = '16px';
-        titleOverlay.style.border = '2px solid rgba(56, 189, 248, 0.6)';
-        titleOverlay.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.7)';
+        titleOverlay.style.backdropFilter = 'blur(10px)';
+        titleOverlay.style.padding = '8px 20px';
+        titleOverlay.style.borderRadius = '10px';
+        titleOverlay.style.border = '1px solid rgba(56, 189, 248, 0.5)';
+        titleOverlay.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.6)';
         this.container.appendChild(titleOverlay);
         
         const showTitle = (text) => {
@@ -1822,8 +1852,12 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         this.state['MICRO'] = true;
         this.updateLayerVisibility();
         
-        resetCameraAndControls();
-        
+        // Restaurar la visibilidad de las bandas laterales y barras del visor al finalizar o cancelar el Tour
+        ['left-sidebar', 'right-sidebar', 'top-bar', 'bottom-action-dock'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = '';
+        });
+
         // Disparar evento para sincronizar la UI en app.js
         window.dispatchEvent(new Event('tour-ended'));
     }

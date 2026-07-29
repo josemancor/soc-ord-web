@@ -1,4 +1,4 @@
-// Motor de Audio Procedural para VISORD (Web Audio API)
+/// Motor de Audio Procedural para VISORD (Web Audio API)
 // Genera sonidos cinematográficos sin necesidad de archivos externos.
 
 class VisordAudio {

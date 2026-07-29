@@ -1,4 +1,4 @@
-class VisordApp {
+cclass VisordApp {
     constructor() {
         this.engine = null;
         this.uiPanels = null;
@@ -16,6 +16,55 @@ class VisordApp {
             this.buildControlPanel(window.VISORD_PAYLOAD);
             this.setupPlayback();
             // No hacemos loader.style.display = 'none'; aquí
+        }
+
+        // Sistema de Autenticación Ágil y Diversificación por Rol (IP / IPI / IPIS)
+        this.currentRole = 'IP';
+        const loginBox = document.getElementById('portal-login-box');
+        const optionsBox = document.getElementById('portal-options-box');
+        const roleAuthBadge = document.getElementById('role-auth-badge');
+        const roleDynamicContent = document.getElementById('role-dynamic-content');
+        const btnLoginAccess = document.getElementById('btn-login-access');
+        const btnChangeRole = document.getElementById('btn-change-role');
+        const authInput = document.getElementById('auth-passcode');
+        const roleSelect = document.getElementById('select-role');
+
+        const processLogin = () => {
+            const passcode = (authInput ? authInput.value.trim() : '').toUpperCase();
+            const requestedRole = roleSelect ? roleSelect.value : 'IP';
+
+            if (requestedRole === 'IPIS') {
+                if (passcode.includes('IPIS') || passcode.includes('MASTER') || passcode.includes('AUTOR') || passcode === '0') {
+                    this.currentRole = 'IPIS';
+                    this.showRoleDashboard('IPIS');
+                } else {
+                    alert('⚠️ Clave IPIS Requerida. Introduzca clave maestra (Ej: IPIS-MASTER o clave de Autor).');
+                }
+            } else if (requestedRole === 'IPI') {
+                if (passcode.includes('IPI') || passcode.includes('INST') || passcode.includes('DEPT')) {
+                    this.currentRole = 'IPI';
+                    this.showRoleDashboard('IPI');
+                } else {
+                    alert('⚠️ Clave IPI Requerida. Introduzca la clave del Servidor Institucional (Ej: IPI-INST).');
+                }
+            } else {
+                this.currentRole = 'IP';
+                this.showRoleDashboard('IP');
+            }
+        };
+
+        if (btnLoginAccess) btnLoginAccess.addEventListener('click', processLogin);
+        if (authInput) {
+            authInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') processLogin();
+            });
+        }
+
+        if (btnChangeRole) {
+            btnChangeRole.addEventListener('click', () => {
+                if (optionsBox) optionsBox.style.display = 'none';
+                if (loginBox) loginBox.style.display = 'flex';
+            });
         }
         
         // Listener para carga interactiva (Splash Screen)
@@ -154,6 +203,118 @@ class VisordApp {
         }
     }
     
+    showRoleDashboard(role) {
+        const loginBox = document.getElementById('portal-login-box');
+        const optionsBox = document.getElementById('portal-options-box');
+        const badge = document.getElementById('role-auth-badge');
+        const content = document.getElementById('role-dynamic-content');
+
+        if (loginBox) loginBox.style.display = 'none';
+        if (optionsBox) optionsBox.style.display = 'block';
+
+        if (role === 'IPIS') {
+            if (badge) {
+                badge.style.background = 'rgba(168, 85, 247, 0.2)';
+                badge.style.border = '1px solid rgba(168, 85, 247, 0.6)';
+                badge.style.color = '#c084fc';
+                badge.innerHTML = '👑 <strong>SESIÓN AUTENTICADA: IPIS (Master Inst. Superior - Desde el Nodo 0)</strong>';
+            }
+            if (content) {
+                content.innerHTML = `
+                    <div style="font-weight:700; color:#c084fc; font-size:0.95rem; margin-bottom:8px;">🌌 OPCIONES DE CONTROL OMNIPOTENTE NODO 0 (IPIS Master)</div>
+                    <p style="font-size:0.82rem; color:#cbd5e1; margin-bottom:14px; line-height:1.4;">
+                        Acceso pleno e ilimitado a todas las variables de simulación raíz, matrices relacionales SMIb, variedad de Grassmann y auditoría global.
+                    </p>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <label style="font-size:0.82rem; color:#94a3b8; font-weight:600;">📜 Seleccionar Cualquier Estudio del Repositorio Histórico:</label>
+                        <select id="select-historical-study" style="background:#0f172a; border:1px solid rgba(168,85,247,0.5); color:#c084fc; padding:8px 12px; border-radius:10px; font-size:0.85rem; font-weight:600; outline:none; cursor:pointer;">
+                            <option value="CURRENT">🟢 ⚡ Simulación Activa (payload_data.js)</option>
+                            <option value="data/estudios_historicos/ESTUDIO_DEMO_HUB_2026.json">🎓 🏫 Sociometría Escolar (G1_T2_C2)</option>
+                            <option value="data/VISORD_HUB_Payload.json">🏢 🏢 Sociometría Laboral (G2_T3_C2)</option>
+                        </select>
+                        <div style="margin-top:6px; font-size:0.78rem; color:#a855f7;">
+                            &bull; Modo Recalibración Activado &bull; Auditoría de Logs Completa &bull; Zero-Purge Control
+                        </div>
+                    </div>
+                `;
+            }
+            const titleBadge = document.getElementById('active-projection-title');
+            if (titleBadge) titleBadge.textContent = 'PROYECCIÓN ACTIVA: Modo IPIS Master (Nodo 0 - Control Total)';
+        } else if (role === 'IPI') {
+            if (badge) {
+                badge.style.background = 'rgba(56, 189, 248, 0.2)';
+                badge.style.border = '1px solid rgba(56, 189, 248, 0.6)';
+                badge.style.color = '#38bdf8';
+                badge.innerHTML = '🏛️ <strong>SESIÓN AUTENTICADA: IPI (Investigador Principal Institucional)</strong>';
+            }
+            if (content) {
+                content.innerHTML = `
+                    <div style="font-weight:700; color:#38bdf8; font-size:0.95rem; margin-bottom:8px;">🏢 SERVIDOR INSTITUCIONAL DE ESTUDIOS DE DEPARTAMENTO</div>
+                    <p style="font-size:0.82rem; color:#cbd5e1; margin-bottom:14px; line-height:1.4;">
+                        Acceso a todos los informes y estudios socio-matriciales pertenecientes a los centros e instituciones a su cargo.
+                    </p>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <label style="font-size:0.82rem; color:#94a3b8; font-weight:600;">🏛️ Seleccionar Informe Institucional:</label>
+                        <select id="select-historical-study" style="background:#0f172a; border:1px solid rgba(56,189,248,0.5); color:#38bdf8; padding:8px 12px; border-radius:10px; font-size:0.85rem; font-weight:600; outline:none; cursor:pointer;">
+                            <option value="CURRENT">🟢 ⚡ Informe Actual de Cohorte Institucional</option>
+                            <option value="data/VISORD_HUB_Payload.json">🏢 🏢 Análisis Multigrupo G1..G3 (SDR/BDR)</option>
+                        </select>
+                    </div>
+                `;
+            }
+            const titleBadge = document.getElementById('active-projection-title');
+            if (titleBadge) titleBadge.textContent = 'PROYECCIÓN ACTIVA: Servidor Institucional IPI';
+        } else {
+            // IP: Estudio Acotado
+            if (badge) {
+                badge.style.background = 'rgba(0, 255, 157, 0.15)';
+                badge.style.border = '1px solid rgba(0, 255, 157, 0.5)';
+                badge.style.color = '#00FF9D';
+                badge.innerHTML = '🔬 <strong>SESIÓN AUTENTICADA: IP (Investigador de Estudio - Acceso Acotado)</strong>';
+            }
+            if (content) {
+                content.innerHTML = `
+                    <div style="font-weight:700; color:#00FF9D; font-size:0.95rem; margin-bottom:8px;">🔬 ESTUDIO SOCIO-MATRICIAL ASIGNADO</div>
+                    <p style="font-size:0.82rem; color:#cbd5e1; margin-bottom:12px; line-height:1.4;">
+                        Acceso acotado exclusivamente a los resultados de su investigación durante la ventana temporal del TTL.
+                    </p>
+                    <div style="background:rgba(0,0,0,0.3); border-radius:10px; padding:10px 14px; font-size:0.78rem; color:#94a3b8; font-family:monospace; line-height:1.5;">
+                        &bull; Estudio Activo: <span style="color:#fff;">EST_2026_G1T2C2_88F1</span><br>
+                        &bull; Custodia Ética: <span style="color:#00FF9D;">🔒 Datos Anonimizados (S1..SN)</span><br>
+                        &bull; Ventana TTL: <span style="color:#00FF9D;">⏳ 30 días restantes</span>
+                    </div>
+                `;
+            }
+            const titleBadge = document.getElementById('active-projection-title');
+            if (titleBadge) titleBadge.textContent = 'PROYECCIÓN ACTIVA: Estudio Acotado IP (TTL Temporal)';
+        }
+
+        const selectHist = document.getElementById('select-historical-study');
+        if (selectHist) {
+            selectHist.addEventListener('change', (e) => {
+                const val = e.target.value;
+                if (val === 'CURRENT') {
+                    if (window.VISORD_PAYLOAD) {
+                        this.loadAndStart(window.VISORD_PAYLOAD);
+                    }
+                    return;
+                }
+                fetch(val)
+                    .then(res => res.text())
+                    .then(text => {
+                        let contentText = text;
+                        if (contentText.startsWith('window.VISORD_PAYLOAD =')) {
+                            contentText = contentText.replace('window.VISORD_PAYLOAD =', '').replace(/;$/, '');
+                        }
+                        const data = JSON.parse(contentText);
+                        window.VISORD_PAYLOAD = data;
+                        this.loadAndStart(data);
+                    })
+                    .catch(err => alert("Error cargando informe: " + err.message));
+            });
+        }
+    }
+    
     loadAndStart(payload) {
         if (payload && payload.metadata) {
             payload.metadata.status = "VISUALIZADO";
@@ -168,12 +329,22 @@ class VisordApp {
         this.isPlaying = false;
         this.slider = document.getElementById('time-slider');
         this.playBtn = document.getElementById('play-btn');
+        this.stepBtn = document.getElementById('step-btn');
+        this.speedSelect = document.getElementById('speed-select');
+        this.frameCounter = document.getElementById('frame-counter');
         
         if (!this.slider || !this.playBtn) return;
         
+        const updateFrameCounter = (val) => {
+            if (this.frameCounter) {
+                this.frameCounter.textContent = `T = ${Math.round(val)} / 100`;
+            }
+        };
+
         this.slider.addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value) / 100;
-            this.engine.setTime(val);
+            const val = parseFloat(e.target.value);
+            this.engine.setTime(val / 100);
+            updateFrameCounter(val);
             
             // Sync meta-t
             const metaT = document.getElementById('meta-t');
@@ -184,17 +355,17 @@ class VisordApp {
                 });
                 const tArray = Array.from(times).sort();
                 const step = 100 / (Math.max(1, tArray.length - 1));
-                const idx = Math.round(parseFloat(e.target.value) / step);
+                const idx = Math.round(val / step);
                 if (tArray[idx]) {
                     metaT.value = tArray[idx];
                     
                     // Actualizar toggles visuales
                     document.querySelectorAll('.toggle-all-col').forEach(el => {
                         if (el.dataset.t === tArray[idx]) {
-                            el.style.background = '#3b82f6'; // Azul oscuro resalte
+                            el.style.background = '#3b82f6';
                             el.style.color = '#ffffff';
                         } else {
-                            el.style.background = '#1e293b'; // Fondo oscuro base
+                            el.style.background = '#1e293b';
                             el.style.color = '#e2e8f0';
                         }
                     });
@@ -207,17 +378,34 @@ class VisordApp {
             this.playBtn.textContent = this.isPlaying ? '⏸' : '▶';
             if (this.isPlaying) this.animatePlayback();
         });
+
+        // Botón Step (T+1)
+        if (this.stepBtn) {
+            this.stepBtn.addEventListener('click', () => {
+                let val = parseFloat(this.slider.value);
+                val += 10; // Avanzar 1 paso temporal
+                if (val > 100) val = 0;
+                this.slider.value = val;
+                this.engine.setTime(val / 100);
+                updateFrameCounter(val);
+            });
+        }
     }
     
     animatePlayback() {
         if (!this.isPlaying) return;
         
+        const mult = this.speedSelect ? parseFloat(this.speedSelect.value) : 1;
         let val = parseFloat(this.slider.value);
-        val += 0.5; // Velocidad
+        val += 0.5 * mult; // Aplicar multiplicador de velocidad (x1, x2, x4)
         if (val > 100) val = 0;
         
         this.slider.value = val;
         this.engine.setTime(val / 100);
+        if (this.frameCounter) this.frameCounter.textContent = `T = ${Math.round(val)} / 100`;
+        
+        requestAnimationFrame(() => this.animatePlayback());
+    }
         
         requestAnimationFrame(() => this.animatePlayback());
     }
@@ -440,8 +628,9 @@ class VisordApp {
             cArray.forEach(c => {
                 html += `<tr><th class="toggle-all-row" data-c="${c}" style="background:#1e293b; color:#e2e8f0; padding:5px; border:1px solid rgba(56, 189, 248, 0.45); cursor:pointer;" title="Toggle Row C${c}">C${c}</th>`;
                 tArray.forEach(t => {
+                    const tNum = t.charCodeAt(0) - 96; // a->1, b->2, c->3, d->4
                     const cellId = `cell_t${t}_c${c}`;
-                    html += `<td id="${cellId}" class="meta-cell tc-cell" data-t="${t}" data-c="${c}" style="border:1px solid rgba(56, 189, 248, 0.5); padding:5px; cursor:pointer; background:rgba(30, 41, 59, 0.9); transition:0.2s;" title="T${t} C${c}"></td>`;
+                    html += `<td id="${cellId}" class="meta-cell tc-cell" data-t="${t}" data-c="${c}" style="border:1.5px solid rgba(56, 189, 248, 0.5); padding:6px 4px; cursor:pointer; background:rgba(15, 23, 42, 0.85); transition:0.2s; font-family:'Fira Code',monospace; font-size:10px;" title="Cruce T${tNum} × C${c}">T${tNum}C${c}</td>`;
                 });
                 for(let i=tArray.length; i<maxCols; i++) {
                     html += `<td style="border:none;"></td>`;
@@ -732,28 +921,24 @@ class VisordApp {
             this.engine.drawTrajectories(selectedSubjects, evSubjects, selectedAAGs, selectedPairs, activeT);
         }
         
-        // ⚡ Bind Capa Global Pill Buttons & Hotkeys (F G T C S E D)
+        // ⚡ Bind Capa Global Pill Buttons & Hotkeys (F G T C S / E D V A K)
         document.querySelectorAll('.pill-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const target = e.currentTarget;
                 const key = target.dataset.key;
-                
-                // Contar cuántas letras de la lista FGTCSED están actualmente activas antes de este click
-                const activeButtons = Array.from(document.querySelectorAll('.pill-btn.active'));
-                const isCurrentlyActive = target.classList.contains('active');
+                const isAlt = e.altKey;
 
-                // Regla de Primera Marca: Si NO hay ninguna letra activa y vamos a marcar una nueva, limpiar pantalla primero
-                if (activeButtons.length === 0 && !isCurrentlyActive) {
+                // Modo Disruptivo Exclusivo (Alt + Click / Alt + Tecla): Limpiar pantalla y activar SOLO esta letra
+                if (isAlt) {
                     if (typeof handleClear === 'function') {
                         handleClear();
                     }
                     target.classList.add('active');
-                    const isAct = true;
                     if (this.engine && this.engine.toggleGlobalLayer) {
-                        this.engine.toggleGlobalLayer(key, isAct);
+                        this.engine.toggleGlobalLayer(key, true);
                     }
                 } else {
-                    // Modo Acumulativo ON / OFF
+                    // Modo Acumulativo Normal (Click / Tecla): Toggle ON/OFF
                     target.classList.toggle('active');
                     const isAct = target.classList.contains('active');
                     if (this.engine && this.engine.toggleGlobalLayer) {
@@ -765,20 +950,134 @@ class VisordApp {
                 if (titleBadge) {
                     const activeKeys = Array.from(document.querySelectorAll('.pill-btn.active')).map(b => b.dataset.key).join('');
                     titleBadge.textContent = activeKeys 
-                        ? `PROYECCIÓN ACTIVA: [${activeKeys}] (${key} ${target.classList.contains('active') ? 'ON' : 'OFF'})`
+                        ? `PROYECCIÓN GLOBAL ACTIVA: [${activeKeys}] (${key} ${target.classList.contains('active') ? 'ON' : 'OFF'}${isAlt ? ' - DISRUPTIVO' : ''})`
                         : 'PROYECCIÓN ACTIVA: Pantalla Limpia (Lista para Selección)';
                 }
+                this.updateTrajectories();
             });
         });
 
-        // ⌨️ Escuchador Global de Teclas Rápidas (Press F, G, T, C, S, E, D)
+        // 💬 Ventanilla Informativa Flotante para las 10 Letras Globales (F G T C S / E D V A K)
+        const PILL_INFO_MAP = {
+            'F': { title: 'F — Figuras', badge: 'Quatuor Q81', color: '#38bdf8', desc: '81 Figuras Geométricas Sociométricas y centroides de tensión relacional.' },
+            'G': { title: 'G — Grupos', badge: 'Centroides G1-G3', color: '#38bdf8', desc: 'Grupos Colectivos y masas de afinidad estructural.' },
+            'T': { title: 'T — Tiempo', badge: 'Fases T1-T4', color: '#38bdf8', desc: 'Ejes temporales y secuencias de evolución del ecosistema.' },
+            'C': { title: 'C — Criterio', badge: 'Criterios C1-C3', color: '#38bdf8', desc: 'Criterios de elección y rechazo sociométrico aplicados.' },
+            'S': { title: 'S — Sujetos', badge: 'Posición S1-Sn', color: '#38bdf8', desc: 'Sujetos Centroides y masa neta de respuesta individual.' },
+            'E': { title: 'E — Evolución', badge: 'Trayectorias E1-En', color: '#a855f7', desc: 'Líneas de trayectoria vectorial y mutación temporal.' },
+            'D': { title: 'D — Dendrograma', badge: 'Clustering D1-D6', color: '#a855f7', desc: 'Clustering jerárquico y dendrogramas sociomatriciales.' },
+            'V': { title: 'V — Variables', badge: '10 Variables', color: '#f59e0b', desc: 'Proyección global de modalidades de las 10 variables.' },
+            'A': { title: 'A — AAG', badge: '16 Adjetivos', color: '#00FF9D', desc: 'Proyección de los 16 adjetivos dicotomizados AAG.' },
+            'K': { title: 'K — Clústeres', badge: 'Clústeres por Grupo', color: '#ec4899', desc: 'Proyección global de clústeres de sujetos de cada grupo.' }
+        };
+
+        const popover = document.getElementById('pill-popover');
+        
+        const setupPillPopover = (selector) => {
+            document.querySelectorAll(selector).forEach(btn => {
+                const key = btn.dataset.key || btn.dataset.vak;
+                const info = PILL_INFO_MAP[key];
+                if (!info || !popover) return;
+
+                btn.addEventListener('mouseenter', (e) => {
+                    popover.style.borderColor = info.color;
+                    popover.innerHTML = `
+                        <div class="popover-header">
+                            <span class="popover-title" style="color:${info.color};">${info.title}</span>
+                            <span class="popover-badge" style="color:${info.color}; border:1px solid ${info.color};">${info.badge}</span>
+                        </div>
+                        <div class="popover-desc">${info.desc}</div>
+                        <div class="popover-footer">💡 Click: Acumulativo | Alt+Click: Disruptivo Exclusivo</div>
+                    `;
+                    popover.style.display = 'block';
+                    popover.style.left = (e.clientX + 15) + 'px';
+                    popover.style.top = (e.clientY + 10) + 'px';
+                });
+
+                btn.addEventListener('mousemove', (e) => {
+                    if (popover.style.display === 'block') {
+                        let left = e.clientX + 15;
+                        let top = e.clientY + 10;
+                        if (left + 280 > window.innerWidth) left = e.clientX - 285;
+                        if (top + 140 > window.innerHeight) top = e.clientY - 140;
+                        popover.style.left = left + 'px';
+                        popover.style.top = top + 'px';
+                    }
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    popover.style.display = 'none';
+                });
+            });
+        };
+
+        setupPillPopover('.pill-btn, .modal-pill-btn, .VAK-btn');
+
+        // 📊 Interruptor de Proyección: Frecuencias vs Densidades (Por defecto: Frecuencias)
+        const btnModeFreq = document.getElementById('switch-mode-freq');
+        const btnModeDens = document.getElementById('switch-mode-dens');
+
+        const setProjectionMode = (mode) => {
+            if (mode === 'freq') {
+                btnModeFreq?.classList.add('active');
+                if (btnModeFreq) { btnModeFreq.style.background = '#0ea5e9'; btnModeFreq.style.color = '#fff'; }
+                btnModeDens?.classList.remove('active');
+                if (btnModeDens) { btnModeDens.style.background = '#1e293b'; btnModeDens.style.color = '#94a3b8'; }
+            } else {
+                btnModeDens?.classList.add('active');
+                if (btnModeDens) { btnModeDens.style.background = '#0ea5e9'; btnModeDens.style.color = '#fff'; }
+                btnModeFreq?.classList.remove('active');
+                if (btnModeFreq) { btnModeFreq.style.background = '#1e293b'; btnModeFreq.style.color = '#94a3b8'; }
+            }
+            if (this.engine && this.engine.setProjectionMode) {
+                this.engine.setProjectionMode(mode);
+            }
+        };
+
+        btnModeFreq?.addEventListener('click', () => setProjectionMode('freq'));
+        btnModeDens?.addEventListener('click', () => setProjectionMode('dens'));
+
+        // 📐 Interruptor de Modo de Vista: Planos | Tablas | Figuras (Por defecto: Planos)
+        const btnViewPlanos = document.getElementById('switch-view-planos');
+        const btnViewTablas = document.getElementById('switch-view-tablas');
+        const btnViewFiguras = document.getElementById('switch-view-figuras');
+
+        const setViewMode = (mode) => {
+            [btnViewPlanos, btnViewTablas, btnViewFiguras].forEach(b => {
+                if (b) { b.classList.remove('active'); b.style.background = '#1e293b'; b.style.color = '#94a3b8'; }
+            });
+
+            if (mode === 'planos') {
+                btnViewPlanos?.classList.add('active');
+                if (btnViewPlanos) { btnViewPlanos.style.background = '#2563eb'; btnViewPlanos.style.color = '#fff'; }
+                if (this.uiPanels && this.uiPanels.dock) this.uiPanels.dock.style.display = 'none';
+            } else if (mode === 'tablas') {
+                btnViewTablas?.classList.add('active');
+                if (btnViewTablas) { btnViewTablas.style.background = '#2563eb'; btnViewTablas.style.color = '#fff'; }
+                if (this.uiPanels) this.uiPanels.showMatrices('SMIa');
+            } else if (mode === 'figuras') {
+                btnViewFiguras?.classList.add('active');
+                if (btnViewFiguras) { btnViewFiguras.style.background = '#2563eb'; btnViewFiguras.style.color = '#fff'; }
+                if (this.uiPanels) this.uiPanels.showQuatuor();
+            }
+
+            if (this.engine && this.engine.setViewMode) {
+                this.engine.setViewMode(mode);
+            }
+        };
+
+        btnViewPlanos?.addEventListener('click', () => setViewMode('planos'));
+        btnViewTablas?.addEventListener('click', () => setViewMode('tablas'));
+        btnViewFiguras?.addEventListener('click', () => setViewMode('figuras'));
+
+        // ⌨️ Escuchador Global de Teclas Rápidas (F, G, T, C, S, E, D, V, A, K con Alt+letra disruptivo)
         window.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
             const key = e.key.toUpperCase();
-            if (['F', 'G', 'T', 'C', 'S', 'E', 'D'].includes(key)) {
+            if (['F', 'G', 'T', 'C', 'S', 'E', 'D', 'V', 'A', 'K'].includes(key)) {
                 const btn = document.querySelector(`.pill-btn[data-key="${key}"]`);
                 if (btn) {
-                    btn.dispatchEvent(new MouseEvent('click', { shiftKey: e.shiftKey, altKey: e.altKey, bubbles: true }));
+                    btn.dispatchEvent(new MouseEvent('click', { altKey: e.altKey, bubbles: true }));
                 }
             }
         });
