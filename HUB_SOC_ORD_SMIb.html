@@ -17,6 +17,8 @@ window.onerror = function(msg, url, line, col, error) {
 </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUB SOC_ORD - Animación SMIb interactiva</title>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
     <script>
 /* injected local_libs/three.min.js */
 /**
@@ -1346,7 +1348,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     <!-- MAIN TITLE -->
     <div id="main-title" style="text-align: center; pointer-events: auto; display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
-        <div style="font-family: sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 4px; color: #fff; text-shadow: 0 0 15px rgba(0,162,255,0.8), 0 0 30px rgba(0,162,255,0.4); margin-bottom: 2px; margin-top: 5px;">VISORDP</div>
+        <div style="font-family: sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 4px; color: #fff; text-shadow: 0 0 15px rgba(0,162,255,0.8), 0 0 30px rgba(0,162,255,0.4); margin-bottom: 2px; margin-top: 5px;">VISORD1</div>
         <div id="lang-flags" style="display: flex; gap: 6px; justify-content: center; margin-bottom: 2px;">
             <span onclick="setLanguage('es')" style="cursor: pointer; font-size: 14px; opacity: 1; transition: transform 0.2s;" class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
             <span onclick="setLanguage('en')" style="cursor: pointer; font-size: 14px; opacity: 1; transition: transform 0.2s;" class="lang-flag" data-lang="en" title="English">🇬🇧</span>
@@ -2642,8 +2644,22 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     const Graph = ForceGraph3D({ rendererConfig: { preserveDrawingBuffer: true } })(graphContainer)
         .width(window.innerWidth)
         .height(window.innerHeight)
-        .backgroundColor('#0E1117')
-        .nodeLabel(node => {
+        .backgroundColor('#0E1117');
+        
+    // --- ILUMINACIÓN ESCÉNICA PARA GLASSMORPHISM ---
+    const scene = Graph.scene();
+    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(100, 200, 50);
+    scene.add(dirLight);
+    const cyanLight = new THREE.PointLight(0x00A2FF, 2, 300);
+    cyanLight.position.set(50, 50, 50);
+    scene.add(cyanLight);
+    const pinkLight = new THREE.PointLight(0xFF0055, 2, 300);
+    pinkLight.position.set(-50, -20, -50);
+    scene.add(pinkLight);
+
+    Graph.nodeLabel(node => {
             if (!currentStats) return `<div style="background:rgba(20,25,35,0.95); padding:10px; border-radius:8px; font-weight:bold; color:#fff;">Sujeto ${parseInt(node.id)+1}</div>`;
             let sdr = (currentStats.sda_emisores[node.id] + currentStats.sda_receptores[node.id]).toFixed(2);
             let dis = (currentStats.sda_emisores[node.id] - currentStats.sda_receptores[node.id]).toFixed(2);
@@ -2655,26 +2671,63 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             </div>`;
         })
         .linkColor(link => link.color || '#888')
-        .nodeColor(node => {
-            // El color es una variable visual CUALITATIVA ideal para categorías cerradas (Roles)
-            if (node.role === 'ALPHA') return '#F5F5DC'; // Blanco hueso / Dorado pálido
-            if (node.role === 'OMEGA') return '#FF0055'; // Rojo Carmesí
-            if (node.role === 'SATELITE') return '#00A2FF'; // Azul Cian
-            return '#666666'; // AISLADO (Gris oscuro)
-        })
-        .nodeVal(node => {
-            if (!currentStats) return 3;
-            // El tamaño es una variable visual CUANTITATIVA ideal para variables continuas y sutiles (Densidad)
-            let sdr_total = (currentStats.sda_emisores[node.id] + currentStats.sda_receptores[node.id]);
-            let sdr_promedio = sdr_total / Math.max(1, n_nodes);
+        .nodeThreeObject(node => {
+            if (!window.sharedSphereGeo) {
+                window.sharedSphereGeo = new THREE.SphereGeometry(1, 32, 32);
+            }
+            const group = new THREE.Group();
             
-            // Valor base 3. Mapeamos la densidad absoluta de forma continua.
-            let size = Math.max(1, 3 + (sdr_promedio * 2.0)); 
+            let size = 3;
+            let colorHex = 0x666666;
+            let sdr_total = 0;
+            if (currentStats && currentStats.sda_emisores && currentStats.sda_receptores) {
+                sdr_total = (currentStats.sda_emisores[node.id] + currentStats.sda_receptores[node.id]);
+                let sdr_promedio = sdr_total / Math.max(1, n_nodes);
+                size = Math.max(1, 1.5 + (sdr_promedio * 2.0)); 
+                if (node.role === 'ALPHA') size *= 1.3;
+            }
             
-            // Ligero destaque estructural extra para Alphas
-            if (node.role === 'ALPHA') size *= 1.3;
+            if (node.role === 'ALPHA') colorHex = 0xF5F5DC;
+            else if (node.role === 'OMEGA') colorHex = 0xFF0055;
+            else if (node.role === 'SATELITE') colorHex = 0x00A2FF;
             
-            return size;
+            // Esfera central glassmorphism
+            const glassMat = new THREE.MeshStandardMaterial({
+                color: colorHex,
+                metalness: 0.2,
+                roughness: 0.1,
+                transparent: true,
+                opacity: 0.8
+            });
+            const sphere = new THREE.Mesh(window.sharedSphereGeo, glassMat);
+            sphere.scale.set(size, size, size);
+            group.add(sphere);
+            
+            // Halo
+            let sda_emit = currentStats && currentStats.sda_emisores ? currentStats.sda_emisores[node.id] : 0;
+            let sda_recv = currentStats && currentStats.sda_receptores ? currentStats.sda_receptores[node.id] : 0;
+            let balance = Math.abs(sda_emit - sda_recv);
+            
+            if (balance > 1.0) {
+                const haloMat = new THREE.MeshBasicMaterial({
+                    color: colorHex,
+                    transparent: true,
+                    opacity: Math.min(0.5, balance * 0.1),
+                    blending: THREE.AdditiveBlending,
+                    side: THREE.BackSide
+                });
+                const halo = new THREE.Mesh(window.sharedSphereGeo, haloMat);
+                let haloSize = size * (1.1 + balance * 0.05);
+                halo.scale.set(haloSize, haloSize, haloSize);
+                group.add(halo);
+            }
+            
+            // Number text
+            const sprite = getNodeTextSprite(parseInt(node.id) + 1);
+            sprite.scale.set(size * 3.5, size * 3.5, 1);
+            group.add(sprite);
+            
+            return group;
         })
 
         // --- ESTÉTICA DE CRISTAL (CABLES FINOS) + ELECTRONES ---
@@ -4256,7 +4309,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
                         `).join('')}
                     </div>
                 </div>
-                <div id="radar-plot-area" style="flex-grow:1; position:relative; background:#000; display:flex; justify-content:center; align-items:center;"></div>
+                <div id="radar-plot-area" style="flex-grow:1; position:relative; background:#000; width:100%; height:100%; overflow:hidden;"></div>
             </div>
         `;
 
@@ -4431,7 +4484,12 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         function renderQuatuorMode(type) {
             let quatuorGrid = Array.from({length: 9}, () => Array(9).fill(0));
             let quatuorSum = Array.from({length: 9}, () => Array(9).fill(0));
-            const mapVal = (v) => v > 0 ? 0 : (v === 0 ? 1 : 2);
+            const mapVal = (v) => {
+                if (v === '0') return 1;
+                if (v >= 'A' && v <= 'Z') return 0;
+                if (v >= 'a' && v <= 'z') return 2;
+                return 1;
+            };
             
             let matrixData = analiticas[type] || currentMatrix;
             let isFreqOnly = (type === 'SMIb' || type === 'SMIa');
@@ -5375,7 +5433,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         // Capturar toda la pantalla tal como se ve (incluyendo ECG y controles)
         html2canvas(document.body, { backgroundColor: '#0E1117', useCORS: true }).then(canvas => {
             let link = document.createElement('a');
-            link.download = `VISORDP_Captura_N${n_nodes}_T${currentCycle}.png`;
+            link.download = `VISORD1_Captura_N${n_nodes}_T${currentCycle}.png`;
             link.href = canvas.toDataURL("image/png");
             link.click();
         }).catch(err => {
@@ -5831,7 +5889,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
             let ws2 = XLSX.utils.aoa_to_sheet(ws_globales_data);
             XLSX.utils.book_append_sheet(wb, ws2, "Frec_Globales");
 
-            XLSX.writeFile(wb, `VISORDP_FullTables_N${n_nodes}_T${currentCycle}.xlsx`);
+            XLSX.writeFile(wb, `VISORD1_FullTables_N${n_nodes}_T${currentCycle}.xlsx`);
         }
         
         // Lanzar reporte TXT en paralelo
@@ -5842,7 +5900,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         if (!currentMatrix || currentMatrix.length === 0) return;
         
         let report = "========================================================\n";
-        report += "   INFORME CLÍNICO AUTOMÁTICO - VISORDP SOC_ORD\n";
+        report += "   INFORME CLÍNICO AUTOMÁTICO - VISORD1 SOC_ORD\n";
         report += "========================================================\n\n";
         
         // 1. Diagnóstico Narrativo
@@ -5904,7 +5962,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
         const encodedUri = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", `Informe_VISORDP_N${n_nodes}_T${currentCycle}.txt`);
+        link.setAttribute("download", `Informe_VISORD1_N${n_nodes}_T${currentCycle}.txt`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
