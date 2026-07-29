@@ -916,6 +916,16 @@ class VisordApp {
                     alert("No hay ningún estudio activo cargado para guardar.");
                     return;
                 }
+                
+                // 🔒 CONTROL DE SEGURIDAD INSTITUCIONAL (Prevención de Fugas en Web Pública)
+                const isPublicWeb = window.location.hostname.includes('github.io') || 
+                                    (window.location.protocol === 'https:' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1'));
+                
+                if (isPublicWeb) {
+                    alert("🔒 PROTECCIÓN DE SEGURIDAD INSTITUCIONAL:\n\nLa descarga de archivos .JSON crudos y la gestión del archivo histórico están restringidas en la versión Web pública para evitar fugas de información sociométrica sensible.\n\nEsta funcionalidad está reservada a la Plataforma Institucional SOC_ORD de uso local / Intranet protegida.");
+                    return;
+                }
+
                 const defaultTipo = (window.VISORD_PAYLOAD?.metadata?.tipo || "REAL").toUpperCase();
                 const defaultGTC = (window.VISORD_PAYLOAD?.metadata?.gtc || "G3T4C3").toUpperCase();
                 const defaultName = window.VISORD_PAYLOAD?.metadata?.study_title || "Matriz_SOC_ORD";
