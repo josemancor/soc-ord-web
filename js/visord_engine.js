@@ -882,15 +882,16 @@ class VisordHubEngine {
 
     toggleGlobalLayer(key, isAct) {
         const mapKeyToType = {
+            'F': ['Figura', 'Q81', 'Quatuor', 'Feature Columna'],
             'G': ['G1', 'G2', 'G3'],
             'T': ['T1', 'T2', 'T3', 'T4'],
             'C': ['C1', 'C2', 'C3'],
-            'M': ['GxT', 'GxC', 'TxC', 'SOCIOMATRIX'],
-            'S': ['SUBJECT'],
-            'D': ['CLUSTER']
+            'S': ['Sujeto', 'SUBJECT', 'Nodo Sujeto', 'Nodo Sujeto Base', 'Nodo Sociomatriz Cromático'],
+            'E': ['Trayectoria', 'Evolucion', 'Evolución', 'EVOLUTION', 'Trayectoria Nodo'],
+            'D': ['CLUSTER', 'Dendrograma', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6']
         };
 
-        const targetTypes = mapKeyToType[key] || [];
+        const targetTypes = mapKeyToType[key] || [key];
 
         ['UNIVERSE', 'MICRO', 'TRAJECTORIES'].forEach(lName => {
             if (this.layers[lName]) {
@@ -906,19 +907,24 @@ class VisordHubEngine {
                 });
             }
         });
+
+        if (key === 'E' && this.layers['TRAJECTORIES']) {
+            this.layers['TRAJECTORIES'].visible = isAct;
+        }
     }
 
     setExclusiveGlobalLayer(exclusiveKey) {
         const mapKeyToType = {
+            'F': ['Figura', 'Q81', 'Quatuor', 'Feature Columna'],
             'G': ['G1', 'G2', 'G3'],
             'T': ['T1', 'T2', 'T3', 'T4'],
             'C': ['C1', 'C2', 'C3'],
-            'M': ['GxT', 'GxC', 'TxC', 'SOCIOMATRIX'],
-            'S': ['SUBJECT'],
-            'D': ['CLUSTER']
+            'S': ['Sujeto', 'SUBJECT', 'Nodo Sujeto', 'Nodo Sujeto Base', 'Nodo Sociomatriz Cromático'],
+            'E': ['Trayectoria', 'Evolucion', 'Evolución', 'EVOLUTION', 'Trayectoria Nodo'],
+            'D': ['CLUSTER', 'Dendrograma', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6']
         };
 
-        const targetTypes = mapKeyToType[exclusiveKey] || [];
+        const targetTypes = mapKeyToType[exclusiveKey] || [exclusiveKey];
 
         ['UNIVERSE', 'MICRO', 'TRAJECTORIES'].forEach(lName => {
             if (this.layers[lName]) {
@@ -932,6 +938,10 @@ class VisordHubEngine {
                 });
             }
         });
+
+        if (this.layers['TRAJECTORIES']) {
+            this.layers['TRAJECTORIES'].visible = (exclusiveKey === 'E');
+        }
     }
 
     toggleVariableCentroid(varNum, isVisible) {

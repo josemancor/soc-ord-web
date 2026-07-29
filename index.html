@@ -116,12 +116,29 @@
         </div>
     </div>
     
-    <!-- 👥 2. FRANJA IZQUIERDA (Filtro GTC & Población / Sujetos) -->
+    <!-- 👥 2. FRANJA IZQUIERDA (Etiquetas FGTCSED, Filtro GTC & Población / Sujetos) -->
     <div id="left-sidebar">
         <div class="panel-header">
-            <h2>🎛️ Filtro GTC & Sujetos</h2>
+            <h2>🎛️ Proyecciones & Sujetos</h2>
         </div>
         <div class="panel-content">
+            <!-- ⚡ Capa Global (Etiquetas Globales FGTCSED) -->
+            <div class="meta-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <h3 style="margin:0;">Etiquetas Globales</h3>
+                    <button id="btn-clear-pills" title="Limpiar todas las selecciones (Pantalla Limpia)" style="background:rgba(239, 68, 68, 0.2); border:1px solid rgba(239, 68, 68, 0.4); color:#f87171; border-radius:4px; padding:1px 6px; font-size:0.68rem; font-weight:bold; cursor:pointer;">🧹 Limpiar</button>
+                </div>
+                <div class="minimal-pill-bar">
+                    <button class="pill-btn" data-key="F" title="F — 81 Figuras Geométricas (Q81)">F</button>
+                    <button class="pill-btn" data-key="G" title="G — Grupos Colectivos (Centroides G1-G3)">G</button>
+                    <button class="pill-btn" data-key="T" title="T — Tiempos (Centroides T1-T4)">T</button>
+                    <button class="pill-btn" data-key="C" title="C — Criterios (Centroides C1-C3)">C</button>
+                    <button class="pill-btn" data-key="S" title="S — Sujetos Centroides (S1-Sn)">S</button>
+                    <button class="pill-btn" data-key="E" title="E — Evolución Temporal (E1-En)">E</button>
+                    <button class="pill-btn" data-key="D" title="D — Dendrograma Sociomatrices (D1-D6)">D</button>
+                </div>
+            </div>
+
             <!-- Filtro Combinatorio GTC -->
             <div class="meta-section">
                 <h3>Filtrado Combinatorio (G, T, C)</h3>
@@ -152,28 +169,12 @@
         </div>
     </div>
 
-    <!-- 🎛️ 3. FRANJA DERECHA (Atajos G T C M S D, Variables 1-10 & AAG 1-16) -->
+    <!-- 🎛️ 3. FRANJA DERECHA (Variables 1-10 & AAG 1-16) -->
     <div id="right-sidebar">
         <div class="panel-header">
-            <h2>🎛️ Filtros & Proyecciones</h2>
+            <h2>🎛️ Variables & Factores</h2>
         </div>
         <div class="panel-content">
-            <!-- ⚡ Capa Global (Atajos Teclado G T C M S D) -->
-            <div class="meta-section">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                    <h3 style="margin:0;">Etiquetas Globales (Teclado)</h3>
-                    <button id="btn-clear-pills" title="Limpiar todas las selecciones (Pantalla Limpia)" style="background:rgba(239, 68, 68, 0.2); border:1px solid rgba(239, 68, 68, 0.4); color:#f87171; border-radius:4px; padding:1px 6px; font-size:0.68rem; font-weight:bold; cursor:pointer;">🧹 Limpiar</button>
-                </div>
-                <div class="minimal-pill-bar">
-                    <button class="pill-btn active" data-key="G" title="G Grupos (3)">G</button>
-                    <button class="pill-btn" data-key="T" title="T Tiempos (4)">T</button>
-                    <button class="pill-btn" data-key="C" title="C Criterios (3)">C</button>
-                    <button class="pill-btn" data-key="M" title="M Matrices (36)">M</button>
-                    <button class="pill-btn" data-key="S" title="S Sujetos (43)">S</button>
-                    <button class="pill-btn" data-key="D" title="D Dendrograma (6)">D</button>
-                </div>
-            </div>
-
             <!-- 📈 10 Variables (1..10) -->
             <div class="meta-section">
                 <h3>Variables (1 - 10)</h3>

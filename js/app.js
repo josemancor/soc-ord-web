@@ -732,47 +732,50 @@ class VisordApp {
             this.engine.drawTrajectories(selectedSubjects, evSubjects, selectedAAGs, selectedPairs, activeT);
         }
         
-        // ⚡ Bind Capa Global Pill Buttons & Hotkeys (G T C M S D)
+        // ⚡ Bind Capa Global Pill Buttons & Hotkeys (F G T C S E D)
         document.querySelectorAll('.pill-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const target = e.currentTarget;
                 const key = target.dataset.key;
-                const isExclusive = e.shiftKey || e.altKey;
+                
+                // Contar cuántas letras de la lista FGTCSED están actualmente activas antes de este click
+                const activeButtons = Array.from(document.querySelectorAll('.pill-btn.active'));
+                const isCurrentlyActive = target.classList.contains('active');
 
-                if (isExclusive) {
-                    // Modo Alternativo Exclusivo (Apagar todos los demás y activar solo este)
-                    document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
-                    target.classList.add('active');
-                    
-                    const titleBadge = document.getElementById('active-projection-title');
-                    if (titleBadge) {
-                        titleBadge.textContent = `PROYECCIÓN ACTIVA: Modo Exclusivo Foco ${key}`;
+                // Regla de Primera Marca: Si NO hay ninguna letra activa y vamos a marcar una nueva, limpiar pantalla primero
+                if (activeButtons.length === 0 && !isCurrentlyActive) {
+                    if (typeof handleClear === 'function') {
+                        handleClear();
                     }
-                    if (this.engine && this.engine.setExclusiveGlobalLayer) {
-                        this.engine.setExclusiveGlobalLayer(key);
+                    target.classList.add('active');
+                    const isAct = true;
+                    if (this.engine && this.engine.toggleGlobalLayer) {
+                        this.engine.toggleGlobalLayer(key, isAct);
                     }
                 } else {
-                    // Modo Estándar Alternativo ON/OFF
+                    // Modo Acumulativo ON / OFF
                     target.classList.toggle('active');
                     const isAct = target.classList.contains('active');
-                    
-                    const titleBadge = document.getElementById('active-projection-title');
-                    if (titleBadge) {
-                        titleBadge.textContent = `PROYECCIÓN ACTIVA: Etiquetas Globales ${key} (${isAct ? 'ON' : 'OFF'})`;
-                    }
-                    
                     if (this.engine && this.engine.toggleGlobalLayer) {
                         this.engine.toggleGlobalLayer(key, isAct);
                     }
                 }
+
+                const titleBadge = document.getElementById('active-projection-title');
+                if (titleBadge) {
+                    const activeKeys = Array.from(document.querySelectorAll('.pill-btn.active')).map(b => b.dataset.key).join('');
+                    titleBadge.textContent = activeKeys 
+                        ? `PROYECCIÓN ACTIVA: [${activeKeys}] (${key} ${target.classList.contains('active') ? 'ON' : 'OFF'})`
+                        : 'PROYECCIÓN ACTIVA: Pantalla Limpia (Lista para Selección)';
+                }
             });
         });
 
-        // ⌨️ Escuchador Global de Teclas Rápidas (Press G, T, C, M, S, D | Shift + Key para Foco Exclusivo)
+        // ⌨️ Escuchador Global de Teclas Rápidas (Press F, G, T, C, S, E, D)
         window.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
             const key = e.key.toUpperCase();
-            if (['G', 'T', 'C', 'M', 'S', 'D'].includes(key)) {
+            if (['F', 'G', 'T', 'C', 'S', 'E', 'D'].includes(key)) {
                 const btn = document.querySelector(`.pill-btn[data-key="${key}"]`);
                 if (btn) {
                     btn.dispatchEvent(new MouseEvent('click', { shiftKey: e.shiftKey, altKey: e.altKey, bubbles: true }));
