@@ -14,8 +14,7 @@ cclass VisordApp {
         if (window.VISORD_PAYLOAD) {
             this.engine.loadPayloadData(window.VISORD_PAYLOAD);
             this.buildControlPanel(window.VISORD_PAYLOAD);
-            this.setupPlayback();
-            // No hacemos loader.style.display = 'none'; aquí
+            // El loader se gestiona interactivamente por el usuario
         }
 
         // Sistema de Autenticación Ágil y Diversificación por Rol (IP / IPI / IPIS)
