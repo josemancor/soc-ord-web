@@ -1,0 +1,225 @@
+body { margin: 0; overflow: hidden; background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; }
+#canvas-container { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: 1; }
+
+#tooltip {
+    position: absolute; display: none; z-index: 200;
+    background: rgba(0, 0, 0, 0.9); padding: 8px 12px;
+    border-radius: 6px; border: 1px solid #38bdf8; font-size: 0.8rem;
+    pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* ==========================================================================
+   👑 1. CABECERA HUD FRONTAL (Logo Izquierda, VISORD Centro, Banderas Derecha)
+   ========================================================================== */
+#top-bar {
+    position: absolute; top: 10px; left: 12px; right: 12px; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px;
+    padding: 4px 14px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+}
+
+.hud-brand-left {
+    display: flex; align-items: center; gap: 12px;
+}
+.hud-logo {
+    height: 34px; width: auto; object-fit: contain; filter: drop-shadow(0 0 6px rgba(56,189,248,0.5));
+}
+.hud-app-name {
+    font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.25rem; letter-spacing: 2px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #00FF9D); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.0; filter: drop-shadow(0 0 8px rgba(56,189,248,0.4)); margin-right: 4px;
+}
+
+/* Titular Flotante de Oleadas Proyectadas (Alta Visibilidad Top-Left para Vista Cansada) */
+#projection-title-badge {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(15, 23, 42, 0.95); border: 2px solid rgba(56, 189, 248, 0.6);
+    padding: 6px 18px; border-radius: 18px; font-size: 1.05rem; font-weight: 800; color: #fef08a;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5); letter-spacing: 0.5px;
+}
+.badge-dot {
+    width: 10px; height: 10px; background-color: #00FF9D; border-radius: 50%;
+    box-shadow: 0 0 10px #00FF9D; animation: pulse 2s infinite; flex-shrink: 0;
+}
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(0, 255, 157, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 157, 0); }
+}
+
+.hud-right-group {
+    display: flex; align-items: center; gap: 12px;
+}
+
+/* Language Bar Integrada */
+.lang-bar {
+    display: flex; gap: 3px; align-items: center;
+    background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px; padding: 2px 5px;
+}
+.lang-btn {
+    background: none; border: none; font-size: 0.9rem; cursor: pointer;
+    opacity: 0.5; transition: 0.2s; padding: 0 1px;
+}
+.lang-btn:hover, .lang-btn.active { opacity: 1; transform: scale(1.15); }
+
+#top-counters {
+    background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.08);
+    padding: 3px 10px; border-radius: 10px; font-size: 0.72rem; color: #cbd5e1;
+    display: flex; gap: 10px; font-family: 'Inter', sans-serif;
+}
+
+/* ==========================================================================
+   👥 2. FRANJA IZQUIERDA (Exclusivamente Sujetos - Ultra-Compacta 190px)
+   ========================================================================== */
+#left-sidebar {
+    position: absolute; top: 58px; left: 12px; bottom: 75px; z-index: 90;
+    width: 190px; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+}
+
+/* ==========================================================================
+   🎛️ 3. FRANJA DERECHA (Filtro GTC & Capas Globales - Ultra-Compacta 240px)
+   ========================================================================== */
+#right-sidebar {
+    position: absolute; top: 58px; right: 12px; bottom: 75px; z-index: 90;
+    width: 240px; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+}
+
+.panel-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.2);
+}
+.panel-header h2 { font-size: 0.88rem; margin: 0; color: #f8fafc; font-weight: 700; letter-spacing: 0.5px; }
+.panel-content { padding: 8px; overflow-y: auto; flex: 1; }
+
+.meta-section { margin-bottom: 10px; background: rgba(0,0,0,0.35); padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+.meta-section h3 { margin: 0 0 6px 0; font-size: 0.78rem; color: #38bdf8; font-weight: 600; }
+
+/* Ultra-Compact Minimalist Pill Bar (Hotkeys G T C M S D) */
+.minimal-pill-bar {
+    display: flex; gap: 3px; justify-content: space-between;
+}
+.pill-btn {
+    flex: 1; background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #38bdf8; font-weight: 800; font-family: 'Fira Code', monospace; font-size: 0.82rem;
+    padding: 3px 0; border-radius: 5px; cursor: pointer; text-align: center; transition: all 0.2s ease;
+}
+.pill-btn:hover {
+    background: rgba(56, 189, 248, 0.25); border-color: #38bdf8; color: #ffffff;
+}
+.pill-btn.active {
+    background: linear-gradient(135deg, #0284c7, #2563eb); border-color: #93c5fd; color: #ffffff;
+    box-shadow: 0 0 8px rgba(2, 132, 199, 0.7);
+}
+
+/* Numeric 1-10 Pill Bar */
+.num-pill-bar {
+    display: flex; gap: 2px; flex-wrap: wrap; justify-content: space-between;
+}
+.num-btn {
+    flex: 1; min-width: 18px; padding: 2px 3px; background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1;
+    font-size: 0.68rem; font-family: 'Fira Code', monospace; font-weight: 700;
+    border-radius: 4px; cursor: pointer; transition: all 0.15s ease; text-align: center;
+}
+.num-btn:hover { border-color: #38bdf8; color: #ffffff; }
+.num-btn.active {
+    background: #2563eb; border-color: #60a5fa; color: #ffffff; box-shadow: 0 0 6px rgba(37, 99, 235, 0.6);
+}
+
+/* AAG 4-Factor Pill Bar */
+.factor-pill-bar {
+    display: flex; gap: 3px;
+}
+.factor-btn {
+    flex: 1; padding: 3px 2px; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(168, 85, 247, 0.4);
+    color: #c084fc; font-size: 0.68rem; font-weight: 700; border-radius: 4px; cursor: pointer; transition: all 0.15s ease;
+    text-align: center; white-space: nowrap;
+}
+.factor-btn:hover { border-color: #c084fc; color: #ffffff; }
+.factor-btn.active {
+    background: #9333ea; border-color: #e9d5ff; color: #ffffff; box-shadow: 0 0 6px rgba(147, 51, 234, 0.6);
+}
+
+/* Índices Panel */
+.indices-panel { margin-top: 8px; padding-top: 8px; }
+.indice-card {
+    background: rgba(0,0,0,0.3); padding: 5px 7px; border-radius: 5px; margin-bottom: 4px;
+    display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.05);
+}
+.indice-card label { display: flex; align-items: center; gap: 6px; cursor: pointer; width: 100%; user-select: none; }
+.indice-card label span { font-size: 0.76rem; font-weight: 500; }
+
+/* Meta Grid TC Cells */
+.meta-grid { border-collapse: separate !important; border-spacing: 3px !important; margin-top: 4px; }
+.meta-grid td, .meta-grid th {
+    border: 1px solid rgba(56, 189, 248, 0.45) !important; border-radius: 4px; box-sizing: border-box;
+}
+.meta-grid th { background: #1e293b; color: #e2e8f0; font-size: 10px; }
+.meta-grid .tc-cell { background: rgba(30, 41, 59, 0.9) !important; transition: all 0.2s ease; }
+.meta-grid .tc-cell:hover { border-color: #38bdf8 !important; background: rgba(56, 189, 248, 0.25) !important; }
+.meta-grid .tc-cell.active-cell { background: #2563eb !important; border-color: #93c5fd !important; box-shadow: 0 0 8px rgba(37, 99, 235, 0.7); }
+.meta-grid .toggle-g.active-cell { background: #0284c7 !important; border-color: #38bdf8 !important; color: #ffffff !important; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+th, td { text-align: left; padding: 4px 5px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+th { color: #94a3b8; font-weight: 600; }
+input[type="checkbox"] { cursor: pointer; accent-color: #38bdf8; }
+
+/* ==========================================================================
+   ⬇️ 4. FRANJA INFERIOR (Dock de Docks Analíticos + Barra de Acciones Sistema)
+   ========================================================================== */
+#bottom-action-dock {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 100;
+    display: flex; flex-direction: column; gap: 4px; align-items: center;
+    background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px;
+    padding: 6px 14px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+
+.dock-row {
+    display: flex; gap: 6px; align-items: center; justify-content: center; flex-wrap: nowrap;
+}
+
+/* Grouping for 4 Action Categories */
+.action-cat-group {
+    display: flex; align-items: center; gap: 4px; background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 2px 5px;
+}
+.cat-label {
+    font-size: 0.62rem; font-weight: 800; font-family: 'Fira Code', monospace; letter-spacing: 0.5px;
+    padding: 2px 4px; border-radius: 4px; text-transform: uppercase; white-space: nowrap;
+}
+.cat-proj { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+.cat-graph { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+.cat-table { background: rgba(0, 255, 157, 0.2); color: #00FF9D; border: 1px solid rgba(0, 255, 157, 0.4); }
+.cat-diag { background: rgba(255, 99, 132, 0.2); color: #ff6384; border: 1px solid rgba(255, 99, 132, 0.4); }
+
+.tool-btn {
+    background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.15);
+    color: #f1f5f9; padding: 4px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.tool-btn:hover {
+    background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: translateY(-1px);
+}
+
+.action-btn {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8;
+    padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700;
+    cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+}
+.action-btn:hover {
+    background: #38bdf8; color: #0f172a; box-shadow: 0 0 10px rgba(56, 189, 248, 0.6); transform: translateY(-1px);
+}
