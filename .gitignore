@@ -1,0 +1,7 @@
+*.mov
+*.mp4
+*.m4a
+.DS_Store
+SOC_ORD_JPG/
+VISORDP/
+n_videos/

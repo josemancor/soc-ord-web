@@ -3,46 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Página no encontrada | SOC_ORD</title>
-    <link rel="stylesheet" href="/soc-ord-web/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <title>404 - Anomalía de Entropía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
+            background-color: #0B0F19; /* Dark background matching the screenshot */
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            margin: 0;
             text-align: center;
-            background-color: #050810;
         }
-        .error-container {
-            padding: 40px;
+        .logo-container {
+            border: 1px solid #333;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
-        h1 {
-            font-size: 6rem;
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        h1.error-code {
+            font-size: 8rem;
             color: #FF0055;
             margin: 0;
-            text-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+            font-family: serif; /* Matching the serif font in screenshot */
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+            font-weight: bold;
         }
-        p {
-            color: #A0AEC0;
+        h2.error-title {
+            font-size: 2rem;
+            margin: 1rem 0;
+            font-weight: 400;
+        }
+        p.error-desc {
+            color: #b0b0b0;
             font-size: 1.2rem;
-            margin-bottom: 30px;
+            margin-bottom: 3rem;
+            max-width: 600px;
         }
-        .logo {
-            height: 120px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px rgba(0, 162, 255, 0.3));
+        a.back-link {
+            color: #0000FF; /* Blue link matching the screenshot */
+            text-decoration: underline;
+            font-size: 1.1rem;
+        }
+        a.back-link:hover {
+            color: #0055ff;
         }
     </style>
 </head>
 <body>
-    <div class="error-container glass-card">
-        <img src="/soc-ord-web/assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='/soc-ord-web/assets/logo_simulacion.png'" class="logo">
-        <h1>404</h1>
-        <h2 style="color: #E0E0E0; font-weight: 300;">Anomalía de Entropía Detectada</h2>
-        <p>Parece que te has salido del ecosistema. Esta ruta no existe en el mapa sociométrico.</p>
-        <a href="/soc-ord-web/index.html" class="btn btn-primary">Volver a la Base de Control</a>
+
+    <div class="logo-container">
+        <!-- Usa absolute path /assets/ para que funcione desde cualquier subruta en GitHub Pages -->
+        <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.style.display='none'">
     </div>
+
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Anomalía de Entropía Detectada</h2>
+    <p class="error-desc">Parece que te has salido del ecosistema. Esta ruta no existe en el mapa sociométrico.</p>
+    
+    <a href="index.html" class="back-link">Volver a la Base de Control</a>
+
 </body>
 </html>
