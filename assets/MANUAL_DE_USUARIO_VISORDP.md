@@ -44,7 +44,7 @@ Situado en la base de la pantalla, aglutina los controles de navegación tempora
 
 ---
 
-## 🎬 8. CASO MAESTRO TRANCRITO: "12 HOMBRES SIN PIEDAD" (HSPD-G1-T3-C2)
+## 🎬 8. CASO MAESTRO TRANSCRIBITO: "12 HOMBRES SIN PIEDAD" (HSPD-G1-T3-C2-V10-A4-ES-12)
 
 El estudio de demostración oficial **HSPD** corresponde a la transcripción sociométrica rigurosa de la obra cinematográfica *"12 Hombres sin Piedad"* (Sidney Lumet, 1957):
 
