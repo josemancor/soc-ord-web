@@ -72,11 +72,23 @@ El estudio de demostración oficial **HSPD** corresponde a la transcripción soc
 - `11J11a`: Jurado 11 (Relojero inmigrante / Riguroso)
 - `12J12a`: Jurado 12 (Publicista voluble)
 
-### 📊 4. Variables Socio-Demográficas ($VCS$) y Adjetivos $AAG$ Transcritos
-- **10 $VCS$ Transcritas**: `EDAD` (Edad), `EST` (Estatus Profesional), `RIG` (Rigidez Dogmática), `RES` (Resistencia al Cambio), `PREJ` (Prejuicio Psicosocial), `EXP` (Experiencia en Debates), `RAC` (Racionalidad Lógica), `EMPAT` (Empatía Socio-Emocional), `VOTO_T1` (Voto Inicial Culpable/Inocente), `VOTO_T3` (Voto Final Inocente).
-- **Factores y Adjetivos $AAG$**:
-  - **Factores Positivos**: `Unido`, `Seguro`, `Escuchado`, `Respetado`, `Estimulado`, `Libre`, `Acogido`, `Satisfecho`.
-  - **Factores de Tensión**: `Tenso`, `Presionado`, `Juzgado`, `Aislado`, `Frustrado`, `Inseguro`, `Agredido`, `Agotado`.
+### 📊 4. Etiquetas Completas Inteligibles de las 10 $VCS$ y Modalidades
+1. **`EDAD`**: Edad Cronológica del Jurado `[30-40 años, 40-55 años, 55+ años]`
+2. **`EST`**: Estatus Socio-Profesional `[1: Obrero / Empleado, 2: Técnico / Comercial, 3: Profesional Liberal, 4: Empresario]`
+3. **`RIG`**: Rigidez Dogmática y Autoritarismo `[0: Flexible / Abierto, 1: Moderado, 2: Inflexible / Dogmático]`
+4. **`RES`**: Resistencia Socio-Afectiva al Cambio `[0: Baja Resistencia, 1: Resistencia Media, 2: Alta Resistencia]`
+5. **`PREJ`**: Prejuicio Social y Sesgo Xenófobo `[0: Ninguno, 1: Sesgo Implícito, 2: Prejuicio Explícito]`
+6. **`EXP`**: Experiencia Formal en Análisis y Debates `[0: Nula, 1: Media, 2: Alta Competencia Analítica]`
+7. **`RAC`**: Racionalidad Lógica y Rigor Argumentativo `[1: Emocional / Impulsivo, 2: Convencional, 3: Alta Racionalidad Crítica]`
+8. **`EMPAT`**: Empatía Socio-Emocional y Sensibilidad Humanista `[0: Baja / Indiferencia, 1: Moderada, 2: Alta Empatía]`
+9. **`VOTO_T1`**: Voto Preliminar de Inocencia en $T_1$ `[0: Culpable (11 Jurados), 1: Inocente / Duda Razonable (J8)]`
+10. **`VOTO_T3`**: Voto Final de Inocencia en $T_3$ `[1: Inocente por Unanimidad (12 Jurados)]`
+
+### 💬 5. Etiquetas Inteligibles de los 16 Adjetivos AAG (4 Factores $F_1 \dots F_4$)
+- **Factor 1 ($F_1$ - Cohesión)**: `Unido / Aislado`, `Acogido / Rechazado`, `Seguro / Inseguro`, `Satisfecho / Frustrado`
+- **Factor 2 ($F_2$ - Respeto)**: `Respetado / Juzgado`, `Escuchado / Ignorado`, `Valorado / Relegado`, `Estimulado / Agotado`
+- **Factor 3 ($F_3$ - Libertad)**: `Libre / Presionado`, `Sereno / Tenso`, `Pacífico / Agredido`, `Comprendido / Incomprendido`
+- **Factor 4 ($F_4$ - Autonomía)**: `Autónomo / Sumiso`, `Constructivo / Disruptivo`, `Objetivo / Prejuicioso`, `Resiliente / Vulnerable`
 
 ---
 
