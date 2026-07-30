@@ -319,9 +319,45 @@ class VisordApp {
             payload.metadata.status = "VISUALIZADO";
             payload.metadata.last_viewed = new Date().toISOString();
         }
+        this.updateStudyCriteriaUI(payload);
         this.engine.loadPayloadData(payload);
         this.buildControlPanel(payload);
         this.setupPlayback();
+    }
+
+    updateStudyCriteriaUI(payload) {
+        const c1El = document.getElementById('c1-literal-text');
+        const c2El = document.getElementById('c2-literal-text');
+        const c3El = document.getElementById('c3-literal-text');
+        const domPill = document.getElementById('domain-badge-pill');
+
+        let criterios = {
+            'C1': 'Atracción / Elección Preferencial (Apoyo o Elección Principal)',
+            'C2': 'Fricción / Barrera Relacional (Rechazo o Distancia Percibida)',
+            'C3': 'Referencia de Cohesión / Liderazgo (Centroide de Referencia)'
+        };
+        let domainName = "General / Multidominio";
+
+        if (payload) {
+            const meta = payload.meta || payload.metadata || {};
+            if (meta.criterios && typeof meta.criterios === 'object') {
+                criterios = { ...criterios, ...meta.criterios };
+            }
+            if (meta.dominio_nombre) {
+                domainName = meta.dominio_nombre;
+            } else if (meta.contexto) {
+                domainName = meta.contexto;
+            } else if (meta.area) {
+                domainName = meta.area;
+            }
+        }
+
+        this.currentCriteria = criterios;
+
+        if (c1El) c1El.textContent = criterios.C1 || criterios.c1 || criterios['1'] || "Criterio 1";
+        if (c2El) c2El.textContent = criterios.C2 || criterios.c2 || criterios['2'] || "Criterio 2";
+        if (c3El) c3El.textContent = criterios.C3 || criterios.c3 || criterios['3'] || "Criterio 3";
+        if (domPill) domPill.textContent = domainName;
     }
     
     setupPlayback() {
@@ -623,13 +659,26 @@ class VisordApp {
             }
             html += '</tr>';
             
+            // Obtener literalidad de criterios si existe
+            let criteriosText = {
+                '1': 'C1: Atracción / Elección Preferencial',
+                '2': 'C2: Fricción / Barrera Relacional',
+                '3': 'C3: Referencia de Cohesión / Liderazgo'
+            };
+            if (window.VISORD_APP && window.VISORD_APP.currentCriteria) {
+                criteriosText = window.VISORD_APP.currentCriteria;
+            } else if (typeof VISORD_PAYLOAD !== 'undefined' && VISORD_PAYLOAD.meta && VISORD_PAYLOAD.meta.criterios) {
+                criteriosText = VISORD_PAYLOAD.meta.criterios;
+            }
+
             // Filas Criterios (C)
             cArray.forEach(c => {
-                html += `<tr><th class="toggle-all-row" data-c="${c}" style="background:#1e293b; color:#e2e8f0; padding:5px; border:1px solid rgba(56, 189, 248, 0.45); cursor:pointer;" title="Toggle Row C${c}">C${c}</th>`;
+                const cLit = criteriosText[c] || criteriosText['C' + c] || criteriosText['c' + c] || `Criterio C${c}`;
+                html += `<tr><th class="toggle-all-row" data-c="${c}" style="background:#1e293b; color:#e2e8f0; padding:5px; border:1px solid rgba(56, 189, 248, 0.45); cursor:pointer;" title="Alternar fila C${c} | Literalidad: ${cLit}">C${c}</th>`;
                 tArray.forEach(t => {
                     const tNum = t.charCodeAt(0) - 96; // a->1, b->2, c->3, d->4
                     const cellId = `cell_t${t}_c${c}`;
-                    html += `<td id="${cellId}" class="meta-cell tc-cell" data-t="${t}" data-c="${c}" style="border:1.5px solid rgba(56, 189, 248, 0.5); padding:6px 4px; cursor:pointer; background:rgba(15, 23, 42, 0.85); transition:0.2s; font-family:'Fira Code',monospace; font-size:10px;" title="Cruce T${tNum} × C${c}">T${tNum}C${c}</td>`;
+                    html += `<td id="${cellId}" class="meta-cell tc-cell" data-t="${t}" data-c="${c}" style="border:1.5px solid rgba(56, 189, 248, 0.5); padding:6px 4px; cursor:pointer; background:rgba(15, 23, 42, 0.85); transition:0.2s; font-family:'Fira Code',monospace; font-size:10px;" title="Cruce T${tNum} × C${c} | Criterio: ${cLit}">T${tNum}C${c}</td>`;
                 });
                 for(let i=tArray.length; i<maxCols; i++) {
                     html += `<td style="border:none;"></td>`;
