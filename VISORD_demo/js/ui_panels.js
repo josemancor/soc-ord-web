@@ -526,7 +526,7 @@ class UIPanels {
             'histograma': '📊 HISTOGRAMA ESPECTRAL DE FRECUENCIAS Y VALENCIAS AAG',
             'dispersion': '🌌 DIAGRAMA DE DISPERSIÓN Y EJES FACTORIALES PCA 2D/3D',
             'sociogramas': '🕸️ SOCIOGRAMAS DE RED NODAL Y VALENCIAS RELACIONALES',
-            'planos': '📐 PLANOS ORTOGONALES DE PROYECCIÓN Y VARIEDAD DE GRASSMANN'
+            'planos': '📐 PLANOS ORTOGONALES DE PROYECCIÓN Y EJES FACTORIALES'
         };
 
         this.dockTitle.textContent = `${titleMap[graphMode] || 'GRÁFICOS DE FIGURAS'} - [${gtc.toUpperCase()}]`;
@@ -771,18 +771,19 @@ class UIPanels {
                         <p style="font-size:0.72rem; color:#cbd5e1; margin:0;">Proyección en el plano principal de máxima varianza relacional.</p>
                     </div>
                     <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(168,85,247,0.3); border-radius:6px; padding:10px;">
-                        <h5 style="color:#a855f7; margin:0 0 4px 0; font-size:0.8rem;">Plano 1-3 (Dim1 x Dim3)</h5>
-                        <p style="font-size:0.72rem; color:#cbd5e1; margin:0;">Proyección en el plano de elevación gravitatoria.</p>
-                    </div>
-                    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(0,255,157,0.3); border-radius:6px; padding:10px;">
-                        <h5 style="color:#00FF9D; margin:0 0 4px 0; font-size:0.8rem;">Plano 2-3 (Dim2 x Dim3)</h5>
-                        <p style="font-size:0.72rem; color:#cbd5e1; margin:0;">Proyección en el plano de fricción secundaria.</p>
-                    </div>
+                <span style="font-size:0.8rem; color:#ec4899; font-weight:bold;">📐 Planos Ortogonales de Proyección & Ejes Factoriales - [${gtc.toUpperCase()}]</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; flex:1;">
+                <!-- Plano Factorial 2D -->
+                <div style="background:#030712; padding:10px; border-radius:8px; border:1px solid rgba(236,72,153,0.3); display:flex; flex-direction:column;">
+                    <span style="font-size:0.75rem; color:#ec4899; font-weight:bold; margin-bottom:6px;">Mapa de Proyección Factorial (Dim 1 vs Dim 2)</span>
+                    <canvas id="pcaScatterCanvas" style="width:100%; height:260px;"></canvas>
                 </div>
 
-                <!-- Distancias Grassmannianas -->
-                <div style="flex:1.5; background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.4); border-radius:8px; padding:12px; overflow-y:auto;">
-                    <h4 style="color:#38bdf8; margin:0 0 8px 0; font-size:0.85rem;">Distancias Geodésicas Grassmannianas</h4>
+                <!-- Distancias Geodésicas -->
+                <div style="background:#030712; padding:10px; border-radius:8px; border:1px solid rgba(56,189,248,0.3); display:flex; flex-direction:column; overflow:auto;">
+                    <h4 style="color:#38bdf8; margin:0 0 8px 0; font-size:0.85rem;">Distancias Geodésicas de Proyección</h4>
                     <table class="cyber-table" style="width:100%; border-collapse:collapse; color:#cbd5e1; font-family:monospace; font-size:0.74rem; text-align:center;">
                         <thead style="background:rgba(30,41,59,0.9); color:#38bdf8;">
                             <tr><th style="padding:6px;">Par Comparativo</th><th style="padding:6px;">Distancia δ</th></tr>
