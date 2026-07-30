@@ -441,9 +441,6 @@ class VisordApp {
         
         requestAnimationFrame(() => this.animatePlayback());
     }
-        
-        requestAnimationFrame(() => this.animatePlayback());
-    }
     
     setupUI() {
         const setupToggle = (id, layerName) => {
