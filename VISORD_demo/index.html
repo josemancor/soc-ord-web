@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -94,7 +94,7 @@
 
                 <div class="visord-actions-group">
                     <button id="btn-enter-visor" class="visord-btn-visor">👁️ Entrar al Visualizador 3D</button>
-                    <button id="btn-tour" class="visord-btn-tour">🧭 Tour Guiado (Demo)</button>
+                    <button id="btn-tour" class="visord-btn-tour">🧭 Tour Guiado 3D</button>
                 </div>
 
                 <div style="margin-top: 14px; text-align: center;">
@@ -189,6 +189,24 @@
                 <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 6px;">
                     <label style="font-size: 0.76rem; color: #cbd5e1;">Relevancia (CTA Mínimo): <span id="cta-val" style="color:#00FF9D; font-weight:700;">0.0</span></label>
                     <input type="range" id="cta-slider" min="0" max="5" step="0.1" value="0" style="width: 100%; accent-color:#00FF9D;">
+                </div>
+            </div>
+
+            <!-- ℹ️ Literalidad de Criterios del Estudio & Dominio -->
+            <div class="meta-section meta-section-criteria" id="criteria-literal-section" style="background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 8px; padding: 8px 10px; margin-bottom: 10px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="const el=document.getElementById('criteria-literal-body'); if(el) el.style.display=(el.style.display==='none'?'block':'none');">
+                    <h3 style="margin:0; font-size:0.75rem; color:#38bdf8; font-weight:700; display:flex; align-items:center; gap:6px;">
+                        <span>ℹ️ Criterios del Estudio</span>
+                        <span id="domain-badge-pill" style="font-size:0.65rem; color:#a3e635; background:rgba(163,230,53,0.15); padding:1px 5px; border-radius:4px; border:1px solid rgba(163,230,53,0.3);">Dominio</span>
+                    </h3>
+                    <span style="font-size:0.75rem; color:#94a3b8;">▼</span>
+                </div>
+                <div id="criteria-literal-body" style="margin-top:6px; font-size:0.70rem; color:#e2e8f0; line-height:1.4;">
+                    <div id="criteria-literal-content">
+                        <div style="margin-bottom:3px;"><strong style="color:#00FF9D;">C1:</strong> <span id="c1-literal-text">Atracción / Elección Preferencial</span></div>
+                        <div style="margin-bottom:3px;"><strong style="color:#38bdf8;">C2:</strong> <span id="c2-literal-text">Fricción / Barrera Relacional</span></div>
+                        <div><strong style="color:#a855f7;">C3:</strong> <span id="c3-literal-text">Referencia de Cohesión / Liderazgo</span></div>
+                    </div>
                 </div>
             </div>
 
