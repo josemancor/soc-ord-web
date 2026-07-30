@@ -69,7 +69,7 @@ class VisordHubEngine {
         this.camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 50000);
         this.camera.position.set(0, 0, 100);
         
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
         this.renderer.setSize(w, h);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         this.container.appendChild(this.renderer.domElement);

@@ -1,4 +1,4 @@
-wwindow.VISORD_PAYLOAD = {
+window.VISORD_PAYLOAD = {
   "metadata": {
     "version": "Omni-Hub 2026",
     "variance": [
