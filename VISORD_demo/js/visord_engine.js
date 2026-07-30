@@ -2022,32 +2022,6 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
     animate() {
         requestAnimationFrame(this.animate.bind(this));
         if (this.controls) this.controls.update();
-
-        // 🌊 FLOTACIÓN TERMODINÁMICA 3D ORGÁNICA DE NODOS Y CENTROIDES
-        const time = Date.now() * 0.0015;
-        if (this.layers && this.layers['MICRO']) {
-            this.layers['MICRO'].children.forEach((mesh, idx) => {
-                if (mesh.userData) {
-                    if (mesh.userData.baseY === undefined) {
-                        mesh.userData.baseY = mesh.position.y;
-                        mesh.userData.baseX = mesh.position.x;
-                    }
-                    mesh.position.y = mesh.userData.baseY + Math.sin(time * 1.5 + idx * 0.8) * 0.5;
-                    mesh.position.x = mesh.userData.baseX + Math.cos(time * 1.2 + idx * 0.5) * 0.25;
-                }
-            });
-        }
-        if (this.layers && this.layers['MACRO']) {
-            this.layers['MACRO'].children.forEach((mesh, idx) => {
-                if (mesh.userData) {
-                    if (mesh.userData.baseY === undefined) {
-                        mesh.userData.baseY = mesh.position.y;
-                    }
-                    mesh.position.y = mesh.userData.baseY + Math.sin(time * 1.0 + idx * 0.5) * 0.3;
-                }
-            });
-        }
-
         if (this.renderer && this.scene && this.camera) {
             this.renderer.render(this.scene, this.camera);
         }

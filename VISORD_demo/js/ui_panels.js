@@ -1,4 +1,4 @@
-cclass UIPanels {
+class UIPanels {
     constructor(app) {
         this.app = app;
         this.dock = document.getElementById('bottom-dock');
@@ -19,6 +19,10 @@ cclass UIPanels {
         document.getElementById('btn-quatuor')?.addEventListener('click', () => this.showQuatuor());
         document.getElementById('btn-radar')?.addEventListener('click', () => this.showRadar());
         document.getElementById('btn-termo')?.addEventListener('click', () => this.showTermo());
+        document.getElementById('btn-histogram')?.addEventListener('click', () => this.showTermo());
+        document.getElementById('btn-dendro-subj')?.addEventListener('click', () => this.showMarkov());
+        document.getElementById('btn-dendro-mat')?.addEventListener('click', () => this.showFourier());
+        document.getElementById('btn-plane-12')?.addEventListener('click', () => this.showPCA('vertical'));
         document.getElementById('btn-markov')?.addEventListener('click', () => this.showMarkov());
         document.getElementById('btn-fourier')?.addEventListener('click', () => this.showFourier());
         document.getElementById('btn-diag')?.addEventListener('click', () => this.showDiag());
