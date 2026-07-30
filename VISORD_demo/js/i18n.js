@@ -1,4 +1,4 @@
-cconst translations = {
+const translations = {
     es: {
         "title": "VISORD OMNI-HUB",
         "subtitle": "Visualizador Sociométrico 4D Interactivo",

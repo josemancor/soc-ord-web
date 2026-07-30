@@ -480,8 +480,9 @@
             }
         });
 
-        // Garantizar inicio de VisordApp en Safari al abrir desde disco local file://
+        // Garantizar inicio de VisordApp y forzar idioma Espanol por defecto
         window.addEventListener('load', () => {
+            if (typeof changeLanguage === 'function') changeLanguage('es');
             if (!window.visordApp && typeof VisordApp !== 'undefined') {
                 window.visordApp = new VisordApp();
                 window.visordApp.init();
