@@ -133,6 +133,11 @@ class VisordHubEngine {
         this.animate();
     }
 
+    createCircularFaceTexture(url) {
+        if (!this.textureLoader) this.textureLoader = new THREE.TextureLoader();
+        return this.textureLoader.load(url, undefined, undefined, () => {});
+    }
+
     loadPayload(url) {
         fetch(url)
             .then(res => res.json())
