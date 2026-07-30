@@ -55,8 +55,8 @@ El estudio de demostración oficial **HSPD** corresponde a la transcripción soc
 - **$T_3$ (Cristalización Final)**: Unanimidad absoluta de inocencia (0 a 12), reconfigurando la jerarquía sociométrica del grupo.
 
 ### 🎯 2. Transcripción de los 2 Criterios Reales Utilizados ($C_1, C_2$)
-- **$C_1$ (Tarea / Análisis Racional)**: *"¿A qué compañero de jurado acudirías o elegirías en primer lugar para revisar minuciosamente las pruebas del caso y argumentar con rigor lógico?"*
-- **$C_2$ (Afectivo / Sostén Emocional)**: *"¿En qué miembro del jurado te apoyarías para sostener el debate en momentos de alta tensión afectiva o presión del grupo?"*
+- **$C_1$ (Ecuanimidad)**: *"¿A qué compañero de jurado reconoces mayor ecuanimidad y serenidad de criterio durante el debate?"*
+- **$C_2$ (Proximidad Afectiva)**: *"¿Con qué miembro del jurado sientes mayor cercanía y afinidad afectiva espontánea?"*
 
 ### 👤 3. Censo Oficial Transcrito de los 12 Nodos ($1J1a \dots 12J12a$)
 - `1J1a`: Jurado 1 (Presidente / Moderador)
