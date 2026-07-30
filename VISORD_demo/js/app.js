@@ -1431,7 +1431,7 @@ class VisordApp {
                 const title = document.getElementById('dock-title');
                 const content = document.getElementById('dock-content');
                 if (dock && title && content) {
-                    title.textContent = 'ℹ️ Información del Sistema SOC_ORD (VISORDP)';
+                    title.textContent = 'ℹ️ Información del Sistema SOC_ORD (VISORD)';
                     content.innerHTML = `
                         <div style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; text-align: left; max-width: 700px;">
                             <h3 style="color: #38bdf8;">VISORD (Visualización de Relaciones de Densidad y Preferencia)</h3>

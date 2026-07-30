@@ -1,6 +1,6 @@
-# 📘 MANUAL DE USUARIO | VISORD1 3D INTERACTIVO (HUB SMIb)
+# 📘 MANUAL DE USUARIO | VISORD 3D INTERACTIVO (HUB SMIb)
 
-**VISORD1: Visualización de Relaciones de Densidad y Preferencia**
+**VISORD: Visualizador Sociométrico Ordinal**
 **Versión de Norma:** Platinum v6.0 | **Despliegue:** Sistema Interactivo Front-End HTML5/WebGL / Servidor Local Python
 
 > El entorno **HUB VISORD1 3D** es un simulador y visualizador sociométrico. Opera de forma autónoma renderizando grafos de fuerza tridimensionales que reflejan las tensiones, lealtades, percepciones y entropía de los grupos humanos mediante las leyes de la termodinámica social.
