@@ -3,29 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOC_ORD | Sociometría Ordinal Computacional</title>
+    <meta name="description" content="SOC_ORD Platinum: Plataforma de Sociometría Ordinal Computacional para el análisis clínico, termodinámico y estructural de ecosistemas humanos. CERN Zenodo DOI: 10.5281/zenodo.18941691.">
+    <!-- OPEN GRAPH / METADATOS ACADÉMICOS -->
+    <meta property="og:title" content="SOC_ORD | Sociometría Ordinal Computacional">
+    <meta property="og:description" content="Plataforma de análisis socio-termodinámico, matrices relacionales SMIb y visualización 3D interactiva VISORD. DOI: 10.5281/zenodo.18941691">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://josemancor.github.io/soc-ord-web/">
+    <meta property="og:image" content="https://josemancor.github.io/soc-ord-web/assets/logo_socord_base.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- SCHEMA.ORG MARKUP ESTRUCTURADO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SOC_ORD Platinum",
+      "operatingSystem": "Web, Cross-platform",
+      "applicationCategory": "ResearchApplication",
+      "description": "Plataforma para el análisis clínico, termodinámico y estructural de ecosistemas humanos y matrices sociométricas SMIb.",
+      "identifier": "https://doi.org/10.5281/zenodo.18941691",
+      "author": {
+        "@type": "Organization",
+        "name": "SOC_ORD Scientific Committee & IPIS Governance"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR SIMPLIFICADA (ARQUITECTURA DE INFORMACIÓN DE ALTO IMPACTO) -->
     <nav class="navbar">
         <div class="logo-container">
-            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_socord_base.png'" class="nav-logo">
-            <span class="nav-title">SOC_ORD PLATINUM</span>
+            <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo" onerror="this.src='assets/logo_socord_base.png'" class="nav-logo" style="max-height: 42px;">
+            <div style="display: flex; flex-direction: column;">
+                <span class="nav-title" style="font-size: 1.1rem; line-height: 1.1;">SOC_ORD PLATINUM</span>
+                <span style="font-size: 0.65rem; color: #38bdf8; font-family: 'Roboto Mono', monospace; letter-spacing: 1px;">ANÁLISIS SOCIOMÉTRICO COMPUTACIONAL</span>
+            </div>
         </div>
         <ul class="nav-links">
             <li><a href="#hero">Inicio</a></li>
-            <li><a href="recursos.html#about">Filosofía</a></li>
+            <li><a href="#que-es-socord">¿Qué es?</a></li>
             <li><a href="recursos.html#modules">Módulos</a></li>
             <li><a href="#dominios-section">Dominios</a></li>
-            <li><a href="VISORD_demo/index.html" target="_blank">VISORD 3D</a></li>
-            <li><a href="recursos.html#glossary">Glosario</a></li>
+            <li><a href="#bsoc-home-card">BSOC</a></li>
             <li><a href="recursos.html#manual">Manual</a></li>
-            <li><a href="recursos.html#bsoc-cta">BSOC</a></li>
-            <li><a href="recursos.html#community">Comunidad</a></li>
-            <li style="margin-left: 15px;"><a href="PORTAL_INSTITUCIONAL/index.html" style="background: #00A2FF; color: #FFF; padding: 8px 16px; border-radius: 6px; font-weight: 600; box-shadow: 0 0 10px rgba(0, 162, 255, 0.4);">Acceso Plataforma 🔐</a></li>
+            <li style="margin-left: 15px;"><a href="PORTAL_INSTITUCIONAL/index.html" style="background: linear-gradient(135deg, #00A2FF, #0055FF); color: #FFF; padding: 8px 18px; border-radius: 6px; font-weight: 700; box-shadow: 0 0 12px rgba(0, 162, 255, 0.4);">Acceso Plataforma 🔐</a></li>
         </ul>
     </nav>
 
@@ -37,20 +62,93 @@
             
             <!-- LOGO CENTRAL -->
             <div style="margin-bottom: 15px;">
-                <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo Oficial" onerror="this.src='assets/logo_socord_base.png'" style="height: 140px; filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.5)); background: rgba(11, 15, 25, 0.6); padding: 10px; border-radius: 12px; border: 2px solid #00A2FF;">
+                <img src="assets/logo_socord_base.png" alt="SOC_ORD Logo Oficial" onerror="this.src='assets/logo_socord_base.png'" style="max-height: 120px; height: auto; filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.5)); background: rgba(11, 15, 25, 0.6); padding: 10px; border-radius: 12px; border: 2px solid #00A2FF;">
             </div>
 
             <h1 class="glitch" data-text="SOC_ORD">SOC_ORD</h1>
             <h2>Sociometría Ordinal Computacional</h2>
             <h3 style="color: #FFCC00; font-weight: 300; margin-top: -15px; margin-bottom: 20px; font-style: italic; letter-spacing: 2px; font-size: 1.4rem;">La Física de lo Grupal.</h3>
-            <p>La plataforma para el análisis clínico, termodinámico y estructural de ecosistemas humanos.</p>
-            <div class="hero-buttons">
-                <a href="PORTAL_INSTITUCIONAL/index.html" class="btn" style="background: linear-gradient(45deg, #00A2FF, #9C27B0); color: white; border: none; box-shadow: 0 0 15px rgba(0, 162, 255, 0.5);">Acceso a la Plataforma 🔐</a>
-                <a href="recursos.html#modules" class="btn btn-primary">Ver Demostraciones</a>
-                <a href="recursos.html#manual" class="btn btn-secondary">Leer Manual Oficial</a>
+            <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto 25px auto; color: #cbd5e1; line-height: 1.6;">
+                Plataforma científica para el diagnóstico clínico, análisis socio-termodinámico y visualización 3D interactiva de estructuras humanas.
+            </p>
+            <div class="hero-buttons" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="VISORD_demo/index.html" target="_blank" class="btn" style="background: linear-gradient(135deg, #00A2FF, #0055FF); color: white; border: none; padding: 14px 32px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; box-shadow: 0 0 20px rgba(0, 162, 255, 0.6);">👁️ VER DEMOSTRACIÓN 3D (VISORD)</a>
+                <a href="PORTAL_INSTITUCIONAL/index.html" class="btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(0, 162, 255, 0.5); color: white; padding: 14px 28px; border-radius: 8px; font-weight: 700;">Acceso a la Plataforma 🔐</a>
+                <a href="#que-es-socord" class="btn btn-secondary" style="padding: 14px 24px; border-radius: 8px;">¿Qué es SOC_ORD?</a>
             </div>
         </div>
     </header>
+
+    <!-- SECCIÓN: ¿QUÉ ES SOC_ORD? (COPYWRITING ACCESIBLE Y PÚBLICO OBJETIVO) -->
+    <section id="que-es-socord" style="padding: 70px 20px; background: #0f172a; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="color: #38bdf8; font-weight: 700; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase;">INTRODUCCIÓN A LA PLATAFORMA</span>
+                <h2 style="color: white; font-size: 2.3rem; margin: 10px 0 15px 0; font-weight: 300; font-family: 'Inter', sans-serif;">
+                    ¿Qué es <span style="color: #38bdf8; font-weight: 800;">SOC_ORD</span>?
+                </h2>
+                <p style="color: #cbd5e1; font-size: 1.15rem; max-width: 850px; margin: 0 auto; line-height: 1.7;">
+                    <strong>SOC_ORD (Sociometría Ordinal Computacional)</strong> es un ecosistema metodológico y tecnológico que transforma la medición tradicional de los grupos humanos en un <strong>análisis matemático riguroso de física relacional</strong>.
+                </p>
+            </div>
+
+            <!-- LOS 3 PILARES FUNDAMENTALES -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
+                
+                <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 14px; padding: 28px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 14px;">⚗️</div>
+                    <h3 style="color: #38bdf8; font-size: 1.25rem; margin-bottom: 10px;">1. Medición Ordinal Cifrada</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        Sustituye los números cardinales arbitrarios por la codificación <strong>SMIb</strong> (ASCII Ordinal), capturando la polaridad real (atracción, neutralidad, exclusión) sin distorsionar la naturaleza cualitativa del vínculo.
+                    </p>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 14px; padding: 28px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 14px;">🧮</div>
+                    <h3 style="color: #c084fc; font-size: 1.25rem; margin-bottom: 10px;">2. Motor Socio-Termodinámico</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        Calcula Análisis Factorial Chi-Cuadrado (AFC), Grassmann, el tensor $Q_{81}$ y las métricas de <strong>Densidad Relativa ($SDR$)</strong> y <strong>Absoluta ($BDR$)</strong> para predecir colapsos o sinergias grupales.
+                    </p>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(0, 255, 157, 0.3); border-radius: 14px; padding: 28px;">
+                    <div style="font-size: 2.2rem; margin-bottom: 14px;">👁️</div>
+                    <h3 style="color: #00FF9D; font-size: 1.25rem; margin-bottom: 10px;">3. Visualización 3D (VISORD)</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        Proyecta la topología de la red en un espacio tridimensional interactivo con Moviola temporal, permitiendo observar la evolución del grupo frame a frame.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- PÚBLICO OBJETIVO / ¿A QUÉ SECTOR VA DIRIGIDO? -->
+            <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px;">
+                <h3 style="color: white; font-size: 1.35rem; margin: 0 0 20px 0; text-align: center; font-weight: 300;">
+                    👥 ¿A quién va dirigido <span style="color: #38bdf8;">SOC_ORD</span>?
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div style="padding: 12px; border-left: 3px solid #38bdf8;">
+                        <strong style="color: white; display: block; margin-bottom: 4px;">🔬 Equipos de Investigación</strong>
+                        <span style="color: #94a3b8; font-size: 0.85rem;">Estudios de macrosociometría, Open Science y modelos matemáticos de interacción.</span>
+                    </div>
+                    <div style="padding: 12px; border-left: 3px solid #00FF9D;">
+                        <strong style="color: white; display: block; margin-bottom: 4px;">🏥 Clinicos y Terapeutas</strong>
+                        <span style="color: #94a3b8; font-size: 0.85rem;">Diagnóstico de salud de la red, detección de chivos expiatorios y sostén afectivo.</span>
+                    </div>
+                    <div style="padding: 12px; border-left: 3px solid #fbbf24;">
+                        <strong style="color: white; display: block; margin-bottom: 4px;">🎓 Educadores y Docentes</strong>
+                        <span style="color: #94a3b8; font-size: 0.85rem;">Clima de aula, integración de alumnos invisibles y prevención del acoso (bullying).</span>
+                    </div>
+                    <div style="padding: 12px; border-left: 3px solid #c084fc;">
+                        <strong style="color: white; display: block; margin-bottom: 4px;">🏢 Líderes Organizacionales</strong>
+                        <span style="color: #94a3b8; font-size: 0.85rem;">Mapeo del organigrama informal real, liderazgo no visible y prevención de burnout.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- BANCO INTERNACIONAL DE DATOS SOCIOMÉTRICOS (BSOC) - DESTACADO EN PORTADA -->
     <section id="bsoc-home-card" style="padding: 40px 20px; background: rgba(15, 23, 42, 0.9); border-top: 1px solid rgba(56, 189, 248, 0.3); border-bottom: 1px solid rgba(56, 189, 248, 0.3);">
@@ -247,6 +345,62 @@
     </section>
 
     
+    <!-- GOBERNANZA ACADÉMICA, AUTORÍA Y PROPIEDAD INTELECTUAL -->
+    <section id="gobernanza-section" style="padding: 60px 20px; background: #070a12; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="max-width: 1050px; margin: 0 auto; text-align: center;">
+            <span style="color: #fbbf24; font-weight: 700; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase;">RESPALDO INSTITUCIONAL & ÉTICO</span>
+            <h2 style="color: white; font-size: 2.1rem; margin: 10px 0 15px 0; font-weight: 300; font-family: 'Inter', sans-serif;">
+                Gobernanza Científica & Registro Oficial
+            </h2>
+            <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6;">
+                <strong>SOC_ORD Platinum v6.0</strong> cuenta con registro formal de propiedad intelectual y depósito científico en repositorios académicos internacionales de acceso abierto.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 35px;">
+                
+                <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 12px; padding: 24px; text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 1.5rem;">📜</span>
+                        <strong style="color: #fbbf24; font-size: 1.05rem;">CERN Zenodo Repository</strong>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">
+                        Registro digital oficial y archivo perpetuo de la especificación metodológica y tensorial SOC_ORD.
+                    </p>
+                    <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color: #fbbf24; font-weight: 700; font-size: 0.85rem; font-family: 'Roboto Mono', monospace; text-decoration: none;">
+                        DOI: 10.5281/zenodo.18941691 ↗
+                    </a>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 24px; text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 1.5rem;">👑</span>
+                        <strong style="color: #38bdf8; font-size: 1.05rem;">Dirección Científica (Socio!!)</strong>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">
+                        Supervisión epistemológica y gobernanza del comité científico (IPIS Governance) de la Norma de Autor.
+                    </p>
+                    <a href="recursos.html#about" style="color: #38bdf8; font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+                        Ver Manifiesto Epistemológico ↗
+                    </a>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 255, 157, 0.3); border-radius: 12px; padding: 24px; text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 1.5rem;">🔐</span>
+                        <strong style="color: #00FF9D; font-size: 1.05rem;">Garantía Ética Q-GID</strong>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">
+                        Protocolo de anonimización tensorial de identidades y salvaguarda de datos de grupos vulnerables.
+                    </p>
+                    <a href="recursos.html#manual" style="color: #00FF9D; font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+                        Consultar Protocolo Ético ↗
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
