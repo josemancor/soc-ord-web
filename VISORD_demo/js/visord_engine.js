@@ -1777,7 +1777,14 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         
         await pause(5000);
         
-        // Fase V: Estallido Orgásmico (Grand Finale progresivo)
+        // Fase VI: Repositorio Global BSOC & Open Science
+        showTitle('Fase VI<br><span style="font-size:24px; font-weight:800; color:#38bdf8; display:block; margin-top:6px;">🏛️ Repositorio Global BSOC (Open Science Q-GID)</span>');
+        if (this.audio) this.audio.playChime();
+        await pause(5000);
+        hideTitle();
+        await pause(600);
+
+        // Fase VII: Estallido Orgásmico (Grand Finale progresivo)
         
         // Respiración dramática: Apagar todo brevemente
         hideTitle();
@@ -1785,7 +1792,7 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         this.updateLayerVisibility();
         await pause(600);
         
-        showTitle('Fase VI<br><span style="font-size:26px; font-weight:800; color:#ffffff; display:block; margin-top:6px;">Integración Estructural Absoluta</span>');
+        showTitle('Fase VII<br><span style="font-size:26px; font-weight:800; color:#ffffff; display:block; margin-top:6px;">Integración Estructural Absoluta</span>');
         
         if (this.audio) this.audio.playGrandFinale();
         
