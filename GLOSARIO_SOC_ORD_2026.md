@@ -152,6 +152,11 @@ El motor SOC_ORD ha sustituido el simple "recuento de preferencias nominales" pa
 $$SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$$
 *   **BDA, BRC, BDR (Densidades Relacionales Absolutas o Brutas):** Equivalentes a SDA, SRC y SDR, pero calculadas sumando los valores absolutos $|A_{1,ij}|, |A_{2,ij}|, |A_{3,ij}| \text{ y } |A_{4,ij}|$ (sin aplicar signo ni restar polaridades). Representan la inercia o carga total de actividad (atracción + marginación) inyectada en el sistema relacional:
 $$BDR_i = \sum_{j \neq i} \left( |A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}| \right) \in [0.0, 4(N-1)]$$
+*   **ENTROPÍA SOCIO-TERMODINÁMICA ($\mathcal{S}_i$):** Métrica fundamental de disipación de energía y fricción relacional que se calcula comparando la Densidad Relativa Neta ($SDR_i$) frente a la Densidad Absoluta ($BDR_i$). Mide el grado en que la energía relacional inyectada en el nodo se disipa por la presencia de fuerzas contrapuestas (atracción y marginación simultáneas):
+$$\mathcal{S}_i = \frac{BDR_i - |SDA_i + SRC_i|}{BDR_i} \in [0.0, 1.0]$$
+    *   **$\mathcal{S}_i = 0.0$ (Entropía Nula / Coherencia Cohesiva):** Toda la energía del nodo es isotérmica y apunta en una misma dirección (consenso absoluto de atracción o de marginación).
+    *   **$\mathcal{S}_i = 1.0$ (Entropía Máxima / Caos de Campo):** Máxima fricción por cancelación vectorial. Ocurre cuando el nodo acumula la misma cantidad de atracción que de marginación ($BDR_i > 0$ pero $SDR_i = 0.0$), disipando toda su energía en ambivalencia estructural.
+    *   **Entropía Macroscópica del Grupo ($\mathcal{S}_{\text{grupo}}$):** Promedio de desorden disipativo del ecosistema: $\mathcal{S}_{\text{grupo}} = 1 - \frac{\sum |SDR_{\text{bruto}, i}|}{\sum BDR_i}$.
 
 ### C. Los 6 Prismas Relacionales, Ópticas Especializadas
 Los **PRISMAS** ($P_1$ al $P_6$) son matrices específicas compuestas por el producto cartesiano de 9 combinaciones conjugadas de pares ordenados:
@@ -198,6 +203,7 @@ Esta tabla agrupa la notación formal de SOC_ORD. Cada símbolo reúne su defini
 | $SDR_i$ | Densidad Relacional Total | $[-1.0, +1.0]$ | $\frac{SDA_i + SRC_i}{\text{Máximo Teórico}}$ | Tensión estructural neta del nodo (Normalizada). |
 | $IEE_i$ | Índice de Energía Estructural | $\mathbb{R}$ | $\sum_{j \neq i} \left( w_{\text{rango}}(r_{ij}) \cdot Q_{81}(i,j) \cdot \text{Estatus}(S_j) \right)$ | Densidad relacional ponderada tensorial $Q_{81}$. |
 | $BDR_i$ | Densidad Absoluta o Bruta | $[0.0, 4(N-1)]$ | $\sum_{j \neq i} (|A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}|)$ | Inercia o carga de actividad inyectada en el sistema. |
+| $\mathcal{S}_i$ | Entropía Socio-Termodinámica | $[0.0, 1.0]$ | $\frac{BDR_i - |SDA_i + SRC_i|}{BDR_i}$ | Métrica de fricción y disipación de energía por ambivalencia. |
 | $Q_{81}$ | Tensor de 81 Figuras | $\{1, \dots, 81\}$ | Descomposición cartesiana $3 \times 3 \times 3 \times 3$ de la relación diádica. | Tipificación exacta de la figura socioafectiva. |
 | $d_G$ | Distancia Grasmaniana | $[0, \pi/2] \text{ rad}$ | Ángulo geodésico $\theta = \arccos(\langle U_{T1}, U_{T2} \rangle)$ entre subespacios. | Magnitud pura del cambio estructural del campo. |
 | $ISV_i$ | Índice Silencio / Invisibilidad | $[0.0, 1.0]$ | Proporción de respuestas neutras `'0'` recibidas vs emitidas. | Nivel de ostracismo o marginación no deseada. |
