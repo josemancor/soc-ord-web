@@ -126,6 +126,54 @@ $$IEE_i = \sum_{j \neq i} \left( w_{\text{rango}}(r_{ij}) \cdot Q_{81}(i,j) \cdo
 *   **Verosimilitud FRN (Fixed Rank Nomination):** Corrección estadística vital en encuestas con límite de respuestas.
 *   **ERGMs (Modelos de Grafos Aleatorios de Familia Exponencial):** Algoritmos avanzados que calculan la probabilidad estadística de la red debido a mecanismos endógenos ocultos.
 
+### A. FORMATO MORENO VS. FORMATO BREVE: SIMILITUDES Y DIFERENCIAS
+El sistema SOC_ORD soporta dos formatos de recabado de datos sociométricos de campo:
+
+1. **Formato MORENO (Nominativo Acotado Clásico)**:
+   - **Mecánica**: Cada miembro $S_i$ selecciona un número acotado de pares $k$ (ej. los $k=3$ preferidos) y $m$ marginados (los $m=3$ rechazados), así como sus correspondientes expectativas de recepción ($A_1, A_4$).
+   - **Ventajas**: Menor esfuerzo cognitivo para el sujeto encuestado; focalización en las dinámicas de mayor intensidad emocional.
+   - **Limitación**: Los pares no elegidos ni rechazados quedan en una "zona muda o neutra" (`'0'`), perdiendo la resolución del ordenamiento interno de la zona media.
+
+2. **Formato BREVE (Ordenamiento Total del Grupo)**:
+   - **Mecánica**: Cada miembro $S_i$ clasifica a **todos** los miembros del grupo en una lista jerárquica continua de $1^{\circ}$ a $(N-1)^{\circ}$ posición de preferencia.
+   - **Ventajas**: Continuidad topológica completa, eliminación de empates nulos y máxima resolución factorial en proyecciones PCA/AFC.
+   - **Desafío**: Por defecto no solicita explícitamente las 4 expectativas cruzadas ($A_1, A_4$) para evitar la fatiga del encuestado.
+
+---
+
+### B. PARÁMETROS DE COMPENSACIÓN EN FORMATO BREVE: $aE$ Y $oE$
+Para recuperar la riqueza perceptual de las 4 vías ($A_1 \dots A_4$) en el formato BREVE sin incrementar la carga cognitiva, SOC_ORD introduce dos **umbrales sintéticos de frontera**:
+
+- **$aE_i$ (Aceptación Esperada / Umbral de Atracción)**: Rango jerárquico límite ($1^\circ \dots aE_i$) dentro del cual el emisor $S_i$ espera razonablemente ser elegido recíprocamente por sus pares.
+- **$oE_i$ (Ostracismo / Marginación Esperada)**: Rango jerárquico límite ($(N-oE_i)^\circ \dots (N-1)^\circ$) a partir del cual el emisor $S_i$ proyecta ser marginado o excluido por sus pares.
+
+---
+
+### C. FUNCIÓN DE CONVERSIÓN RECÍPROCA: $\mathcal{F}_{\text{MORENO} \leftrightarrow \text{BREVE}}$
+
+Como derivación directa del modelo de Sociometría Ordinal Computacional, SOC_ORD establece las funciones biyectivas de transformación entre ambos formatos:
+
+#### 1. Transformación Directa: $\mathcal{F}_{\text{MORENO} \to \text{BREVE}}$
+Transforma una matriz acotada de Moreno con $k$ elecciones ($E_1 \dots E_k$) y $m$ marginaciones ($R_1 \dots R_m$) en un ordenamiento total continuo $r_{ij} \in \{1, 2, \dots, N-1\}$:
+
+$$r_{ij} = \begin{cases}
+\text{rango}(E_p) & \text{si } S_j \text{ es la } p\text{-ésima elección } (p \le k) \\
+N - m + q - 1 & \text{si } S_j \text{ es la } q\text{-ésima marginación } (q \le m) \\
+k + \text{Rank}_{\text{intermedios}}\left( d_{\text{PCA}}(S_i, S_j) \right) & \text{si } S_j \text{ está en la zona neutra } (`'0'`)
+\end{cases}$$
+
+Donde $d_{\text{PCA}}(S_i, S_j)$ imputa el ordenamiento relativo de la zona neutra utilizando la distancia euclídea factorial en el subespacio proyectado de las $VAR$ y del estatus indirecto.
+
+#### 2. Transformación Inversa: $\mathcal{F}_{\text{BREVE} \to \text{MORENO}}$
+Dada una matriz de ordenamiento total BREVE $r_{ij} \in \{1, \dots, N-1\}$ y los parámetros de corte del investigador IP ($k, m, aE, oE$), imputa automáticamente la matriz SMIb de 4 vías:
+
+$$\begin{aligned}
+A_{2,ij} \text{ [DA]} &= \begin{cases} +1 & \text{si } r_{ij} \le k \text{ (Elección } E) \\ -1 & \text{si } r_{ij} \ge N - m \text{ (Marginación } R) \\ 0 & \text{en otro caso (Neutralidad } ¿) \end{cases} \\
+A_{1,ij} \text{ [pDA]} &= \begin{cases} +1 & \text{si } r_{ij} \le aE_i \text{ (Aceptación Esperada)} \\ -1 & \text{si } r_{ij} \ge N - oE_i \text{ (Ostracismo Esperado)} \\ 0 & \text{en otro caso} \end{cases}
+\end{aligned}$$
+
+Esta doble conversión garantiza que un estudio recabado en formato BREVE o MORENO sea $100\%$ interoperable y procesable por el motor VISORDEngine y los módulos de análisis de SOC_ORD.
+
 ---
 
 ## 🚀 VIII. GEOMETRÍA GRASMANIANA RELACIONAL (Hermann Grassmann, 1844)
