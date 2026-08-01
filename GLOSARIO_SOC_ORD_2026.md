@@ -220,3 +220,33 @@ BDR_i &= \text{Densidad Absoluta (Inercia Bruta)} = |A_{1,i}| + |A_{2,i}| + |A_{
 1. **$S_4$** se consolida como el **Líder Sociométrico** del grupo (máxima Densidad Total $SDR = +3.6$ y mayor inercia $BDR = 4.6$).
 2. **$S_1$** actúa como **Centroide Integrador**, manteniendo sinergia recíproca directa tanto con $S_2$ como con $S_4$.
 3. **$S_3$** concentra la tensión de marginación del ecosistema (marginación mutua con $S_2$ y marginación sufrida desde $S_1$), constituyendo un **nodo de marginación de alta inercia ($BDR = 3.8$)** que requiere intervención orientada a la desescalada del conflicto.
+
+---
+
+## 📚 XI. REFERENCIAS BIBLIOGRÁFICAS FUNDAMENTALES
+
+Las siguientes referencias bibliográficas constituyen el corpus teórico, estadístico y metodológico que fundamenta las definiciones y algoritmos de **SOC_ORD**:
+
+1. **Benzécri, J.-P.** (1973). *L'Analyse des Données: Tome 1, La Taxinomie; Tome 2, L'Analyse des Correspondances*. Paris: Dunod.
+2. **Bales, R. F.** (1950). *Interaction Process Analysis: A Method for the Study of Small Groups*. Cambridge, MA: Addison-Wesley.
+3. **Bales, R. F., & Cohen, S. P.** (1979). *SYMLOG: A System for the Multiple Level Observation of Groups*. New York: Free Press.
+4. **Cornejo, J. M.** (1988). *Técnicas de Análisis Grupal (TAG)*. Barcelona: Publicacions de la Universitat de Barcelona.
+5. **Escofier, B., & Pagès, J.** (1994). *Análisis factoriales simples y múltiples: Teoría y aplicaciones*. Bilbao: Universidad del País Vasco.
+6. **Grassmann, H.** (1844). *Die Lineale Ausdehnungslehre, ein neuer Zweig der Mathematik*. Leipzig: Otto Wigand.
+7. **Hemphill, J. K., & Westie, C. M.** (1950). The measurement of group dimensions. *The Journal of Psychology*, 29(2), 325–342.
+8. **Hotelling, H.** (1933). Analysis of a complex of statistical variables into principal components. *Journal of Educational Psychology*, 24(6), 417–441.
+9. **Kenny, D. A., & Lavoie, L.** (1984). The social relations model. *Advances in Experimental Social Psychology*, 18, 141–182.
+10. **Kenny, D. A.** (1994). *Interpersonal Perception: A Social Relations Analysis*. New York: Guilford Press.
+11. **Lewin, K.** (1936). *Principles of Topological Psychology*. New York: McGraw-Hill.
+12. **Lewin, K.** (1951). *Field Theory in Social Science: Selected Theoretical Papers* (D. Cartwright, Ed.). New York: Harper & Row.
+13. **Moreno, J. L.** (1934). *Who Shall Survive? A New Approach to the Problem of Human Interrelations*. Washington, DC: Nervous and Mental Disease Publishing Co.
+14. **Munné, F.** (1985). *La interacción social: Teoría y método en psicología social*. Barcelona: Hispano Europea.
+15. **Munné, F.** (1995). La interacción grupal: Estructura y dinámicas de la actividad relacional. *Revista de Psicología Social*, 10(2), 145–162.
+16. **Munné, F.** (2008). *La complejidad en los grupos y en la sociedad: De la física teórica a la psicología social*. Barcelona: UOC.
+17. **Osgood, C. E., Suci, G. J., & Tannenbaum, P. H.** (1957). *The Measurement of Meaning*. Urbana, IL: University of Illinois Press.
+18. **Pearson, K.** (1901). On lines and planes of closest fit to systems of points in space. *Philosophical Magazine*, 2(11), 559–572.
+19. **Roux, M.** (1985). *Algorithmes de Classification*. Paris: Masson.
+20. **Vicente, R., Cornejo, J. M., et al.** (1998). El Análisis de la Actividad Grupal (AAG): Medición del clima y la dinámica relacional en pequeños grupos. *Anuario de Psicología*, UB, 29(4), 45–68.
+21. **Vicente, R., Cornejo, J. M., et al.** (2003). Evaluación sociométrica y diferencial semántico aplicados al diagnóstico de redes interpersonales. *Anuario de Psicología*, UB, 34(3), 312–335.
+22. **Ward, J. H.** (1963). Hierarchical grouping to optimize an objective function. *Journal of the American Statistical Association*, 58(301), 236–244.
+
