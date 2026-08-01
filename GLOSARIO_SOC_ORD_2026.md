@@ -81,7 +81,8 @@ Conceptos derivados de la física, la topología y la mecánica que Lewin adapt�
 Esta sección traduce la red social a propiedades del álgebra matricial y la estadística espacial, revelando la estructura geométrica oculta del grupo.
 
 *   📌 **SMIa (Sociomatriz Integrada Ampliada):** Matriz relacional bruta de valoraciones o nominaciones ordinales continuas previa a la compresión bipolar de 4 vías de SMIb.
-*   📌 **SMIb (Sociomatriz Integrada Básica / Bipolar):** Estructura matricial fundamental en la suite SOC_ORD. Aglutina en una sola casilla toda la complejidad de la relación diádica: lo que el sujeto emite ($A_{2,ij}$), lo que recibe ($A_{3,ij}$) y las percepciones de ambos ($A_{1,ij}, A_{4,ij}$). **Incluye explícitamente en su notación el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}, \dots$)** en el que cada miembro del grupo ha sido seleccionado. Genera el mapa completo del espacio probabilístico de interacción.
+*   📌 **SMIb (Sociomatriz Integrada Básica / Bipolar):** Estructura matricial fundamental en la suite SOC_ORD. Aglutina en una sola casilla toda la complejidad de la relación diádica: lo que el sujeto emite ($A_{2,ij}$), lo que recibe ($A_{3,ij}$) y las percepciones de ambos ($A_{1,ij}, A_{4,ij}$). **Incluye explícitamente en su notación el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}, \dots$)** en el que cada miembro del grupo ha sido seleccionado.
+    > ⚠️ **REGLA ARQUITECTÓNICA DE GENERACIÓN DE SMIb**: La matriz SMIb se genera **SIEMPRE a partir del Formato MORENO AMPLIADO a $E_{-k_1}$ y $R_{-k_2}$ y sus hipótesis selectivas automáticas**, NUNCA directamente desde BREVE. Cuando un estudio se recaba de campo en formato BREVE, el motor SOC_ORD convierte primero la matriz continua de ordenamiento al formato MORENO ampliado (imputando los polos $E_{-k_1}, R_{-k_2}$ y los umbrales de meta-percepción $aE, oE$), y desde esta base de MORENO ampliado se compila la estructura final SMIb de 4 vías.
 *   📌 **Densidad Relacional Total ($SDR_i$):** Índice matemático estandarizado computado por SOC_ORD como la tensión estructural neta normalizada:
 $$SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$$
 *   📌 **Índice de Energía Estructural ($IEE_i$):** Modelo de densidad ponderada que integra el ranking de la figura relacional sociométrica diádica (entre 1 y 81 figuras posibles del tensor $Q_{81}$), el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}$ con ponderación $w_{\text{rango}}(1^\circ)=1.0, w_{\text{rango}}(2^\circ)=0.8, w_{\text{rango}}(3^\circ)=0.6$), y el estatus ponderado del elector:
@@ -183,14 +184,16 @@ k + \text{Rank}_{\text{intermedios}}\left( d_{\text{PCA}}(S_i, S_j) \right) & \t
 Donde $d_{\text{PCA}}(S_i, S_j)$ imputa el ordenamiento relativo de la zona neutra utilizando la distancia euclídea factorial en el subespacio proyectado de las $VAR$ y del estatus indirecto.
 
 #### 2. Transformación Inversa: $\mathcal{F}_{\text{BREVE} \to \text{MORENO}}$
-Dada una matriz de ordenamiento total BREVE $r_{ij} \in \{1, \dots, N-1\}$ y los parámetros de corte del investigador IP ($k, m, aE, oE$), imputa automáticamente la matriz SMIb de 4 vías:
+Dada una matriz de ordenamiento total BREVE $r_{ij} \in \{1, \dots, N-1\}$ y los parámetros de corte del investigador IP ($k_1, k_2, aE, oE$), se imputa primero la representación de **MORENO AMPLIADO a $E_{-k_1}$ y $R_{-k_2}$**:
 
 $$\begin{aligned}
-A_{2,ij} \text{ [DA]} &= \begin{cases} +1 & \text{si } r_{ij} \le k \text{ (Elección } E) \\ -1 & \text{si } r_{ij} \ge N - m \text{ (Marginación } R) \\ 0 & \text{en otro caso (Neutralidad } ¿) \end{cases} \\
+A_{2,ij} \text{ [DA]} &= \begin{cases} +1 & \text{si } r_{ij} \le k_1 \text{ (Elección } E) \\ -1 & \text{si } r_{ij} \ge N - k_2 \text{ (Marginación } R) \\ 0 & \text{en otro caso (Neutralidad } ¿) \end{cases} \\
 A_{1,ij} \text{ [pDA]} &= \begin{cases} +1 & \text{si } r_{ij} \le aE_i \text{ (Aceptación Esperada)} \\ -1 & \text{si } r_{ij} \ge N - oE_i \text{ (Ostracismo Esperado)} \\ 0 & \text{en otro caso} \end{cases}
 \end{aligned}$$
 
-Esta doble conversión garantiza que un estudio recabado en formato BREVE o MORENO sea $100\%$ interoperable y procesable por el motor VISORDEngine y los módulos de análisis de SOC_ORD.
+> 📌 **FLUJO ARQUITECTÓNICO FUNDAMENTAL**:
+> $$\text{BREVE} \xrightarrow{\mathcal{F}_{\text{B}\to\text{M}}} \text{MORENO AMPLIADO } (E_{-k_1}, R_{-k_2}) \xrightarrow{\text{Hipótesis Selectivas Automáticas}} \text{SMIb (4 Vías)}$$
+> Esta regla garantiza que la matriz SMIb **NUNCA se compile directamente desde BREVE**, sino siempre desde el formato MORENO ampliado a $E_{-k_1}$ y $R_{-k_2}$ aplicando las hipótesis selectivas automáticas sobre las 4 vías ($A_1 \dots A_4$).
 
 ---
 
