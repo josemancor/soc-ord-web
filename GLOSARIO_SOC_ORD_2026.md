@@ -12,8 +12,8 @@ Este documento es el fundamento teórico y algorítmico de la suite SOC_ORD. El 
 | Sigla | Nombre Completo | Definición Breve |
 | :--- | :--- | :--- |
 | **TAG** | Técnicas de Análisis Grupal | Conjunto de instrumentos estadísticos y sociométricos de evaluación grupal (Cornejo, 1988). |
-| **SMIa** | Sociomatriz Integrada Ampliada | Matriz bruta no comprimida de valoraciones o nominaciones ordinales en escala continua. |
-| **SMIb** | Sociomatriz Integrada Bipolar | Estructura matricial $N \times N$ fundamental de 4 vías ($A_1 \dots A_4$) en codificación SMIb. |
+| **SMIa** | Sociomatriz Integrada Ampliada / Abstraída | Reflejo simplificado de SMIb (prescinde del ranking) convertido en una de las 81 figuras de $Q_{81}$. |
+| **SMIb** | Sociomatriz Integrada Bipolar | Estructura matricial $N \times N$ fundamental de 4 vías ($A_1 \dots A_4$) generada desde Moreno Ampliado. |
 | **IPA** | Interaction Process Analysis | Sistema de observación sistemática del comportamiento en grupos (Bales, 1950). |
 | **SYMLOG**| System for the Multiple Level Observation | Modelo tridimensional (U-D, P-N, F-B) de observación de campo (Bales & Cohen, 1979). |
 | **AAG** | Análisis de la Actividad Grupal | Diferencial semántico de 16 adjetivos calificativos en 4 factores (Vicente & Cornejo, 1998). |
@@ -30,6 +30,9 @@ Este documento es el fundamento teórico y algorítmico de la suite SOC_ORD. El 
 | **SDR** | Densidad Relacional Total | Tensión relativa neta normalizada $SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$. |
 | **IEE** | Índice de Energía Estructural | Densidad relacional ponderada con pesos de rango, tensor $Q_{81}$ y estatus del elector. |
 | **BDR** | Densidad Relacional Absoluta | Inercia o carga bruta de actividad $|A_1| + |A_2| + |A_3| + |A_4| \in [0.0, 4(N-1)]$. |
+| **$\mathcal{S}_i$** | Entropía Socio-Termodinámica | Métrica de fricción y disipación de energía por ambivalencia $\frac{BDR_i - |SDA_i+SRC_i|}{BDR_i} \in [0.0, 1.0]$. |
+| **$aE$** | Aceptación Esperada | Umbral de meta-percepción triádica de atracción en formato BREVE ($1^\circ \dots aE$). |
+| **$oE$** | Ostracismo Esperado | Umbral de meta-percepción triádica de marginación en formato BREVE ($(N-oE)^\circ \dots N-1$). |
 | **ISV** | Índice de Silencio e Invisibilidad | Disonancia agencial y tasa de marginación/ostracismo sufrido. |
 | **IIR** | Inconsistencia Relacional | Varianza poblacional del estatus recibido (ambivalencia o liderazgo disputado). |
 | **$Q_{81}$** | Tensor de 81 Figuras | Matriz cartesiana $3 \times 3 \times 3 \times 3$ de figuras sociométricas diádicas. |
