@@ -153,12 +153,17 @@ Para recuperar las 4 vías ($A_1 \dots A_4$) en el formato BREVE sin añadir pre
 
 ---
 
-### C. ESTRATEGIA PARA GRANDES GRUPOS ($N > 20$): TRABAJAR LOS EXTREMOS
-Cuando el tamaño del colectivo supera la escala de equipo ($N > 20$), realizar un ordenamiento total continuo de una sola vez puede generar fatiga cognitiva. Para resolverlo, SOC_ORD aplica la estrategia de **Ordenación en Varias Fases por Trabamiento de Extremos**:
+### C. ESTRATEGIA PARA GRANDES GRUPOS ($N > 20$): ALGORITMO DE LAS 5 FASES DE ORDENAMIENTO
+Cuando el tamaño del colectivo es muy numeroso ($N > 20$), exigir un ordenamiento continuo directo de una sola pasada resulta inviable. SOC_ORD resuelve la ordenación total en BREVE aplicando un **protocolo algorítmico estructurado en 5 Fases consecutivas (Trabajar los Extremos)**:
 
-1. **Fase 1 (Polo Superior / Elección)**: El encuestado selecciona y ordena primero sus $k$ pares de mayor preferencia ($1^\circ \dots k^\circ$).
-2. **Fase 2 (Polo Inferior / Residuos)**: A continuación, selecciona de los miembros restantes sus $m$ pares de menor preferencia ($(N-m)^\circ \dots (N-1)^\circ$), situándolos en la cola inferior.
-3. **Fase 3 (Zona Intermedia / Arrastre Autómata)**: Los miembros remanentes de la zona media se ordenan automáticamente mediante proximidad de estatus o arrastre guiado en la interfaz.
+1. **Fase 1 (Preselección del Polo Superior)**: El encuestado selecciona de la lista general del grupo, sin ordenarlos previamente, al menos los $k$ sujetos más apreciados o con quienes tiene mayor preferencia de trabajo.
+2. **Fase 2 (Ordenación Fina del Polo Superior)**: De la lista filtrada en la Fase 1, el encuestado ordena jerárquicamente a los $k_1$ sujetos más apreciados ($1^\circ, 2^\circ, \dots, k_1^\circ$).
+3. **Fase 3 (Preselección del Polo Inferior)**: De la lista del resto de sujetos (los descartados de la Fase 2 más los no seleccionados en la Fase 1), el encuestado selecciona al menos los $m$ sujetos de menor preferencia o mayor dificultad de colaboración.
+4. **Fase 4 (Ordenación del Polo Inferior de Mayor a Menor Descarte)**: De la lista seleccionada en la Fase 3, el encuestado ordena jerárquicamente los $k_2$ sujetos de mayor a menor descarte.
+5. **Fase 5 (Inversión y Continuo de Zona Intermedia)**: Se invierte el orden de la lista ordenada en la Fase 4 (situando a los de mayor descarte en la cola final del grupo $(N-1)^\circ$), y se ubican intercalados en la zona intermedia el resto de los sujetos (los descartados de la Fase 2, los nunca seleccionados en 1 y 3, y los descartados de la Fase 4).
+
+> 📌 **Propiedad Socio-Termodinámica de la Función Inversa de Rango ($1/r_{ij}$)**:
+> La matriz de ponderación $w(r_{ij}) = \frac{1}{r_{ij}}$ atenúa logarítmicamente las oscilaciones de la zona intermedia (los sujetos no seleccionados en 1 ni en 3), **ponderando con máxima precisión matemática los polos extremos ($1^\circ \dots k_1^\circ$ y $(N-k_2)^\circ \dots (N-1)^\circ$)** y minimizando el impacto del ruido en la zona neutra.
 
 ---
 
