@@ -148,7 +148,8 @@ Toda interacción entre dos miembros del grupo ($S_i \to S_j$) se codifica inter
 El motor SOC_ORD ha sustituido el simple "recuento de preferencias nominales" para medir la Energía Estructural de los vínculos:
 *   **SDA (Densidad Relacional Relativa Emitida, $A_1+A_2$):** El volumen total de energía relacional (positiva o de marginación) que un miembro del grupo emite hacia el colectivo: $SDA_i = \sum_{j \neq i} (A_{1,ij} + A_{2,ij}) \cdot w_{\text{rango}}(r_{ij})$.
 *   **SRC (Densidad Relacional Relativa Recibida, $A_3+A_4$):** El volumen total de energía relacional que un miembro del grupo recibe del colectivo: $SRC_i = \sum_{j \neq i} (A_{3,ij} + A_{4,ij}) \cdot w_{\text{estatus}}(S_j)$.
-*   **SDR (Densidad Relacional Relativa Total Normalizada):** La tensión estructural neta normalizada acumulada por el miembro del grupo: $SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$.
+*   **SDR (Densidad Relacional Relativa Total Normalizada):** La tensión estructural neta del nodo normalizada dividiendo la suma de densidad emitida y recibida ($SDA_i + SRC_i$) entre el máximo teórico alcanzable del grupo, lo que garantiza que oscile en el rango $[-1.0, +1.0]$:
+$$SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$$
 *   **BDA, BRC, BDR (Densidades Relacionales Absolutas o Brutas):** Equivalentes a SDA, SRC y SDR, pero calculadas sumando los valores absolutos $|A_{1,ij}|, |A_{2,ij}|, |A_{3,ij}| \text{ y } |A_{4,ij}|$ (sin aplicar signo ni restar polaridades). Representan la inercia o carga total de actividad (atracción + marginación) inyectada en el sistema relacional:
 $$BDR_i = \sum_{j \neq i} \left( |A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}| \right) \in [0.0, 4(N-1)]$$
 
