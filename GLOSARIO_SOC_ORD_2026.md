@@ -7,6 +7,51 @@ Este documento es el fundamento teórico y algorítmico de la suite SOC_ORD. El 
 
 ---
 
+## 📋 TABLA DE SIGLAS Y ABREVIATURAS TEÓRICAS
+
+| Sigla | Nombre Completo | Definición Breve |
+| :--- | :--- | :--- |
+| **TAG** | Técnicas de Análisis Grupal | Conjunto de instrumentos estadísticos y sociométricos de evaluación grupal (Cornejo, 1988). |
+| **SMIa** | Sociomatriz Integrada Ampliada | Matriz bruta no comprimida de valoraciones o nominaciones ordinales en escala continua. |
+| **SMIb** | Sociomatriz Integrada Bipolar | Estructura matricial $N \times N$ fundamental de 4 vías ($A_1 \dots A_4$) en codificación SMIb. |
+| **IPA** | Interaction Process Analysis | Sistema de observación sistemática del comportamiento en grupos (Bales, 1950). |
+| **SYMLOG**| System for the Multiple Level Observation | Modelo tridimensional (U-D, P-N, F-B) de observación de campo (Bales & Cohen, 1979). |
+| **AAG** | Análisis de la Actividad Grupal | Diferencial semántico de 16 adjetivos calificativos en 4 factores (Vicente & Cornejo, 1998). |
+| **VAR** | Variables Socio-Demográficas | 10 variables cualitativas ordinales/nominales de caracterización disposicional de los sujetos. |
+| **MRS** | Modelo de Relaciones Sociales | Modelo estadístico de descomposición en efectos de actor, partner y relación (Kenny, 1994). |
+| **FRN** | Fixed Rank Nomination | Corrección estadística para nominaciones sociométricas de rango fijo. |
+| **ERGM** | Exponential Random Graph Models | Modelos estocásticos de grafos aleatorios para estimación de estructura endógena. |
+| **AFC** | Análisis Factorial de Correspondencias | Método estadístico multivariante para tablas de contingencia relacionales (Benzécri, 1973). |
+| **PCA** | Principal Component Analysis | Análisis de Componentes Principales para reducción de dimensionalidad (Pearson, 1901). |
+| **MFA** | Multiple Factor Analysis | Análisis Factorial Múltiple para tablas estructuradas (Escofier & Pagès, 1994). |
+| **CAJ** | Clasificación Automática Jerarquizada | Técnica de agrupamiento jerárquico ascendente (Ward, 1963; Roux, 1985). |
+| **SDA** | Densidad Relacional Emitida | Densidad relativa emitida $A_1 + A_2$ (expansividad relacional). |
+| **SRC** | Densidad Relacional Recibida | Densidad relativa recibida $A_3 + A_4$ (estatus relacional). |
+| **SDR** | Densidad Relacional Total | Tensión relativa neta normalizada $SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$. |
+| **IEE** | Índice de Energía Estructural | Densidad relacional ponderada con pesos de rango, tensor $Q_{81}$ y estatus del elector. |
+| **BDR** | Densidad Relacional Absoluta | Inercia o carga bruta de actividad $|A_1| + |A_2| + |A_3| + |A_4| \in [0.0, 4(N-1)]$. |
+| **ISV** | Índice de Silencio e Invisibilidad | Disonancia agencial y tasa de marginación/ostracismo sufrido. |
+| **IIR** | Inconsistencia Relacional | Varianza poblacional del estatus recibido (ambivalencia o liderazgo disputado). |
+| **$Q_{81}$** | Tensor de 81 Figuras | Matriz cartesiana $3 \times 3 \times 3 \times 3$ de figuras sociométricas diádicas. |
+
+---
+
+## 🗺️ ÍNDICE GENERAL DE CONTENIDOS
+
+1. [🧲 I. Fundamentos de la Grupalidad y Sociometría Clásica](#-i-fundamentos-de-la-grupalidad-y-sociometria-clasica)
+2. [🌊 II. La "Física de los Grupos": Teoría del Campo (Kurt Lewin)](#-ii-la-fisica-de-los-grupos-teoria-del-campo-kurt-lewin-1890-1947)
+3. [🧮 III. Topología y Análisis Multidimensional (Suite SOC_ORD)](#-iii-topologia-y-analisis-multidimensional-suite-soc_ord)
+4. [🎭 IV. Actividad, Roles y Comportamiento Grupal](#-iv-actividad-roles-y-comportamiento-grupal)
+5. [🕸️ V. Estructuras Sociométricas Clásicas](#-v-estructuras-sociometricas-clasicas)
+6. [🛠️ VI. Instrumentos y Métricas de Observación (TAG)](#️-vi-instrumentos-y-metricas-de-observacion-tag)
+7. [🌟 VII. Conceptos de Sociometría Ordinal Computacional](#-vii-conceptos-de-sociometria-ordinal-computacional)
+8. [🚀 VIII. Geometría Grasmaniana Relacional (Hermann Grassmann)](#-viii-geometria-grasmaniana-relacional-hermann-grassmann-1844)
+9. [📐 IX. Tabla de Notación y Simbología Matemática](#-ix-tabla-de-notacion-y-simbologia-matematica)
+10. [📊 X. Caso Práctico Paso a Paso ($N=4$)](#-x-caso-practico-paso-a-paso-n4)
+11. [📚 XI. Referencias Bibliográficas Fundamentales](#-xi-referencias-bibliograficas-fundamentales)
+
+---
+
 ## 🧲 I. FUNDAMENTOS DE LA GRUPALIDAD Y SOCIOMETRÍA CLÁSICA
 Partimos de la topología y los vectores de Lewin, pasamos por la intuición clínica del átomo social de Moreno, integramos la observación sistemática de Bales (IPA/SYMLOG) y la teoría de la actividad de Munné, para culminar en la algoritmia matricial y espacial (SMIb, AFC, CAJ, Masa, Inercia) de las Técnicas de Análisis Grupal y la suite SOC_ORD.
 
@@ -17,7 +62,7 @@ Partimos de la topología y los vectores de Lewin, pasamos por la intuición cl�
 *   **Tele:** Unidad de relación empática y transferencial bidireccional (positiva o negativa). Es el "cemento" socioafectivo invisible que forma los lazos sociométricos.
 *   **Átomo Social:** La unidad microsocial más pequeña. Es el individuo (foco central) junto con la red de todas las figuras significativas (reales o imaginarias) con las que se interrelaciona.
 
-## 🧲 II. LA "FÍSICA DE LOS GRUPOS": TEORÍA DEL CAMPO (Kurt Lewin, 1890-1947)
+## 🌊 II. LA "FÍSICA DE LOS GRUPOS": TEORÍA DEL CAMPO (Kurt Lewin, 1890-1947)
 Conceptos derivados de la física, la topología y la mecánica que Lewin adaptó para explicar el comportamiento humano como el resultado de un campo de fuerzas en tensión (*Teoría del Campo*, 1936, 1951). La genialidad de Lewin fue importar los conceptos de la física newtoniana, el electromagnetismo y la topología matemática para explicar el comportamiento humano. Su visión es el puente conceptual perfecto para entender por qué la sociometría moderna necesita representaciones espaciales, vectoriales y topológicas.
 
 *   📌 **Teoría del Campo (Field Theory):** Modelo paradigmático que postula que el comportamiento grupal o individual no depende del pasado ni de variables aisladas, sino que es una función del campo de fuerzas interdependientes que operan en el momento presente: $C = f(P, A)$ (la Conducta es función de la Persona y su Ambiente). Un cambio en una parte del campo afecta a todo el sistema.
@@ -35,10 +80,12 @@ Conceptos derivados de la física, la topología y la mecánica que Lewin adapt�
 ## 🧮 III. TOPOLOGÍA Y ANÁLISIS MULTIDIMENSIONAL (Suite SOC_ORD)
 Esta sección traduce la red social a propiedades del álgebra matricial y la estadística espacial, revelando la estructura geométrica oculta del grupo.
 
-*   📌 **SMIb (Sociomatriz Integrada Básica / Bipolar):** Estructura matricial fundamental en la suite SOC_ORD. Aglutina en una sola casilla toda la complejidad de la relación diádica: lo que el sujeto emite ($A_2$), lo que recibe ($A_3$) y las percepciones de ambos ($A_1, A_4$). **Incluye explícitamente en su notación el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}, \dots$)** en el que cada miembro del grupo ha sido seleccionado. Genera el mapa completo del espacio probabilístico de interacción.
-*   📌 **Densidad Relacional ($SDR$):** Índice matemático computado por SOC_ORD mediante métodos específicos que integran el ranking de la figura relacional sociométrica diádica (entre 1 y 81 figuras posibles del tensor $Q_{81}$), el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}$), y el estatus ponderado del elector. Se formula mediante la ecuación sumatoria de pesos:
-$$SDR_i = \sum_{j \neq i} \left( w_{\text{rango}}(r_{ij}) \cdot Q_{81}(i,j) \cdot \text{Estatus}(S_j) \right)$$
-Vital para evaluar el grado de compactación o cohesión interna.
+*   📌 **SMIa (Sociomatriz Integrada Ampliada):** Matriz relacional bruta de valoraciones o nominaciones ordinales continuas previa a la compresión bipolar de 4 vías de SMIb.
+*   📌 **SMIb (Sociomatriz Integrada Básica / Bipolar):** Estructura matricial fundamental en la suite SOC_ORD. Aglutina en una sola casilla toda la complejidad de la relación diádica: lo que el sujeto emite ($A_{2,ij}$), lo que recibe ($A_{3,ij}$) y las percepciones de ambos ($A_{1,ij}, A_{4,ij}$). **Incluye explícitamente en su notación el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}, \dots$)** en el que cada miembro del grupo ha sido seleccionado. Genera el mapa completo del espacio probabilístico de interacción.
+*   📌 **Densidad Relacional Total ($SDR_i$):** Índice matemático estandarizado computado por SOC_ORD como la tensión estructural neta normalizada:
+$$SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$$
+*   📌 **Índice de Energía Estructural ($IEE_i$):** Modelo de densidad ponderada que integra el ranking de la figura relacional sociométrica diádica (entre 1 y 81 figuras posibles del tensor $Q_{81}$), el orden de elección jerárquico ($1^{\circ}, 2^{\circ}, 3^{\circ}$ con ponderación $w_{\text{rango}}(1^\circ)=1.0, w_{\text{rango}}(2^\circ)=0.8, w_{\text{rango}}(3^\circ)=0.6$), y el estatus ponderado del elector:
+$$IEE_i = \sum_{j \neq i} \left( w_{\text{rango}}(r_{ij}) \cdot Q_{81}(i,j) \cdot \text{Estatus}(S_j) \right)$$
 *   📌 **AFC / PCA / MFA (Análisis Factorial de Correspondencias / Componentes Principales):** Métodos estadísticos multivariantes de reducción de dimensionalidad utilizados por SOC_ORD que comprimen las interacciones relacionales de las tablas para proyectar a los miembros del grupo en un espacio factorial de 2D a 6D. Autores de referencia: Jean-Paul Benzécri (1973) para AFC, Karl Pearson (1901) y Harold Hotelling (1933) para PCA, y Brigitte Escofier & Jérôme Pagès (1994) para MFA. La proximidad geométrica refleja fielmente la similitud psicosocial.
 *   📌 **Masa ($m_i$):** El peso marginal o la influencia relativa de un individuo dentro de la red total. Se calcula como la proporción marginal de la suma de masa relacional respecto al total de la matriz: $m_i = \frac{\sum_j p_{ij}}{N}$. Un miembro con alta masa ejerce una gran fuerza de atracción o gravitación sobre el sistema.
 *   📌 **Inercia ($\Phi^2$):** Equivalente multidimensional a la varianza total en el espacio factorial. Mide la cantidad de información, dispersión o heterogeneidad contenida en la nube de datos respecto a su centro de gravedad ($g$). Se calcula como la suma ponderada de las distancias al cuadrado: $\Phi^2 = \sum_i m_i \cdot d^2(i, g) = \frac{\chi^2}{N}$.
@@ -63,11 +110,11 @@ Vital para evaluar el grado de compactación o cohesión interna.
 *   **Ignorado vs. Marginado:** El ignorado pasa desapercibido; el marginado acumula nominaciones negativas declaradas. El Desatendido elige a muchos pero no es correspondido.
 
 ## 🛠️ VI. INSTRUMENTOS Y MÉTRICAS DE OBSERVACIÓN (TAG)
-*   **IPA (Interaction Process Analysis - Bales):** Sistema de observación sistemática que codifica toda interacción grupal.
-*   **SYMLOG (Bales):** Sistema de niveles múltiples que evalúa el campo grupal en tres dimensiones: U-D, P-N y F-B.
+*   **IPA (Interaction Process Analysis - Bales, 1950):** Sistema de observación sistemática que codifica toda interacción grupal.
+*   **SYMLOG (Bales & Cohen, 1979):** Sistema de niveles múltiples que evalúa el campo grupal en tres dimensiones: U-D, P-N y F-B.
 *   **AAG (Análisis de la Actividad Grupal):** Técnica de medición desarrollada para cuantificar los niveles de la Actividad Grupal de F. Munné (Vicente, R., Cornejo, J.M. et al., *Anuario de Psicología*, UB, 1998, 2003), estructurada a través de un Diferencial Semántico (Osgood, Suci & Tannenbaum, 1957) formado por 16 adjetivos calificativos bipolares aplicables a los grupos, subdivididos en 4 factores o niveles: Temático, Funcional, Cognitivo y Afectivo.
 *   **VAR (Variables Socio-Demográficas y Disposicionales):** Datos de clasificación no clínicos que agrupan a los miembros en estratos fijos. Por defecto, SOC_ORD propone 10 variables socio-demográficas y disposicionales: `EDAD`, `EST` (Estatus Socio-Profesional), `RIG` (Rigidez/Dogmatismo), `RES` (Respeto a Procedimientos), `PREJ` (Prejuicio Implícito), `EXP` (Experiencia Previa), `RAC` (Racionalidad Lógica), `EMPAT` (Empatía/Escucha), `VOTO_T1` (Posición Inicial) y `VOTO_T3` (Posición Final).
-*   **Índice de Hemphill (Group Dimensions, Hemphill & Westie, 1956):** Cuestionario estandarizado que describe la fisionomía estructural del grupo a través de 13 dimensiones fundamentales: Autonomía, Control, Cohesión, Flexibilidad, Intimidad, Homogeneidad, Participación, Permeabilidad, Polarización, Potencia, Estabilidad, Visibilidad y Dependencia.
+*   **Índice de Hemphill (Group Dimensions, Hemphill & Westie, 1950):** Cuestionario estandarizado que describe la fisionomía estructural del grupo a través de 13 dimensiones fundamentales: Autonomía, Control, Cohesión, Flexibilidad, Intimidad, Homogeneidad, Participación, Permeabilidad, Polarización, Potencia, Estabilidad, Visibilidad y Dependencia.
 *   **I-Sociometría (Sociometría Indirecta):** Metodología de medición indirecta que analiza redes sin aplicar el test sociométrico nominativo clásico. Se basa en: 1) la valoración independiente de cada sujeto en una escala numérica de 0 a 9 sobre el grado de aceptación de los miembros del grupo, o a través de cualquier otra escala actitudinal o ideológica; 2) el cálculo de la matriz $N \times N$ de distancias y proximidades euclídeas entre las puntuaciones de los sujetos.
 *   **Modelo de Relaciones Sociales (MRS, Kenny & Lavoie, 1984; Kenny, 1994):** Sistema estadístico que descompone una interacción recíproca en tres componentes independientes: efecto del emisor (actor), efecto del receptor (partner) y efecto interactivo o de la relación diádica.
 
@@ -84,34 +131,35 @@ Vital para evaluar el grado de compactación o cohesión interna.
 ## 🚀 VIII. GEOMETRÍA GRASMANIANA RELACIONAL (Hermann Grassmann, 1844)
 
 ### A. Geometría Topológica: El Grasmaniano de las Relaciones
-SOC_ORD no evalúa a los miembros del grupo como puntos fijos en un vacío, sino que mapea las estructuras de poder como subespacios geométricos.
+La geometría de Grassmann (1844) permite modelar las preferencias colectivas no como vectores individuales aislados, sino como subespacios de dimensión variable, capturando la emergencia topológica de estructuras grupales que no se reducen a la suma de sus miembros.
 *   **Variedad Grasmaniana ($Gr(k, n)$):** El espacio topológico multidimensional donde "habitan" las estructuras grupales. Un punto en un Grasmaniano no es una coordenada, sino un *subespacio entero de k dimensiones* proyectado desde un universo de *n* dimensiones (el grupo). Cuando SOC_ORD calcula el PCA, está seleccionando el "punto" Grasmaniano óptimo que resume el poder del grupo.
 *   **Prisma Sociométrico como Subespacio:** En SOC_ORD, un "Prisma" es matemáticamente un subespacio Grasmaniano específico (un plano de proyección) elegido intencionalmente para revelar una simetría o asimetría pura (ej. fricción, idealización).
 *   **Difracción Espectral:** El proceso topológico mediante el cual el tensor bruto de interacciones (SMIa) se descompone al atravesar los diferentes subespacios Grasmanianos, revelando las "frecuencias de onda" del comportamiento social (espectros de luz relacional).
 *   **Distancia Grasmaniana ($d_G$):** La medida pura del cambio estructural. En lugar de restar votos, mide el *ángulo de rotación geodésica* entre el "plano de poder" de un grupo en $T_1$ y su nuevo plano en $T_2$, ignorando las posiciones individuales y enfocándose en la esencia del campo.
 
 ### B. La Matriz de 4 Vías (Vectores A1 a A4)
-Toda interacción entre dos miembros del grupo ($i$ hacia $j$) se codifica internamente en 4 posiciones o vectores conjugados:
-1.  **A1 [pDA] (Expectativa de Acción Directa / Expectativa Dada por el Emisor):** Expectativa del emisor sobre lo que hará el partner o receptor en la relación. Se caracteriza en la notación SMIb con las marcas angulares de apertura: `'<'` (atracción esperada), `'¡'` (indiferencia esperada), `'['` (marginación esperada).
-2.  **A2 [DA] (Acción Directa / Matriz de Preferencias Reales Emitidas):** Preferencia o marginación efectiva que el emisor declara hacia el partner. Se caracteriza en la notación SMIb con los símbolos de emisión en mayúsculas: `'E'` (elección/atracción), `'¿'` (indiferencia), `'R'` (marginación).
-3.  **A3 [REC] (Recepción / Realidad Recibida):** Lo que el partner o receptor selecciona realmente para el emisor ($A_3 = A_{2,ji}$). Se caracteriza en la notación SMIb con los símbolos recibidos en minúsculas: `'e'` (atracción recibida), `'?'` (indiferencia recibida), `'r'` (marginación recibida).
-4.  **A4 [pREC] (Percepción de Recepción / Expectativa de Respuesta):** Lo que el partner o receptor supone que el emisor seleccionará efectivamente hacia él. Se caracteriza en la notación SMIb con las marcas angulares de cierre: `'>'` (atracción supuesta), `'!'` (indiferencia supuesta), `']'` (marginación supuesta).
+Toda interacción entre dos miembros del grupo ($S_i \to S_j$) se codifica internamente en 4 posiciones o vectores conjugados $A_{k,ij}$:
+1.  **$A_{1,ij}$ [pDA] (Expectativa de Acción Directa / Expectativa Dada por el Emisor):** Expectativa del emisor sobre lo que hará el partner o receptor en la relación. Se caracteriza en la notación SMIb con las marcas angulares de apertura: `'<'` (atracción esperada), `'¡'` (indiferencia esperada), `'['` (marginación esperada).
+2.  **$A_{2,ij}$ [DA] (Acción Directa / Matriz de Preferencias Reales Emitidas):** Preferencia o marginación efectiva que el emisor declara hacia el partner. Se caracteriza en la notación SMIb con los símbolos de emisión en mayúsculas: `'E'` (elección/atracción), `'¿'` (indiferencia), `'R'` (marginación).
+3.  **$A_{3,ij}$ [REC] (Recepción / Realidad Recibida):** Lo que el partner o receptor selecciona realmente para el emisor ($A_{3,ij} = A_{2,ji}$). Se caracteriza en la notación SMIb con los símbolos recibidos en minúsculas: `'e'` (atracción recibida), `'?'` (indiferencia recibida), `'r'` (marginación recibida).
+4.  **$A_{4,ij}$ [pREC] (Percepción de Recepción / Expectativa de Respuesta):** Lo que el partner o receptor supone que el emisor seleccionará efectivamente hacia él. Se caracteriza en la notación SMIb con las marcas angulares de cierre: `'>'` (atracción supuesta), `'!'` (indiferencia supuesta), `']'` (marginación supuesta).
 
 ### B. Masas Relacionales y Densidades
 El motor SOC_ORD ha sustituido el simple "recuento de preferencias nominales" para medir la Energía Estructural de los vínculos:
-*   **SDA (Densidad Relacional Relativa Emitida, $A_1+A_2$):** El volumen total de energía relacional (positiva o de marginación) que un miembro del grupo emite hacia el colectivo. Representa su expansividad o gasto energético.
-*   **SRC (Densidad Relacional Relativa Recibida, $A_3+A_4$):** El volumen total de energía relacional que un miembro del grupo recibe del colectivo. Representa su estatus o gravitación en la red.
-*   **SDR (Densidad Relacional Relativa Total, $SDA+SRC$):** La tensión estructural neta del vínculo acumulada por el miembro del grupo.
-*   **BDA, BRC, BDR (Densidades Relacionales Absolutas o Brutas):** Equivalentes a SDA, SRC y SDR, pero calculadas sumando los valores absolutos $|A_1|, |A_2|, |A_3| \text{ y } |A_4|$ (sin aplicar signo ni restar polaridades). Representan la inercia o carga total de actividad (atracción + marginación) inyectada en el sistema relacional.
+*   **SDA (Densidad Relacional Relativa Emitida, $A_1+A_2$):** El volumen total de energía relacional (positiva o de marginación) que un miembro del grupo emite hacia el colectivo: $SDA_i = \sum_{j \neq i} (A_{1,ij} + A_{2,ij}) \cdot w_{\text{rango}}(r_{ij})$.
+*   **SRC (Densidad Relacional Relativa Recibida, $A_3+A_4$):** El volumen total de energía relacional que un miembro del grupo recibe del colectivo: $SRC_i = \sum_{j \neq i} (A_{3,ij} + A_{4,ij}) \cdot w_{\text{estatus}}(S_j)$.
+*   **SDR (Densidad Relacional Relativa Total Normalizada):** La tensión estructural neta normalizada acumulada por el miembro del grupo: $SDR_i = \frac{SDA_i + SRC_i}{\text{Máximo Teórico}} \in [-1.0, +1.0]$.
+*   **BDA, BRC, BDR (Densidades Relacionales Absolutas o Brutas):** Equivalentes a SDA, SRC y SDR, pero calculadas sumando los valores absolutos $|A_{1,ij}|, |A_{2,ij}|, |A_{3,ij}| \text{ y } |A_{4,ij}|$ (sin aplicar signo ni restar polaridades). Representan la inercia o carga total de actividad (atracción + marginación) inyectada en el sistema relacional:
+$$BDR_i = \sum_{j \neq i} \left( |A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}| \right) \in [0.0, 4(N-1)]$$
 
 ### C. Los 6 Prismas Relacionales, Ópticas Especializadas
-Los **PRISMAS** (1 al 6) son matrices específicas que aíslan diferentes perspectivas del "cubo" sociométrico, cruzando las posiciones como relaciones conjugadas:
-*   **PRISMA 1 (Posiciones $A_1$ y $A_4$):** "Cámaras de Eco". Cruza las expectativas emitidas ($A_1$) con las expectativas recibidas ($A_4$). Evalúa las meta-percepciones subjetivas de los miembros del grupo. Caracterizado por las 9 combinaciones conjugadas: `'<..>'`, `'<..!'`, `'<..]'`, `'¡..>'`, `'¡..!'`, `'¡..]'`, `'[..>'`, `'[..!'`, `'[..]'`.
-*   **PRISMA 2 (Posiciones $A_2$ y $A_3$):** "Matriz de Preferencias Dadas por la Díada". Cruza la preferencia efectiva emitida ($A_2$) con la respuesta efectiva recibida ($A_3$). Evalúa si hay colaboración genuina o antagonismo abierto. Caracterizado por las 9 combinaciones conjugadas: `'.Ee.'`, `'.E?.'`, `'.Er.'`, `'.¿e.'`, `'.¿?.'`, `'.¿r.'`, `'.Re.'`, `'.R?.'`, `'.Rr.'`.
-*   **PRISMA 3 (Posiciones $A_1$ y $A_3$):** "Realismo Perceptivo del Emisor". Cruza la expectativa emitida ($A_1$) frente a la respuesta real recibida del partner ($A_3$). Caracterizado por las 9 combinaciones conjugadas: `'<.e.'`, `'<.?.'`, `'<.r.'`, `'¡.e.'`, `'¡.?.'`, `'¡.r.'`, `'[.e.'`, `'[.?.'`, `'[.r.'`.
-*   **PRISMA 4 (Posiciones $A_4$ y $A_2$):** "Espejo Invertido". Cruza lo que el partner supone que se le responderá ($A_4$) frente a la preferencia efectiva declarada ($A_2$). Caracterizado por las 9 combinaciones conjugadas: `'.E.>'`, `'.E.!'`, `'.E.]'`, `'.¿.>'`, `'.¿.!'`, `'.¿.]'`, `'.R.>'`, `'.R.!'`, `'.R.]'`.
-*   **PRISMA 5 (Posiciones $A_1$ y $A_2$):** "Sinceridad Operativa". Evalúa si las expectativas del emisor ($A_1$) coinciden con su preferencia efectiva ($A_2$). Caracterizado por las 9 combinaciones conjugadas: `'<E..'`, `'<¿..'`, `'<R..'`, `'¡E..'`, `'¡¿..'`, `'¡R..'`, `'[E..'`, `'[¿..'`, `'[R..'`.
-*   **PRISMA 6 (Posiciones $A_4$ y $A_3$):** "Ceguera al Rechazo/Afecto". Cruza lo que el receptor supone que se hará ($A_4$) con la respuesta efectiva del emisor ($A_3$). Caracterizado por las 9 combinaciones conjugadas: `'..e>'`, `'..e!'`, `'..e]'`, `'..?>'`, `'..?!'`, `'..?]'`, `'..r>'`, `'..r!'`, `'..r]'`.
+Los **PRISMAS** ($P_1$ al $P_6$) son matrices específicas compuestas por el producto cartesiano de 9 combinaciones conjugadas de pares ordenados:
+*   **PRISMA 1 ($P_1 = A_1 \times A_4$):** "Cámaras de Eco". Cruza las expectativas emitidas ($A_1$) con las expectativas recibidas ($A_4$). Evalúa las meta-percepciones subjetivas. Caracterizado por las 9 combinaciones conjugadas: `'<..>'`, `'<..!'`, `'<..]'`, `'¡..>'`, `'¡..!'`, `'¡..]'`, `'[..>'`, `'[..!'`, `'[..]'`.
+*   **PRISMA 2 ($P_2 = A_2 \times A_3$):** "Matriz de Preferencias Dadas por la Díada". Cruza la preferencia efectiva emitida ($A_2$) con la respuesta efectiva recibida ($A_3$). Evalúa colaboración genuina vs antagonismo abierto. Caracterizado por las 9 combinaciones conjugadas: `'.Ee.'`, `'.E?.'`, `'.Er.'`, `'.¿e.'`, `'.¿?.'`, `'.¿r.'`, `'.Re.'`, `'.R?.'`, `'.Rr.'`.
+*   **PRISMA 3 ($P_3 = A_1 \times A_3$):** "Realismo Perceptivo del Emisor". Cruza la expectativa emitida ($A_1$) frente a la respuesta real recibida del partner ($A_3$). Caracterizado por las 9 combinaciones conjugadas: `'<.e.'`, `'<.?.'`, `'<.r.'`, `'¡.e.'`, `'¡.?.'`, `'¡.r.'`, `'[.e.'`, `'[.?.'`, `'[.r.'`. Métrica de diferencia derivada: $\Delta P_3(i,j) = A_{1,ij} - A_{3,ij}$.
+*   **PRISMA 4 ($P_4 = A_4 \times A_2$):** "Espejo Invertido". Cruza lo que el partner supone que se le responderá ($A_4$) frente a la preferencia efectiva declarada ($A_2$). Caracterizado por las 9 combinaciones conjugadas: `'.E.>'`, `'.E.!'`, `'.E.]'`, `'.¿.>'`, `'.¿.!'`, `'.¿.]'`, `'.R.>'`, `'.R.!'`, `'.R.]'`.
+*   **PRISMA 5 ($P_5 = A_1 \times A_2$):** "Sinceridad Operativa". Evalúa si las expectativas del emisor ($A_1$) coinciden con su preferencia efectiva ($A_2$). Caracterizado por las 9 combinaciones conjugadas: `'<E..'`, `'<¿..'`, `'<R..'`, `'¡E..'`, `'¡¿..'`, `'¡R..'`, `'[E..'`, `'[¿..'`, `'[R..'`.
+*   **PRISMA 6 ($P_6 = A_4 \times A_3$):** "Ceguera al Rechazo/Afecto". Cruza lo que el receptor supone que se hará ($A_4$) con la respuesta efectiva del emisor ($A_3$). Caracterizado por las 9 combinaciones conjugadas: `'..e>'`, `'..e!'`, `'..e]'`, `'..?>'`, `'..?!'`, `'..?]'`, `'..r>'`, `'..r!'`, `'..r]'`. Métrica de diferencia derivada: $\Delta P_6(i,j) = A_{4,ij} - A_{3,ij}$.
 
 ### D. Indicadores Dinámicos de Campo
 *   **SINTONÍA RELACIONAL ($SR$ / Resonancia Dinámica):** Es la medida macroscópica de Acoplamiento Estructural. Evalúa el grado en que la percepción general del grupo coincide con la realidad de sus acciones. Se calcula como la proporción de coincidencia escalar entre las expectativas ($P_1$) y la realidad efectivizada ($P_2$):
@@ -134,20 +182,21 @@ Esta tabla agrupa la notación formal de SOC_ORD. Cada símbolo reúne su defini
 | :--- | :--- | :--- | :--- | :--- |
 | $S_i$ | Nodo / Miembro del Grupo | $i \in \{1, \dots, N\}$ | Entidad individual dentro del universo sociométrico de tamaño $N$. | El miembro en su espacio vital (Moreno/Lewin). |
 | $W_{ij}$ | Vínculo Ordinal Bruto | $\{-1, 0, +1\}$ | Valor codificado SMIb de la emisión del sujeto $S_i$ hacia $S_j$ ($+1$=Atracción, $0$=Neutralidad, $-1$=Marginación). | Polaridad del flujo afectivo o relacional directo. |
-| $A_1 \text{ [pDA]}$ | Expectativa DADA por el emisor | $\{-1, 0, +1\}$ | Expectativa que $S_i$ supone que emitirá hacia $S_j$ en su espacio ideal. | "Mundo Ideal" proyectado o expectativas de emisión. |
-| $A_2 \text{ [DA]}$ | Acción Directa / Preferencia Emitida | $\{-1, 0, +1\}$ | Elección o marginación efectiva declarada por $S_i$ hacia $S_j$. | Realidad de las preferencias emitidas. |
-| $A_3 \text{ [REC]}$ | Recepción Efectiva Recibida | $\{-1, 0, +1\}$ | Elección o marginación efectiva seleccionada por $S_j$ hacia $S_i$ ($A_3 = A_{2, ji}$). | Realidad del estatus recibido del colectivo. |
-| $A_4 \text{ [pREC]}$ | Percepción de Recepción | $\{-1, 0, +1\}$ | Lo que $S_i$ presupone o adivina que $S_j$ ha respondido sobre él. | Percepción de aceptación o marginación en la red. |
-| $P_1$ | Prisma 1: Cámaras de Eco | $A_1 \times A_4$ | Matriz conjugada $P_1(i,j) = (A_{1,ij}, A_{4,ij})$. | Idealización y meta-percepciones subjetivas. |
-| $P_2$ | Prisma 2: Preferencias de la Díada | $A_2 \times A_3$ | Matriz conjugada $P_2(i,j) = (A_{2,ij}, A_{3,ij})$. | Preferencias reales dadas por la díada. |
-| $P_3$ | Prisma 3: Realismo Perceptivo Emisor | $A_1 \times A_3$ | Matriz de diferencia $P_3(i,j) = A_{1,ij} - A_{3,ij}$. | Ajuste perceptivo entre expectativa y respuesta real. |
-| $P_4$ | Prisma 4: Espejo Invertido | $A_4 \times A_2$ | Matriz conjugada $P_4(i,j) = (A_{4,ij}, A_{2,ij})$. | Grado de acierto en la auto-percepción frente a pares. |
-| $P_5$ | Prisma 5: Sinceridad Operativa | $A_1 \times A_2$ | Coincidencia $P_5(i,j) = \text{I}(A_{1,ij} == A_{2,ij})$. | Consistencia entre el deseo ideal y la acción real. |
-| $P_6$ | Prisma 6: Ceguera al Rechazo/Afecto| $A_4 \times A_3$ | Discrepancia $P_6(i,j) = A_{4,ij} - A_{3,ij}$. | Ceguera relacional; incapacidad de percibir la marginación. |
+| $A_{1,ij} \text{ [pDA]}$ | Expectativa DADA por el emisor | $\{-1, 0, +1\}$ | Expectativa que $S_i$ supone que emitirá hacia $S_j$ en su espacio ideal. | "Mundo Ideal" proyectado o expectativas de emisión. |
+| $A_{2,ij} \text{ [DA]}$ | Acción Directa / Preferencia Emitida | $\{-1, 0, +1\}$ | Elección o marginación efectiva declarada por $S_i$ hacia $S_j$. | Realidad de las preferencias emitidas. |
+| $A_{3,ij} \text{ [REC]}$ | Recepción Efectiva Recibida | $\{-1, 0, +1\}$ | Elección o marginación efectiva seleccionada por $S_j$ hacia $S_i$ ($A_{3,ij} = A_{2,ji}$). | Realidad del estatus recibido del colectivo. |
+| $A_{4,ij} \text{ [pREC]}$ | Percepción de Recepción | $\{-1, 0, +1\}$ | Lo que $S_i$ presupone o adivina que $S_j$ ha respondido sobre él. | Percepción de aceptación o marginación en la red. |
+| $P_1$ | Prisma 1: Cámaras de Eco | $A_1 \times A_4$ | Matriz conjugada de 9 pares $P_1(i,j) = (A_{1,ij}, A_{4,ij})$. | Idealización y meta-percepciones subjetivas. |
+| $P_2$ | Prisma 2: Preferencias de la Díada | $A_2 \times A_3$ | Matriz conjugada de 9 pares $P_2(i,j) = (A_{2,ij}, A_{3,ij})$. | Preferencias reales dadas por la díada. |
+| $P_3$ | Prisma 3: Realismo Perceptivo Emisor | $A_1 \times A_3$ | Matriz conjugada de 9 pares $P_3(i,j) = (A_{1,ij}, A_{3,ij})$. | Ajuste perceptivo entre expectativa y respuesta real. |
+| $P_4$ | Prisma 4: Espejo Invertido | $A_4 \times A_2$ | Matriz conjugada de 9 pares $P_4(i,j) = (A_{4,ij}, A_{2,ij})$. | Grado de acierto en la auto-percepción frente a pares. |
+| $P_5$ | Prisma 5: Sinceridad Operativa | $A_1 \times A_2$ | Matriz conjugada de 9 pares $P_5(i,j) = (A_{1,ij}, A_{2,ij})$. | Consistencia entre el deseo ideal y la acción real. |
+| $P_6$ | Prisma 6: Ceguera al Rechazo/Afecto| $A_4 \times A_3$ | Matriz conjugada de 9 pares $P_6(i,j) = (A_{4,ij}, A_{3,ij})$. | Ceguera relacional; incapacidad de percibir la marginación. |
 | $SDA_i$ | Densidad Relacional Emitida | $\mathbb{R}$ | $\sum_{j \neq i} (A_{1,ij} + A_{2,ij}) \cdot w_{\text{rango}}$ | Gasto energético total o expansividad relacional. |
 | $SRC_i$ | Densidad Relacional Recibida | $\mathbb{R}$ | $\sum_{j \neq i} (A_{3,ij} + A_{4,ij}) \cdot w_{\text{estatus}}$ | Estatus o gravitación recibida del colectivo. |
-| $SDR_i$ | Densidad Relacional Total | $[-1.0, +1.0]$ | $\frac{SDA_i + SRC_i}{\text{Máximo Teórico}}$ | Tensión estructural neta del nodo (Polarizada). |
-| $BDR_i$ | Densidad Absoluta o Bruta | $[0.0, +\infty)$ | $\sum_{j \neq i} (|A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}|)$ | Inercia o carga de actividad inyectada en el sistema. |
+| $SDR_i$ | Densidad Relacional Total | $[-1.0, +1.0]$ | $\frac{SDA_i + SRC_i}{\text{Máximo Teórico}}$ | Tensión estructural neta del nodo (Normalizada). |
+| $IEE_i$ | Índice de Energía Estructural | $\mathbb{R}$ | $\sum_{j \neq i} \left( w_{\text{rango}}(r_{ij}) \cdot Q_{81}(i,j) \cdot \text{Estatus}(S_j) \right)$ | Densidad relacional ponderada tensorial $Q_{81}$. |
+| $BDR_i$ | Densidad Absoluta o Bruta | $[0.0, 4(N-1)]$ | $\sum_{j \neq i} (|A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}|)$ | Inercia o carga de actividad inyectada en el sistema. |
 | $Q_{81}$ | Tensor de 81 Figuras | $\{1, \dots, 81\}$ | Descomposición cartesiana $3 \times 3 \times 3 \times 3$ de la relación diádica. | Tipificación exacta de la figura socioafectiva. |
 | $d_G$ | Distancia Grasmaniana | $[0, \pi/2] \text{ rad}$ | Ángulo geodésico $\theta = \arccos(\langle U_{T1}, U_{T2} \rangle)$ entre subespacios. | Magnitud pura del cambio estructural del campo. |
 | $ISV_i$ | Índice Silencio / Invisibilidad | $[0.0, 1.0]$ | Proporción de respuestas neutras `'0'` recibidas vs emitidas. | Nivel de ostracismo o marginación no deseada. |
@@ -155,39 +204,39 @@ Esta tabla agrupa la notación formal de SOC_ORD. Cada símbolo reúne su defini
 
 ---
 
-## 🧮 X. CASO PRÁCTICO PASO A PASO ($N=4$)
+## 📊 X. CASO PRÁCTICO PASO A PASO ($N=4$)
 
-Para ilustrar de forma concreta la notación y trazabilidad de SOC_ORD con total **anonimato nominal**, consideremos un grupo de **$N=4$ miembros censados**: **$S_1$**, **$S_2$**, **$S_3$** y **$S_4$**, evaluados en 2 Criterios ($C_1, C_2$), 10 Variables Socio-Demográficas ($VAR$) y 16 Adjetivos Bipolares ($AAG$).
+Para ilustrar de forma concreta la notación y trazabilidad de SOC_ORD con total **anonimato nominal**, consideremos un grupo de **$N=4$ miembros censados**: **$S_1$**, **$S_2$**, **$S_3$** y **$S_4$**, evaluados en las 4 vías ($A_1, A_2, A_3, A_4$), 10 Variables Socio-Demográficas ($VAR$) y 16 Adjetivos Bipolares ($AAG$).
 
-### 1. Matriz de Emisión Efectiva $A_2$ (Acción Directa Emitida)
-Codificación SMIb con rango jerárquico de elección ($1^{\circ}, 2^{\circ}, 3^{\circ}$):
-- Mayúsculas con rango: `'E1'` ($1^{\circ}$ elección / atracción), `'E2'` ($2^{\circ}$ elección), `'E3'` ($3^{\circ}$ elección).
-- Indiferencia/Neutralidad: `'¿0'` ($0$=Neutralidad).
-- Marginación: `'R1'` ($1^{\circ}$ marginación), `'R2'` ($2^{\circ}$ marginación).
+### 1. Desglose de las 4 Vías Relacionales ($A_1, A_2, A_3, A_4$) por Miembro del Grupo
 
-| Emisor \ Receptor | $S_1$ | $S_2$ | $S_3$ | $S_4$ | Densidad Emitida $SDA_i$ Bruta |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **$S_1$** | — | $+1.0$ (`E1`) | $0.0$ (`¿0`) | $+0.8$ (`E2`) | **$+1.8$** |
-| **$S_2$** | $+1.0$ (`E1`) | — | $-1.0$ (`R1`) | $0.0$ (`¿0`) | **$0.0$** |
-| **$S_3$** | $-1.0$ (`R1`) | $-0.8$ (`R2`) | — | $+1.0$ (`E1`) | **$-0.8$** |
-| **$S_4$** | $+1.0$ (`E1`) | $+0.8$ (`E2`) | $0.0$ (`¿0`) | — | **$+1.8$** |
-| **Densidad Recibida $SRC_j$** | **$+1.0$** | **$+1.0$** | **$-2.0$** | **$+1.8$** | **$\sum = +2.8$** |
+- **Matriz $A_1$ (Expectativas de Emisión Dadas, $pDA$)**:
+  - $S_1$: $\to S_2 (+1.0)$, $\to S_3 (0.0)$, $\to S_4 (+0.8)$
+  - $S_2$: $\to S_1 (+1.0)$, $\to S_3 (-1.0)$, $\to S_4 (0.0)$
+  - $S_3$: $\to S_1 (-1.0)$, $\to S_2 (-0.8)$, $\to S_4 (+1.0)$
+  - $S_4$: $\to S_1 (+1.0)$, $\to S_2 (+0.8)$, $\to S_3 (0.0)$
+
+- **Matriz $A_2$ (Acción Directa Emitida / Preferencias Reales, $DA$)**:
+  - $S_1$: $\to S_2 (+1.0, \text{`E1`}), \to S_3 (0.0, \text{`¿0`}), \to S_4 (+0.8, \text{`E2`})$ $\Rightarrow SDA_2 = +1.8$
+  - $S_2$: $\to S_1 (+1.0, \text{`E1`}), \to S_3 (-1.0, \text{`R1`}), \to S_4 (0.0, \text{`¿0`})$ $\Rightarrow SDA_2 = 0.0$
+  - $S_3$: $\to S_1 (-1.0, \text{`R1`}), \to S_2 (-0.8, \text{`R2`}), \to S_4 (+1.0, \text{`E1`})$ $\Rightarrow SDA_2 = -0.8$
+  - $S_4$: $\to S_1 (+1.0, \text{`E1`}), \to S_2 (+0.8, \text{`E2`}), \to S_3 (0.0, \text{`¿0`})$ $\Rightarrow SDA_2 = +1.8$
+
+- **Matriz $A_3$ (Recepción Efectiva Recibida, $REC = A_2^T$)**:
+  - $S_1$: recibe de $S_2 (+1.0), S_3 (-1.0), S_4 (+1.0) \Rightarrow SRC_3 = +1.0$
+  - $S_2$: recibe de $S_1 (+1.0), S_3 (-0.8), S_4 (+0.8) \Rightarrow SRC_3 = +1.0$
+  - $S_3$: recibe de $S_1 (0.0), S_2 (-1.0), S_4 (0.0) \Rightarrow SRC_3 = -1.0$
+  - $S_4$: recibe de $S_1 (+0.8), S_2 (0.0), S_3 (+1.0) \Rightarrow SRC_3 = +1.8$
+
+- **Matriz $A_4$ (Percepción de Recepción / Expectativas Recibidas, $pREC$)**:
+  - $S_1$: supone recibir de $S_2 (+1.0), S_3 (0.0), S_4 (+0.8) \Rightarrow SRC_4 = +1.8$
+  - $S_2$: supone recibir de $S_1 (+1.0), S_3 (-1.0), S_4 (0.0) \Rightarrow SRC_4 = 0.0$
+  - $S_3$: supone recibir de $S_1 (-1.0), S_2 (-0.8), S_4 (+1.0) \Rightarrow SRC_4 = -0.8$
+  - $S_4$: supone recibir de $S_1 (+1.0), S_2 (+0.8), S_3 (0.0) \Rightarrow SRC_4 = +1.8$
 
 ---
 
-### 2. Matriz de Recepción Efectiva $A_3$ (Traspuesta de $A_2$)
-Refleja lo que cada miembro $S_i$ recibe del resto del grupo:
-
-| Receptor \ Emisor | $S_1$ | $S_2$ | $S_3$ | $S_4$ | Estatus Recibido ($SRC_i$) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **$S_1$** | — | $+1.0$ | $-1.0$ | $+1.0$ | **$+1.0$** |
-| **$S_2$** | $+1.0$ | — | $-0.8$ | $+0.8$ | **$+1.0$** |
-| **$S_3$** | $0.0$ | $-1.0$ | — | $0.0$ | **$-2.0$** |
-| **$S_4$** | $+0.8$ | $0.0$ | $+1.0$ | — | **$+1.8$** |
-
----
-
-### 3. Matriz Conjugada de Preferencias Dadas por la Díada (Prisma 2: $A_2 \times A_3$)
+### 2. Matriz Conjugada de Preferencias Dadas por la Díada (Prisma 2: $A_2 \times A_3$)
 Al cruzar la preferencia efectiva emitida ($A_2$) con la recepción real ($A_3$), aislamos el tipo de vínculo diádico entre pares:
 
 | Par Diádico ($S_i \leftrightarrow S_j$) | Emitido ($A_{2,ij}$) | Recibido ($A_{3,ij}$) | Código Prisma 2 | Diagnóstico Ecosistémico del Vínculo |
@@ -200,26 +249,30 @@ Al cruzar la preferencia efectiva emitida ($A_2$) con la recepción real ($A_3$)
 
 ---
 
-### 4. Métricas Termodinámicas $SDR$ y $BDR$ por Sujeto
+### 3. Cómputo de Densidades Termodinámicas ($SDA, SRC, SDR, BDR$)
+
+Para $N=4$, el máximo teórico de emisión/recepción relativa es $SDA_{\text{max}} = 2 \times (4-1) = 6.0$, y el máximo teórico absoluto es $BDR_{\text{max}} = 4 \times (4-1) = 12.0$.
 
 $$\begin{aligned}
-SDR_i &= \text{Densidad Relacional Relativa Total} = SDA_i + SRC_i \\
-BDR_i &= \text{Densidad Absoluta (Inercia Bruta)} = |A_{1,i}| + |A_{2,i}| + |A_{3,i}| + |A_{4,i}|
+SDA_i &= \sum_{j \neq i} (A_{1,ij} + A_{2,ij}) \\
+SRC_i &= \sum_{j \neq i} (A_{3,ij} + A_{4,ij}) \\
+SDR_i &= \frac{SDA_i + SRC_i}{12.0} \in [-1.0, +1.0] \\
+BDR_i &= \sum_{j \neq i} (|A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}|) \in [0.0, 12.0]
 \end{aligned}$$
 
-| Miembro ($S_i$) | $SDA_i$ (Emisión) | $SRC_i$ (Recepción) | $SDR_i$ (Neta Relativa) | $BDR_i$ (Carga Absoluta) | Diagnóstico de Posición de Campo |
+| Miembro ($S_i$) | $SDA_i$ ($A_1+A_2$) | $SRC_i$ ($A_3+A_4$) | $SDR_i$ (Total Normalizada) | $BDR_i$ (Inercia Absoluta) | Diagnóstico de Posición de Campo |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **$S_1$** | $+1.8$ | $+1.0$ | **$+2.8$** | **$3.8$** | **Centroide Afectivo Integrador** |
-| **$S_2$** | $0.0$ | $+1.0$ | **$+1.0$** | **$2.8$** | **Nodo Estable de Sostén** |
-| **$S_3$** | $-0.8$ | $-2.0$ | **$-2.8$** | **$3.8$** | **Sujeto Marginado / Zona de Riesgo** |
-| **$S_4$** | $+1.8$ | $+1.8$ | **$+3.6$** | **$4.6$** | **Líder Sociométrico de Campo** |
+| **$S_1$** | $+3.6$ | $+2.8$ | **$+0.53$** | **$6.4$** | **Centroide Afectivo Integrador** |
+| **$S_2$** | $0.0$ | $+1.0$ | **$+0.08$** | **$4.6$** | **Nodo Estable de Sostén** |
+| **$S_3$** | $-1.6$ | $-1.8$ | **$-0.28$** | **$5.6$** | **Sujeto Marginado / Zona de Riesgo** |
+| **$S_4$** | $+3.6$ | $+3.6$ | **$+0.60$** | **$7.2$** | **Líder Sociométrico de Campo** |
 
 ---
 
 ### 💡 Diagnóstico Ecosistémico Resultante:
-1. **$S_4$** se consolida como el **Líder Sociométrico** del grupo (máxima Densidad Total $SDR = +3.6$ y mayor inercia $BDR = 4.6$).
-2. **$S_1$** actúa como **Centroide Integrador**, manteniendo sinergia recíproca directa tanto con $S_2$ como con $S_4$.
-3. **$S_3$** concentra la tensión de marginación del ecosistema (marginación mutua con $S_2$ y marginación sufrida desde $S_1$), constituyendo un **nodo de marginación de alta inercia ($BDR = 3.8$)** que requiere intervención orientada a la desescalada del conflicto.
+1. **$S_4$** se consolida como el **Líder Sociométrico** del grupo (máxima Densidad Total $SDR = +0.60$ y mayor inercia $BDR = 7.2$).
+2. **$S_1$** actúa como **Centroide Integrador** ($SDR = +0.53$), manteniendo sinergia recíproca directa tanto con $S_2$ como con $S_4$.
+3. **$S_3$** concentra la tensión de marginación del ecosistema (marginación mutua con $S_2$ y marginación sufrida desde $S_1$), constituyendo un **nodo de marginación de alta inercia ($BDR = 5.6, SDR = -0.28$)** que requiere intervención orientada a la desescalada del conflicto.
 
 ---
 
@@ -249,4 +302,3 @@ Las siguientes referencias bibliográficas constituyen el corpus teórico, estad
 20. **Vicente, R., Cornejo, J. M., et al.** (1998). El Análisis de la Actividad Grupal (AAG): Medición del clima y la dinámica relacional en pequeños grupos. *Anuario de Psicología*, UB, 29(4), 45–68.
 21. **Vicente, R., Cornejo, J. M., et al.** (2003). Evaluación sociométrica y diferencial semántico aplicados al diagnóstico de redes interpersonales. *Anuario de Psicología*, UB, 34(3), 312–335.
 22. **Ward, J. H.** (1963). Hierarchical grouping to optimize an objective function. *Journal of the American Statistical Association*, 58(301), 236–244.
-
