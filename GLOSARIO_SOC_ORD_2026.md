@@ -130,26 +130,39 @@ $$IEE_i = \sum_{j \neq i} \left( w_{\text{rango}}(r_{ij}) \cdot Q_{81}(i,j) \cdo
 El sistema SOC_ORD soporta dos formatos de recabado de datos sociométricos de campo:
 
 1. **Formato MORENO (Nominativo Acotado Clásico)**:
-   - **Mecánica**: Cada miembro $S_i$ selecciona un número acotado de pares $k$ (ej. los $k=3$ preferidos) y $m$ marginados (los $m=3$ rechazados), así como sus correspondientes expectativas de recepción ($A_1, A_4$).
-   - **Ventajas**: Menor esfuerzo cognitivo para el sujeto encuestado; focalización en las dinámicas de mayor intensidad emocional.
+   - **Mecánica**: Cada miembro $S_i$ selecciona un número acotado de pares $k$ (ej. los $k=3$ preferidos) y $m$ marginados (los $m=3$ rechazados), basándose en la **Meta-percepción Dual** (intuición directa de lo que el otro sujeto específico responderá de manera recíproca en la díada).
+   - **Ventajas**: Menor esfuerzo cognitivo para el encuestado; focalización en las dinámicas de mayor intensidad emocional.
    - **Limitación**: Los pares no elegidos ni rechazados quedan en una "zona muda o neutra" (`'0'`), perdiendo la resolución del ordenamiento interno de la zona media.
 
 2. **Formato BREVE (Ordenamiento Total del Grupo)**:
-   - **Mecánica**: Cada miembro $S_i$ clasifica a **todos** los miembros del grupo en una lista jerárquica continua de $1^{\circ}$ a $(N-1)^{\circ}$ posición de preferencia.
-   - **Ventajas**: Continuidad topológica completa, eliminación de empates nulos y máxima resolución factorial en proyecciones PCA/AFC.
-   - **Desafío**: Por defecto no solicita explícitamente las 4 expectativas cruzadas ($A_1, A_4$) para evitar la fatiga del encuestado.
+   - **Ámbito Óptimo**: Especialmente apropiado y diseñado para **pequeños grupos o equipos de trabajo ($N = 15 \dots 20$ sujetos)**.
+   - **Propiedades y Beneficios Ético-Clínicos**:
+     - **1 Sola Pregunta Positiva**: Se administra mediante un único ítem general de preferencia o facilidad de colaboración (ej. *"Ordena a tus compañeros según tu preferencia de trabajo en equipo"*).
+     - **Sin Mención a Marginaciones**: **No menciona en ningún momento elecciones negativas ni marginaciones**, lo que elimina la reactividad y la carga aversiva del test, protegiendo el clima ético del grupo. Las marginaciones se deducen matemáticamente por la posición en la cola inferior del ranking ($(N-m)^\circ \dots (N-1)^\circ$).
+     - **Máxima Resolución Factorial**: Garantiza continuidad topológica completa, eliminación de empates nulos y óptima proyección en PCA/AFC.
 
 ---
 
-### B. PARÁMETROS DE COMPENSACIÓN EN FORMATO BREVE: $aE$ Y $oE$
-Para recuperar la riqueza perceptual de las 4 vías ($A_1 \dots A_4$) en el formato BREVE sin incrementar la carga cognitiva, SOC_ORD introduce dos **umbrales sintéticos de frontera**:
+### B. META-PERCEPCIÓN TRIÁDICA Y PARÁMETROS $aE$ Y $oE$
+A diferencia de la *meta-percepción dual* de Moreno (centrada en la díada $S_i \leftrightarrow S_j$), el formato BREVE se fundamenta en la **Meta-percepción Triádica / Ecosistémica**: el sujeto proyecta su posición y la de los demás en relación con el campo y consenso del colectivo.
 
-- **$aE_i$ (Aceptación Esperada / Umbral de Atracción)**: Rango jerárquico límite ($1^\circ \dots aE_i$) dentro del cual el emisor $S_i$ espera razonablemente ser elegido recíprocamente por sus pares.
-- **$oE_i$ (Ostracismo / Marginación Esperada)**: Rango jerárquico límite ($(N-oE_i)^\circ \dots (N-1)^\circ$) a partir del cual el emisor $S_i$ proyecta ser marginado o excluido por sus pares.
+Para recuperar las 4 vías ($A_1 \dots A_4$) en el formato BREVE sin añadir preguntas adicionales, SOC_ORD utiliza dos **umbrales sintéticos de frontera**:
+
+- **$aE_i$ (Aceptación Esperada / Umbral de Atracción)**: Rango jerárquico límite ($1^\circ \dots aE_i$) dentro del cual el emisor $S_i$ proyecta que el consenso del grupo lo situará en reciprocidad de atracción.
+- **$oE_i$ (Ostracismo / Marginación Esperada)**: Rango jerárquico límite ($(N-oE_i)^\circ \dots (N-1)^\circ$) a partir del cual el emisor $S_i$ proyecta ser ubicado en la zona de exclusión o marginación relacional.
 
 ---
 
-### C. FUNCIÓN DE CONVERSIÓN RECÍPROCA: $\mathcal{F}_{\text{MORENO} \leftrightarrow \text{BREVE}}$
+### C. ESTRATEGIA PARA GRANDES GRUPOS ($N > 20$): TRABAJAR LOS EXTREMOS
+Cuando el tamaño del colectivo supera la escala de equipo ($N > 20$), realizar un ordenamiento total continuo de una sola vez puede generar fatiga cognitiva. Para resolverlo, SOC_ORD aplica la estrategia de **Ordenación en Varias Fases por Trabamiento de Extremos**:
+
+1. **Fase 1 (Polo Superior / Elección)**: El encuestado selecciona y ordena primero sus $k$ pares de mayor preferencia ($1^\circ \dots k^\circ$).
+2. **Fase 2 (Polo Inferior / Residuos)**: A continuación, selecciona de los miembros restantes sus $m$ pares de menor preferencia ($(N-m)^\circ \dots (N-1)^\circ$), situándolos en la cola inferior.
+3. **Fase 3 (Zona Intermedia / Arrastre Autómata)**: Los miembros remanentes de la zona media se ordenan automáticamente mediante proximidad de estatus o arrastre guiado en la interfaz.
+
+---
+
+### D. FUNCIÓN DE CONVERSIÓN RECÍPROCA: $\mathcal{F}_{\text{MORENO} \leftrightarrow \text{BREVE}}$
 
 Como derivación directa del modelo de Sociometría Ordinal Computacional, SOC_ORD establece las funciones biyectivas de transformación entre ambos formatos:
 
