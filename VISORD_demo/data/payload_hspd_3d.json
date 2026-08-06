@@ -1,0 +1,142 @@
+{
+  "study_code": "HSPD",
+  "subjects": [
+    "CAPATAZ (JURADO 1)",
+    "JURADO 1",
+    "JURADO 10",
+    "JURADO 12",
+    "JURADO 2",
+    "JURADO 3",
+    "JURADO 5",
+    "JURADO 7",
+    "JURADO 8"
+  ],
+  "density_metrics": {
+    "N": 9,
+    "BDR": 1.0,
+    "SDR": 1.0,
+    "Pearson_r_FC": 1.0,
+    "Unified_Density_Di": {
+      "CAPATAZ (JURADO 1)": 2.0,
+      "JURADO 1": 4.0,
+      "JURADO 10": 3.0,
+      "JURADO 12": 2.0,
+      "JURADO 2": 2.0,
+      "JURADO 3": 2.0,
+      "JURADO 5": 1.0,
+      "JURADO 7": 1.0,
+      "JURADO 8": 0.0
+    }
+  },
+  "grassmann_metrics": {
+    "k_dim": 3,
+    "principal_angles_deg": [
+      7.5,
+      14.2,
+      21.0
+    ],
+    "dist_geodesic_rad": 0.46140445220514803,
+    "dist_cordal_rad": 0.45347589537202576
+  },
+  "smib_sample": {
+    "CAPATAZ (JURADO 1)": {
+      "CAPATAZ (JURADO 1)": "A1A1",
+      "JURADO 1": "00AA",
+      "JURADO 10": "0000",
+      "JURADO 12": "AAAA",
+      "JURADO 2": "aaaa",
+      "JURADO 3": "0000",
+      "JURADO 5": "AAAA",
+      "JURADO 7": "0000",
+      "JURADO 8": "aaaa"
+    },
+    "JURADO 1": {
+      "CAPATAZ (JURADO 1)": "AA00",
+      "JURADO 1": "A1A1",
+      "JURADO 10": "AAAA",
+      "JURADO 12": "aaaa",
+      "JURADO 2": "0000",
+      "JURADO 3": "AAAA",
+      "JURADO 5": "AA00",
+      "JURADO 7": "aaaa",
+      "JURADO 8": "AAAA"
+    },
+    "JURADO 10": {
+      "CAPATAZ (JURADO 1)": "0000",
+      "JURADO 1": "AAAA",
+      "JURADO 10": "A1A1",
+      "JURADO 12": "AA00",
+      "JURADO 2": "AAAA",
+      "JURADO 3": "0000",
+      "JURADO 5": "aaaa",
+      "JURADO 7": "AA00",
+      "JURADO 8": "00aa"
+    },
+    "JURADO 12": {
+      "CAPATAZ (JURADO 1)": "AAAA",
+      "JURADO 1": "aaaa",
+      "JURADO 10": "00AA",
+      "JURADO 12": "A1A1",
+      "JURADO 2": "0000",
+      "JURADO 3": "aaaa",
+      "JURADO 5": "AAAA",
+      "JURADO 7": "0000",
+      "JURADO 8": "0000"
+    },
+    "JURADO 2": {
+      "CAPATAZ (JURADO 1)": "aaaa",
+      "JURADO 1": "0000",
+      "JURADO 10": "AAAA",
+      "JURADO 12": "0000",
+      "JURADO 2": "A1A1",
+      "JURADO 3": "AAAA",
+      "JURADO 5": "0000",
+      "JURADO 7": "00aa",
+      "JURADO 8": "AAAA"
+    },
+    "JURADO 3": {
+      "CAPATAZ (JURADO 1)": "0000",
+      "JURADO 1": "AAAA",
+      "JURADO 10": "0000",
+      "JURADO 12": "aaaa",
+      "JURADO 2": "AAAA",
+      "JURADO 3": "A1A1",
+      "JURADO 5": "0000",
+      "JURADO 7": "AAAA",
+      "JURADO 8": "00aa"
+    },
+    "JURADO 5": {
+      "CAPATAZ (JURADO 1)": "AAAA",
+      "JURADO 1": "00AA",
+      "JURADO 10": "aaaa",
+      "JURADO 12": "AAAA",
+      "JURADO 2": "0000",
+      "JURADO 3": "0000",
+      "JURADO 5": "A1A1",
+      "JURADO 7": "aa00",
+      "JURADO 8": "aaaa"
+    },
+    "JURADO 7": {
+      "CAPATAZ (JURADO 1)": "0000",
+      "JURADO 1": "aaaa",
+      "JURADO 10": "00AA",
+      "JURADO 12": "0000",
+      "JURADO 2": "aa00",
+      "JURADO 3": "AAAA",
+      "JURADO 5": "00aa",
+      "JURADO 7": "A1A1",
+      "JURADO 8": "AAAA"
+    },
+    "JURADO 8": {
+      "CAPATAZ (JURADO 1)": "aaaa",
+      "JURADO 1": "AAAA",
+      "JURADO 10": "aa00",
+      "JURADO 12": "0000",
+      "JURADO 2": "AAAA",
+      "JURADO 3": "aa00",
+      "JURADO 5": "aaaa",
+      "JURADO 7": "AAAA",
+      "JURADO 8": "A1A1"
+    }
+  }
+}

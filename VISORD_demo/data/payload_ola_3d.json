@@ -1,0 +1,102 @@
+{
+  "study_code": "OLA",
+  "subjects": [
+    "DAVID COLLINS",
+    "KARO",
+    "LAURIE SAUNDERS",
+    "PROFESOR RAINER WENGER",
+    "ROBERT BILLINGS",
+    "SINAN",
+    "TIM"
+  ],
+  "density_metrics": {
+    "N": 7,
+    "BDR": 1.0,
+    "SDR": 1.0,
+    "Pearson_r_FC": 0.9999999999999999,
+    "Unified_Density_Di": {
+      "DAVID COLLINS": 3.0,
+      "KARO": 4.0,
+      "LAURIE SAUNDERS": 2.0,
+      "PROFESOR RAINER WENGER": 2.0,
+      "ROBERT BILLINGS": 2.0,
+      "SINAN": 1.0,
+      "TIM": 1.0
+    }
+  },
+  "grassmann_metrics": {
+    "k_dim": 3,
+    "principal_angles_deg": [
+      7.5,
+      14.2,
+      21.0
+    ],
+    "dist_geodesic_rad": 0.46140445220514803,
+    "dist_cordal_rad": 0.45347589537202576
+  },
+  "smib_sample": {
+    "DAVID COLLINS": {
+      "DAVID COLLINS": "A1A1",
+      "KARO": "0000",
+      "LAURIE SAUNDERS": "0000",
+      "PROFESOR RAINER WENGER": "AAAA",
+      "ROBERT BILLINGS": "aaaa",
+      "SINAN": "AAaa",
+      "TIM": "AAAA"
+    },
+    "KARO": {
+      "DAVID COLLINS": "0000",
+      "KARO": "A1A1",
+      "LAURIE SAUNDERS": "AAAA",
+      "PROFESOR RAINER WENGER": "aaaa",
+      "ROBERT BILLINGS": "AA00",
+      "SINAN": "AAAA",
+      "TIM": "AAaa"
+    },
+    "LAURIE SAUNDERS": {
+      "DAVID COLLINS": "0000",
+      "KARO": "AAAA",
+      "LAURIE SAUNDERS": "A1A1",
+      "PROFESOR RAINER WENGER": "AA00",
+      "ROBERT BILLINGS": "AAAA",
+      "SINAN": "00aa",
+      "TIM": "aaaa"
+    },
+    "PROFESOR RAINER WENGER": {
+      "DAVID COLLINS": "AAAA",
+      "KARO": "aaaa",
+      "LAURIE SAUNDERS": "00AA",
+      "PROFESOR RAINER WENGER": "A1A1",
+      "ROBERT BILLINGS": "0000",
+      "SINAN": "aaaa",
+      "TIM": "AAAA"
+    },
+    "ROBERT BILLINGS": {
+      "DAVID COLLINS": "aaaa",
+      "KARO": "00AA",
+      "LAURIE SAUNDERS": "AAAA",
+      "PROFESOR RAINER WENGER": "0000",
+      "ROBERT BILLINGS": "A1A1",
+      "SINAN": "AAAA",
+      "TIM": "00aa"
+    },
+    "SINAN": {
+      "DAVID COLLINS": "aaAA",
+      "KARO": "AAAA",
+      "LAURIE SAUNDERS": "aa00",
+      "PROFESOR RAINER WENGER": "aaaa",
+      "ROBERT BILLINGS": "AAAA",
+      "SINAN": "A1A1",
+      "TIM": "aaaa"
+    },
+    "TIM": {
+      "DAVID COLLINS": "AAAA",
+      "KARO": "aaAA",
+      "LAURIE SAUNDERS": "aaaa",
+      "PROFESOR RAINER WENGER": "AAAA",
+      "ROBERT BILLINGS": "aa00",
+      "SINAN": "aaaa",
+      "TIM": "A1A1"
+    }
+  }
+}

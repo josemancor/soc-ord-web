@@ -81,9 +81,19 @@ class VisordHubEngine {
                                    (typeof window !== 'undefined' && window.THREE && window.THREE.OrbitControls);
         
         if (typeof OrbitControlsClass === 'function') {
-            this.controls = new OrbitControlsClass(this.camera, this.renderer.domElement);
-            this.controls.enableDamping = true;
-            this.controls.dampingFactor = 0.05;
+            try {
+                this.controls = new OrbitControlsClass(this.camera, this.renderer.domElement);
+                this.controls.enableDamping = true;
+                this.controls.dampingFactor = 0.05;
+            } catch (errControls) {
+                console.warn("VISORDEngine: OrbitControls instantiation failed, fallback active:", errControls);
+                this.controls = {
+                    update: function() {},
+                    target: new THREE.Vector3(0, 0, 0),
+                    enableDamping: false,
+                    dispose: function() {}
+                };
+            }
         } else {
             console.warn("VISORDEngine: OrbitControls unavailable. Falling back to static camera controls.");
             this.controls = {
