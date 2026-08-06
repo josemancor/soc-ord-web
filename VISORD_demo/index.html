@@ -48,7 +48,6 @@
     
     <!-- CDN Fallbacks para garantizar Three.js en cualquier servidor web -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -72,11 +71,18 @@
                 <p class="visord-holo-subtitle">Visualizador Sociométrico</p>
             </div>
 
-            <!-- ENTRADA DIRECTA DEMO DIDÁCTICA -->
+            <!-- ENTRADA DIRECTA DEMO DIDÁCTICA CON SELECTOR DE ESTUDIOS -->
             <div id="portal-login-box" class="visord-login-form">
-                <div style="background: rgba(0, 162, 255, 0.1); border: 1px solid rgba(0, 162, 255, 0.3); padding: 12px 18px; border-radius: 12px; margin-bottom: 16px; text-align: center;">
-                    <span style="color: #00A2FF; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px;">🎬 ESTUDIO DEMO ACTIVADO</span>
-                    <h4 style="color: white; margin: 4px 0 0 0; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">12 Hombres sin Piedad (HSPD-G1-T3-C2-V10-A4-ES-12)</h4>
+                <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(0, 162, 255, 0.4); padding: 14px 18px; border-radius: 14px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+                    <label style="color: #00A2FF; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 8px;">🎬 SELECCIONAR ESTUDIO SOCIOMÉTRICO 4D</label>
+                    <select id="select-active-study" style="width: 100%; padding: 10px 14px; background: #0b1329; border: 1px solid rgba(0, 162, 255, 0.5); border-radius: 8px; color: white; font-weight: 700; font-size: 0.95rem; font-family: 'Outfit', sans-serif; cursor: pointer; outline: none;">
+                        <option value="HSPD" selected>🎬 12 Hombres sin Piedad (HSPD &bull; N=12)</option>
+                        <option value="LCBA">🎭 La Casa de Bernarda Alba (LCBA &bull; N=8)</option>
+                        <option value="MOSCAS">🏝️ El Señor de las Moscas (MOSCAS &bull; N=8)</option>
+                    </select>
+                    <div id="study-active-subtitle" style="color: #94a3b8; font-size: 0.82rem; margin-top: 8px; font-weight: 500;">
+                        Código: HSPD-G1-T3-C2-V10-A4-ES-12 &bull; 12 Jurados &bull; Deliberación a Puerta Cerrada
+                    </div>
                 </div>
 
                 <div class="visord-actions-group" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
@@ -84,8 +90,8 @@
                         👁️ ENTRAR AL VISUALIZADOR 3D
                     </button>
                     
-                    <button onclick="document.getElementById('hspd-info-modal').style.display='flex'" style="width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: #E2E8F0; font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s;">
-                        📖 Ficha Didáctica del Estudio (12 Hombres sin Piedad)
+                    <button id="btn-open-study-info" style="width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: #E2E8F0; font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s;">
+                        📖 Ficha Didáctica del Estudio
                     </button>
 
                     <button id="btn-tour" class="visord-btn-tour" style="width: 100%; padding: 12px; background: transparent; border: 1px dashed #00FF9D; border-radius: 10px; color: #00FF9D; font-weight: 700; cursor: pointer; font-size: 0.9rem;">
@@ -172,6 +178,73 @@
                         <li><strong>F3 (Libertad)</strong>: Libre/Presionado &bull; Sereno/Tenso &bull; Pacífico/Agredido &bull; Comprendido/Incomprendido</li>
                         <li><strong>F4 (Autonomía)</strong>: Autónomo/Sumiso &bull; Constructivo/Disruptivo &bull; Objetivo/Prejuicioso &bull; Resiliente/Vulnerable</li>
                     </ul>
+            <!-- GALERÍA DE ROSTROS Y COMPONENTES DEL GRUPO (N=12 JURADOS) -->
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(0, 162, 255, 0.3); padding: 15px; border-radius: 14px; margin-bottom: 20px;">
+                <h4 style="color: #00A2FF; margin-top: 0; margin-bottom: 12px; font-size: 1rem; font-family: 'Outfit', sans-serif;">👤 Galería de Rostros de los 12 Jurados ($N=12$)</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px;">
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/1.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 1</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">Martin Balsam</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/2.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 2</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">John Fiedler</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/3.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #ef4444;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 3</div>
+                        <div style="font-size: 0.68rem; color: #ef4444;">Lee J. Cobb</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/4.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 4</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">E.G. Marshall</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/5.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 5</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">Jack Klugman</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/6.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 6</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">Edward Binns</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/7.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 7</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">Jack Warden</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(0, 255, 157, 0.1); padding: 8px; border-radius: 10px; border: 1.5px solid #00FF9D;">
+                        <img src="assets/faces/8.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00FF9D;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: #00FF9D; margin-top: 4px;">Jurado 8</div>
+                        <div style="font-size: 0.68rem; color: #00FF9D;">Henry Fonda</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/9.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 9</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">Joseph Sweeney</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/10.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #ef4444;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 10</div>
+                        <div style="font-size: 0.68rem; color: #ef4444;">Ed Begley</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/11.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 11</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">George Voskovec</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <img src="assets/faces/12.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid #00A2FF;" />
+                        <div style="font-size: 0.78rem; font-weight: bold; color: white; margin-top: 4px;">Jurado 12</div>
+                        <div style="font-size: 0.68rem; color: #94a3b8;">Robert Webber</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- INTEGRACIÓN BSOC (BANCO INTERNACIONAL DE DATOS SOCIOMÉTRICOS) -->
             <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.3); padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px;">
                 <div style="display: flex; align-items: center; gap: 12px;">
@@ -468,6 +541,202 @@
         </div>
     </div>
 
+    <!-- MODAL DE FICHA DIDÁCTICA "LA CASA DE BERNARDA ALBA" (LCBA) -->
+    <div id="lcba-info-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3, 7, 18, 0.95); z-index: 100000; overflow-y: auto; padding: 2rem 1rem; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+        <div style="background: #0f172a; border: 1px solid rgba(0, 255, 157, 0.4); max-width: 850px; width: 100%; border-radius: 20px; padding: 2rem; color: #e2e8f0; font-family: 'Inter', sans-serif; box-shadow: 0 20px 50px rgba(0,0,0,0.9); position: relative;">
+            <span onclick="document.getElementById('lcba-info-modal').style.display='none'" style="position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #94a3b8; cursor: pointer; font-weight: bold;">&times;</span>
+            
+            <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                <span style="font-size: 2.5rem;">🎭</span>
+                <div>
+                    <h2 style="color: white; margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.8rem;">Estudio Sociométrico: "La Casa de Bernarda Alba"</h2>
+                    <p style="color: #00FF9D; margin: 4px 0 0 0; font-size: 0.9rem; font-weight: 600;">Código Master: LCBA-G1-T3-C3-V10-A4-ES-8 &bull; G1 &bull; T3 &bull; C3 &bull; V10 &bull; A4 &bull; ES &bull; N=8</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.25); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <h4 style="color: #00FF9D; margin-top: 0; margin-bottom: 8px; font-size: 1rem;">📖 Sinopsis Argumental y Dilema Sociométrico</h4>
+                <p style="font-size: 0.88rem; line-height: 1.6; color: #cbd5e1; margin: 0;">
+                    Tras la muerte de su segundo esposo, Bernarda Alba impone un luto riguroso e inquebrantable de 8 años a sus 5 hijas en un pueblo andaluz. El claustro doméstico, sofocado por la moral autocrática y el calor estival, se quiebra cuando la pasión reprimida por Pepe el Romano desencadena una encarnizada rivalidad entre las hermanas (especialmente Martirio y Adela), conduciendo inexorablemente a la tragedia y al colapso del bastón de mando.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h4 style="color: #00FF9D; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid rgba(0,255,157,0.2); padding-bottom: 5px;">📜 Ficha Técnica y Muestra</h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                        <li><strong>Autor / Obra:</strong> Federico García Lorca (1936)</li>
+                        <li><strong>Tamaño de Grupo (N):</strong> N=8 Personajes Actantes Fijos</li>
+                        <li><strong>Estructura Dramática:</strong> 3 Actos (T1: Luto, T2: Caldeo, T3: Ruptura)</li>
+                        <li><strong>Criterios Sociométricos:</strong> C1 (Apoyo), C2 (Fricción), C3 (Liderazgo)</li>
+                        <li><strong>Manifold Grassmanniano:</strong> Gr(4, 8) &bull; 56 Menores de Plücker</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h4 style="color: #38bdf8; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid rgba(56,189,248,0.2); padding-bottom: 5px;">🌌 Hallazgos Grasmanianos Clave</h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                        <li><strong>Rotación Geodésica T1 $\to$ T3:</strong> d_G = 2.48 rad (Ángulo 88.9° $\approx 90^\circ$).</li>
+                        <li><strong>Giro de Apoyo (C1):</strong> 119.4° en Acto II (Inversión afectiva sin salida).</li>
+                        <li><strong>Colapso C2 $\iff$ C3:</strong> Fricción y Dominación se unen en d = 1.21 rad.</li>
+                        <li><strong>Frase Síntesis:</strong> <em>"La tragedia no es un desplazamiento: es una contracción."</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- GALERÍA DE ROSTROS Y COMPONENTES DEL GRUPO (N=8 LORCA) -->
+            <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(0, 255, 157, 0.3); padding: 15px; border-radius: 14px; margin-bottom: 20px;">
+                <h4 style="color: #00FF9D; margin-top: 0; margin-bottom: 12px; font-size: 1rem; font-family: 'Outfit', sans-serif;">👤 Galería de Rostros y Componentes del Grupo ($N=8$)</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px;">
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(239, 68, 68, 0.4); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ef4444, #7f1d1d); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S1</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Bernarda Alba</div>
+                        <div style="font-size: 0.72rem; color: #ef4444;">Matriarca Autocrática (60a)</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8, #0369a1); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S2</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Angustias</div>
+                        <div style="font-size: 0.72rem; color: #38bdf8;">Hija Mayor Heredera (39a)</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #a855f7, #6b21a8); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S3</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Magdalena</div>
+                        <div style="font-size: 0.72rem; color: #c084fc;">Hija Melancólica (30a)</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #64748b, #334155); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S4</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Amelia</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Hija Tímida (27a)</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(239, 68, 68, 0.3); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #f97316, #c2410c); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S5</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Martirio</div>
+                        <div style="font-size: 0.72rem; color: #fb923c;">Hija Resentida (24a)</div>
+                    </div>
+                    <div style="background: rgba(0, 255, 157, 0.08); padding: 10px; border-radius: 10px; border: 1.5px solid #00FF9D; text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #00FF9D, #059669); color: #030712; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S6</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: #00FF9D;">Adela</div>
+                        <div style="font-size: 0.72rem; color: #00FF9D;">Hija Rebelde / Pasión (20a)</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #eab308, #854d0e); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S7</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">La Poncia</div>
+                        <div style="font-size: 0.72rem; color: #fde047;">Criada Principal (60a)</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #9d174d); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S8</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">María Josefa / Criada</div>
+                        <div style="font-size: 0.72rem; color: #f472b6;">Madre Demenciada (80a)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <button onclick="document.getElementById('lcba-info-modal').style.display='none'; document.getElementById('loader').style.opacity='0'; setTimeout(()=>document.getElementById('loader').style.display='none',500);" style="padding: 12px 30px; background: linear-gradient(135deg, #00FF9D, #00A2FF); border: none; border-radius: 10px; color: #030712; font-weight: 800; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(0, 255, 157, 0.4);">
+                    👁️ Iniciar Simulación Didáctica 3D
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE FICHA DIDÁCTICA "EL SEÑOR DE LAS MOSCAS" (MOSCAS) -->
+    <div id="moscas-info-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3, 7, 18, 0.95); z-index: 100000; overflow-y: auto; padding: 2rem 1rem; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+        <div style="background: #0f172a; border: 1px solid rgba(239, 68, 68, 0.5); max-width: 850px; width: 100%; border-radius: 20px; padding: 2rem; color: #e2e8f0; font-family: 'Inter', sans-serif; box-shadow: 0 20px 50px rgba(0,0,0,0.9); position: relative;">
+            <span onclick="document.getElementById('moscas-info-modal').style.display='none'" style="position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #94a3b8; cursor: pointer; font-weight: bold;">&times;</span>
+            
+            <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                <span style="font-size: 2.5rem;">🏝️</span>
+                <div>
+                    <h2 style="color: white; margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.8rem;">Estudio Sociométrico: "El Señor de las Moscas"</h2>
+                    <p style="color: #ef4444; margin: 4px 0 0 0; font-size: 0.9rem; font-weight: 600;">Código Master: MOSCAS-G1-T4-C3-V10-A4-ES-8 &bull; G1 &bull; T4 &bull; C3 &bull; V10 &bull; A4 &bull; ES &bull; N=8</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <h4 style="color: #ef4444; margin-top: 0; margin-bottom: 8px; font-size: 1rem;">📖 Sinopsis Argumental y Colapso Entrópico</h4>
+                <p style="font-size: 0.88rem; line-height: 1.6; color: #cbd5e1; margin: 0;">
+                    Un grupo de niños británicos aislados en una isla desierta intenta establecer una sociedad democrática bajo el símbolo de la caracola (Ralph). Sin embargo, el pavor supersticioso a una "Bestia" invisible y la pulsión de caza liderada por Jack erosionan la norma civilizada. El grupo sufre un cisma irrecuperable que degenera en la barbarie tribal, la ejecución mística de Simon, el asesinato frío de Piggy y la caza a muerte del líder legítimo.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h4 style="color: #ef4444; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.3); padding-bottom: 5px;">📜 Ficha Técnica y Muestra</h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                        <li><strong>Autor / Obra:</strong> William Golding (1954)</li>
+                        <li><strong>Tamaño de Grupo (N):</strong> N=8 Niños Actantes Fijos</li>
+                        <li><strong>Estructura Dramática:</strong> 4 Fases (T1: Caracola, T2: Fuego, T3: Cisma, T4: Caza)</li>
+                        <li><strong>Criterios Sociométricos:</strong> C1 (Norma), C2 (Fricción/Temor), C3 (Poder/Fuerza)</li>
+                        <li><strong>Manifold Grassmanniano:</strong> Gr(4, 8) &bull; 70 Menores de Plücker</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h4 style="color: #38bdf8; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid rgba(56,189,248,0.2); padding-bottom: 5px;">🌌 Hallazgos Grasmanianos Clave</h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                        <li><strong>Separación Inter-Criterio:</strong> Divergente (1.35 &rarr; 1.86 rad, Firma de Cisma).</li>
+                        <li><strong>Quiebra C3 en T2&rarr;T3:</strong> Salto máximo d = 1.805 rad (Bifurcación del Poder).</li>
+                        <li><strong>Tres Convulsiones Sostenidas:</strong> Saltos 2.45 &rarr; 2.49 &rarr; 2.40 (Colapso continuo).</li>
+                        <li><strong>Frase Síntesis:</strong> <em>"La barbarie no es un evento: es un desacoplamiento de la razón."</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- GALERÍA DE ROSTROS Y COMPONENTES DEL GRUPO (N=8 MOSCAS) -->
+            <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(239, 68, 68, 0.4); padding: 15px; border-radius: 14px; margin-bottom: 20px;">
+                <h4 style="color: #ef4444; margin-top: 0; margin-bottom: 12px; font-size: 1rem; font-family: 'Outfit', sans-serif;">👤 Galería de Componentes del Grupo ($N=8$)</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px;">
+                    <div style="background: rgba(0, 255, 157, 0.08); padding: 10px; border-radius: 10px; border: 1.5px solid #00FF9D; text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #00FF9D, #00A2FF); color: #030712; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S1</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: #00FF9D;">Ralph</div>
+                        <div style="font-size: 0.72rem; color: #00FF9D;">Líder Democrático / Caracola</div>
+                    </div>
+                    <div style="background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 10px; border: 1.5px solid #ef4444; text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ef4444, #991b1b); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S2</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: #ef4444;">Jack</div>
+                        <div style="font-size: 0.72rem; color: #ef4444;">Líder Autocrático / Cazador</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8, #0284c7); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S3</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Piggy</div>
+                        <div style="font-size: 0.72rem; color: #38bdf8;">Intelecto / Las Gafas</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.3); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #a855f7, #7e22ce); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S4</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Simon</div>
+                        <div style="font-size: 0.72rem; color: #c084fc;">Místico / Visión de la Bestia</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(239, 68, 68, 0.5); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc2626, #7f1d1d); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S5</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Roger</div>
+                        <div style="font-size: 0.72rem; color: #f87171;">Sadismo Punitivo / Ejecutor</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #64748b, #334155); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S6</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Samneric</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Gemelos / Coaccionados</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #eab308, #854d0e); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S7</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Maurice</div>
+                        <div style="font-size: 0.72rem; color: #fde047;">Cazador Secundario</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #9d174d); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 6px auto;">S8</div>
+                        <div style="font-size: 0.85rem; font-weight: bold; color: white;">Littluns</div>
+                        <div style="font-size: 0.72rem; color: #f472b6;">Los Pequeños / Masa Sometida</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <button onclick="document.getElementById('moscas-info-modal').style.display='none'; document.getElementById('loader').style.opacity='0'; setTimeout(()=>document.getElementById('loader').style.display='none',500);" style="padding: 12px 30px; background: linear-gradient(135deg, #ef4444, #dc2626); border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);">
+                    👁️ Iniciar Simulación Didáctica 3D
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- 🖥️ Pantalla Completa Modal Analítica (Tablas, Gráficos e Informes) -->
     <div id="bottom-dock">
         <!-- Header Corporativo en Pantalla Completa -->
@@ -505,6 +774,8 @@
     
     <!-- Data Payload Base -->
     <script src="data/payload_data.js"></script>
+    <script src="data/payload_lorca_3d.js"></script>
+    <script src="data/payload_moscas_3d.js"></script>
     
     <!-- Omni Engine -->
     <script src="js/audio.js"></script>

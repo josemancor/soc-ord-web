@@ -9,13 +9,59 @@ class VisordApp {
         this.uiPanels = new UIPanels(this);
         this.setupUI();
         
-        // Preparar payload base si existe, pero NO ocultar el Splash Screen automáticamente
-        // El usuario debe pulsar "Iniciar Tour" para usar este payload
-        if (window.VISORD_PAYLOAD) {
-            this.engine.loadPayloadData(window.VISORD_PAYLOAD);
-            this.buildControlPanel(window.VISORD_PAYLOAD);
-            // El loader se gestiona interactivamente por el usuario
+        // Selector de Estudios Demo (12 Hombres sin Piedad | La Casa de Bernarda Alba)
+        const selectStudy = document.getElementById('select-active-study');
+        const studySubtitle = document.getElementById('study-active-subtitle');
+        const btnOpenInfo = document.getElementById('btn-open-study-info');
+
+        const applySelectedStudy = (studyKey) => {
+            let activePayload = window.VISORD_PAYLOAD;
+            let titleText = 'PROYECCIÓN ACTIVA: 12 Hombres sin Piedad (HSPD)';
+            let subText = 'Código: HSPD-G1-T3-C2-V10-A4-ES-12 &bull; 12 Jurados &bull; Deliberación a Puerta Cerrada';
+
+            if (studyKey === 'LCBA' && window.VISORD_PAYLOAD_BERNARDA_ALBA) {
+                activePayload = window.VISORD_PAYLOAD_BERNARDA_ALBA;
+                titleText = 'PROYECCIÓN ACTIVA: La Casa de Bernarda Alba (LCBA)';
+                subText = 'Código: LCBA-G1-T3-C3-V10-A4-ES-8 &bull; 8 Personajes &bull; Drama Lorquiano 4D';
+            } else if (studyKey === 'MOSCAS' && window.VISORD_PAYLOAD_MOSCAS) {
+                activePayload = window.VISORD_PAYLOAD_MOSCAS;
+                titleText = 'PROYECCIÓN ACTIVA: El Señor de las Moscas (MOSCAS)';
+                subText = 'Código: MOSCAS-G1-T4-C3-V10-A4-ES-8 &bull; 8 Niños &bull; Barbarie Tribal 4D';
+            }
+
+            if (studySubtitle) studySubtitle.innerHTML = subText;
+            
+            const activeTitleSpan = document.getElementById('active-projection-title');
+            if (activeTitleSpan) activeTitleSpan.innerText = titleText;
+
+            if (activePayload && this.engine) {
+                this.engine.loadPayloadData(activePayload);
+                this.buildControlPanel(activePayload);
+            }
+        };
+
+        if (selectStudy) {
+            selectStudy.addEventListener('change', (e) => applySelectedStudy(e.target.value));
         }
+
+        if (btnOpenInfo) {
+            btnOpenInfo.addEventListener('click', () => {
+                const currentVal = selectStudy ? selectStudy.value : 'HSPD';
+                if (currentVal === 'LCBA') {
+                    const modal = document.getElementById('lcba-info-modal');
+                    if (modal) modal.style.display = 'flex';
+                } else if (currentVal === 'MOSCAS') {
+                    const modal = document.getElementById('moscas-info-modal');
+                    if (modal) modal.style.display = 'flex';
+                } else {
+                    const modal = document.getElementById('hspd-info-modal');
+                    if (modal) modal.style.display = 'flex';
+                }
+            });
+        }
+
+        // Cargar estudio por defecto
+        applySelectedStudy(selectStudy ? selectStudy.value : 'HSPD');
 
         // Sistema de Autenticación Ágil y Diversificación por Rol (IP / IPI / IPIS)
         this.currentRole = 'IP';

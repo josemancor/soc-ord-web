@@ -74,10 +74,25 @@ class VisordHubEngine {
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         this.container.appendChild(this.renderer.domElement);
         
-        // Controls
-        this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-        this.controls.enableDamping = true;
-        this.controls.dampingFactor = 0.05;
+        // Controls (Robust OrbitControls resolution with fallback)
+        const OrbitControlsClass = (typeof THREE !== 'undefined' && THREE.OrbitControls) || 
+                                   (typeof window !== 'undefined' && window.OrbitControls) || 
+                                   (typeof OrbitControls !== 'undefined' && OrbitControls) ||
+                                   (typeof window !== 'undefined' && window.THREE && window.THREE.OrbitControls);
+        
+        if (typeof OrbitControlsClass === 'function') {
+            this.controls = new OrbitControlsClass(this.camera, this.renderer.domElement);
+            this.controls.enableDamping = true;
+            this.controls.dampingFactor = 0.05;
+        } else {
+            console.warn("VISORDEngine: OrbitControls unavailable. Falling back to static camera controls.");
+            this.controls = {
+                update: function() {},
+                target: new THREE.Vector3(0, 0, 0),
+                enableDamping: false,
+                dispose: function() {}
+            };
+        }
         
         // Lighting
         this.scene.add(new THREE.AmbientLight(0x404040, 2));

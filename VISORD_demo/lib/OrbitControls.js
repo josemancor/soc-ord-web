@@ -1039,7 +1039,17 @@
 
 	}
 
-	THREE.MapControls = MapControls;
-	THREE.OrbitControls = OrbitControls;
+	if (typeof THREE !== 'undefined') {
+		THREE.MapControls = MapControls;
+		THREE.OrbitControls = OrbitControls;
+	}
+	if (typeof window !== 'undefined') {
+		window.MapControls = MapControls;
+		window.OrbitControls = OrbitControls;
+		if (window.THREE) {
+			window.THREE.MapControls = MapControls;
+			window.THREE.OrbitControls = OrbitControls;
+		}
+	}
 
 } )();
