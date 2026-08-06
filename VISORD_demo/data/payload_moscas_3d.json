@@ -1,27 +1,29 @@
 {
-  "study_code": "OLA",
+  "study_code": "MOSCAS",
   "subjects": [
-    "DAVID COLLINS",
-    "KARO",
-    "LAURIE SAUNDERS",
-    "PROFESOR RAINER WENGER",
-    "ROBERT BILLINGS",
-    "SINAN",
-    "TIM"
+    "SUJETO_1",
+    "SUJETO_2",
+    "SUJETO_3",
+    "SUJETO_4",
+    "SUJETO_5",
+    "SUJETO_6",
+    "SUJETO_7",
+    "SUJETO_8"
   ],
   "density_metrics": {
-    "N": 7,
+    "N": 8,
     "BDR": 1.0,
     "SDR": 1.0,
-    "Pearson_r_FC": 0.9999999999999999,
+    "Pearson_r_FC": 1.0,
     "Unified_Density_Di": {
-      "DAVID COLLINS": 3.0,
-      "KARO": 4.0,
-      "LAURIE SAUNDERS": 2.0,
-      "PROFESOR RAINER WENGER": 2.0,
-      "ROBERT BILLINGS": 2.0,
-      "SINAN": 1.0,
-      "TIM": 1.0
+      "SUJETO_1": 3.0,
+      "SUJETO_2": 3.0,
+      "SUJETO_3": 3.0,
+      "SUJETO_4": 2.0,
+      "SUJETO_5": 2.0,
+      "SUJETO_6": 1.0,
+      "SUJETO_7": 1.0,
+      "SUJETO_8": 1.0
     }
   },
   "grassmann_metrics": {
@@ -74,49 +76,56 @@
       ]
     },
     "individual_suggestions": {
-      "DAVID COLLINS": {
+      "SUJETO_1": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
         ],
         "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
       },
-      "KARO": {
+      "SUJETO_2": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
         ],
         "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
       },
-      "LAURIE SAUNDERS": {
+      "SUJETO_3": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
         ],
         "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
       },
-      "PROFESOR RAINER WENGER": {
+      "SUJETO_4": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
         ],
         "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
       },
-      "ROBERT BILLINGS": {
+      "SUJETO_5": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
         ],
         "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
       },
-      "SINAN": {
+      "SUJETO_6": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
         ],
         "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
       },
-      "TIM": {
+      "SUJETO_7": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "SUJETO_8": {
         "sugerencias_personales": [
           "Desacoplar sesgos emocionales en momentos de fricción T3.",
           "Fomentar la escucha activa y la recepción de feedback del grupo."
@@ -126,68 +135,85 @@
     }
   },
   "smib_sample": {
-    "DAVID COLLINS": {
-      "DAVID COLLINS": "A1A1",
-      "KARO": "0000",
-      "LAURIE SAUNDERS": "0000",
-      "PROFESOR RAINER WENGER": "AAAA",
-      "ROBERT BILLINGS": "aaaa",
-      "SINAN": "AAaa",
-      "TIM": "AAAA"
+    "SUJETO_1": {
+      "SUJETO_1": "A1A1",
+      "SUJETO_2": "0000",
+      "SUJETO_3": "0000",
+      "SUJETO_4": "AAAA",
+      "SUJETO_5": "aaaa",
+      "SUJETO_6": "0000",
+      "SUJETO_7": "AAAA",
+      "SUJETO_8": "AAaa"
     },
-    "KARO": {
-      "DAVID COLLINS": "0000",
-      "KARO": "A1A1",
-      "LAURIE SAUNDERS": "AAAA",
-      "PROFESOR RAINER WENGER": "aaaa",
-      "ROBERT BILLINGS": "AA00",
-      "SINAN": "AAAA",
-      "TIM": "AAaa"
+    "SUJETO_2": {
+      "SUJETO_1": "0000",
+      "SUJETO_2": "A1A1",
+      "SUJETO_3": "AAAA",
+      "SUJETO_4": "aaaa",
+      "SUJETO_5": "AA00",
+      "SUJETO_6": "AAAA",
+      "SUJETO_7": "AA00",
+      "SUJETO_8": "aaaa"
     },
-    "LAURIE SAUNDERS": {
-      "DAVID COLLINS": "0000",
-      "KARO": "AAAA",
-      "LAURIE SAUNDERS": "A1A1",
-      "PROFESOR RAINER WENGER": "AA00",
-      "ROBERT BILLINGS": "AAAA",
-      "SINAN": "00aa",
-      "TIM": "aaaa"
+    "SUJETO_3": {
+      "SUJETO_1": "0000",
+      "SUJETO_2": "AAAA",
+      "SUJETO_3": "A1A1",
+      "SUJETO_4": "AA00",
+      "SUJETO_5": "AAAA",
+      "SUJETO_6": "00aa",
+      "SUJETO_7": "aaaa",
+      "SUJETO_8": "AA00"
     },
-    "PROFESOR RAINER WENGER": {
-      "DAVID COLLINS": "AAAA",
-      "KARO": "aaaa",
-      "LAURIE SAUNDERS": "00AA",
-      "PROFESOR RAINER WENGER": "A1A1",
-      "ROBERT BILLINGS": "0000",
-      "SINAN": "aaaa",
-      "TIM": "AAAA"
+    "SUJETO_4": {
+      "SUJETO_1": "AAAA",
+      "SUJETO_2": "aaaa",
+      "SUJETO_3": "00AA",
+      "SUJETO_4": "A1A1",
+      "SUJETO_5": "0000",
+      "SUJETO_6": "aaaa",
+      "SUJETO_7": "AAAA",
+      "SUJETO_8": "0000"
     },
-    "ROBERT BILLINGS": {
-      "DAVID COLLINS": "aaaa",
-      "KARO": "00AA",
-      "LAURIE SAUNDERS": "AAAA",
-      "PROFESOR RAINER WENGER": "0000",
-      "ROBERT BILLINGS": "A1A1",
-      "SINAN": "AAAA",
-      "TIM": "00aa"
+    "SUJETO_5": {
+      "SUJETO_1": "aaaa",
+      "SUJETO_2": "00AA",
+      "SUJETO_3": "AAAA",
+      "SUJETO_4": "0000",
+      "SUJETO_5": "A1A1",
+      "SUJETO_6": "AAAA",
+      "SUJETO_7": "0000",
+      "SUJETO_8": "00aa"
     },
-    "SINAN": {
-      "DAVID COLLINS": "aaAA",
-      "KARO": "AAAA",
-      "LAURIE SAUNDERS": "aa00",
-      "PROFESOR RAINER WENGER": "aaaa",
-      "ROBERT BILLINGS": "AAAA",
-      "SINAN": "A1A1",
-      "TIM": "aaaa"
+    "SUJETO_6": {
+      "SUJETO_1": "0000",
+      "SUJETO_2": "AAAA",
+      "SUJETO_3": "aa00",
+      "SUJETO_4": "aaaa",
+      "SUJETO_5": "AAAA",
+      "SUJETO_6": "A1A1",
+      "SUJETO_7": "00aa",
+      "SUJETO_8": "AAAA"
     },
-    "TIM": {
-      "DAVID COLLINS": "AAAA",
-      "KARO": "aaAA",
-      "LAURIE SAUNDERS": "aaaa",
-      "PROFESOR RAINER WENGER": "AAAA",
-      "ROBERT BILLINGS": "aa00",
-      "SINAN": "aaaa",
-      "TIM": "A1A1"
+    "SUJETO_7": {
+      "SUJETO_1": "AAAA",
+      "SUJETO_2": "00AA",
+      "SUJETO_3": "aaaa",
+      "SUJETO_4": "AAAA",
+      "SUJETO_5": "0000",
+      "SUJETO_6": "aa00",
+      "SUJETO_7": "A1A1",
+      "SUJETO_8": "aaaa"
+    },
+    "SUJETO_8": {
+      "SUJETO_1": "aaAA",
+      "SUJETO_2": "aaaa",
+      "SUJETO_3": "00AA",
+      "SUJETO_4": "0000",
+      "SUJETO_5": "aa00",
+      "SUJETO_6": "AAAA",
+      "SUJETO_7": "aaaa",
+      "SUJETO_8": "A1A1"
     }
   }
 }

@@ -1,0 +1,687 @@
+{
+  "study_code": "LCBA",
+  "subjects": [
+    "ADELA",
+    "AMELIA",
+    "ANGUSTIAS",
+    "BERNARDA",
+    "CORO",
+    "CRIADA",
+    "LA PONCIA",
+    "LAS CINCO A LA VEZ",
+    "MAGDALENA",
+    "MARTIRIO",
+    "MARÍA JOSEFA",
+    "MENDIGA",
+    "MUCHACHA",
+    "MUJER 1",
+    "MUJER 2",
+    "MUJER 3",
+    "MUJER 4",
+    "PRUDENCIA",
+    "TODAS",
+    "VOZ"
+  ],
+  "density_metrics": {
+    "N": 20,
+    "BDR": 1.0,
+    "SDR": 1.0,
+    "Pearson_r_FC": 1.0,
+    "Unified_Density_Di": {
+      "ADELA": 5.0,
+      "AMELIA": 5.0,
+      "ANGUSTIAS": 6.0,
+      "BERNARDA": 5.0,
+      "CORO": 5.0,
+      "CRIADA": 6.0,
+      "LA PONCIA": 5.0,
+      "LAS CINCO A LA VEZ": 5.0,
+      "MAGDALENA": 6.0,
+      "MARTIRIO": 1.0,
+      "MARÍA JOSEFA": 2.0,
+      "MENDIGA": 1.0,
+      "MUCHACHA": 1.0,
+      "MUJER 1": 0.0,
+      "MUJER 2": 1.0,
+      "MUJER 3": 0.0,
+      "MUJER 4": 1.0,
+      "PRUDENCIA": 1.0,
+      "TODAS": 1.0,
+      "VOZ": 1.0
+    }
+  },
+  "grassmann_metrics": {
+    "k_dim": 3,
+    "principal_angles_deg": [
+      7.5,
+      14.2,
+      21.0
+    ],
+    "dist_geodesic_rad": 0.46140445220514803,
+    "dist_cordal_rad": 0.45347589537202576
+  },
+  "pca_dual_metrics": {
+    "group_states_coords": {
+      "T1xC1": [
+        0.4217489324146023,
+        0.39428564688620954
+      ],
+      "T1xC2": [
+        0.40801728965040557,
+        -0.013731642764196512
+      ],
+      "T1xC3": [
+        0.39428564688620943,
+        -0.4217489324146025
+      ],
+      "T2xC1": [
+        0.01373164276419629,
+        0.4080172896504058
+      ],
+      "T2xC2": [
+        -9.890763886582492e-17,
+        -1.4039958969270387e-16
+      ],
+      "T2xC3": [
+        -0.01373164276419649,
+        -0.40801728965040607
+      ],
+      "T3xC1": [
+        -0.39428564688620954,
+        0.42174893241460226
+      ],
+      "T3xC2": [
+        -0.4080172896504059,
+        0.013731642764196165
+      ],
+      "T3xC3": [
+        -0.4217489324146022,
+        -0.3942856468862097
+      ]
+    },
+    "individual_suggestions": {
+      "ADELA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "AMELIA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "ANGUSTIAS": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "BERNARDA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "CORO": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "CRIADA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "LA PONCIA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "LAS CINCO A LA VEZ": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MAGDALENA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MARTIRIO": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MARÍA JOSEFA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MENDIGA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MUCHACHA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MUJER 1": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MUJER 2": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MUJER 3": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "MUJER 4": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "PRUDENCIA": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "TODAS": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "VOZ": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      }
+    }
+  },
+  "smib_sample": {
+    "ADELA": {
+      "ADELA": "A1A1",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "AAAA",
+      "CORO": "0000",
+      "CRIADA": "0000",
+      "LA PONCIA": "AAAA",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "aaaa",
+      "MARTIRIO": "AAAA",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "AA00",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "AA00",
+      "MUJER 4": "00aa",
+      "PRUDENCIA": "0000",
+      "TODAS": "AA00",
+      "VOZ": "0000"
+    },
+    "AMELIA": {
+      "ADELA": "0000",
+      "AMELIA": "A1A1",
+      "ANGUSTIAS": "AAAA",
+      "BERNARDA": "0000",
+      "CORO": "0000",
+      "CRIADA": "AAAA",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "AAAA",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "AA00",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "AA00",
+      "MUJER 3": "00aa",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "AA00",
+      "TODAS": "0000",
+      "VOZ": "00aa"
+    },
+    "ANGUSTIAS": {
+      "ADELA": "0000",
+      "AMELIA": "AAAA",
+      "ANGUSTIAS": "A1A1",
+      "BERNARDA": "0000",
+      "CORO": "AAAA",
+      "CRIADA": "0000",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "AAAA",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "AA00",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "AA00",
+      "MUJER 2": "00aa",
+      "MUJER 3": "0000",
+      "MUJER 4": "AA00",
+      "PRUDENCIA": "0000",
+      "TODAS": "00aa",
+      "VOZ": "AA00"
+    },
+    "BERNARDA": {
+      "ADELA": "AAAA",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "A1A1",
+      "CORO": "0000",
+      "CRIADA": "0000",
+      "LA PONCIA": "AAAA",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "AAAA",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "AA00",
+      "MUJER 1": "00aa",
+      "MUJER 2": "0000",
+      "MUJER 3": "AA00",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "00aa",
+      "TODAS": "AA00",
+      "VOZ": "0000"
+    },
+    "CORO": {
+      "ADELA": "0000",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "AAAA",
+      "BERNARDA": "0000",
+      "CORO": "A1A1",
+      "CRIADA": "AAAA",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "AAAA",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "AA00",
+      "MUCHACHA": "00aa",
+      "MUJER 1": "0000",
+      "MUJER 2": "AA00",
+      "MUJER 3": "0000",
+      "MUJER 4": "aaaa",
+      "PRUDENCIA": "AA00",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "CRIADA": {
+      "ADELA": "0000",
+      "AMELIA": "AAAA",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "0000",
+      "CORO": "AAAA",
+      "CRIADA": "A1A1",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "AAAA",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "AA00",
+      "MENDIGA": "00aa",
+      "MUCHACHA": "0000",
+      "MUJER 1": "AA00",
+      "MUJER 2": "0000",
+      "MUJER 3": "00aa",
+      "MUJER 4": "AA00",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "AA00"
+    },
+    "LA PONCIA": {
+      "ADELA": "AAAA",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "AAAA",
+      "CORO": "0000",
+      "CRIADA": "0000",
+      "LA PONCIA": "A1A1",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "AAAA",
+      "MARÍA JOSEFA": "aaaa",
+      "MENDIGA": "0000",
+      "MUCHACHA": "AA00",
+      "MUJER 1": "0000",
+      "MUJER 2": "aaaa",
+      "MUJER 3": "AA00",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "AA00",
+      "VOZ": "0000"
+    },
+    "LAS CINCO A LA VEZ": {
+      "ADELA": "0000",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "AAAA",
+      "BERNARDA": "0000",
+      "CORO": "0000",
+      "CRIADA": "AAAA",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "A1A1",
+      "MAGDALENA": "AAAA",
+      "MARTIRIO": "00aa",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "AA00",
+      "MUCHACHA": "0000",
+      "MUJER 1": "00aa",
+      "MUJER 2": "AA00",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "AA00",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "MAGDALENA": {
+      "ADELA": "aaaa",
+      "AMELIA": "AAAA",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "0000",
+      "CORO": "AAAA",
+      "CRIADA": "0000",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "AAAA",
+      "MAGDALENA": "A1A1",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "AA00",
+      "MENDIGA": "0000",
+      "MUCHACHA": "aaaa",
+      "MUJER 1": "AA00",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "AA00",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "AA00"
+    },
+    "MARTIRIO": {
+      "ADELA": "AAAA",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "AAAA",
+      "CORO": "0000",
+      "CRIADA": "0000",
+      "LA PONCIA": "AAAA",
+      "LAS CINCO A LA VEZ": "aa00",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "A1A1",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "aaaa",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "aaaa"
+    },
+    "MARÍA JOSEFA": {
+      "ADELA": "0000",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "00AA",
+      "BERNARDA": "0000",
+      "CORO": "0000",
+      "CRIADA": "00AA",
+      "LA PONCIA": "aaaa",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "00AA",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "A1A1",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "aaaa",
+      "VOZ": "0000"
+    },
+    "MENDIGA": {
+      "ADELA": "0000",
+      "AMELIA": "00AA",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "0000",
+      "CORO": "00AA",
+      "CRIADA": "aa00",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "00AA",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "aaaa",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "A1A1",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "aaaa",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "MUCHACHA": {
+      "ADELA": "00AA",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "00AA",
+      "CORO": "aa00",
+      "CRIADA": "0000",
+      "LA PONCIA": "00AA",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "aaaa",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "A1A1",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "aaaa",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "MUJER 1": {
+      "ADELA": "0000",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "00AA",
+      "BERNARDA": "aa00",
+      "CORO": "0000",
+      "CRIADA": "00AA",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "aa00",
+      "MAGDALENA": "00AA",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "A1A1",
+      "MUJER 2": "0000",
+      "MUJER 3": "aaaa",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "aaaa"
+    },
+    "MUJER 2": {
+      "ADELA": "0000",
+      "AMELIA": "00AA",
+      "ANGUSTIAS": "aa00",
+      "BERNARDA": "0000",
+      "CORO": "00AA",
+      "CRIADA": "0000",
+      "LA PONCIA": "aaaa",
+      "LAS CINCO A LA VEZ": "00AA",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "A1A1",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "aaaa",
+      "VOZ": "0000"
+    },
+    "MUJER 3": {
+      "ADELA": "00AA",
+      "AMELIA": "aa00",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "00AA",
+      "CORO": "0000",
+      "CRIADA": "aa00",
+      "LA PONCIA": "00AA",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "aaaa",
+      "MUJER 2": "0000",
+      "MUJER 3": "A1A1",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "aaaa",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "MUJER 4": {
+      "ADELA": "aa00",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "00AA",
+      "BERNARDA": "0000",
+      "CORO": "aaaa",
+      "CRIADA": "00AA",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "00AA",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "aaaa",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "A1A1",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "PRUDENCIA": {
+      "ADELA": "0000",
+      "AMELIA": "00AA",
+      "ANGUSTIAS": "0000",
+      "BERNARDA": "aa00",
+      "CORO": "00AA",
+      "CRIADA": "0000",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "00AA",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "aaaa",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "0000",
+      "MUJER 3": "aaaa",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "A1A1",
+      "TODAS": "0000",
+      "VOZ": "0000"
+    },
+    "TODAS": {
+      "ADELA": "00AA",
+      "AMELIA": "0000",
+      "ANGUSTIAS": "aa00",
+      "BERNARDA": "00AA",
+      "CORO": "0000",
+      "CRIADA": "0000",
+      "LA PONCIA": "00AA",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "0000",
+      "MARTIRIO": "0000",
+      "MARÍA JOSEFA": "aaaa",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "0000",
+      "MUJER 2": "aaaa",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "A1A1",
+      "VOZ": "0000"
+    },
+    "VOZ": {
+      "ADELA": "0000",
+      "AMELIA": "aa00",
+      "ANGUSTIAS": "00AA",
+      "BERNARDA": "0000",
+      "CORO": "0000",
+      "CRIADA": "00AA",
+      "LA PONCIA": "0000",
+      "LAS CINCO A LA VEZ": "0000",
+      "MAGDALENA": "00AA",
+      "MARTIRIO": "aaaa",
+      "MARÍA JOSEFA": "0000",
+      "MENDIGA": "0000",
+      "MUCHACHA": "0000",
+      "MUJER 1": "aaaa",
+      "MUJER 2": "0000",
+      "MUJER 3": "0000",
+      "MUJER 4": "0000",
+      "PRUDENCIA": "0000",
+      "TODAS": "0000",
+      "VOZ": "A1A1"
+    }
+  }
+}

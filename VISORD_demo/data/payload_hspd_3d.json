@@ -1,31 +1,37 @@
 {
   "study_code": "HSPD",
   "subjects": [
-    "CAPATAZ (JURADO 1)",
     "JURADO 1",
     "JURADO 10",
+    "JURADO 11",
     "JURADO 12",
     "JURADO 2",
     "JURADO 3",
+    "JURADO 4",
     "JURADO 5",
+    "JURADO 6",
     "JURADO 7",
-    "JURADO 8"
+    "JURADO 8",
+    "JURADO 9"
   ],
   "density_metrics": {
-    "N": 9,
+    "N": 12,
     "BDR": 1.0,
     "SDR": 1.0,
     "Pearson_r_FC": 1.0,
     "Unified_Density_Di": {
-      "CAPATAZ (JURADO 1)": 2.0,
-      "JURADO 1": 4.0,
+      "JURADO 1": 2.0,
       "JURADO 10": 3.0,
+      "JURADO 11": 3.0,
       "JURADO 12": 2.0,
-      "JURADO 2": 2.0,
-      "JURADO 3": 2.0,
-      "JURADO 5": 1.0,
+      "JURADO 2": 3.0,
+      "JURADO 3": 3.0,
+      "JURADO 4": 2.0,
+      "JURADO 5": 3.0,
+      "JURADO 6": 3.0,
       "JURADO 7": 1.0,
-      "JURADO 8": 0.0
+      "JURADO 8": 1.0,
+      "JURADO 9": 0.0
     }
   },
   "grassmann_metrics": {
@@ -38,105 +44,300 @@
     "dist_geodesic_rad": 0.46140445220514803,
     "dist_cordal_rad": 0.45347589537202576
   },
+  "pca_dual_metrics": {
+    "group_states_coords": {
+      "T1xC1": [
+        0.4217489324146023,
+        0.39428564688620954
+      ],
+      "T1xC2": [
+        0.40801728965040557,
+        -0.013731642764196512
+      ],
+      "T1xC3": [
+        0.39428564688620943,
+        -0.4217489324146025
+      ],
+      "T2xC1": [
+        0.01373164276419629,
+        0.4080172896504058
+      ],
+      "T2xC2": [
+        -9.890763886582492e-17,
+        -1.4039958969270387e-16
+      ],
+      "T2xC3": [
+        -0.01373164276419649,
+        -0.40801728965040607
+      ],
+      "T3xC1": [
+        -0.39428564688620954,
+        0.42174893241460226
+      ],
+      "T3xC2": [
+        -0.4080172896504059,
+        0.013731642764196165
+      ],
+      "T3xC3": [
+        -0.4217489324146022,
+        -0.3942856468862097
+      ]
+    },
+    "individual_suggestions": {
+      "JURADO 1": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 10": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 11": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 12": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 2": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 3": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 4": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 5": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 6": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 7": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 8": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      },
+      "JURADO 9": {
+        "sugerencias_personales": [
+          "Desacoplar sesgos emocionales en momentos de fricción T3.",
+          "Fomentar la escucha activa y la recepción de feedback del grupo."
+        ],
+        "sugerencia_grupal": "Establecer mediación transparente para reducir la presión SDR."
+      }
+    }
+  },
   "smib_sample": {
-    "CAPATAZ (JURADO 1)": {
-      "CAPATAZ (JURADO 1)": "A1A1",
-      "JURADO 1": "00AA",
+    "JURADO 1": {
+      "JURADO 1": "A1A1",
       "JURADO 10": "0000",
+      "JURADO 11": "0000",
       "JURADO 12": "AAAA",
       "JURADO 2": "aaaa",
       "JURADO 3": "0000",
-      "JURADO 5": "AAAA",
-      "JURADO 7": "0000",
-      "JURADO 8": "aaaa"
+      "JURADO 4": "AAAA",
+      "JURADO 5": "0000",
+      "JURADO 6": "aaaa",
+      "JURADO 7": "AAAA",
+      "JURADO 8": "0000",
+      "JURADO 9": "0000"
     },
-    "JURADO 1": {
-      "CAPATAZ (JURADO 1)": "AA00",
-      "JURADO 1": "A1A1",
-      "JURADO 10": "AAAA",
+    "JURADO 10": {
+      "JURADO 1": "0000",
+      "JURADO 10": "A1A1",
+      "JURADO 11": "AAAA",
       "JURADO 12": "aaaa",
       "JURADO 2": "0000",
       "JURADO 3": "AAAA",
-      "JURADO 5": "AA00",
-      "JURADO 7": "aaaa",
-      "JURADO 8": "AAAA"
+      "JURADO 4": "0000",
+      "JURADO 5": "aaaa",
+      "JURADO 6": "AAAA",
+      "JURADO 7": "0000",
+      "JURADO 8": "0000",
+      "JURADO 9": "AA00"
     },
-    "JURADO 10": {
-      "CAPATAZ (JURADO 1)": "0000",
-      "JURADO 1": "AAAA",
-      "JURADO 10": "A1A1",
-      "JURADO 12": "AA00",
+    "JURADO 11": {
+      "JURADO 1": "0000",
+      "JURADO 10": "AAAA",
+      "JURADO 11": "A1A1",
+      "JURADO 12": "0000",
       "JURADO 2": "AAAA",
       "JURADO 3": "0000",
-      "JURADO 5": "aaaa",
-      "JURADO 7": "AA00",
-      "JURADO 8": "00aa"
+      "JURADO 4": "aaaa",
+      "JURADO 5": "AAAA",
+      "JURADO 6": "0000",
+      "JURADO 7": "0000",
+      "JURADO 8": "AA00",
+      "JURADO 9": "00aa"
     },
     "JURADO 12": {
-      "CAPATAZ (JURADO 1)": "AAAA",
-      "JURADO 1": "aaaa",
-      "JURADO 10": "00AA",
+      "JURADO 1": "AAAA",
+      "JURADO 10": "aaaa",
+      "JURADO 11": "0000",
       "JURADO 12": "A1A1",
       "JURADO 2": "0000",
       "JURADO 3": "aaaa",
-      "JURADO 5": "AAAA",
-      "JURADO 7": "0000",
-      "JURADO 8": "0000"
+      "JURADO 4": "AAAA",
+      "JURADO 5": "0000",
+      "JURADO 6": "0000",
+      "JURADO 7": "AAAA",
+      "JURADO 8": "0000",
+      "JURADO 9": "0000"
     },
     "JURADO 2": {
-      "CAPATAZ (JURADO 1)": "aaaa",
-      "JURADO 1": "0000",
-      "JURADO 10": "AAAA",
+      "JURADO 1": "aaaa",
+      "JURADO 10": "0000",
+      "JURADO 11": "AAAA",
       "JURADO 12": "0000",
       "JURADO 2": "A1A1",
       "JURADO 3": "AAAA",
+      "JURADO 4": "0000",
       "JURADO 5": "0000",
-      "JURADO 7": "00aa",
-      "JURADO 8": "AAAA"
+      "JURADO 6": "AAAA",
+      "JURADO 7": "0000",
+      "JURADO 8": "00aa",
+      "JURADO 9": "AA00"
     },
     "JURADO 3": {
-      "CAPATAZ (JURADO 1)": "0000",
-      "JURADO 1": "AAAA",
-      "JURADO 10": "0000",
+      "JURADO 1": "0000",
+      "JURADO 10": "AAAA",
+      "JURADO 11": "0000",
       "JURADO 12": "aaaa",
       "JURADO 2": "AAAA",
       "JURADO 3": "A1A1",
-      "JURADO 5": "0000",
-      "JURADO 7": "AAAA",
-      "JURADO 8": "00aa"
+      "JURADO 4": "0000",
+      "JURADO 5": "AAAA",
+      "JURADO 6": "0000",
+      "JURADO 7": "0000",
+      "JURADO 8": "AA00",
+      "JURADO 9": "aaaa"
     },
-    "JURADO 5": {
-      "CAPATAZ (JURADO 1)": "AAAA",
-      "JURADO 1": "00AA",
-      "JURADO 10": "aaaa",
+    "JURADO 4": {
+      "JURADO 1": "AAAA",
+      "JURADO 10": "0000",
+      "JURADO 11": "aaaa",
       "JURADO 12": "AAAA",
       "JURADO 2": "0000",
       "JURADO 3": "0000",
-      "JURADO 5": "A1A1",
-      "JURADO 7": "aa00",
-      "JURADO 8": "aaaa"
+      "JURADO 4": "A1A1",
+      "JURADO 5": "0000",
+      "JURADO 6": "0000",
+      "JURADO 7": "AAAA",
+      "JURADO 8": "aaaa",
+      "JURADO 9": "0000"
     },
-    "JURADO 7": {
-      "CAPATAZ (JURADO 1)": "0000",
-      "JURADO 1": "aaaa",
-      "JURADO 10": "00AA",
+    "JURADO 5": {
+      "JURADO 1": "0000",
+      "JURADO 10": "aaaa",
+      "JURADO 11": "AAAA",
       "JURADO 12": "0000",
-      "JURADO 2": "aa00",
+      "JURADO 2": "0000",
       "JURADO 3": "AAAA",
-      "JURADO 5": "00aa",
-      "JURADO 7": "A1A1",
-      "JURADO 8": "AAAA"
+      "JURADO 4": "0000",
+      "JURADO 5": "A1A1",
+      "JURADO 6": "AAAA",
+      "JURADO 7": "aaaa",
+      "JURADO 8": "0000",
+      "JURADO 9": "AA00"
     },
-    "JURADO 8": {
-      "CAPATAZ (JURADO 1)": "aaaa",
-      "JURADO 1": "AAAA",
-      "JURADO 10": "aa00",
+    "JURADO 6": {
+      "JURADO 1": "aaaa",
+      "JURADO 10": "AAAA",
+      "JURADO 11": "0000",
       "JURADO 12": "0000",
       "JURADO 2": "AAAA",
-      "JURADO 3": "aa00",
+      "JURADO 3": "0000",
+      "JURADO 4": "0000",
+      "JURADO 5": "AAAA",
+      "JURADO 6": "A1A1",
+      "JURADO 7": "0000",
+      "JURADO 8": "AA00",
+      "JURADO 9": "00aa"
+    },
+    "JURADO 7": {
+      "JURADO 1": "AAAA",
+      "JURADO 10": "0000",
+      "JURADO 11": "0000",
+      "JURADO 12": "AAAA",
+      "JURADO 2": "0000",
+      "JURADO 3": "0000",
+      "JURADO 4": "AAAA",
       "JURADO 5": "aaaa",
-      "JURADO 7": "AAAA",
-      "JURADO 8": "A1A1"
+      "JURADO 6": "0000",
+      "JURADO 7": "A1A1",
+      "JURADO 8": "aa00",
+      "JURADO 9": "aaaa"
+    },
+    "JURADO 8": {
+      "JURADO 1": "0000",
+      "JURADO 10": "0000",
+      "JURADO 11": "00AA",
+      "JURADO 12": "0000",
+      "JURADO 2": "aa00",
+      "JURADO 3": "00AA",
+      "JURADO 4": "aaaa",
+      "JURADO 5": "0000",
+      "JURADO 6": "00AA",
+      "JURADO 7": "00aa",
+      "JURADO 8": "A1A1",
+      "JURADO 9": "0000"
+    },
+    "JURADO 9": {
+      "JURADO 1": "0000",
+      "JURADO 10": "00AA",
+      "JURADO 11": "aa00",
+      "JURADO 12": "0000",
+      "JURADO 2": "00AA",
+      "JURADO 3": "aaaa",
+      "JURADO 4": "0000",
+      "JURADO 5": "00AA",
+      "JURADO 6": "aa00",
+      "JURADO 7": "aaaa",
+      "JURADO 8": "0000",
+      "JURADO 9": "A1A1"
     }
   }
 }
