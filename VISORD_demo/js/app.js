@@ -27,6 +27,10 @@ class VisordApp {
                 activePayload = window.VISORD_PAYLOAD_MOSCAS;
                 titleText = 'PROYECCIÓN ACTIVA: El Señor de las Moscas (MOSCAS)';
                 subText = 'Código: MOSCAS-G1-T4-C3-V10-A4-ES-8 &bull; 8 Niños &bull; Barbarie Tribal 4D';
+            } else if (studyKey === 'LA_OLA' && window.VISORD_PAYLOAD_LA_OLA) {
+                activePayload = window.VISORD_PAYLOAD_LA_OLA;
+                titleText = 'PROYECCIÓN ACTIVA: La Ola (LA_OLA)';
+                subText = 'Código: LA_OLA-G1-T3-C3-V10-A4-ES-7 &bull; 7 Integrantes &bull; Autocracia de Grupo 4D';
             }
 
             if (studySubtitle) studySubtitle.innerHTML = subText;
