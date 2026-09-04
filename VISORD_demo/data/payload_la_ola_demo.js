@@ -1,6 +1,6 @@
 window.VISORD_PAYLOAD_LA_OLA = {
   "metadata": {
-    "version": "SOC_ORD 2026 - Autocracia y Cohesión de Grupo",
+    "version": "NEX_ORD 2026 - Autocracia y Cohesión de Grupo",
     "study_title": "La Ola (Die Welle / D. Gansel)",
     "autor_obra": "Dennis Gansel / Morton Rhue",
     "contexto": "Experimento Autocrático e Ilusión Colectiva (N=7)",

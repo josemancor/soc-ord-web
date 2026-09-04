@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISORD / NEX_ORD — Widget de Unjamming Socio-Termodinámico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070a12;
+      --panel-bg: rgba(15, 23, 42, 0.85);
+      --border-color: rgba(255, 255, 255, 0.12);
+      --cyan: #00f0ff;
+      --red-jammed: #ff3b5c;
+      --green-unjammed: #00ff9d;
+      --gold: #ffc800;
+      --purple: #b56cff;
+      --font-main: 'Outfit', -apple-system, sans-serif;
+      --font-code: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #e2e8f0;
+      font-family: var(--font-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 59, 92, 0.05) 0%, transparent 40%);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+
+    .header h1 {
+      font-family: var(--font-code);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .header h1 span {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header p {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+
+    .badge-no-ablation {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--cyan);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .panel-title {
+      font-size: 0.85rem;
+      font-family: var(--font-code);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .status-pill {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .status-pill.jammed {
+      background: rgba(255, 59, 92, 0.2);
+      color: var(--red-jammed);
+      border: 1px solid rgba(255, 59, 92, 0.4);
+    }
+
+    .status-pill.unjammed {
+      background: rgba(0, 255, 157, 0.2);
+      color: var(--green-unjammed);
+      border: 1px solid rgba(0, 255, 157, 0.4);
+    }
+
+    #canvas-container {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      background: rgba(5, 8, 16, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .controls-box {
+      margin-top: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .slider-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .slider-val {
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    input[type=range] {
+      width: 100%;
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.1);
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--cyan);
+      transition: transform 0.1s;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .metrics-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .metric-title {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .metric-value-huge {
+      font-family: var(--font-code);
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-top: 4px;
+      transition: color 0.3s;
+    }
+
+    .metric-subtitle {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .stress-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .stress-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+    }
+
+    .node-label {
+      width: 24px;
+      font-family: var(--font-code);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bar-bg {
+      flex: 1;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .stress-num {
+      width: 36px;
+      text-align: right;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .explainer-box {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #94a3b8;
+      background: rgba(0, 240, 255, 0.03);
+      border-left: 3px solid var(--cyan);
+      padding: 10px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>VISORD <span>// WIDGET DE UNJAMMING</span></h1>
+    <p>Simulación socio-termodinámica de desatascamiento por mínima perturbación en el eslabón crítico</p>
+    <div class="badge-no-ablation">🛡️ Principio Inviolable: Cero Ablaciones (Nodo C Preservado)</div>
+  </div>
+
+  <div class="dashboard-grid">
+    <!-- Panel Izquierdo: Campo de Fuerza 2D -->
+    <div class="panel">
+      <div class="panel-title">
+        <span>CAMPO RELACIONAL 2D (FORCE CHAINS)</span>
+        <span id="status-pill" class="status-pill jammed">ESTADO VÍTREO (JAMMED)</span>
+      </div>
+
+      <div id="canvas-container">
+        <canvas id="simCanvas"></canvas>
+      </div>
+
+      <div class="controls-box">
+        <div class="slider-header">
+          <span class="slider-title">⚡ Inyección de Perturbación Local Activa sobre C (Δθ_C / η):</span>
+          <span id="slider-val" class="slider-val">0% (Estado Jammed)</span>
+        </div>
+        <input type="range" id="unjam-slider" min="0" max="100" value="0" step="1">
+      </div>
+    </div>
+
+    <!-- Panel Derecho: Métricas y Tensor de Stress -->
+    <div class="metrics-column">
+      
+      <!-- Energía Global -->
+      <div class="panel metric-card">
+        <div class="metric-title">Energía de Frustración Global E(t)</div>
+        <div id="energy-val" class="metric-value-huge" style="color: var(--red-jammed);">25.00</div>
+        <div id="energy-diff" class="metric-subtitle">Resistencia estructural inicial máxima</div>
+      </div>
+
+      <!-- Tensor de Stress S_i -->
+      <div class="panel metric-card">
+        <div class="metric-title">Tensor de Stress Ordinal (S_i)</div>
+        <div class="stress-bars">
+          <div class="stress-row">
+            <span class="node-label">A</span>
+            <div class="bar-bg"><div id="bar-A" class="bar-fill" style="background: var(--cyan);"></div></div>
+            <span id="val-A" class="stress-num">6.0</span>
+          </div>
+          <div class="stress-row">
+            <span class="node-label">B</span>
+            <div class="bar-bg"><div id="bar-B" class="bar-fill" style="background: var(--cyan);"></div></div>
+            <span id="val-B" class="stress-num">6.0</span>
+          </div>
+          <div class="stress-row">
+            <span class="node-label" style="color: var(--red-jammed);">C*</span>
+            <div class="bar-bg"><div id="bar-C" class="bar-fill" style="background: var(--red-jammed);"></div></div>
+            <span id="val-C" class="stress-num" style="color: var(--red-jammed); font-weight:700;">21.0</span>
+          </div>
+          <div class="stress-row">
+            <span class="node-label">D</span>
+            <div class="bar-bg"><div id="bar-D" class="bar-fill" style="background: var(--cyan);"></div></div>
+            <span id="val-D" class="stress-num">11.0</span>
+          </div>
+          <div class="stress-row">
+            <span class="node-label">E</span>
+            <div class="bar-bg"><div id="bar-E" class="bar-fill" style="background: var(--cyan);"></div></div>
+            <span id="val-E" class="stress-num">6.0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explicación Didáctica -->
+      <div class="panel metric-card">
+        <div class="metric-title">Diagnóstico de Transición</div>
+        <div class="explainer-box" id="explainer-text">
+          <strong>Nodo C (Eslabón Débil):</strong> Soporta el 84% de la cizalla del sistema. Al mover el control, se activa su predisposición relacional sin aislarlo, provocando el desplome en cascada de la tensión de A, B, D y E.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('simCanvas');
+    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('unjam-slider');
+    const sliderVal = document.getElementById('slider-val');
+    const statusPill = document.getElementById('status-pill');
+    const energyVal = document.getElementById('energy-val');
+    const energyDiff = document.getElementById('energy-diff');
+    const explainerText = document.getElementById('explainer-text');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Nodos en el espacio 2D
+    let nodes = [
+      { id: 'A', x: 0.25, y: 0.30, vx: 0, vy: 0, targetX: 0.25, targetY: 0.30, color: '#00f0ff' },
+      { id: 'B', x: 0.35, y: 0.75, vx: 0, vy: 0, targetX: 0.35, targetY: 0.75, color: '#00f0ff' },
+      { id: 'C', x: 0.50, y: 0.50, vx: 0, vy: 0, targetX: 0.50, targetY: 0.50, color: '#ff3b5c' },
+      { id: 'D', x: 0.75, y: 0.30, vx: 0, vy: 0, targetX: 0.75, targetY: 0.30, color: '#00f0ff' },
+      { id: 'E', x: 0.70, y: 0.75, vx: 0, vy: 0, targetX: 0.70, targetY: 0.75, color: '#00f0ff' }
+    ];
+
+    // Matrices Inicial (Jammed) y Final (Unjammed)
+    const S_jammed = { A: 6.0, B: 6.0, C: 21.0, D: 11.0, E: 6.0 };
+    const S_unjammed = { A: 0.0, B: 0.25, C: 0.25, D: 0.0, E: 0.0 };
+
+    const E_jammed = 25.00;
+    const E_unjammed = 0.50;
+
+    let pulseAngle = 0;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function updateMetrics(pct) {
+      const t = pct / 100.0;
+
+      // Interp de energía
+      const currentE = lerp(E_jammed, E_unjammed, t);
+      energyVal.innerText = currentE.toFixed(2);
+
+      if (t < 0.5) {
+        statusPill.innerText = "ESTADO VÍTREO (JAMMED)";
+        statusPill.className = "status-pill jammed";
+        energyVal.style.color = "var(--red-jammed)";
+        energyDiff.innerText = `Frustración elevada (Umbral p_c = ${(0.312 * (1 - t)).toFixed(3)})`;
+      } else {
+        statusPill.innerText = "ESTADO FLUIDO (UNJAMMED)";
+        statusPill.className = "status-pill unjammed";
+        energyVal.style.color = "var(--green-unjammed)";
+        energyDiff.innerText = `Alivio relacional del ${(t * 98.0).toFixed(1)}% (Sin Ablación)`;
+      }
+
+      // Interp de Stress por nodo
+      ['A', 'B', 'C', 'D', 'E'].forEach(nodeId => {
+        const val = lerp(S_jammed[nodeId], S_unjammed[nodeId], t);
+        const barEl = document.getElementById(`bar-${nodeId}`);
+        const valEl = document.getElementById(`val-${nodeId}`);
+        
+        valEl.innerText = val.toFixed(1);
+        const barPct = Math.min(100, (val / 21.0) * 100);
+        barEl.style.width = barPct + '%';
+
+        if (nodeId === 'C') {
+          barEl.style.background = t > 0.5 ? 'var(--green-unjammed)' : 'var(--red-jammed)';
+          valEl.style.color = t > 0.5 ? 'var(--green-unjammed)' : 'var(--red-jammed)';
+        }
+      });
+
+      // Modular posiciones para efecto orgánico de unjamming
+      nodes[0].targetX = 0.25 - 0.05 * t; nodes[0].targetY = 0.30 - 0.05 * t; // A
+      nodes[1].targetX = 0.30 - 0.05 * t; nodes[1].targetY = 0.70 + 0.05 * t; // B
+      nodes[2].targetX = 0.50;            nodes[2].targetY = 0.50;            // C (Pivote central)
+      nodes[3].targetX = 0.75 + 0.05 * t; nodes[3].targetY = 0.30 - 0.05 * t; // D
+      nodes[4].targetX = 0.70 + 0.05 * t; nodes[4].targetY = 0.70 + 0.05 * t; // E
+    }
+
+    slider.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value);
+      sliderVal.innerText = `${val}% ${val > 50 ? '(Unjammed)' : '(Jammed)'}`;
+      updateMetrics(val);
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const w = canvas.width;
+      const h = canvas.height;
+      const t = slider.value / 100.0;
+
+      pulseAngle += 0.05;
+
+      // Actualizar física suave de nodos
+      nodes.forEach(n => {
+        n.x = lerp(n.x, n.targetX, 0.1);
+        n.y = lerp(n.y, n.targetY, 0.1);
+      });
+
+      // Dibujar enlaces (Force Chains)
+      const links = [
+        { from: 0, to: 1 }, { from: 0, to: 2 },
+        { from: 1, to: 2 }, { from: 2, to: 3 },
+        { from: 2, to: 4 }, { from: 3, to: 4 }
+      ];
+
+      links.forEach(l => {
+        const n1 = nodes[l.from];
+        const n2 = nodes[l.to];
+        const isCConnected = (n1.id === 'C' || n2.id === 'C');
+
+        ctx.beginPath();
+        ctx.moveTo(n1.x * w, n1.y * h);
+        ctx.lineTo(n2.x * w, n2.y * h);
+
+        if (isCConnected) {
+          ctx.strokeStyle = t > 0.5 ? 'rgba(0, 255, 157, 0.4)' : `rgba(255, 59, 92, ${0.8 - t * 0.4})`;
+          ctx.lineWidth = isCConnected ? (1 - t) * 4 + 1.5 : 1.5;
+        } else {
+          ctx.strokeStyle = 'rgba(0, 240, 255, 0.3)';
+          ctx.lineWidth = 1.5;
+        }
+        ctx.stroke();
+      });
+
+      // Dibujar Nodos
+      nodes.forEach(n => {
+        const nx = n.x * w;
+        const ny = n.y * h;
+        const isC = (n.id === 'C');
+
+        // Anillo de brillo para C si está atascado
+        if (isC) {
+          const pulseR = 24 + Math.sin(pulseAngle) * (1 - t) * 8;
+          ctx.beginPath();
+          ctx.arc(nx, ny, pulseR, 0, Math.PI * 2);
+          ctx.fillStyle = t > 0.5 ? 'rgba(0, 255, 157, 0.15)' : 'rgba(255, 59, 92, 0.2)';
+          ctx.fill();
+        }
+
+        // Cuerpo del nodo
+        ctx.beginPath();
+        ctx.arc(nx, ny, 16, 0, Math.PI * 2);
+        ctx.fillStyle = isC ? (t > 0.5 ? '#00ff9d' : '#ff3b5c') : '#00f0ff';
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#ffffff';
+        ctx.stroke();
+
+        // Etiqueta del nodo
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 12px Space Grotesk';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(n.id, nx, ny);
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    updateMetrics(0);
+    draw();
+  </script>
+</body>
+</html>

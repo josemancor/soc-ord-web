@@ -1,13 +1,13 @@
-# GLOSARIO SOC_ORD: CONCEPTOS FUNDAMENTALES
+# GLOSARIO NEX_ORD: CONCEPTOS FUNDAMENTALES
 
 ## DENSIDAD RELACIONAL (Termodinámica del Vínculo)
 
 **Definición Clínica:**
-La Densidad Relacional no es el simple conteo de flechas o elecciones en un grupo, sino la *masa térmica y estructural* real que aporta una relación. Representa la fuerza cohesiva o destructiva de un vínculo diádico basándose en la FÍSICA DE LO GRUPAL. El Motor SOC_ORD procesa esta densidad no como un bloque, sino como un cristal atravesado por 6 vectores o capas computacionales.
+La Densidad Relacional no es el simple conteo de flechas o elecciones en un grupo, sino la *masa térmica y estructural* real que aporta una relación. Representa la fuerza cohesiva o destructiva de un vínculo diádico basándose en la FÍSICA DE LO GRUPAL. El Motor NEX_ORD procesa esta densidad no como un bloque, sino como un cristal atravesado por 6 vectores o capas computacionales.
 
 ### LA MATRIZ DE TRAZABILIDAD (Cálculo de Densidad 6D)
 
-Dada la creciente complejidad del cálculo de densidades, el motor algorítmico SOC_ORD desglosa el diagnóstico de toda relación `i -> j` en el siguiente cuadro de evaluación de 6 capas. Este modelo de **Hoja de Resultados Clínica** permite rastrear exactamente qué componente psicológico apuntala o destruye un vínculo:
+Dada la creciente complejidad del cálculo de densidades, el motor algorítmico NEX_ORD desglosa el diagnóstico de toda relación `i -> j` en el siguiente cuadro de evaluación de 6 capas. Este modelo de **Hoja de Resultados Clínica** permite rastrear exactamente qué componente psicológico apuntala o destruye un vínculo:
 
 | Vector de Fuerza | Condición Evaluada | Modulador Matemático Asignado | Impacto en la Estructura |
 | :--- | :--- | :--- | :--- |

@@ -1,15 +1,15 @@
 # DINÁMICA DE SISTEMAS Y MANUAL DE LOS 10 DOMINIOS APLICADOS
-### *Adaptación Ecosistémica y Moduladores Temporales en SOC_ORD 2026*
+### *Adaptación Ecosistémica y Moduladores Temporales en NEX_ORD 2026*
 
 **José Manuel Cornejo Álvarez**  
-*Universitat de Barcelona (UB) / Proyecto SOC_ORD*  
+*Universitat de Barcelona (UB) / Proyecto NEX_ORD*  
 *Registro DOI Zenodo (v2) | Safe Creative: 2603074794486*
 
 ---
 
 ## 1. EL MOTOR DE DINÁMICA DE SISTEMAS ($T_1 \to T_2 \to T_3$)
 
-SOC_ORD modela la evolución longitudinal del grupo mediante ecuaciones de estado que miden la trayectoria relacional entre olas temporales consecutivas. 
+NEX_ORD modela la evolución longitudinal del grupo mediante ecuaciones de estado que miden la trayectoria relacional entre olas temporales consecutivas. 
 
 El comportamiento dinámico se rige por tres constantes operacionales y métricas socio-termodinámicas:
 - **Inercia Relacional ($\alpha \in [0.0, 0.99]$):** Resistencia estructural de la matriz a modificar sus posiciones ordinales entre $T_n$ y $T_{n+1}$.
@@ -33,7 +33,7 @@ El sistema establece el punto de equilibrio o "vacío gravitacional" en el valor
 
 ## 3. LOS 4 ESTADOS DE FASE SOCIO-TERMODINÁMICOS
 
-El diagrama de fase de SOC_ORD clasifica el clima del colectivo en 4 estados termodinámicos:
+El diagrama de fase de NEX_ORD clasifica el clima del colectivo en 4 estados termodinámicos:
 1. **Estado Sólido (Cristalización)**: Alta coherencia, baja entropía $\mathcal{S}_i \to 0$, estabilidad y alta reciprocidad.
 2. **Estado Líquido (Anomia)**: Pérdida de estructura informativa, baja viscosidad vincular y alta fluctuación de roles.
 3. **Estado Turbulento (Conflicto)**: Alta energía relacional ($BDR \uparrow$) combinada con alta entropía ($\mathcal{S}_i \to 1.0$) por presencia de fuerzas contrapuestas.
@@ -59,9 +59,9 @@ El módulo forense detecta arquetipos críticos en la red:
 
 ---
 
-## 6. MANUAL DE ADAPTACIÓN A LOS 10 DOMINIOS DE SOC_ORD
+## 6. MANUAL DE ADAPTACIÓN A LOS 10 DOMINIOS DE NEX_ORD
 
-Manteniendo inalterado el motor matemático ($G \times T \times C \times Z$), SOC_ORD adapta los coeficientes $\alpha$ y $\gamma$, el léxico del estímulo y los protocolos de intervención a 10 ecosistemas fundamentales:
+Manteniendo inalterado el motor matemático ($G \times T \times C \times Z$), NEX_ORD adapta los coeficientes $\alpha$ y $\gamma$, el léxico del estímulo y los protocolos de intervención a 10 ecosistemas fundamentales:
 
 ### 1. Sociometría Educativa y Formativa
 - **Parámetros:** $\alpha = 0.50$, $\gamma = 0.80$

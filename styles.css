@@ -435,7 +435,7 @@ footer {
     .showcase-grid { grid-template-columns: 1fr; }
 }
 
-/* GALERÍA DEL ECOSISTEMA SOC_ORD */
+/* GALERÍA DEL ECOSISTEMA NEX_ORD */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

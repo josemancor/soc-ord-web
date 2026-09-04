@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-SOC_ORD JS SYNTAX VALIDATOR & DIAGNOSTIC CHECKER
+NEX_ORD JS SYNTAX VALIDATOR & DIAGNOSTIC CHECKER
 Checks all JavaScript files for balanced parentheses, braces, brackets, and string literals.
 """
 
@@ -92,7 +92,7 @@ def check_js_syntax(file_path):
     return True
 
 if __name__ == '__main__':
-    js_dir = '/Users/jmcor/Desktop/SOC_ORD_Project/05_Web_Promocional/VISORD_demo'
+    js_dir = '/Users/jmcor/Desktop/NEX_ORD_Project/05_Web_Promocional/VISORD_demo'
     js_files = glob.glob(f"{js_dir}/**/*.js", recursive=True)
     
     all_ok = True

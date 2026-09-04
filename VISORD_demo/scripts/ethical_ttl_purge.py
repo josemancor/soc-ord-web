@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-SOC_ORD PROJECT - VISORD ETHICAL PURGE ENGINE
+NEX_ORD PROJECT - VISORD ETHICAL PURGE ENGINE
 Motor de Purga Ética y Expiración Temporal (TTL) de Datos Sociométricos
 Sobreescritura Cero (0x00) y Borrado Seguro Forense
 """
@@ -39,7 +39,7 @@ def check_and_purge_expired_studies():
     purged_count = 0
     valid_count = 0
 
-    print(f"🛡️ [SOC_ORD ETHICAL ENGINE] Iniciando auditoría de TTL en: {HISTORICO_DIR}")
+    print(f"🛡️ [NEX_ORD ETHICAL ENGINE] Iniciando auditoría de TTL en: {HISTORICO_DIR}")
     
     for fname in os.listdir(HISTORICO_DIR):
         if not fname.endswith('.json'):

@@ -19,7 +19,11 @@ class VisordApp {
             let titleText = 'PROYECCIÓN ACTIVA: 12 Hombres sin Piedad (HSPD)';
             let subText = 'Código: HSPD-G1-T3-C2-V10-A4-ES-12 &bull; 12 Jurados &bull; Deliberación a Puerta Cerrada';
 
-            if (studyKey === 'LCBA' && window.VISORD_PAYLOAD_BERNARDA_ALBA) {
+            if (studyKey === 'G2T1C1' && window.VISORD_PAYLOAD_G2T1C1) {
+                activePayload = window.VISORD_PAYLOAD_G2T1C1;
+                titleText = 'PROYECCIÓN ACTIVA: Estudio Empírico G2T1C1 (Psicothema)';
+                subText = 'Código: PROPIO-AA-G2-T1-C1-V10-A16-ES-5 &bull; N=10 &bull; G1 Cohesión vs G2 Ostracismo';
+            } else if (studyKey === 'LCBA' && window.VISORD_PAYLOAD_BERNARDA_ALBA) {
                 activePayload = window.VISORD_PAYLOAD_BERNARDA_ALBA;
                 titleText = 'PROYECCIÓN ACTIVA: La Casa de Bernarda Alba (LCBA)';
                 subText = 'Código: LCBA-G1-T3-C3-V10-A4-ES-8 &bull; 8 Personajes &bull; Drama Lorquiano 4D';
@@ -64,8 +68,24 @@ class VisordApp {
             });
         }
 
-        // Cargar estudio por defecto
-        applySelectedStudy(selectStudy ? selectStudy.value : 'HSPD');
+        // Cargar estudio por defecto o por parámetro URL (?study=G2T1C1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryStudy = urlParams.get('study') || urlParams.get('escenario');
+        let initialStudy = selectStudy ? selectStudy.value : 'HSPD';
+        if (queryStudy) {
+            const norm = queryStudy.toUpperCase();
+            if (norm === 'G2T1C1' || norm === 'G2' || norm.includes('G2-T1-C1')) {
+                initialStudy = 'G2T1C1';
+            } else if (norm === 'LCBA') {
+                initialStudy = 'LCBA';
+            } else if (norm === 'MOSCAS') {
+                initialStudy = 'MOSCAS';
+            } else if (norm === 'LA_OLA' || norm === 'OLA') {
+                initialStudy = 'LA_OLA';
+            }
+            if (selectStudy) selectStudy.value = initialStudy;
+        }
+        applySelectedStudy(initialStudy);
 
         // Sistema de Autenticación Ágil y Diversificación por Rol (IP / IPI / IPIS)
         this.currentRole = 'IP';
@@ -1319,13 +1339,13 @@ class VisordApp {
                                     (window.location.protocol === 'https:' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1'));
                 
                 if (isPublicWeb) {
-                    alert("🔒 PROTECCIÓN DE SEGURIDAD INSTITUCIONAL:\n\nLa descarga de archivos .JSON crudos y la gestión del archivo histórico están restringidas en la versión Web pública para evitar fugas de información sociométrica sensible.\n\nEsta funcionalidad está reservada a la Plataforma Institucional SOC_ORD de uso local / Intranet protegida.");
+                    alert("🔒 PROTECCIÓN DE SEGURIDAD INSTITUCIONAL:\n\nLa descarga de archivos .JSON crudos y la gestión del archivo histórico están restringidas en la versión Web pública para evitar fugas de información sociométrica sensible.\n\nEsta funcionalidad está reservada a la Plataforma Institucional NEX_ORD de uso local / Intranet protegida.");
                     return;
                 }
 
                 const defaultTipo = (window.VISORD_PAYLOAD?.metadata?.tipo || "REAL").toUpperCase();
                 const defaultGTC = (window.VISORD_PAYLOAD?.metadata?.gtc || "G3T4C3").toUpperCase();
-                const defaultName = window.VISORD_PAYLOAD?.metadata?.study_title || "Matriz_SOC_ORD";
+                const defaultName = window.VISORD_PAYLOAD?.metadata?.study_title || "Matriz_NEX_ORD";
                 
                 const customTitle = prompt("Introduce el Nombre o Título Identificativo para este Estudio:", defaultName);
                 if (customTitle === null) return; // Cancelado por el usuario
@@ -1481,7 +1501,7 @@ class VisordApp {
                 const title = document.getElementById('dock-title');
                 const content = document.getElementById('dock-content');
                 if (dock && title && content) {
-                    title.textContent = 'ℹ️ Información del Sistema SOC_ORD (VISORD)';
+                    title.textContent = 'ℹ️ Información del Sistema NEX_ORD (VISORD)';
                     content.innerHTML = `
                         <div style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; text-align: left; max-width: 700px;">
                             <h3 style="color: #38bdf8;">VISORD (Visualización de Relaciones de Densidad y Preferencia)</h3>

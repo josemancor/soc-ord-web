@@ -1,6 +1,6 @@
 window.VISORD_PAYLOAD_BERNARDA_ALBA = {
   "metadata": {
-    "version": "SOC_ORD 2026 - Sociometría Cultural",
+    "version": "NEX_ORD 2026 - Sociometría Cultural",
     "study_title": "La Casa de Bernarda Alba (F. García Lorca)",
     "autor_obra": "Federico García Lorca",
     "contexto": "Sociometría Teatral y Drama Clásico (N=8)",

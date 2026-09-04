@@ -1,5 +1,5 @@
 /**
- * SOC_ORD PROJECT - VISORD HUB (Omni-Visor)
+ * NEX_ORD PROJECT - VISORD HUB (Omni-Visor)
  * Motor 3D Unificado basado en Super AFC
  */
 

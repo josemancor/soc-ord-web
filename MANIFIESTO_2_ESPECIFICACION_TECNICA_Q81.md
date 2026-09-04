@@ -1,15 +1,15 @@
 # ESPECIFICACIÓN TÉCNICA, ESTRUCTURA Q81 Y TAXONOMÍA DE INDICADORES
-### *Manual de Fundamentación Algebraica Diádica y Espacio de Estados en SOC_ORD 2026*
+### *Manual de Fundamentación Algebraica Diádica y Espacio de Estados en NEX_ORD 2026*
 
 **José Manuel Cornejo Álvarez**  
-*Universitat de Barcelona (UB) / Proyecto SOC_ORD*  
+*Universitat de Barcelona (UB) / Proyecto NEX_ORD*  
 *Registro DOI Zenodo (v2) | Safe Creative: 2603074794486*
 
 ---
 
 ## 1. FUNDAMENTACIÓN ALGEBRAICA DIÁDICA: LA ESTRUCTURA Q81
 
-Frente a las lecturas simplificadas que interpretan la multiplicidad de indicadores como una superposición de métricas independientes, SOC_ORD demuestra que la totalidad del espacio relacional diádico en disyuntiva completa se fundamenta algebraicamente en las **81 Figuras Relacionales Sociométricas Diádicas ($Q_{81}$)**.
+Frente a las lecturas simplificadas que interpretan la multiplicidad de indicadores como una superposición de métricas independientes, NEX_ORD demuestra que la totalidad del espacio relacional diádico en disyuntiva completa se fundamenta algebraicamente en las **81 Figuras Relacionales Sociométricas Diádicas ($Q_{81}$)**.
 
 Estas 81 figuras emergen de cruzar la doble dimensión del vínculo relacional ($3 \times 3 \times 3 \times 3$):
 1. **Vector Operativo:** Lo que se DA (emisión afectiva/operativa $A_2$) vs. lo que se RECIBE (recepción $A_3$).
@@ -19,14 +19,14 @@ Estas 81 figuras emergen de cruzar la doble dimensión del vínculo relacional (
 
 ## 2. REGLA ARQUITECTÓNICA DE GENERACIÓN DE SMIb
 
-La matriz sociométrica fundamental del motor SOC_ORD es la **Sociomatriz Integrada Bipolar (SMIb)** de 4 vías ($A_1, A_2, A_3, A_4$).
+La matriz sociométrica fundamental del motor NEX_ORD es la **Sociomatriz Integrada Bipolar (SMIb)** de 4 vías ($A_1, A_2, A_3, A_4$).
 
 El motor establece una **Regla Arquitectónica Inviolable**:
 > ⚠️ La matriz SMIb se genera **SIEMPRE a partir del Formato MORENO AMPLIADO a $E_{-k_1}$ y $R_{-k_2}$ y sus hipótesis selectivas automáticas**, NUNCA directamente desde el ordenamiento bruto de BREVE.
 
 $$\text{BREVE} \xrightarrow{\mathcal{F}_{\text{B}\to\text{M}}} \text{MORENO AMPLIADO } (E_{-k_1}, R_{-k_2}) \xrightarrow{\text{Hipótesis Selectivas Automáticas}} \text{SMIb (4 Vías)}$$
 
-Cuando los datos se recaban en campo mediante el formato BREVE (ordenamiento total del grupo de $1^\circ$ a $(N-1)^\circ$), el backend de SOC_ORD convierte primero el continuo al formato MORENO ampliado (imputando los polos de elección $E_{-k_1}$, marginación $R_{-k_2}$ y los umbrales de meta-percepción $aE, oE$), y a partir de esta base compila la matriz SMIb de 4 vías.
+Cuando los datos se recaban en campo mediante el formato BREVE (ordenamiento total del grupo de $1^\circ$ a $(N-1)^\circ$), el backend de NEX_ORD convierte primero el continuo al formato MORENO ampliado (imputando los polos de elección $E_{-k_1}$, marginación $R_{-k_2}$ y los umbrales de meta-percepción $aE, oE$), y a partir de esta base compila la matriz SMIb de 4 vías.
 
 ---
 

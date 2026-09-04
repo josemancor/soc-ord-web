@@ -7,7 +7,7 @@ Comprueba si hay caracteres no ASCII, comillas mal cerradas o errores de sintaxi
 
 import os
 
-filepath = '/Users/jmcor/Desktop/SOC_ORD_Project/05_VISORD_Standalone/js/app.js'
+filepath = '/Users/jmcor/Desktop/NEX_ORD_Project/05_VISORD_Standalone/js/app.js'
 
 with open(filepath, 'rb') as f:
     raw = f.read()

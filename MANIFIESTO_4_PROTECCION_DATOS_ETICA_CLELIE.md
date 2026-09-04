@@ -1,23 +1,23 @@
 # PROTECCIÓN DE DATOS, CÓDIGO ABIERTO Y ARQUITECTURA TÉCNICA
-### *Seguridad Forense (Q-GID), Cifrado Tensorial (SMIb), Protocolo Clélie y Open Science en SOC_ORD 2026*
+### *Seguridad Forense (Q-GID), Cifrado Tensorial (SMIb), Protocolo Clélie y Open Science en NEX_ORD 2026*
 
 **José Manuel Cornejo Álvarez**  
-*Universitat de Barcelona (UB) / Proyecto SOC_ORD*  
+*Universitat de Barcelona (UB) / Proyecto NEX_ORD*  
 *Registro DOI Zenodo (v2) | Safe Creative: 2603074794486*
 
 ---
 
 ## 1. COMPROMISO OPEN SCIENCE Y REPRODUCIBILIDAD
 
-El proyecto SOC_ORD rechaza explícitamente la opacidad de los desarrollos propietarios o de "caja negra". La investigación social y clínica requiere herramientas transparentes cuya formulación pueda ser auditada y replicada por la comunidad científica internacional.
+El proyecto NEX_ORD rechaza explícitamente la opacidad de los desarrollos propietarios o de "caja negra". La investigación social y clínica requiere herramientas transparentes cuya formulación pueda ser auditada y replicada por la comunidad científica internacional.
 
-Toda la arquitectura de cálculo (`ENGINE_Simulator.py`) y el configurador de parámetros por oleadas (`SOCORD_ConfigWizard.py`) se ofrecen como **código abierto de autoría**, manteniendo la sincronización entre el repositorio de GitHub y el registro oficial en Zenodo (`DOI: 10.5281/zenodo.18941691`).
+Toda la arquitectura de cálculo (`ENGINE_Simulator.py`) y el configurador de parámetros por oleadas (`NEXORD_ConfigWizard.py`) se ofrecen como **código abierto de autoría**, manteniendo la sincronización entre el repositorio de GitHub y el registro oficial en Zenodo (`DOI: 10.5281/zenodo.18941691`).
 
 ---
 
 ## 2. PROTOCOLO DE PRIVACIDAD Y SEGURIDAD FORENSE (RGPD)
 
-SOC_ORD cumple estrictamente con el Reglamento General de Protección de Datos (RGPD) mediante un diseño de privacidad desde la cuna (*Privacy by Design*):
+NEX_ORD cumple estrictamente con el Reglamento General de Protección de Datos (RGPD) mediante un diseño de privacidad desde la cuna (*Privacy by Design*):
 
 1. **Destrucción Efímera de Identificadores:** Los nombres y marcadores visuales se procesan en memoria volátil y se eliminan automáticamente tras la generación del informe.
 2. **Tokenización Q-GID:** Asignación de identificadores alfanuméricos únicos y no reversibles que permiten el seguimiento longitudinal del sujeto entre $T_1$ y $T_n$ sin revelar la identidad real.
@@ -27,10 +27,10 @@ SOC_ORD cumple estrictamente con el Reglamento General de Protección de Datos (
 
 ## 3. EL PROTOCOLO CLÉLIE DE SEGURIDAD ÉTICA
 
-El marco ético de SOC_ORD se rige por el **Protocolo Clélie**:
+El marco ético de NEX_ORD se rige por el **Protocolo Clélie**:
 
 - **Principio de la Sombra Necesaria**: Derecho a la privacidad y al *No-Anclaje* (posibilidad de borrado de trayectorias antiguas para evitar estigmatización permanente).
-- **Veto a la Purga (Anti-Maquiavelismo)**: Prohibición estricta de utilizar SOC_ORD para ejecutar despidos o segregar a la periferia; los algoritmos priorizan el *rescate relacional* del sujeto aislado.
+- **Veto a la Purga (Anti-Maquiavelismo)**: Prohibición estricta de utilizar NEX_ORD para ejecutar despidos o segregar a la periferia; los algoritmos priorizan el *rescate relacional* del sujeto aislado.
 - **Devolución Social (Human-in-the-Loop)**: Obligación de realizar devolver el mapa al grupo y veto a que la IA tome decisiones ejecutivas autónomas (*Factor de Piedad*).
 
 ---
@@ -39,7 +39,7 @@ El marco ético de SOC_ORD se rige por el **Protocolo Clélie**:
 
 El formato BREVE se administra mediante **1 sola pregunta general positiva, sin mencionar jamás marginaciones o rechazos en la encuesta**, protegiendo el clima ético del grupo.
 
-Para colectivos muy numerosos ($N > 20$), SOC_ORD aplica el **Algoritmo de las 5 Fases de Ordenamiento (Trabajar los Extremos)**:
+Para colectivos muy numerosos ($N > 20$), NEX_ORD aplica el **Algoritmo de las 5 Fases de Ordenamiento (Trabajar los Extremos)**:
 1. **Fase 1 (Preselección Polo Superior)**: Selección libre de los $k$ más apreciados.
 2. **Fase 2 (Ordenación Polo Superior)**: Ordenación jerárquica de los $k_1$ más apreciados ($1^\circ \dots k_1^\circ$).
 3. **Fase 3 (Preselección Polo Inferior)**: Selección de los $m$ menos apreciados de la lista de residuos.
@@ -56,13 +56,13 @@ El sistema establece dos niveles de acceso diferenciados:
 - **Rol IPIS (Investigador Principal Institucional Superior)**: Control absoluto de los algoritmos, orquestación y desarrollo.
 - **Rol IPI (Investigador Principal Institucional)**: Operación institucional y generación de informes .HTML. **Bloqueo estricto de descarga de JSONs crudos** con datos nominativos para prevenir fugas.
 
-Los servidores de SOC_ORD están diseñados de forma **desacoplada y multicanal**, preparados para conectarse mediante APIs nativas, conectores LTI (Moodle/Canvas) o Webhooks.
+Los servidores de NEX_ORD están diseñados de forma **desacoplada y multicanal**, preparados para conectarse mediante APIs nativas, conectores LTI (Moodle/Canvas) o Webhooks.
 
 ---
 
 ## 6. EL PROYECTO CONTEXT: SOCIOMETRÍA LITERARIA Y ARTÍSTICA
 
-SOC_ORD incluye el módulo **ConText** para el análisis de obras literarias y cine (*La Casa de Bernarda Alba*, teatro clásico).
+NEX_ORD incluye el módulo **ConText** para el análisis de obras literarias y cine (*La Casa de Bernarda Alba*, teatro clásico).
 
 - Considera el arte como un **"Sistema Cerrado Perfecto"**, libre de restricciones éticas empíricas.
 - Permite forzar al límite las ecuaciones de la física social en simulaciones de ficción para la investigación avanzada de frontera.

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-SOC_ORD PROJECT - VISORD WEB DEMO INTEGRATION VERIFIER
-Verifica la integridad de archivos, scripts, estilos y payloads de SOC_ORD_WEB/index_demo.html y index.html.
+NEX_ORD PROJECT - VISORD WEB DEMO INTEGRATION VERIFIER
+Verifica la integridad de archivos, scripts, estilos y payloads de NEX_ORD_WEB/index_demo.html y index.html.
 """
 
 import os
 import re
 
-WEB_DIR = '/Users/jmcor/Desktop/SOC_ORD_WEB'
+WEB_DIR = '/Users/jmcor/Desktop/NEX_ORD_WEB'
 DEMO_FILE = os.path.join(WEB_DIR, 'VISORD_demo', 'index.html')
 INDEX_FILE = os.path.join(WEB_DIR, 'index.html')
 
@@ -57,4 +57,4 @@ if __name__ == '__main__':
     res1 = check_html_file(DEMO_FILE)
     res2 = check_html_file(INDEX_FILE)
     if res1 and res2:
-        print("\n🚀 [ESTADO FINAL DE VERIFICACIÓN]: VISORD_demo funciona perfectamente en SOC_ORD_WEB!")
+        print("\n🚀 [ESTADO FINAL DE VERIFICACIÓN]: VISORD_demo funciona perfectamente en NEX_ORD_WEB!")

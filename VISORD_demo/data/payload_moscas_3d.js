@@ -1,6 +1,6 @@
 window.VISORD_PAYLOAD_MOSCAS = {
   "metadata": {
-    "version": "SOC_ORD 2026 - Sociometría de la Barbarie",
+    "version": "NEX_ORD 2026 - Sociometría de la Barbarie",
     "study_title": "El Señor de las Moscas (W. Golding)",
     "autor_obra": "William Golding",
     "contexto": "Colapso Democrático y Barbarie Tribal (N=8)",

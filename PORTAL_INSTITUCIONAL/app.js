@@ -1,4 +1,4 @@
-// Funciones básicas para el Portal SOC_ORD
+// Funciones básicas para el Portal NEX_ORD
 
 document.addEventListener('DOMContentLoaded', () => {
     // Evitar envío por defecto de los formularios

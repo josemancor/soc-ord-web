@@ -95,7 +95,7 @@ El estudio de demostración oficial **HSPD** corresponde a la transcripción soc
 ## 🎭 9. DOMINIO 6 — SOCIOMETRÍA CULTURAL Y NARRATIVA
 
 ### 🏛️ 1. Definición y Alcance
-El **Dominio 6 (Sociometría Cultural y Narrativa)** traslada la instrumentación de SOC_ORD desde colectivos reales a **ecosistemas representacionales, obras dramáticas, guiones cinematográficos, textos literarios e hitos históricos**.
+El **Dominio 6 (Sociometría Cultural y Narrativa)** traslada la instrumentación de NEX_ORD desde colectivos reales a **ecosistemas representacionales, obras dramáticas, guiones cinematográficos, textos literarios e hitos históricos**.
 
 ### 🔮 2. Especificidad y Potencialidad Hermenéutica
 - **Traducción Cualitativo-Cuantitativa**: Permite codificar los diálogos, tensiones escénicas y arcos de personajes en matrices $SMIb$, transformando el análisis narrativo en un continuo matemático medible.
@@ -103,5 +103,5 @@ El **Dominio 6 (Sociometría Cultural y Narrativa)** traslada la instrumentació
 - **Identificación de Catalizadores y Arquetipos**: Las métricas de autocorrelación $COR_{PCA}$, la centralidad en las variedades de Grassmann y los vectores de atracción $E$ descubren quiénes son los verdaderos motores del cambio narrativo (nodos catalizadores) frente a los personajes secundarios de baja tracción sociométrica.
 
 ---
-*© 2026 SOC_ORD Project - Arquitectura Consolidada Platinum*
+*© 2026 NEX_ORD Project - Arquitectura Consolidada Platinum*
 *DOI Registro de Referencia: 10.5281/zenodo.18941691*
