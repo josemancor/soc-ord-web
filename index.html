@@ -45,12 +45,11 @@
         </div>
         <ul class="nav-links">
             <li><a href="#hero">Inicio</a></li>
-            <li><a href="#modulos-visord">Ecosistema</a></li>
-            <li><a href="VISORD_demo/index_demo.html" style="color:#38bdf8; font-weight:700;">🌐 VISORD Demo</a></li>
-            <li><a href="visord_literario.html" style="color:#FF9F1C; font-weight:700;">🎭 VISORD Literario</a></li>
-            <li><a href="visord_g2t1c1.html" style="color:#00FF87; font-weight:800; background:rgba(0,255,135,0.12); padding:6px 14px; border-radius:6px; border:1px solid rgba(0,255,135,0.3);">🔬 VISORD G2T1C1</a></li>
-            <li><a href="visord_gxtycz.html" style="color:#c084fc; font-weight:700;">🌌 VISORD General</a></li>
-            <li><a href="glosario.html" style="color:#f8fafc; font-weight:700; background:rgba(255,255,255,0.08); padding:6px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.15);">📖 Glosario</a></li>
+            <li><a href="VISORD_demo/index_demo.html" style="color:#38BDF8; font-weight:700; background:rgba(56,189,248,0.12); padding:6px 12px; border-radius:6px; border:1px solid rgba(56,189,248,0.3);">🌐 V_Demo</a></li>
+            <li><a href="visord_literario.html" style="color:#FF9F1C; font-weight:700; background:rgba(255,159,28,0.12); padding:6px 12px; border-radius:6px; border:1px solid rgba(255,159,28,0.3);">🎭 V_Literario</a></li>
+            <li style="border-left: 1px solid rgba(255,255,255,0.15); padding-left: 8px;"><a href="visord_g2t1c1.html" style="color:#00FF87; font-weight:800; background:rgba(0,255,135,0.12); padding:6px 12px; border-radius:6px; border:1px solid rgba(0,255,135,0.3);" title="Portal Independiente del Caso Empírico G2T1C1">🔬 V_G2T1C1 (Independiente)</a></li>
+            <li><a href="visord_gxtycz.html" style="color:#C084FC; font-weight:700; background:rgba(192,132,252,0.12); padding:6px 12px; border-radius:6px; border:1px solid rgba(192,132,252,0.3);" title="Portal Independiente del Hipercubo Universal GxTyCz">🌌 V_GxTyCz (Independiente)</a></li>
+            <li><a href="glosario.html" style="color:#F8FAFC; font-weight:700; background:rgba(255,255,255,0.08); padding:6px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.15);">📖 Glosario</a></li>
             <li><a href="recursos.html">📚 Recursos</a></li>
             <!-- SELECTOR INTERNACIONAL DE 8 IDIOMAS -->
             <li style="margin-left: 6px;">
@@ -92,11 +91,26 @@
             <p data-i18n="hero_desc" style="font-size: 1.15rem; max-width: 750px; margin: 0 auto 25px auto; color: #cbd5e1; line-height: 1.6;">
                 Plataforma científica para el diagnóstico clínico, análisis socio-termodinámico y visualización 3D interactiva de estructuras humanas.
             </p>
-            <div class="hero-buttons" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
-                <a href="visord_g2t1c1.html" class="btn" style="background: linear-gradient(135deg, #00FF87, #00A2FF); color: #0B132B; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; box-shadow: 0 0 24px rgba(0, 255, 135, 0.5); text-decoration: none;">🔬 VISORD 3D: Caso G2T1C1 (Ventana Única)</a>
-                <a href="visord_literario.html" class="btn" style="background: rgba(255, 159, 28, 0.2); color: #FF9F1C; border: 1px solid #FF9F1C; padding: 14px 24px; border-radius: 8px; font-weight: 800; font-size: 1.02rem; text-decoration: none; backdrop-filter: blur(8px); box-shadow: 0 0 16px rgba(255, 159, 28, 0.3);">🎭 VISORD Literario (Teatro 3D)</a>
-                <a href="VISORD_demo/index_demo.html" class="btn" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 14px 22px; border-radius: 8px; font-weight: 700; font-size: 1.02rem; text-decoration: none; backdrop-filter: blur(8px);">🌐 VISORD Demo (12 Hombres)</a>
-                <a href="visord_gxtycz.html" class="btn" style="background: rgba(192, 132, 252, 0.15); color: #c084fc; border: 1px solid #c084fc; padding: 14px 22px; border-radius: 8px; font-weight: 700; font-size: 1.02rem; text-decoration: none; backdrop-filter: blur(8px);">🌌 VISORD General GxTyCz</a>
+            <div style="margin-top: 25px; display: flex; flex-direction: column; gap: 14px; align-items: center;">
+                <!-- Fila 1: Demostradores Abiertos desde Web (V_demo y V-literario) -->
+                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+                    <a href="VISORD_demo/index_demo.html" class="btn" style="background: linear-gradient(135deg, #00A2FF, #0055FF); color: #FFFFFF; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; box-shadow: 0 0 20px rgba(0, 162, 255, 0.5); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                        🌐 Entrar a V_Demo (12 Hombres sin Piedad)
+                    </a>
+                    <a href="visord_literario.html" class="btn" style="background: linear-gradient(135deg, rgba(255, 159, 28, 0.25), rgba(255, 107, 0, 0.35)); color: #FF9F1C; border: 1px solid #FF9F1C; padding: 15px 30px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; text-decoration: none; backdrop-filter: blur(8px); box-shadow: 0 0 20px rgba(255, 159, 28, 0.3); display: inline-flex; align-items: center; gap: 8px;">
+                        🎭 Entrar a V_Literario (Lorca / Sartre / Gansel)
+                    </a>
+                </div>
+
+                <!-- Fila 2: Portales Especializados Independientes (V_G2T1C1 y V_GxTyCz) -->
+                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+                    <a href="visord_g2t1c1.html" class="btn" style="background: linear-gradient(135deg, #00FF87 0%, #38BDF8 100%); color: #0B132B; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 900; font-size: 0.95rem; box-shadow: 0 0 16px rgba(0, 255, 135, 0.4); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                        🔬 Portal Independiente V_G2T1C1 (Caso Empírico Canónico)
+                    </a>
+                    <a href="visord_gxtycz.html" class="btn" style="background: rgba(192, 132, 252, 0.15); color: #C084FC; border: 1px solid #C084FC; padding: 12px 24px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; text-decoration: none; backdrop-filter: blur(8px); box-shadow: 0 0 14px rgba(192, 132, 252, 0.25); display: inline-flex; align-items: center; gap: 8px;">
+                        🌌 Portal Independiente V_GxTyCz (Hipercubo Universal)
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -126,7 +140,7 @@
                             <span style="font-size: 2rem;">🌐</span>
                             <span style="font-size: 0.72rem; font-family: monospace; font-weight: 800; color: #38BDF8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); padding: 3px 8px; border-radius: 12px;">MÓDULO 1</span>
                         </div>
-                        <h3 style="color: #38BDF8; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">VISORD Demo</h3>
+                        <h3 style="color: #38BDF8; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">V_Demo</h3>
                         <div style="color: #94A3B8; font-size: 0.80rem; font-family: monospace; margin-bottom: 12px;">12 Hombres sin Piedad &bull; Quatuor Q81</div>
                         <p style="color: #CBD5E1; font-size: 0.90rem; line-height: 1.6; margin-bottom: 18px;">
                             Demostrador interactivo 4D con control de oleadas (T1-T4), motor tensorial Quatuor Q81 y tour guiado para el público general y clínico.
@@ -144,7 +158,7 @@
                             <span style="font-size: 2rem;">🎭</span>
                             <span style="font-size: 0.72rem; font-family: monospace; font-weight: 800; color: #FF9F1C; background: rgba(255, 159, 28, 0.15); border: 1px solid rgba(255, 159, 28, 0.3); padding: 3px 8px; border-radius: 12px;">MÓDULO 2</span>
                         </div>
-                        <h3 style="color: #FF9F1C; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">VISORD Literario</h3>
+                        <h3 style="color: #FF9F1C; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">V_Literario</h3>
                         <div style="color: #94A3B8; font-size: 0.80rem; font-family: monospace; margin-bottom: 12px;">Teatro &bull; Drama &bull; Sociometría Cultural</div>
                         <p style="color: #CBD5E1; font-size: 0.90rem; line-height: 1.6; margin-bottom: 18px;">
                             Modelado socio-termodinámico de obras maestras: <em>La Casa de Bernarda Alba</em> (Lorca, Gr(4,8)), <em>El Señor de las Moscas</em> (Golding/Sartre) y <em>La Ola</em> (Gansel).
@@ -162,7 +176,7 @@
                             <span style="font-size: 2rem;">🔬</span>
                             <span style="font-size: 0.72rem; font-family: monospace; font-weight: 800; color: #00FF87; background: rgba(0, 255, 135, 0.2); border: 1px solid #00FF87; padding: 3px 8px; border-radius: 12px;">MÓDULO 3 CANÓNICO</span>
                         </div>
-                        <h3 style="color: #00FF87; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">VISORD G2T1C1</h3>
+                        <h3 style="color: #00FF87; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">V_G2T1C1 (Independiente)</h3>
                         <div style="color: #94A3B8; font-size: 0.80rem; font-family: monospace; margin-bottom: 12px;">Dossier Empírico Canónico &bull; N=10</div>
                         <p style="color: #CBD5E1; font-size: 0.90rem; line-height: 1.6; margin-bottom: 18px;">
                             <strong>Toda la información en una sola ventana</strong>: Simulación 3D de evolución desde Caos a SMIb, 10 tablas canónicas, radar individual, informes de grupo, síntesis y galería de Inter-proximidades DA/RECIBE.
@@ -180,7 +194,7 @@
                             <span style="font-size: 2rem;">🌌</span>
                             <span style="font-size: 0.72rem; font-family: monospace; font-weight: 800; color: #C084FC; background: rgba(192, 132, 252, 0.15); border: 1px solid rgba(192, 132, 252, 0.3); padding: 3px 8px; border-radius: 12px;">MÓDULO 4</span>
                         </div>
-                        <h3 style="color: #C084FC; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">VISORD General</h3>
+                        <h3 style="color: #C084FC; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;">V_GxTyCz (Independiente)</h3>
                         <div style="color: #94A3B8; font-size: 0.80rem; font-family: monospace; margin-bottom: 12px;">Hipercubo Universal GxTyCz</div>
                         <p style="color: #CBD5E1; font-size: 0.90rem; line-height: 1.6; margin-bottom: 18px;">
                             Estructura universal de las 5 Presentaciones y 5 Transmutaciones para diseños multidimensionales arbitrarios. Protocolo de gobernanza Clélie y exportación pericial.
