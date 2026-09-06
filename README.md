@@ -6,8 +6,8 @@ Plataforma científica y ecosistema interactivo de diagnóstico socio-termodiná
 
 ## 🌐 Enlaces Oficiales
 
-1. 🔬 **VISORD 3D (Caso Empírico $G_2T_1C_1$ — Psicothema)**: [https://josemancor.github.io/soc-ord-web/visord/](https://josemancor.github.io/soc-ord-web/visord/)
-2. 🌐 **Plataforma Web Promocional e Institucional**: [https://josemancor.github.io/soc-ord-web/](https://josemancor.github.io/soc-ord-web/)
+1. 🔬 **VISORD 3D (Caso Empírico $G_2T_1C_1$ — Psicothema)**: [https://josemancor.github.io/nex-ord-web/visord/](https://josemancor.github.io/nex-ord-web/visord/)
+2. 🌐 **Plataforma Web Promocional e Institucional**: [https://josemancor.github.io/nex-ord-web/](https://josemancor.github.io/nex-ord-web/)
 
 ---
 
