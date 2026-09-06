@@ -6,6 +6,7 @@
     <title>Suite Diagnóstica G2T1C1 — NEXORD / VISORD Platform</title>
     <meta name="description" content="Suite Diagnóstica y Selección Analítica del Caso Empírico G2T1C1 (Psicothema 2026). Tablas Canónicas, Planos Factoriales, Ejes Verticales y Dashboards.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     
     <style>
         :root {
@@ -628,22 +629,40 @@
         <div class="header-brand">
             <img src="assets/logo_nexord_base.png" onerror="this.src='assets/logo_nexord_demo.png'" alt="NEXORD Logo">
             <div>
-                <div class="brand-title">NEXORD <span>Suite Diagnóstica</span></div>
-                <div class="brand-subtitle">PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026</div>
+                <div class="brand-title" data-i18n="suite_brand_title">NEXORD <span>Suite Diagnóstica</span></div>
+                <div class="brand-subtitle" data-i18n="suite_brand_sub">PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026</div>
             </div>
         </div>
         <nav class="header-nav">
-            <a href="visord/index.html" class="btn-nav btn-nav-primary">👁️ Lanzar VISORD 3D</a>
-            <a href="index.html" class="btn-nav">🌐 Web Principal</a>
-            <a href="https://github.com/josemancor/nex-ord-web" target="_blank" class="btn-nav">📂 GitHub</a>
+            <a href="visord/index.html" data-i18n="suite_nav_3d" class="btn-nav btn-nav-primary">👁️ Lanzar VISORD 3D</a>
+            <a href="index.html" data-i18n="suite_nav_home" class="btn-nav">🌐 Web Principal</a>
+            <a href="https://github.com/josemancor/nex-ord-web" target="_blank" data-i18n="suite_nav_github" class="btn-nav">📂 GitHub</a>
+            <!-- SELECTOR INTERNACIONAL DE 8 IDIOMAS -->
+            <div class="lang-picker" id="nexord-lang-picker">
+                <button class="lang-picker-btn" id="lang-picker-btn" type="button" aria-label="Seleccionar Idioma">
+                    <span class="lang-flag" id="lang-current-flag">🇪🇸</span>
+                    <span class="lang-code" id="lang-current-code">ES</span>
+                    <span class="lang-arrow">▾</span>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button type="button" class="lang-opt active" data-lang="es"><span class="lang-flag">🇪🇸</span> Español <span class="lang-short">ES</span></button>
+                    <button type="button" class="lang-opt" data-lang="en"><span class="lang-flag">🇬🇧</span> English <span class="lang-short">EN</span></button>
+                    <button type="button" class="lang-opt" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français <span class="lang-short">FR</span></button>
+                    <button type="button" class="lang-opt" data-lang="it"><span class="lang-flag">🇮🇹</span> Italiano <span class="lang-short">IT</span></button>
+                    <button type="button" class="lang-opt" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-short">DE</span></button>
+                    <button type="button" class="lang-opt" data-lang="pt"><span class="lang-flag">🇵🇹</span> Português <span class="lang-short">PT</span></button>
+                    <button type="button" class="lang-opt" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский <span class="lang-short">RU</span></button>
+                    <button type="button" class="lang-opt" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文 <span class="lang-short">ZH</span></button>
+                </div>
+            </div>
         </nav>
     </header>
 
     <!-- 🌟 Hero de la Suite -->
     <section class="suite-hero">
-        <span class="suite-badge">🔬 ESTUDIO EMPÍRICO INTERGRUPAL G2T1C1 (N=10)</span>
-        <h1 class="suite-heading">Diagnóstico Socio-Termodinámico y Topología en Grassmann</h1>
-        <p class="suite-desc">
+        <span class="suite-badge" data-i18n="suite_hero_badge">🔬 ESTUDIO EMPÍRICO INTERGRUPAL G2T1C1 (N=10)</span>
+        <h1 class="suite-heading" data-i18n="suite_heading">Diagnóstico Socio-Termodinámico y Topología en Grassmann</h1>
+        <p class="suite-desc" data-i18n="suite_desc">
             Demostración empírica de la plataforma <strong>NEXORD / VISORD</strong> contrastando un colectivo estructurado y armónico (<strong>Grupo 1: Cohesión</strong>) frente a un colectivo en tensión con marginación invisible (<strong>Grupo 2: Ostracismo sobre el nodo 5B1a</strong>).
         </p>
 
@@ -681,10 +700,10 @@
     <main class="tabs-container">
         
         <div class="main-tabs">
-            <button class="tab-btn active" onclick="openMainTab('tab-tablas', this)">📊 Tablas Metodológicas (Pasos 1 al 6)</button>
-            <button class="tab-btn" onclick="openMainTab('tab-planos', this)">📈 Planos Factoriales y Ejes Verticales</button>
-            <button class="tab-btn" onclick="openMainTab('tab-dashboards', this)">📑 Dashboards e Informes Interactivos</button>
-            <button class="tab-btn" onclick="openMainTab('tab-revista', this)">🏛️ Figuras y Tablas Oficiales (Psicothema)</button>
+            <button class="tab-btn active" data-i18n="suite_tab_tables" onclick="openMainTab('tab-tablas', this)">📊 Tablas Metodológicas (Pasos 1 al 6)</button>
+            <button class="tab-btn" data-i18n="suite_tab_planes" onclick="openMainTab('tab-planos', this)">📈 Planos Factoriales y Ejes Verticales</button>
+            <button class="tab-btn" data-i18n="suite_tab_dashboards" onclick="openMainTab('tab-dashboards', this)">📑 Dashboards e Informes Interactivos</button>
+            <button class="tab-btn" data-i18n="suite_tab_journal" onclick="openMainTab('tab-revista', this)">🏛️ Figuras y Tablas Oficiales (Psicothema)</button>
         </div>
 
         <!-- ===================================================================
@@ -694,10 +713,10 @@
             
             <!-- Selector de Sub-pestañas para los 6 pasos -->
             <div class="sub-nav">
-                <button class="sub-btn active" onclick="openSubTab('sub-paso12', this)">Paso 1 y 2: Entrada BREVE & Moreno</button>
-                <button class="sub-btn" onclick="openSubTab('sub-paso34', this)">Paso 3 y 4: Matrices SMIb y SMIa (Q81)</button>
-                <button class="sub-btn" onclick="openSubTab('sub-paso5', this)">Paso 5: 10 Densidades Relacionales D(n,10)</button>
-                <button class="sub-btn" onclick="openSubTab('sub-paso6', this)">Paso 6: Reducción Progresiva de Centroides</button>
+                <button class="sub-btn active" data-i18n="suite_sub_paso12" onclick="openSubTab('sub-paso12', this)">Paso 1 y 2: Entrada BREVE & Moreno</button>
+                <button class="sub-btn" data-i18n="suite_sub_paso34" onclick="openSubTab('sub-paso34', this)">Paso 3 y 4: Matrices SMIb y SMIa (Q81)</button>
+                <button class="sub-btn" data-i18n="suite_sub_paso5" onclick="openSubTab('sub-paso5', this)">Paso 5: 10 Densidades Relacionales D(n,10)</button>
+                <button class="sub-btn" data-i18n="suite_sub_paso6" onclick="openSubTab('sub-paso6', this)">Paso 6: Reducción Progresiva de Centroides</button>
             </div>
 
             <!-- SUB-TAB 1 & 2 -->
@@ -1657,5 +1676,6 @@
             if (e.key === 'Escape') closeLightbox();
         });
     </script>
+    <script src="i18n_nav.js"></script>
 </body>
 </html>

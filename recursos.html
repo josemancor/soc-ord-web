@@ -17,15 +17,34 @@
             <span class="nav-title">NEX_ORD PLATINUM</span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">Volver al Inicio</a></li>
-            <li><a href="#about">Filosofía</a></li>
-            <li><a href="#modules">Módulos</a></li>
-            <li><a href="index.html" target="_blank">Demos</a></li>
-            <li><a href="#glossary">Glosario</a></li>
-            <li><a href="#manual">Manual</a></li>
-            <li><a href="#bsoc-cta">BSOC</a></li>
-            <li><a href="#community">Comunidad</a></li>
-            <li style="margin-left: 15px;"><a href="PORTAL_INSTITUCIONAL/index.html" style="background: #00A2FF; color: #FFF; padding: 8px 16px; border-radius: 6px; font-weight: 600; box-shadow: 0 0 10px rgba(0, 162, 255, 0.4);">Acceso Plataforma 🔐</a></li>
+            <li><a href="index.html" data-i18n="nav_back">Volver al Inicio</a></li>
+            <li><a href="#about" data-i18n="nav_philosophy">Filosofía</a></li>
+            <li><a href="#modules" data-i18n="nav_modules">Módulos</a></li>
+            <li><a href="#glossary" data-i18n="nav_glossary">Glosario</a></li>
+            <li><a href="#manual" data-i18n="nav_manual">Manual</a></li>
+            <li><a href="#community" data-i18n="nav_community">Comunidad</a></li>
+            <li><a href="suite_g2t1c1.html" data-i18n="nav_suite" style="background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; padding: 6px 14px; border-radius: 6px; font-weight: 700; text-decoration: none;">📊 Suite G2T1C1</a></li>
+            <li style="margin-left: 10px;"><a href="PORTAL_INSTITUCIONAL/index.html" data-i18n="nav_access" style="background: #00A2FF; color: #FFF; padding: 8px 16px; border-radius: 6px; font-weight: 600; box-shadow: 0 0 10px rgba(0, 162, 255, 0.4);">Acceso Plataforma 🔐</a></li>
+            <!-- SELECTOR INTERNACIONAL DE 8 IDIOMAS -->
+            <li style="margin-left: 10px;">
+                <div class="lang-picker" id="nexord-lang-picker">
+                    <button class="lang-picker-btn" id="lang-picker-btn" type="button" aria-label="Seleccionar Idioma">
+                        <span class="lang-flag" id="lang-current-flag">🇪🇸</span>
+                        <span class="lang-code" id="lang-current-code">ES</span>
+                        <span class="lang-arrow">▾</span>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button type="button" class="lang-opt active" data-lang="es"><span class="lang-flag">🇪🇸</span> Español <span class="lang-short">ES</span></button>
+                        <button type="button" class="lang-opt" data-lang="en"><span class="lang-flag">🇬🇧</span> English <span class="lang-short">EN</span></button>
+                        <button type="button" class="lang-opt" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français <span class="lang-short">FR</span></button>
+                        <button type="button" class="lang-opt" data-lang="it"><span class="lang-flag">🇮🇹</span> Italiano <span class="lang-short">IT</span></button>
+                        <button type="button" class="lang-opt" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-short">DE</span></button>
+                        <button type="button" class="lang-opt" data-lang="pt"><span class="lang-flag">🇵🇹</span> Português <span class="lang-short">PT</span></button>
+                        <button type="button" class="lang-opt" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский <span class="lang-short">RU</span></button>
+                        <button type="button" class="lang-opt" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文 <span class="lang-short">ZH</span></button>
+                    </div>
+                </div>
+            </li>
         </ul>
     </nav>
 
@@ -1028,6 +1047,7 @@
     </footer>
 
     <script src="scripts.js?v=3"></script>
+    <script src="i18n_nav.js"></script>
 
     <!-- Global Lightbox Modal -->
     <div id="global-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 2rem 0; align-items: center; justify-content: center;">

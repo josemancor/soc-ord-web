@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VISORD 3D — Caso Empírico G2T1C1 (Psicothema 2026)</title>
     <meta name="description" content="Visualizador 3D/4D Interactivo del Caso Empírico G2T1C1 (Psicothema 2026). Plataforma NEXORD / VISORD.">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html {
@@ -162,8 +163,27 @@
             </div>
         </div>
         <div class="header-actions">
+            <a href="../suite_g2t1c1.html" data-i18n="vis_btn_suite" class="btn-action" style="background: rgba(56, 189, 248, 0.15); border-color: #38BDF8; color: #38BDF8; text-decoration: none;">📊 Suite Diagnóstica (Tablas &amp; Gráficos)</a>
             <button class="btn-action" id="btn-open-nota">💡 Nota Explicativa</button>
-            <a href="../index.html" class="btn-action btn-portal" id="btn-link-portal">🌐 Web Promocional</a>
+            <a href="../index.html" data-i18n="vis_btn_portal" class="btn-action btn-portal" id="btn-link-portal">🌐 Web Principal</a>
+            <!-- SELECTOR INTERNACIONAL DE 8 IDIOMAS -->
+            <div class="lang-picker" id="nexord-lang-picker">
+                <button class="lang-picker-btn" id="lang-picker-btn" type="button" aria-label="Seleccionar Idioma">
+                    <span class="lang-flag" id="lang-current-flag">🇪🇸</span>
+                    <span class="lang-code" id="lang-current-code">ES</span>
+                    <span class="lang-arrow">▾</span>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button type="button" class="lang-opt active" data-lang="es"><span class="lang-flag">🇪🇸</span> Español <span class="lang-short">ES</span></button>
+                    <button type="button" class="lang-opt" data-lang="en"><span class="lang-flag">🇬🇧</span> English <span class="lang-short">EN</span></button>
+                    <button type="button" class="lang-opt" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français <span class="lang-short">FR</span></button>
+                    <button type="button" class="lang-opt" data-lang="it"><span class="lang-flag">🇮🇹</span> Italiano <span class="lang-short">IT</span></button>
+                    <button type="button" class="lang-opt" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-short">DE</span></button>
+                    <button type="button" class="lang-opt" data-lang="pt"><span class="lang-flag">🇵🇹</span> Português <span class="lang-short">PT</span></button>
+                    <button type="button" class="lang-opt" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский <span class="lang-short">RU</span></button>
+                    <button type="button" class="lang-opt" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文 <span class="lang-short">ZH</span></button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -586,5 +606,6 @@
         // Ejecutar al cargar la ventana
         window.addEventListener('load', init);
     </script>
+    <script src="../i18n_nav.js"></script>
 </body>
 </html>

@@ -429,7 +429,9 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Simple mobile hide */
+    .navbar { padding: 0 4%; }
+    .nav-links { display: flex; gap: 10px; align-items: center; }
+    .nav-links > li:not(:last-child) { display: none; } /* Mantener selector de idioma visible en móvil */
     .hero-content h1 { font-size: 3rem; }
     .hero-buttons { flex-direction: column; }
     .showcase-grid { grid-template-columns: 1fr; }
@@ -657,3 +659,125 @@ footer {
 .clickable-media {
     cursor: zoom-in;
 }
+
+/* =============================================================================
+   SELECTOR INTERNACIONAL DE NAVEGACIÓN EN 8 IDIOMAS (VISORD / NEXORD)
+   ============================================================================= */
+.lang-picker {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.lang-picker-btn {
+    background: rgba(11, 19, 43, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #F8FAFC;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.lang-picker-btn:hover,
+.lang-picker-btn:focus {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38BDF8;
+    color: #38BDF8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+}
+
+.lang-flag {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.lang-code {
+    font-family: 'Roboto Mono', 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+}
+
+.lang-arrow {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+.lang-picker.open .lang-arrow {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 170px;
+    background: rgba(11, 19, 43, 0.98);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75), 0 0 16px rgba(56, 189, 248, 0.2);
+    backdrop-filter: blur(16px);
+    padding: 6px;
+    z-index: 10000;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.lang-picker.open .lang-dropdown {
+    display: flex;
+    animation: langFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes langFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-opt {
+    background: transparent;
+    border: none;
+    color: #E2E8F0;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    transition: all 0.15s ease;
+}
+
+.lang-opt:hover {
+    background: rgba(56, 189, 248, 0.18);
+    color: #38BDF8;
+    transform: translateX(2px);
+}
+
+.lang-opt.active {
+    background: rgba(0, 255, 135, 0.15);
+    color: #00FF87;
+    font-weight: 800;
+    border: 1px solid rgba(0, 255, 135, 0.3);
+}
+
+.lang-short {
+    font-family: 'Roboto Mono', 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
