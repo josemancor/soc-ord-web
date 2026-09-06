@@ -1394,12 +1394,18 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
                     }
                 });
             }
+            const seenBaseSubjs = new Set();
             subjectEntries.forEach(([key, subj]) => {
+                const idMatch = key.match(/^(\d+)/);
+                const subjId = idMatch ? idMatch[1] : key;
+                if (seenBaseSubjs.has(subjId)) return;
+                seenBaseSubjs.add(subjId);
+
                 const pos = new THREE.Vector3(...subj.coords);
                 const mat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.85 });
-                const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.25, 10, 10), mat);
+                const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.20, 12, 12), mat);
                 mesh.position.copy(pos);
-                mesh.userData = { type: 'Nodo Sujeto Base', name: key };
+                mesh.userData = { type: 'Nodo Sujeto Base', name: subj.full_name || subj.name || key };
                 this.universeWaves[0].add(mesh);
 
                 if (subj.extra_dims) {
@@ -1524,17 +1530,23 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
                 return new THREE.Color().setHSL(hue / 360, 0.85, 0.55);
             };
 
+            const seenWave4Subjs = new Set();
             subjectEntries.forEach(([key, subj]) => {
+                const idMatch = key.match(/^(\d+)/);
+                const subjId = idMatch ? idMatch[1] : key;
+                if (seenWave4Subjs.has(subjId)) return;
+                seenWave4Subjs.add(subjId);
+
                 const match = key.match(/^(\d+)([A-Z])([a-z])(\d+)$/);
                 let color = new THREE.Color(0x38bdf8);
                 if (match) {
                     color = getMatrixColor(match[2], match[3], match[4]);
                 }
                 const pos = new THREE.Vector3(...subj.coords);
-                const mat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.5, transparent: true, opacity: 0.95 });
-                const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.35, 12, 12), mat);
+                const mat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.5, transparent: true, opacity: 0.90 });
+                const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), mat);
                 mesh.position.copy(pos);
-                mesh.userData = { type: 'Nodo Sociomatriz Cromático', name: key };
+                mesh.userData = { type: 'Nodo Sociomatriz Cromático', name: subj.full_name || subj.name || key };
                 this.universeWaves[4].add(mesh);
             });
         }
@@ -1616,6 +1628,12 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
                 this.controls.target.copy(center);
                 this.controls.update();
             }
+            // Restaurar la visibilidad de las barras del visor
+            ['left-sidebar', 'right-sidebar', 'top-bar', 'bottom-action-dock'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = '';
+            });
+            window.dispatchEvent(new Event('tour-ended'));
         };
         
         const pause = (ms) => new Promise((resolve) => {
@@ -1842,32 +1860,30 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         
         this.state['FEATURES'] = true;
         this.state['SUPP'] = true;
-        this.state['CLUSTERS'] = true;
-        this.updateLayerVisibility();
-        
         // Acelerar rotación
-        stopRotate();
-        let fastRotateReq;
-        let fastAngle = angle;
+        let fastRotateReq = null;
+        let fastAngle = 0;
+        const orbitRadius = 24.0;
         const fastRotateLoop = () => {
             if (this.abortTour) return;
             fastAngle += 0.015;
-            this.camera.position.x = center.x + Math.sin(fastAngle) * (radius * 1.3);
-            this.camera.position.z = center.z + Math.cos(fastAngle) * (radius * 1.3);
-            this.camera.position.y = center.y + 15 + Math.sin(fastAngle * 4) * 35; // Órbita majestuosa arriba y abajo
+            this.camera.position.x = center.x + Math.sin(fastAngle) * orbitRadius;
+            this.camera.position.z = center.z + Math.cos(fastAngle) * orbitRadius;
+            this.camera.position.y = center.y + 6 + Math.sin(fastAngle * 3) * 8; // Órbita suave
             this.camera.lookAt(center);
             fastRotateReq = requestAnimationFrame(fastRotateLoop);
         };
         fastRotateReq = requestAnimationFrame(fastRotateLoop);
         
-        await pause(10000);
+        await pause(8000);
         
         if (fastRotateReq) cancelAnimationFrame(fastRotateReq);
-        if (this.audio) this.audio.stopAll();
+        if (this.audio && this.audio.stopAll) this.audio.stopAll();
         
-        if (titleOverlay) titleOverlay.remove();
+        const titleEl = document.getElementById('tour-title-overlay');
+        if (titleEl) titleEl.remove();
         
-        // Restaurar estado inicial (Pantalla final solicitada)
+        // Restaurar estado inicial (Pantalla final normalizada y desbloqueada)
         Object.keys(this.state).forEach(k => this.state[k] = false);
         this.state['UNIVERSE'] = true; // Restaurar la proyección básica (nodos y etiquetas)
         this.state['MACRO'] = true;
@@ -1877,17 +1893,23 @@ mesh.userData = { type: 'Nodo Sujeto', name: subj.name || key };
         this.state['SUPP'] = false;
         
         // Restaurar opacidades alteradas durante el tour
-        this.layers['UNIVERSE'].traverse((child) => {
-            if (child.material && child.userData.originalOpacity !== undefined) {
-                child.material.opacity = child.userData.originalOpacity;
-            }
-        });
+        if (this.layers['UNIVERSE']) {
+            this.layers['UNIVERSE'].traverse((child) => {
+                if (child.material && child.userData.originalOpacity !== undefined) {
+                    child.material.opacity = child.userData.originalOpacity;
+                }
+            });
+        }
         
         // Sincronizar visibilidad de capas al finalizar el tour
-        this.state['UNIVERSE'] = true;
-        this.state['MACRO'] = true;
-        this.state['MICRO'] = true;
         this.updateLayerVisibility();
+        
+        // RE-HABILITAR CONTROLES DE CÁMARA (Soluciona el bloqueo al finalizar)
+        if (this.controls) {
+            this.controls.enabled = true;
+            this.controls.target.copy(center);
+            this.controls.update();
+        }
         
         // Restaurar la visibilidad de las bandas laterales y barras del visor al finalizar o cancelar el Tour
         ['left-sidebar', 'right-sidebar', 'top-bar', 'bottom-action-dock'].forEach(id => {

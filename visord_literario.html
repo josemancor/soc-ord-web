@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VISORD Literario • Proyección Dinámica SMIb & Sociometría Cultural 3D</title>
+    <title>VISORD Literario • Buque Insignia '12 Hombres sin Piedad' & Sociometría Cultural 3D</title>
     <!-- Three.js & OrbitControls -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
@@ -36,22 +36,22 @@
             left: 0;
             width: 100%;
             height: 68px;
-            background: rgba(8, 13, 26, 0.88);
+            background: rgba(8, 13, 26, 0.90);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255, 159, 28, 0.35);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
+            padding: 0 20px;
             z-index: 100;
         }
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
         .brand-logo {
-            height: 40px;
+            height: 38px;
             filter: drop-shadow(0 0 10px rgba(0, 255, 135, 0.5));
         }
         .brand-titles {
@@ -60,7 +60,7 @@
         }
         .brand-main {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: 1.20rem;
             font-weight: 800;
             color: #FFFFFF;
             letter-spacing: 0.5px;
@@ -70,7 +70,7 @@
             font-style: italic;
         }
         .brand-sub {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             color: #94A3B8;
             font-family: 'Roboto Mono', monospace;
             letter-spacing: 1px;
@@ -78,9 +78,9 @@
         /* Selector de Obras */
         .work-selector {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             background: rgba(15, 23, 42, 0.85);
-            padding: 4px 8px;
+            padding: 4px 6px;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
@@ -88,12 +88,13 @@
             background: transparent;
             border: none;
             color: #94A3B8;
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
         .btn-work:hover {
             color: #FFFFFF;
@@ -102,19 +103,19 @@
         .btn-work.active {
             background: linear-gradient(135deg, #FF9F1C, #FF007F);
             color: #FFFFFF;
-            box-shadow: 0 0 14px rgba(255, 159, 28, 0.4);
+            box-shadow: 0 0 14px rgba(255, 159, 28, 0.45);
         }
         /* Botones de Navegación */
         .header-nav {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .btn-nav-lit {
             text-decoration: none;
-            font-size: 0.80rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            padding: 7px 14px;
+            padding: 6px 12px;
             border-radius: 8px;
             transition: all 0.2s ease;
             display: flex;
@@ -154,11 +155,11 @@
             backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 159, 28, 0.3);
             border-radius: 14px;
-            padding: 16px;
+            padding: 14px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.75);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             overflow-y: auto;
         }
         /* Recuadro Canónico Destacado: Sinopsis Breve de la Obra */
@@ -172,7 +173,7 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 159, 28, 0.18);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 7px;
             transition: all 0.25s ease;
         }
         .synopsis-box-header {
@@ -180,11 +181,11 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 159, 28, 0.25);
-            padding-bottom: 5px;
+            padding-bottom: 4px;
         }
         .synopsis-tag {
             font-family: 'Roboto Mono', monospace;
-            font-size: 0.70rem;
+            font-size: 0.68rem;
             font-weight: 800;
             color: #FF9F1C;
             letter-spacing: 1px;
@@ -217,26 +218,26 @@
             line-height: 1.2;
         }
         .work-author {
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             color: #38BDF8;
             font-family: 'Roboto Mono', monospace;
         }
         .synopsis-body {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: #CBD5E1;
-            line-height: 1.55;
+            line-height: 1.5;
             background: rgba(3, 7, 18, 0.55);
             padding: 8px 10px;
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
         .synopsis-key {
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             color: #FEF08A;
             background: rgba(234, 179, 8, 0.08);
             border: 1px solid rgba(234, 179, 8, 0.25);
             border-radius: 6px;
-            padding: 7px 9px;
+            padding: 6px 8px;
             line-height: 1.45;
         }
         .synopsis-key strong {
@@ -247,13 +248,13 @@
             display: none;
         }
         .panel-heading {
-            font-size: 0.82rem;
+            font-size: 0.80rem;
             font-weight: 800;
             color: #FF9F1C;
             letter-spacing: 0.8px;
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 5px;
+            padding-bottom: 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -261,17 +262,17 @@
         .characters-list {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
         }
         .char-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: rgba(255, 255, 255, 0.04);
-            padding: 6px 9px;
+            padding: 5px 8px;
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             cursor: pointer;
             transition: all 0.15s ease;
         }
@@ -282,13 +283,17 @@
         }
         .char-name { font-weight: 600; color: #F1F5F9; }
         .char-role-badge {
-            font-size: 0.66rem;
+            font-size: 0.65rem;
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 700;
             background: rgba(56, 189, 248, 0.15);
             color: #38BDF8;
             border: 1px solid rgba(56, 189, 248, 0.3);
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         /* Panel Derecho: Métricas Socio-Termodinámicas */
@@ -327,8 +332,8 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 150;
-            width: 940px;
-            max-width: 96vw;
+            width: 960px;
+            max-width: 97vw;
             background: rgba(8, 13, 26, 0.94);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 159, 28, 0.4);
@@ -524,13 +529,14 @@
             </a>
             <div class="brand-titles">
                 <div class="brand-main">VISORD <span>Literario</span></div>
-                <div class="brand-sub">PROYECCIÓN DINÁMICA SMIb &bull; SOCIODINÁMICA 3D/4D</div>
+                <div class="brand-sub">SOCIOMETRÍA CINEMATOGRÁFICA &bull; DINÁMICA DE DELIBERACIÓN 3D</div>
             </div>
         </div>
 
-        <!-- Selector de Obras -->
+        <!-- Selector de Obras (Buque Insignia en 1ª Posición) -->
         <div class="work-selector">
-            <button class="btn-work active" data-work="lorca">🎭 Bernarda Alba (Lorca)</button>
+            <button class="btn-work active" data-work="hombres12">⚖️ 12 Hombres sin Piedad (Rose)</button>
+            <button class="btn-work" data-work="lorca">🎭 Bernarda Alba (Lorca)</button>
             <button class="btn-work" data-work="moscas">🪰 El Señor de las Moscas (Golding)</button>
             <button class="btn-work" data-work="la_ola">🌊 La Ola (Gansel)</button>
         </div>
@@ -551,8 +557,8 @@
                 <span class="synopsis-tag">📖 SINOPSIS BREVE DE LA OBRA</span>
                 <button class="btn-toggle-synopsis" id="btn-toggle-synopsis" title="Minimizar / Expandir Sinopsis">—</button>
             </div>
-            <div class="work-title-display" id="display-title">La Casa de Bernarda Alba</div>
-            <div class="work-author" id="display-author">Federico García Lorca &bull; Gr(4, 8)</div>
+            <div class="work-title-display" id="display-title">12 Hombres sin Piedad</div>
+            <div class="work-author" id="display-author">Reginald Rose / Sidney Lumet &bull; Gr(6, 12)</div>
             <div class="synopsis-body" id="display-synopsis">
                 Cargando sinopsis argumental...
             </div>
@@ -578,23 +584,23 @@
         </div>
         <div class="metric-item">
             <span class="metric-k">Masa Invariante BDR:</span>
-            <span class="metric-v" id="val-lit-bdr" style="color:#FFE600;">3.15</span>
+            <span class="metric-v" id="val-lit-bdr" style="color:#FFE600;">3.80</span>
         </div>
         <div class="metric-item">
             <span class="metric-k">Densidad Neta SDR:</span>
-            <span class="metric-v" id="val-lit-sdr" style="color:#00FF87;">+0.40</span>
+            <span class="metric-v" id="val-lit-sdr" style="color:#00FF87;">+0.58</span>
         </div>
         <div class="metric-item">
             <span class="metric-k">Variedad Grassmann:</span>
-            <span class="metric-v" id="val-lit-grassmann" style="color:#38BDF8;">d_G = 0.440 rad</span>
+            <span class="metric-v" id="val-lit-grassmann" style="color:#38BDF8;">d_G = 0.320 rad</span>
         </div>
         <div class="metric-item">
             <span class="metric-k">Varianza Explicada F1:</span>
-            <span class="metric-v" id="val-lit-f1" style="color:#FF9F1C;">97.9%</span>
+            <span class="metric-v" id="val-lit-f1" style="color:#FF9F1C;">98.2%</span>
         </div>
         <div class="metric-item">
             <span class="metric-k">Régimen Estructural:</span>
-            <span class="metric-v" id="val-lit-regime" style="color:#FF007F; font-size:0.72rem;">Luto Normativo</span>
+            <span class="metric-v" id="val-lit-regime" style="color:#FF007F; font-size:0.72rem;">Monopolio de Culpabilidad</span>
         </div>
 
         <div class="panel-heading" style="margin-top:6px;">
@@ -603,15 +609,15 @@
         <div style="font-size:0.72rem; color:#CBD5E1; display:flex; flex-direction:column; gap:5px;">
             <div style="display:flex; align-items:center; gap:8px;">
                 <span style="width:16px; height:3px; background:#00FF87; display:inline-block; border-radius:2px; box-shadow:0 0 6px #00FF87;"></span>
-                <span>Alianza / Elección Afectiva (E)</span>
+                <span>Alianza / Duda Razonable (E)</span>
             </div>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span style="width:16px; height:3px; background:#FF007F; display:inline-block; border-radius:2px; box-shadow:0 0 6px #FF007F;"></span>
-                <span>Opresión / Conflicto / Fricción (R)</span>
+                <span>Prejuicio / Fricción / Oposición (R)</span>
             </div>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span style="width:9px; height:9px; border-radius:50%; background:#FFE600; display:inline-block; box-shadow:0 0 6px #FFE600;"></span>
-                <span>Centroide de Masa Relacional</span>
+                <span>Centroide de Mesa de Deliberación</span>
             </div>
         </div>
     </aside>
@@ -619,9 +625,9 @@
     <!-- Barra Inferior: Selector de TC (SMIb), Moviola y Cámara -->
     <div class="bottom-timeline">
         <div class="tc-controls-row">
-            <!-- Selector de Tiempos / Actos -->
+            <!-- Selector de Tiempos / Votaciones -->
             <div class="tc-group">
-                <span class="tc-label">TIEMPO (T):</span>
+                <span class="tc-label">VOTACIÓN (T):</span>
                 <div class="act-pills" id="time-pills">
                     <!-- Inyectado dinámicamente -->
                 </div>
@@ -631,15 +637,15 @@
             <div class="tc-group">
                 <span class="tc-label">CRITERIO (C):</span>
                 <div class="crit-pills" id="crit-pills">
-                    <button class="btn-crit active" data-crit="1">C1: Alianza / Norma (E)</button>
-                    <button class="btn-crit" data-crit="2">C2: Fricción / Tensión (R)</button>
+                    <button class="btn-crit active" data-crit="1">C1: Alianza / Duda (E)</button>
+                    <button class="btn-crit" data-crit="2">C2: Fricción / Conflicto (R)</button>
                 </div>
             </div>
 
             <!-- Píldora de Celda TC y Moviola -->
             <div class="tc-group">
                 <span class="tc-active-badge" id="active-tc-pill">TC: 1g1t1c</span>
-                <button class="btn-moviola" id="btn-moviola-play" title="Reproducir evolución temporal automática">▶ Moviola</button>
+                <button class="btn-moviola" id="btn-moviola-play" title="Reproducir evolución de votaciones paso a paso">▶ Moviola</button>
             </div>
         </div>
 
@@ -660,6 +666,7 @@
             <p><strong>De la Escena al Espacio de Fases:</strong> La literatura y la dramaturgia clásica representan sistemas sociales cerrados gobernados por tensiones socio-termodinámicas comparables a los ecosistemas humanos empíricos.</p>
             <p><strong>Matrices Ordinales SMIb:</strong> Las interacciones, diálogos, acotaciones escénicas y polaridades entre personajes se codifican mediante el estándar ordinal SMIb (Atracción, Neutralidad, Repulsión), permitiendo proyectar la variedad de Grassmann Gr(k, N) y los invariantes de densidad BDR/SDR en el espacio tridimensional.</p>
             <p><strong>Corpus Validados:</strong></p>
+            <p>&bull; <em>12 Hombres sin Piedad</em>: Transición paradigmática desde la unanimidad aparente del prejuicio (11-1) hacia el consenso emancipador de la duda razonable (12-0).</p>
             <p>&bull; <em>La Casa de Bernarda Alba</em>: El confinamiento del luto genera una presión adiabática donde el vector repulsivo de Bernarda precipita la fractura y suicidio de Adela.</p>
             <p>&bull; <em>El Señor de las Moscas</em>: Transición de fase desde la cohesión democrática inicial hacia la barbarie tribal hiper-polarizada.</p>
             <p>&bull; <em>La Ola</em>: Sincronización coercitiva y anulación de la disidencia individual bajo un campo atractor autocrático unificado.</p>
@@ -671,10 +678,38 @@
         // =========================================================================
         // DATASET CANÓNICO DE CELDAS TC (SMIb) GENERADO MATEMÁTICAMENTE
         // =========================================================================
-        const TC_DATASET = {"lorca": {"1g1t1c": {"coords": [[-2.8, 3.2, -0.6], [-1.2, -0.7, 0.4], [-0.83, 1.59, 0.61], [-0.43, -3.62, -1.18], [-1.8, 1.5, -0.2], [-0.9, -1.2, 0.5], [-1.8, -2.1, 1.8], [4.8, -0.07, -0.2]], "edges": [{"src": 0, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 5, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 5, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 3, "type": "E"}, {"src": 7, "tgt": 6, "type": "E"}], "bdr": "3.30", "sdr": "+0.40", "f1": "97.9%", "grassmann": "d_G = 0.440 rad", "t": 1, "c": 1, "synopsis_tc": "Acto I • C1 (Alianza y Luto): Bernarda impone el luto hermético. Las hermanas buscan apoyo mutuo bajo el confinamiento, mientras Adela mantiene una apariencia dócil.", "regime": "Luto Normativo"}, "1g1t2c": {"coords": [[-2.8, 3.2, -0.6], [-1.2, -0.7, 0.4], [-4.37, -0.91, 1.35], [2.37, 0.71, 3.66], [-1.8, 1.5, -0.2], [-0.9, -1.2, 0.5], [-1.8, -2.1, 1.8], [4.53, -2.12, 1.68]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 5, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 4, "type": "R"}, {"src": 3, "tgt": 6, "type": "R"}, {"src": 3, "tgt": 7, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 4, "tgt": 7, "type": "R"}, {"src": 5, "tgt": 2, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 4, "type": "R"}, {"src": 7, "tgt": 6, "type": "R"}], "bdr": "3.05", "sdr": "-0.35", "f1": "97.9%", "grassmann": "d_G = 0.440 rad", "t": 1, "c": 2, "synopsis_tc": "Acto I • C2 (Fricción Normativa): Resentimientos latentes por la dote de Angustias y el compromiso con Pepe el Romano. Primeras miradas de reproche y vigilancia moral.", "regime": "Vigilancia Latente"}, "1g2t1c": {"coords": [[-3.4, 2.9, -0.8], [-0.8, -1.1, 0.2], [-2.11, 2.78, 1.73], [-2.18, -2.14, 1.94], [-0.5, 0.8, 0.6], [2.0, -1.6, 1.4], [-1.5, -1.9, 2.0], [4.8, 1.18, -0.0]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 3, "tgt": 1, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 4, "tgt": 5, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 3, "type": "E"}, {"src": 6, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}], "bdr": "3.55", "sdr": "+0.55", "f1": "96.8%", "grassmann": "d_G = 0.500 rad", "t": 2, "c": 1, "synopsis_tc": "Acto II • C1 (Alianzas Secretas): Adela transgrede el luto y se encuentra furtivamente con Pepe el Romano. Poncia advierte la tormenta inminente.", "regime": "Transgresión Secreta"}, "1g2t2c": {"coords": [[-3.4, 2.9, -0.8], [-0.8, -1.1, 0.2], [-4.51, -1.74, -0.75], [2.58, -2.76, -2.48], [-0.5, 0.8, 0.6], [2.0, -1.6, 1.4], [-1.5, -1.9, 2.0], [4.51, 0.48, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 5, "type": "R"}, {"src": 3, "tgt": 4, "type": "R"}, {"src": 3, "tgt": 6, "type": "R"}, {"src": 3, "tgt": 7, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 4, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 7, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 5, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 4, "type": "R"}, {"src": 7, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}], "bdr": "3.30", "sdr": "-0.53", "f1": "96.8%", "grassmann": "d_G = 0.500 rad", "t": 2, "c": 2, "synopsis_tc": "Acto II • C2 (Sospecha y Celos): Martirio vigila obsesivamente a Adela tras robar el retrato de Pepe. Fractura abierta entre hermanas y vigilancia paranoica.", "regime": "Polarización Fraterna"}, "1g3t1c": {"coords": [[-4.5, 3.8, -1.2], [-0.5, -1.5, 0.1], [-1.82, 2.06, 0.61], [0.19, 1.67, -3.22], [2.6, -2.2, 1.6], [4.8, -4.5, 3.2], [-1.0, -1.5, 2.4], [4.8, 0.6, -0.52]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 1, "type": "E"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 2, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 3, "type": "E"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 0, "tgt": 5, "type": "R"}], "bdr": "3.80", "sdr": "+0.70", "f1": "95.7%", "grassmann": "d_G = 0.560 rad", "t": 3, "c": 1, "synopsis_tc": "Acto III • C1 (Confrontación de Pasiones): Noche de clímax. Adela quebranta la autoridad materna rompiendo el bastón de Bernarda en dos.", "regime": "Rebelión Absoluta"}, "1g3t2c": {"coords": [[-4.5, 3.8, -1.2], [-0.5, -1.5, 0.1], [-4.59, 2.39, -0.88], [2.83, 3.04, 0.4], [2.6, -2.2, 1.6], [4.8, -4.5, 3.2], [-1.0, -1.5, 2.4], [4.23, 0.29, 0.29]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 2, "tgt": 5, "type": "R"}, {"src": 3, "tgt": 6, "type": "R"}, {"src": 3, "tgt": 7, "type": "R"}, {"src": 4, "tgt": 3, "type": "R"}, {"src": 4, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 7, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 3, "type": "R"}, {"src": 6, "tgt": 5, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 3, "type": "R"}, {"src": 7, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 0, "tgt": 5, "type": "R"}], "bdr": "3.55", "sdr": "-0.71", "f1": "95.7%", "grassmann": "d_G = 0.560 rad", "t": 3, "c": 2, "synopsis_tc": "Acto III • C2 (Ruptura y Suicidio): Delación de Martirio, disparo de Bernarda y suicidio de Adela. Cisma irreversible y clausura forzada del dolor con '¡Silencio!'.", "regime": "Colapso y Silencio Forzoso"}}, "moscas": {"1g1t1c": {"coords": [[-2.2, 1.8, 0.4], [1.8, 1.4, -0.5], [-2.5, 0.8, 0.9], [-0.2, 2.5, 1.2], [2.4, 0.5, -1.0], [-1.5, -1.0, 0.2], [1.2, -0.8, -0.8], [0.0, -2.5, -1.5]], "edges": [{"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 6, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 6, "tgt": 0, "type": "E"}, {"src": 7, "tgt": 0, "type": "E"}], "bdr": "3.75", "sdr": "+0.55", "f1": "94.6%", "grassmann": "d_G = 0.510 rad", "t": 1, "c": 1, "synopsis_tc": "Fase 1 • C1 (Asamblea de la Caracola): Cooperación democrática inicial; Ralph elegido líder, Piggy establece las reglas del orden y fuego de rescate.", "regime": "Democracia Normativa"}, "1g1t2c": {"coords": [[-2.2, 1.8, 0.4], [1.8, 1.4, -0.5], [-2.5, 0.8, 0.9], [-0.2, 2.5, 1.2], [2.4, 0.5, -1.0], [-1.5, -1.0, 0.2], [1.2, -0.8, -0.8], [0.0, -2.5, -1.5]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 0, "tgt": 7, "type": "E"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 7, "type": "E"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "R"}, {"src": 3, "tgt": 2, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 7, "tgt": 2, "type": "R"}], "bdr": "3.40", "sdr": "+0.30", "f1": "94.6%", "grassmann": "d_G = 0.510 rad", "t": 1, "c": 2, "synopsis_tc": "Fase 1 • C2 (Tensión Latente): Descontento de Jack ante el liderazgo civilizado; burla sistemática y hostigamiento contra Piggy.", "regime": "Rivalidad Latente"}, "1g2t1c": {"coords": [[-2.8, 2.2, 0.6], [2.9, -0.5, -0.8], [-2.9, 1.2, 1.1], [0.0, 3.2, 1.8], [3.5, -1.2, -1.4], [-1.8, -0.5, 0.1], [2.2, -1.5, -0.5], [0.2, -2.8, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 7, "tgt": 0, "type": "E"}], "bdr": "4.10", "sdr": "+0.30", "f1": "93.2%", "grassmann": "d_G = 0.600 rad", "t": 2, "c": 1, "synopsis_tc": "Fase 2 • C1 (Tarea vs. Caza): Jack y el coro abandonan el fuego de rescate para cazar un jabalí; un barco pasa sin ser alertado, desatando la cólera de Ralph.", "regime": "Fractura de Prioridades"}, "1g2t2c": {"coords": [[-2.8, 2.2, 0.6], [2.9, -0.5, -0.8], [-2.9, 1.2, 1.1], [0.0, 3.2, 1.8], [3.5, -1.2, -1.4], [-1.8, -0.5, 0.1], [2.2, -1.5, -0.5], [0.2, -2.8, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 5, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 3, "tgt": 0, "type": "R"}, {"src": 3, "tgt": 2, "type": "R"}, {"src": 4, "tgt": 1, "type": "R"}, {"src": 4, "tgt": 7, "type": "E"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 0, "type": "R"}, {"src": 7, "tgt": 2, "type": "R"}], "bdr": "3.75", "sdr": "+0.48", "f1": "93.2%", "grassmann": "d_G = 0.600 rad", "t": 2, "c": 2, "synopsis_tc": "Fase 2 • C2 (El Miedo a la Bestia): La superstición se apodera de los niños pequeños; Jack explota el terror para minar la legitimidad de la caracola.", "regime": "Superstición y Caos"}, "1g3t1c": {"coords": [[-3.8, 1.9, 0.5], [4.2, -2.2, -1.0], [-3.5, 0.9, 1.4], [0.5, -1.8, 2.8], [4.8, -2.8, -1.5], [-1.0, -1.8, -0.5], [3.2, -2.5, -0.2], [1.5, -3.5, -2.0]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 7, "tgt": 0, "type": "E"}, {"src": 7, "tgt": 1, "type": "E"}], "bdr": "4.45", "sdr": "+0.05", "f1": "91.8%", "grassmann": "d_G = 0.690 rad", "t": 3, "c": 1, "synopsis_tc": "Fase 3 • C1 (El Cisma Tribal): Jack funda la tribu salvaje en Castle Rock; festines de carne y sometimiento por lealtad ciega.", "regime": "Cisma Autocrático"}, "1g3t2c": {"coords": [[-3.8, 1.9, 0.5], [4.2, -2.2, -1.0], [-3.5, 0.9, 1.4], [0.5, -1.8, 2.8], [4.8, -2.8, -1.5], [-1.0, -1.8, -0.5], [3.2, -2.5, -0.2], [1.5, -3.5, -2.0]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 5, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 3, "tgt": 0, "type": "R"}, {"src": 3, "tgt": 2, "type": "R"}, {"src": 4, "tgt": 1, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 7, "tgt": 0, "type": "R"}, {"src": 7, "tgt": 1, "type": "R"}], "bdr": "4.10", "sdr": "+0.66", "f1": "91.8%", "grassmann": "d_G = 0.690 rad", "t": 3, "c": 2, "synopsis_tc": "Fase 3 • C2 (Danza y Barbarie): Frenesí orgiástico bajo la tempestad. La tribu lincha y despedaza ritualmente a Simon en la playa.", "regime": "Frenesí y Sacrificio Tribal"}, "1g4t1c": {"coords": [[-4.8, -1.5, 0.0], [4.6, 2.5, -1.2], [-4.0, -3.8, 2.5], [0.0, 5.0, 3.5], [5.2, 3.1, -1.6], [3.5, 0.8, -0.8], [3.8, 1.8, -0.4], [2.2, 0.2, -2.2]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 4, "type": "R"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 7, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 4, "type": "R"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 7, "tgt": 1, "type": "E"}], "bdr": "4.80", "sdr": "-0.20", "f1": "90.4%", "grassmann": "d_G = 0.780 rad", "t": 4, "c": 1, "synopsis_tc": "Fase 4 • C1 (Asedio y Dominación): Ataque nocturno para robar las gafas de Piggy. Jack implanta un régimen de tortura y terror punitivo.", "regime": "Tiranía Punitiva"}, "1g4t2c": {"coords": [[-4.8, -1.5, 0.0], [4.6, 2.5, -1.2], [-4.0, -3.8, 2.5], [0.0, 5.0, 3.5], [5.2, 3.1, -1.6], [3.5, 0.8, -0.8], [3.8, 1.8, -0.4], [2.2, 0.2, -2.2]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 0, "tgt": 4, "type": "E"}, {"src": 0, "tgt": 5, "type": "R"}, {"src": 0, "tgt": 7, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 4, "type": "E"}, {"src": 2, "tgt": 5, "type": "R"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 1, "type": "R"}, {"src": 4, "tgt": 2, "type": "E"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 0, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 7, "tgt": 0, "type": "E"}, {"src": 7, "tgt": 1, "type": "R"}], "bdr": "4.45", "sdr": "+0.84", "f1": "90.4%", "grassmann": "d_G = 0.780 rad", "t": 4, "c": 2, "synopsis_tc": "Fase 4 • C2 (Caza Humana y Colapso): Roger arroja una roca gigante asesinando a Piggy y quebrando la caracola. Ralph es perseguido a muerte por la isla en llamas.", "regime": "Anarquía y Caza del Hombre"}}, "la_ola": {"t1c1": {"coords": [[0.0, 2.5, 0.0], [-1.5, 0.5, 1.2], [1.2, 0.8, 0.4], [-0.8, 1.2, 1.0], [1.5, -1.2, -1.0], [1.0, -0.5, -0.6], [-1.2, -0.8, -1.4]], "edges": [{"src": 0, "tgt": 4, "type": "E"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 5, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.66", "sdr": "+0.48", "f1": "94.3%", "grassmann": "d_G = 0.460 rad", "t": 1, "c": 1, "synopsis_tc": "Acto I • C1 (Disciplina en el Aula): El profesor Wenger introduce 'fuerza mediante la disciplina'; los alumnos adoptan postura erecta y sincronía motriz.", "regime": "Orden Colectivo"}, "t1c2": {"coords": [[0.0, 2.5, 0.0], [-1.5, 0.5, 1.2], [1.2, 0.8, 0.4], [-0.8, 1.2, 1.0], [1.5, -1.2, -1.0], [1.0, -0.5, -0.6], [-1.2, -0.8, -1.4]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.36", "sdr": "-0.25", "f1": "94.3%", "grassmann": "d_G = 0.460 rad", "t": 1, "c": 2, "synopsis_tc": "Acto I • C2 (Atracción Inicial): Despertar de la curiosidad estudiantil y placer por el orden colectivo sin disidencias declaradas.", "regime": "Atracción Voluntaria"}, "t2c1": {"coords": [[0.0, 3.2, 0.0], [-3.2, -1.5, 1.5], [1.8, 1.8, 0.6], [-0.5, 0.8, 1.8], [2.5, 2.2, -1.2], [2.0, 0.5, -0.8], [-1.5, 0.5, -1.5]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 4, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.04", "sdr": "+0.66", "f1": "93.1%", "grassmann": "d_G = 0.530 rad", "t": 2, "c": 1, "synopsis_tc": "Acto II • C1 (Consolidación Colectiva): Adopción del nombre 'La Ola', camisa blanca y saludo identificativo; efervescencia de pertenencia unificada.", "regime": "Sincronía Autocrática"}, "t2c2": {"coords": [[0.0, 3.2, 0.0], [-3.2, -1.5, 1.5], [1.8, 1.8, 0.6], [-0.5, 0.8, 1.8], [2.5, 2.2, -1.2], [2.0, 0.5, -0.8], [-1.5, 0.5, -1.5]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.74", "sdr": "-0.47", "f1": "93.1%", "grassmann": "d_G = 0.530 rad", "t": 2, "c": 2, "synopsis_tc": "Acto II • C2 (Marginación de Karo): Karo rehúsa vestir el uniforme y reparte octavillas críticas; el grupo la califica de traidora y la excluye con hostilidad.", "regime": "Aislamiento del Disidente"}, "t3c1": {"coords": [[0.0, 3.8, 0.0], [-4.8, -3.2, 2.2], [2.2, 2.5, 0.8], [-1.2, 0.2, 2.2], [3.2, 3.5, -1.8], [2.4, 1.2, -0.9], [-1.8, -0.2, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 6, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.42", "sdr": "+0.84", "f1": "91.9%", "grassmann": "d_G = 0.600 rad", "t": 3, "c": 1, "synopsis_tc": "Acto III • C1 (Fanatismo Totalitario): Violencia contra quienes no saludan a La Ola; Tim asume el rol de guardaespaldas armado de Wenger.", "regime": "Fanatismo Coercitivo"}, "t3c2": {"coords": [[0.0, 3.8, 0.0], [-4.8, -3.2, 2.2], [2.2, 2.5, 0.8], [-1.2, 0.2, 2.2], [3.2, 3.5, -1.8], [2.4, 1.2, -0.9], [-1.8, -0.2, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 6, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.12", "sdr": "-0.69", "f1": "91.9%", "grassmann": "d_G = 0.600 rad", "t": 3, "c": 2, "synopsis_tc": "Acto III • C2 (Disolución y Tragedia): Wenger intenta demostrar a sus alumnos que cayeron en la trampa autocrática. Tim, devastado por la pérdida de identidad, dispara y se quita la vida.", "regime": "Desmoronamiento Trágico"}}};
+        const TC_DATASET = {"hombres12": {"1g1t1c": {"coords": [[1.5, 1.0, -1.2], [2.0, 0.2, -1.8], [3.8, -2.2, 2.0], [2.6, 2.2, 0.6], [2.2, -0.8, -0.5], [1.8, 0.6, -1.0], [3.2, -1.5, -1.4], [-4.2, 1.8, 2.2], [1.2, 0.8, 0.5], [4.0, -3.0, 1.2], [1.9, 1.2, -0.2], [2.8, -0.2, -1.6]], "edges": [{"src": 2, "tgt": 3, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 9, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}], "bdr": "3.80", "sdr": "+0.58", "f1": "98.2%", "grassmann": "d_G = 0.320 rad", "regime": "Monopolio de Culpabilidad", "synopsis_tc": "1ª Votación a mano alzada (11 Culpables vs 1 No Culpable). Davis (Jurado 8) vota en solitario invocando la duda razonable frente a la inercia masiva.", "t": 1, "c": 1}, "1g1t2c": {"coords": [[1.5, 1.0, -1.2], [2.0, 0.2, -1.8], [3.8, -2.2, 2.0], [2.6, 2.2, 0.6], [2.2, -0.8, -0.5], [1.8, 0.6, -1.0], [3.2, -1.5, -1.4], [-4.2, 1.8, 2.2], [1.2, 0.8, 0.5], [4.0, -3.0, 1.2], [1.9, 1.2, -0.2], [2.8, -0.2, -1.6]], "edges": [{"src": 2, "tgt": 7, "type": "R"}, {"src": 9, "tgt": 7, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}], "bdr": "3.80", "sdr": "-0.45", "f1": "98.2%", "grassmann": "d_G = 0.320 rad", "regime": "Coerción Punitiva Masiva", "synopsis_tc": "Furia inmediata del Jurado 3 y del Jurado 10 contra Davis. La prisa por clausurar el caso choca con la exigencia ética de deliberar.", "t": 1, "c": 2}, "1g2t1c": {"coords": [[1.2, 0.8, -1.0], [1.6, 0.0, -1.5], [3.6, -2.5, 2.2], [2.2, 2.0, 0.8], [1.5, -0.5, -0.6], [1.4, 0.4, -0.8], [3.0, -1.6, -1.2], [-3.8, 2.0, 2.0], [-3.0, 1.2, 1.4], [3.8, -3.2, 1.0], [1.5, 1.0, 0.0], [2.5, -0.2, -1.4]], "edges": [{"src": 7, "tgt": 8, "type": "E"}, {"src": 8, "tgt": 7, "type": "E"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.95", "sdr": "+0.42", "f1": "96.8%", "grassmann": "d_G = 0.410 rad", "regime": "Emergencia de Díada Crítica", "synopsis_tc": "2ª Votación secreta (10 a 2). McArdle (Jurado 9) apoya a Davis respetando su coraje moral. Se consolida la primera díada de duda razonable.", "t": 2, "c": 1}, "1g2t2c": {"coords": [[1.2, 0.8, -1.0], [1.6, 0.0, -1.5], [3.6, -2.5, 2.2], [2.2, 2.0, 0.8], [1.5, -0.5, -0.6], [1.4, 0.4, -0.8], [3.0, -1.6, -1.2], [-3.8, 2.0, 2.0], [-3.0, 1.2, 1.4], [3.8, -3.2, 1.0], [1.5, 1.0, 0.0], [2.5, -0.2, -1.4]], "edges": [{"src": 2, "tgt": 4, "type": "R"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 9, "tgt": 7, "type": "R"}], "bdr": "3.95", "sdr": "-0.52", "f1": "96.8%", "grassmann": "d_G = 0.410 rad", "regime": "Paranoia y Sospecha Fraterna", "synopsis_tc": "El Jurado 3 estalla en ira y acusa con violencia al Jurado 5 de haber cambiado el voto, evidenciando su rencor latente.", "t": 2, "c": 2}, "1g3t1c": {"coords": [[0.8, 0.5, -1.2], [-2.0, 0.2, -1.0], [3.9, -2.8, 2.4], [2.0, 2.2, 0.6], [-2.5, -0.8, 0.8], [-1.8, 0.6, -0.6], [2.8, -1.8, -1.0], [-3.6, 2.2, 1.8], [-2.8, 1.4, 1.2], [3.6, -3.5, 0.8], [-2.2, 1.2, 0.5], [2.2, -0.4, -1.2]], "edges": [{"src": 7, "tgt": 8, "type": "E"}, {"src": 8, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 10, "type": "E"}, {"src": 10, "tgt": 7, "type": "E"}, {"src": 4, "tgt": 7, "type": "E"}, {"src": 1, "tgt": 7, "type": "E"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.25", "sdr": "+0.08", "f1": "94.5%", "grassmann": "d_G = 0.590 rad", "regime": "Bipolaridad Equitativa (Cisma)", "synopsis_tc": "3ª Votación (6 a 6). El jurado se parte exactamente a la mitad tras la demostración de la navaja automática y el paso del tren.", "t": 3, "c": 1}, "1g3t2c": {"coords": [[0.8, 0.5, -1.2], [-2.0, 0.2, -1.0], [3.9, -2.8, 2.4], [2.0, 2.2, 0.6], [-2.5, -0.8, 0.8], [-1.8, 0.6, -0.6], [2.8, -1.8, -1.0], [-3.6, 2.2, 1.8], [-2.8, 1.4, 1.2], [3.6, -3.5, 0.8], [-2.2, 1.2, 0.5], [2.2, -0.4, -1.2]], "edges": [{"src": 2, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 2, "type": "R"}, {"src": 9, "tgt": 4, "type": "R"}, {"src": 2, "tgt": 5, "type": "R"}], "bdr": "4.25", "sdr": "-0.68", "f1": "94.5%", "grassmann": "d_G = 0.590 rad", "regime": "Máxima Fricción Geodésica", "synopsis_tc": "Tensión límite: el Jurado 3 pierde el control y grita a Davis '¡Voy a matarlo!', demostrando que sus palabras no son literales.", "t": 3, "c": 2}, "1g4t1c": {"coords": [[-1.5, 0.6, -0.8], [-2.4, 0.5, -0.6], [4.5, -3.2, 2.0], [-1.8, 2.0, 0.8], [-2.8, -0.4, 0.6], [-2.2, 0.8, -0.4], [-1.0, -1.2, -1.0], [-3.5, 2.0, 1.8], [-3.0, 1.5, 1.0], [0.5, -4.0, 0.5], [-2.6, 1.4, 0.6], [-1.2, -0.2, -0.8]], "edges": [{"src": 7, "tgt": 8, "type": "E"}, {"src": 7, "tgt": 3, "type": "E"}, {"src": 3, "tgt": 7, "type": "E"}, {"src": 10, "tgt": 7, "type": "E"}, {"src": 4, "tgt": 7, "type": "E"}, {"src": 0, "tgt": 7, "type": "E"}], "bdr": "4.40", "sdr": "+0.68", "f1": "97.1%", "grassmann": "d_G = 0.680 rad", "regime": "Hegemonía de la Razón Cívica", "synopsis_tc": "4ª Votación (1 Culpable vs 11 No Culpables). El análisis de las marcas de gafas convence al racional Jurado 4. Todos se vuelven de espaldas al racismo del Jurado 10.", "t": 4, "c": 1}, "1g4t2c": {"coords": [[-1.5, 0.6, -0.8], [-2.4, 0.5, -0.6], [4.5, -3.2, 2.0], [-1.8, 2.0, 0.8], [-2.8, -0.4, 0.6], [-2.2, 0.8, -0.4], [-1.0, -1.2, -1.0], [-3.5, 2.0, 1.8], [-3.0, 1.5, 1.0], [0.5, -4.0, 0.5], [-2.6, 1.4, 0.6], [-1.2, -0.2, -0.8]], "edges": [{"src": 2, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 0, "tgt": 9, "type": "R"}, {"src": 3, "tgt": 9, "type": "R"}, {"src": 7, "tgt": 9, "type": "R"}], "bdr": "4.40", "sdr": "-0.32", "f1": "97.1%", "grassmann": "d_G = 0.680 rad", "regime": "Ostracismo del Prejuicio", "synopsis_tc": "El Jurado 3 queda acorralado como atractor residual único, resistiéndose desesperadamente a admitir el fracaso de su venganza personal.", "t": 4, "c": 2}, "1g5t1c": {"coords": [[-0.5, 1.2, -0.5], [-1.2, 0.8, -0.8], [-0.2, -0.5, 1.2], [-1.5, 1.8, 0.5], [-1.8, -0.2, 0.4], [-1.4, 0.6, -0.2], [-0.8, -0.8, -0.6], [-2.2, 1.8, 1.2], [-2.0, 1.2, 0.8], [-0.5, -2.0, 0.0], [-1.8, 1.4, 0.2], [-0.9, -0.2, -0.5]], "edges": [{"src": 7, "tgt": 8, "type": "E"}, {"src": 7, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 7, "type": "E"}, {"src": 3, "tgt": 7, "type": "E"}, {"src": 4, "tgt": 7, "type": "E"}, {"src": 10, "tgt": 7, "type": "E"}, {"src": 0, "tgt": 7, "type": "E"}, {"src": 1, "tgt": 7, "type": "E"}, {"src": 5, "tgt": 7, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}], "bdr": "4.55", "sdr": "+0.92", "f1": "99.4%", "grassmann": "d_G = 0.745 rad", "regime": "Consenso Estacionario Total", "synopsis_tc": "Consenso Unánime (12 No Culpables). El Jurado 3 rompe la foto de su hijo, llora y musita 'No culpable'. Davis le alcanza el abrigo con respeto humano.", "t": 5, "c": 1}, "1g5t2c": {"coords": [[-0.5, 1.2, -0.5], [-1.2, 0.8, -0.8], [-0.2, -0.5, 1.2], [-1.5, 1.8, 0.5], [-1.8, -0.2, 0.4], [-1.4, 0.6, -0.2], [-0.8, -0.8, -0.6], [-2.2, 1.8, 1.2], [-2.0, 1.2, 0.8], [-0.5, -2.0, 0.0], [-1.8, 1.4, 0.2], [-0.9, -0.2, -0.5]], "edges": [], "bdr": "4.55", "sdr": "0.00", "f1": "99.4%", "grassmann": "d_G = 0.745 rad", "regime": "Entropía Cero / Paz Relacional", "synopsis_tc": "Disipación de la hostilidad. El campo grupal alcanza el estado estacionario armónico y los jurados abandonan la sala bajo la lluvia reconciliadora.", "t": 5, "c": 2}}, "lorca": {"1g1t1c": {"coords": [[-2.8, 3.2, -0.6], [-1.2, -0.7, 0.4], [-0.83, 1.59, 0.61], [-0.43, -3.62, -1.18], [-1.8, 1.5, -0.2], [-0.9, -1.2, 0.5], [-1.8, -2.1, 1.8], [4.8, -0.07, -0.2]], "edges": [{"src": 0, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 5, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 5, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 3, "type": "E"}, {"src": 7, "tgt": 6, "type": "E"}], "bdr": "3.30", "sdr": "+0.40", "f1": "97.9%", "grassmann": "d_G = 0.440 rad", "t": 1, "c": 1}, "1g1t2c": {"coords": [[-2.8, 3.2, -0.6], [-1.2, -0.7, 0.4], [-4.37, -0.91, 1.35], [2.37, 0.71, 3.66], [-1.8, 1.5, -0.2], [-0.9, -1.2, 0.5], [-1.8, -2.1, 1.8], [4.53, -2.12, 1.68]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 5, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 4, "type": "R"}, {"src": 3, "tgt": 6, "type": "R"}, {"src": 3, "tgt": 7, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 4, "tgt": 7, "type": "R"}, {"src": 5, "tgt": 2, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 4, "type": "R"}, {"src": 7, "tgt": 6, "type": "R"}], "bdr": "3.05", "sdr": "-0.35", "f1": "97.9%", "grassmann": "d_G = 0.440 rad", "t": 1, "c": 2}, "1g2t1c": {"coords": [[-3.4, 2.9, -0.8], [-0.8, -1.1, 0.2], [-2.11, 2.78, 1.73], [-2.18, -2.14, 1.94], [-0.5, 0.8, 0.6], [2.0, -1.6, 1.4], [-1.5, -1.9, 2.0], [4.8, 1.18, -0.0]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 3, "tgt": 1, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 4, "tgt": 5, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 3, "type": "E"}, {"src": 6, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}], "bdr": "3.55", "sdr": "+0.55", "f1": "96.8%", "grassmann": "d_G = 0.500 rad", "t": 2, "c": 1}, "1g2t2c": {"coords": [[-3.4, 2.9, -0.8], [-0.8, -1.1, 0.2], [-4.51, -1.74, -0.75], [2.58, -2.76, -2.48], [-0.5, 0.8, 0.6], [2.0, -1.6, 1.4], [-1.5, -1.9, 2.0], [4.51, 0.48, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 5, "type": "R"}, {"src": 3, "tgt": 4, "type": "R"}, {"src": 3, "tgt": 6, "type": "R"}, {"src": 3, "tgt": 7, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 4, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 7, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 5, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 4, "type": "R"}, {"src": 7, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}], "bdr": "3.30", "sdr": "-0.53", "f1": "96.8%", "grassmann": "d_G = 0.500 rad", "t": 2, "c": 2}, "1g3t1c": {"coords": [[-4.5, 3.8, -1.2], [-0.5, -1.5, 0.1], [-1.82, 2.06, 0.61], [0.19, 1.67, -3.22], [2.6, -2.2, 1.6], [4.8, -4.5, 3.2], [-1.0, -1.5, 2.4], [4.8, 0.6, -0.52]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 1, "type": "E"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 2, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 3, "type": "E"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 0, "tgt": 5, "type": "R"}], "bdr": "3.80", "sdr": "+0.70", "f1": "95.7%", "grassmann": "d_G = 0.560 rad", "t": 3, "c": 1}, "1g3t2c": {"coords": [[-4.5, 3.8, -1.2], [-0.5, -1.5, 0.1], [-4.59, 2.39, -0.88], [2.83, 3.04, 0.4], [2.6, -2.2, 1.6], [4.8, -4.5, 3.2], [-1.0, -1.5, 2.4], [4.23, 0.29, 0.29]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 2, "tgt": 5, "type": "R"}, {"src": 3, "tgt": 6, "type": "R"}, {"src": 3, "tgt": 7, "type": "R"}, {"src": 4, "tgt": 3, "type": "R"}, {"src": 4, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 7, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 6, "tgt": 3, "type": "R"}, {"src": 6, "tgt": 5, "type": "R"}, {"src": 6, "tgt": 7, "type": "R"}, {"src": 7, "tgt": 3, "type": "R"}, {"src": 7, "tgt": 6, "type": "R"}, {"src": 4, "tgt": 5, "type": "R"}, {"src": 5, "tgt": 4, "type": "R"}, {"src": 0, "tgt": 5, "type": "R"}], "bdr": "3.55", "sdr": "-0.71", "f1": "95.7%", "grassmann": "d_G = 0.560 rad", "t": 3, "c": 2}}, "moscas": {"1g1t1c": {"coords": [[-2.2, 1.8, 0.4], [1.8, 1.4, -0.5], [-2.5, 0.8, 0.9], [-0.2, 2.5, 1.2], [2.4, 0.5, -1.0], [-1.5, -1.0, 0.2], [1.2, -0.8, -0.8], [0.0, -2.5, -1.5]], "edges": [{"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 6, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 6, "tgt": 0, "type": "E"}, {"src": 7, "tgt": 0, "type": "E"}], "bdr": "3.75", "sdr": "+0.55", "f1": "94.6%", "grassmann": "d_G = 0.510 rad", "t": 1, "c": 1}, "1g1t2c": {"coords": [[-2.2, 1.8, 0.4], [1.8, 1.4, -0.5], [-2.5, 0.8, 0.9], [-0.2, 2.5, 1.2], [2.4, 0.5, -1.0], [-1.5, -1.0, 0.2], [1.2, -0.8, -0.8], [0.0, -2.5, -1.5]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 0, "tgt": 7, "type": "E"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 7, "type": "E"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "R"}, {"src": 3, "tgt": 2, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 7, "tgt": 2, "type": "R"}], "bdr": "3.40", "sdr": "+0.30", "f1": "94.6%", "grassmann": "d_G = 0.510 rad", "t": 1, "c": 2}, "1g2t1c": {"coords": [[-2.8, 2.2, 0.6], [2.9, -0.5, -0.8], [-2.9, 1.2, 1.1], [0.0, 3.2, 1.8], [3.5, -1.2, -1.4], [-1.8, -0.5, 0.1], [2.2, -1.5, -0.5], [0.2, -2.8, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 7, "tgt": 0, "type": "E"}], "bdr": "4.10", "sdr": "+0.30", "f1": "93.2%", "grassmann": "d_G = 0.600 rad", "t": 2, "c": 1}, "1g2t2c": {"coords": [[-2.8, 2.2, 0.6], [2.9, -0.5, -0.8], [-2.9, 1.2, 1.1], [0.0, 3.2, 1.8], [3.5, -1.2, -1.4], [-1.8, -0.5, 0.1], [2.2, -1.5, -0.5], [0.2, -2.8, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 3, "type": "E"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 5, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 3, "tgt": 0, "type": "R"}, {"src": 3, "tgt": 2, "type": "R"}, {"src": 4, "tgt": 1, "type": "R"}, {"src": 4, "tgt": 7, "type": "E"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 7, "type": "E"}, {"src": 7, "tgt": 0, "type": "R"}, {"src": 7, "tgt": 2, "type": "R"}], "bdr": "3.75", "sdr": "+0.48", "f1": "93.2%", "grassmann": "d_G = 0.600 rad", "t": 2, "c": 2}, "1g3t1c": {"coords": [[-3.8, 1.9, 0.5], [4.2, -2.2, -1.0], [-3.5, 0.9, 1.4], [0.5, -1.8, 2.8], [4.8, -2.8, -1.5], [-1.0, -1.8, -0.5], [3.2, -2.5, -0.2], [1.5, -3.5, -2.0]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 3, "type": "E"}, {"src": 2, "tgt": 7, "type": "R"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 2, "type": "E"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 7, "tgt": 0, "type": "E"}, {"src": 7, "tgt": 1, "type": "E"}], "bdr": "4.45", "sdr": "+0.05", "f1": "91.8%", "grassmann": "d_G = 0.690 rad", "t": 3, "c": 1}, "1g3t2c": {"coords": [[-3.8, 1.9, 0.5], [4.2, -2.2, -1.0], [-3.5, 0.9, 1.4], [0.5, -1.8, 2.8], [4.8, -2.8, -1.5], [-1.0, -1.8, -0.5], [3.2, -2.5, -0.2], [1.5, -3.5, -2.0]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 5, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 3, "type": "R"}, {"src": 3, "tgt": 0, "type": "R"}, {"src": 3, "tgt": 2, "type": "R"}, {"src": 4, "tgt": 1, "type": "R"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 7, "tgt": 0, "type": "R"}, {"src": 7, "tgt": 1, "type": "R"}], "bdr": "4.10", "sdr": "+0.66", "f1": "91.8%", "grassmann": "d_G = 0.690 rad", "t": 3, "c": 2}, "1g4t1c": {"coords": [[-4.8, -1.5, 0.0], [4.6, 2.5, -1.2], [-4.0, -3.8, 2.5], [0.0, 5.0, 3.5], [5.2, 3.1, -1.6], [3.5, 0.8, -0.8], [3.8, 1.8, -0.4], [2.2, 0.2, -2.2]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 0, "tgt": 4, "type": "R"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 0, "tgt": 7, "type": "R"}, {"src": 1, "tgt": 0, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 7, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 4, "type": "R"}, {"src": 4, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 7, "tgt": 1, "type": "E"}], "bdr": "4.80", "sdr": "-0.20", "f1": "90.4%", "grassmann": "d_G = 0.780 rad", "t": 4, "c": 1}, "1g4t2c": {"coords": [[-4.8, -1.5, 0.0], [4.6, 2.5, -1.2], [-4.0, -3.8, 2.5], [0.0, 5.0, 3.5], [5.2, 3.1, -1.6], [3.5, 0.8, -0.8], [3.8, 1.8, -0.4], [2.2, 0.2, -2.2]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 2, "type": "R"}, {"src": 0, "tgt": 3, "type": "R"}, {"src": 0, "tgt": 4, "type": "E"}, {"src": 0, "tgt": 5, "type": "R"}, {"src": 0, "tgt": 7, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 4, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 7, "type": "R"}, {"src": 2, "tgt": 0, "type": "R"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 4, "type": "E"}, {"src": 2, "tgt": 5, "type": "R"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 1, "type": "R"}, {"src": 4, "tgt": 2, "type": "E"}, {"src": 5, "tgt": 0, "type": "R"}, {"src": 5, "tgt": 1, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 0, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 7, "tgt": 0, "type": "E"}, {"src": 7, "tgt": 1, "type": "R"}], "bdr": "4.45", "sdr": "+0.84", "f1": "90.4%", "grassmann": "d_G = 0.780 rad", "t": 4, "c": 2}}, "la_ola": {"t1c1": {"coords": [[0.0, 2.5, 0.0], [-1.5, 0.5, 1.2], [1.2, 0.8, 0.4], [-0.8, 1.2, 1.0], [1.5, -1.2, -1.0], [1.0, -0.5, -0.6], [-1.2, -0.8, -1.4]], "edges": [{"src": 0, "tgt": 4, "type": "E"}, {"src": 0, "tgt": 5, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 5, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.66", "sdr": "+0.48", "f1": "94.3%", "grassmann": "d_G = 0.460 rad", "t": 1, "c": 1}, "t1c2": {"coords": [[0.0, 2.5, 0.0], [-1.5, 0.5, 1.2], [1.2, 0.8, 0.4], [-0.8, 1.2, 1.0], [1.5, -1.2, -1.0], [1.0, -0.5, -0.6], [-1.2, -0.8, -1.4]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.36", "sdr": "-0.25", "f1": "94.3%", "grassmann": "d_G = 0.460 rad", "t": 1, "c": 2}, "t2c1": {"coords": [[0.0, 3.2, 0.0], [-3.2, -1.5, 1.5], [1.8, 1.8, 0.6], [-0.5, 0.8, 1.8], [2.5, 2.2, -1.2], [2.0, 0.5, -0.8], [-1.5, 0.5, -1.5]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 2, "tgt": 4, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.04", "sdr": "+0.66", "f1": "93.1%", "grassmann": "d_G = 0.530 rad", "t": 2, "c": 1}, "t2c2": {"coords": [[0.0, 3.2, 0.0], [-3.2, -1.5, 1.5], [1.8, 1.8, 0.6], [-0.5, 0.8, 1.8], [2.5, 2.2, -1.2], [2.0, 0.5, -0.8], [-1.5, 0.5, -1.5]], "edges": [{"src": 0, "tgt": 3, "type": "E"}, {"src": 0, "tgt": 4, "type": "E"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "3.74", "sdr": "-0.47", "f1": "93.1%", "grassmann": "d_G = 0.530 rad", "t": 2, "c": 2}, "t3c1": {"coords": [[0.0, 3.8, 0.0], [-4.8, -3.2, 2.2], [2.2, 2.5, 0.8], [-1.2, 0.2, 2.2], [3.2, 3.5, -1.8], [2.4, 1.2, -0.9], [-1.8, -0.2, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "E"}, {"src": 0, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 6, "type": "E"}, {"src": 1, "tgt": 2, "type": "E"}, {"src": 2, "tgt": 1, "type": "E"}, {"src": 2, "tgt": 6, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "E"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.42", "sdr": "+0.84", "f1": "91.9%", "grassmann": "d_G = 0.600 rad", "t": 3, "c": 1}, "t3c2": {"coords": [[0.0, 3.8, 0.0], [-4.8, -3.2, 2.2], [2.2, 2.5, 0.8], [-1.2, 0.2, 2.2], [3.2, 3.5, -1.8], [2.4, 1.2, -0.9], [-1.8, -0.2, -1.8]], "edges": [{"src": 0, "tgt": 1, "type": "R"}, {"src": 0, "tgt": 2, "type": "E"}, {"src": 1, "tgt": 2, "type": "R"}, {"src": 1, "tgt": 6, "type": "R"}, {"src": 2, "tgt": 1, "type": "R"}, {"src": 2, "tgt": 6, "type": "E"}, {"src": 3, "tgt": 0, "type": "E"}, {"src": 3, "tgt": 4, "type": "E"}, {"src": 4, "tgt": 0, "type": "E"}, {"src": 4, "tgt": 3, "type": "E"}, {"src": 5, "tgt": 0, "type": "E"}, {"src": 5, "tgt": 4, "type": "E"}, {"src": 6, "tgt": 1, "type": "R"}, {"src": 6, "tgt": 2, "type": "E"}], "bdr": "4.12", "sdr": "-0.69", "f1": "91.9%", "grassmann": "d_G = 0.600 rad", "t": 3, "c": 2}}};
 
-        // Metadatos de Obras
+        // Metadatos de las 4 Obras Maestras
         const WORKS_CONFIG = {
+            hombres12: {
+                title: "12 Hombres sin Piedad",
+                author: "Reginald Rose / Sidney Lumet • Deliberación a Puerta Cerrada",
+                n: 12,
+                synopsis: "Un jurado compuesto por 12 hombres debe decidir por unanimidad la condena a muerte de un joven acusado de parricidio. En la votación preliminar, 11 jurados votan «Culpable» con prisa por marcharse. Sólo el Jurado 8 (Davis / Henry Fonda) vota «No Culpable», no porque esté seguro de su inocencia, sino porque exige dialogar antes de enviar a un chico a la silla eléctrica. A través de un desgarrador debate contra el prejuicio, el clasismo y el rencor personal del Jurado 3, Davis va desmontando cada prueba judicial hasta lograr la unanimidad de la duda razonable.",
+                times: [
+                    { id: 1, label: "1ª Votación (11-1)" },
+                    { id: 2, label: "2ª Votación (10-2)" },
+                    { id: 3, label: "3ª Votación (6-6)" },
+                    { id: 4, label: "4ª Votación (1-11)" },
+                    { id: 5, label: "Veredicto (12-0)" }
+                ],
+                tcPrefix: "1g",
+                characters: [
+                    { id: "1", name: "Jurado 1", role: "Presidente / Conciliador", color: "#38BDF8" },
+                    { id: "2", name: "Jurado 2", role: "Empleado tímido / Vacilante", color: "#94A3B8" },
+                    { id: "3", name: "Jurado 3", role: "Hostil / Agresivo (Lee J. Cobb)", color: "#FF007F" },
+                    { id: "4", name: "Jurado 4", role: "Corredor analítico (E.G. Marshall)", color: "#38BDF8" },
+                    { id: "5", name: "Jurado 5", role: "Joven de suburbios / Estigma", color: "#00FF87" },
+                    { id: "6", name: "Jurado 6", role: "Pintor honesto / Protector", color: "#94A3B8" },
+                    { id: "7", name: "Jurado 7", role: "Vendedor cínico / Prisas", color: "#FF9F1C" },
+                    { id: "8", name: "Jurado 8", role: "Arquitecto disidente (Henry Fonda)", color: "#00FF87" },
+                    { id: "9", name: "Jurado 9", role: "Anciano sabio / Aliado (McArdle)", color: "#FFE600" },
+                    { id: "10", name: "Jurado 10", role: "Comerciante clasista / Prejuicioso", color: "#FF007F" },
+                    { id: "11", name: "Jurado 11", role: "Relojero inmigrante / Cívico", color: "#00FF87" },
+                    { id: "12", name: "Jurado 12", role: "Publicista indeciso y maleable", color: "#94A3B8" }
+                ]
+            },
             lorca: {
                 title: "La Casa de Bernarda Alba",
                 author: "Federico García Lorca • Gr(4, 8)",
@@ -744,7 +779,7 @@
         };
 
         // Estado Global
-        let activeWorkKey = 'lorca';
+        let activeWorkKey = 'hombres12';
         let currentT = 1;
         let currentC = 1;
         let isMoviolaPlaying = false;
@@ -800,8 +835,8 @@
             controls.maxDistance = 45;
             controls.minDistance = 3;
 
-            // Iluminación
-            const ambient = new THREE.AmbientLight(0xffffff, 0.9);
+            // Iluminación de Estudio
+            const ambient = new THREE.AmbientLight(0xffffff, 0.95);
             scene.add(ambient);
             const pLight1 = new THREE.PointLight(0xFF9F1C, 2.0, 60);
             pLight1.position.set(15, 20, 15);
@@ -869,7 +904,7 @@
                         <span style="width:8px; height:8px; border-radius:50%; background:${char.color};"></span>
                         <span class="char-name">${char.name}</span>
                     </div>
-                    <span class="char-role-badge">${char.role}</span>
+                    <span class="char-role-badge" title="${char.role}">${char.role}</span>
                 `;
                 row.addEventListener('click', () => focusCharacter(idx));
                 charContainer.appendChild(row);
@@ -897,7 +932,7 @@
                 });
             });
 
-            // Generar botones de Tiempos / Actos en la barra inferior
+            // Generar botones de Tiempos / Votaciones en la barra inferior
             buildTimePills(wConf.times);
 
             // Aplicar primer estado TC (SMIb)
@@ -929,7 +964,7 @@
         function applyTC(t, c, isImmediate) {
             const tcKey = getTCKey(activeWorkKey, t, c);
             const workTCs = TC_DATASET[activeWorkKey];
-            const tcData = workTCs[tcKey];
+            const tcData = workTCs ? workTCs[tcKey] : null;
             if (!tcData) return;
 
             // Actualizar píldora de celda TC activa
@@ -968,9 +1003,9 @@
             // Eliminar aristas viejas
             edgeObjects.forEach(e => scene.remove(e));
             edgeObjects.length = 0;
-            activeEdgeDefs = edgesDef;
+            activeEdgeDefs = edgesDef || [];
 
-            edgesDef.forEach(edge => {
+            activeEdgeDefs.forEach(edge => {
                 const c1 = subjectMeshes[edge.src];
                 const c2 = subjectMeshes[edge.tgt];
                 if (!c1 || !c2) return;
