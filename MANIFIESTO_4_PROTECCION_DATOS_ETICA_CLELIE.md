@@ -60,11 +60,11 @@ Los servidores de NEX_ORD están diseñados de forma **desacoplada y multicanal*
 
 ---
 
-## 6. EL PROYECTO CONTEXT: SOCIOMETRÍA LITERARIA Y ARTÍSTICA
+## 6. EL PROYECTO CONTEXT: SOCIOMETRÍA CULTURAL (CINE, TEATRO Y DRAMA)
 
-NEX_ORD incluye el módulo **ConText** para el análisis de obras literarias y cine (*La Casa de Bernarda Alba*, teatro clásico).
+NEX_ORD incluye el módulo **ConText / VISORD Cultural** para el análisis socio-termodinámico de obras cinematográficas, teatrales y narrativas (*12 Hombres sin Piedad*, *La Casa de Bernarda Alba*, *El Señor de las Moscas*, *La Ola*).
 
-- Considera el arte como un **"Sistema Cerrado Perfecto"**, libre de restricciones éticas empíricas.
+- Considera el corpus cultural como un **"Sistema Cerrado Perfecto"**, libre de restricciones éticas empíricas.
 - Permite forzar al límite las ecuaciones de la física social en simulaciones de ficción para la investigación avanzada de frontera.
 
 ---
