@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISORD TOTAL — Estructura Única: Presentaciones y Transmutaciones (GxTyCz)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0B132B;
+      color: #E2E8F0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .glow-cyan { filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.7)); }
+    .glow-green { filter: drop-shadow(0 0 6px rgba(0, 255, 135, 0.7)); }
+    .glow-magenta { filter: drop-shadow(0 0 6px rgba(255, 0, 127, 0.7)); }
+    .glow-orange { filter: drop-shadow(0 0 6px rgba(255, 159, 28, 0.7)); }
+    .glow-gold { filter: drop-shadow(0 0 6px rgba(255, 230, 0, 0.7)); }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #141E3A;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #2D3A5D;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="p-4 md:p-6 custom-scrollbar min-h-screen pt-0">
+
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR CANÓNICA VISORD PLATFORM -->
+  <nav class="bg-[#0B132B]/95 border-b border-[#2D3A5D] px-4 py-3 mb-4 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50 backdrop-blur-md shadow-lg">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-2 text-decoration-none">
+        <img src="assets/logo_nexord_base.png" alt="VISORD Logo" class="h-8 w-auto rounded">
+        <span class="font-extrabold text-white text-base tracking-wide">VISORD <span class="text-[#00E5FF]">GxTyCz</span></span>
+      </a>
+      <span class="text-xs font-mono text-gray-400 hidden sm:inline">| Hipercubo Multidimensional Universal</span>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <a href="VISORD_demo/index_demo.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition">🌐 VISORD Demo</a>
+      <a href="visord_literario.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-400 hover:text-amber-300 bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/30 transition">🎭 VISORD Literario</a>
+      <a href="visord_g2t1c1.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-[#00FF87] hover:text-[#00FF87]/80 bg-[#00FF87]/10 hover:bg-[#00FF87]/20 border border-[#00FF87]/30 transition">🔬 VISORD G2T1C1</a>
+      <a href="glosario.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition">📖 Glosario</a>
+      <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-[#38BDF8] hover:text-white bg-[#38BDF8]/15 hover:bg-[#38BDF8]/25 border border-[#38BDF8]/40 transition">🏠 ← Volver al Inicio</a>
+    </div>
+  </nav>
+
+
+  <!-- BARRA DE GOBERNANZA Y ACCESO INSTITUCIONAL (PROTOCOLO CLÉLIE - SEGURIDAD Y ACCESO TEMPORAL) -->
+  <div class="bg-[#101B3B] border border-[#2D3A5D] rounded-xl px-4 py-2.5 mb-6 flex flex-wrap items-center justify-between gap-3 shadow-md text-xs">
+    <div class="flex items-center gap-3">
+      <div id="gov-badge" class="px-2.5 py-1 rounded bg-[#00FF87]/20 border border-[#00FF87] text-[#00FF87] font-bold flex items-center gap-2">
+        <span id="gov-indicator" class="w-2 h-2 rounded-full bg-[#00FF87] animate-pulse"></span>
+        <span id="gov-role-title">🎓 ROL IPR: EQUIPO DE INVESTIGACIÓN & DOCTORANDOS</span>
+      </div>
+      <div id="gov-details" class="text-gray-300 font-mono text-[11px] hidden sm:block">
+        Ámbito: <span id="gov-scope" class="text-[#00E5FF] font-semibold">Bóveda Abierta Multi-Estudio</span> | Vigencia: <span id="gov-days" class="text-[#FFE600] font-bold">365 días</span> (Hasta <span id="gov-exp-date">06/09/2027</span>)
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="exportResearchCSV()" id="btn-export-phd" class="px-3 py-1.5 bg-[#00FF87]/15 hover:bg-[#00FF87]/25 border border-[#00FF87] text-[#00FF87] rounded-lg font-semibold text-xs transition flex items-center gap-1.5 shadow">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        <span>Exportar Coordenadas (Tesis / R / Python)</span>
+      </button>
+      <button onclick="openTokenModal()" class="px-3 py-1.5 bg-[#1E293B] hover:bg-[#2D3A5D] border border-[#00E5FF]/60 text-[#00E5FF] rounded-lg font-semibold text-xs transition flex items-center gap-1.5 shadow">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+        <span>Gestionar Token Institucional</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CABECERA INSTITUCIONAL CANÓNICA (REGLAS 9 Y 10) -->
+  <header class="border-b border-[#2D3A5D] pb-4 mb-6">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="px-3 py-1 bg-gradient-to-r from-[#00E5FF] to-[#00FF87] text-[#0B132B] font-black text-xs rounded uppercase tracking-wider">VISORD TOTAL</span>
+          <span class="text-xs font-mono text-[#00E5FF]">MOTOR UNIVERSAL GxTyCz</span>
+          <span class="text-xs text-gray-400">|</span>
+          <span class="text-xs text-gray-400 font-mono" id="hdr-fecha">Homologación: --</span>
+        </div>
+        <h1 class="text-xl md:text-2xl font-black text-white mt-1">Estructura Única: Las 5 Presentaciones y 5 Transmutaciones</h1>
+        <p class="text-xs text-gray-400 font-mono mt-0.5">Diseño Experimental: <span class="text-[#00FF87] font-semibold" id="hdr-diseno">--</span></p>
+      </div>
+
+      <!-- Métricas Clave de Cabecera -->
+      <div class="flex items-center gap-2">
+        <div class="bg-[#141E3A] border border-[#2D3A5D] px-3 py-1.5 rounded-lg text-center">
+          <div class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold">Grupos (X)</div>
+          <div class="text-lg font-black text-[#00E5FF]" id="hdr-grupos">-</div>
+        </div>
+        <div class="bg-[#141E3A] border border-[#2D3A5D] px-3 py-1.5 rounded-lg text-center">
+          <div class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold">Tiempos (Y)</div>
+          <div class="text-lg font-black text-[#00FF87]" id="hdr-tiempos">-</div>
+        </div>
+        <div class="bg-[#141E3A] border border-[#2D3A5D] px-3 py-1.5 rounded-lg text-center">
+          <div class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold">Criterios (Z)</div>
+          <div class="text-lg font-black text-[#FF9100]" id="hdr-criterios">-</div>
+        </div>
+        <div class="bg-[#141E3A] border border-[#2D3A5D] px-3 py-1.5 rounded-lg text-center">
+          <div class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold">Sujetos Total</div>
+          <div class="text-lg font-black text-[#FFE600]" id="hdr-sujetos">-</div>
+        </div>
+        <div class="bg-[#141E3A] border border-[#2D3A5D] px-3 py-1.5 rounded-lg text-center">
+          <div class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold">Inercia F1+F2</div>
+          <div class="text-lg font-black text-[#00FF87]" id="hdr-inercia">-%</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTROLES MAESTROS: NAVEGADOR DE PRESENTACIONES Y TRANSMUTACIONES -->
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+    
+    <!-- Panel Izquierdo: Selectores y Moduladores -->
+    <div class="lg:col-span-1 space-y-4">
+      
+      <!-- Bloque 1: Las 5 Presentaciones -->
+      <div class="bg-[#141E3A] border border-[#2D3A5D] rounded-xl p-4 shadow-lg">
+        <h2 class="text-xs font-black uppercase tracking-wider text-[#00E5FF] mb-3 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          Las 5 Presentaciones (Vistas)
+        </h2>
+        <div class="space-y-1.5" id="pres-buttons">
+          <button onclick="setPresentation(1)" id="btn-p1" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold border border-transparent transition flex items-center justify-between bg-[#1E293B] text-gray-200 hover:bg-[#2D3A5D]">
+            <span>1. Compás Q (Invariante Q81/Q6/Q3)</span>
+            <span class="w-2 h-2 rounded-full bg-[#00FF87]"></span>
+          </button>
+          <button onclick="setPresentation(2)" id="btn-p2" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold border border-transparent transition flex items-center justify-between bg-[#1E293B] text-gray-200 hover:bg-[#2D3A5D]">
+            <span>2. Filas Activas (8 Estados)</span>
+            <span class="w-2 h-2 rounded-full bg-[#00E5FF]"></span>
+          </button>
+          <button onclick="setPresentation(3)" id="btn-p3" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold border border-transparent transition flex items-center justify-between bg-[#1E293B] text-gray-200 hover:bg-[#2D3A5D]">
+            <span>3. Agrupaciones & Puente Geodésico</span>
+            <span class="w-2 h-2 rounded-full bg-[#FF9100]"></span>
+          </button>
+          <button onclick="setPresentation(4)" id="btn-p4" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold border border-transparent transition flex items-center justify-between bg-[#1E293B] text-gray-200 hover:bg-[#2D3A5D]">
+            <span>4. Morfologías de Sujetos (1A..7A / 1B..5B)</span>
+            <span class="w-2 h-2 rounded-full bg-[#FF007F]"></span>
+          </button>
+          <button onclick="setPresentation(5)" id="btn-p5" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold border border-[#00FF87] transition flex items-center justify-between bg-[#1E293B] text-white shadow-md">
+            <span>5. Puntillismo Total 1px (Maestro)</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#00FF87] animate-pulse"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bloque 2: Las 5 Transmutaciones -->
+      <div class="bg-[#141E3A] border border-[#2D3A5D] rounded-xl p-4 shadow-lg">
+        <h2 class="text-xs font-black uppercase tracking-wider text-[#FF9100] mb-3 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          Las 5 Transmutaciones
+        </h2>
+        
+        <!-- Transmutación I: Génesis Primordial -->
+        <div class="mb-3 pb-3 border-b border-[#2D3A5D]/60">
+          <div class="flex justify-between text-xs mb-1">
+            <span class="font-bold text-gray-300">I. Génesis (Caos &rarr; SMIb)</span>
+            <span class="font-mono text-[#00FF87]" id="lbl-genesis">100% (Cristalizado)</span>
+          </div>
+          <input type="range" id="slider-genesis" min="0" max="100" value="100" oninput="onGenesisChange(this.value)" class="w-full accent-[#00FF87] cursor-pointer">
+          <div class="flex justify-between text-[10px] text-gray-500 mt-0.5">
+            <span>t=0 Caos</span>
+            <span>t=0.5 Nucleación</span>
+            <span>t=1.0 Factual</span>
+          </div>
+        </div>
+
+        <!-- Transmutación II: Temporal T1 -> T2 -->
+        <div class="mb-3 pb-3 border-b border-[#2D3A5D]/60">
+          <div class="flex justify-between items-center text-xs mb-1.5">
+            <span class="font-bold text-gray-300">II. Cinemática Temporal (&Delta;T)</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-[#2D3A5D] text-[#00E5FF] font-mono">T1 &rarr; T2</span>
+          </div>
+          <div class="grid grid-cols-3 gap-1">
+            <button onclick="setTemporalFilter('ALL')" id="t-all" class="text-[11px] py-1 rounded bg-[#00E5FF] text-[#0B132B] font-bold">Todos T</button>
+            <button onclick="setTemporalFilter(1)" id="t-1" class="text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]">Solo T1</button>
+            <button onclick="setTemporalFilter(2)" id="t-2" class="text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]">Solo T2</button>
+          </div>
+          <label class="flex items-center gap-2 mt-2 cursor-pointer">
+            <input type="checkbox" id="chk-trayectorias" checked onchange="renderCanvas()" class="accent-[#FF9100]">
+            <span class="text-xs text-gray-300">Trazar vectores de metamorfosis &Delta;T</span>
+          </label>
+        </div>
+
+        <!-- Transmutación III: Criterial C1 <-> C2 -->
+        <div class="mb-3 pb-3 border-b border-[#2D3A5D]/60">
+          <div class="flex justify-between items-center text-xs mb-1.5">
+            <span class="font-bold text-gray-300">III. Conmutador Criterial (&Delta;C)</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-[#2D3A5D] text-[#FF9100] font-mono">2 Criterios</span>
+          </div>
+          <div class="grid grid-cols-3 gap-1">
+            <button onclick="setCriteriaFilter('ALL')" id="c-all" class="text-[11px] py-1 rounded bg-[#FF9100] text-[#0B132B] font-bold">Ambos</button>
+            <button onclick="setCriteriaFilter(1)" id="c-1" class="text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]">Tarea</button>
+            <button onclick="setCriteriaFilter(2)" id="c-2" class="text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]">Afecto</button>
+          </div>
+        </div>
+
+        <!-- Transmutación IV: Comparador Intergrupal -->
+        <div>
+          <div class="flex justify-between items-center text-xs mb-1.5">
+            <span class="font-bold text-gray-300">IV. Puente Geodésico (&Delta;G)</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-[#2D3A5D] text-[#00FF87] font-mono">d = 0.2101</span>
+          </div>
+          <div class="grid grid-cols-3 gap-1">
+            <button onclick="setGroupFilter('ALL')" id="g-all" class="text-[11px] py-1 rounded bg-[#00FF87] text-[#0B132B] font-bold">G1 + G2</button>
+            <button onclick="setGroupFilter(1)" id="g-1" class="text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]">G1 Familia</button>
+            <button onclick="setGroupFilter(2)" id="g-2" class="text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]">G2 Startup</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Filtro de Sujetos Específicos -->
+      <div class="bg-[#141E3A] border border-[#2D3A5D] rounded-xl p-4 shadow-lg">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300">Aislar Sujeto Específico</h3>
+          <button onclick="selectSubject('ALL')" class="text-[10px] text-[#00E5FF] hover:underline">Ver Todos</button>
+        </div>
+        <div class="flex flex-wrap gap-1" id="subject-chips">
+          <!-- Chips inyectados por JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Panel Central: Lienzo Factorial SVG y Visualización Interactiva -->
+    <div class="lg:col-span-3 space-y-4">
+      
+      <!-- Marco del Canvas SVG -->
+      <div class="bg-[#141E3A] border border-[#2D3A5D] rounded-xl p-4 shadow-2xl relative">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#00FF87] inline-block"></span>
+            <span class="text-xs font-bold text-gray-200 uppercase tracking-wider" id="canvas-status-title">Presentación 5: Lienzo Puntillista Total</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="resetZoom()" class="text-xs px-2.5 py-1 bg-[#1E293B] hover:bg-[#2D3A5D] rounded text-gray-300 transition">Reset Vista</button>
+            <button onclick="zoomIn()" class="text-xs px-2.5 py-1 bg-[#1E293B] hover:bg-[#2D3A5D] rounded text-gray-300 font-bold">+</button>
+            <button onclick="zoomOut()" class="text-xs px-2.5 py-1 bg-[#1E293B] hover:bg-[#2D3A5D] rounded text-gray-300 font-bold">-</button>
+          </div>
+        </div>
+
+        <!-- SVG Container -->
+        <div class="w-full aspect-[16/10] bg-[#0B132B] rounded-lg border border-[#2D3A5D] overflow-hidden relative" id="svg-container">
+          <svg id="main-svg" class="w-full h-full cursor-crosshair" viewBox="-0.55 -0.55 1.1 1.1">
+            <defs>
+              <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#142145" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#0B132B" stop-opacity="0"/>
+              </radialGradient>
+              <!-- Marcadores de flechas -->
+              <marker id="arrow-green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#00FF87"/>
+              </marker>
+              <marker id="arrow-magenta" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#FF007F"/>
+              </marker>
+              <marker id="arrow-gold" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#FFE600"/>
+              </marker>
+              <marker id="arrow-orange" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#FF9100"/>
+              </marker>
+              <marker id="arrow-cyan" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#00E5FF"/>
+              </marker>
+              <marker id="arrow-axis" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#627D98"/>
+              </marker>
+            </defs>
+
+            <!-- Fondo tenue con gradiente -->
+            <rect x="-1" y="-1" width="2" height="2" fill="url(#bg-glow)" />
+
+            <!-- Capa Dinámica SVG Principal -->
+            <g id="svg-root" transform="matrix(1 0 0 -1 0 0)">
+              <!-- Elementos inyectados dinámicamente -->
+            </g>
+          </svg>
+
+          <!-- Tarjeta de Inspección Flotante (Tooltip HUD) -->
+          <div id="inspector-hud" class="absolute bottom-3 left-3 bg-[#141E3A]/95 backdrop-blur border border-[#00E5FF] p-3 rounded-lg text-xs shadow-xl hidden pointer-events-none max-w-xs transition-opacity">
+            <!-- HUD info -->
+          </div>
+
+          <!-- Mini Leyenda Flotante -->
+          <div class="absolute top-3 right-3 bg-[#141E3A]/90 backdrop-blur border border-[#2D3A5D] px-3 py-2 rounded-lg text-[11px] text-gray-300 space-y-1 shadow-lg pointer-events-none">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#00FF87]"></span><span>Verde: Elección / Atracción</span></div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#FF007F]"></span><span>Magenta: Rechazo / Tensión</span></div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#FF9F1C]"></span><span>Naranja: Oposición</span></div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#FFE600]"></span><span>Dorado: Indiferencia / Neutral</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Métricas Espectrales y Análisis Factual en Vivo -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="bg-[#141E3A] border border-[#2D3A5D] p-4 rounded-xl">
+          <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">Inercia Factorial F1 + F2</div>
+          <div class="text-xl font-black text-[#00FF87]">90.29%</div>
+          <p class="text-xs text-gray-400 mt-1">F1: <span class="text-white font-mono">58.46%</span> (Polarización Socio-Afectiva) | F2: <span class="text-white font-mono">31.83%</span> (Cohesión de Tarea)</p>
+        </div>
+
+        <div class="bg-[#141E3A] border border-[#2D3A5D] p-4 rounded-xl">
+          <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">Geodesia Intergrupal</div>
+          <div class="text-xl font-black text-[#00E5FF]">d = 0.2101</div>
+          <p class="text-xs text-gray-400 mt-1">Distancia euclídea entre baricentros en Grassmann Gr(k, N). Separación nítida de subculturas.</p>
+        </div>
+
+        <div class="bg-[#141E3A] border border-[#2D3A5D] p-4 rounded-xl">
+          <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-1">Estructura de Micro-Nodos</div>
+          <div class="text-xl font-black text-[#FFE600]">48 Estados Instantáneos</div>
+          <p class="text-xs text-gray-400 mt-1">Puntillismo de 1px orbitando los 12 centroides permanentes invariantes.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- NOTA EXPLICATIVA PEDAGÓGICA OBLIGATORIA (REGLA 10) -->
+  <footer class="bg-[#141E3A] border border-[#2D3A5D] rounded-xl p-5 mt-6 text-xs text-gray-300 leading-relaxed shadow-lg">
+    <h3 class="text-sm font-black text-white flex items-center gap-2 mb-2">
+      <span>💡</span> Nota Explicativa de Interpretación Socio-Termodinámica (VISORD TOTAL)
+    </h3>
+    <p class="mb-2">
+      <strong>1. La Estructura Única Universal:</strong> El espacio factorial bidimensional presentado es el plano invariante de máxima inercia (90.29%) común a todas las sociomatrices del hipercubo experimental <em>D = G_X &times; T_Y &times; C_Z</em>. El eje horizontal <em>F1</em> gobierna la polarización socio-afectiva (Elección mútua a la derecha/abajo vs. Indiferencia a la izquierda vs. Rechazo al extremo derecho), mientras que el eje vertical <em>F2</em> gobierna la diferenciación funcional de roles en la tarea.
+    </p>
+    <p class="mb-2">
+      <strong>2. Las 5 Presentaciones Graduales:</strong> Permiten observar la misma realidad social desde cinco niveles de abstracción: (1) La ontología universal de figuras díadicas Q, (2) El comportamiento de las sociomatrices factuales, (3) Los baricentros colectivos y el puente geodésico que los separa, (4) Los centroides permanentes que definen la estructura esqueletal de cada sujeto, y (5) El puntillismo micro-analítico donde cada díada en cada corte espaciotemporal es un micro-punto puro de 1px conectado por filamentos elásticos a su rol permanente.
+    </p>
+    <p class="mb-2">
+      <strong>3. Las 5 Transmutaciones Dinámicas:</strong> Modulan la transformación del sistema en el hiperespacio: la génesis que transita del gas caótico primordial a la cristalización SMIb, la cinemática temporal <em>T1 &rarr; T2</em> con sus vectores de metamorfosis, el acoplamiento multicriterial Tarea-Afecto, y la comparación geodésica entre grupos de distinta morfología y escala.
+    </p>
+    <p>
+      <strong>4. Super-Matriz de Centroides y Ecuaciones de Transición:</strong> Al compartir todas las sociomatrices la misma base ortonormal invariante <em>Q81 &rarr; Q6 &rarr; Q3</em>, el PCA conjunto se calcula sobre la super-matriz de centroides activos (capturando el 90.29% de inercia). Sobre esas coordenadas maestras, mediante las <em>Ecuaciones de Transición Canónicas de Benzécri y Escofier</em>, se proyectan en <strong>ilustrativas</strong> todos los restantes valores de cada elemento particular (micro-estados de 1px, centroides permanentes, celdas y baricentros), con conservación baricéntrica exacta (&epsilon; &lt; 10<sup>-15</sup>), calidad de representación <em>COR / cos<sup>2</sup></em> y contribución nula a la inercia (<em>CTA &equiv; 0%</em>).
+    </p>
+    <p class="mt-2">
+      <strong>5. Gobernanza Institucional, Protocolo Clélie y Acceso Facilitado a Doctorandos:</strong>
+      En servidores protegidos institucionales, el acceso a <em>VISORD_general</em> se estructura en tres niveles estrictos: (1) <strong>Rol IPI</strong> para Investigadores Principales de intervenciones aplicadas puntuales (acceso temporal acotado a 15-60 días, estudio individual y descarga de datos brutos nominativos bloqueada para proteger a los participantes según el Protocolo Clélie y RGPD); (2) <strong>Rol IPR</strong> para Equipos de Investigación y Doctorandos, con credencial académica de larga duración (1 a 3 años renovables), acceso facilitado a la Bóveda Multiestudio (<em>LITERAL</em>, <em>SIMUL</em>, <em>REAL</em> anonimizado) y herramientas de exportación de coordenadas factoriales y autovalores para análisis estadístico (R, SPSS, Python) y publicación de tesis/artículos; y (3) <strong>Rol IPIS</strong> para Dirección General de Cátedra y Control Maestro permanente del sistema.
+    </p>
+  </footer>
+
+  <!-- DATA PAYLOAD Y MOTOR INTERACTIVO JAVASCRIPT -->
+  <script>
+    const MODEL = {"meta": {"diseno_clave": "SIMUL-AA-G2-T2-C2-V10-A16-ES-7_20260906_060926_G2T2C2_FAM7_TECH5", "dimensiones": {"grupos_X": 2, "tiempos_Y": 2, "criterios_Z": 2, "total_sociomatrices": 8}, "n_sujetos_por_grupo": {"1": 7, "2": 5}, "total_sujetos": 12, "fecha_homologacion": "06 de September de 2026"}, "espectro_factorial": {"f1_pct": 58.46, "f2_pct": 31.83, "acumulado_pct": 90.29, "eigenvals": [0.09531130802794477, 0.05188900889006755, 0.010616298869126071, 0.00413743865992828, 0.0010830770722077207, 1.0062179568254645e-32]}, "presentaciones": {"presentacion_1_q": {"q81": [{"id": 1, "symbol": "[Rr]", "desc": "Rechazo recíproco total.", "q6_class": "Rechazo Mutuo", "q3_polarity": "-", "coords": [0.07123589392105367, 0.003950674037215492]}, {"id": 11, "symbol": "¡¿r]", "desc": "Rechazo total ante la indiferencia.", "q6_class": "Rechazo Unilateral", "q3_polarity": "-", "coords": [0.027219434901577487, 0.006269035971721003]}, {"id": 15, "symbol": "[R?!>", "desc": "Rechazo total en la indiferencia.", "q6_class": "Rechazo Unilateral", "q3_polarity": "-", "coords": [0.027219434901577487, 0.006269035971721003]}, {"id": 16, "symbol": "¡Er]", "desc": "Falsa percepción de rechazo con rechazo unilateral.", "q6_class": "Oposición", "q3_polarity": "-", "coords": [-0.003335056449316219, -0.03384340085315269]}, {"id": 21, "symbol": "[Re!>", "desc": "Rechazo total con elección unilateral.", "q6_class": "Oposición", "q3_polarity": "-", "coords": [-0.003335056449316219, -0.03384340085315269]}, {"id": 37, "symbol": "<Er]", "desc": "Oposición total de sentimientos.", "q6_class": "Oposición", "q3_polarity": "-", "coords": [0.01820955886472491, 0.02990885408524084]}, {"id": 41, "symbol": "¡¿?!>", "desc": "Desconocimiento absoluto / Indiferencia pura.", "q6_class": "Indiferencia Mutua", "q3_polarity": "0", "coords": [-0.282088873402703, 0.04268881951894818]}, {"id": 45, "symbol": "[Re>", "desc": "Oposición total de sentimientos.", "q6_class": "Oposición", "q3_polarity": "-", "coords": [0.01820955886472491, 0.02990885408524084]}, {"id": 49, "symbol": "¡E?!>", "desc": "Elección unilateral en la indiferencia.", "q6_class": "Elección Unilateral", "q3_polarity": "+", "coords": [-0.013962592554111567, -0.08224632032917427]}, {"id": 50, "symbol": "¡¿e!>", "desc": "Elección unilateral en la indiferencia.", "q6_class": "Elección Unilateral", "q3_polarity": "+", "coords": [-0.013962592554111567, -0.08224632032917427]}, {"id": 57, "symbol": "¡Ee!>", "desc": "Elección mutua, con desconocimiento.", "q6_class": "Elección Mutua", "q3_polarity": "+", "coords": [0.035585639130324434, 0.16438222442021438]}, {"id": 67, "symbol": "<E?!>", "desc": "Elección esperada unilateral.", "q6_class": "Elección Unilateral", "q3_polarity": "+", "coords": [0.02922038786623905, 0.019999833986052897]}, {"id": 71, "symbol": "¡¿e>", "desc": "Relación positiva unilateral.", "q6_class": "Elección Unilateral", "q3_polarity": "+", "coords": [0.02922038786623905, 0.019999833986052897]}, {"id": 72, "symbol": "<Ee!>", "desc": "Elección mutua, con percepción positiva unilateral.", "q6_class": "Elección Mutua", "q3_polarity": "+", "coords": [-0.005336009413977783, -0.04757419886748457]}, {"id": 75, "symbol": "¡Ee>", "desc": "Elección mutua, con percepción positiva unilateral.", "q6_class": "Elección Mutua", "q3_polarity": "+", "coords": [-0.005336009413977783, -0.04757419886748457]}, {"id": 81, "symbol": "<Ee>", "desc": "Elección total, mutua.", "q6_class": "Elección Mutua", "q3_polarity": "+", "coords": [0.0712358939210535, 0.003950674037215515]}], "q6": {"Rechazo Mutuo": [0.07123589392105367, 0.003950674037215492], "Rechazo Unilateral": [0.027219434901577487, 0.006269035971721003], "Oposición": [0.007437251207704346, -0.0019672733839559246], "Indiferencia Mutua": [-0.282088873402703, 0.04268881951894818], "Elección Unilateral": [0.0076288976560637415, -0.031123243171560684], "Elección Mutua": [0.024037378555855596, 0.01829612518061519]}, "q3": {"-": [0.022203395507860862, 0.0012313789206905429], "0": [-0.282088873402703, 0.04268881951894818], "+": [0.015833138105959668, -0.006413558995472747]}}, "presentacion_2_filas_activas": [{"matriz_id": "1g1t1c", "group_id": 1, "group_name": "Familia (N=7)", "tiempo": 1, "criterio": 1, "criterion_name": "Tarea / Instrumental", "desc": "Grupo A (N=7) [T1, Tarea / Instrumental]", "coords": [-0.12151190624905765, 0.037412308381078216]}, {"matriz_id": "1g1t2c", "group_id": 1, "group_name": "Familia (N=7)", "tiempo": 1, "criterio": 2, "criterion_name": "Socio-Afectivo / Relacional", "desc": "Grupo A (N=7) [T1, Socio-Afectivo / Emocional]", "coords": [-0.07544216682188547, 0.01968041442364619]}, {"matriz_id": "1g2t1c", "group_id": 1, "group_name": "Familia (N=7)", "tiempo": 2, "criterio": 1, "criterion_name": "Tarea / Instrumental", "desc": "Grupo A (N=7) [T2, Tarea / Instrumental]", "coords": [-0.14745718764422375, -0.09395362523412097]}, {"matriz_id": "1g2t2c", "group_id": 1, "group_name": "Familia (N=7)", "tiempo": 2, "criterio": 2, "criterion_name": "Socio-Afectivo / Relacional", "desc": "Grupo A (N=7) [T2, Socio-Afectivo / Emocional]", "coords": [-0.07544216682188548, 0.019680414423646146]}, {"matriz_id": "2g1t1c", "group_id": 2, "group_name": "Tech Startup (N=5)", "tiempo": 1, "criterio": 1, "criterion_name": "Tarea / Instrumental", "desc": "Grupo B (N=5) [T1, Tarea / Instrumental]", "coords": [0.1074881951508683, -0.1272604058473301]}, {"matriz_id": "2g1t2c", "group_id": 2, "group_name": "Tech Startup (N=5)", "tiempo": 1, "criterio": 2, "criterion_name": "Socio-Afectivo / Relacional", "desc": "Grupo B (N=5) [T1, Socio-Afectivo / Emocional]", "coords": [0.12772180243424477, -0.006224911462900173]}, {"matriz_id": "2g2t1c", "group_id": 2, "group_name": "Tech Startup (N=5)", "tiempo": 2, "criterio": 1, "criterion_name": "Tarea / Instrumental", "desc": "Grupo B (N=5) [T2, Tarea / Instrumental]", "coords": [0.056921627517694647, 0.1568907167788809]}, {"matriz_id": "2g2t2c", "group_id": 2, "group_name": "Tech Startup (N=5)", "tiempo": 2, "criterio": 2, "criterion_name": "Socio-Afectivo / Relacional", "desc": "Grupo B (N=5) [T2, Socio-Afectivo / Emocional]", "coords": [0.12772180243424477, -0.006224911462900173]}], "presentacion_3_agrupaciones": {"baricentros_grupos": {"1": {"group_id": 1, "name": "Familia (N=7)", "size": 7, "baricentro": [-0.10496335688426309, -0.004295122001437604]}, "2": {"group_id": 2, "name": "Tech Startup (N=5)", "size": 5, "baricentro": [0.10496335688426311, 0.004295122001437617]}}, "red_geodesica": {"1-1": 0.0, "1-2": 0.2101, "2-1": 0.2101, "2-2": 0.0}, "centroides_tiempo": {"1": [0.009563981128542488, -0.019098148626376463], "2": [-0.009563981128542454, 0.01909814862637647]}, "centroides_criterio": {"1": [-0.026139817806179612, -0.0067277514803729885], "2": [0.026139817806179647, 0.006727751480372996]}}, "presentacion_4_sujetos": [{"perm_id": "1A", "group_id": 1, "node_idx": 0, "centroid": [0.08560962421411172, -0.026151081999150942], "dispersion_radio": 0.1337, "num_estados": 4}, {"perm_id": "1B", "group_id": 2, "node_idx": 0, "centroid": [0.14946797477219373, 0.0006812836114621461], "dispersion_radio": 0.0528, "num_estados": 4}, {"perm_id": "2A", "group_id": 1, "node_idx": 1, "centroid": [-0.15910648440472827, -0.010169018666308339], "dispersion_radio": 0.1075, "num_estados": 4}, {"perm_id": "2B", "group_id": 2, "node_idx": 1, "centroid": [0.07780499322032584, -0.07691083055249907], "dispersion_radio": 0.1668, "num_estados": 4}, {"perm_id": "3A", "group_id": 1, "node_idx": 2, "centroid": [0.07066530962819323, 0.07180686695153865], "dispersion_radio": 0.0987, "num_estados": 4}, {"perm_id": "3B", "group_id": 2, "node_idx": 2, "centroid": [0.11067057656697854, 0.05332192509524003], "dispersion_radio": 0.1717, "num_estados": 4}, {"perm_id": "4A", "group_id": 1, "node_idx": 3, "centroid": [-0.039676654586955414, -0.02675205679918388], "dispersion_radio": 0.1727, "num_estados": 4}, {"perm_id": "4B", "group_id": 2, "node_idx": 3, "centroid": [0.1470374730514201, -0.02192292769751107], "dispersion_radio": 0.0415, "num_estados": 4}, {"perm_id": "5A", "group_id": 1, "node_idx": 4, "centroid": [-0.22729371962964529, 0.004871813824318859], "dispersion_radio": 0.0911, "num_estados": 4}, {"perm_id": "5B", "group_id": 2, "node_idx": 4, "centroid": [0.039835766810397216, 0.06630615955049608], "dispersion_radio": 0.1239, "num_estados": 4}, {"perm_id": "6A", "group_id": 1, "node_idx": 5, "centroid": [-0.18227520204857528, -0.10479505459392946], "dispersion_radio": 0.0989, "num_estados": 4}, {"perm_id": "7A", "group_id": 1, "node_idx": 6, "centroid": [-0.28266637136224226, 0.06112267727265187], "dispersion_radio": 0.262, "num_estados": 4}], "presentacion_5_puntillismo": [{"full_label": "1A1a", "perm_id": "1A", "node_idx": 0, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.14801715726400422, 0.037467328100919545], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2A1a", "perm_id": "2A", "node_idx": 1, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [-0.2031182940692162, 0.08420185183492243], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3A1a", "perm_id": "3A", "node_idx": 2, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [-0.054302604428742476, 0.18498298273534441], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "4A1a", "perm_id": "4A", "node_idx": 3, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.12720129292202895, -0.03206672017968244], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5A1a", "perm_id": "5A", "node_idx": 4, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [-0.22878689515579187, -0.08620079984839585], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "6A1a", "perm_id": "6A", "node_idx": 5, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [-0.09754640089626188, -0.024814768816611574], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "7A1a", "perm_id": "7A", "node_idx": 6, "group_id": 1, "matriz_id": "1g1t1c", "tiempo": 1, "criterio": 1, "coords": [-0.5420475993794247, 0.09831628484105155], "valence_color": "#FFE600", "valence_label": "Indiferencia"}, {"full_label": "1A1b", "perm_id": "1A", "node_idx": 0, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.14801715726400422, 0.037467328100919545], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2A1b", "perm_id": "2A", "node_idx": 1, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [-0.08105142850232881, 0.004534014914704727], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3A1b", "perm_id": "3A", "node_idx": 2, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.11312876120670978, 0.08182999449090446], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "4A1b", "perm_id": "4A", "node_idx": 3, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [-0.03957319343491791, -0.04808439957130363], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5A1b", "perm_id": "5A", "node_idx": 4, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [-0.22580054410349865, 0.09594442749703357], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "6A1b", "perm_id": "6A", "node_idx": 5, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [-0.25254936817708495, -0.08450454032360612], "valence_color": "#FFE600", "valence_label": "Indiferencia"}, {"full_label": "7A1b", "perm_id": "7A", "node_idx": 6, "group_id": 1, "matriz_id": "1g1t2c", "tiempo": 1, "criterio": 2, "coords": [-0.19026655200608178, 0.0505760758568705], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "1A2a", "perm_id": "1A", "node_idx": 0, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.10161297493556576, -0.2170063122993624], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2A2a", "perm_id": "2A", "node_idx": 1, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.2712047865450392, -0.13394595632956524], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3A2a", "perm_id": "3A", "node_idx": 2, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [0.11070632052809581, -0.06141550391099872], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "4A2a", "perm_id": "4A", "node_idx": 3, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [0.12720129292202895, -0.03206672017968244], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5A2a", "perm_id": "5A", "node_idx": 4, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.22878689515579187, -0.08620079984839585], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "6A2a", "perm_id": "6A", "node_idx": 5, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.12645567094386934, -0.22535636891189406], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "7A2a", "perm_id": "7A", "node_idx": 6, "group_id": 1, "matriz_id": "1g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.5420475993794247, 0.09831628484105155], "valence_color": "#FFE600", "valence_label": "Indiferencia"}, {"full_label": "1A2b", "perm_id": "1A", "node_idx": 0, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.14801715726400422, 0.037467328100919545], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2A2b", "perm_id": "2A", "node_idx": 1, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [-0.08105142850232881, 0.004534014914704727], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3A2b", "perm_id": "3A", "node_idx": 2, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.11312876120670978, 0.08182999449090446], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "4A2b", "perm_id": "4A", "node_idx": 3, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [-0.37353601075696163, 0.005209612733933003], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5A2b", "perm_id": "5A", "node_idx": 4, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [-0.22580054410349865, 0.09594442749703357], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "6A2b", "perm_id": "6A", "node_idx": 5, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [-0.25254936817708495, -0.08450454032360612], "valence_color": "#FFE600", "valence_label": "Indiferencia"}, {"full_label": "7A2b", "perm_id": "7A", "node_idx": 6, "group_id": 1, "matriz_id": "1g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.14369626531596202, -0.002717936448366131], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "1B1a", "perm_id": "1B", "node_idx": 0, "group_id": 2, "matriz_id": "2g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.12871341670032965, -0.10293808063251134], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2B1a", "perm_id": "2B", "node_idx": 1, "group_id": 2, "matriz_id": "2g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.17134277275063195, -0.06743001007808674], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "3B1a", "perm_id": "3B", "node_idx": 2, "group_id": 2, "matriz_id": "2g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.031738140026680725, -0.27170092499883125], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "4B1a", "perm_id": "4B", "node_idx": 3, "group_id": 2, "matriz_id": "2g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.1287134167003298, -0.10293808063251138], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5B1a", "perm_id": "5B", "node_idx": 4, "group_id": 2, "matriz_id": "2g1t1c", "tiempo": 1, "criterio": 1, "coords": [0.07693322957636906, -0.09129493289470991], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "1B1b", "perm_id": "1B", "node_idx": 0, "group_id": 2, "matriz_id": "2g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.15638616079614842, 0.03522107169278664], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2B1b", "perm_id": "2B", "node_idx": 1, "group_id": 2, "matriz_id": "2g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.09374464263003568, -0.21515266448305925], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3B1b", "perm_id": "3B", "node_idx": 2, "group_id": 2, "matriz_id": "2g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.1354882132209312, 0.07059026145388239], "valence_color": "#FF9F1C", "valence_label": "Oposición"}, {"full_label": "4B1b", "perm_id": "4B", "node_idx": 3, "group_id": 2, "matriz_id": "2g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.15314549183511686, 0.005082123280822366], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5B1b", "perm_id": "5B", "node_idx": 4, "group_id": 2, "matriz_id": "2g1t2c", "tiempo": 1, "criterio": 2, "coords": [0.09984450368899152, 0.073134650741067], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "1B2a", "perm_id": "1B", "node_idx": 0, "group_id": 2, "matriz_id": "2g2t1c", "tiempo": 2, "criterio": 1, "coords": [0.15638616079614842, 0.03522107169278664], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2B2a", "perm_id": "2B", "node_idx": 1, "group_id": 2, "matriz_id": "2g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.0476120851293999, 0.19009201683420895], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3B2a", "perm_id": "3B", "node_idx": 2, "group_id": 2, "matriz_id": "2g2t1c", "tiempo": 2, "criterio": 1, "coords": [0.13996773979937105, 0.3438081024720266], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "4B2a", "perm_id": "4B", "node_idx": 3, "group_id": 2, "matriz_id": "2g2t1c", "tiempo": 2, "criterio": 1, "coords": [0.15314549183511686, 0.005082123280822366], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5B2a", "perm_id": "5B", "node_idx": 4, "group_id": 2, "matriz_id": "2g2t1c", "tiempo": 2, "criterio": 1, "coords": [-0.11727916971276323, 0.21025026961456023], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "1B2b", "perm_id": "1B", "node_idx": 0, "group_id": 2, "matriz_id": "2g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.15638616079614842, 0.03522107169278664], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "2B2b", "perm_id": "2B", "node_idx": 1, "group_id": 2, "matriz_id": "2g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.09374464263003568, -0.21515266448305925], "valence_color": "#00FF87", "valence_label": "Atracción"}, {"full_label": "3B2b", "perm_id": "3B", "node_idx": 2, "group_id": 2, "matriz_id": "2g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.1354882132209312, 0.07059026145388239], "valence_color": "#FF9F1C", "valence_label": "Oposición"}, {"full_label": "4B2b", "perm_id": "4B", "node_idx": 3, "group_id": 2, "matriz_id": "2g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.15314549183511686, 0.005082123280822366], "valence_color": "#FF007F", "valence_label": "Rechazo"}, {"full_label": "5B2b", "perm_id": "5B", "node_idx": 4, "group_id": 2, "matriz_id": "2g2t2c", "tiempo": 2, "criterio": 2, "coords": [0.09984450368899152, 0.073134650741067], "valence_color": "#00FF87", "valence_label": "Atracción"}]}, "transmutaciones": {"trayectorias_temporales": [{"perm_id": "1A", "criterio": 1, "group_id": 1, "p_start": [0.14801715726400422, 0.037467328100919545], "p_end": [-0.10161297493556576, -0.2170063122993624], "delta": [-0.2496, -0.2545], "distancia_metamorfosis": 0.3565}, {"perm_id": "1A", "criterio": 2, "group_id": 1, "p_start": [0.14801715726400422, 0.037467328100919545], "p_end": [0.14801715726400422, 0.037467328100919545], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "1B", "criterio": 1, "group_id": 2, "p_start": [0.12871341670032965, -0.10293808063251134], "p_end": [0.15638616079614842, 0.03522107169278664], "delta": [0.0277, 0.1382], "distancia_metamorfosis": 0.1409}, {"perm_id": "1B", "criterio": 2, "group_id": 2, "p_start": [0.15638616079614842, 0.03522107169278664], "p_end": [0.15638616079614842, 0.03522107169278664], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "2A", "criterio": 1, "group_id": 1, "p_start": [-0.2031182940692162, 0.08420185183492243], "p_end": [-0.2712047865450392, -0.13394595632956524], "delta": [-0.0681, -0.2181], "distancia_metamorfosis": 0.2285}, {"perm_id": "2A", "criterio": 2, "group_id": 1, "p_start": [-0.08105142850232881, 0.004534014914704727], "p_end": [-0.08105142850232881, 0.004534014914704727], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "2B", "criterio": 1, "group_id": 2, "p_start": [0.17134277275063195, -0.06743001007808674], "p_end": [-0.0476120851293999, 0.19009201683420895], "delta": [-0.219, 0.2575], "distancia_metamorfosis": 0.338}, {"perm_id": "2B", "criterio": 2, "group_id": 2, "p_start": [0.09374464263003568, -0.21515266448305925], "p_end": [0.09374464263003568, -0.21515266448305925], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "3A", "criterio": 1, "group_id": 1, "p_start": [-0.054302604428742476, 0.18498298273534441], "p_end": [0.11070632052809581, -0.06141550391099872], "delta": [0.165, -0.2464], "distancia_metamorfosis": 0.2965}, {"perm_id": "3A", "criterio": 2, "group_id": 1, "p_start": [0.11312876120670978, 0.08182999449090446], "p_end": [0.11312876120670978, 0.08182999449090446], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "3B", "criterio": 1, "group_id": 2, "p_start": [0.031738140026680725, -0.27170092499883125], "p_end": [0.13996773979937105, 0.3438081024720266], "delta": [0.1082, 0.6155], "distancia_metamorfosis": 0.625}, {"perm_id": "3B", "criterio": 2, "group_id": 2, "p_start": [0.1354882132209312, 0.07059026145388239], "p_end": [0.1354882132209312, 0.07059026145388239], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "4A", "criterio": 1, "group_id": 1, "p_start": [0.12720129292202895, -0.03206672017968244], "p_end": [0.12720129292202895, -0.03206672017968244], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "4A", "criterio": 2, "group_id": 1, "p_start": [-0.03957319343491791, -0.04808439957130363], "p_end": [-0.37353601075696163, 0.005209612733933003], "delta": [-0.334, 0.0533], "distancia_metamorfosis": 0.3382}, {"perm_id": "4B", "criterio": 1, "group_id": 2, "p_start": [0.1287134167003298, -0.10293808063251138], "p_end": [0.15314549183511686, 0.005082123280822366], "delta": [0.0244, 0.108], "distancia_metamorfosis": 0.1107}, {"perm_id": "4B", "criterio": 2, "group_id": 2, "p_start": [0.15314549183511686, 0.005082123280822366], "p_end": [0.15314549183511686, 0.005082123280822366], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "5A", "criterio": 1, "group_id": 1, "p_start": [-0.22878689515579187, -0.08620079984839585], "p_end": [-0.22878689515579187, -0.08620079984839585], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "5A", "criterio": 2, "group_id": 1, "p_start": [-0.22580054410349865, 0.09594442749703357], "p_end": [-0.22580054410349865, 0.09594442749703357], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "5B", "criterio": 1, "group_id": 2, "p_start": [0.07693322957636906, -0.09129493289470991], "p_end": [-0.11727916971276323, 0.21025026961456023], "delta": [-0.1942, 0.3015], "distancia_metamorfosis": 0.3587}, {"perm_id": "5B", "criterio": 2, "group_id": 2, "p_start": [0.09984450368899152, 0.073134650741067], "p_end": [0.09984450368899152, 0.073134650741067], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "6A", "criterio": 1, "group_id": 1, "p_start": [-0.09754640089626188, -0.024814768816611574], "p_end": [-0.12645567094386934, -0.22535636891189406], "delta": [-0.0289, -0.2005], "distancia_metamorfosis": 0.2026}, {"perm_id": "6A", "criterio": 2, "group_id": 1, "p_start": [-0.25254936817708495, -0.08450454032360612], "p_end": [-0.25254936817708495, -0.08450454032360612], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "7A", "criterio": 1, "group_id": 1, "p_start": [-0.5420475993794247, 0.09831628484105155], "p_end": [-0.5420475993794247, 0.09831628484105155], "delta": [0.0, 0.0], "distancia_metamorfosis": 0.0}, {"perm_id": "7A", "criterio": 2, "group_id": 1, "p_start": [-0.19026655200608178, 0.0505760758568705], "p_end": [0.14369626531596202, -0.002717936448366131], "delta": [0.334, -0.0533], "distancia_metamorfosis": 0.3382}], "acoplamientos_criteriales": [{"perm_id": "1A", "tiempo": 1, "group_id": 1, "coords_c1": [0.14801715726400422, 0.037467328100919545], "coords_c2": [0.14801715726400422, 0.037467328100919545], "distancia_criterial": 0.0}, {"perm_id": "1A", "tiempo": 2, "group_id": 1, "coords_c1": [-0.10161297493556576, -0.2170063122993624], "coords_c2": [0.14801715726400422, 0.037467328100919545], "distancia_criterial": 0.3565}, {"perm_id": "1B", "tiempo": 1, "group_id": 2, "coords_c1": [0.12871341670032965, -0.10293808063251134], "coords_c2": [0.15638616079614842, 0.03522107169278664], "distancia_criterial": 0.1409}, {"perm_id": "1B", "tiempo": 2, "group_id": 2, "coords_c1": [0.15638616079614842, 0.03522107169278664], "coords_c2": [0.15638616079614842, 0.03522107169278664], "distancia_criterial": 0.0}, {"perm_id": "2A", "tiempo": 1, "group_id": 1, "coords_c1": [-0.2031182940692162, 0.08420185183492243], "coords_c2": [-0.08105142850232881, 0.004534014914704727], "distancia_criterial": 0.1458}, {"perm_id": "2A", "tiempo": 2, "group_id": 1, "coords_c1": [-0.2712047865450392, -0.13394595632956524], "coords_c2": [-0.08105142850232881, 0.004534014914704727], "distancia_criterial": 0.2352}, {"perm_id": "2B", "tiempo": 1, "group_id": 2, "coords_c1": [0.17134277275063195, -0.06743001007808674], "coords_c2": [0.09374464263003568, -0.21515266448305925], "distancia_criterial": 0.1669}, {"perm_id": "2B", "tiempo": 2, "group_id": 2, "coords_c1": [-0.0476120851293999, 0.19009201683420895], "coords_c2": [0.09374464263003568, -0.21515266448305925], "distancia_criterial": 0.4292}, {"perm_id": "3A", "tiempo": 1, "group_id": 1, "coords_c1": [-0.054302604428742476, 0.18498298273534441], "coords_c2": [0.11312876120670978, 0.08182999449090446], "distancia_criterial": 0.1967}, {"perm_id": "3A", "tiempo": 2, "group_id": 1, "coords_c1": [0.11070632052809581, -0.06141550391099872], "coords_c2": [0.11312876120670978, 0.08182999449090446], "distancia_criterial": 0.1433}, {"perm_id": "3B", "tiempo": 1, "group_id": 2, "coords_c1": [0.031738140026680725, -0.27170092499883125], "coords_c2": [0.1354882132209312, 0.07059026145388239], "distancia_criterial": 0.3577}, {"perm_id": "3B", "tiempo": 2, "group_id": 2, "coords_c1": [0.13996773979937105, 0.3438081024720266], "coords_c2": [0.1354882132209312, 0.07059026145388239], "distancia_criterial": 0.2733}, {"perm_id": "4A", "tiempo": 1, "group_id": 1, "coords_c1": [0.12720129292202895, -0.03206672017968244], "coords_c2": [-0.03957319343491791, -0.04808439957130363], "distancia_criterial": 0.1675}, {"perm_id": "4A", "tiempo": 2, "group_id": 1, "coords_c1": [0.12720129292202895, -0.03206672017968244], "coords_c2": [-0.37353601075696163, 0.005209612733933003], "distancia_criterial": 0.5021}, {"perm_id": "4B", "tiempo": 1, "group_id": 2, "coords_c1": [0.1287134167003298, -0.10293808063251138], "coords_c2": [0.15314549183511686, 0.005082123280822366], "distancia_criterial": 0.1107}, {"perm_id": "4B", "tiempo": 2, "group_id": 2, "coords_c1": [0.15314549183511686, 0.005082123280822366], "coords_c2": [0.15314549183511686, 0.005082123280822366], "distancia_criterial": 0.0}, {"perm_id": "5A", "tiempo": 1, "group_id": 1, "coords_c1": [-0.22878689515579187, -0.08620079984839585], "coords_c2": [-0.22580054410349865, 0.09594442749703357], "distancia_criterial": 0.1822}, {"perm_id": "5A", "tiempo": 2, "group_id": 1, "coords_c1": [-0.22878689515579187, -0.08620079984839585], "coords_c2": [-0.22580054410349865, 0.09594442749703357], "distancia_criterial": 0.1822}, {"perm_id": "5B", "tiempo": 1, "group_id": 2, "coords_c1": [0.07693322957636906, -0.09129493289470991], "coords_c2": [0.09984450368899152, 0.073134650741067], "distancia_criterial": 0.166}, {"perm_id": "5B", "tiempo": 2, "group_id": 2, "coords_c1": [-0.11727916971276323, 0.21025026961456023], "coords_c2": [0.09984450368899152, 0.073134650741067], "distancia_criterial": 0.2568}, {"perm_id": "6A", "tiempo": 1, "group_id": 1, "coords_c1": [-0.09754640089626188, -0.024814768816611574], "coords_c2": [-0.25254936817708495, -0.08450454032360612], "distancia_criterial": 0.1661}, {"perm_id": "6A", "tiempo": 2, "group_id": 1, "coords_c1": [-0.12645567094386934, -0.22535636891189406], "coords_c2": [-0.25254936817708495, -0.08450454032360612], "distancia_criterial": 0.189}, {"perm_id": "7A", "tiempo": 1, "group_id": 1, "coords_c1": [-0.5420475993794247, 0.09831628484105155], "coords_c2": [-0.19026655200608178, 0.0505760758568705], "distancia_criterial": 0.355}, {"perm_id": "7A", "tiempo": 2, "group_id": 1, "coords_c1": [-0.5420475993794247, 0.09831628484105155], "coords_c2": [0.14369626531596202, -0.002717936448366131], "distancia_criterial": 0.6931}], "puentes_intergrupales": {"1-1": 0.0, "1-2": 0.2101, "2-1": 0.2101, "2-2": 0.0}}};
+    
+    let currentPresentation = 5;
+    let genesisValue = 1.0;
+    let selectedGroup = 'ALL';
+    let selectedTime = 'ALL';
+    let selectedCriteria = 'ALL';
+    let selectedSubject = 'ALL';
+    let zoomLevel = 1.0;
+    let panOffset = { x: 0, y: 0 };
+
+    // Inicialización de fichas de sujetos
+    function initSubjectChips() {
+      const container = document.getElementById('subject-chips');
+      container.innerHTML = '';
+      MODEL.presentaciones.presentacion_4_sujetos.forEach(s => {
+        const btn = document.createElement('button');
+        btn.id = 'chip-' + s.perm_id;
+        btn.className = 'text-[10px] px-2 py-1 rounded bg-[#1E293B] border border-[#2D3A5D] text-gray-300 font-mono hover:border-[#00E5FF] transition';
+        btn.innerText = s.perm_id;
+        btn.onclick = () => selectSubject(s.perm_id);
+        container.appendChild(btn);
+      });
+    }
+
+    function setPresentation(p) {
+      currentPresentation = p;
+      for (let i = 1; i <= 5; i++) {
+        const b = document.getElementById('btn-p' + i);
+        if (i === p) {
+          b.classList.add('border-[#00FF87]', 'text-white');
+          b.classList.remove('border-transparent', 'text-gray-200');
+        } else {
+          b.classList.remove('border-[#00FF87]', 'text-white');
+          b.classList.add('border-transparent', 'text-gray-200');
+        }
+      }
+      const titles = {
+        1: "Presentación 1: Base Invariante de Columnas (Q81, Q6, Q3)",
+        2: "Presentación 2: Hipercubo de Filas Activas (8 Estados)",
+        3: "Presentación 3: Agrupaciones Intermedias y Puente Geodésico",
+        4: "Presentación 4: Morfologías Estructurales de Sujetos Permanentes",
+        5: "Presentación 5: Puntillismo Socio-Termodinámico Total (1 Píxel)"
+      };
+      document.getElementById('canvas-status-title').innerText = titles[p];
+      renderCanvas();
+    }
+
+    function onGenesisChange(val) {
+      genesisValue = val / 100.0;
+      document.getElementById('lbl-genesis').innerText = `${val}% (${val == 100 ? 'Cristalizado' : val == 0 ? 'Caos Puro' : 'Transición'})`;
+      renderCanvas();
+    }
+
+    function setTemporalFilter(t) {
+      selectedTime = t;
+      ['ALL', 1, 2].forEach(k => {
+        const b = document.getElementById('t-' + (k === 'ALL' ? 'all' : k));
+        if (k === t) {
+          b.className = 'text-[11px] py-1 rounded bg-[#00E5FF] text-[#0B132B] font-bold';
+        } else {
+          b.className = 'text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]';
+        }
+      });
+      renderCanvas();
+    }
+
+    function setCriteriaFilter(c) {
+      selectedCriteria = c;
+      ['ALL', 1, 2].forEach(k => {
+        const b = document.getElementById('c-' + (k === 'ALL' ? 'all' : k));
+        if (k === c) {
+          b.className = 'text-[11px] py-1 rounded bg-[#FF9100] text-[#0B132B] font-bold';
+        } else {
+          b.className = 'text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]';
+        }
+      });
+      renderCanvas();
+    }
+
+    function setGroupFilter(g) {
+      selectedGroup = g;
+      ['ALL', 1, 2].forEach(k => {
+        const b = document.getElementById('g-' + (k === 'ALL' ? 'all' : k));
+        if (k === g) {
+          b.className = 'text-[11px] py-1 rounded bg-[#00FF87] text-[#0B132B] font-bold';
+        } else {
+          b.className = 'text-[11px] py-1 rounded bg-[#1E293B] text-gray-300 font-semibold hover:bg-[#2D3A5D]';
+        }
+      });
+      renderCanvas();
+    }
+
+    function selectSubject(pid) {
+      selectedSubject = pid;
+      MODEL.presentaciones.presentacion_4_sujetos.forEach(s => {
+        const chip = document.getElementById('chip-' + s.perm_id);
+        if (chip) {
+          if (s.perm_id === pid) {
+            chip.classList.add('bg-[#00E5FF]', 'text-[#0B132B]', 'font-bold', 'border-[#00E5FF]');
+            chip.classList.remove('bg-[#1E293B]', 'text-gray-300');
+          } else {
+            chip.classList.remove('bg-[#00E5FF]', 'text-[#0B132B]', 'font-bold', 'border-[#00E5FF]');
+            chip.classList.add('bg-[#1E293B]', 'text-gray-300');
+          }
+        }
+      });
+      renderCanvas();
+    }
+
+    function zoomIn() {
+      zoomLevel *= 1.25;
+      updateSvgViewBox();
+    }
+
+    function zoomOut() {
+      zoomLevel /= 1.25;
+      updateSvgViewBox();
+    }
+
+    function resetZoom() {
+      zoomLevel = 1.0;
+      panOffset = { x: 0, y: 0 };
+      updateSvgViewBox();
+    }
+
+    function updateSvgViewBox() {
+      const svg = document.getElementById('main-svg');
+      const w = 1.1 / zoomLevel;
+      const h = 1.1 / zoomLevel;
+      const minX = -w / 2 + panOffset.x;
+      const minY = -h / 2 + panOffset.y;
+      svg.setAttribute('viewBox', `${minX} ${minY} ${w} ${h}`);
+    }
+
+    // Renderizado del Canvas SVG en función del estado reactivo
+    function renderCanvas() {
+      const root = document.getElementById('svg-root');
+      root.innerHTML = '';
+
+      // 1. Rejilla y círculos isométricos
+      [0.1, 0.25, 0.45].forEach(r => {
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("cx", "0");
+        circle.setAttribute("cy", "0");
+        circle.setAttribute("r", r);
+        circle.setAttribute("fill", "none");
+        circle.setAttribute("stroke", "#1E293B");
+        circle.setAttribute("stroke-dasharray", "0.006, 0.008");
+        circle.setAttribute("stroke-width", "0.0015");
+        root.appendChild(circle);
+      });
+
+      // 2. Ejes coordenados principales (F1 y F2) nítidos y destacados
+      const axisX = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      axisX.setAttribute("x1", "-0.54"); axisX.setAttribute("y1", "0");
+      axisX.setAttribute("x2", "0.54"); axisX.setAttribute("y2", "0");
+      axisX.setAttribute("stroke", "#486581");
+      axisX.setAttribute("stroke-width", "0.0028");
+      axisX.setAttribute("marker-end", "url(#arrow-axis)");
+      root.appendChild(axisX);
+
+      const axisY = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      axisY.setAttribute("x1", "0"); axisY.setAttribute("y1", "-0.50");
+      axisY.setAttribute("x2", "0"); axisY.setAttribute("y2", "0.50");
+      axisY.setAttribute("stroke", "#486581");
+      axisY.setAttribute("stroke-width", "0.0028");
+      axisY.setAttribute("marker-end", "url(#arrow-axis)");
+      root.appendChild(axisY);
+
+      // Origen (0, 0)
+      const originRing = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      originRing.setAttribute("cx", "0"); originRing.setAttribute("cy", "0");
+      originRing.setAttribute("r", "0.008");
+      originRing.setAttribute("fill", "#0B132B");
+      originRing.setAttribute("stroke", "#829AB1");
+      originRing.setAttribute("stroke-width", "0.002");
+      root.appendChild(originRing);
+
+      const originDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      originDot.setAttribute("cx", "0"); originDot.setAttribute("cy", "0");
+      originDot.setAttribute("r", "0.003");
+      originDot.setAttribute("fill", "#FFFFFF");
+      root.appendChild(originDot);
+
+      const originText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      originText.setAttribute("x", "0.012"); originText.setAttribute("y", "0.015");
+      originText.setAttribute("transform", "scale(1, -1)");
+      originText.setAttribute("fill", "#9FB3C8");
+      originText.setAttribute("font-size", "0.014");
+      originText.setAttribute("font-weight", "bold");
+      originText.textContent = "(0, 0)";
+      root.appendChild(originText);
+
+      // Punteros de ejes F1 y F2
+      const f1Text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      f1Text.setAttribute("x", "0.53"); f1Text.setAttribute("y", "-0.014");
+      f1Text.setAttribute("transform", "scale(1, -1)");
+      f1Text.setAttribute("fill", "#E0E1DD");
+      f1Text.setAttribute("font-size", "0.016");
+      f1Text.setAttribute("font-weight", "bold");
+      f1Text.setAttribute("text-anchor", "end");
+      f1Text.textContent = "+F₁ (Atracción)";
+      root.appendChild(f1Text);
+
+      const f1NegText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      f1NegText.setAttribute("x", "-0.53"); f1NegText.setAttribute("y", "-0.014");
+      f1NegText.setAttribute("transform", "scale(1, -1)");
+      f1NegText.setAttribute("fill", "#9FB3C8");
+      f1NegText.setAttribute("font-size", "0.016");
+      f1NegText.setAttribute("font-weight", "bold");
+      f1NegText.setAttribute("text-anchor", "start");
+      f1NegText.textContent = "-F₁ (Indiferencia)";
+      root.appendChild(f1NegText);
+
+      const f2Text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      f2Text.setAttribute("x", "0.015"); f2Text.setAttribute("y", "-0.48");
+      f2Text.setAttribute("transform", "scale(1, -1)");
+      f2Text.setAttribute("fill", "#E0E1DD");
+      f2Text.setAttribute("font-size", "0.016");
+      f2Text.setAttribute("font-weight", "bold");
+      f2Text.textContent = "+F₂ (Roles)";
+      root.appendChild(f2Text);
+
+      const f2NegText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      f2NegText.setAttribute("x", "0.015"); f2NegText.setAttribute("y", "0.48");
+      f2NegText.setAttribute("transform", "scale(1, -1)");
+      f2NegText.setAttribute("fill", "#9FB3C8");
+      f2NegText.setAttribute("font-size", "0.016");
+      f2NegText.setAttribute("font-weight", "bold");
+      f2NegText.textContent = "-F₂ (Cohesión)";
+      root.appendChild(f2NegText);
+
+      // -------------------------------------------------------------
+      // RENDER CAPA 1: COLUMNAS Q (Q81, Q6, Q3)
+      // -------------------------------------------------------------
+      if (currentPresentation === 1 || currentPresentation >= 2) {
+        const q3 = MODEL.presentaciones.presentacion_1_q.q3;
+        
+        // Polos Q3 con flechas
+        const q3Colors = { "+": "#00FF87", "-": "#FF007F", "0": "#FFE600" };
+        const q3Markers = { "+": "url(#arrow-green)", "-": "url(#arrow-magenta)", "0": "url(#arrow-gold)" };
+        
+        for (const [pol, coord] of Object.entries(q3)) {
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", "0"); line.setAttribute("y1", "0");
+          line.setAttribute("x2", coord[0]); line.setAttribute("y2", coord[1]);
+          line.setAttribute("stroke", q3Colors[pol]);
+          line.setAttribute("stroke-width", currentPresentation === 1 ? "0.0035" : "0.002");
+          line.setAttribute("marker-end", q3Markers[pol]);
+          line.setAttribute("opacity", currentPresentation === 1 ? "0.95" : "0.55");
+          root.appendChild(line);
+
+          // Etiqueta de polo Q3
+          if (currentPresentation === 1) {
+            const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", coord[0] * 1.08);
+            text.setAttribute("y", coord[1] * 1.08);
+            text.setAttribute("transform", `scale(1, -1) translate(0, ${-(coord[1]*2.16)})`);
+            text.setAttribute("fill", q3Colors[pol]);
+            text.setAttribute("font-size", "0.022");
+            text.setAttribute("font-weight", "bold");
+            text.setAttribute("text-anchor", coord[0] > 0 ? "start" : "end");
+            text.textContent = `POLO Q3 (${pol})`;
+            root.appendChild(text);
+          }
+        }
+
+        // Si es Presentación 1, dibujar figuras Q81 activas con detalle
+        if (currentPresentation === 1) {
+          MODEL.presentaciones.presentacion_1_q.q81.forEach(q => {
+            const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            dot.setAttribute("cx", q.coords[0]);
+            dot.setAttribute("cy", q.coords[1]);
+            dot.setAttribute("r", "0.007");
+            dot.setAttribute("fill", q.q3_polarity === "+" ? "#00FF87" : q.q3_polarity === "-" ? "#FF007F" : "#FFE600");
+            dot.setAttribute("stroke", "#FFFFFF");
+            dot.setAttribute("stroke-width", "0.0015");
+            dot.onmouseenter = (e) => showHud(`<b>Figura Q81:</b> ${q.symbol} (#${q.id})<br><b>Clase Q6:</b> ${q.q6_class}<br><b>Polaridad Q3:</b> ${q.q3_polarity}<br><b>Significado:</b> ${q.desc}`);
+            dot.onmouseleave = hideHud;
+            root.appendChild(dot);
+          });
+        }
+      }
+
+      // -------------------------------------------------------------
+      // RENDER CAPA 3: PUENTE GEODÉSICO Y BARICENTROS (Si P >= 3)
+      // -------------------------------------------------------------
+      if (currentPresentation >= 3) {
+        const b1 = MODEL.presentaciones.presentacion_3_agrupaciones.baricentros_grupos["1"].baricentro;
+        const b2 = MODEL.presentaciones.presentacion_3_agrupaciones.baricentros_grupos["2"].baricentro;
+        
+        // Puente geodésico
+        const bridge = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        bridge.setAttribute("x1", b1[0]); bridge.setAttribute("y1", b1[1]);
+        bridge.setAttribute("x2", b2[0]); bridge.setAttribute("y2", b2[1]);
+        bridge.setAttribute("stroke", "#FFFFFF");
+        bridge.setAttribute("stroke-dasharray", "0.005, 0.005");
+        bridge.setAttribute("stroke-width", "0.0025");
+        bridge.setAttribute("opacity", "0.75");
+        root.appendChild(bridge);
+
+        // Baricentros
+        [b1, b2].forEach((b, idx) => {
+          const isG1 = (idx === 0);
+          if (selectedGroup !== 'ALL' && selectedGroup !== (isG1 ? 1 : 2)) return;
+
+          const star = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+          const r = 0.016;
+          // Coordenadas estrella
+          const pts = [];
+          for (let i = 0; i < 10; i++) {
+            const rad = i * Math.PI / 5;
+            const dist = (i % 2 === 0) ? r : r * 0.45;
+            pts.push(`${b[0] + dist * Math.sin(rad)},${b[1] + dist * Math.cos(rad)}`);
+          }
+          star.setAttribute("points", pts.join(" "));
+          star.setAttribute("fill", isG1 ? "#00E5FF" : "#FF9100");
+          star.setAttribute("stroke", "#FFFFFF");
+          star.setAttribute("stroke-width", "0.002");
+          star.classList.add("cursor-pointer");
+          star.onmouseenter = () => showHud(`<b>Baricentro ${isG1 ? 'G1 (Familia, N=7)' : 'G2 (Tech Startup, N=5)'}</b><br>Coordenadas: [${b[0].toFixed(4)}, ${b[1].toFixed(4)}]<br>Distancia Geodésica d(G1,G2) = ${MODEL.transmutaciones.puentes_intergrupales['1-2']}`);
+          star.onmouseleave = hideHud;
+          root.appendChild(star);
+        });
+      }
+
+      // -------------------------------------------------------------
+      // RENDER CAPA 2: FILAS ACTIVAS (Si P === 2 o P === 3)
+      // -------------------------------------------------------------
+      if (currentPresentation === 2 || currentPresentation === 3) {
+        MODEL.presentaciones.presentacion_2_filas_activas.forEach(f => {
+          if (selectedGroup !== 'ALL' && selectedGroup !== f.group_id) return;
+          if (selectedTime !== 'ALL' && selectedTime !== f.tiempo) return;
+          if (selectedCriteria !== 'ALL' && selectedCriteria !== f.criterio) return;
+
+          const marker = document.createElementNS("http://www.w3.org/2000/svg", f.group_id === 1 ? "polygon" : "circle");
+          if (f.group_id === 1) {
+            const s = 0.012;
+            marker.setAttribute("points", `${f.coords[0]},${f.coords[1]+s} ${f.coords[0]+s},${f.coords[1]} ${f.coords[0]},${f.coords[1]-s} ${f.coords[0]-s},${f.coords[1]}`);
+          } else {
+            marker.setAttribute("cx", f.coords[0]);
+            marker.setAttribute("cy", f.coords[1]);
+            marker.setAttribute("r", "0.011");
+          }
+          marker.setAttribute("fill", f.group_id === 1 ? "#00E5FF" : "#FF9100");
+          marker.setAttribute("stroke", "#FFFFFF");
+          marker.setAttribute("stroke-width", "0.002");
+          marker.classList.add("cursor-pointer");
+          marker.onmouseenter = () => showHud(`<b>Estado Factual:</b> ${f.desc}<br>Matriz: ${f.matriz_id}<br>Coords: [${f.coords[0].toFixed(4)}, ${f.coords[1].toFixed(4)}]`);
+          marker.onmouseleave = hideHud;
+          root.appendChild(marker);
+        });
+      }
+
+      // -------------------------------------------------------------
+      // RENDER TRANSMUTACIÓN II: TRAYECTORIAS &DELTA;T (Si activadas)
+      // -------------------------------------------------------------
+      const showTrayectorias = document.getElementById('chk-trayectorias').checked;
+      if (showTrayectorias && (currentPresentation >= 3)) {
+        MODEL.transmutaciones.trayectorias_temporales.forEach(tr => {
+          if (selectedGroup !== 'ALL' && selectedGroup !== tr.group_id) return;
+          if (selectedCriteria !== 'ALL' && selectedCriteria !== tr.criterio) return;
+          if (selectedSubject !== 'ALL' && selectedSubject !== tr.perm_id) return;
+
+          const arrow = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          arrow.setAttribute("x1", tr.p_start[0]); arrow.setAttribute("y1", tr.p_start[1]);
+          arrow.setAttribute("x2", tr.p_end[0]); arrow.setAttribute("y2", tr.p_end[1]);
+          arrow.setAttribute("stroke", tr.group_id === 1 ? "#00E5FF" : "#FF9100");
+          arrow.setAttribute("stroke-width", tr.perm_id === selectedSubject ? "0.0035" : "0.0018");
+          arrow.setAttribute("stroke-dasharray", tr.criterio === 1 ? "none" : "0.004, 0.004");
+          arrow.setAttribute("marker-end", tr.group_id === 1 ? "url(#arrow-cyan)" : "url(#arrow-orange)");
+          arrow.setAttribute("opacity", "0.75");
+          root.appendChild(arrow);
+        });
+      }
+
+      // -------------------------------------------------------------
+      // RENDER CAPA 4: CENTROIDES PERMANENTES DE SUJETOS
+      // -------------------------------------------------------------
+      if (currentPresentation >= 4) {
+        MODEL.presentaciones.presentacion_4_sujetos.forEach(s => {
+          if (selectedGroup !== 'ALL' && selectedGroup !== s.group_id) return;
+          if (selectedSubject !== 'ALL' && selectedSubject !== s.perm_id) return;
+
+          const cx = s.centroid[0];
+          const cy = s.centroid[1];
+
+          // Radio de dispersión isométrica
+          const dispCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          dispCircle.setAttribute("cx", cx);
+          dispCircle.setAttribute("cy", cy);
+          dispCircle.setAttribute("r", s.dispersion_radio);
+          dispCircle.setAttribute("fill", s.group_id === 1 ? "#00E5FF" : "#FF9100");
+          dispCircle.setAttribute("fill-opacity", "0.06");
+          dispCircle.setAttribute("stroke", s.group_id === 1 ? "#00E5FF" : "#FF9100");
+          dispCircle.setAttribute("stroke-dasharray", "0.003, 0.005");
+          dispCircle.setAttribute("stroke-width", "0.001");
+          root.appendChild(dispCircle);
+
+          // Centroide destacado
+          const centerMarker = document.createElementNS("http://www.w3.org/2000/svg", s.group_id === 1 ? "polygon" : "circle");
+          if (s.group_id === 1) {
+            const sz = 0.014;
+            centerMarker.setAttribute("points", `${cx},${cy+sz} ${cx+sz},${cy} ${cx},${cy-sz} ${cx-sz},${cy}`);
+          } else {
+            centerMarker.setAttribute("cx", cx);
+            centerMarker.setAttribute("cy", cy);
+            centerMarker.setAttribute("r", "0.012");
+          }
+          centerMarker.setAttribute("fill", s.group_id === 1 ? "#00FF87" : "#FF9100");
+          centerMarker.setAttribute("stroke", "#FFFFFF");
+          centerMarker.setAttribute("stroke-width", "0.0025");
+          centerMarker.classList.add("cursor-pointer");
+          centerMarker.onmouseenter = () => showHud(`<b>Sujeto Permanente:</b> ${s.perm_id} <span class="text-[9px] px-1.5 py-0.5 bg-[#00E5FF]/20 text-[#00E5FF] rounded border border-[#00E5FF]/40">ILUSTRATIVO</span><br>Grupo: G${s.group_id} | Radio Metamorfosis: ${s.dispersion_radio}<br>Coords: [${cx.toFixed(4)}, ${cy.toFixed(4)}]<br><span class="text-gray-400">Ecuación Transición:</span> <span class="text-[#00FF87] font-mono">F* = (x* - &mu;)V</span> (CTA=0.0%)`);
+          centerMarker.onmouseleave = hideHud;
+          root.appendChild(centerMarker);
+        });
+      }
+
+      // -------------------------------------------------------------
+      // RENDER CAPA 5: PUNTILLISMO 1PX Y MICRO-FILAMENTOS (Si P === 5)
+      // -------------------------------------------------------------
+      if (currentPresentation === 5) {
+        // Mapa de centroides para filamentos
+        const permMap = {};
+        MODEL.presentaciones.presentacion_4_sujetos.forEach(s => permMap[s.perm_id] = s.centroid);
+
+        MODEL.presentaciones.presentacion_5_puntillismo.forEach(pt => {
+          if (selectedGroup !== 'ALL' && selectedGroup !== pt.group_id) return;
+          if (selectedTime !== 'ALL' && selectedTime !== pt.tiempo) return;
+          if (selectedCriteria !== 'ALL' && selectedCriteria !== pt.criterio) return;
+          if (selectedSubject !== 'ALL' && selectedSubject !== pt.perm_id) return;
+
+          // Modulación de génesis (caos -> factual)
+          const targetX = pt.coords[0];
+          const targetY = pt.coords[1];
+          // Caos determinista usando hash del label
+          const hashVal = (pt.full_label.charCodeAt(0) * 31 + pt.full_label.charCodeAt(1) * 7) % 100 / 100.0;
+          const chaosX = Math.cos(hashVal * Math.PI * 2) * 0.35;
+          const chaosY = Math.sin(hashVal * Math.PI * 2) * 0.35;
+          const currX = chaosX * (1.0 - genesisValue) + targetX * genesisValue;
+          const currY = chaosY * (1.0 - genesisValue) + targetY * genesisValue;
+
+          // Micro-filamento al centroide del sujeto
+          const pc = permMap[pt.perm_id];
+          if (pc && genesisValue > 0.3) {
+            const fil = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            fil.setAttribute("x1", pc[0]); fil.setAttribute("y1", pc[1]);
+            fil.setAttribute("x2", currX); fil.setAttribute("y2", currY);
+            fil.setAttribute("stroke", pt.valence_color);
+            fil.setAttribute("stroke-dasharray", "0.002, 0.003");
+            fil.setAttribute("stroke-width", "0.0008");
+            fil.setAttribute("opacity", (0.22 * genesisValue).toString());
+            root.appendChild(fil);
+          }
+
+          // Micro-punto de 1px puro sin contorno
+          const microDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          microDot.setAttribute("cx", currX);
+          microDot.setAttribute("cy", currY);
+          microDot.setAttribute("r", "0.0055");
+          microDot.setAttribute("fill", pt.valence_color);
+          microDot.setAttribute("opacity", "0.92");
+          microDot.classList.add("cursor-pointer");
+          microDot.onmouseenter = () => showHud(`<b>Micro-Estado 1px:</b> ${pt.full_label} <span class="text-[9px] px-1.5 py-0.5 bg-[#FF9100]/20 text-[#FF9100] rounded border border-[#FF9100]/40">ILUSTRATIVO</span><br>Sujeto: ${pt.perm_id} | Matriz: ${pt.matriz_id}<br>Valencia: <span style="color:${pt.valence_color}">${pt.valence_label}</span><br>Coords: [${currX.toFixed(4)}, ${currY.toFixed(4)}]<br><span class="text-gray-400">Transición Benzécri:</span> <span class="text-[#FFE600] font-mono">&Sigma; x* &middot; G / &radic;&lambda;</span>`);
+          microDot.onmouseleave = hideHud;
+          root.appendChild(microDot);
+        });
+      }
+    }
+
+    function showHud(html) {
+      const hud = document.getElementById('inspector-hud');
+      hud.innerHTML = html;
+      hud.classList.remove('hidden');
+    }
+
+    function hideHud() {
+      const hud = document.getElementById('inspector-hud');
+      hud.classList.add('hidden');
+    }
+
+    // Booting
+    
+    // ==========================================
+    // GOBERNANZA INSTITUCIONAL Y ACCESO TEMPORAL
+    // ==========================================
+    let currentAuth = {
+      role: 'IPR',
+      title: '🎓 ROL IPR: EQUIPO DE INVESTIGACIÓN & DOCTORANDOS',
+      scope: 'Bóveda Abierta Multi-Estudio (Tesis / Papers)',
+      expires: '06/09/2027',
+      daysLeft: 365,
+      allowExport: true,
+      color: '#00FF87'
+    };
+
+    function initGovernance() {
+      const saved = localStorage.getItem('NEXORD_AUTH_ROLE');
+      if (saved) {
+        setRoleProfile(saved, false);
+      } else {
+        updateGovernanceUI();
+      }
+    }
+
+    function openTokenModal() {
+      document.getElementById('token-modal').classList.remove('hidden');
+    }
+
+    function closeTokenModal() {
+      document.getElementById('token-modal').classList.add('hidden');
+    }
+
+    function setRoleProfile(role, save = true) {
+      if (role === 'IPR') {
+        currentAuth = {
+          role: 'IPR',
+          title: '🎓 ROL IPR: EQUIPO DE INVESTIGACIÓN & DOCTORANDOS',
+          scope: 'Bóveda Abierta Multi-Estudio (Tesis / Papers)',
+          expires: '06/09/2027',
+          daysLeft: 365,
+          allowExport: true,
+          color: '#00FF87'
+        };
+      } else if (role === 'IPI') {
+        currentAuth = {
+          role: 'IPI',
+          title: '👤 ROL IPI: INVESTIGADOR PRINCIPAL DE ESTUDIO',
+          scope: 'Estudio Asignado Factual (REAL-AA-G2-T2-C2)',
+          expires: '06/10/2026',
+          daysLeft: 30,
+          allowExport: false,
+          color: '#00E5FF'
+        };
+      } else if (role === 'IPIS') {
+        currentAuth = {
+          role: 'IPIS',
+          title: '👑 ROL IPIS: DIRECCIÓN GENERAL / CÁTEDRA',
+          scope: 'Control Maestro Permanente',
+          expires: '05/09/2031',
+          daysLeft: 1825,
+          allowExport: true,
+          color: '#FFE600'
+        };
+      }
+      if (save) localStorage.setItem('NEXORD_AUTH_ROLE', role);
+      updateGovernanceUI();
+    }
+
+    function updateGovernanceUI() {
+      document.getElementById('gov-role-title').innerText = currentAuth.title;
+      document.getElementById('gov-scope').innerText = currentAuth.scope;
+      document.getElementById('gov-days').innerText = currentAuth.daysLeft + ' días';
+      document.getElementById('gov-exp-date').innerText = currentAuth.expires;
+      
+      const badge = document.getElementById('gov-badge');
+      badge.style.borderColor = currentAuth.color;
+      badge.style.color = currentAuth.color;
+      document.getElementById('gov-indicator').style.backgroundColor = currentAuth.color;
+
+      ['ipr', 'ipi', 'ipis'].forEach(r => {
+        const isCur = currentAuth.role.toLowerCase() === r;
+        const chk = document.getElementById('check-' + r);
+        const opt = document.getElementById('opt-' + r);
+        if (chk) chk.className = isCur ? 'text-[' + currentAuth.color + '] font-bold text-sm' : 'text-transparent font-bold text-sm';
+        if (opt) opt.style.borderColor = isCur ? currentAuth.color : '#2D3A5D';
+      });
+
+      const btnExp = document.getElementById('btn-export-phd');
+      if (btnExp) {
+        if (currentAuth.allowExport) {
+          btnExp.classList.remove('opacity-50', 'cursor-not-allowed');
+          btnExp.title = 'Exportar coordenadas factoriales y autovalores para investigación';
+        } else {
+          btnExp.classList.add('opacity-50', 'cursor-not-allowed');
+          btnExp.title = 'Descarga restringida para Rol IPI según Protocolo Clélie / RGPD';
+        }
+      }
+    }
+
+    function applyManualToken() {
+      const input = document.getElementById('token-input').value.trim();
+      const msg = document.getElementById('token-msg');
+      if (!input.startsWith('NEXORD.')) {
+        msg.innerHTML = '<span class="text-[#FF007F]">❌ Token inválido. Debe comenzar por NEXORD.</span>';
+        return;
+      }
+      try {
+        const parts = input.split('.');
+        let b64 = parts[1];
+        while (b64.length % 4 !== 0) b64 += '=';
+        const payload = JSON.parse(atob(b64));
+        setRoleProfile(payload.role || 'IPR');
+        msg.innerHTML = '<span class="text-[#00FF87]">✓ Token validado con éxito para ' + payload.entity + ' (Expira: ' + payload.exp_date + ')</span>';
+        setTimeout(closeTokenModal, 1200);
+      } catch(e) {
+        msg.innerHTML = '<span class="text-[#FF007F]">❌ Error decodificando token institucional: ' + e.message + '</span>';
+      }
+    }
+
+    function exportResearchCSV() {
+      if (!currentAuth.allowExport) {
+        alert("🔒 ACCESO RESTRINGIDO (Protocolo Clélie / RGPD):\nEl Rol IPI permite visualizar el mapa interactivo y emitir informes gráficos agregados, pero tiene bloqueada la descarga de datos brutos de participantes individuales para proteger la confidencialidad.\n\nPara contrastes empíricos y tesis doctorales, solicite una credencial IPR (Equipo de Investigación).");
+        return;
+      }
+      let csv = "ELEMENTO,TIPO,SUBCLASE,GRUPO,TIEMPO,CRITERIO,F1,F2,COR1,COR2,CTA1,CTA2\n";
+      
+      const q_list = (MODEL.presentaciones.presentacion_1_q && MODEL.presentaciones.presentacion_1_q.q81) || [];
+      q_list.forEach(q => {
+        csv += '"' + q.id + '","COLUMNA_Q","' + q.clase_q6 + '","ALL","ALL","ALL",' + q.F1.toFixed(5) + ',' + q.F2.toFixed(5) + ',0,0,' + q.F1.toFixed(4) + ',' + q.F2.toFixed(4) + '\n';
+      });
+      (MODEL.presentaciones.presentacion_2_filas_activas || []).forEach(f => {
+        csv += '"' + f.id + '","SOCIOMATRIZ_ACTIVA","G' + f.grupo + '_T' + f.tiempo + '_C' + f.criterio + '","' + f.grupo + '","' + f.tiempo + '","' + f.criterio + '",' + f.F1.toFixed(5) + ',' + f.F2.toFixed(5) + ',' + (f.cos2_F1||0).toFixed(4) + ',' + (f.cos2_F2||0).toFixed(4) + ',' + (f.cta_F1||0).toFixed(4) + ',' + (f.cta_F2||0).toFixed(4) + '\n';
+      });
+      (MODEL.presentaciones.presentacion_4_sujetos || []).forEach(s => {
+        csv += '"' + s.perm_id + '","CENTROIDE_SUJETO","' + s.rol + '","' + s.grupo + '","ALL","ALL",' + s.F1.toFixed(5) + ',' + s.F2.toFixed(5) + ',' + (s.cos2_F1||0).toFixed(4) + ',' + (s.cos2_F2||0).toFixed(4) + ',0,0\n';
+      });
+      (MODEL.presentaciones.presentacion_5_puntillismo || []).forEach(m => {
+        csv += '"' + m.id + '","MICRO_ESTADO_1PX","' + m.clase + '","' + m.grupo + '","' + m.tiempo + '","' + m.criterio + '",' + m.F1.toFixed(5) + ',' + m.F2.toFixed(5) + ',0,0,0,0\n';
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'NEXORD_RESEARCH_PCA_' + MODEL.meta.diseno_clave + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function initHeader() {
+      if (MODEL && MODEL.meta) {
+        if (document.getElementById('hdr-fecha')) document.getElementById('hdr-fecha').innerText = 'Homologación: ' + (MODEL.meta.fecha_homologacion || '--');
+        if (document.getElementById('hdr-diseno')) document.getElementById('hdr-diseno').innerText = MODEL.meta.diseno_clave || '--';
+        if (document.getElementById('hdr-grupos')) document.getElementById('hdr-grupos').innerText = MODEL.meta.dimensiones ? MODEL.meta.dimensiones.grupos_X : '-';
+        if (document.getElementById('hdr-tiempos')) document.getElementById('hdr-tiempos').innerText = MODEL.meta.dimensiones ? MODEL.meta.dimensiones.tiempos_Y : '-';
+        if (document.getElementById('hdr-criterios')) document.getElementById('hdr-criterios').innerText = MODEL.meta.dimensiones ? MODEL.meta.dimensiones.criterios_Z : '-';
+        if (document.getElementById('hdr-sujetos')) document.getElementById('hdr-sujetos').innerText = MODEL.meta.total_sujetos || '-';
+        if (document.getElementById('hdr-inercia')) document.getElementById('hdr-inercia').innerText = (MODEL.espectro_factorial ? MODEL.espectro_factorial.acumulado_pct : '--') + '%';
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initHeader();
+      initGovernance();
+      initSubjectChips();
+      renderCanvas();
+    });
+  </script>
+  <!-- MODAL DE GOBERNANZA INSTITUCIONAL Y CREDENCIALES (3 NIVELES) -->
+  <div id="token-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-[#141E3A] border border-[#00E5FF] rounded-2xl max-w-xl w-full p-6 shadow-2xl text-gray-200">
+      <div class="flex items-center justify-between border-b border-[#2D3A5D] pb-3 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-[#00E5FF]/20 text-[#00E5FF]">🔐</span>
+          <h3 class="text-base font-black text-white">Gobernanza Institucional y Acceso Temporal (NEXORD)</h3>
+        </div>
+        <button onclick="closeTokenModal()" class="text-gray-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+
+      <p class="text-xs text-gray-300 mb-4 leading-relaxed">
+        El acceso a <strong>VISORD_general</strong> en servidores institucionales está protegido por el <strong>Protocolo Clélie (RGPD)</strong>, estructurando tres niveles de privilegio según el rol del usuario:
+      </p>
+
+      <!-- Selector de Perfiles Institucionales Rápidos -->
+      <div class="space-y-2 mb-4">
+        <div onclick="setRoleProfile('IPR')" id="opt-ipr" class="p-3 rounded-xl border border-[#00FF87] bg-[#101B3B] hover:bg-[#1E293B] cursor-pointer transition flex items-start justify-between">
+          <div>
+            <div class="text-xs font-bold text-[#00FF87] flex items-center gap-1.5">
+              <span>🎓 ROL IPR: Equipo de Investigación / Doctorandos</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-[#00FF87]/20 font-normal">Recomendado Tesis</span>
+            </div>
+            <p class="text-[11px] text-gray-400 mt-1">Acceso facilitado a la Bóveda Multiestudio (SIMUL, LITERAL, REAL anonimizado). Validez de 1 año (365 días). Exportación de matrices de transición habilitada.</p>
+          </div>
+          <span id="check-ipr" class="text-[#00FF87] font-bold text-sm">✓</span>
+        </div>
+
+        <div onclick="setRoleProfile('IPI')" id="opt-ipi" class="p-3 rounded-xl border border-[#2D3A5D] bg-[#101B3B] hover:bg-[#1E293B] cursor-pointer transition flex items-start justify-between">
+          <div>
+            <div class="text-xs font-bold text-[#00E5FF] flex items-center gap-1.5">
+              <span>👤 ROL IPI: Investigador Principal de Estudio</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-[#00E5FF]/20 font-normal">Intervención Temporal</span>
+            </div>
+            <p class="text-[11px] text-gray-400 mt-1">Acceso acotado al estudio específico intervenido. Ventana temporal estricta de 30 días. Descarga de datos crudos nominativos bloqueada por RGPD.</p>
+          </div>
+          <span id="check-ipi" class="text-transparent font-bold text-sm">✓</span>
+        </div>
+
+        <div onclick="setRoleProfile('IPIS')" id="opt-ipis" class="p-3 rounded-xl border border-[#2D3A5D] bg-[#101B3B] hover:bg-[#1E293B] cursor-pointer transition flex items-start justify-between">
+          <div>
+            <div class="text-xs font-bold text-[#FFE600] flex items-center gap-1.5">
+              <span>👑 ROL IPIS: Dirección General / Cátedra</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-[#FFE600]/20 font-normal">Control Maestro</span>
+            </div>
+            <p class="text-[11px] text-gray-400 mt-1">Control absoluto del sistema, calibraciones termodinámicas BDR/SDR, gestión de tokens y supervisión ética universal.</p>
+          </div>
+          <span id="check-ipis" class="text-transparent font-bold text-sm">✓</span>
+        </div>
+      </div>
+
+      <!-- Entrada manual de Token Cifrado -->
+      <div class="mb-4">
+        <label class="block text-[11px] font-mono text-gray-400 mb-1">O introduzca un Token Criptográfico Firmado (NEXORD.ey...):</label>
+        <div class="flex gap-2">
+          <input type="text" id="token-input" placeholder="Pegar token institucional..." class="flex-1 bg-[#0B132B] border border-[#2D3A5D] rounded-lg px-3 py-1.5 text-xs text-white font-mono focus:border-[#00E5FF] outline-none">
+          <button onclick="applyManualToken()" class="px-3 py-1.5 bg-[#00E5FF] text-[#0B132B] font-bold text-xs rounded-lg hover:bg-white transition">Validar</button>
+        </div>
+        <div id="token-msg" class="text-[10px] text-gray-400 mt-1 font-mono"></div>
+      </div>
+
+      <div class="flex justify-end gap-2 border-t border-[#2D3A5D] pt-3">
+        <button onclick="closeTokenModal()" class="px-4 py-1.5 bg-[#1E293B] hover:bg-[#2D3A5D] text-xs font-semibold rounded-lg text-white transition">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISORD Literario &bull; Sociometría Teatral y Dinámica Dramática 3D</title>
+    <meta name="description" content="Módulo de Sociometría Cultural y Teatral VISORD / NEXORD. Modelado socio-termodinámico 3D y análisis de redes relacionales en La Casa de Bernarda Alba, El Señor de las Moscas y La Ola.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Roboto+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <script src="lib/three.min.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <!-- Payloads literarios canónicos -->
+    <script src="VISORD_demo/data/payload_lorca_3d.js"></script>
+    <script src="VISORD_demo/data/payload_moscas_3d.js"></script>
+    <script src="VISORD_demo/data/payload_la_ola_demo.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body, html {
+            width: 100%; height: 100%; overflow: hidden;
+            background-color: #080D1A;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #F8FAFC;
+            user-select: none;
+        }
+
+        #canvas-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        /* Cabecera Superior HUD */
+        header.lit-header {
+            position: absolute; top: 12px; left: 14px; right: 14px; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(8, 13, 26, 0.92); backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 159, 28, 0.35); border-radius: 12px;
+            padding: 10px 18px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            flex-wrap: wrap; gap: 12px;
+        }
+        .brand-box {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .brand-logo {
+            max-height: 38px; border-radius: 6px;
+        }
+        .brand-titles {
+            display: flex; flex-direction: column;
+        }
+        .brand-main {
+            font-size: 1.15rem; font-weight: 800; letter-spacing: 0.8px; color: #FFFFFF;
+        }
+        .brand-main span { color: #FF9F1C; font-family: 'Playfair Display', serif; font-style: italic; }
+        .brand-sub {
+            font-size: 0.72rem; color: #94A3B8; font-family: monospace; letter-spacing: 0.5px;
+        }
+
+        /* Selector de Obras Literarias */
+        .work-selector {
+            display: flex; gap: 6px; background: rgba(255, 255, 255, 0.05);
+            padding: 4px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-work {
+            background: transparent; border: none; color: #94A3B8;
+            padding: 7px 14px; border-radius: 7px; font-size: 0.80rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-work:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.08); }
+        .btn-work.active {
+            background: rgba(255, 159, 28, 0.25); color: #FF9F1C;
+            border: 1px solid rgba(255, 159, 28, 0.5); box-shadow: 0 0 12px rgba(255, 159, 28, 0.3);
+        }
+
+        /* Botones de Cabecera */
+        .header-nav {
+            display: flex; align-items: center; gap: 8px;
+        }
+        .btn-nav-lit {
+            padding: 7px 13px; border-radius: 8px; font-size: 0.80rem; font-weight: 700;
+            text-decoration: none; cursor: pointer; transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-home {
+            background: rgba(56, 189, 248, 0.15); border: 1px solid #38BDF8; color: #38BDF8;
+        }
+        .btn-home:hover { background: rgba(56, 189, 248, 0.3); color: #FFFFFF; }
+        .btn-glossary {
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #E2E8F0;
+        }
+        .btn-glossary:hover { background: rgba(255, 255, 255, 0.18); color: #FFFFFF; }
+
+        /* Panel Izquierdo: Contexto Dramático & Elenco */
+        aside.left-panel {
+            position: absolute; top: 80px; left: 14px; bottom: 85px; z-index: 100;
+            width: 320px; max-width: 90vw;
+            background: rgba(8, 13, 26, 0.90); backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 159, 28, 0.3); border-radius: 14px;
+            padding: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            display: flex; flex-direction: column; gap: 12px; overflow-y: auto;
+        }
+        .panel-heading {
+            font-size: 0.85rem; font-weight: 800; color: #FF9F1C; letter-spacing: 0.8px;
+            text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .work-title-display {
+            font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+            color: #FFFFFF; line-height: 1.2;
+        }
+        .work-author {
+            font-size: 0.78rem; color: #38BDF8; font-family: monospace; margin-top: 2px;
+        }
+        .work-synopsis {
+            font-size: 0.78rem; color: #CBD5E1; line-height: 1.55;
+            background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 8px;
+            border-left: 3px solid #FF9F1C;
+        }
+        .characters-list {
+            display: flex; flex-direction: column; gap: 6px; margin-top: 4px;
+        }
+        .char-item {
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255, 255, 255, 0.04); padding: 6px 10px; border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.06); font-size: 0.78rem;
+            cursor: pointer; transition: all 0.15s ease;
+        }
+        .char-item:hover {
+            background: rgba(255, 159, 28, 0.15); border-color: #FF9F1C; transform: translateX(2px);
+        }
+        .char-name { font-weight: 600; color: #F1F5F9; }
+        .char-role-badge {
+            font-size: 0.68rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;
+            background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* Panel Derecho: Métricas Socio-Termodinámicas */
+        aside.right-panel {
+            position: absolute; top: 80px; right: 14px; z-index: 100;
+            width: 300px; max-width: 90vw;
+            background: rgba(8, 13, 26, 0.90); backdrop-filter: blur(14px);
+            border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 14px;
+            padding: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .metric-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-bottom: 5px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.78rem;
+        }
+        .metric-k { color: #94A3B8; }
+        .metric-v { font-weight: 800; font-family: monospace; }
+
+        /* Barra Inferior de Navegación Dramática */
+        .bottom-timeline {
+            position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+            z-index: 150; width: 680px; max-width: 95vw;
+            background: rgba(8, 13, 26, 0.92); backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 159, 28, 0.35); border-radius: 12px;
+            padding: 10px 20px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+            display: flex; align-items: center; justify-content: space-between; gap: 15px;
+        }
+        .act-pills {
+            display: flex; gap: 6px;
+        }
+        .btn-act {
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #CBD5E1; padding: 5px 12px; border-radius: 6px; font-size: 0.76rem;
+            font-weight: 700; cursor: pointer; transition: all 0.2s ease;
+        }
+        .btn-act:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.15); }
+        .btn-act.active {
+            background: rgba(255, 159, 28, 0.3); border-color: #FF9F1C; color: #FF9F1C; font-weight: 800;
+        }
+        .camera-controls {
+            display: flex; gap: 6px;
+        }
+        .btn-cam {
+            padding: 5px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700;
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #E2E8F0; cursor: pointer;
+        }
+        .btn-cam:hover { background: rgba(56, 189, 248, 0.2); border-color: #38BDF8; color: #38BDF8; }
+
+        /* Tooltip de Personaje */
+        #char-tooltip {
+            position: absolute; display: none; z-index: 200; pointer-events: none;
+            background: rgba(8, 13, 26, 0.95); backdrop-filter: blur(10px);
+            border: 1px solid #FF9F1C; border-radius: 8px;
+            padding: 10px 14px; font-size: 0.80rem; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+            max-width: 260px; line-height: 1.4;
+        }
+
+        /* Modal Nota Regla 10 */
+        #modal-nota-lit {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 500;
+            background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(8px);
+            display: none; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-card {
+            background: #0B132B; border: 1px solid #FF9F1C; border-radius: 14px;
+            max-width: 650px; width: 100%; padding: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;
+        }
+        .modal-card h3 { color: #FF9F1C; font-size: 1.15rem; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
+        .modal-card p { margin-bottom: 10px; }
+        .btn-close-modal {
+            margin-top: 12px; padding: 8px 20px; background: #FF9F1C; color: #080D1A;
+            border: none; border-radius: 6px; font-weight: 800; cursor: pointer; float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <!-- Cabecera HUD -->
+    <header class="lit-header">
+        <div class="brand-box">
+            <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+                <img src="assets/logo_nexord_base.png" alt="VISORD" class="brand-logo">
+            </a>
+            <div class="brand-titles">
+                <div class="brand-main">VISORD <span>Literario</span></div>
+                <div class="brand-sub">SOCIOMETRÍA CULTURAL &bull; DINÁMICA DRAMÁTICA 3D/4D</div>
+            </div>
+        </div>
+
+        <!-- Selector de Obras -->
+        <div class="work-selector">
+            <button class="btn-work active" data-work="lorca">🎭 Bernarda Alba (Lorca)</button>
+            <button class="btn-work" data-work="moscas">🪰 Las Moscas (Sartre / Golding)</button>
+            <button class="btn-work" data-work="la_ola">🌊 La Ola (Gansel)</button>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="header-nav">
+            <button class="btn-nav-lit btn-glossary" id="btn-open-nota">💡 Nota Metodológica</button>
+            <a href="glosario.html" class="btn-nav-lit btn-glossary">📖 Glosario</a>
+            <a href="index.html" class="btn-nav-lit btn-home">🏠 ← Volver al Inicio</a>
+        </div>
+    </header>
+
+    <!-- Panel Izquierdo: Contexto de la Obra y Personajes -->
+    <aside class="left-panel">
+        <div class="panel-heading">
+            <span>Contexto Dramático</span>
+            <span id="badge-corpus" style="color:#FF9F1C; font-family:monospace; font-size:0.75rem;">N = 8</span>
+        </div>
+        <div class="work-title-display" id="display-title">La Casa de Bernarda Alba</div>
+        <div class="work-author" id="display-author">Federico García Lorca &bull; Gr(4, 8)</div>
+        <div class="work-synopsis" id="display-synopsis">
+            Mapeo socio-termodinámico del encierro patriarcal y la represión matriarcal. El choque entre la tiranía moral de Bernarda Alba y la rebelión afectiva de Adela desencadena una fractura relacional de severo ostracismo que desemboca en catástrofe trágica.
+        </div>
+
+        <div class="panel-heading" style="margin-top:6px;">
+            <span>Dramatis Personae</span>
+            <span style="font-size:0.70rem; color:#94A3B8;">Clic para enfocar</span>
+        </div>
+        <div class="characters-list" id="characters-list-container">
+            <!-- Inyectado vía JS según obra seleccionada -->
+        </div>
+    </aside>
+
+    <!-- Panel Derecho: Métricas Socio-Termodinámicas -->
+    <aside class="right-panel">
+        <div class="panel-heading">
+            <span>Métricas del Drama</span>
+            <span style="color:#38BDF8;">VISORD Engine</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-k">Masa Invariante BDR:</span>
+            <span class="metric-v" id="val-lit-bdr" style="color:#FFE600;">3.30</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-k">Densidad Neta SDR:</span>
+            <span class="metric-v" id="val-lit-sdr" style="color:#00FF87;">+0.51</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-k">Variedad Grassmann:</span>
+            <span class="metric-v" id="val-lit-grassmann" style="color:#38BDF8;">d_G = 0.461 rad</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-k">Varianza Explicada F1:</span>
+            <span class="metric-v" id="val-lit-f1" style="color:#FF9F1C;">98.5%</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-k">Régimen Estructural:</span>
+            <span class="metric-v" id="val-lit-regime" style="color:#FF007F; font-size:0.75rem;">Opresión / Fractura</span>
+        </div>
+
+        <div class="panel-heading" style="margin-top:10px;">
+            <span>Leyenda de Enlaces</span>
+        </div>
+        <div style="font-size:0.75rem; color:#CBD5E1; display:flex; flex-direction:column; gap:5px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:16px; height:3px; background:#00FF87; display:inline-block; border-radius:2px; box-shadow:0 0 6px #00FF87;"></span>
+                <span>Alianza / Elección Afectiva (E)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:16px; height:3px; background:#FF007F; display:inline-block; border-radius:2px; box-shadow:0 0 6px #FF007F;"></span>
+                <span>Opresión / Rechazo / Conflicto (R)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:10px; height:10px; border-radius:50%; background:#FFE600; display:inline-block; box-shadow:0 0 6px #FFE600;"></span>
+                <span>Centroide Invariante (TtCc)</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Barra Inferior: Fases y Cámara -->
+    <div class="bottom-timeline">
+        <div class="act-pills">
+            <button class="btn-act active" data-act="1">Acto I (Exposición)</button>
+            <button class="btn-act" data-act="2">Acto II (Nudo y Tensión)</button>
+            <button class="btn-act" data-act="3">Acto III (Clímax / Catástrofe)</button>
+        </div>
+        <div class="camera-controls">
+            <button class="btn-cam" id="btn-cam-reset">🎯 Vista General</button>
+            <button class="btn-cam" id="btn-toggle-spin">🔄 Giro Auto</button>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="char-tooltip"></div>
+
+    <!-- Modal Nota Metodológica -->
+    <div id="modal-nota-lit">
+        <div class="modal-card">
+            <h3>💡 Metodología de Sociometría Teatral y Dinámica Dramática (Regla 10)</h3>
+            <p><strong>De la Escena al Espacio de Fases:</strong> La literatura y la dramaturgia clásica representan sistemas sociales cerrados gobernados por tensiones socio-termodinámicas comparables a los ecosistemas humanos empíricos.</p>
+            <p><strong>Matrices Ordinales SMIb:</strong> Las interacciones, diálogos, acotaciones escénicas y polaridades entre personajes se codifican mediante el estándar ordinal SMIb (Atracción, Neutralidad, Repulsión), permitiendo proyectar la variedad de Grassmann Gr(k, N) y los invariantes de densidad BDR/SDR en el espacio tridimensional.</p>
+            <p><strong>Corpus Validados:</strong></p>
+            <p>&bull; <em>La Casa de Bernarda Alba</em>: El confinamiento del luto genera una presión adiabática donde el vector repulsivo de Bernarda precipita la fractura y suicidio de Adela.</p>
+            <p>&bull; <em>El Señor de las Moscas</em>: Transición de fase desde la cohesión democrática inicial hacia la barbarie tribal hiper-polarizada.</p>
+            <p>&bull; <em>La Ola</em>: Sincronización coercitiva y anulación de la disidencia individual bajo un campo atractor autocrático unificado.</p>
+            <button class="btn-close-modal" id="btn-close-nota">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // DATOS DE LAS OBRAS LITERARIAS
+        // =========================================================================
+        const WORKS_DATA = {
+            lorca: {
+                title: "La Casa de Bernarda Alba",
+                author: "Federico García Lorca • Gr(4, 8)",
+                n: 8,
+                synopsis: "Mapeo socio-termodinámico del encierro patriarcal y la represión matriarcal. El choque entre la tiranía moral de Bernarda Alba y la rebelión afectiva de Adela desencadena una fractura relacional de severo ostracismo que desemboca en catástrofe trágica.",
+                bdr: "3.30", sdr: "+0.51", grassmann: "d_G = 0.461 rad", f1: "98.5%",
+                regime: "Opresión Matriarcal",
+                characters: [
+                    { id: "1", name: "Bernarda Alba", role: "Tiránica / Matriarca", coords: [-3.66, 3.14, -0.75], color: "#FF007F" },
+                    { id: "2", name: "Angustias", role: "Heredera / Sumisa", coords: [-1.21, -0.73, 0.43], color: "#38BDF8" },
+                    { id: "3", name: "Magdalena", role: "Resignada", coords: [-2.42, 1.50, 0.34], color: "#94A3B8" },
+                    { id: "4", name: "Amelia", role: "Temerosa", coords: [-1.74, -2.01, -2.45], color: "#94A3B8" },
+                    { id: "5", name: "Martirio", role: "Rivalidad / Delación", coords: [-1.94, 2.30, -0.06], color: "#FF9F1C" },
+                    { id: "6", name: "Adela", role: "Rebelión / Pasión", coords: [-1.03, -0.78, 0.59], color: "#00FF87" },
+                    { id: "7", name: "La Poncia", role: "Criada / Mediadora", coords: [-1.81, -2.11, 2.03], color: "#FFE600" },
+                    { id: "8", name: "María Josefa", role: "Locura Poética", coords: [-1.20, -0.55, 0.10], color: "#A855F7" }
+                ],
+                edges: [
+                    { src: 0, tgt: 5, type: "R" }, // Bernarda -> Adela
+                    { src: 0, tgt: 1, type: "R" }, // Bernarda -> Angustias
+                    { src: 4, tgt: 5, type: "R" }, // Martirio -> Adela
+                    { src: 5, tgt: 4, type: "R" }, // Adela -> Martirio
+                    { src: 5, tgt: 1, type: "E" }, // Adela <-> Angustias (vínculo Pepe)
+                    { src: 6, tgt: 0, type: "E" }, // Poncia -> Bernarda
+                    { src: 2, tgt: 1, type: "E" }, // Magdalena -> Angustias
+                    { src: 3, tgt: 2, type: "E" }  // Amelia -> Magdalena
+                ]
+            },
+            moscas: {
+                title: "El Señor de las Moscas",
+                author: "William Golding • Sociometría de la Barbarie",
+                n: 8,
+                synopsis: "Evolución trágica de una sociedad infantil náufraga. La polaridad entre el orden democrático racionalista (Ralph, Piggy) y la pulsión atávica cazadora (Jack, Roger) induce el colapso del contrato social y el linchamiento de los disidentes.",
+                bdr: "4.10", sdr: "+0.62", grassmann: "d_G = 0.582 rad", f1: "94.2%",
+                regime: "Fractura Tribal y Caza",
+                characters: [
+                    { id: "1", name: "Ralph", role: "Líder Democrático", coords: [-2.85, 2.10, 0.50], color: "#00FF87" },
+                    { id: "2", name: "Jack", role: "Cacique Tribal / Furia", coords: [3.40, -1.80, -0.80], color: "#FF007F" },
+                    { id: "3", name: "Piggy", role: "Razón / Víctima", coords: [-2.10, 1.40, 1.20], color: "#38BDF8" },
+                    { id: "4", name: "Simon", role: "Místico / Sacrificio", coords: [-0.50, 0.20, 2.50], color: "#FFE600" },
+                    { id: "5", name: "Roger", role: "Ejecutor Sádico", coords: [4.10, -2.50, -1.20], color: "#FF007F" },
+                    { id: "6", name: "Samneric", role: "Lealtad Coaccionada", coords: [-1.20, 0.80, -1.50], color: "#94A3B8" },
+                    { id: "7", name: "Maurice", role: "Seguidor de la tribu", coords: [2.50, -1.10, 0.20], color: "#FF9F1C" },
+                    { id: "8", name: "Littluns", role: "Masa Pasiva", coords: [0.20, -0.50, -2.10], color: "#64748B" }
+                ],
+                edges: [
+                    { src: 0, tgt: 2, type: "E" }, // Ralph <-> Piggy
+                    { src: 2, tgt: 0, type: "E" },
+                    { src: 1, tgt: 4, type: "E" }, // Jack <-> Roger
+                    { src: 4, tgt: 1, type: "E" },
+                    { src: 1, tgt: 0, type: "R" }, // Jack -> Ralph
+                    { src: 1, tgt: 2, type: "R" }, // Jack -> Piggy
+                    { src: 4, tgt: 2, type: "R" }, // Roger -> Piggy
+                    { src: 1, tgt: 3, type: "R" }  // Tribu -> Simon
+                ]
+            },
+            la_ola: {
+                title: "La Ola (Die Welle)",
+                author: "Dennis Gansel / Morton Rhue • Autocracia Escolar",
+                n: 7,
+                synopsis: "Experimento pedagógico sobre la seducción del fascismo y la uniformidad. En una sola semana, el grupo desarrolla una identidad corporativa agresiva ('Poder mediante la disciplina'), segregando brutalmente a los disidentes.",
+                bdr: "3.80", sdr: "+0.74", grassmann: "d_G = 0.512 rad", f1: "91.8%",
+                regime: "Cohesión Fascistoide",
+                characters: [
+                    { id: "1", name: "Rainer Wenger", role: "Profesor / Líder", coords: [0.00, 3.20, 0.00], color: "#FF9F1C" },
+                    { id: "2", name: "Karo", role: "Disidente / Resistencia", coords: [-3.80, -2.10, 1.20], color: "#FF007F" },
+                    { id: "3", name: "Dennis", role: "Guardia / Cohesión", coords: [1.80, 1.50, 0.80], color: "#00FF87" },
+                    { id: "4", name: "Marco", role: "Dilema Moral / Co-Líder", coords: [-0.90, 0.50, 1.80], color: "#38BDF8" },
+                    { id: "5", name: "Tim", role: "Fanático Radical Armado", coords: [2.50, 2.80, -1.20], color: "#FF007F" },
+                    { id: "6", name: "Sinan", role: "Adherente Ferviente", coords: [2.10, 0.20, -0.60], color: "#00FF87" },
+                    { id: "7", name: "Lisa", role: "Observadora Integrada", coords: [-1.50, 1.10, -1.80], color: "#94A3B8" }
+                ],
+                edges: [
+                    { src: 0, tgt: 2, type: "E" }, // Wenger -> Dennis
+                    { src: 4, tgt: 0, type: "E" }, // Tim -> Wenger (devoción extrema)
+                    { src: 2, tgt: 5, type: "E" }, // Dennis <-> Sinan
+                    { src: 0, tgt: 1, type: "R" }, // La Ola -> Karo (rechazo a la disidente)
+                    { src: 4, tgt: 1, type: "R" }, // Tim -> Karo
+                    { src: 3, tgt: 1, type: "E" }, // Marco <-> Karo (tensión de pareja)
+                    { src: 4, tgt: 0, type: "R" }  // Tim desenlace trágico
+                ]
+            }
+        };
+
+        // =========================================================================
+        // MOTOR GRÁFICO THREE.JS
+        // =========================================================================
+        let scene, camera, renderer, controls;
+        let activeWorkKey = 'lorca';
+        let isSpinning = false;
+        const subjectMeshes = [];
+        const edgeObjects = [];
+        const container = document.getElementById('canvas-container');
+        const tooltip = document.getElementById('char-tooltip');
+
+        function makeSprite(text, colorStr) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 256; canvas.height = 128;
+            ctx.font = "bold 32px 'Inter', sans-serif";
+            ctx.fillStyle = colorStr;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(text, 128, 64);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const mat = new THREE.SpriteMaterial({ map: texture, transparent: true });
+            const sprite = new THREE.Sprite(mat);
+            sprite.scale.set(3.0, 1.5, 1.0);
+            return sprite;
+        }
+
+        function initScene() {
+            const w = container.clientWidth || window.innerWidth;
+            const h = container.clientHeight || window.innerHeight;
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x080D1A);
+            scene.fog = new THREE.FogExp2(0x080D1A, 0.035);
+
+            camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+            camera.position.set(0, 3, 16);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(w, h);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+
+            // Iluminación
+            scene.add(new THREE.AmbientLight(0xFFFFFF, 0.75));
+            const pLight1 = new THREE.PointLight(0xFF9F1C, 2.0, 50);
+            pLight1.position.set(10, 15, 10);
+            scene.add(pLight1);
+            const pLight2 = new THREE.PointLight(0x00FF87, 1.5, 50);
+            pLight2.position.set(-10, -10, -10);
+            scene.add(pLight2);
+
+            // Rejilla de referencia sutil
+            const grid = new THREE.GridHelper(20, 20, 0x1E293B, 0x0F172A);
+            grid.position.y = -4;
+            scene.add(grid);
+
+            // Cargar obra inicial
+            loadWork(activeWorkKey);
+
+            // Eventos
+            window.addEventListener('resize', onResize);
+            setupUI();
+            setupRaycaster();
+        }
+
+        function clearWork() {
+            subjectMeshes.forEach(obj => {
+                scene.remove(obj.mesh);
+                scene.remove(obj.sprite);
+            });
+            subjectMeshes.length = 0;
+
+            edgeObjects.forEach(edge => {
+                scene.remove(edge);
+            });
+            edgeObjects.length = 0;
+        }
+
+        function loadWork(workKey) {
+            clearWork();
+            activeWorkKey = workKey;
+            const data = WORKS_DATA[workKey];
+
+            // Actualizar interfaz lateral
+            document.getElementById('display-title').textContent = data.title;
+            document.getElementById('display-author').textContent = data.author;
+            document.getElementById('display-synopsis').textContent = data.synopsis;
+            document.getElementById('badge-corpus').textContent = `N = ${data.n}`;
+            document.getElementById('val-lit-bdr').textContent = data.bdr;
+            document.getElementById('val-lit-sdr').textContent = data.sdr;
+            document.getElementById('val-lit-grassmann').textContent = data.grassmann;
+            document.getElementById('val-lit-f1').textContent = data.f1;
+            document.getElementById('val-lit-regime').textContent = data.regime;
+
+            // Renderizar lista de personajes
+            const charContainer = document.getElementById('characters-list-container');
+            charContainer.innerHTML = '';
+            data.characters.forEach((char, idx) => {
+                const row = document.createElement('div');
+                row.className = 'char-item';
+                row.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="width:8px; height:8px; border-radius:50%; background:${char.color};"></span>
+                        <span class="char-name">${char.name}</span>
+                    </div>
+                    <span class="char-role-badge">${char.role}</span>
+                `;
+                row.addEventListener('click', () => {
+                    focusCharacter(idx);
+                });
+                charContainer.appendChild(row);
+            });
+
+            // Geometría de personajes
+            const sphereGeo = new THREE.SphereGeometry(0.55, 32, 32);
+            data.characters.forEach((char, idx) => {
+                const mat = new THREE.MeshStandardMaterial({
+                    color: char.color, emissive: char.color,
+                    emissiveIntensity: 0.45, roughness: 0.2, metalness: 0.4
+                });
+                const mesh = new THREE.Mesh(sphereGeo, mat);
+                mesh.position.set(char.coords[0], char.coords[1], char.coords[2]);
+                mesh.userData = { ...char, index: idx };
+                scene.add(mesh);
+
+                const sprite = makeSprite(char.name, char.color);
+                sprite.position.copy(mesh.position).add(new THREE.Vector3(0, 0.85, 0));
+                scene.add(sprite);
+
+                subjectMeshes.push({ mesh, sprite, data: char });
+            });
+
+            // Enlaces diádicos
+            data.edges.forEach(edge => {
+                const c1 = data.characters[edge.src];
+                const c2 = data.characters[edge.tgt];
+                if (!c1 || !c2) return;
+
+                const isE = edge.type === "E";
+                const col = isE ? 0x00FF87 : 0xFF007F;
+                const points = [
+                    new THREE.Vector3(c1.coords[0], c1.coords[1], c1.coords[2]),
+                    new THREE.Vector3(c2.coords[0], c2.coords[1], c2.coords[2])
+                ];
+                const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                const lineMat = new THREE.LineBasicMaterial({
+                    color: col, transparent: true, opacity: isE ? 0.75 : 0.85,
+                    linewidth: isE ? 1 : 2
+                });
+                const line = new THREE.Line(lineGeo, lineMat);
+                scene.add(line);
+                edgeObjects.push(line);
+            });
+
+            // Animar cámara a posición centrada
+            controls.target.set(0, 0, 0);
+            camera.position.set(0, 2, 14);
+        }
+
+        function focusCharacter(index) {
+            const item = subjectMeshes[index];
+            if (!item) return;
+            const targetPos = item.mesh.position;
+            controls.target.copy(targetPos);
+            camera.position.set(targetPos.x, targetPos.y + 1, targetPos.z + 5);
+        }
+
+        function onResize() {
+            const w = container.clientWidth || window.innerWidth;
+            const h = container.clientHeight || window.innerHeight;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        }
+
+        function setupRaycaster() {
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+                const meshesOnly = subjectMeshes.map(s => s.mesh);
+                const intersects = raycaster.intersectObjects(meshesOnly);
+
+                if (intersects.length > 0) {
+                    const hit = intersects[0].object;
+                    const charData = hit.userData;
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = (e.clientX + 14) + 'px';
+                    tooltip.style.top = (e.clientY + 14) + 'px';
+                    tooltip.style.borderColor = charData.color;
+                    tooltip.innerHTML = `
+                        <strong style="color:${charData.color}; font-size:0.90rem;">${charData.name}</strong><br>
+                        <span style="color:#94A3B8;">${charData.role}</span><br>
+                        <span style="font-family:monospace; font-size:0.72rem; color:#38BDF8;">Pos: (${charData.coords.join(', ')})</span>
+                    `;
+                } else {
+                    tooltip.style.display = 'none';
+                }
+            });
+        }
+
+        function setupUI() {
+            // Selector de obras
+            document.querySelectorAll('.btn-work').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.btn-work').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadWork(btn.getAttribute('data-work'));
+                });
+            });
+
+            // Selector de actos (modula opacidades y tensiones)
+            document.querySelectorAll('.btn-act').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.btn-act').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const act = parseInt(btn.getAttribute('data-act'));
+                    edgeObjects.forEach((line, idx) => {
+                        line.visible = (act === 1) ? (idx % 2 === 0) : true;
+                    });
+                });
+            });
+
+            // Botones de cámara
+            document.getElementById('btn-cam-reset').addEventListener('click', () => {
+                controls.target.set(0, 0, 0);
+                camera.position.set(0, 2, 14);
+            });
+            document.getElementById('btn-toggle-spin').addEventListener('click', () => {
+                isSpinning = !isSpinning;
+                document.getElementById('btn-toggle-spin').textContent = isSpinning ? '⏹ Detener Giro' : '🔄 Giro Auto';
+            });
+
+            // Modal Nota
+            const modal = document.getElementById('modal-nota-lit');
+            document.getElementById('btn-open-nota').addEventListener('click', () => modal.style.display = 'flex');
+            document.getElementById('btn-close-nota').addEventListener('click', () => modal.style.display = 'none');
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+        }
+
+        // Bucle de renderizado
+        function animate() {
+            requestAnimationFrame(animate);
+            if (isSpinning) {
+                scene.rotation.y += 0.003;
+            }
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('load', () => {
+            initScene();
+            animate();
+        });
+    </script>
+</body>
+</html>

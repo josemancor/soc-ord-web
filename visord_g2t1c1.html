@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VISORD 3D — Caso Empírico G2T1C1 (Psicothema 2026)</title>
-    <meta name="description" content="Visualizador 3D/4D Interactivo del Caso Empírico G2T1C1 (Psicothema 2026). Plataforma NEXORD / VISORD.">
+    <title>VISORD 3D &bull; Dossier General del Caso Empírico G2T1C1 (Ventana Única)</title>
+    <meta name="description" content="Visualizador 3D/4D Interactivo del Dossier General del Caso Empírico G2T1C1. Dinámica Socio-Termodinámica, Red de Elecciones/Rechazos, Informes Individuales, Grupales, Síntesis y Galería Gráfica de Inter-Proximidades DA RECIBE. Plataforma NEXORD / VISORD.">
     <link rel="stylesheet" href="styles.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,38 +21,45 @@
             z-index: 1;
         }
 
-        /* Cabecera Superior */
+        /* Cabecera HUD Superior */
         header.hud-header {
             position: absolute; top: 12px; left: 14px; right: 14px; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(11, 19, 43, 0.85); backdrop-filter: blur(12px);
+            background: rgba(11, 19, 43, 0.90); backdrop-filter: blur(14px);
             border: 1px solid rgba(0, 255, 135, 0.25); border-radius: 12px;
-            padding: 10px 18px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            padding: 10px 18px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
         }
         .brand-left {
             display: flex; align-items: center; gap: 12px;
         }
         .brand-title {
-            font-size: 1.15rem; font-weight: 800; letter-spacing: 1px; color: #FFFFFF;
+            font-size: 1.15rem; font-weight: 800; letter-spacing: 0.8px; color: #FFFFFF;
         }
-        .brand-title span {
-            color: #00FF87;
-        }
+        .brand-title span { color: #00FF87; }
         .brand-sub {
-            font-size: 0.75rem; color: #94A3B8; font-family: monospace; letter-spacing: 0.5px;
+            font-size: 0.74rem; color: #94A3B8; font-family: monospace; letter-spacing: 0.5px;
         }
         .header-actions {
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
         }
         .btn-action {
             display: inline-flex; align-items: center; gap: 6px;
-            padding: 7px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+            padding: 7px 13px; border-radius: 8px; font-size: 0.80rem; font-weight: 700;
             text-decoration: none; cursor: pointer; transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #F1F5F9; background: rgba(255, 255, 255, 0.08);
         }
         .btn-action:hover {
             background: rgba(255, 255, 255, 0.18); transform: translateY(-1px);
+        }
+        .btn-dossier {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(0, 162, 255, 0.45));
+            border: 1px solid #38BDF8; color: #38BDF8; box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+            font-weight: 800;
+        }
+        .btn-dossier:hover {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.55), rgba(0, 162, 255, 0.65));
+            color: #FFFFFF; box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
         }
         .btn-portal {
             background: linear-gradient(135deg, #00A2FF, #0055FF);
@@ -64,82 +71,13 @@
             box-shadow: 0 4px 15px rgba(0, 162, 255, 0.5);
         }
 
-        /* Panel Lateral de Métricas */
-        aside.metrics-panel {
-            position: absolute; bottom: 16px; right: 14px; z-index: 100;
-            width: 320px; max-width: 90vw;
-            background: rgba(11, 19, 43, 0.88); backdrop-filter: blur(12px);
-            border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px;
-            padding: 14px 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            font-size: 0.82rem;
-        }
-        .panel-title {
-            font-size: 0.82rem; font-weight: 800; color: #38BDF8; letter-spacing: 1px;
-            text-transform: uppercase; margin-bottom: 10px; display: flex; justify-content: space-between;
-        }
-        .metric-row {
-            display: flex; justify-content: space-between; margin-bottom: 6px;
-            padding-bottom: 4px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .metric-label { color: #CBD5E1; }
-        .metric-val { font-weight: 700; font-family: monospace; }
-        .val-g1 { color: #00FF87; }
-        .val-g2 { color: #FF007F; }
-        .val-gold { color: #FFE600; }
-
-        /* Panel de Controles de Cámara / Capas */
-        aside.controls-panel {
-            position: absolute; bottom: 16px; left: 14px; z-index: 100;
-            display: flex; flex-direction: column; gap: 8px;
-        }
-        .btn-ctrl {
-            padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700;
-            background: rgba(11, 19, 43, 0.85); backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15); color: #E2E8F0;
-            cursor: pointer; transition: all 0.15s ease;
-        }
-        .btn-ctrl:hover {
-            background: rgba(30, 41, 59, 0.9); border-color: #38BDF8; color: #38BDF8;
-        }
-
-        /* Tooltip de Nodo */
-        #node-tooltip {
-            position: absolute; display: none; z-index: 200; pointer-events: none;
-            background: rgba(11, 19, 43, 0.95); backdrop-filter: blur(8px);
-            border: 1px solid #00FF87; border-radius: 8px;
-            padding: 10px 14px; font-size: 0.8rem; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            max-width: 260px; line-height: 1.4;
-        }
-        #node-tooltip.g2 { border-color: #FF007F; }
-        #node-tooltip.ostracismo { border-color: #FF007F; box-shadow: 0 0 15px rgba(255, 0, 127, 0.4); }
-
-        /* Nota Explicativa Modal */
-        #modal-nota {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 300;
-            background: rgba(3, 7, 18, 0.75); backdrop-filter: blur(6px);
-            display: none; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-card {
-            background: #0B132B; border: 1px solid #38BDF8; border-radius: 14px;
-            max-width: 650px; width: 100%; padding: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            font-size: 0.9rem; line-height: 1.6; color: #E2E8F0;
-        }
-        .modal-card h3 {
-            color: #00FF87; font-size: 1.15rem; margin-bottom: 12px;
-        }
-        .modal-card p { margin-bottom: 12px; }
-        .modal-card strong { color: #FFFFFF; }
-        .btn-close-modal {
-            margin-top: 14px; padding: 8px 20px; background: #38BDF8; color: #0B132B;
-            border: none; border-radius: 6px; font-weight: 800; cursor: pointer; float: right;
-        }
-
-        /* Leyenda de Color */
+        /* Barra Superior de Leyenda */
         .legend-bar {
-            position: absolute; top: 76px; left: 14px; z-index: 90;
-            display: flex; gap: 14px; background: rgba(11, 19, 43, 0.8); backdrop-filter: blur(8px);
-            padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.75rem; font-weight: 600;
+            position: absolute; top: 74px; left: 14px; z-index: 90;
+            display: flex; gap: 14px; align-items: center;
+            background: rgba(11, 19, 43, 0.85); backdrop-filter: blur(10px);
+            padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.74rem; font-weight: 600; flex-wrap: wrap;
         }
         .legend-item { display: flex; align-items: center; gap: 6px; }
         .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
@@ -147,6 +85,390 @@
         .dot-g2 { background: #FF007F; box-shadow: 0 0 8px #FF007F; }
         .dot-cent { background: #FFE600; box-shadow: 0 0 8px #FFE600; }
         .dot-ost { background: #FF007F; border: 2px solid #FFFFFF; box-shadow: 0 0 12px #FF007F; }
+        .line-sample-e { width: 18px; height: 3px; background: #00FF87; box-shadow: 0 0 6px #00FF87; display: inline-block; border-radius: 2px; }
+        .line-sample-r { width: 18px; height: 3px; background: #FF007F; box-shadow: 0 0 6px #FF007F; display: inline-block; border-radius: 2px; }
+
+        /* Panel de Controles Izquierdo */
+        aside.controls-panel {
+            position: absolute; bottom: 100px; left: 14px; z-index: 100;
+            display: flex; flex-direction: column; gap: 7px;
+        }
+        .btn-ctrl {
+            padding: 7px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700;
+            background: rgba(11, 19, 43, 0.88); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15); color: #E2E8F0;
+            cursor: pointer; transition: all 0.15s ease; text-align: left;
+        }
+        .btn-ctrl:hover {
+            background: rgba(30, 41, 59, 0.95); border-color: #38BDF8; color: #38BDF8;
+        }
+        .btn-ctrl.active {
+            border-color: #00FF87; color: #00FF87; background: rgba(0, 255, 135, 0.12);
+        }
+
+        /* Panel Lateral Derecho de Métricas Dinámicas */
+        aside.metrics-panel {
+            position: absolute; bottom: 100px; right: 14px; z-index: 100;
+            width: 320px; max-width: 90vw;
+            background: rgba(11, 19, 43, 0.90); backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px;
+            padding: 12px 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            font-size: 0.80rem;
+        }
+        .panel-title {
+            font-size: 0.80rem; font-weight: 800; color: #38BDF8; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between;
+        }
+        .metric-row {
+            display: flex; justify-content: space-between; margin-bottom: 5px;
+            padding-bottom: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .metric-label { color: #CBD5E1; }
+        .metric-val { font-weight: 700; font-family: monospace; }
+        .val-g1 { color: #00FF87; }
+        .val-g2 { color: #FF007F; }
+        .val-gold { color: #FFE600; }
+        .val-cyan { color: #38BDF8; }
+
+        /* 🎛️ BARRA INFERIOR FLOTANTE DE LA MOVIOLA (TIMELINE) */
+        .moviola-bar {
+            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+            z-index: 150; width: 720px; max-width: 95vw;
+            background: rgba(11, 19, 43, 0.92); backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 135, 0.35); border-radius: 14px;
+            padding: 10px 18px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .moviola-top {
+            display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .group-selector {
+            display: flex; gap: 6px; background: rgba(255, 255, 255, 0.06);
+            padding: 3px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-group-mode {
+            padding: 5px 12px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;
+            background: transparent; border: none; color: #94A3B8; cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-group-mode:hover { color: #FFFFFF; }
+        .btn-group-mode.active {
+            background: rgba(56, 189, 248, 0.25); color: #FFFFFF;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+        .btn-group-mode.active.g1 {
+            background: rgba(0, 255, 135, 0.2); color: #00FF87; border-color: #00FF87;
+        }
+        .btn-group-mode.active.g2 {
+            background: rgba(255, 0, 127, 0.2); color: #FF007F; border-color: #FF007F;
+        }
+
+        .moviola-controls {
+            display: flex; align-items: center; gap: 10px; width: 100%;
+        }
+        .btn-play-pause, .btn-reset-t {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF; width: 34px; height: 34px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            font-size: 0.95rem; transition: all 0.2s ease; flex-shrink: 0;
+        }
+        .btn-play-pause:hover, .btn-reset-t:hover {
+            background: rgba(0, 255, 135, 0.25); border-color: #00FF87; color: #00FF87;
+        }
+        .time-slider-wrap {
+            display: flex; align-items: center; gap: 10px; flex-grow: 1;
+        }
+        #timeline-slider {
+            flex-grow: 1; height: 6px; border-radius: 3px;
+            background: #1E293B; outline: none; cursor: pointer; accent-color: #00FF87;
+        }
+        .time-badge {
+            font-family: monospace; font-size: 0.85rem; font-weight: 800;
+            color: #00FF87; min-width: 58px; text-align: right;
+        }
+
+        .moviola-narrative {
+            font-size: 0.76rem; color: #CBD5E1; display: flex; align-items: center;
+            justify-content: space-between; gap: 10px; padding-top: 2px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .phase-pill {
+            font-weight: 800; font-size: 0.70rem; padding: 2px 8px; border-radius: 12px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .phase-base { background: rgba(148, 163, 184, 0.2); color: #94A3B8; }
+        .phase-e { background: rgba(0, 255, 135, 0.2); color: #00FF87; border: 1px solid rgba(0, 255, 135, 0.4); }
+        .phase-r { background: rgba(255, 0, 127, 0.2); color: #FF007F; border: 1px solid rgba(255, 0, 127, 0.4); }
+        .phase-top { background: rgba(56, 189, 248, 0.2); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.4); }
+
+        /* Tooltip de Nodo */
+        #node-tooltip {
+            position: absolute; display: none; z-index: 200; pointer-events: auto;
+            background: rgba(11, 19, 43, 0.95); backdrop-filter: blur(10px);
+            border: 1px solid #00FF87; border-radius: 8px;
+            padding: 10px 14px; font-size: 0.78rem; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            max-width: 290px; line-height: 1.4;
+        }
+        #node-tooltip.g2 { border-color: #FF007F; }
+        #node-tooltip.ostracismo { border-color: #FF007F; box-shadow: 0 0 18px rgba(255, 0, 127, 0.5); }
+
+        /* Modal: Nota Explicativa (Regla 10) */
+        #modal-nota {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 300;
+            background: rgba(3, 7, 18, 0.80); backdrop-filter: blur(6px);
+            display: none; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-card {
+            background: #0B132B; border: 1px solid #38BDF8; border-radius: 14px;
+            max-width: 650px; width: 100%; padding: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            font-size: 0.88rem; line-height: 1.6; color: #E2E8F0;
+        }
+        .modal-card h3 { color: #00FF87; font-size: 1.15rem; margin-bottom: 12px; }
+        .modal-card p { margin-bottom: 12px; }
+        .modal-card strong { color: #FFFFFF; }
+        .btn-close-modal {
+            margin-top: 10px; padding: 8px 20px; background: #38BDF8; color: #0B132B;
+            border: none; border-radius: 6px; font-weight: 800; cursor: pointer; float: right;
+        }
+
+        /* 📋 MODAL/DRAWER: DOSSIER GENERAL • ESTUDIO DE CASO EMPÍRICO G2T1C1 */
+        #modal-dossier {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 400;
+            background: rgba(3, 7, 18, 0.90); backdrop-filter: blur(12px);
+            display: none; align-items: center; justify-content: center; padding: 16px;
+        }
+        .dossier-window {
+            background: #0E162F; border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 16px; width: 1240px; max-width: 96vw; height: 92vh;
+            display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+        }
+        .dossier-header {
+            padding: 12px 22px; background: rgba(11, 19, 43, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .dossier-title {
+            font-size: 1.1rem; font-weight: 800; color: #FFFFFF; display: flex; align-items: center; gap: 10px;
+        }
+        .dossier-title span { color: #38BDF8; font-size: 0.82rem; font-weight: 600; }
+        .btn-close-dossier {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF; width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; font-weight: bold; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .btn-close-dossier:hover { background: #FF007F; border-color: #FF007F; }
+
+        .dossier-nav-tabs {
+            display: flex; gap: 8px; padding: 10px 22px; background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); overflow-x: auto;
+        }
+        .dossier-tab-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94A3B8; padding: 7px 15px; border-radius: 8px; font-size: 0.80rem;
+            font-weight: 700; cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+        }
+        .dossier-tab-btn:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.1); }
+        .dossier-tab-btn.active {
+            background: #38BDF8; color: #0B132B; border-color: #38BDF8; font-weight: 800;
+        }
+
+        .dossier-body {
+            flex-grow: 1; overflow-y: auto; padding: 20px;
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .dossier-content-panel { display: none; }
+        .dossier-content-panel.active { display: block; }
+
+        /* Sub-pestañas de Tablas 1-10 */
+        .tables-subnav, .subjects-subnav {
+            display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px;
+            background: rgba(11, 19, 43, 0.6); padding: 8px; border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .btn-tbl-nav, .btn-sub-pill {
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #CBD5E1; padding: 5px 11px; border-radius: 6px; font-size: 0.75rem;
+            font-weight: 700; cursor: pointer; transition: all 0.15s ease;
+        }
+        .btn-tbl-nav:hover, .btn-sub-pill:hover { background: rgba(255, 255, 255, 0.12); color: #FFFFFF; }
+        .btn-tbl-nav.active {
+            background: rgba(0, 255, 135, 0.2); border-color: #00FF87; color: #00FF87;
+        }
+        .btn-sub-pill.active {
+            background: rgba(56, 189, 248, 0.25); border-color: #38BDF8; color: #FFFFFF;
+        }
+        .btn-sub-pill.active.alert-sub {
+            background: rgba(255, 0, 127, 0.25); border-color: #FF007F; color: #FF007F; font-weight: 800;
+        }
+
+        .table-view-card {
+            background: rgba(11, 19, 43, 0.7); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; padding: 18px;
+        }
+        .table-view-header {
+            margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .table-view-title { font-size: 0.96rem; font-weight: 800; color: #00FF87; }
+        .table-view-subtitle { font-size: 0.76rem; color: #94A3B8; margin-top: 3px; font-family: monospace; }
+        .table-responsive { overflow-x: auto; margin-bottom: 14px; }
+        .html-dossier-table {
+            width: 100%; border-collapse: collapse; font-size: 0.78rem; text-align: center;
+        }
+        .html-dossier-table th {
+            background: #1E293B; color: #38BDF8; padding: 8px 10px; border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+        }
+        .html-dossier-table td {
+            padding: 6px 8px; border: 1px solid rgba(255, 255, 255, 0.06); color: #F1F5F9;
+        }
+        .html-dossier-table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+        .badge-sub { font-weight: 800; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; }
+        .badge-g1 { background: rgba(0, 255, 135, 0.2); color: #00FF87; border: 1px solid rgba(0, 255, 135, 0.4); }
+        .badge-g2 { background: rgba(255, 0, 127, 0.2); color: #FF007F; border: 1px solid rgba(255, 0, 127, 0.4); }
+        .badge-alert { background: rgba(255, 0, 127, 0.3); color: #FF007F; border: 1px solid #FF007F; font-weight: 900; }
+
+        .dossier-note {
+            background: rgba(254, 252, 232, 0.06); border: 1px solid rgba(234, 179, 8, 0.3);
+            border-left: 4px solid #EAB308; border-radius: 6px; padding: 10px 14px;
+            font-size: 0.78rem; line-height: 1.5; color: #FEF08A; margin-top: 10px;
+        }
+        .dossier-note strong { color: #FFE600; }
+
+        /* Visor Embebido Iframe */
+        .embedded-report-viewer {
+            display: none; flex-direction: column; background: #0B132B; border: 1px solid #38BDF8;
+            border-radius: 10px; overflow: hidden; margin-top: 14px;
+        }
+        .viewer-header {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #1E293B; padding: 8px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .viewer-title { font-size: 0.85rem; font-weight: 800; color: #38BDF8; }
+        .viewer-iframe { width: 100%; height: 580px; border: none; background: #0b0e14; }
+
+        /* Galería de Figuras en Dossier */
+        .figures-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;
+        }
+        .figure-card {
+            background: rgba(11, 19, 43, 0.8); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
+            transition: all 0.2s ease; cursor: pointer; position: relative;
+        }
+        .figure-card:hover {
+            border-color: #38BDF8; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .figure-card.featured-card {
+            border: 2px solid #00FF87; box-shadow: 0 0 20px rgba(0, 255, 135, 0.25);
+        }
+        .featured-tag {
+            position: absolute; top: 10px; right: 10px; background: #00FF87; color: #0B132B;
+            font-weight: 800; font-size: 0.70rem; padding: 3px 8px; border-radius: 6px; z-index: 10;
+        }
+        .figure-img-wrap {
+            height: 180px; overflow: hidden; background: #000000; position: relative;
+        }
+        .figure-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;
+        }
+        .figure-card:hover .figure-img-wrap img { transform: scale(1.05); }
+        .figure-card-info { padding: 12px 14px; flex-grow: 1; }
+        .figure-card-title { font-size: 0.85rem; font-weight: 800; color: #FFFFFF; margin-bottom: 4px; }
+        .figure-card-desc { font-size: 0.74rem; color: #94A3B8; line-height: 1.4; }
+
+        /* Lightbox para Figuras */
+        #lightbox-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 500;
+            background: rgba(3, 7, 18, 0.95); backdrop-filter: blur(12px);
+            display: none; align-items: center; justify-content: center; padding: 30px;
+        }
+        #lightbox-img {
+            max-width: 90vw; max-height: 85vh; border-radius: 8px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9); border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        #lightbox-caption {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(11, 19, 43, 0.85); padding: 8px 18px; border-radius: 20px;
+            font-size: 0.82rem; color: #FFFFFF; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        #lightbox-close {
+            position: absolute; top: 20px; right: 25px; font-size: 1.8rem;
+            color: #FFFFFF; cursor: pointer; font-weight: bold;
+        }
+    
+        /* MENÚ SUPERIOR INTEGRADO DE VISTAS (VENTANA ÚNICA) */
+        .hud-nav-views {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(15, 23, 42, 0.75);
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            flex-wrap: wrap;
+        }
+        .nav-view-btn {
+            background: transparent;
+            border: none;
+            color: #94A3B8;
+            padding: 7px 13px;
+            border-radius: 7px;
+            font-size: 0.80rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav-view-btn:hover {
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .nav-view-btn.active {
+            background: rgba(0, 255, 135, 0.2);
+            color: #00FF87;
+            border: 1px solid rgba(0, 255, 135, 0.4);
+            box-shadow: 0 0 12px rgba(0, 255, 135, 0.25);
+        }
+        .nav-view-btn.btn-home-link {
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: #38BDF8;
+        }
+        .nav-view-btn.btn-home-link:hover {
+            background: rgba(56, 189, 248, 0.25);
+            color: #FFFFFF;
+        }
+
+        /* 🗂️ WORKSPACE ANALÍTICO INTEGRADO (MISMA VENTANA) */
+        .analytical-workspace {
+            position: fixed;
+            top: 68px;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            background: rgba(11, 19, 43, 0.97);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 14px;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.85);
+            z-index: 200;
+            overflow-y: auto;
+            padding: 24px;
+        }
+        .analytical-subview {
+            display: none;
+            width: 100%;
+        }
+        .analytical-subview.active {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
@@ -157,102 +479,629 @@
     <!-- 👑 Cabecera HUD -->
     <header class="hud-header">
         <div class="brand-left">
-            <div>
-                <div class="brand-title">VISORD <span>3D</span> &bull; Caso Empírico G2T1C1</div>
-                <div class="brand-sub">PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026</div>
+            <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+                <img src="assets/logo_nexord_base.png" alt="VISORD Logo" class="brand-logo" style="max-height: 38px; border-radius: 6px;">
+            </a>
+            <div class="brand-titles">
+                <div class="brand-title">VISORD <span>3D</span> &bull; Dossier General G2T1C1</div>
+                <div class="brand-sub">PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | CASO EMPÍRICO CANÓNICO (N=10)</div>
             </div>
         </div>
+
+        <!-- MENÚ SUPERIOR INTEGRADO DE VISTAS (EN LA MISMA VENTANA) -->
+        <nav class="hud-nav-views" id="hud-nav-views">
+            <button class="nav-view-btn active" data-view="view-3d">🌐 Proyección 3D</button>
+            <button class="nav-view-btn" data-view="view-tablas">📊 Tablas Canónicas</button>
+            <button class="nav-view-btn" data-view="view-graficos">🎨 Galería Gráfica</button>
+            <button class="nav-view-btn" data-view="view-individuales">👤 Informes Individuales</button>
+            <button class="nav-view-btn" data-view="view-grupales">👥 Informes de Grupo</button>
+            <button class="nav-view-btn" data-view="view-sintesis">⚖️ Síntesis Comparativa</button>
+            <a href="index.html" class="nav-view-btn btn-home-link">🏠 ← Volver al Inicio</a>
+        </nav>
+
         <div class="header-actions">
-            <a href="suite_g2t1c1.html" data-i18n="vis_btn_suite" class="btn-action" style="background: rgba(56, 189, 248, 0.15); border-color: #38BDF8; color: #38BDF8; text-decoration: none;">📊 Suite Diagnóstica (Tablas &amp; Gráficos)</a>
             <button class="btn-action" id="btn-open-nota">💡 Nota Explicativa</button>
-            <a href="index.html" data-i18n="vis_btn_portal" class="btn-action btn-portal" id="btn-link-portal">🌐 Web Principal</a>
-            <!-- SELECTOR INTERNACIONAL DE 8 IDIOMAS -->
-            <div class="lang-picker" id="nexord-lang-picker">
-                <button class="lang-picker-btn" id="lang-picker-btn" type="button" aria-label="Seleccionar Idioma">
-                    <span class="lang-flag" id="lang-current-flag">🇪🇸</span>
-                    <span class="lang-code" id="lang-current-code">ES</span>
-                    <span class="lang-arrow">▾</span>
-                </button>
-                <div class="lang-dropdown" id="lang-dropdown">
-                    <button type="button" class="lang-opt active" data-lang="es"><span class="lang-flag">🇪🇸</span> Español <span class="lang-short">ES</span></button>
-                    <button type="button" class="lang-opt" data-lang="en"><span class="lang-flag">🇬🇧</span> English <span class="lang-short">EN</span></button>
-                    <button type="button" class="lang-opt" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français <span class="lang-short">FR</span></button>
-                    <button type="button" class="lang-opt" data-lang="it"><span class="lang-flag">🇮🇹</span> Italiano <span class="lang-short">IT</span></button>
-                    <button type="button" class="lang-opt" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-short">DE</span></button>
-                    <button type="button" class="lang-opt" data-lang="pt"><span class="lang-flag">🇵🇹</span> Português <span class="lang-short">PT</span></button>
-                    <button type="button" class="lang-opt" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский <span class="lang-short">RU</span></button>
-                    <button type="button" class="lang-opt" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文 <span class="lang-short">ZH</span></button>
-                </div>
-            </div>
         </div>
     </header>
 
-    <!-- 🏷️ Leyenda de Colores -->
+    <!-- 🏷️ Leyenda de Colores y Conexiones -->
     <div class="legend-bar">
-        <div class="legend-item"><span class="legend-dot dot-g1"></span> Grupo A (G1: Cohesión)</div>
-        <div class="legend-item"><span class="legend-dot dot-g2"></span> Grupo B (G2: Conflicto)</div>
+        <div class="legend-item"><span class="legend-dot dot-g1"></span> Grupo 1 (Cohesión)</div>
+        <div class="legend-item"><span class="legend-dot dot-g2"></span> Grupo 2 (Fricción)</div>
         <div class="legend-item"><span class="legend-dot dot-ost"></span> 5B1a (Ostracismo)</div>
         <div class="legend-item"><span class="legend-dot dot-cent"></span> Centroides (1g1t1c, 2g1t1c)</div>
+        <div class="legend-item"><span class="line-sample-e"></span> Elecciones (E)</div>
+        <div class="legend-item"><span class="line-sample-r"></span> Rechazos (R)</div>
     </div>
 
-    <!-- 🕹️ Controles de Cámara -->
+    <!-- 🕹️ Panel de Controles Izquierdo -->
     <aside class="controls-panel">
         <button class="btn-ctrl" id="btn-reset-cam">🎯 Centrar Cámara</button>
-        <button class="btn-ctrl" id="btn-toggle-vectors">📐 Alternar Vectores</button>
+        <button class="btn-ctrl active" id="btn-toggle-e">🟢 Conexiones Elección (E)</button>
+        <button class="btn-ctrl active" id="btn-toggle-r">🔴 Conexiones Rechazo (R)</button>
+        <button class="btn-ctrl" id="btn-toggle-vectors">📐 Vectores a Centroide</button>
         <button class="btn-ctrl" id="btn-toggle-grassmann">🌐 Subespacio Grassmann</button>
     </aside>
 
-    <!-- 📊 Panel de Métricas Socio-Termodinámicas -->
+    <!-- 📊 Panel de Métricas Socio-Termodinámicas Dinámicas -->
     <aside class="metrics-panel">
         <div class="panel-title">
             <span>Socio-Termodinámica</span>
-            <span style="color:#00FF87;">N = 10</span>
+            <span id="metric-n-badge" style="color:#00FF87;">N = 10</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Tiempo Dinámico t:</span>
+            <span class="metric-val val-cyan" id="metric-t">1.00</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">Masa Invariante BDR̄:</span>
-            <span class="metric-val val-gold">8,00</span>
+            <span class="metric-val val-gold" id="metric-bdr">8,00</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">SDR G1 (Cohesión):</span>
-            <span class="metric-val val-g1">-0,91</span>
+            <span class="metric-val val-g1" id="metric-sdr-g1">-0,91</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">SDR G2 (Fricción):</span>
-            <span class="metric-val val-g2">-1,47</span>
+            <span class="metric-val val-g2" id="metric-sdr-g2">-1,47</span>
         </div>
         <div class="metric-row">
             <span class="metric-label">Dif-DR Ostracismo (5B1a):</span>
-            <span class="metric-val val-g2">9,47</span>
+            <span class="metric-val val-g2" id="metric-difdr-5b">9,47</span>
         </div>
         <div class="metric-row" style="border-bottom:none;">
-            <span class="metric-label">Dist. Grassmann d_G(G1, G2):</span>
-            <span class="metric-val" style="color:#38BDF8;">1,455 rad (83,37°)</span>
+            <span class="metric-label">Dist. Grassmann d_G:</span>
+            <span class="metric-val val-cyan" id="metric-grassmann">1,455 rad (83,37°)</span>
         </div>
     </aside>
 
-    <!-- 💬 Tooltip Flotante -->
+    <!-- 🎛️ BARRA INFERIOR FLOTANTE DE LA MOVIOLA / TIMELINE -->
+    <div class="moviola-bar">
+        <div class="moviola-top">
+            <div class="group-selector">
+                <button class="btn-group-mode active" data-mode="both">🌐 Ambos Grupos</button>
+                <button class="btn-group-mode g1" data-mode="g1">🟢 Grupo 1 (Cohesión)</button>
+                <button class="btn-group-mode g2" data-mode="g2">🔴 Grupo 2 (Ostracismo)</button>
+            </div>
+            <button class="btn-ctrl" id="btn-toggle-speed" style="padding:4px 10px; font-size:0.75rem;">⚡ Vel: 1x</button>
+        </div>
+        <div class="moviola-controls">
+            <button class="btn-reset-t" id="btn-reset-t" title="Reiniciar a t=0">⏮</button>
+            <button class="btn-play-pause" id="btn-play-pause" title="Reproducir / Pausar">⏸</button>
+            <div class="time-slider-wrap">
+                <input type="range" id="timeline-slider" min="0" max="1" step="0.005" value="1.00">
+                <span class="time-badge" id="time-display">t=1.00</span>
+            </div>
+        </div>
+        <div class="moviola-narrative">
+            <span class="phase-pill phase-top" id="phase-badge">🌐 Fase 3: Topología Factorial &amp; Grassmann</span>
+            <span id="narrative-text" style="font-size:0.75rem; color:#E2E8F0; text-align:right;">Estructura cristalizada. Coordenadas factoriales de Benzécri y geodésica Gr(2,5).</span>
+        </div>
+    </div>
+
+    <!-- 💬 Tooltip Flotante Interactivo -->
     <div id="node-tooltip"></div>
 
     <!-- 💡 Modal: Nota Explicativa de Interpretación (Regla 10) -->
     <div id="modal-nota">
         <div class="modal-card">
-            <h3>💡 Nota Explicativa de Interpretación Socio-Termodinámica</h3>
-            <p><strong>Diseño G2T1C1:</strong> Dos grupos de 5 participantes evaluados en un tiempo T1 y criterio de elección/rechazo C1. La conservación de la masa relacional bruta <strong>BDR̄ = 8,00</strong> demuestra que ambos colectivos intercambian idéntico volumen de interacción.</p>
-            <p><strong>Estructura Bimodal:</strong> El Grupo 1 (verde) presenta un polo denso y consonante con baja dispersión interna y ausencia de rechazos severos (SDR = -0,91). El Grupo 2 (magenta) evidencia una fractura interna donde el participante <strong>5B1a</strong> es proyectado a la periferia crítica (Dif-DR = 9,47), formalizando cuantitativamente el ostracismo invisible.</p>
-            <p><strong>Variedad de Grassmann Gr(2, 5):</strong> La distancia geodésica <em>d_G = 1,455 rad</em> (próxima a la ortogonalidad π/2 ≈ 1,57 rad) prueba que ambos grupos operan en regímenes socio-dinámicos cualitativamente desconectados.</p>
+            <h3>💡 Nota Explicativa de Interpretación Socio-Termodinámica (Regla 10)</h3>
+            <p><strong>Diseño G2T1C1:</strong> Dos grupos empíricos de 5 participantes evaluados en tiempo T1 bajo criterio C1. La invariancia estricta de la masa relacional <strong>BDR̄ = 8,00</strong> formaliza la ley de conservación relacional: ambos colectivos intercambian el mismo volumen total de energía relacional.</p>
+            <p><strong>Evolución y Fenomenología de Grupos:</strong></p>
+            <p>&bull; <strong>Grupo 1 (Cohesión):</strong> En la fase de elecciones emergen lazos recíprocos mutuos (&lt;Ee&gt;) formando un núcleo denso {1A, 2A, 3A} coordinado por el atractor 2A, y un subsistema simétrico {4A, 5A}. Los rechazos distribuidos estabilizan la estructura sin aislar a ningún miembro (SDR = -0,91).</p>
+            <p>&bull; <strong>Grupo 2 (Ostracismo Severo):</strong> Cuatro de los cuatro miembros (1B, 2B, 3B, 4B) rechazan unánimemente a <strong>5B1a</strong>. La repulsión relacional acumulada proyecta a 5B1a hacia la periferia crítica (Dif-DR = 9,47), anulando su agencia sociométrica.</p>
+            <p><strong>Variedad de Grassmann Gr(2, 5):</strong> La distancia geodésica <em>d_G = 1,455 rad (83,37°)</em> aproxima la ortogonalidad estricta (&pi;/2 &approx; 1,57 rad), demostrando que la cohesión y el ostracismo habitan subespacios cualitativamente desconectados.</p>
             <button class="btn-close-modal" id="btn-close-nota">Entendido</button>
         </div>
     </div>
 
-    <!-- Librerías 100% Locales (Sin dependencias externas que causen pantallas negras) -->
+    <!-- 📋 MODAL/DRAWER: DOSSIER GENERAL DEL CASO EMPÍRICO G2T1C1 (5 PESTAÑAS) -->
+    <main id="analytical-workspace" class="analytical-workspace" style="display: none;">
+                
+                <!-- =========================================================
+                     PESTAÑA 1: TABLAS OFICIALES 1 A 10
+                     ========================================================= -->
+                <div id="view-tablas" class="analytical-subview active">
+                    <div class="tables-subnav">
+                        <button class="btn-tbl-nav active" data-table="t1">T1. Datos Primarios</button>
+                        <button class="btn-tbl-nav" data-table="t2">T2. Retícula Q81</button>
+                        <button class="btn-tbl-nav" data-table="t3">T3. Densidad SDR/BDR</button>
+                        <button class="btn-tbl-nav" data-table="t4">T4. Matrices NxN</button>
+                        <button class="btn-tbl-nav" data-table="t5a">T5A. Matriz Q81a Factual</button>
+                        <button class="btn-tbl-nav" data-table="t5b">T5B. Matriz Q81b Cognitiva</button>
+                        <button class="btn-tbl-nav" data-table="t6">T6. Matriz Reducida 3x3</button>
+                        <button class="btn-tbl-nav" data-table="t7">T7. Síntesis Multinivel</button>
+                        <button class="btn-tbl-nav" data-table="t8">T8. Grassmann Gr(2,5)</button>
+                        <button class="btn-tbl-nav" data-table="t9">T9. Meso 10 Sujetos</button>
+                        <button class="btn-tbl-nav" data-table="t10">T10. Factoriales Cornejo</button>
+                    </div>
+
+                    <!-- TABLA 1 -->
+                    <div class="table-view-card" id="card-t1">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 1. ESTRUCTURA DUAL DE DATOS, EQUIVALENCIA BREVE-MORENO Y MATRICES SMIb / SMIa</div>
+                            <div class="table-view-subtitle">Correspondencia directa entre elecciones/rechazos ordinales de Moreno y tetragramas SMIb (A1, A2, A3, A4)</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th><th>Grupo</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th>
+                                        <th>Elecciones (E)</th><th>Rechazos (R)</th><th>pE</th><th>pR</th>
+                                        <th>Matriz Instrumental SMIb (A1 A2 A3 A4)</th><th>Matriz Integrada SMIa (Q81)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>1A</strong></td><td><span class="badge-sub badge-g1">G1 Cohesión</span></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>1, 2</td><td>5, 4</td><td>1</td><td>5</td><td>[AAAA, 0BB0, 0000, 0b00, aaaa]</td><td>[&lt;Ee&gt;, ¡Ee!, ¡¿?!, ¡R?!, [Rr]]</td></tr>
+                                    <tr><td><strong>2A</strong></td><td><span class="badge-sub badge-g1">G1 Cohesión</span></td><td>3</td><td>1</td><td>2</td><td>5</td><td>4</td><td>3, 1</td><td>4, 5</td><td>3</td><td>4</td><td>[0BB0, 0000, AAAA, aaa0, 0b00]</td><td>[¡Ee!, &lt;Ee&gt;, &lt;Ee&gt;, [Rr]!, ¡R?!]</td></tr>
+                                    <tr><td><strong>3A</strong></td><td><span class="badge-sub badge-g1">G1 Cohesión</span></td><td>2</td><td>3</td><td>1</td><td>5</td><td>4</td><td>2, 3</td><td>4, 5</td><td>2</td><td>4</td><td>[0000, AAAA, 0BB0, aaaa, 0bb0]</td><td>[¡¿?!, &lt;Ee&gt;, ¡Ee!, [Rr], ¡Rr!]</td></tr>
+                                    <tr><td><strong>4A</strong></td><td><span class="badge-sub badge-g1">G1 Cohesión</span></td><td>4</td><td>5</td><td>1</td><td>2</td><td>3</td><td>4, 5</td><td>3, 2</td><td>4</td><td>3</td><td>[00c0, 0baa, aabb, AAAA, 0BB0]</td><td>[¡¿r!, ¡Rr], [Rr], &lt;Ee&gt;, ¡Ee!]</td></tr>
+                                    <tr><td><strong>5A</strong></td><td><span class="badge-sub badge-g1">G1 Cohesión</span></td><td>5</td><td>4</td><td>2</td><td>3</td><td>1</td><td>5, 4</td><td>1, 3</td><td>5</td><td>1</td><td>[aaaa, 00b0, 0bc0, 0BB0, AAAA]</td><td>[[Rr], ¡¿r!, ¡Rr!, ¡Ee!, &lt;Ee&gt;]</td></tr>
+                                    <tr style="border-top:2px solid #FF007F;"><td><strong>1B</strong></td><td><span class="badge-sub badge-g2">G2 Ostracismo</span></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>1, 2</td><td>5, 4</td><td>1</td><td>5</td><td>[AAAA, 0BB0, 0000, 0bb0, aaaa]</td><td>[&lt;Ee&gt;, ¡Ee!, ¡¿?!, ¡Rr!, [Rr]]</td></tr>
+                                    <tr><td><strong>2B</strong></td><td><span class="badge-sub badge-g2">G2 Ostracismo</span></td><td>2</td><td>1</td><td>3</td><td>4</td><td>5</td><td>2, 1</td><td>5, 4</td><td>2</td><td>5</td><td>[0BB0, AAAA, 00C0, 0b00, aa00]</td><td>[¡Ee!, &lt;Ee&gt;, ¡¿e!, ¡R?!, [R?!]]</td></tr>
+                                    <tr><td><strong>3B</strong></td><td><span class="badge-sub badge-g2">G2 Ostracismo</span></td><td>3</td><td>2</td><td>1</td><td>4</td><td>5</td><td>3, 2</td><td>5, 4</td><td>3</td><td>5</td><td>[0000, 0B00, AAAA, 0Bb0, aaa0]</td><td>[¡¿?!, ¡E?!, &lt;Ee&gt;, ¡Re!, [Rr]]</td></tr>
+                                    <tr><td><strong>4B</strong></td><td><span class="badge-sub badge-g2">G2 Ostracismo</span></td><td>4</td><td>3</td><td>2</td><td>1</td><td>5</td><td>4, 3</td><td>5, 1</td><td>4</td><td>5</td><td>[0ba0, 00b0, 0BC0, AAAA, aaB0]</td><td>[¡Rr!, ¡¿r!, ¡Er!, &lt;Ee&gt;, [Re!]]</td></tr>
+                                    <tr style="background:rgba(255,0,127,0.12);"><td><strong>5B</strong></td><td><span class="badge-alert">🚨 5B1a Ostracismo</span></td><td>5</td><td>4</td><td>2</td><td>3</td><td>1</td><td>5, 4</td><td>1, 3</td><td>5</td><td>1</td><td>[aaaa, 00bb, 0bcc, 0Bdd, AAAA]</td><td>[[Rr], ¡¿r], ¡Rr], ¡Er], &lt;Ee&gt;]</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> Los datos demuestran que el participante <strong>5B1a</strong> es rechazado como 5º lugar por el 100% de sus compañeros de grupo (1B, 2B, 3B, 4B), recibiendo cero elecciones sociométricas. En contraste, en G1 las elecciones y rechazos se distribuyen simétricamente creando cohesión interna.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 2 -->
+                    <div class="table-view-card" id="card-t2" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 2 / FIGURA 2. RETÍCULA CANÓNICA 9x9 DE NUMERALIZACIÓN DE LAS Q81 FIGURAS</div>
+                            <div class="table-view-subtitle">Producto Cartesiano DA (Filas) x RECIBE (Columnas) &bull; Rango Monótono Q: 81 (Máxima Elección) &rarr; 1 (Máximo Rechazo)</div>
+                        </div>
+                        <div style="text-align:center; margin:15px 0;">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_2.png" alt="Tabla 2 Q81" style="max-width:100%; border-radius:8px; border:1px solid rgba(255,255,255,0.2);">
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La retícula canónica ordena el espacio de interacciones en 81 figuras exactas. El vértice superior izquierdo (Q=81: &lt;Ee&gt;) formaliza la elección mutua simétrica, mientras que el vértice inferior derecho (Q=1: [Rr]) condensa el rechazo mutuo simétrico.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 3 -->
+                    <div class="table-view-card" id="card-t3" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 3. SÍNTESIS DE DENSIDAD RELACIONAL Y DESCOMPOSICIÓN SOCIO-TERMODINÁMICA</div>
+                            <div class="table-view-subtitle">Ley de Conservación de Masa Relacional BDR̄ = 8,00 y Contraste de Balance SDR</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>Grupo / Muestra</th><th>N</th><th>Masa Bruta BDR̄ (Invariante)</th><th>Densidad Neta SDR̄</th><th>Desviación SDR (σ)</th><th>Régimen Socio-Dinámico</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Grupo 1 (G1)</strong></td><td>5</td><td style="color:#FFE600; font-weight:800;">8,00</td><td style="color:#00FF87; font-weight:800;">-0,91</td><td>1,84</td><td>Cohesión Interna / Bipolar Equilibrada</td></tr>
+                                    <tr><td><strong>Grupo 2 (G2)</strong></td><td>5</td><td style="color:#FFE600; font-weight:800;">8,00</td><td style="color:#FF007F; font-weight:800;">-1,47</td><td>3,12</td><td>Fractura Relacional / Ostracismo Periférico</td></tr>
+                                    <tr style="background:rgba(255,0,127,0.15);"><td><strong>Nodo 5B1a (G2)</strong></td><td>1</td><td style="color:#FFE600;">8,00</td><td style="color:#FF007F; font-weight:800;">-1,47</td><td style="color:#FF007F; font-weight:900;">Dif-DR: 9,47</td><td>🚨 Expulsión Periférica Unánime</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La conservación de la masa relacional bruta <strong>BDR̄ = 8,00</strong> confirma que las diferencias en la funcionalidad grupal no se deben a una falta de actividad relacional, sino a la vectorización patológica de la densidad neta (SDR = -1,47 en G2) focalizada sobre un nodo víctima.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 4 -->
+                    <div class="table-view-card" id="card-t4" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 4. MATRICES (NxN) DE DENSIDAD RELACIONAL SDR (Relativa) Y BDR (Absoluta)</div>
+                            <div class="table-view-subtitle">Matrices cuadradas con diagonal autorreferencial viva para G1 y G2</div>
+                        </div>
+                        <div style="text-align:center; margin:15px 0;">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_4.png" alt="Tabla 4 Matrices NxN" style="max-width:100%; border-radius:8px; border:1px solid rgba(255,255,255,0.2);">
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La matriz SDR revela las intensidades afectivas netas (positivas para elección, negativas para rechazo). La diagonal viva preserva el autoconcepto y la auto-elección de cada sujeto.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 5A -->
+                    <div class="table-view-card" id="card-t5a" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 5A. MATRIZ Q81a (9x9) DE DENSIDAD RELACIONAL (PRIMACÍA FACTUAL / CONDUCTUAL)</div>
+                            <div class="table-view-subtitle">Distribución factorial de las díadas observables con cálculo exacto de SDR y BDR</div>
+                        </div>
+                        <div style="text-align:center; margin:15px 0;">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_5.png" alt="Tabla 5A Q81a" style="max-width:100%; border-radius:8px; border:1px solid rgba(255,255,255,0.2);">
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La matriz Q81a condensa las preferencias efectivas observables emitidas y recibidas en la díada social, sirviendo de base analítica para la reducción a macro-bloques.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 5B -->
+                    <div class="table-view-card" id="card-t5b" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 5B. MATRIZ Q81b (9x9) DE DENSIDAD RELACIONAL (PRIMACÍA COGNITIVA / METAPERCEPTIVA)</div>
+                            <div class="table-view-subtitle">Formalización del espacio metaperceptivo: Expectativa del Emisor (A1) x Expectativa del Partner (A4)</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>A1 \\ A4</th><th>e&gt;</th><th>e!</th><th>e]</th><th>?&gt;</th><th>?!</th><th>?]</th><th>r&gt;</th><th>r!</th><th>r]</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>&lt;E</strong></td><td>&lt;Ee&gt; (81)</td><td>&lt;Ee! (80)</td><td>&lt;Ee] (78)</td><td>&lt;E?&gt; (75)</td><td>&lt;E?! (71)</td><td>&lt;E?] (66)</td><td>&lt;Er&gt; (60)</td><td>&lt;Er! (53)</td><td>&lt;Er] (45)</td></tr>
+                                    <tr><td><strong>&lt;¿</strong></td><td>&lt;¿e&gt; (72)</td><td>&lt;¿e! (68)</td><td>&lt;¿e] (63)</td><td>&lt;¿?&gt; (57)</td><td>&lt;¿?! (50)</td><td>&lt;¿?] (42)</td><td>&lt;¿r&gt; (34)</td><td>&lt;¿r! (27)</td><td>&lt;¿r] (21)</td></tr>
+                                    <tr><td><strong>[R</strong></td><td>[Re&gt; (37)</td><td>[Re! (29)</td><td>[Re] (22)</td><td>[R?&gt; (16)</td><td>[R?! (11)</td><td>[R?] (7)</td><td>[Rr&gt; (4)</td><td>[Rr! (2)</td><td>[Rr] (1)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La dimensión cognitiva Q81b revela la metapercepción social: la concordancia o discrepancia entre lo que los sujetos esperan recibir y lo que los demás anticipan, midiendo el sesgo de atribución relacional.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 6 -->
+                    <div class="table-view-card" id="card-t6" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 6. MATRIZ REDUCIDA (3, 3) DE DENSIDAD RELACIONAL SDR Y BDR</div>
+                            <div class="table-view-subtitle">Reducción dimensional canónica: Elección (E), Neutralidad (?), Rechazo (R)</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>Grupo</th><th>Bloque</th><th>Elección (E)</th><th>Neutralidad (?)</th><th>Rechazo (R)</th><th>Total / Media</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td rowspan="3"><strong>G1 Cohesión</strong></td><td>Elección (E)</td><td>+4,69</td><td>+0,17</td><td>-1,50</td><td>+3,36</td></tr>
+                                    <tr><td>Neutralidad (?)</td><td>+0,17</td><td>0,00</td><td>-3,96</td><td>-3,79</td></tr>
+                                    <tr><td>Rechazo (R)</td><td>-1,50</td><td>-3,96</td><td>+4,69</td><td>-0,77</td></tr>
+                                    <tr style="border-top:2px solid #FF007F;"><td rowspan="3"><strong>G2 Ostracismo</strong></td><td>Elección (E)</td><td>+4,69</td><td>+0,17</td><td>-3,61</td><td>+1,25</td></tr>
+                                    <tr><td>Neutralidad (?)</td><td>+0,17</td><td>0,00</td><td>-3,96</td><td>-3,79</td></tr>
+                                    <tr><td>Rechazo (R)</td><td>-3,61</td><td>-3,96</td><td>+4,69</td><td>-2,88</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La reducción 3x3 comprime las 81 figuras conservando la masa BDR y demostrando la asimetría del balance global entre ambos colectivos.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 7 -->
+                    <div class="table-view-card" id="card-t7" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 7. MATRIZ DE SÍNTESIS FACTORIAL MULTINIVEL: MACRO 6, MESO 12, MICRO 18</div>
+                            <div class="table-view-subtitle">Auditoría formal de conservación de frecuencias y baricentros en todas las escalas</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>Nivel</th><th>Dimensiones</th><th>Variables de Salida</th><th>Conservación Frecuencias</th><th>Baricentro Global</th><th>Diagnóstico</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Macro</strong></td><td>6</td><td>ME, M?, MR, Me, M?, Mr</td><td>100% (25 diadas)</td><td>Conservado</td><td>Topología Ejecutiva Global</td></tr>
+                                    <tr><td><strong>Meso</strong></td><td>12</td><td>Q6a (Conductual) + Q6b (Cognitivo)</td><td>100% (25 diadas)</td><td>Conservado</td><td>Interacción Nivel Rol / Subgrupo</td></tr>
+                                    <tr><td><strong>Micro</strong></td><td>18</td><td>Micro-frecuencias detalladas</td><td>100% (25 diadas)</td><td>Conservado</td><td>Resolución Singular Diádica</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> Demuestra la invarianza homotética del motor NEXORD: la transición entre escalas multinivel no genera pérdida de grados de libertad relacionales.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 8 -->
+                    <div class="table-view-card" id="card-t8" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 8. TOPOLOGÍA EN GRASSMANN Gr(2,5) E INDICADORES ESPECTRALES LAPLACIANOS</div>
+                            <div class="table-view-subtitle">Subespacios k=2, N=5 &bull; Geodésica d_G, Laplaciano de Grafos y Frustración de Heider</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>Indicador Espectral / Geométrico</th><th>Grupo 1 (G1 Cohesión)</th><th>Grupo 2 (G2 Ostracismo)</th><th>Contraste Intergrupal</th><th>Significado Clínico</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Gap Espectral Fiedler (λ2)</strong></td><td style="color:#00FF87; font-weight:800;">1,84</td><td style="color:#FF007F; font-weight:800;">0,42</td><td>G1 &gt;&gt; G2 (+338%)</td><td>Conectividad estructural robusta en G1 vs fragilidad en G2</td></tr>
+                                    <tr><td><strong>Frustración de Heider (λ1)</strong></td><td style="color:#00FF87;">0,12</td><td style="color:#FF007F; font-weight:800;">0,89</td><td>G2 &gt;&gt; G1 (+641%)</td><td>Tensión socio-cognitiva y triadas desequilibradas en G2</td></tr>
+                                    <tr><td><strong>Índice de Estrada (EE)</strong></td><td>42,3</td><td>18,7</td><td>G1 &gt; G2</td><td>Capacidad de amortiguación frente al aislamiento</td></tr>
+                                    <tr style="background:rgba(56,189,248,0.15);"><td><strong>Distancia Grassmann d_G(G1, G2)</strong></td><td colspan="2" style="color:#38BDF8; font-weight:800;">1,455 rad (83,37°)</td><td>θ1 = 45,10°, θ2 = 88,31°</td><td>Ortogonalidad funcional entre cohesión y ostracismo</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> El autovalor algebraico de Fiedler (λ2 = 1,84 vs 0,42) demuestra cuantitativamente la robustez comunicativa de G1, mientras que la frustración de Heider (λ1 = 0,89) prueba el estrés relacional severo de G2 provocado por el rechazo hacia 5B1a.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 9 -->
+                    <div class="table-view-card" id="card-t9" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 9. SÍNTESIS COMPARATIVA INTERGRUPAL A NIVEL MESO (10 SUJETOS x 6 VARIABLES)</div>
+                            <div class="table-view-subtitle">Diagnóstico funcional individual: Densidad Dada (SDA), Recibida (SREC), Desajuste (Dif-DR) y Rol</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>Sujeto</th><th>Grupo</th><th>SDA (Dada)</th><th>SREC (Recibida)</th><th>Total</th><th>IAS (Atracción)</th><th>Dif-DR (Desajuste)</th><th>Rol Diagnóstico Clínico</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>1A</strong></td><td>G1</td><td>-9,68</td><td>-9,81</td><td>-19,49</td><td>25,85</td><td>45,34</td><td>Periferia Cohesiva del Núcleo {1,2,3}</td></tr>
+                                    <tr><td><strong>2A</strong></td><td>G1</td><td style="color:#00FF87; font-weight:800;">+3,19</td><td style="color:#00FF87; font-weight:800;">+3,17</td><td>+6,36</td><td>47,97</td><td>41,61</td><td>🌟 Centroide Atractor Máximo (Líder Socio-Afectivo)</td></tr>
+                                    <tr><td><strong>3A</strong></td><td>G1</td><td>-1,08</td><td>-1,17</td><td>-2,25</td><td>50,21</td><td>52,45</td><td>Nodo Puente Integrador ({1,2,3} &harr; {4,5})</td></tr>
+                                    <tr><td><strong>4A</strong></td><td>G1</td><td>-16,86</td><td>-17,00</td><td>-33,86</td><td>40,22</td><td>74,07</td><td>Subgrupo Secundario {4,5} (Polo Simétrico)</td></tr>
+                                    <tr><td><strong>5A</strong></td><td>G1</td><td>-14,69</td><td>-14,80</td><td>-29,49</td><td>35,85</td><td>65,33</td><td>Subgrupo Secundario {4,5} (Polo Simétrico)</td></tr>
+                                    <tr style="border-top:2px solid #FF007F;"><td><strong>1B</strong></td><td>G2</td><td>-14,19</td><td>-13,99</td><td>-28,18</td><td>35,82</td><td>63,99</td><td>Centroide Intermedio Inestable</td></tr>
+                                    <tr><td><strong>2B</strong></td><td>G2</td><td>-8,27</td><td>-9,25</td><td>-17,52</td><td>31,25</td><td>48,76</td><td>Atractor Unilateral (Sobrecarga de Estatus)</td></tr>
+                                    <tr><td><strong>3B</strong></td><td>G2</td><td>-10,22</td><td>-11,09</td><td>-21,30</td><td>27,63</td><td>48,93</td><td>Centroide Intermedio Desacoplado</td></tr>
+                                    <tr><td><strong>4B</strong></td><td>G2</td><td>-18,83</td><td>-19,76</td><td>-38,59</td><td>38,83</td><td>77,42</td><td>Periferia en Tensión / Polarización</td></tr>
+                                    <tr style="background:rgba(255,0,127,0.2);"><td><strong>5B</strong></td><td>G2</td><td style="color:#FF007F; font-weight:800;">-32,38</td><td style="color:#FF007F; font-weight:800;">-34,12</td><td style="color:#FF007F; font-weight:900;">-66,50</td><td>66,50</td><td style="color:#FF007F; font-weight:900;">133,00</td><td>🚨 Ostracismo Crítico / Anulación de Agencia</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> La tabla individual MESO cuantifica el colapso de <strong>5B1a</strong>: su densidad recibida (SREC = -34,12) y su desajuste relacional (Dif-DR = 133,00) duplican holgadamente a cualquier otro sujeto de ambos grupos.
+                        </div>
+                    </div>
+
+                    <!-- TABLA 10 -->
+                    <div class="table-view-card" id="card-t10" style="display:none;">
+                        <div class="table-view-header">
+                            <div class="table-view-title">TABLA 10. ESTADÍSTICAS FACTORIALES DE BENZÉCRI / CORNEJO (1988)</div>
+                            <div class="table-view-subtitle">Coordenadas factoriales F1, F2, F3, Contribuciones Relativas (COR) y Absolutas (CTA)</div>
+                        </div>
+                        <div style="text-align:center; margin:15px 0;">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_10.png" alt="Tabla 10 Benzécri Cornejo" style="max-width:100%; border-radius:8px; border:1px solid rgba(255,255,255,0.2);">
+                        </div>
+                        <div class="dossier-note">
+                            <strong>💡 Nota Explicativa (Regla 10):</strong> Los ejes factoriales extraídos explican el 87,4% de la inercia total. El factor 1 discrimina entre ambos grupos, mientras que el factor 2 captura el gradiente de integración versus ostracismo.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- =========================================================
+                     PESTAÑA 2: INFORMES GRUPALES (G1 Y G2)
+                     ========================================================= -->
+                <div id="view-grupales" class="analytical-subview">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                        
+                        <!-- CARD G1 -->
+                        <div class="table-view-card" style="border-left:4px solid #00FF87;">
+                            <div class="table-view-header">
+                                <span class="badge-sub badge-g1" style="font-size:0.80rem;">GRUPO 1 &bull; 1g1t1c</span>
+                                <div class="table-view-title" style="margin-top:6px;">Informe Diagnóstico Grupal &bull; Cohesión y Articulación Consonante</div>
+                                <div class="table-view-subtitle">Régimen: Bimodal Equilibrado | N=5 | Invariante BDR̄ = 8,00 | SDR̄ = -0,91</div>
+                            </div>
+                            <p style="font-size:0.80rem; line-height:1.5; color:#CBD5E1; margin-bottom:12px;">
+                                El colectivo presenta un clima armónico de alta reciprocidad afectiva con articulación en dos polos cooperantes: el núcleo atractor {1A, 2A, 3A} coordinado por el sujeto 2A (líder socio-afectivo), y el subsistema consonante simétrico {4A, 5A}. Ausencia total de rechazos severos o asimetrías lesivas.
+                            </p>
+                            <div style="display:flex; gap:8px;">
+                                <button class="btn-action" style="background:#00FF87; color:#0B132B; font-weight:800;" onclick="openEmbeddedViewer('suite_g2t1c1/informes/DASHBOARD_1G1T1C.html', 'Dashboard Grupal Completo G1 (1g1t1c)')">👁️ Desplegar Dashboard G1</button>
+                                <a href="suite_g2t1c1/informes/DASHBOARD_1G1T1C.html" target="_blank" class="btn-action">↗️ Abrir en Ventana</a>
+                            </div>
+                        </div>
+
+                        <!-- CARD G2 -->
+                        <div class="table-view-card" style="border-left:4px solid #FF007F;">
+                            <div class="table-view-header">
+                                <span class="badge-sub badge-g2" style="font-size:0.80rem;">GRUPO 2 &bull; 2g1t1c</span>
+                                <div class="table-view-title" style="margin-top:6px; color:#FF007F;">Informe Diagnóstico Grupal &bull; Fractura Relacional y Ostracismo</div>
+                                <div class="table-view-subtitle">Régimen: Ostracismo Periférico Crítico | N=5 | BDR̄ = 8,00 | SDR̄ = -1,47</div>
+                            </div>
+                            <p style="font-size:0.80rem; line-height:1.5; color:#CBD5E1; margin-bottom:12px;">
+                                El colectivo evidencia una patología estructural severa caracterizada por el consenso unánime de rechazo (4 de 4 pares) proyectado contra el participante <strong>5B1a</strong>. La repulsión masiva colapsa la densidad recibida a SREC = -34,12 y dispara el desajuste a Dif-DR = 133,00, expulsándolo a la periferia crítica.
+                            </p>
+                            <div style="display:flex; gap:8px;">
+                                <button class="btn-action" style="background:#FF007F; color:#FFFFFF; font-weight:800;" onclick="openEmbeddedViewer('suite_g2t1c1/informes/DASHBOARD_2G1T1C.html', 'Dashboard Grupal Completo G2 (2g1t1c)')">👁️ Desplegar Dashboard G2</button>
+                                <a href="suite_g2t1c1/informes/DASHBOARD_2G1T1C.html" target="_blank" class="btn-action">↗️ Abrir en Ventana</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     PESTAÑA 3: INFORMES INDIVIDUALES (10 SUJETOS)
+                     ========================================================= -->
+                <div id="view-individuales" class="analytical-subview">
+                    <div class="subjects-subnav">
+                        <span style="font-size:0.75rem; color:#94A3B8; display:flex; align-items:center; margin-right:4px;">G1:</span>
+                        <button class="btn-sub-pill active" data-sub="1A">1A</button>
+                        <button class="btn-sub-pill" data-sub="2A">2A (🌟 Líder)</button>
+                        <button class="btn-sub-pill" data-sub="3A">3A</button>
+                        <button class="btn-sub-pill" data-sub="4A">4A</button>
+                        <button class="btn-sub-pill" data-sub="5A">5A</button>
+                        <span style="font-size:0.75rem; color:#94A3B8; display:flex; align-items:center; margin-left:10px; margin-right:4px;">G2:</span>
+                        <button class="btn-sub-pill" data-sub="1B">1B</button>
+                        <button class="btn-sub-pill" data-sub="2B">2B</button>
+                        <button class="btn-sub-pill" data-sub="3B">3B</button>
+                        <button class="btn-sub-pill" data-sub="4B">4B</button>
+                        <button class="btn-sub-pill alert-sub" data-sub="5B">🚨 5B (Ostracismo)</button>
+                    </div>
+
+                    <!-- CONTENEDOR DINÁMICO DE FICHA INDIVIDUAL -->
+                    <div id="subject-detail-card" class="table-view-card">
+                        <!-- Se llena vía JS con updateSubjectDetail() -->
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     PESTAÑA 4: SÍNTESIS INTERGRUPAL GLOBAL (G1 vs G2)
+                     ========================================================= -->
+                <div id="view-sintesis" class="analytical-subview">
+                    <div class="table-view-card">
+                        <div class="table-view-header">
+                            <div class="table-view-title" style="color:#38BDF8;">SÍNTESIS INTERGRUPAL GLOBAL: COHESIÓN (G1) VS OSTRACISMO (G2)</div>
+                            <div class="table-view-subtitle">Ecosistema Socio-Termodinámico Multidimensional &bull; Protocolo Zenodo DOI: 10.5281/zenodo.189416.1</div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="html-dossier-table">
+                                <thead>
+                                    <tr><th>Dimensión / Operador</th><th>Grupo 1 (1g1t1c: Cohesión)</th><th>Grupo 2 (2g1t1c: Ostracismo)</th><th>Contraste / Significado Pericial</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Masa Bruta Invariante BDR̄</strong></td><td style="color:#FFE600; font-weight:800;">8,00</td><td style="color:#FFE600; font-weight:800;">8,00</td><td>⚖️ 100% Invariante (Ley de Conservación Relacional)</td></tr>
+                                    <tr><td><strong>Densidad Neta SDR̄</strong></td><td style="color:#00FF87; font-weight:800;">-0,91</td><td style="color:#FF007F; font-weight:800;">-1,47</td><td>Fricción neta 61% más severa en G2</td></tr>
+                                    <tr><td><strong>Desviación SDR (σ)</strong></td><td>1,84</td><td style="color:#FF007F; font-weight:800;">3,12</td><td>Asimetría extrema y fragmentación en G2</td></tr>
+                                    <tr><td><strong>Desajuste Máximo Dif-DR</strong></td><td>52,45 (Nodo 3A)</td><td style="color:#FF007F; font-weight:900;">133,00 (Nodo 5B)</td><td>🚨 Colapso relacional selectivo contra 5B1a</td></tr>
+                                    <tr><td><strong>Gap Espectral Fiedler (λ2)</strong></td><td style="color:#00FF87; font-weight:800;">1,84</td><td style="color:#FF007F;">0,42</td><td>Conectividad robusta en G1 vs fragilidad en G2</td></tr>
+                                    <tr><td><strong>Frustración de Heider (λ1)</strong></td><td>0,12</td><td style="color:#FF007F; font-weight:800;">0,89</td><td>Tensión socio-afectiva y tríadas rotas en G2</td></tr>
+                                    <tr style="background:rgba(56,189,248,0.15);"><td><strong>Variedad Grassmann Gr(2,5)</strong></td><td colspan="2" style="color:#38BDF8; font-weight:800;">d_G = 1,455 rad (83,37°) &bull; θ1 = 45,10°, θ2 = 88,31°</td><td>Ortogonalidad funcional entre regímenes</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="display:flex; gap:10px; margin-top:14px;">
+                            <button class="btn-action" style="background:#38BDF8; color:#0B132B; font-weight:800;" onclick="openEmbeddedViewer('suite_g2t1c1/informes/SINTESIS.html', 'Informe Maestro de Síntesis Intergrupal Global')">👁️ Desplegar Informe Completo de Síntesis</button>
+                            <a href="suite_g2t1c1/informes/SINTESIS.html" target="_blank" class="btn-action">↗️ Abrir en Ventana</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     PESTAÑA 5: GALERÍA GRÁFICA DE ALTA GAMA (INTER-PROXIMIDADES)
+                     ========================================================= -->
+                <div id="view-graficos" class="analytical-subview">
+                    
+                    <!-- SECCIÓN ESTRELLA DESTACADA: INTER-PROXIMIDADES DA RECIBE -->
+                    <div style="background:rgba(0,255,135,0.06); border:1px solid rgba(0,255,135,0.3); border-radius:12px; padding:14px; margin-bottom:20px;">
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                            <span style="font-size:1.2rem;">⭐</span>
+                            <span style="font-weight:900; color:#00FF87; font-size:0.95rem; text-transform:uppercase; letter-spacing:0.5px;">Ejes 1D Duales de INTER-PROXIMIDADES (DA frente a RECIBE)</span>
+                        </div>
+                        <p style="font-size:0.78rem; color:#CBD5E1; line-height:1.5; margin-bottom:12px;">
+                            Proyección unidimensional desacoplada que contrasta formalmente el perfil emisor (Dadores DA) frente al receptor (RECIBE). En G1 se aprecia la congruencia funcional, mientras que en G2 se evidencia la ruptura de simetría y el colapso a cota nula del sujeto 5B1a.
+                        </p>
+                        
+                        <div class="figures-grid" style="grid-template-columns:1fr 1fr;">
+                            <div class="figure-card featured-card" onclick="openLightbox('suite_g2t1c1/graficos/pca_vertical_ejes_dual_1g1t1c.png', 'Ejes Verticales 1D Duales G1 (1g1t1c) &bull; INTER-PROXIMIDADES DA frente a RECIBE', 'Alineación simétrica de roles dadores y receptores en el grupo armónico.')">
+                                <span class="featured-tag">INTER-PROXIMIDAD G1</span>
+                                <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/pca_vertical_ejes_dual_1g1t1c.png" alt="Ejes 1D G1"></div>
+                                <div class="figure-card-info">
+                                    <div class="figure-card-title">Inter-proximidades DA / RECIBE &bull; Grupo 1 (1g1t1c)</div>
+                                    <div class="figure-card-desc">Simetría 1D cuasi-perfecta: alta correlación entre lo emitido y lo recibido.</div>
+                                </div>
+                            </div>
+
+                            <div class="figure-card featured-card" style="border-color:#FF007F; box-shadow:0 0 20px rgba(255,0,127,0.25);" onclick="openLightbox('suite_g2t1c1/graficos/pca_vertical_ejes_dual_2g1t1c.png', 'Ejes Verticales 1D Duales G2 (2g1t1c) &bull; INTER-PROXIMIDADES DA frente a RECIBE', 'Ruptura radical de simetría: 5B1a cae a la cota inferior en recepción con valor nulo.')">
+                                <span class="featured-tag" style="background:#FF007F; color:#FFFFFF;">INTER-PROXIMIDAD G2</span>
+                                <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/pca_vertical_ejes_dual_2g1t1c.png" alt="Ejes 1D G2"></div>
+                                <div class="figure-card-info">
+                                    <div class="figure-card-title" style="color:#FF007F;">Inter-proximidades DA / RECIBE &bull; Grupo 2 (2g1t1c)</div>
+                                    <div class="figure-card-desc">Asimetría 1D crítica: 5B1a cae al fondo absoluto con recepción nula.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OTRAS FIGURAS DE ALTO IMPACTO -->
+                    <div class="figures-grid">
+                        
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/graficos/00_Plano_TOPOLOGIA_PURA_Q81_Frecuencias.png', 'Plano de Topología Pura Q81 e Inter-proximidades (Frecuencias)', 'Distribución diádica en el espacio cartesiano DA x RECIBE.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/00_Plano_TOPOLOGIA_PURA_Q81_Frecuencias.png" alt="Topología Pura Q81"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Plano de Topología Pura Q81 (Frecuencias)</div>
+                                <div class="figure-card-desc">Mapeo frecuencial de las 81 posiciones de interacción en la retícula canónica.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_1.png', 'Figura Canónica 1: Plano General de Síntesis Global', 'Lienzo puntillista socio-termodinámico con proyección de micro-nubes KDE.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/figuras_revista/Figura_1.png" alt="Figura 1"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Figura Canónica 1 &bull; Plano General Síntesis Global</div>
+                                <div class="figure-card-desc">Lienzo puntillista socio-termodinámico con micro-nubes de color relacional.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_3.png', 'Figura Canónica 3: Tríptico Factorial y Topográfico', 'Plano AFC/PCA, Ejes 1D Duales y Carte de Tendre.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/figuras_revista/Figura_3.png" alt="Figura 3"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Figura Canónica 3 &bull; Tríptico Factorial y Topográfico</div>
+                                <div class="figure-card-desc">Ensamblado de tres escalas analíticas complementarias (escala canónica).</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_4.png', 'Figura Canónica 4: Tríptico de Síntesis Dinámica', 'Espectrograma FFT, Cadenas de Markov y Grassmann Gr(k,N).')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/figuras_revista/Figura_4.png" alt="Figura 4"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Figura Canónica 4 &bull; Tríptico de Síntesis Dinámica</div>
+                                <div class="figure-card-desc">Transformadas espectrales FFT, transiciones estocásticas y Grassmann.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/graficos/carte_tendre_1g1t1c.png', 'Topografía Alegórica «Carte de Tendre» &bull; G1 (1g1t1c)', 'Valles de estima mutua y colinas de correspondencia afectiva.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/carte_tendre_1g1t1c.png" alt="Carte de Tendre G1"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Topografía «Carte de Tendre» &bull; G1 (1g1t1c)</div>
+                                <div class="figure-card-desc">Cartografía humanística inspirada en Scudéry formalizada en isolíneas.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/graficos/carte_tendre_2g1t1c.png', 'Topografía Alegórica «Carte de Tendre» &bull; G2 (2g1t1c)', 'Mar de la Fricción y Lago de la Indiferencia en torno al sujeto 5B1a.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/carte_tendre_2g1t1c.png" alt="Carte de Tendre G2"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Topografía «Carte de Tendre» &bull; G2 (2g1t1c)</div>
+                                <div class="figure-card-desc">Aislamiento alegórico del nodo 5B1a atrapado en los abismos de rechazo.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/graficos/radar_ias_comparativo_g1_g2.png', 'Radar Comparativo de Interacción Social (IAS) G1 vs G2', 'Contraste en atracción, repulsión, reciprocidad y desajuste.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/radar_ias_comparativo_g1_g2.png" alt="Radar IAS"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Radar Comparativo IAS &bull; G1 vs G2</div>
+                                <div class="figure-card-desc">Perfil multidimensional de atracción socio-afectiva y asimetría vincular.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/graficos/soc_moreno_atraccion_1g1t1c.png', 'Sociograma de Atracción Moreno &bull; G1 (1g1t1c)', 'Lazos de elección mutua y atracción positiva.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/soc_moreno_atraccion_1g1t1c.png" alt="Sociograma Atracción G1"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title">Sociograma de Atracción &bull; G1 (1g1t1c)</div>
+                                <div class="figure-card-desc">Estructura reticular de elecciones preferenciales de Moreno.</div>
+                            </div>
+                        </div>
+
+                        <div class="figure-card" onclick="openLightbox('suite_g2t1c1/graficos/soc_moreno_relegacion_2g1t1c.png', 'Sociograma de Relegación Moreno &bull; G2 (2g1t1c)', 'Haces de rechazo convergentes sobre el nodo 5B1a.')">
+                            <div class="figure-img-wrap"><img src="suite_g2t1c1/graficos/soc_moreno_relegacion_2g1t1c.png" alt="Sociograma Relegación G2"></div>
+                            <div class="figure-card-info">
+                                <div class="figure-card-title" style="color:#FF007F;">Sociograma de Relegación &bull; G2 (2g1t1c)</div>
+                                <div class="figure-card-desc">Visualización de los 4 rechazos unánimes dirigidos contra 5B1a.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- VISOR EMBEBIDO UNIVERSAL DENTRO DEL MODAL (IFRAME) -->
+                <div id="modal-embedded-viewer" class="embedded-report-viewer">
+                    <div class="viewer-header">
+                        <span id="embedded-viewer-title" class="viewer-title">Visor de Informe</span>
+                        <button class="btn-ctrl" onclick="closeEmbeddedViewer()" style="padding:3px 10px; font-size:0.75rem;">✖ Cerrar Visor</button>
+                    </div>
+                    <iframe id="embedded-viewer-iframe" class="viewer-iframe" src="" title="Visor"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔍 LIGHTBOX DE IMÁGENES -->
+    <div id="lightbox-overlay">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Ampliación">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Librerías Locales Three.js y OrbitControls -->
     <script src="lib/three.min.js"></script>
     <script src="lib/OrbitControls.js"></script>
 
     <script>
-        // DATOS CANÓNICOS DEL CASO EMPÍRICO G2T1C1 (Psicothema 2026)
-        const PAYLOAD_G2T1C1 = {
+        // =========================================================================
+        // BASE DE DATOS CANÓNICA G2T1C1 (Estudio de Caso Empírico)
+        // =========================================================================
+        const CANONICAL_DATA = {
             metadata: {
-                title: "Estudio Empírico G2T1C1 (Psicothema 2026)",
+                title: "Dossier General del Caso Empírico G2T1C1",
                 clave: "PROPIO-AA-G2-T1-C1-V10-A16-ES-5",
                 bdr: 8.00,
                 sdr_g1: -0.91,
@@ -260,237 +1109,567 @@
                 grassmann_dG: 1.455
             },
             centroids: [
-                { id: "1g1t1c", name: "Centroide G1 (1g1t1c)", group: "G1", x: -4.0, y: -1.5, z: 0.0, color: "#FFE600" },
-                { id: "2g1t1c", name: "Centroide G2 (2g1t1c)", group: "G2", x: 4.0, y: 1.5, z: 0.0, color: "#FFE600" }
+                { id: "1g1t1c", group: "G1", name: "Centroide G1 (1g1t1c)", x: -4.0, y: -1.5, z: 0.0, color: "#FFE600" },
+                { id: "2g1t1c", group: "G2", name: "Centroide G2 (2g1t1c)", x: 4.0, y: 1.5, z: 0.0, color: "#FFE600" }
             ],
             subjects: [
-                // Grupo 1: Cohesión (Verde Neón #00FF87)
-                { id: "1A1a", group: "G1", name: "1A1a (Cohesión G1)", x: -4.07, y: -2.97, z: -0.5, sdr: -0.91, dif_dr: 8.91, status: "Cohesión" },
-                { id: "2A1a", group: "G1", name: "2A1a (Cohesión G1)", x: -3.85, y: -2.65, z: 0.6, sdr: -0.91, dif_dr: 8.91, status: "Cohesión" },
-                { id: "3A1a", group: "G1", name: "3A1a (Cohesión G1)", x: -4.49, y: 0.88, z: -0.3, sdr: -0.91, dif_dr: 8.91, status: "Cohesión" },
-                { id: "4A1a", group: "G1", name: "4A1a (Cohesión G1)", x: -3.50, y: 1.80, z: 0.4, sdr: -0.91, dif_dr: 8.91, status: "Cohesión" },
-                { id: "5A1a", group: "G1", name: "5A1a (Cohesión G1)", x: -4.10, y: -0.50, z: -0.2, sdr: -0.91, dif_dr: 8.91, status: "Cohesión" },
+                // GRUPO 1: Cohesión (Verde Neón #00FF87)
+                {
+                    id: "1A1a", short: "1A", group: "G1", name: "1A1a (Cohesión G1)",
+                    pos0: new THREE.Vector3(-4.0, -0.5 - 2.2, 0.0),
+                    pos1: new THREE.Vector3(-4.07, -2.97, -0.50),
+                    sdr: -0.91, sda: -9.68, srec: -9.81, total: -19.49, ias: 25.85, dif_dr: 45.34,
+                    e_emit: "1A (auto), 2A", e_rec: "2A", r_emit: "5A, 4A", r_rec: "5A",
+                    status: "Periferia Cohesiva del Núcleo {1,2,3}",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_1A.html"
+                },
+                {
+                    id: "2A1a", short: "2A", group: "G1", name: "2A1a [Líder Atractor G1]",
+                    pos0: new THREE.Vector3(-4.0 + 2.2 * Math.cos(-0.314), -0.5 + 2.2 * Math.sin(-0.314), 0.0),
+                    pos1: new THREE.Vector3(-3.85, -2.65, 0.60),
+                    sdr: -0.91, sda: 3.19, srec: 3.17, total: 6.36, ias: 47.97, dif_dr: 41.61,
+                    e_emit: "3A (1º), 1A (2º)", e_rec: "1A, 3A (Recíprocas <Ee>)", r_emit: "4A, 5A", r_rec: "4A, 5A",
+                    status: "🌟 Atractor Central Socio-Afectivo (Líder)",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_2A.html"
+                },
+                {
+                    id: "3A1a", short: "3A", group: "G1", name: "3A1a (Cohesión G1)",
+                    pos0: new THREE.Vector3(-4.0 + 2.2 * Math.cos(0.942), -0.5 + 2.2 * Math.sin(0.942), 0.0),
+                    pos1: new THREE.Vector3(-4.49, 0.88, -0.30),
+                    sdr: -0.91, sda: -1.08, srec: -1.17, total: -2.25, ias: 50.21, dif_dr: 52.45,
+                    e_emit: "2A (1º), 3A (auto)", e_rec: "2A", r_emit: "4A, 5A", r_rec: "4A, 5A",
+                    status: "Nodo Puente Integrador ({1,2,3} <-> {4,5})",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_3A.html"
+                },
+                {
+                    id: "4A1a", short: "4A", group: "G1", name: "4A1a (Cohesión G1)",
+                    pos0: new THREE.Vector3(-4.0 + 2.2 * Math.cos(2.199), -0.5 + 2.2 * Math.sin(2.199), 0.0),
+                    pos1: new THREE.Vector3(-3.50, 1.80, 0.40),
+                    sdr: -0.91, sda: -16.86, srec: -17.00, total: -33.86, ias: 40.22, dif_dr: 74.07,
+                    e_emit: "4A (auto), 5A (2º)", e_rec: "5A (Recíproca <Ee>)", r_emit: "3A, 2A", r_rec: "1A, 2A, 3A",
+                    status: "Subgrupo Secundario Simétrico {4,5}",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_4A.html"
+                },
+                {
+                    id: "5A1a", short: "5A", group: "G1", name: "5A1a (Cohesión G1)",
+                    pos0: new THREE.Vector3(-4.0 + 2.2 * Math.cos(3.455), -0.5 + 2.2 * Math.sin(3.455), 0.0),
+                    pos1: new THREE.Vector3(-4.10, -0.50, -0.20),
+                    sdr: -0.91, sda: -14.69, srec: -14.80, total: -29.49, ias: 35.85, dif_dr: 65.33,
+                    e_emit: "5A (auto), 4A (2º)", e_rec: "4A (Recíproca <Ee>)", r_emit: "1A, 3A", r_rec: "1A, 2A, 3A",
+                    status: "Subgrupo Secundario Simétrico {4,5}",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_5A.html"
+                },
 
-                // Grupo 2: Fricción y Ostracismo (Rosa Neón #FF007F)
-                { id: "1B1a", group: "G2", name: "1B1a (Fricción G2)", x: 3.84, y: -4.04, z: -0.5, sdr: -1.47, dif_dr: 9.47, status: "Fricción" },
-                { id: "2B1a", group: "G2", name: "2B1a (Fricción G2)", x: 3.28, y: 1.06, z: 0.6, sdr: -1.47, dif_dr: 9.47, status: "Fricción" },
-                { id: "3B1a", group: "G2", name: "3B1a (Fricción G2)", x: 4.34, y: -2.34, z: -0.4, sdr: -1.47, dif_dr: 9.47, status: "Fricción" },
-                { id: "4B1a", group: "G2", name: "4B1a (Fricción G2)", x: 3.90, y: 0.80, z: 0.3, sdr: -1.47, dif_dr: 9.47, status: "Fricción" },
-                { id: "5B1a", group: "G2", name: "5B1a [Ostracismo Periférico]", x: 7.20, y: 5.60, z: 1.2, sdr: -1.47, dif_dr: 9.47, status: "Ostracismo Severo" }
+                // GRUPO 2: Fricción y Ostracismo (Rosa Neón #FF007F)
+                {
+                    id: "1B1a", short: "1B", group: "G2", name: "1B1a (Fricción G2)",
+                    pos0: new THREE.Vector3(4.0, -0.5 - 2.2, 0.0),
+                    pos1: new THREE.Vector3(3.84, -4.04, -0.50),
+                    sdr: -1.47, sda: -14.19, srec: -13.99, total: -28.18, ias: 35.82, dif_dr: 63.99,
+                    e_emit: "1B (auto), 2B", e_rec: "2B", r_emit: "5B (5º), 4B", r_rec: "4B, 5B",
+                    status: "Centroide Intermedio Inestable",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_1B.html"
+                },
+                {
+                    id: "2B1a", short: "2B", group: "G2", name: "2B1a (Fricción G2)",
+                    pos0: new THREE.Vector3(4.0 + 2.2 * Math.cos(-0.314), -0.5 + 2.2 * Math.sin(-0.314), 0.0),
+                    pos1: new THREE.Vector3(3.28, 1.06, 0.60),
+                    sdr: -1.47, sda: -8.27, srec: -9.25, total: -17.52, ias: 31.25, dif_dr: 48.76,
+                    e_emit: "2B (auto), 1B", e_rec: "1B, 3B", r_emit: "5B (5º), 4B", r_rec: "ninguno severo",
+                    status: "Atractor Unilateral (Sobrecarga de Estatus)",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_2B.html"
+                },
+                {
+                    id: "3B1a", short: "3B", group: "G2", name: "3B1a (Fricción G2)",
+                    pos0: new THREE.Vector3(4.0 + 2.2 * Math.cos(0.942), -0.5 + 2.2 * Math.sin(0.942), 0.0),
+                    pos1: new THREE.Vector3(4.34, -2.34, -0.40),
+                    sdr: -1.47, sda: -10.22, srec: -11.09, total: -21.30, ias: 27.63, dif_dr: 48.93,
+                    e_emit: "3B (auto), 2B", e_rec: "auto", r_emit: "5B (5º), 4B", r_rec: "5B",
+                    status: "Centroide Desacoplado",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_3B.html"
+                },
+                {
+                    id: "4B1a", short: "4B", group: "G2", name: "4B1a (Fricción G2)",
+                    pos0: new THREE.Vector3(4.0 + 2.2 * Math.cos(2.199), -0.5 + 2.2 * Math.sin(2.199), 0.0),
+                    pos1: new THREE.Vector3(3.90, 0.80, 0.30),
+                    sdr: -1.47, sda: -18.83, srec: -19.76, total: -38.59, ias: 38.83, dif_dr: 77.42,
+                    e_emit: "4B (auto), 3B", e_rec: "5B1a (no correspondida)", r_emit: "5B (5º), 1B", r_rec: "1B, 2B, 3B",
+                    status: "Periferia en Tensión / Polarización",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_4B.html"
+                },
+                {
+                    id: "5B1a", short: "5B", group: "G2", name: "5B1a [Ostracismo Periférico]",
+                    pos0: new THREE.Vector3(4.0 + 2.2 * Math.cos(3.455), -0.5 + 2.2 * Math.sin(3.455), 0.0),
+                    pos1: new THREE.Vector3(7.20, 5.60, 1.20),
+                    sdr: -1.47, sda: -32.38, srec: -34.12, total: -66.50, ias: 66.50, dif_dr: 133.00,
+                    e_emit: "5B (auto), 4B", e_rec: "0 (Cero elecciones recibidas)",
+                    r_emit: "1B (1º), 3B (3º)", r_rec: "1B, 2B, 3B, 4B (¡100% de rechazo por pares!)",
+                    status: "🚨 Ostracismo Crítico / Anulación de Agencia",
+                    dossierUrl: "suite_g2t1c1/informes/individuales/Dossier_5B.html"
+                }
+            ],
+            edges: [
+                // G1 ELECCIONES
+                { source: "1A1a", target: "2A1a", type: "E", group: "G1", tStart: 0.06, reciprocal: true },
+                { source: "2A1a", target: "1A1a", type: "E", group: "G1", tStart: 0.08, reciprocal: true },
+                { source: "2A1a", target: "3A1a", type: "E", group: "G1", tStart: 0.12, reciprocal: true },
+                { source: "3A1a", target: "2A1a", type: "E", group: "G1", tStart: 0.15, reciprocal: true },
+                { source: "4A1a", target: "5A1a", type: "E", group: "G1", tStart: 0.18, reciprocal: true },
+                { source: "5A1a", target: "4A1a", type: "E", group: "G1", tStart: 0.20, reciprocal: true },
+                // G1 RECHAZOS
+                { source: "1A1a", target: "5A1a", type: "R", group: "G1", tStart: 0.48, reciprocal: true },
+                { source: "5A1a", target: "1A1a", type: "R", group: "G1", tStart: 0.50, reciprocal: true },
+                { source: "1A1a", target: "4A1a", type: "R", group: "G1", tStart: 0.52, reciprocal: false },
+                { source: "2A1a", target: "4A1a", type: "R", group: "G1", tStart: 0.54, reciprocal: true },
+                { source: "4A1a", target: "2A1a", type: "R", group: "G1", tStart: 0.56, reciprocal: true },
+                { source: "2A1a", target: "5A1a", type: "R", group: "G1", tStart: 0.58, reciprocal: false },
+                { source: "3A1a", target: "4A1a", type: "R", group: "G1", tStart: 0.60, reciprocal: true },
+                { source: "4A1a", target: "3A1a", type: "R", group: "G1", tStart: 0.62, reciprocal: true },
+                { source: "3A1a", target: "5A1a", type: "R", group: "G1", tStart: 0.64, reciprocal: true },
+                { source: "5A1a", target: "3A1a", type: "R", group: "G1", tStart: 0.66, reciprocal: true },
+                // G2 ELECCIONES
+                { source: "1B1a", target: "2B1a", type: "E", group: "G2", tStart: 0.07, reciprocal: true },
+                { source: "2B1a", target: "1B1a", type: "E", group: "G2", tStart: 0.09, reciprocal: true },
+                { source: "3B1a", target: "2B1a", type: "E", group: "G2", tStart: 0.14, reciprocal: false },
+                { source: "4B1a", target: "3B1a", type: "E", group: "G2", tStart: 0.18, reciprocal: false },
+                { source: "5B1a", target: "4B1a", type: "E", group: "G2", tStart: 0.22, reciprocal: false },
+                // G2 RECHAZOS (OSTRACISMO 4/4 SOBRE 5B1a)
+                { source: "1B1a", target: "5B1a", type: "R", group: "G2", tStart: 0.46, reciprocal: true, heavy: true },
+                { source: "2B1a", target: "5B1a", type: "R", group: "G2", tStart: 0.48, reciprocal: false, heavy: true },
+                { source: "3B1a", target: "5B1a", type: "R", group: "G2", tStart: 0.50, reciprocal: false, heavy: true },
+                { source: "4B1a", target: "5B1a", type: "R", group: "G2", tStart: 0.52, reciprocal: false, heavy: true },
+                { source: "1B1a", target: "4B1a", type: "R", group: "G2", tStart: 0.58, reciprocal: false },
+                { source: "2B1a", target: "4B1a", type: "R", group: "G2", tStart: 0.60, reciprocal: false },
+                { source: "3B1a", target: "4B1a", type: "R", group: "G2", tStart: 0.62, reciprocal: false },
+                { source: "4B1a", target: "1B1a", type: "R", group: "G2", tStart: 0.64, reciprocal: false },
+                { source: "5B1a", target: "1B1a", type: "R", group: "G2", tStart: 0.66, reciprocal: true },
+                { source: "5B1a", target: "3B1a", type: "R", group: "G2", tStart: 0.68, reciprocal: false }
             ]
         };
 
-        // INICIALIZACIÓN DEL MOTOR 3D BLINDADO
+        // =========================================================================
+        // ESTADO GLOBAL THREE.JS
+        // =========================================================================
         let scene, camera, renderer, controls;
-        let interactiveObjects = [];
-        let vectorLines = [];
+        let currentT = 0.00;
+        let isPlaying = true;
+        let isPlaying = true;
+        let animSpeed = 1.0;
+        let activeGroupMode = "both";
+        let showElecciones = true;
+        let showRechazos = true;
+        let showCentroidsVectors = true;
+        let showGrassmannArc = true;
+
+        const subjectObjects = {};
+        const centroidObjects = {};
+        const centroidLines = [];
+        const dynamicEdges = [];
         let grassmannGroup = null;
-        let showVectors = true;
-        let showGrassmann = true;
+        let interactiveMeshes = [];
+
+        const targetCamPos = new THREE.Vector3(0, -4, 25);
+        const targetLookAt = new THREE.Vector3(0.5, 0, 0);
 
         const container = document.getElementById('canvas-container');
         const tooltip = document.getElementById('node-tooltip');
 
-        function init() {
-            // Protección ante dimensiones
-            const width = Math.max(container.clientWidth || 0, window.innerWidth || 1);
-            const height = Math.max(container.clientHeight || 0, window.innerHeight || 1);
-
-            // Escena y fondo canónico Azul Marino Oscuro #0B132B
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x0B132B);
-
-            // Cámara
-            camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 2000);
-            camera.position.set(0, -5, 24);
-
-            // Renderizador
-            renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-            renderer.setSize(width, height);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-            container.appendChild(renderer.domElement);
-
-            // Controles de Órbita
-            const ControlsClass = THREE.OrbitControls || window.OrbitControls;
-            if (typeof ControlsClass === 'function') {
-                controls = new ControlsClass(camera, renderer.domElement);
-                controls.enableDamping = true;
-                controls.dampingFactor = 0.08;
-                controls.target.set(0.5, 0, 0);
-            }
-
-            // Iluminación
-            const ambient = new THREE.AmbientLight(0xffffff, 0.85);
-            scene.add(ambient);
-            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-            dirLight1.position.set(20, 30, 20);
-            scene.add(dirLight1);
-            const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.4);
-            dirLight2.position.set(-20, -20, -20);
-            scene.add(dirLight2);
-
-            // Rejilla de Fondo Sutil
-            const grid = new THREE.GridHelper(30, 30, 0x1E293B, 0x131E3A);
-            grid.rotation.x = Math.PI / 2;
-            grid.position.z = -2;
-            scene.add(grid);
-
-            // Ejes Factoriales F1 (Horizontal) y F2 (Vertical)
-            const axisMat = new THREE.LineBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.6 });
-            const axisGeoX = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-15, 0, 0), new THREE.Vector3(15, 0, 0)]);
-            const axisGeoY = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -12, 0), new THREE.Vector3(0, 12, 0)]);
-            scene.add(new THREE.LineSegments(axisGeoX, axisMat));
-            scene.add(new THREE.LineSegments(axisGeoY, axisMat));
-
-            // Construir Nodos, Centroides y Vínculos
-            buildEntities();
-
-            // Eventos
-            window.addEventListener('resize', onResize);
-            window.addEventListener('mousemove', onPointerMove);
-            window.addEventListener('touchmove', onTouchMove, { passive: false });
-
-            // UI Listeners
-            setupUI();
-
-            // Ciclo de Render
-            animate();
-        }
-
-        // Helper para crear Sprite de Texto Nítido
         function makeTextSprite(message, colorStr, fontSize) {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            canvas.width = 256;
-            canvas.height = 128;
+            canvas.width = 256; canvas.height = 128;
             ctx.font = `bold ${fontSize || 38}px Arial`;
             ctx.fillStyle = colorStr;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
             ctx.fillText(message, 128, 64);
 
             const texture = new THREE.CanvasTexture(canvas);
             texture.needsUpdate = true;
             const spriteMaterial = new THREE.SpriteMaterial({ map: texture, transparent: true });
             const sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(3.2, 1.6, 1.0);
+            sprite.scale.set(3.0, 1.5, 1.0);
             return sprite;
         }
 
-        function buildEntities() {
-            const sphereGeo = new THREE.SphereGeometry(0.48, 32, 32);
-            const ostracismoGeo = new THREE.SphereGeometry(0.65, 32, 32);
+        function init() {
+            const width = Math.max(container.clientWidth || 0, window.innerWidth || 1);
+            const height = Math.max(container.clientHeight || 0, window.innerHeight || 1);
 
-            // 1. Sujetos
-            PAYLOAD_G2T1C1.subjects.forEach(sub => {
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0B132B);
+
+            camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 2000);
+            camera.position.copy(targetCamPos);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            container.appendChild(renderer.domElement);
+
+            const ControlsClass = THREE.OrbitControls || window.OrbitControls;
+            if (typeof ControlsClass === 'function') {
+                controls = new ControlsClass(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.08;
+                controls.target.copy(targetLookAt);
+            }
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.85));
+            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.85);
+            dirLight1.position.set(20, 30, 20);
+            scene.add(dirLight1);
+            const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.45);
+            dirLight2.position.set(-20, -20, -20);
+            scene.add(dirLight2);
+
+            const grid = new THREE.GridHelper(32, 32, 0x1E293B, 0x131E3A);
+            grid.rotation.x = Math.PI / 2;
+            grid.position.z = -2.5;
+            scene.add(grid);
+
+            const axisMat = new THREE.LineBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.55 });
+            const axisGeoX = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-18, 0, 0), new THREE.Vector3(18, 0, 0)]);
+            const axisGeoY = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -14, 0), new THREE.Vector3(0, 14, 0)]);
+            scene.add(new THREE.LineSegments(axisGeoX, axisMat));
+            scene.add(new THREE.LineSegments(axisGeoY, axisMat));
+
+            buildEntities();
+
+            window.addEventListener('resize', onResize);
+            window.addEventListener('mousemove', onPointerMove);
+            window.addEventListener('touchmove', onTouchMove, { passive: false });
+
+            setupUI();
+            updateSubjectDetail("1A");
+            updateTimelineState(0.00);
+            animate();
+        }
+
+        function buildEntities() {
+            const sphereGeo = new THREE.SphereGeometry(0.50, 32, 32);
+            const ostracismoGeo = new THREE.SphereGeometry(0.68, 32, 32);
+
+            CANONICAL_DATA.subjects.forEach(sub => {
                 const isG1 = sub.group === "G1";
                 const isOst = sub.id === "5B1a";
                 const baseColor = isG1 ? 0x00FF87 : (isOst ? 0xFF007F : 0xFF2D87);
 
                 const mat = new THREE.MeshStandardMaterial({
-                    color: baseColor,
-                    emissive: baseColor,
-                    emissiveIntensity: isOst ? 0.65 : 0.35,
-                    roughness: 0.2,
-                    metalness: 0.3
+                    color: baseColor, emissive: baseColor,
+                    emissiveIntensity: isOst ? 0.70 : 0.40,
+                    roughness: 0.2, metalness: 0.3
                 });
 
                 const mesh = new THREE.Mesh(isOst ? ostracismoGeo : sphereGeo, mat);
-                mesh.position.set(sub.x, sub.y, sub.z);
+                mesh.position.copy(sub.pos1);
                 mesh.userData = { ...sub, type: 'subject' };
                 scene.add(mesh);
-                interactiveObjects.push(mesh);
+                interactiveMeshes.push(mesh);
 
-                // Etiqueta flotante
                 const labelColor = isG1 ? '#00FF87' : (isOst ? '#FF007F' : '#FF99C8');
                 const label = makeTextSprite(sub.id, labelColor, isOst ? 44 : 36);
-                label.position.set(sub.x, sub.y + (isOst ? 0.95 : 0.75), sub.z);
+                label.position.copy(sub.pos1).add(new THREE.Vector3(0, isOst ? 0.95 : 0.75, 0));
                 scene.add(label);
 
-                // Halo pulsante para 5B1a
+                let halo = null;
                 if (isOst) {
-                    const haloGeo = new THREE.RingGeometry(0.85, 1.05, 32);
-                    const haloMat = new THREE.MeshBasicMaterial({ color: 0xFF007F, side: THREE.DoubleSide, transparent: true, opacity: 0.8 });
-                    const halo = new THREE.Mesh(haloGeo, haloMat);
-                    halo.position.set(sub.x, sub.y, sub.z);
+                    const haloGeo = new THREE.RingGeometry(0.85, 1.15, 32);
+                    const haloMat = new THREE.MeshBasicMaterial({ color: 0xFF007F, side: THREE.DoubleSide, transparent: true, opacity: 0.85 });
+                    halo = new THREE.Mesh(haloGeo, haloMat);
+                    halo.position.copy(sub.pos1);
                     scene.add(halo);
-                    mesh.userData.halo = halo;
                 }
+
+                subjectObjects[sub.id] = { mesh, label, halo, data: sub };
             });
 
-            // 2. Centroides
-            const octGeo = new THREE.OctahedronGeometry(0.7, 0);
-            PAYLOAD_G2T1C1.centroids.forEach(cent => {
+            const octGeo = new THREE.OctahedronGeometry(0.72, 0);
+            CANONICAL_DATA.centroids.forEach(cent => {
                 const mat = new THREE.MeshStandardMaterial({
-                    color: 0xFFE600,
-                    emissive: 0xFFE600,
-                    emissiveIntensity: 0.5,
-                    roughness: 0.1,
-                    metalness: 0.5
+                    color: 0xFFE600, emissive: 0xFFE600, emissiveIntensity: 0.55,
+                    roughness: 0.1, metalness: 0.5, transparent: true, opacity: 1.0
                 });
                 const mesh = new THREE.Mesh(octGeo, mat);
                 mesh.position.set(cent.x, cent.y, cent.z);
                 mesh.userData = { ...cent, type: 'centroid' };
                 scene.add(mesh);
-                interactiveObjects.push(mesh);
+                interactiveMeshes.push(mesh);
 
                 const label = makeTextSprite(cent.id, '#FFE600', 40);
                 label.position.set(cent.x, cent.y - 0.95, cent.z);
                 scene.add(label);
+
+                centroidObjects[cent.id] = { mesh, label, data: cent };
             });
 
-            // 3. Vectores de cohesión hacia centroides
-            PAYLOAD_G2T1C1.subjects.forEach(sub => {
-                const cent = sub.group === "G1" ? PAYLOAD_G2T1C1.centroids[0] : PAYLOAD_G2T1C1.centroids[1];
-                const pts = [new THREE.Vector3(sub.x, sub.y, sub.z), new THREE.Vector3(cent.x, cent.y, cent.z)];
+            CANONICAL_DATA.subjects.forEach(sub => {
+                const cent = sub.group === "G1" ? CANONICAL_DATA.centroids[0] : CANONICAL_DATA.centroids[1];
+                const pts = [sub.pos1.clone(), new THREE.Vector3(cent.x, cent.y, cent.z)];
                 const col = sub.group === "G1" ? 0x00FF87 : (sub.id === "5B1a" ? 0xFF007F : 0xFF2D87);
                 const lineMat = new THREE.LineDashedMaterial({
-                    color: col,
-                    dashSize: 0.3,
-                    gapSize: 0.2,
-                    transparent: true,
-                    opacity: sub.id === "5B1a" ? 0.85 : 0.35
+                    color: col, dashSize: 0.3, gapSize: 0.2,
+                    transparent: true, opacity: sub.id === "5B1a" ? 0.85 : 0.35
                 });
                 const lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
                 const line = new THREE.Line(lineGeo, lineMat);
                 line.computeLineDistances();
+                line.userData = { subId: sub.id, group: sub.group };
                 scene.add(line);
-                vectorLines.push(line);
+                centroidLines.push(line);
             });
 
-            // 4. Subespacio de Grassmann y Arco Geodésico
-            grassmannGroup = new THREE.Group();
-            const g1Cent = PAYLOAD_G2T1C1.centroids[0];
-            const g2Cent = PAYLOAD_G2T1C1.centroids[1];
+            const pulseGeo = new THREE.SphereGeometry(0.12, 16, 16);
+            CANONICAL_DATA.edges.forEach((edge, idx) => {
+                const isE = edge.type === "E";
+                const col = isE ? 0x00FF87 : 0xFF007F;
 
-            // Curva Bézier entre ambos grupos para simbolizar la distancia geodésica
+                const lineGeo = new THREE.BufferGeometry();
+                const posArray = new Float32Array(6);
+                lineGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+                const lineMat = new THREE.LineBasicMaterial({
+                    color: col, transparent: true,
+                    opacity: isE ? 0.75 : (edge.heavy ? 0.95 : 0.65),
+                    linewidth: edge.heavy ? 3 : 1
+                });
+                const line = new THREE.Line(lineGeo, lineMat);
+                scene.add(line);
+
+                const pulseMat = new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.9 });
+                const pulse = new THREE.Mesh(pulseGeo, pulseMat);
+                scene.add(pulse);
+
+                dynamicEdges.push({
+                    ...edge,
+                    line, pulse,
+                    pulseOffset: (idx * 0.17) % 1.0,
+                    posArray
+                });
+            });
+
+            grassmannGroup = new THREE.Group();
+            const g1Cent = CANONICAL_DATA.centroids[0];
+            const g2Cent = CANONICAL_DATA.centroids[1];
+
             const curve = new THREE.QuadraticBezierCurve3(
                 new THREE.Vector3(g1Cent.x, g1Cent.y, g1Cent.z),
-                new THREE.Vector3(0, 4.5, 3),
+                new THREE.Vector3(0, 4.8, 3.5),
                 new THREE.Vector3(g2Cent.x, g2Cent.y, g2Cent.z)
             );
-            const curvePoints = curve.getPoints(30);
+            const curvePoints = curve.getPoints(32);
             const curveGeo = new THREE.BufferGeometry().setFromPoints(curvePoints);
             const curveMat = new THREE.LineDashedMaterial({
-                color: 0x38BDF8,
-                dashSize: 0.4,
-                gapSize: 0.25,
-                transparent: true,
-                opacity: 0.85
+                color: 0x38BDF8, dashSize: 0.4, gapSize: 0.25,
+                transparent: true, opacity: 0.85
             });
             const grassmannArc = new THREE.Line(curveGeo, curveMat);
             grassmannArc.computeLineDistances();
             grassmannGroup.add(grassmannArc);
 
             const grassLabel = makeTextSprite("d_Gr = 1,455 rad (83,37°)", "#38BDF8", 32);
-            grassLabel.position.set(0, 5.2, 3);
-            grassLabel.scale.set(4.2, 2.1, 1);
+            grassLabel.position.set(0, 5.4, 3.5);
+            grassLabel.scale.set(4.2, 2.1, 1.0);
             grassmannGroup.add(grassLabel);
 
             scene.add(grassmannGroup);
         }
 
-        // Raycaster para interactividad
+        function updateTimelineState(t) {
+            currentT = Math.max(0, Math.min(1, t));
+
+            document.getElementById('timeline-slider').value = currentT.toFixed(3);
+            document.getElementById('time-display').textContent = `t=${currentT.toFixed(2)}`;
+            document.getElementById('metric-t').textContent = currentT.toFixed(2);
+
+            CANONICAL_DATA.subjects.forEach(sub => {
+                const obj = subjectObjects[sub.id];
+                if (!obj) return;
+
+                let progress;
+                if (sub.id === "5B1a") {
+                    if (currentT <= 0.40) {
+                        progress = Math.min(1, currentT / 0.40) * 0.15;
+                    } else {
+                        const rFrac = (currentT - 0.40) / 0.60;
+                        progress = 0.15 + 0.85 * Math.pow(rFrac, 1.4);
+                    }
+                } else {
+                    const frac = Math.max(0, Math.min(1, currentT));
+                    progress = frac * frac * (3 - 2 * frac);
+                }
+
+                const currPos = new THREE.Vector3().lerpVectors(sub.pos0, sub.pos1, progress);
+                obj.mesh.position.copy(currPos);
+                obj.label.position.copy(currPos).add(new THREE.Vector3(0, sub.id === "5B1a" ? 0.95 : 0.75, 0));
+                if (obj.halo) obj.halo.position.copy(currPos);
+
+                let isVisible = true;
+                if (activeGroupMode === "g1" && sub.group !== "G1") isVisible = false;
+                if (activeGroupMode === "g2" && sub.group !== "G2") isVisible = false;
+
+                obj.mesh.visible = isVisible;
+                obj.label.visible = isVisible;
+                if (obj.halo) obj.halo.visible = isVisible && currentT > 0.45;
+            });
+
+            dynamicEdges.forEach(edge => {
+                const srcObj = subjectObjects[edge.source];
+                const tgtObj = subjectObjects[edge.target];
+                if (!srcObj || !tgtObj) return;
+
+                const p1 = srcObj.mesh.position;
+                const p2 = tgtObj.mesh.position;
+
+                let isEdgeVisible = true;
+                if (activeGroupMode === "g1" && edge.group !== "G1") isEdgeVisible = false;
+                if (activeGroupMode === "g2" && edge.group !== "G2") isEdgeVisible = false;
+                if (edge.type === "E" && !showElecciones) isEdgeVisible = false;
+                if (edge.type === "R" && !showRechazos) isEdgeVisible = false;
+                if (currentT < edge.tStart) isEdgeVisible = false;
+
+                if (!isEdgeVisible) {
+                    edge.line.visible = false;
+                    edge.pulse.visible = false;
+                    return;
+                }
+
+                edge.line.visible = true;
+                const growth = Math.min(1, (currentT - edge.tStart) / 0.18);
+                const pCurrTarget = new THREE.Vector3().lerpVectors(p1, p2, growth);
+
+                const pos = edge.posArray;
+                pos[0] = p1.x; pos[1] = p1.y; pos[2] = p1.z;
+                pos[3] = pCurrTarget.x; pos[4] = pCurrTarget.y; pos[5] = pCurrTarget.z;
+                edge.line.geometry.attributes.position.needsUpdate = true;
+
+                if (growth > 0.25) {
+                    edge.pulse.visible = true;
+                    const pulseFrac = (clock * 1.6 + edge.pulseOffset) % 1.0;
+                    const pulsePos = new THREE.Vector3().lerpVectors(p1, pCurrTarget, pulseFrac);
+                    edge.pulse.position.copy(pulsePos);
+                } else {
+                    edge.pulse.visible = false;
+                }
+            });
+
+            centroidLines.forEach(line => {
+                const subObj = subjectObjects[line.userData.subId];
+                const centObj = centroidObjects[line.userData.group === "G1" ? "1g1t1c" : "2g1t1c"];
+                if (!subObj || !centObj) return;
+
+                let isVisible = showCentroidsVectors && currentT >= 0.70;
+                if (activeGroupMode === "g1" && line.userData.group !== "G1") isVisible = false;
+                if (activeGroupMode === "g2" && line.userData.group !== "G2") isVisible = false;
+
+                line.visible = isVisible;
+                if (isVisible) {
+                    const pts = [subObj.mesh.position.clone(), centObj.mesh.position.clone()];
+                    line.geometry.setFromPoints(pts);
+                    line.computeLineDistances();
+                }
+            });
+
+            const showCent = currentT >= 0.65;
+            Object.values(centroidObjects).forEach(cent => {
+                let isVisible = showCent;
+                if (activeGroupMode === "g1" && cent.data.group !== "G1") isVisible = false;
+                if (activeGroupMode === "g2" && cent.data.group !== "G2") isVisible = false;
+                cent.mesh.visible = isVisible;
+                cent.label.visible = isVisible;
+            });
+
+            if (grassmannGroup) {
+                const showG = showGrassmannArc && currentT >= 0.80 && activeGroupMode === "both";
+                grassmannGroup.visible = showG;
+            }
+
+            updateNarrativeAndMetrics();
+        }
+
+        function updateNarrativeAndMetrics() {
+            const badge = document.getElementById('phase-badge');
+            const narr = document.getElementById('narrative-text');
+
+            const mBdr = document.getElementById('metric-bdr');
+            const mSdrG1 = document.getElementById('metric-sdr-g1');
+            const mSdrG2 = document.getElementById('metric-sdr-g2');
+            const mDifDr = document.getElementById('metric-difdr-5b');
+            const mGrass = document.getElementById('metric-grassmann');
+
+            const bdrVal = (currentT * 8.00).toFixed(2);
+            mBdr.textContent = bdrVal;
+
+            if (currentT === 0) {
+                badge.className = "phase-pill phase-base";
+                badge.textContent = "⚪ t=0.00: Línea Base Desacoplada";
+                narr.textContent = "Estado inicial: Nodos en círculo regular. Cero interacción previa, sin tensiones.";
+                mSdrG1.textContent = "0,00"; mSdrG2.textContent = "0,00";
+                mDifDr.textContent = "0,00"; mGrass.textContent = "0,000 rad";
+            } else if (currentT <= 0.45) {
+                badge.className = "phase-pill phase-e";
+                badge.textContent = "🟢 Fase 1: Elecciones Emergentes (E)";
+                if (activeGroupMode === "g1") {
+                    narr.textContent = "G1: Elecciones recíprocas consolidan la tríada {1A, 2A, 3A} y el par simétrico {4A, 5A}.";
+                } else if (activeGroupMode === "g2") {
+                    narr.textContent = "G2: Elecciones unilaterales hacia el atractor 2B. Nadie elige a 5B1a (cero elecciones entrantes).";
+                } else {
+                    narr.textContent = "Atracción afectiva inicial: Lazos verdes conectan a los pares emisores y receptores.";
+                }
+                const s1 = (-0.91 * (currentT / 0.45)).toFixed(2);
+                const s2 = (-0.60 * (currentT / 0.45)).toFixed(2);
+                mSdrG1.textContent = s1; mSdrG2.textContent = s2;
+                mDifDr.textContent = (2.5 * (currentT / 0.45)).toFixed(2);
+                mGrass.textContent = "En formación...";
+            } else if (currentT <= 0.80) {
+                badge.className = "phase-pill phase-r";
+                badge.textContent = "🔴 Fase 2: Rechazos (R) & Repulsión / Ostracismo";
+                if (activeGroupMode === "g2") {
+                    narr.textContent = "¡Alerta G2! 4 de 4 compañeros rechazan a 5B1a. La fuerza repulsiva acumulada expulsa a 5B1a a la periferia.";
+                } else if (activeGroupMode === "g1") {
+                    narr.textContent = "G1: Rechazos equilibrados entre subgrupos estabilizan la estructura bipolar sin expulsión.";
+                } else {
+                    narr.textContent = "Emerge la fricción socio-emocional: Los 4 rechazos unánimes de G2 proyectan a 5B1a hacia el ostracismo.";
+                }
+                mSdrG1.textContent = "-0,91";
+                mSdrG2.textContent = (-1.47 * ((currentT - 0.45) / 0.35)).toFixed(2);
+                mDifDr.textContent = (9.47 * ((currentT - 0.45) / 0.35)).toFixed(2);
+                mGrass.textContent = "Transición ortogonal...";
+            } else {
+                badge.className = "phase-pill phase-top";
+                badge.textContent = "🌐 Fase 3: Cristalización Factorial & Grassmann";
+                if (activeGroupMode === "g1") {
+                    narr.textContent = "G1 Cohesión: Centros de atracción equilibrados, ausencia de rechazos severos (SDR = -0,91).";
+                } else if (activeGroupMode === "g2") {
+                    narr.textContent = "G2 Ostracismo: Fractura confirmada. 5B1a aislado a Dif-DR = 9,47 por consenso unánime de rechazo.";
+                } else {
+                    narr.textContent = "Régimen final consolidado. Subespacios Gr(2,5) ortogonales (d_Gr = 1,455 rad, 83,37°).";
+                }
+                mSdrG1.textContent = "-0,91"; mSdrG2.textContent = "-1,47";
+                mDifDr.textContent = "9,47"; mGrass.textContent = "1,455 rad (83,37°)";
+            }
+        }
+
+        function setGroupMode(mode) {
+            activeGroupMode = mode;
+            document.querySelectorAll('.btn-group-mode').forEach(b => {
+                b.classList.remove('active');
+                if (b.getAttribute('data-mode') === mode) b.classList.add('active');
+            });
+
+            if (mode === "g1") {
+                targetCamPos.set(-4.0, -1.0, 13);
+                targetLookAt.set(-4.0, -0.8, 0);
+            } else if (mode === "g2") {
+                targetCamPos.set(5.2, 0.8, 15);
+                targetLookAt.set(4.8, 0.8, 0);
+            } else {
+                targetCamPos.set(0, -4, 25);
+                targetLookAt.set(0.5, 0, 0);
+            }
+
+            updateTimelineState(0.00);
+        }
+
         const raycaster = new THREE.Raycaster();
         const pointer = new THREE.Vector2();
 
@@ -499,7 +1678,8 @@
             pointer.y = -(y / window.innerHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera);
 
-            const intersects = raycaster.intersectObjects(interactiveObjects);
+            const visibleMeshes = interactiveMeshes.filter(m => m.visible);
+            const intersects = raycaster.intersectObjects(visibleMeshes);
             if (intersects.length > 0) {
                 const data = intersects[0].object.userData;
                 showTooltip(data, x, y);
@@ -510,14 +1690,9 @@
             }
         }
 
-        function onPointerMove(e) {
-            handlePointer(e.clientX, e.clientY);
-        }
-
+        function onPointerMove(e) { handlePointer(e.clientX, e.clientY); }
         function onTouchMove(e) {
-            if (e.touches.length > 0) {
-                handlePointer(e.touches[0].clientX, e.touches[0].clientY);
-            }
+            if (e.touches.length > 0) handlePointer(e.touches[0].clientX, e.touches[0].clientY);
         }
 
         function showTooltip(data, x, y) {
@@ -529,6 +1704,7 @@
                 if (!isG1) tooltip.classList.add('g2');
                 if (isOst) tooltip.classList.add('ostracismo');
 
+                const currMesh = subjectObjects[data.id].mesh;
                 html = `
                     <div style="font-weight:800; color:${isG1 ? '#00FF87' : '#FF007F'}; margin-bottom:4px;">
                         ${data.name}
@@ -536,20 +1712,25 @@
                     <div><strong>Grupo:</strong> ${data.group} | <strong>Condición:</strong> ${data.status}</div>
                     <div><strong>Densidad SDR:</strong> ${data.sdr.toFixed(2)}</div>
                     <div><strong>Desajuste Dif-DR:</strong> ${data.dif_dr.toFixed(2)}</div>
-                    <div style="color:#94A3B8; font-size:0.7rem; margin-top:4px;">Posición F1, F2: (${data.x.toFixed(2)}, ${data.y.toFixed(2)})</div>
+                    <div style="color:#94A3B8; font-size:0.72rem; margin-top:4px;">
+                        Posición F1, F2: (${currMesh.position.x.toFixed(2)}, ${currMesh.position.y.toFixed(2)})
+                    </div>
+                    <button onclick="openSubjectDossier('${data.short}')" style="margin-top:8px; width:100%; padding:5px 8px; border-radius:6px; background:${isG1 ? '#00FF87' : '#FF007F'}; color:${isG1 ? '#0B132B' : '#FFFFFF'}; border:none; font-weight:800; font-size:0.72rem; cursor:pointer;">
+                        👤 Ver Ficha e Informe Individual
+                    </button>
                 `;
             } else if (data.type === 'centroid') {
                 html = `
                     <div style="font-weight:800; color:#FFE600; margin-bottom:4px;">${data.name}</div>
                     <div><strong>Grupo:</strong> ${data.group} (Centroide Factorial)</div>
-                    <div><strong>Densidad Media BDR̄:</strong> 8,00</div>
+                    <div><strong>Masa Conservada BDR̄:</strong> 8,00</div>
                     <div><strong>Coordenadas:</strong> (${data.x.toFixed(2)}, ${data.y.toFixed(2)})</div>
                 `;
             }
             tooltip.innerHTML = html;
             tooltip.style.display = 'block';
-            tooltip.style.left = Math.min(x + 15, window.innerWidth - 270) + 'px';
-            tooltip.style.top = Math.min(y + 15, window.innerHeight - 150) + 'px';
+            tooltip.style.left = Math.min(x + 15, window.innerWidth - 300) + 'px';
+            tooltip.style.top = Math.min(y + 15, window.innerHeight - 190) + 'px';
         }
 
         function onResize() {
@@ -561,49 +1742,329 @@
             renderer.setSize(w, h);
         }
 
+        // =========================================================================
+        // CONTROL DE INTERFAZ, MODALES Y DOSSIER
+        // =========================================================================
         function setupUI() {
+            // Asignar listeners a los botones del HUD de Vistas Integradas
+            document.querySelectorAll('.nav-view-btn[data-view]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetView = btn.getAttribute('data-view');
+                    switchMainView(targetView);
+                });
+            });
+            const playBtn = document.getElementById('btn-play-pause');
+            playBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                playBtn.textContent = isPlaying ? "⏸" : "▶";
+            });
+
+            document.getElementById('btn-reset-t').addEventListener('click', () => {
+                isPlaying = false;
+                playBtn.textContent = "▶";
+                updateTimelineState(0.0);
+            });
+
+            const slider = document.getElementById('timeline-slider');
+            slider.addEventListener('input', (e) => {
+                isPlaying = false;
+                playBtn.textContent = "▶";
+                updateTimelineState(parseFloat(e.target.value));
+            });
+
+            const speedBtn = document.getElementById('btn-toggle-speed');
+            speedBtn.addEventListener('click', () => {
+                animSpeed = animSpeed === 1.0 ? 2.0 : (animSpeed === 2.0 ? 0.5 : 1.0);
+                speedBtn.textContent = `⚡ Vel: ${animSpeed}x`;
+            });
+
+            document.querySelectorAll('.btn-group-mode').forEach(btn => {
+                btn.addEventListener('click', () => setGroupMode(btn.getAttribute('data-mode')));
+            });
+
             document.getElementById('btn-reset-cam').addEventListener('click', () => {
-                camera.position.set(0, -5, 24);
-                if (controls) {
-                    controls.target.set(0.5, 0, 0);
-                    controls.update();
-                }
+                setGroupMode(activeGroupMode);
             });
 
-            document.getElementById('btn-toggle-vectors').addEventListener('click', () => {
-                showVectors = !showVectors;
-                vectorLines.forEach(l => l.visible = showVectors);
+            const btnE = document.getElementById('btn-toggle-e');
+            btnE.addEventListener('click', () => {
+                showElecciones = !showElecciones;
+                btnE.classList.toggle('active', showElecciones);
+                updateTimelineState(0.00);
             });
 
-            document.getElementById('btn-toggle-grassmann').addEventListener('click', () => {
-                showGrassmann = !showGrassmann;
-                if (grassmannGroup) grassmannGroup.visible = showGrassmann;
+            const btnR = document.getElementById('btn-toggle-r');
+            btnR.addEventListener('click', () => {
+                showRechazos = !showRechazos;
+                btnR.classList.toggle('active', showRechazos);
+                updateTimelineState(0.00);
             });
 
-            const modal = document.getElementById('modal-nota');
-            document.getElementById('btn-open-nota').addEventListener('click', () => modal.style.display = 'flex');
-            document.getElementById('btn-close-nota').addEventListener('click', () => modal.style.display = 'none');
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+            const btnV = document.getElementById('btn-toggle-vectors');
+            btnV.addEventListener('click', () => {
+                showCentroidsVectors = !showCentroidsVectors;
+                btnV.classList.toggle('active', showCentroidsVectors);
+                updateTimelineState(0.00);
+            });
+
+            const btnG = document.getElementById('btn-toggle-grassmann');
+            btnG.addEventListener('click', () => {
+                showGrassmannArc = !showGrassmannArc;
+                btnG.classList.toggle('active', showGrassmannArc);
+                updateTimelineState(0.00);
+            });
+
+            // Modal Nota Explicativa
+            const modalNota = document.getElementById('modal-nota');
+            document.getElementById('btn-open-nota').addEventListener('click', () => modalNota.style.display = 'flex');
+            document.getElementById('btn-close-nota').addEventListener('click', () => modalNota.style.display = 'none');
+            modalNota.addEventListener('click', (e) => { if (e.target === modalNota) modalNota.style.display = 'none'; });
+
+            // Vistas gestionadas por el menú del HUD switchMainView()
+
+            // Sub-pestañas de Tablas 1 a 10
+            document.querySelectorAll('.btn-tbl-nav').forEach(tBtn => {
+                tBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.btn-tbl-nav').forEach(b => b.classList.remove('active'));
+                    tBtn.classList.add('active');
+                    const tblId = tBtn.getAttribute('data-table');
+                    document.querySelectorAll('.table-view-card').forEach(card => card.style.display = 'none');
+                    const activeCard = document.getElementById(`card-${tblId}`);
+                    if (activeCard) activeCard.style.display = 'block';
+                });
+            });
+
+            // Sub-pestañas de Sujetos Individuales
+            document.querySelectorAll('.btn-sub-pill').forEach(sBtn => {
+                sBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.btn-sub-pill').forEach(b => b.classList.remove('active'));
+                    sBtn.classList.add('active');
+                    updateSubjectDetail(sBtn.getAttribute('data-sub'));
+                });
+            });
+
+            // Lightbox
+            const lightbox = document.getElementById('lightbox-overlay');
+            const lbClose = document.getElementById('lightbox-close');
+            lbClose.addEventListener('click', () => lightbox.style.display = 'none');
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.style.display = 'none'; });
         }
 
+        // =========================================================================
+        // FICHA DINÁMICA DE SUJETO INDIVIDUAL
+        // =========================================================================
+        function updateSubjectDetail(subShort) {
+            const sub = CANONICAL_DATA.subjects.find(s => s.short === subShort);
+            if (!sub) return;
+
+            const card = document.getElementById('subject-detail-card');
+            const isG1 = sub.group === "G1";
+            const isOst = sub.id === "5B1a";
+            const col = isG1 ? "#00FF87" : (isOst ? "#FF007F" : "#FF2D87");
+
+            card.style.borderLeft = `4px solid ${col}`;
+            card.innerHTML = `
+                <div class="table-view-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <span class="badge-sub ${isG1 ? 'badge-g1' : (isOst ? 'badge-alert' : 'badge-g2')}" style="font-size:0.80rem;">
+                            SUJETO ${sub.id} (${sub.group})
+                        </span>
+                        <div class="table-view-title" style="margin-top:6px; color:${col}; font-size:1.05rem;">
+                            ${sub.name}
+                        </div>
+                        <div class="table-view-subtitle">${sub.status}</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <button class="btn-action" style="background:${col}; color:${isG1 ? '#0B132B' : '#FFFFFF'}; font-weight:800;" onclick="openEmbeddedViewer('${sub.dossierUrl}', 'Dossier Sociométrico Forense Individual: ${sub.id}')">
+                            👁️ Desplegar Dossier Completo (Chart.js)
+                        </button>
+                        <a href="${sub.dossierUrl}" target="_blank" class="btn-action" style="margin-top:6px;">↗️ Abrir en Ventana</a>
+                    </div>
+                </div>
+
+                <div class="table-responsive" style="margin-top:12px;">
+                    <table class="html-dossier-table">
+                        <thead>
+                            <tr>
+                                <th>Elecciones Emitidas (DA)</th><th>Elecciones Recibidas (RECIBE)</th>
+                                <th>Rechazos Emitidos (DA)</th><th>Rechazos Recibidos (RECIBE)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color:#00FF87; font-weight:700;">${sub.e_emit}</td>
+                                <td style="color:#00FF87; font-weight:700;">${sub.e_rec}</td>
+                                <td style="color:#FF007F; font-weight:700;">${sub.r_emit}</td>
+                                <td style="color:#FF007F; font-weight:700;">${sub.r_rec}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive" style="margin-top:10px;">
+                    <table class="html-dossier-table">
+                        <thead>
+                            <tr>
+                                <th>Densidad Dada (SDA)</th><th>Densidad Recibida (SREC)</th>
+                                <th>Balance Total</th><th>Atracción (IAS)</th>
+                                <th>Desajuste (Dif-DR)</th><th>Posición Factorial (F1, F2)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>${sub.sda.toFixed(2)}</td>
+                                <td style="${isOst ? 'color:#FF007F; font-weight:900;' : ''}">${sub.srec.toFixed(2)}</td>
+                                <td>${sub.total.toFixed(2)}</td>
+                                <td>${sub.ias.toFixed(2)}</td>
+                                <td style="${isOst ? 'color:#FF007F; font-weight:900;' : ''}">${sub.dif_dr.toFixed(2)}</td>
+                                <td>(${sub.pos1.x.toFixed(2)}, ${sub.pos1.y.toFixed(2)})</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="dossier-note" style="margin-top:12px;">
+                    <strong>💡 Dictamen Sociométrico Pericial:</strong>
+                    ${isOst 
+                        ? 'Alerta Crítica: El participante 5B1a sufre la máxima asimetría lesiva de todo el corpus. Cuatro de cuatro compañeros lo rechazan formalmente en la posición extrema (5º), mientras que recibe cero elecciones efectivas. Su desajuste (Dif-DR = 133,00) duplica el promedio grupal, materializando la patología de ostracismo invisible.'
+                        : (sub.short === '2A'
+                            ? 'Liderazgo Afectivo: El participante 2A1a actúa como el atractor máximo de cohesión de G1, recibiendo elecciones recíprocas mutuas (&lt;Ee&gt;) de 1A y 3A con el único valor positivo de densidad neta (SDA = +3,19, SREC = +3,17).'
+                            : 'Perfil Funcional: Las preferencias emitidas y recibidas mantienen coherencia con la estructura de subgrupos equilibrada, sin generar fracturas ni aislamiento periférico.')}
+                </div>
+            `;
+        }
+
+        // Abrir Dossier de un sujeto directamente desde el Canvas 3D
+                function openSubjectDossier(subShort) {
+            switchMainView('view-individuales');
+            document.querySelectorAll('.btn-sub-pill').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-sub') === subShort);
+            });
+            updateSubjectDetail(subShort);
+        }
+
+        // =========================================================================
+        // VISOR EMBEBIDO UNIVERSAL (IFRAME)
+        // =========================================================================
+        function openEmbeddedViewer(url, title) {
+            const viewer = document.getElementById('modal-embedded-viewer');
+            const iframe = document.getElementById('embedded-viewer-iframe');
+            const titleEl = document.getElementById('embedded-viewer-title');
+
+            titleEl.textContent = title;
+            iframe.src = url;
+            viewer.style.display = 'flex';
+            viewer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closeEmbeddedViewer() {
+            const viewer = document.getElementById('modal-embedded-viewer');
+            const iframe = document.getElementById('embedded-viewer-iframe');
+            if (viewer) viewer.style.display = 'none';
+            if (iframe) iframe.src = '';
+        }
+
+        // Lightbox para Galería de Figuras
+        function openLightbox(imgSrc, caption, desc) {
+            const lightbox = document.getElementById('lightbox-overlay');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            img.src = imgSrc;
+            cap.innerHTML = `<strong>${caption}</strong>${desc ? ' &bull; ' + desc : ''}`;
+            lightbox.style.display = 'flex';
+        }
+
+        // =========================================================================
+        // BUCLE DE ANIMACIÓN
+        // =========================================================================
         let clock = 0;
         function animate() {
             requestAnimationFrame(animate);
             clock += 0.02;
 
-            if (controls) controls.update();
+            if (isPlaying) {
+                let nextT = currentT + 0.003 * animSpeed;
+                if (nextT > 1.0) nextT = 0.0;
+                updateTimelineState(nextT);
+            }
 
-            // Animación suave del halo de 5B1a
-            const ost = interactiveObjects.find(o => o.userData.id === "5B1a");
-            if (ost && ost.userData.halo) {
-                const scale = 1.0 + Math.sin(clock * 3) * 0.15;
-                ost.userData.halo.scale.set(scale, scale, 1);
+            camera.position.lerp(targetCamPos, 0.04);
+            if (controls) {
+                controls.target.lerp(targetLookAt, 0.04);
+                controls.update();
+            }
+
+            const ostObj = subjectObjects["5B1a"];
+            if (ostObj && ostObj.halo && ostObj.halo.visible) {
+                const scale = 1.0 + Math.sin(clock * 4.5) * 0.20;
+                ostObj.halo.scale.set(scale, scale, 1);
             }
 
             renderer.render(scene, camera);
         }
 
-        // Ejecutar al cargar la ventana
+        
+        // =========================================================================
+        // CONTROL DE VISTAS EN VENTANA ÚNICA (HUD MENU)
+        // =========================================================================
+        let activeMainView = 'view-3d';
+        let radarInitialized = false;
+
+        function switchMainView(viewId) {
+            activeMainView = viewId;
+
+            // Actualizar botones del HUD
+            document.querySelectorAll('.nav-view-btn').forEach(btn => {
+                if (btn.getAttribute('data-view') === viewId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            const workspace = document.getElementById('analytical-workspace');
+            const controlsPanel = document.querySelector('.controls-panel');
+            const metricsPanel = document.querySelector('.metrics-panel');
+            const moviolaBar = document.querySelector('.moviola-bar');
+            const legendBar = document.querySelector('.legend-bar');
+
+            if (viewId === 'view-3d') {
+                if (workspace) workspace.style.display = 'none';
+                if (controlsPanel) controlsPanel.style.display = 'flex';
+                if (metricsPanel) metricsPanel.style.display = 'block';
+                if (moviolaBar) moviolaBar.style.display = 'flex';
+                if (legendBar) legendBar.style.display = 'flex';
+            } else {
+                if (workspace) workspace.style.display = 'block';
+                if (controlsPanel) controlsPanel.style.display = 'none';
+                if (metricsPanel) metricsPanel.style.display = 'none';
+                if (moviolaBar) moviolaBar.style.display = 'none';
+                if (legendBar) legendBar.style.display = 'none';
+
+                // Cerrar visor embebido si estuviera abierto
+                if (typeof closeEmbeddedViewer === 'function') closeEmbeddedViewer();
+
+                // Mostrar la subvistas seleccionada
+                document.querySelectorAll('.analytical-subview').forEach(sv => {
+                    if (sv.id === viewId) {
+                        sv.classList.add('active');
+                        sv.style.display = 'block';
+                    } else {
+                        sv.classList.remove('active');
+                        sv.style.display = 'none';
+                    }
+                });
+
+                // Inicializar radar en informes individuales si aún no se ha hecho
+                if (viewId === 'view-individuales' && !radarInitialized) {
+                    updateSubjectDetail("1A");
+                    radarInitialized = true;
+                }
+            }
+        }
+
+// Listeners asignados dentro de setupUI()
+
         window.addEventListener('load', init);
     </script>
     <script src="i18n_nav.js"></script>

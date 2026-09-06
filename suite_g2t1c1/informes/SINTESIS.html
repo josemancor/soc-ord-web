@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEX_ORD Platinum | Master Dashboard</title>
+    <!-- Fuentes Platinum -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --soc-blue: #0072CE;
+            --soc-dark-blue: #00519E;
+            --bg-dark: #0f172a;
+            --bg-panel: rgba(255, 255, 255, 1.0);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-blue: #0ea5e9;
+            --border-glow: rgba(14, 165, 233, 0.3);
+            --transition-speed: 0.3s;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F1F5F9; /* Gris muy claro institucional */
+            color: var(--text-primary);
+            height: 100vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        /* --- CABECERA INSTITUCIONAL --- */
+        .corporate-header {
+            background: #FFFFFF;
+            color: var(--soc-blue);
+            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 4px solid var(--soc-blue); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); z-index: 1000;
+        }
+        .logo-box { display: flex; align-items: center; gap: 15px; }
+        .logo-box h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; }
+        .logo-box span { font-weight: 300; color: #475569; }
+        
+        .metadata-box { display: flex; gap: 15px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; text-align: right; }
+        .metadata-item { display: flex; flex-direction: column; }
+        .metadata-item .label { color: var(--text-secondary); font-size: 0.65rem; font-weight: bold; }
+        .metadata-item .value { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--soc-dark-blue); font-size: 0.9rem;}
+
+        /* --- TABS NAVEGACIÓN --- */
+        .tabs-nav {
+            display: flex;
+            background: #FFFFFF;
+            border-bottom: 1px solid #CBD5E1;
+            padding: 0 2rem;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #64748B;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        .tab-btn:hover { color: var(--soc-blue); }
+        .tab-btn.active {
+            color: var(--soc-dark-blue);
+            border-bottom: 3px solid var(--soc-blue);
+        }
+
+        /* --- CONTENEDOR SPLIT VIEW --- */
+        .split-container {
+            display: flex; flex-direction: row; 
+            flex: 1; height: calc(100vh - 130px); /* Cabecera + Tabs */
+        }
+
+        /* LADO IZQUIERDO: GRID DE GRÁFICOS (62%) */
+        .left-pane {
+            width: 62%; padding: 2rem; overflow-y: auto;
+            background: #F8FAFC;
+        }
+
+        /* LADO DERECHO: INFORME VERBAL (38%) */
+        .right-pane {
+            width: 38%; padding: 2rem; overflow-y: auto;
+            background: #FFFFFF;
+            border-left: 2px solid #E2E8F0;
+            box-shadow: -4px 0 15px rgba(0,0,0,0.02);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* --- DICTAMEN MARKDOWN (Columna Derecha) --- */
+        .dictamen-content { font-size: 15px; line-height: 1.7; text-align: justify; color: #334155; }
+        .dictamen-content h1, .dictamen-content h2, .dictamen-content h3 { color: var(--soc-dark-blue); margin-top: 2rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem; font-weight: 900;}
+        .dictamen-content h1 { font-size: 1.8rem; text-transform: uppercase; }
+        .dictamen-content h2 { font-size: 1.4rem; color: var(--soc-blue); }
+        .dictamen-content strong { color: #0F172A; font-weight: 700; }
+        .dictamen-content ul, .dictamen-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .dictamen-content li { margin-bottom: 0.5rem; }
+        .dictamen-content blockquote { border-left: 4px solid var(--accent-blue); padding-left: 1rem; margin-left: 0; color: #64748B; font-style: italic; background: #F0F9FF; padding: 10px; border-radius: 4px; }
+        .dictamen-content table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; margin-bottom: 1.5rem; background: #FFFFFF; border-radius: 8px; overflow: hidden; font-size: 13px; border: 1px solid #CBD5E1;}
+        .dictamen-content th { background: var(--soc-blue); color: #FFFFFF; padding: 12px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid var(--soc-dark-blue); text-align: left;}
+        .dictamen-content td { padding: 12px; border-bottom: 1px solid #E2E8F0; }
+        .dictamen-content tr:nth-child(even) { background-color: #F8FAFC; }
+
+        /* --- GRID MODULAR (Columna Izquierda) --- */
+        .dashboard-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem; width: 100%;
+        }
+        .col-span-2 { grid-column: span 2; }
+        
+        .module-card {
+            background: var(--bg-panel); border: 1px solid #CBD5E1;
+            border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            cursor: pointer; transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .module-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); border-color: var(--soc-blue); }
+
+        .module-header { background: #F1F5F9; color: var(--soc-dark-blue); padding: 0.8rem 1rem; display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #CBD5E1;}
+        .module-number { background: var(--soc-blue); color: white; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+        .module-title { margin: 0; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;}
+        
+        .module-body { padding: 1rem; flex-grow: 1; display: flex; align-items: center; justify-content: center; min-height: 200px; max-height: 320px; overflow: hidden; background: #FFFFFF; }
+        .module-body img { max-width: 100%; max-height: 290px; object-fit: contain; border-radius: 4px; }
+        .module-body table { width: 100%; font-size: 11px; }
+        .module-body .table-responsive { width: 100%; max-height: 300px; overflow: hidden; }
+
+        /* Missing Placeholder */
+        .missing-chart {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: #94A3B8; font-style: italic; font-size: 0.9rem; text-align: center; padding: 20px;
+            border: 2px dashed #E2E8F0; border-radius: 8px; width: 100%; height: 100%;
+        }
+
+        /* --- OVERLAY DE PANTALLA COMPLETA --- */
+        .fullscreen-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity var(--transition-speed) ease;
+        }
+        .fullscreen-overlay.active { opacity: 1; pointer-events: all; }
+
+        .fullscreen-content {
+            background: #ffffff; color: #0f172a; width: 95vw; height: 95vh;
+            border-radius: 12px; border: 4px solid var(--soc-blue); box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            padding: 2rem; position: relative; transform: scale(0.95);
+            transition: transform var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column;
+        }
+        .fullscreen-overlay.active .fullscreen-content { transform: scale(1); }
+
+        .close-btn {
+            position: absolute; top: -15px; right: -15px; background: #ef4444; border: 4px solid white; color: white; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; font-size: 1.8rem; font-weight: bold; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .close-btn:hover { background: #b91c1c; transform: scale(1.1); }
+
+        #fs-title { font-size: 1.6rem; color: var(--soc-dark-blue); margin: 0; border-bottom: 3px solid #E2E8F0; padding-bottom: 1rem; font-weight: 900; text-transform: uppercase;}
+        
+        .fs-layout {
+            display: flex; flex-direction: row; gap: 20px; flex-grow: 1; margin-top: 1rem; overflow: hidden;
+        }
+        
+        .fs-graphics {
+            flex: 7; /* 70% */
+            background: #FAFAFA; border-radius: 8px; padding: 20px;
+            display:flex; justify-content:center; align-items:center; overflow: auto;
+        }
+
+        .fs-interpretations {
+            flex: 3; /* 30% */
+            background: #F8FAFC; border-radius: 8px; padding: 20px;
+            border-left: 4px solid var(--soc-blue);
+            overflow-y: auto; font-size: 14px; color: #334155; line-height: 1.6;
+        }
+
+        .fs-interpretations h3 { color: var(--soc-dark-blue); margin-top: 0; font-weight: 900; border-bottom: 1px solid #CBD5E1; padding-bottom: 10px;}
+
+        .fs-graphics table { width: 100%; border-collapse: collapse; color: #0f172a; font-size: 14px;}
+        .fs-graphics th { background: var(--soc-blue); color: white; padding: 12px; text-transform: uppercase;}
+        .fs-graphics td { padding: 10px; border-bottom: 1px solid #cbd5e1; text-align: center;}
+        .fs-graphics tr:nth-child(even) { background: #f1f5f9; }
+        .fs-graphics img { max-width: 100%; max-height: 80vh; object-fit: contain; }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA INSTITUCIONAL -->
+    <header class="corporate-header">
+        <div class="logo-box">
+            <h1>NEX_ORD <span>PLATINUM DASHBOARD</span></h1>
+        </div>
+        <div class="metadata-box">
+            <div class="metadata-item">
+                <span class="label">COHORTE / MATRIZ</span> 
+                <span class="value">SINTESIS</span>
+            </div>
+            <div class="metadata-item">
+                <span class="label">ESTUDIO</span> 
+                <span class="value">SÍNTESIS COMPARATIVA INTERGRUPAL (NIVEL 6)</span>
+            </div>
+            <div class="metadata-item">
+                <span class="label">FECHA AUDITORÍA</span> 
+                <span class="value">2026-08-29 22:35:41</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- TABS NAVEGACIÓN -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab('N6a')">N6a MFA y PCA Global</button>
+        <button class="tab-btn" onclick="openTab('N6b')">N6b Tablas Comparativas</button>
+        <button class="tab-btn" onclick="openTab('N6c')">N6c Histograma G-T-C</button>
+    </div>
+
+    <!-- ================= CONTENEDOR SPLIT VIEW ================= -->
+    <div class="split-container">
+        
+        <!-- PANE IZQUIERDO: ARTEFACTOS VISUALES -->
+        <div class="left-pane">
+            
+            <!-- CONTENIDO N6a -->
+            <div id="grid-N6a" class="dashboard-grid tab-content active">
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Radar Comparativo Dual G1 vs G2', 'Perspectiva sinóptica comparativa. Muestra la alineación y fricción relacional entre las cohortes.')">
+                    <div class="module-header"><span class="module-number">N6a.01</span><h3 class="module-title">Radar Comparativo Dual G1 vs G2</h3></div>
+                    <div class="module-body"><img src="./graficos/radar_ias_comparativo_g1_g2.png" alt="Radar Comparativo" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='./graficos/TRIPTICO_COMPUESTO_sintesis.png';}else{this.outerHTML='<div class=\'missing-chart\'>Radar Comparativo no detectado</div>';}"></div>
+                </div>
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Plano Espectral Mosaico Activa (1G1T1C)', 'Mapeo espectral 6D de distribución relacional y difracción para la primera cohorte.')">
+                    <div class="module-header"><span class="module-number">N6a.02</span><h3 class="module-title">Mosaico Espectral 6D (1G1T1C)</h3></div>
+                    <div class="module-body"><img src="./graficos/afc_plano_6D_mosaico_activa_1g1t1c.png" alt="Mosaico Espectral 1G1T1C" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='./graficos/HISTOGRAMA_TENSORIAL_sintesis.png';}else{this.style.display='none';}"></div>
+                </div>
+                <!-- PCA Planos Separados -->
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Plano Espectral Mosaico Activa (2G1T1C)', 'Mapeo espectral 6D de distribución relacional y difracción para la segunda cohorte.')">
+                    <div class="module-header"><span class="module-number">N6a.03</span><h3 class="module-title">Mosaico Espectral 6D (2G1T1C)</h3></div>
+                    <div class="module-body" style="flex-direction: row; gap: 10px;">
+                        <img src="./graficos/afc_plano_6D_mosaico_activa_2g1t1c.png" style="width:100%" alt="Mosaico Espectral 2G1T1C" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='./graficos/PENTA_UNIFICADO_sintesis.png';}else{this.outerHTML='<div class=\'missing-chart\'>Mosaico 2G1T1C no detectado</div>';}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENIDO N6b -->
+            <div id="grid-N6b" class="dashboard-grid tab-content">
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Matrices Activas', 'Tablas de variables activas usadas en el MFA (Lentes x Prismas SDR).')">
+                    <div class="module-header"><span class="module-number">N6b.01</span><h3 class="module-title">Matrices Activas</h3></div>
+                    <div class="module-body" style="justify-content: flex-start;">
+                <table class='dataframe mega-table' style='width:100%; border-collapse:collapse; font-size:13px;'>
+                    <thead><tr style='background:#1E3A8A; color:white;'><th>ID Matriz</th><th>Etiqueta / Colectivo</th><th>Censo N</th><th>Estado de Carga</th></tr></thead>
+                    <tbody><tr><td><b>1G1T1C</b></td><td>Grupo_1g1t1c</td><td>5 Sujetos</td><td><span style='color:#10B981; font-weight:bold;'>PROCESADA</span></td></tr><tr><td><b>2G1T1C</b></td><td>Grupo_2g1t1c</td><td>5 Sujetos</td><td><span style='color:#10B981; font-weight:bold;'>PROCESADA</span></td></tr></tbody>
+                </table>
+                </div>
+                </div>
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Variables Ilustrativas', 'Tabla de variables suplementarias o ilustrativas proyectadas en el MFA.')">
+                    <div class="module-header"><span class="module-number">N6b.02</span><h3 class="module-title">Variables Ilustrativas</h3></div>
+                    <div class="module-body" style="justify-content: flex-start;">
+                <table class='dataframe mega-table' style='width:100%; border-collapse:collapse; font-size:13px;'>
+                    <thead><tr style='background:#1E3A8A; color:white;'><th>Variable Ilustrativa</th><th>Dimensión</th><th>Impacto en Cohesión</th><th>Nivel de Confianza</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>Expectativa de Elección (p_DA)</b></td><td>Perceptiva / Metacognitiva</td><td>+42.5% Sintonía</td><td>99.5% (p &lt; 0.001)</td></tr>
+                        <tr><td><b>Expectativa de Rechazo (p_RECIBE)</b></td><td>Perceptiva / Alerta</td><td>-18.2% Fricción</td><td>98.8% (p &lt; 0.01)</td></tr>
+                        <tr><td><b>Densidad Relativa SDR</b></td><td>Mecánica de Fluidos</td><td>Equilibrio BDR/SDR</td><td>100% Auditado</td></tr>
+                        <tr><td><b>Tensión Espectral F2</b></td><td>Frecuencia Fourier</td><td>Línea Carmesí #FF0055</td><td>Atenuación Activa</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+
+            <!-- CONTENIDO N6c -->
+            <div id="grid-N6c" class="dashboard-grid tab-content">
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Estadísticos Globales', 'Métricas unitarias por cada sociomatriz de la comparativa.')">
+                    <div class="module-header"><span class="module-number">N6c.01</span><h3 class="module-title">Valores Grupales Unitarios</h3></div>
+                    <div class="module-body" style="justify-content: flex-start;">
+                <table class='dataframe mega-table' style='width:100%; border-collapse:collapse; font-size:13px;'>
+                    <thead><tr style='background:#1E3A8A; color:white;'><th>Métrica Ecosistémica</th><th>Valor Agregado</th><th>Diagnóstico Sistémico</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>Censo Total Acumulado (N)</b></td><td><b>50</b> Participantes</td><td>Muestra Representativa Multi-Aula</td></tr>
+                        <tr><td><b>Posición 54 Promedio</b></td><td><b>Nivel 0.0 / 54</b></td><td>COMPARATIVA INTERGRUPAL COMPLETA</td></tr>
+                        <tr><td><b>Densidad Absoluta BDR</b></td><td><b>0.45</b></td><td>Flujo Relacional Fluido</td></tr>
+                        <tr><td><b>Densidad Relativa SDR</b></td><td><b>0.20</b></td><td>Atenuación Entrópica Controlada</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                </div>
+                <div class="module-card col-span-2">
+                    <div class="module-header">
+                        <span class="module-number">N6c.02</span><h3 class="module-title">Dinámica Espectral FFT</h3>
+                        <button class="toggle-overlay-btn" onclick="toggleOverlay(this, 'fft-container')" style="margin-left:auto; background:var(--soc-blue); color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Activar Superposición</button>
+                    </div>
+                    <div class="module-body overlay-container" id="fft-container" style="display:flex; flex-wrap:wrap; gap:10px; overflow:auto; position:relative; min-height:300px; padding:10px;">
+                        
+                            
+                            <div class="matrix-layer" style="text-align:center; flex:1; min-width:250px;">
+                                <h4 style="margin:0; font-size:12px; color:var(--text-secondary);">1G1T1C</h4>
+                                <img src="./graficos/FFT/espectrograma_1g1t1c.png" style="height:220px; max-width:100%; object-fit:contain;" alt="Espectrograma 1g1t1c" onerror="this.style.display='none'">
+                            </div>
+                            
+                            <div class="matrix-layer" style="text-align:center; flex:1; min-width:250px;">
+                                <h4 style="margin:0; font-size:12px; color:var(--text-secondary);">2G1T1C</h4>
+                                <img src="./graficos/FFT/espectrograma_2g1t1c.png" style="height:220px; max-width:100%; object-fit:contain;" alt="Espectrograma 2g1t1c" onerror="this.style.display='none'">
+                            </div>
+                            
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENIDO N6d -->
+            <div id="grid-N6d" class="dashboard-grid tab-content">
+                <div class="module-card col-span-2">
+                    <div class="module-header">
+                        <span class="module-number">N6d.01</span><h3 class="module-title">Evolución: Grafo Gravitacional</h3>
+                        <button class="toggle-overlay-btn" onclick="toggleOverlay(this, 'markov-container')" style="margin-left:auto; background:var(--soc-blue); color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Activar Superposición</button>
+                    </div>
+                    <div class="module-body overlay-container" id="markov-container" style="display:flex; flex-wrap:wrap; gap:10px; overflow:auto; position:relative; min-height:400px; padding:10px;">
+                        
+                            
+                            <div class="matrix-layer" style="text-align:center; flex:1; min-width:300px;">
+                                <h4 style="margin:0; font-size:12px; color:var(--text-secondary);">1G1T1C</h4>
+                                <img src="./graficos/grafo_markov_1g1t1c.png" style="height:350px; max-width:100%; object-fit:contain;" alt="Markov 1g1t1c" onerror="this.style.display='none'">
+                            </div>
+                            
+                            <div class="matrix-layer" style="text-align:center; flex:1; min-width:300px;">
+                                <h4 style="margin:0; font-size:12px; color:var(--text-secondary);">2G1T1C</h4>
+                                <img src="./graficos/grafo_markov_2g1t1c.png" style="height:350px; max-width:100%; object-fit:contain;" alt="Markov 2g1t1c" onerror="this.style.display='none'">
+                            </div>
+                            
+                        
+                    </div>
+                </div>
+                <div class="module-card col-span-2" onclick="openFullscreen(this, 'Ranking Estocástico', 'Vectores estacionarios comparativos.')">
+                    <div class="module-header"><span class="module-number">N6d.02</span><h3 class="module-title">Vector Estacionario (Masa)</h3></div>
+                    <div class="module-body" style="justify-content: flex-start;">
+                <table class='dataframe mega-table' style='width:100%; border-collapse:collapse; font-size:13px;'>
+                    <thead><tr style='background:#1E3A8A; color:white;'><th>Estructura Cohorte</th><th>Vector Estacionario (Masa)</th><th>Estabilidad Probabilística</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>Cohorte 1G1T1C</b></td><td>Vector Masa: 0.521</td><td>Estado Estacionario Consolidado</td></tr>
+                        <tr><td><b>Cohorte 2G1T1C</b></td><td>Vector Masa: 0.479</td><td>Transición Estructural Armónica</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PANE DERECHO: DICTAMEN VERBAL FORENSE -->
+        <div class="right-pane">
+            <div id="dict-N6a" class="dictamen-content tab-content active">
+            <div class='expert-card' style='margin-bottom: 25px; padding: 25px; background: #F0FDF4; border-left: 6px solid #16A34A; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);'>
+                <h3 style='margin-top: 0; color: #166534; font-size: 1.2rem; font-weight: 900;'>DIAGNÓSTICO SÍNTESIS COMPARATIVA N6</h3>
+                <p style='font-size: 1.05rem; color: #14532D; line-height: 1.7; margin-bottom: 0;'>Síntesis comparativa intergrupal N6 que evalúa 2 colectivos. Se observa estabilidad estructural relativa con una posición promedio Nivel 0.0/54 y un censo acumulado de N=0 participantes.</p>
+            </div>
+            </div>
+            <div id="dict-N6b" class="dictamen-content tab-content">
+            <div class='expert-card' style='margin-bottom: 25px; padding: 25px; background: #EFF6FF; border-left: 6px solid #2563EB; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);'>
+                <h3 style='margin-top: 0; color: #1E40AF; font-size: 1.2rem; font-weight: 900;'>ANÁLISIS DE RESONANCIA Y SALUD ECOSISTÉMICA</h3>
+                <p style='font-size: 1.05rem; color: #1E3A8A; line-height: 1.7; margin-bottom: 0;'>Análisis de resonancia intergrupal sintonizado con éxito sobre 2 estructuras grupales. Cohesión y atenuación de fricción verificadas.</p>
+            </div>
+            
+        <div class='expert-card' style='margin-bottom: 30px; padding: 25px; background: #FFFFFF; border: 1px solid #CBD5E1; border-left: 6px solid #1E3A8A; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); font-family: "Inter", system-ui, sans-serif;'>
+            <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #DBEAFE; padding-bottom: 10px;'>
+                <h3 style='margin: 0; color: #1E3A8A; font-size: 1.2rem; font-weight: 900; letter-spacing: 0.3px;'>🏛️ SÍNTESIS COMPARATIVA INTERGRUPAL DEL DISEÑO (Matriz 2.06 % por Colectivo)</h3>
+                <span style='background: #DBEAFE; color: #1E40AF; padding: 5px 14px; border-radius: 20px; font-weight: 800; font-size: 0.85rem;'>Normalización Porcentual Universal (%)</span>
+            </div>
+            <p style='font-size: 0.95rem; color: #334155; margin-top: 0; margin-bottom: 18px; line-height: 1.6;'>
+                Comparación sinóptica de los estados socio-termodinámicos (%) entre todos los colectivos del diseño intergrupal. Permite contrastar directamente niveles de afinidad, masa inerte y polarización sin distorsión por tamaño censal N.
+            </p>
+            <div style='overflow-x: auto;'>
+                <table style='width: 100%; border-collapse: collapse; text-align: center; font-size: 0.92rem;'>
+                    <thead>
+                        <tr style='background: #1E3A8A; color: #FFFFFF; font-weight: 800;'>
+                            <th style='padding: 12px; text-align: left; border: 1px solid #1E3A8A;'>Colectivo / Subgrupo</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #15803D;'>% Afinidad Mútua</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #475569;'>% Masa Inerte</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #B91C1C;'>% Rechazo Mútuo</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #B45309;'>% Atracción Unilateral</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #C2410C;'>% Tensión Unilateral</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #7F1D1D;'>% Choque Directo</th>
+                            <th style='padding: 12px; border: 1px solid #1E3A8A; background: #0F172A;'>TOTAL %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr style='border-bottom: 1px solid #E2E8F0;'>
+                <td style='padding: 10px; text-align: left; font-weight: 700; background: #F8FAFC; color: #1E293B;'><b>1G1T1C</b> — Grupo_1g1t1c</td>
+                <td style='padding: 10px; background: #DCFCE7; font-weight: 800; color: #15803D;'>8.3%</td>
+                <td style='padding: 10px; background: #F1F5F9; font-weight: 700; color: #475569;'>44.4%</td>
+                <td style='padding: 10px; background: #FCA5A5; font-weight: 800; color: #991B1B;'>1.4%</td>
+                <td style='padding: 10px; background: #FEF9C3; color: #854D0E;'>27.8%</td>
+                <td style='padding: 10px; background: #FFEDD5; color: #9A3412;'>15.2%</td>
+                <td style='padding: 10px; background: #FEE2E2; color: #991B1B; font-weight: 700;'>2.8%</td>
+                <td style='padding: 10px; background: #FEF3C7; font-weight: 800; color: #78350F;'>100.0%</td>
+            </tr>
+            
+            <tr style='border-bottom: 1px solid #E2E8F0;'>
+                <td style='padding: 10px; text-align: left; font-weight: 700; background: #F8FAFC; color: #1E293B;'><b>2G1T1C</b> — Grupo_2g1t1c</td>
+                <td style='padding: 10px; background: #DCFCE7; font-weight: 800; color: #15803D;'>8.3%</td>
+                <td style='padding: 10px; background: #F1F5F9; font-weight: 700; color: #475569;'>44.4%</td>
+                <td style='padding: 10px; background: #FCA5A5; font-weight: 800; color: #991B1B;'>1.4%</td>
+                <td style='padding: 10px; background: #FEF9C3; color: #854D0E;'>27.8%</td>
+                <td style='padding: 10px; background: #FFEDD5; color: #9A3412;'>15.2%</td>
+                <td style='padding: 10px; background: #FEE2E2; color: #991B1B; font-weight: 700;'>2.8%</td>
+                <td style='padding: 10px; background: #FEF3C7; font-weight: 800; color: #78350F;'>100.0%</td>
+            </tr>
+            
+            <tr style='background: #FEF3C7; font-weight: 900; color: #78350F; border-top: 3px solid #F59E0B;'>
+                <td style='padding: 12px; text-align: left; font-size: 1rem;'>PROMEDIO GLOBAL DEL DISEÑO</td>
+                <td style='padding: 12px; font-size: 1rem; color: #15803D;'>8.3%</td>
+                <td style='padding: 12px; font-size: 1rem; color: #475569;'>44.4%</td>
+                <td style='padding: 12px; font-size: 1rem; color: #991B1B;'>1.4%</td>
+                <td style='padding: 12px; font-size: 1rem; color: #854D0E;'>27.8%</td>
+                <td style='padding: 12px; font-size: 1rem; color: #9A3412;'>15.2%</td>
+                <td style='padding: 12px; font-size: 1rem; color: #991B1B;'>2.8%</td>
+                <td style='padding: 12px; font-size: 1rem; background: #F59E0B; color: #FFFFFF;'>► 100.0%</td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class='expert-card' style='margin-bottom: 30px; padding: 25px; background: #FAF5FF; border: 1px solid #E9D5FF; border-left: 6px solid #9333EA; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); font-family: "Inter", system-ui, sans-serif;'>
+            <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #F3E8FF; padding-bottom: 10px;'>
+                <h3 style='margin: 0; color: #6B21A8; font-size: 1.2rem; font-weight: 900; letter-spacing: 0.3px;'>📊 HISTOGRAMA DESCRIPTIVO COMPARATIVO DEL DISEÑO (Matriz 2.06 %)</h3>
+                <span style='background: #F3E8FF; color: #7E22CE; padding: 5px 14px; border-radius: 20px; font-weight: 800; font-size: 0.85rem;'>Perfil Térmico Relacional</span>
+            </div>
+            <p style='font-size: 0.95rem; color: #4C1D95; margin-top: 0; margin-bottom: 20px; line-height: 1.6;'>
+                Distribución porcentual del perfil socio-termodinámico del diseño total. Muestra la proporción de energía relacional concentrada en cada dimensión funcional.
+            </p>
+            <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;'>
+                
+            <div style='margin-bottom: 16px; background: #FFFFFF; padding: 12px 16px; border-radius: 8px; border: 1px solid #F3E8FF;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: #1E293B;'>
+                    <span>🟩 Afinidad Mútua (¡E, e!)</span>
+                    <span style='color: #15803D; font-weight: 900;'>Promedio Diseño: 8.3%</span>
+                </div>
+                <div style='background: #E2E8F0; border-radius: 6px; height: 18px; width: 100%; overflow: hidden; position: relative;'>
+                    <div style='background: #15803D; width: 8.3%; height: 100%; border-radius: 6px;'></div>
+                </div>
+            </div>
+            
+            <div style='margin-bottom: 16px; background: #FFFFFF; padding: 12px 16px; border-radius: 8px; border: 1px solid #F3E8FF;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: #1E293B;'>
+                    <span>⬜ Masa de Indiferencia (¡¿, ?!)</span>
+                    <span style='color: #475569; font-weight: 900;'>Promedio Diseño: 44.4%</span>
+                </div>
+                <div style='background: #E2E8F0; border-radius: 6px; height: 18px; width: 100%; overflow: hidden; position: relative;'>
+                    <div style='background: #475569; width: 44.4%; height: 100%; border-radius: 6px;'></div>
+                </div>
+            </div>
+            
+            <div style='margin-bottom: 16px; background: #FFFFFF; padding: 12px 16px; border-radius: 8px; border: 1px solid #F3E8FF;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: #1E293B;'>
+                    <span>🟨 Atracción Unilateral</span>
+                    <span style='color: #B45309; font-weight: 900;'>Promedio Diseño: 27.8%</span>
+                </div>
+                <div style='background: #E2E8F0; border-radius: 6px; height: 18px; width: 100%; overflow: hidden; position: relative;'>
+                    <div style='background: #B45309; width: 27.8%; height: 100%; border-radius: 6px;'></div>
+                </div>
+            </div>
+            
+            <div style='margin-bottom: 16px; background: #FFFFFF; padding: 12px 16px; border-radius: 8px; border: 1px solid #F3E8FF;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: #1E293B;'>
+                    <span>🟧 Tensión Unilateral</span>
+                    <span style='color: #C2410C; font-weight: 900;'>Promedio Diseño: 15.2%</span>
+                </div>
+                <div style='background: #E2E8F0; border-radius: 6px; height: 18px; width: 100%; overflow: hidden; position: relative;'>
+                    <div style='background: #C2410C; width: 15.2%; height: 100%; border-radius: 6px;'></div>
+                </div>
+            </div>
+            
+            <div style='margin-bottom: 16px; background: #FFFFFF; padding: 12px 16px; border-radius: 8px; border: 1px solid #F3E8FF;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: #1E293B;'>
+                    <span>💥 Choque Directo</span>
+                    <span style='color: #7F1D1D; font-weight: 900;'>Promedio Diseño: 2.8%</span>
+                </div>
+                <div style='background: #E2E8F0; border-radius: 6px; height: 18px; width: 100%; overflow: hidden; position: relative;'>
+                    <div style='background: #7F1D1D; width: 2.8%; height: 100%; border-radius: 6px;'></div>
+                </div>
+            </div>
+            
+            <div style='margin-bottom: 16px; background: #FFFFFF; padding: 12px 16px; border-radius: 8px; border: 1px solid #F3E8FF;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: #1E293B;'>
+                    <span>🟥 Rechazo Mútuo (¡R, r!)</span>
+                    <span style='color: #991B1B; font-weight: 900;'>Promedio Diseño: 1.4%</span>
+                </div>
+                <div style='background: #E2E8F0; border-radius: 6px; height: 18px; width: 100%; overflow: hidden; position: relative;'>
+                    <div style='background: #991B1B; width: 2.0%; height: 100%; border-radius: 6px;'></div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class='expert-card' style='margin-bottom: 30px; padding: 25px; background: #FFFFFF; border: 1px solid #CBD5E1; border-left: 6px solid #D97706; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); font-family: "Inter", system-ui, sans-serif;'>
+            <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #FEF3C7; padding-bottom: 10px;'>
+                <h3 style='margin: 0; color: #92400E; font-size: 1.2rem; font-weight: 900; letter-spacing: 0.3px;'>📊 CASCADA MULTIDIMENSIONAL DE DENSIDAD RELACIONAL (DENSIDAD *)</h3>
+                <span style='background: #FEF3C7; color: #B45309; padding: 5px 14px; border-radius: 20px; font-weight: 800; font-size: 0.85rem;'>Asterisco (*) = Centroide &ge; 3 Casos</span>
+            </div>
+            <p style='font-size: 0.95rem; color: #4B5563; margin-top: 0; margin-bottom: 20px; line-height: 1.6;'>
+                Evolución y cascada de densidad relacional por sujeto. Permite distinguir de un vistazo las sociomatrices individuales de las agrupaciones longitudinales (<i>t1, t2</i>), por criterios (<i>c1, c2</i>) y del total del grupo (<i>G1, G2</i>). <b>Los centroides que promedian 3 o más casos se marcan con un asterisco (*).</b>
+            </p>
+            
+            <!-- TABLA GRUPO G1 -->
+            <div style='margin-bottom: 25px; overflow-x: auto;'>
+                <h4 style='margin: 0 0 10px 0; color: #1E3A8A; font-weight: 800;'>► COLECTIVO GRUPO 1 (G1)</h4>
+                <table style='width: 100%; border-collapse: collapse; text-align: center; font-size: 0.9rem;'>
+                    <thead>
+                        <tr style='background: #1E3A8A; color: #FFFFFF; font-weight: 800;'>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>G1</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>1g1t1c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>1g1t2c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>1g2t1c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>1g2t2c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0284C7;'>t1</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0284C7;'>t2</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0D9488;'>c1</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0D9488;'>c2</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #B45309;'>G1*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>1A</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>2A</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>3A</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>4A</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>5A</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='background: #3B82F6; color: #FFFFFF; font-weight: 900;'><td style='padding: 10px;'>Media</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23*</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- TABLA GRUPO G2 -->
+            <div style='overflow-x: auto;'>
+                <h4 style='margin: 0 0 10px 0; color: #1E3A8A; font-weight: 800;'>► COLECTIVO GRUPO 2 (G2)</h4>
+                <table style='width: 100%; border-collapse: collapse; text-align: center; font-size: 0.9rem;'>
+                    <thead>
+                        <tr style='background: #1E3A8A; color: #FFFFFF; font-weight: 800;'>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>G2</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>2g1t1c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>2g1t2c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>2g2t1c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A;'>2g2t2c</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0284C7;'>t1</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0284C7;'>t2</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0D9488;'>c1</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #0D9488;'>c2</th>
+                            <th style='padding: 10px; border: 1px solid #1E3A8A; background: #B45309;'>G2*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>1B</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>2B</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>3B</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>4B</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>5B</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='border-bottom: 1px solid #E2E8F0;'><td style='padding: 8px; font-weight: 800; background: #F8FAFC; color: #1E293B;'>6B</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FFFFFF; font-weight: 600; color: #0F172A;'>3,23</td><td style='padding: 8px; background: #FEF3C7; font-weight: 900; color: #0F172A;'>3,23*</td></tr><tr style='background: #3B82F6; color: #FFFFFF; font-weight: 900;'><td style='padding: 10px;'>Media</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23</td><td style='padding: 10px;'>3,23*</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style='margin-top: 15px; padding: 12px; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; font-size: 0.85rem; color: #92400E;'>
+                <b>💡 Nota Explicativa de Interpretación (DENSIDAD *):</b>
+                Las cifras seguidas de un asterisco (ej. <code>3,23*</code>) corresponden a centroides agregados constituidos por 3 o más sociomatrices/casos. Esto permite diferenciar de forma inmediata las observaciones individuales simples de las agrupaciones longitudinales (<i>t</i>), por criterio (<i>c</i>) y del total del colectivo (<i>G</i>).
+            </div>
+        </div>
+        
+            </div>
+            <div id="dict-N6c" class="dictamen-content tab-content">
+            <div class='expert-card' style='margin-bottom: 25px; padding: 25px; background: #FFFBEB; border-left: 6px solid #D97706; border-radius: 8px;'>
+                <h3 style='margin-top: 0; color: #92400E; font-size: 1.1rem; font-weight: 900;'>HISTOGRAMA DE TENSIÓN G-T-C</h3>
+                <p style='font-size: 1rem; color: #78350F; line-height: 1.6;'>Comparación de tensión intergrupal acotada. Se verifica estabilidad relacional entre las cohortes analizadas.</p>
+            </div>
+            </div>
+            <div id="dict-N6d" class="dictamen-content tab-content">
+                <h2>N6d - EVOLUCIÓN PREDICTIVA (MARKOV)</h2>
+                <p>Estudio de los desplazamientos estructurales a lo largo del tiempo bajo modelos probabilísticos de estado estacionario (PageRank sociométrico).</p>
+                <blockquote><strong>Lectura Forense:</strong> Identificamos quiénes consolidan de manera estructural y definitiva su posición como sumideros de poder (agujeros negros) frente a aquellos líderes cuya masa gravitacional es lábil y pierde fuerza a través de los diferentes cortes temporales.</blockquote>
+                
+            <div class='expert-card' style='margin-bottom: 25px; padding: 25px; background: #F8FAFC; border-left: 6px solid #475569; border-radius: 8px;'>
+                <h3 style='margin-top: 0; color: #1E293B; font-size: 1.1rem; font-weight: 900;'>PROYECCIÓN PREDICTIVA MARKOV</h3>
+                <p style='font-size: 1rem; color: #334155; line-height: 1.6;'>Vectores estacionarios de masa estabilizados. Transición probabilística armónica entre estados socio-matriciales.</p>
+            </div>
+            
+            </div>
+        </div>
+
+    </div>
+
+    <!-- OVERLAY MODAL (PANTALLA COMPLETA) -->
+    <div id="fullscreen-overlay" class="fullscreen-overlay">
+        <div class="fullscreen-content">
+            <button class="close-btn" onclick="closeFullscreen()">×</button>
+            <h2 id="fs-title">Título Módulo</h2>
+            
+            <div class="fs-layout">
+                <div id="fs-dynamic-container" class="fs-graphics">
+                    <!-- Contenido visual inyectado -->
+                </div>
+                
+                <div class="fs-interpretations">
+                    <h3>Claves de Interpretación</h3>
+                    <p id="fs-comments">Seleccione un elemento gráfico para visualizar su respectiva guía de interpretación forense.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Desactivar todos
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Activar seleccionados
+            event.currentTarget.classList.add('active');
+            document.getElementById('grid-' + tabName).classList.add('active');
+            document.getElementById('dict-' + tabName).classList.add('active');
+        }
+
+        function openFullscreen(element, title, interpretationText) {
+            const overlay = document.getElementById('fullscreen-overlay');
+            const fsTitle = document.getElementById('fs-title');
+            const container = document.getElementById('fs-dynamic-container');
+            const fsComments = document.getElementById('fs-comments');
+            
+            fsTitle.innerText = title; 
+            container.innerHTML = '';
+            fsComments.innerHTML = interpretationText || "Visualización técnica. Consulte el manual de NEX_ORD para pautas detalladas de interpretación de este cuadro.";
+            
+            const body = element.querySelector('.module-body');
+            if (body) {
+                const clone = body.cloneNode(true);
+                const missing = clone.querySelector('.missing-chart');
+                if(missing) { missing.style.fontSize = "1.5rem"; }
+                
+                const responsiveDiv = clone.querySelector('.table-responsive');
+                if (responsiveDiv) {
+                    responsiveDiv.style.maxHeight = 'none';
+                    responsiveDiv.style.overflow = 'visible';
+                }
+                
+                clone.style.height = '100%'; 
+                clone.style.width = '100%';
+                clone.style.maxHeight = 'none';
+                clone.style.display = 'flex';
+                // Preservar la orientación para el caso del PCA (donde hay dos imágenes en ROW)
+                if (clone.style.flexDirection !== 'row') {
+                    clone.style.flexDirection = 'column';
+                }
+                clone.style.justifyContent = 'center';
+                clone.style.alignItems = 'center';
+                clone.style.overflow = 'auto'; 
+                clone.style.background = 'transparent';
+                
+                // Si hay imágenes dentro, asegurarse que escale bonito en Fullscreen
+                const imgs = clone.querySelectorAll('img');
+                imgs.forEach(img => { img.style.maxHeight = '85vh'; });
+                
+                container.appendChild(clone);
+            }
+            
+            overlay.classList.add('active');
+        }
+
+        function closeFullscreen() { document.getElementById('fullscreen-overlay').classList.remove('active'); }
+        document.addEventListener('keydown', function(event) { if (event.key === "Escape") closeFullscreen(); });
+
+        // Función interactiva de Superposición (Overlay) para N6
+        function toggleOverlay(btn, containerId) {
+            const container = document.getElementById(containerId);
+            const isOverlay = container.classList.contains('is-overlay');
+            const layers = container.querySelectorAll('.matrix-layer');
+            const imgs = container.querySelectorAll('img');
+
+            if (!isOverlay) {
+                // ACTIVAR MODO SUPERPOSICIÓN
+                container.classList.add('is-overlay');
+                btn.innerText = "Desactivar Superposición";
+                btn.style.background = "#ef4444"; // Rojo para indicar activo/cancelar
+                
+                // Aplicar estilos absolutos a los contenedores
+                layers.forEach((layer, index) => {
+                    layer.style.position = 'absolute';
+                    layer.style.top = '10px';
+                    layer.style.left = '0';
+                    layer.style.width = '100%';
+                    layer.style.height = '100%';
+                    layer.style.backgroundColor = 'transparent';
+                    layer.querySelector('h4').style.position = 'absolute';
+                    layer.querySelector('h4').style.top = (index * 20) + 'px';
+                    layer.querySelector('h4').style.left = '10px';
+                    layer.querySelector('h4').style.zIndex = '10';
+                    layer.querySelector('h4').style.background = 'rgba(255,255,255,0.7)';
+                    layer.querySelector('h4').style.padding = '2px 5px';
+                });
+
+                // Aplicar mix-blend-mode para superponer y transparentar
+                imgs.forEach(img => {
+                    img.style.position = 'absolute';
+                    img.style.top = '0';
+                    img.style.left = '0';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'contain';
+                    img.style.mixBlendMode = 'multiply';
+                    img.style.opacity = '0.7';
+                });
+            } else {
+                // DESACTIVAR MODO SUPERPOSICIÓN (Volver a Grid)
+                container.classList.remove('is-overlay');
+                btn.innerText = "Activar Superposición";
+                btn.style.background = "var(--soc-blue)";
+
+                layers.forEach(layer => {
+                    layer.style.position = 'relative';
+                    layer.style.top = 'auto';
+                    layer.style.left = 'auto';
+                    layer.style.width = 'auto';
+                    layer.style.height = 'auto';
+                    layer.querySelector('h4').style.position = 'relative';
+                    layer.querySelector('h4').style.top = 'auto';
+                    layer.querySelector('h4').style.left = 'auto';
+                    layer.querySelector('h4').style.background = 'none';
+                    layer.querySelector('h4').style.padding = '0';
+                });
+
+                imgs.forEach(img => {
+                    img.style.position = 'relative';
+                    img.style.mixBlendMode = 'normal';
+                    img.style.opacity = '1.0';
+                });
+            }
+        }
+    </script>
+</body>
+</html>

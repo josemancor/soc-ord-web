@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Sociométrico Individual - 3B</title>
+    <!-- Chart.js para los radares y evolución -->
+    <script src="lib/chart.min.js"></script><script>if(typeof Chart==="undefined"){document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');}</script>
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --panel-bg: rgba(22, 27, 34, 0.7);
+            --border-color: #30363d;
+            --accent-blue: #58a6ff;
+            --accent-purple: #9c27b0;
+            --accent-green: #2ea043;
+            --accent-red: #f85149;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(156, 39, 176, 0.1) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            background: -webkit-linear-gradient(#58a6ff, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: white;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dissonance-meter {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+
+        .meter-col {
+            text-align: center;
+        }
+        .meter-val { font-size: 24px; font-weight: bold; color: var(--accent-blue); }
+        .meter-lbl { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+
+        .dissonance-feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-left: 4px solid var(--accent-purple);
+            background: rgba(156, 39, 176, 0.1);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .archetype-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(46, 160, 67, 0.1);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        .recommendation {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .rec-icon {
+            font-size: 24px;
+        }
+
+        .rec-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .d-lbl { display:flex; align-items:center; justify-content:center; font-family:monospace; font-size:12px; font-weight:bold; background:#333; color:#FFCC00; border:1px solid #555; border-radius:4px; }
+        .d-val { display:flex; align-items:center; justify-content:center; font-family:monospace; font-size:14px; font-weight:bold; background:#111; border-radius:4px; border:1px solid #444; }
+        .d-emp { background:transparent; }
+
+        .disclaimer {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Dossier Personal Topológico</h1>
+        <p>Informe confidencial para el sujeto ID: <strong id="sujeto_id">3B</strong> | Fecha: <span id="fecha_inf"></span></p>
+    </div>
+
+    <!-- BLOQUE 1 & 2: Disonancia y Arquetipo -->
+    <div class="grid-2">
+        <div class="panel">
+            <h2 class="panel-title">🪞 Espejo de Meta-Percepción</h2>
+            <p style="font-size: 13px; color: var(--text-muted);">Comparativa entre tu autovaloración (aE) y tu lectura del entorno (oE).</p>
+            
+            <div class="dissonance-meter">
+                <div class="meter-col">
+                    <div class="meter-val" id="val_aE">4.5</div>
+                    <div class="meter-lbl">Autovaloración (aE)</div>
+                </div>
+                <div class="meter-col">
+                    <div class="meter-val" style="color: var(--accent-purple);" id="val_oE">3.2</div>
+                    <div class="meter-lbl">Entorno (oE)</div>
+                </div>
+            </div>
+
+            <div class="dissonance-feedback" id="feedback_disonancia">
+                <!-- Inyectado por JS -->
+                Tus expectativas de liderazgo son altas en relación a la lectura del entorno. Es un área de oportunidad para trabajar tu empatía bidireccional.
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2 class="panel-title">🧩 Perfil Arquetípico y Estatus</h2>
+            <div class="archetype-badge" id="arquetipo_badge">Satélite Independiente</div>
+            
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 5px;">
+                <strong>Percentil de Integración:</strong> <span id="percentil_val" style="color: white; font-weight: bold;">75%</span>
+            </p>
+            <div style="width: 100%; background: #222; border-radius: 4px; height: 8px; margin-bottom: 15px; overflow: hidden;">
+                <div id="percentil_bar" style="width: 75%; height: 100%; background: var(--accent-blue);"></div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 3: Métricas de Densidad (Valores Totales) -->
+    <div class="panel">
+        <h2 class="panel-title">📉 Densograma Estructural</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+            Mapa de energía sociométrica. <span style="color:#00A2FF;">Azul/Verde</span>: Positiva | <span style="color:#FF0055;">Rojo/Naranja</span>: Negativa.
+        </p>
+        
+        <div class="grid-2">
+            <!-- Individual -->
+            <div>
+                <h3 style="text-align:center; color:#FFF; font-size:14px; margin-bottom:10px;">Personal</h3>
+                <div style="display:grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(6, 1fr); gap: 4px; width: 100%; max-width: 400px; margin: 0 auto; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);">
+                    <!-- Row 1 -->
+                    <div class="d-lbl">A1</div> <div class="d-val" id="val_A1">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-val" id="val_A4">0</div> <div class="d-lbl">A4</div>
+                    <!-- Row 2 -->
+                    <div class="d-emp"></div> <div class="d-lbl">SDA</div> <div class="d-val" id="val_SDA">0</div> <div class="d-emp"></div> <div class="d-val" id="val_SRC">0</div> <div class="d-lbl">SRC</div> <div class="d-emp"></div>
+                    <!-- Row 3 -->
+                    <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-lbl">SDR</div> <div class="d-val" id="val_SDR">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div>
+                    <!-- Row 4 -->
+                    <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-lbl">BDR</div> <div class="d-val" id="val_BDR">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div>
+                    <!-- Row 5 -->
+                    <div class="d-emp"></div> <div class="d-lbl">BDA</div> <div class="d-val" id="val_BDA">0</div> <div class="d-emp"></div> <div class="d-val" id="val_BRC">0</div> <div class="d-lbl">BRC</div> <div class="d-emp"></div>
+                    <!-- Row 6 -->
+                    <div class="d-lbl">A2</div> <div class="d-val" id="val_A2">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-val" id="val_A3">0</div> <div class="d-lbl">A3</div>
+                </div>
+            </div>
+            
+            <!-- Grupal -->
+            <div>
+                <h3 style="text-align:center; color:#FFF; font-size:14px; margin-bottom:10px;">Grupal (Promedio)</h3>
+                <div style="display:grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(6, 1fr); gap: 4px; width: 100%; max-width: 400px; margin: 0 auto; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);">
+                    <!-- Row 1 -->
+                    <div class="d-lbl">A1</div> <div class="d-val" id="gval_A1">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-val" id="gval_A4">0</div> <div class="d-lbl">A4</div>
+                    <!-- Row 2 -->
+                    <div class="d-emp"></div> <div class="d-lbl">SDA</div> <div class="d-val" id="gval_SDA">0</div> <div class="d-emp"></div> <div class="d-val" id="gval_SRC">0</div> <div class="d-lbl">SRC</div> <div class="d-emp"></div>
+                    <!-- Row 3 -->
+                    <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-lbl">SDR</div> <div class="d-val" id="gval_SDR">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div>
+                    <!-- Row 4 -->
+                    <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-lbl">BDR</div> <div class="d-val" id="gval_BDR">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div>
+                    <!-- Row 5 -->
+                    <div class="d-emp"></div> <div class="d-lbl">BDA</div> <div class="d-val" id="gval_BDA">0</div> <div class="d-emp"></div> <div class="d-val" id="gval_BRC">0</div> <div class="d-lbl">BRC</div> <div class="d-emp"></div>
+                    <!-- Row 6 -->
+                    <div class="d-lbl">A2</div> <div class="d-val" id="gval_A2">0</div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-emp"></div> <div class="d-val" id="gval_A3">0</div> <div class="d-lbl">A3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+    <!-- BLOQUE 3.5: Análisis SMIa y Quatuor -->
+    <div class="panel">
+        <h2 class="panel-title">🧬 Distribución Topológica (SMIa y Quatuor)</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+            A la izquierda, tus relaciones emitidas/recibidas directas (SMIa). A la derecha, la distribución de frecuencias de tus figuras en la Matriz Quatuor (9x9).
+        </p>
+        <div class="grid-2">
+            <div>
+                <h3 style="text-align:center; color:#FFF; font-size:14px; margin-bottom:10px;">Interacciones Crudas (SMIa)</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; height: 200px; overflow-y: auto;">
+                    <table style="width: 100%; font-size: 12px; text-align: left; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #333; color: var(--accent-blue);">
+                                <th style="padding: 5px;">Compañero</th>
+                                <th style="padding: 5px;">Figura SMIa</th>
+                                <th style="padding: 5px;">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="smia_tbody">
+                            <!-- JS Injection -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div>
+                <h3 style="text-align:center; color:#FFF; font-size:14px; margin-bottom:10px;">Matriz Quatuor (Frecuencias %)</h3>
+                
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; height: 200px;">
+                    <!-- Row 1: Emitted Positive -->
+                    <div style="background:#004400; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Mutuas (+)<br><span id="q_pp" style="font-size:14px; color:#00FF9D;">0%</span></div>
+                    <div style="background:#002244; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Asim. E (+)<br><span id="q_p0" style="font-size:14px; color:#58a6ff;">0%</span></div>
+                    <div style="background:#442200; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Fricción E<br><span id="q_pn" style="font-size:14px; color:#FF8800;">0%</span></div>
+                    
+                    <!-- Row 2: Emitted Neutral -->
+                    <div style="background:#002244; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Asim. R (+)<br><span id="q_0p" style="font-size:14px; color:#58a6ff;">0%</span></div>
+                    <div style="background:#333333; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Neutras<br><span id="q_00" style="font-size:14px; color:#aaa;">0%</span></div>
+                    <div style="background:#222222; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Fricción R<br><span id="q_0n" style="font-size:14px; color:#FF8800;">0%</span></div>
+                    
+                    <!-- Row 3: Emitted Negative -->
+                    <div style="background:#442200; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Antipatía R<br><span id="q_np" style="font-size:14px; color:#FF8800;">0%</span></div>
+                    <div style="background:#220000; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Rechazo E<br><span id="q_n0" style="font-size:14px; color:#FF0055;">0%</span></div>
+                    <div style="background:#440000; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:4px; font-size:11px; font-weight:bold;">Rechazo M (-)<br><span id="q_nn" style="font-size:14px; color:#FF0055;">0%</span></div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 3.6: Variables Complementarias y Clusters -->
+    <div class="grid-2" style="margin-bottom: 24px;">
+        <div class="panel" style="margin: 0;">
+            <h2 class="panel-title">📊 Variables Complementarias (Centroides)</h2>
+            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;">
+                <table style="width: 100%; font-size: 12px; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid #333; color: var(--accent-blue);">
+                            <th style="padding: 5px;">Variable</th>
+                            <th style="padding: 5px;">Tu Categoría</th>
+                            <th style="padding: 5px;">Tú (Cent.)</th>
+                            <th style="padding: 5px;">Grupo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vars_tbody">
+                        <!-- JS Injection -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel" style="margin: 0;">
+            <h2 class="panel-title">🔗 Pertenencia a Subgrupos (Clusters)</h2>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13px; color:var(--text-muted);">Cluster Principal:</span>
+                    <strong style="color:var(--accent-purple); font-size:14px;" id="cluster_nombre">Subgrupo Alpha</strong>
+                </div>
+                <div style="width: 100%; height: 1px; background: #333;"></div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13px; color:var(--text-muted);">Densidad Interna (Cohesión):</span>
+                    <strong style="color:var(--accent-green);" id="cluster_di">85%</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13px; color:var(--text-muted);">Densidad Externa (Apertura):</span>
+                    <strong style="color:var(--accent-blue);" id="cluster_de">32%</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:13px; color:var(--text-muted);">Media Grupal (Base):</span>
+                    <strong style="color:var(--text-main);" id="cluster_mg">45%</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 4: Valoraciones AAG (Solo Estudios Reales) -->
+    <div class="panel" id="panel_aag" style="display: none;">
+        <h2 class="panel-title">⭐ Valoraciones Adjetivadas (AAG)</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+            Comparativa de tu perfil percibido respecto al promedio del grupo.
+        </p>
+        <div class="grid-2">
+            <div class="table-container" style="max-height: 250px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Adjetivo</th>
+                            <th>Tú</th>
+                            <th>Media</th>
+                            <th>Sig.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="aag_tbody">
+                        <!-- Filas inyectadas por JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="chart-container">
+                <canvas id="aagChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 4.5: Narrativa del Sistema Experto (IA) -->
+    <div class="panel" id="panel_narrativa" style="border-color: var(--accent-purple);">
+        <h2 class="panel-title" style="color: var(--accent-purple);">🤖 Dictamen del Sistema Experto (IA)</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+            Síntesis cualitativa generada automáticamente a partir de tu topología relacional.
+        </p>
+        <div class="dissonance-feedback" id="txt_narrativa_ia" style="font-size: 14px; color: var(--text-main); font-style: italic;">
+            <!-- Inyectado por JS -->
+            Cargando dictamen...
+        </div>
+    </div>
+
+    <!-- BLOQUE 5: Recomendaciones Clínicas -->
+    <div class="panel">
+        <h2 class="panel-title">💡 Áreas de Oportunidad y Acción Reparadora</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+            Estas sugerencias han sido generadas algorítmicamente en base a tu topología de red. Te recomendamos discutirlas en tu sesión presencial con el Investigador Principal (IP).
+        </p>
+
+        <div id="recommendations-container">
+            <!-- Inyectado por JS -->
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>⚠️ Nota Clínica:</strong> Este reporte ha sido generado por el Sistema NEX_ORD. Los datos sociométricos son dinámicos y reflejan una topología temporal. El análisis definitivo y las acciones formativas recaen exclusivamente bajo el criterio del Investigador Principal (IP).
+    </div>
+</div>
+
+<script>
+    document.getElementById('fecha_inf').innerText = new Date().toLocaleDateString();
+
+    // ==========================================
+    // DATOS INYECTADOS POR PYTHON (MOCK DEFAULT)
+    // ==========================================
+    const INFORME_DATA = {
+    "radar": {
+        "labels": [
+            "Elecciones Emitidas (E)",
+            "Elecciones Recibidas (e)",
+            "Expectativas (\u00bf)",
+            "Confirmaciones (?)",
+            "Rechazo Emitido (<)",
+            "Rechazo Recibido (>)"
+        ],
+        "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "data_grupal": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "smia_list": [],
+    "quatuor": {},
+    "quatuor_grupal": {
+        "pp": "0.0%",
+        "p0": "0.0%",
+        "pn": "0.0%",
+        "0p": "0.0%",
+        "00": "0.0%",
+        "0n": "0.0%",
+        "np": "0.0%",
+        "n0": "0.0%",
+        "nn": "0.0%"
+    },
+    "recomendaciones": [
+        {
+            "icon": "\ud83e\udd1d",
+            "text": "Perfil generado autom\u00e1ticamente. El IP detallar\u00e1 recomendaciones personalizadas."
+        }
+    ],
+    "densidad": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": 0,
+        "SDA": 0,
+        "SRC": 0,
+        "SDR": 0,
+        "BDA": 0,
+        "BRC": 0,
+        "BDR": 0
+    },
+    "densidad_grupal": {
+        "A1": 0,
+        "A2": 0,
+        "A3": 0,
+        "A4": 0,
+        "SDA": 0,
+        "SRC": 0,
+        "SDR": 0,
+        "BDA": 0,
+        "BRC": 0,
+        "BDR": 0
+    },
+    "is_real_human_study": true,
+    "aag_data": [],
+    "variables": [],
+    "cluster": null,
+    "arquetipo": "Sat\u00e9lite Independiente",
+    "percentil": 50,
+    "narrativa_ia": "**[\u26a0\ufe0f MODO OFFLINE / SIN API KEY]**\n\nEstimado sujeto 3B, tu perfil topol\u00f3gico revela datos estructurales clave, pero el motor de IA no est\u00e1 conectado para redactar el dictamen. \n\n**Anomal\u00edas detectadas:**\nNo se detectaron desviaciones extremas (+- 2.00 sigmas) para este sujeto en las matrices estructurales."
+};
+
+    // Renderizar Narrativa IA
+    if (INFORME_DATA.narrativa_ia) {
+        // Usamos una función simple para convertir saltos de línea a <br> y **texto** a <b>texto</b>
+        let htmlText = INFORME_DATA.narrativa_ia
+            .replace(/\n/g, '<br>')
+            .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+        document.getElementById('txt_narrativa_ia').innerHTML = htmlText;
+    } else {
+        document.getElementById('panel_narrativa').style.display = 'none';
+    }
+
+    // Renderizar AAG si es un estudio real
+    if (INFORME_DATA.is_real_human_study && INFORME_DATA.aag_data.length > 0) {
+        document.getElementById('panel_aag').style.display = 'block';
+        
+        // 1. Poblar Tabla
+        const tbody = document.getElementById('aag_tbody');
+        const aagLabels = [];
+        const aagTuData = [];
+        const aagMediaData = [];
+
+        INFORME_DATA.aag_data.forEach(item => {
+            aagLabels.push(item.adjetivo);
+            aagTuData.push(item.tu_valor);
+            aagMediaData.push(item.promedio);
+
+            let colorSig = item.significacion.includes("(+)") ? "color: var(--accent-green);" : (item.significacion.includes("(-)") ? "color: var(--accent-blue);" : "color: var(--text-muted);");
+            tbody.innerHTML += `
+                <tr>
+                    <td style="font-weight:bold;">${item.adjetivo}</td>
+                    <td style="color:white;">${item.tu_valor}</td>
+                    <td>${item.promedio}</td>
+                    <td style="${colorSig}">${item.significacion}</td>
+                </tr>
+            `;
+        });
+
+        // 2. Renderizar Gráfico de Líneas Quebradas (Line Chart)
+        const ctxAag = document.getElementById('aagChart').getContext('2d');
+        new Chart(ctxAag, {
+            type: 'bar',
+            data: {
+                labels: aagLabels,
+                datasets: [
+                    {
+                        label: 'Tu Puntuación',
+                        data: aagTuData,
+                        borderColor: '#58a6ff',
+                        backgroundColor: '#58a6ff',
+                        pointBackgroundColor: '#58a6ff',
+                        pointBorderColor: '#fff',
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        borderWidth: 2,
+                        borderRadius: 4 // Líneas quebradas (rectas)
+                    },
+                    {
+                        label: 'Media Grupo',
+                        data: aagMediaData,
+                        borderColor: 'rgba(139, 148, 158, 0.6)',
+                        backgroundColor: 'rgba(139, 148, 158, 0.6)',
+                        pointBackgroundColor: 'rgba(139, 148, 158, 0.6)',
+                        pointBorderColor: '#0b0e14',
+                        pointRadius: 4,
+                        // para diferenciar el promedio
+                        borderWidth: 2,
+                        borderRadius: 4 // Líneas quebradas (rectas)
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#8b949e' }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#8b949e', font: {size: 10} }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#c9d1d9', font: {size: 11} }
+                    }
+                }
+            }
+        });
+    }
+
+    
+    // Render SMIa list
+    if (INFORME_DATA.smia_list) {
+        let smiaTbody = document.getElementById('smia_tbody');
+        if (smiaTbody) {
+            INFORME_DATA.smia_list.forEach(item => {
+                let color = item.tipo.includes('Positiva') ? 'color:#00FF9D;' : (item.tipo.includes('Negativa') ? 'color:#FF0055;' : 'color:white;');
+                smiaTbody.innerHTML += `<tr><td style="padding:5px;">${item.sujeto}</td><td style="padding:5px; font-family:monospace; ${color}">${item.figura}</td><td style="padding:5px;">${item.tipo}</td></tr>`;
+            });
+        }
+    }
+
+    // Render Quatuor
+    if (INFORME_DATA.quatuor) {
+        ['pp', 'p0', 'pn', '0p', '00', '0n', 'np', 'n0', 'nn'].forEach(k => {
+            let el = document.getElementById('q_' + k);
+            if (el && INFORME_DATA.quatuor[k]) el.innerText = INFORME_DATA.quatuor[k];
+        });
+    }
+
+    // Render Clusters and Variables
+    if (INFORME_DATA.cluster) {
+        let n = document.getElementById('cluster_nombre'); if(n) n.innerText = INFORME_DATA.cluster.nombre;
+        let di = document.getElementById('cluster_di'); if(di) di.innerText = INFORME_DATA.cluster.di;
+        let de = document.getElementById('cluster_de'); if(de) de.innerText = INFORME_DATA.cluster.de;
+        let mg = document.getElementById('cluster_mg'); if(mg) mg.innerText = INFORME_DATA.cluster.mg;
+    }
+
+    if (INFORME_DATA.variables && INFORME_DATA.variables.length > 0) {
+        let varsTbody = document.getElementById('vars_tbody');
+        if (varsTbody) {
+            varsTbody.innerHTML = '';
+            INFORME_DATA.variables.forEach(item => {
+                varsTbody.innerHTML += `<tr><td style="padding:5px; font-weight:bold;">${item.nombre}</td><td style="padding:5px;">${item.categoria}</td><td style="padding:5px; color:var(--accent-blue);">${item.cent_tu}</td><td style="padding:5px; color:var(--text-muted);">${item.cent_gr}</td></tr>`;
+            });
+        }
+    } else {
+        let varsTbody = document.getElementById('vars_tbody');
+        if (varsTbody) varsTbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:10px; color:var(--text-muted);">Sin variables complementarias</td></tr>';
+    }
+
+    // Render Arquetipo y Percentil
+    if (INFORME_DATA.arquetipo) {
+        let arqEl = document.getElementById('arquetipo_badge');
+        if (arqEl) arqEl.innerText = INFORME_DATA.arquetipo;
+    }
+    if (INFORME_DATA.percentil !== undefined) {
+        let pVal = document.getElementById('percentil_val');
+        if (pVal) pVal.innerText = INFORME_DATA.percentil + "%";
+        let pBar = document.getElementById('percentil_bar');
+        if (pBar) pBar.style.width = INFORME_DATA.percentil + "%";
+    }
+
+    // Poblar métricas de densidad (Densograma)
+    function getColor(val, key) {
+        let base = 0.0;
+        if (['A1','A2','A3','A4'].includes(key)) base = 1.0;
+        else if (['BDA','BRC'].includes(key)) base = 2.0;
+        else if (key === 'BDR') base = 4.0;
+        
+        let diff = val - base;
+        if (diff > 0.5) return '#00FF9D'; 
+        if (diff > 0.0) return '#00A2FF'; 
+        if (diff < -0.5) return '#FF0055'; 
+        if (diff < 0.0) return '#FF8800'; 
+        return '#888888'; 
+    }
+
+    if(INFORME_DATA.densidad) {
+        Object.keys(INFORME_DATA.densidad).forEach(key => {
+            const el = document.getElementById('val_' + key);
+            if(el) {
+                let val = parseFloat(INFORME_DATA.densidad[key]);
+                if (isNaN(val)) val = 0.0;
+                let c = getColor(val, key);
+                el.innerText = Number.isInteger(val) ? val : val.toFixed(2);
+                el.style.color = c;
+                el.style.borderColor = c;
+                el.style.boxShadow = `0 0 8px ${c}40`;
+            }
+        });
+    }
+
+    if(INFORME_DATA.densidad_grupal) {
+        Object.keys(INFORME_DATA.densidad_grupal).forEach(key => {
+            const el = document.getElementById('gval_' + key);
+            if(el) {
+                let val = parseFloat(INFORME_DATA.densidad_grupal[key]);
+                if (isNaN(val)) val = 0.0;
+                let c = getColor(val, key);
+                el.innerText = Number.isInteger(val) ? val : val.toFixed(2);
+                el.style.color = c;
+                el.style.borderColor = c;
+                el.style.boxShadow = `0 0 8px ${c}40`;
+            }
+        });
+    }
+
+    // Renderizar Recomendaciones
+    const recContainer = document.getElementById('recommendations-container');
+    INFORME_DATA.recomendaciones.forEach(rec => {
+        recContainer.innerHTML += `
+            <div class="recommendation">
+                <div class="rec-icon">${rec.icon}</div>
+                <div class="rec-text">${rec.text}</div>
+            </div>
+        `;
+    });
+
+    // Renderizar Radar Chart con Chart.js
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: INFORME_DATA.radar.labels,
+                        datasets: [{
+                label: 'Tu Perfil Topológico',
+                data: INFORME_DATA.radar.data,
+                backgroundColor: 'rgba(88, 166, 255, 0.4)',
+                borderColor: '#58a6ff',
+                pointBackgroundColor: '#58a6ff',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#58a6ff',
+                order: 1
+            },
+            {
+                label: 'Media Grupo',
+                data: INFORME_DATA.radar.data_grupal || [50, 50, 50, 50, 50, 50],
+                backgroundColor: 'rgba(139, 148, 158, 0.15)',
+                borderColor: 'rgba(139, 148, 158, 0.8)',
+                pointBackgroundColor: 'rgba(139, 148, 158, 0.8)',
+                pointBorderColor: '#0b0e14',
+                borderDash: [5, 5],
+                order: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    pointLabels: { color: '#8b949e', font: { size: 10 } },
+                    ticks: { display: false, min: 0, max: 100 }
+                }
+            },
+            plugins: {
+                legend: { display: true, labels: { color: '#c9d1d9' } }
+            }
+        }
+    });
+</script>
+</body>
+</html>

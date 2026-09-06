@@ -51,14 +51,14 @@ const NEXORD_I18N_DICTS = {
 
         // Suite Diagnóstica G2T1C1
         "suite_brand_title": "NEXORD <span>Suite Diagnóstica</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Ecosistema Socio-Termodinámico VISORD (2026)",
         "suite_hero_badge": "🔬 ESTUDIO EMPÍRICO INTERGRUPAL G2T1C1 (N=10)",
         "suite_heading": "Diagnóstico Socio-Termodinámico y Topología en Grassmann",
         "suite_desc": "Demostración empírica de la plataforma <strong>NEXORD / VISORD</strong> contrastando un colectivo estructurado y armónico (<strong>Grupo 1: Cohesión</strong>) frente a un colectivo en tensión con marginación invisible (<strong>Grupo 2: Ostracismo sobre el nodo 5B1a</strong>).",
         "suite_tab_tables": "📊 Tablas Metodológicas (Pasos 1 al 6)",
         "suite_tab_planes": "📈 Planos Factoriales y Ejes Verticales",
         "suite_tab_dashboards": "📑 Dashboards e Informes Interactivos",
-        "suite_tab_journal": "🏛️ Figuras y Tablas Oficiales (Psicothema)",
+        "suite_tab_journal": "🏛️ Proyecciones y Tablas Canónicas (300 DPI)",
         "suite_sub_paso12": "Paso 1 y 2: Entrada BREVE & Moreno",
         "suite_sub_paso34": "Paso 3 y 4: Matrices SMIb y SMIa (Q81)",
         "suite_sub_paso5": "Paso 5: 10 Densidades Relacionales D(n,10)",
@@ -67,7 +67,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "CASO EMPÍRICO G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "DOSSIER GENERAL G2T1C1 (N=10) • ECOSISTEMA VISORD",
         "vis_btn_suite": "📊 Suite Diagnóstica",
         "vis_btn_reset": "🔄 Reset Cámara",
         "vis_btn_top": "📐 Vista Cenital (2D)",
@@ -118,14 +118,14 @@ const NEXORD_I18N_DICTS = {
 
         // Diagnostic Suite G2T1C1
         "suite_brand_title": "NEXORD <span>Diagnostic Suite</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | VISORD Socio-Thermodynamics (2026)",
         "suite_hero_badge": "🔬 INTERGROUP EMPIRICAL STUDY G2T1C1 (N=10)",
         "suite_heading": "Socio-Thermodynamic Diagnosis and Grassmann Topology",
         "suite_desc": "Empirical demonstration of the <strong>NEXORD / VISORD</strong> platform contrasting a structured, harmonic collective (<strong>Group 1: Cohesion</strong>) against a collective in tension with invisible exclusion (<strong>Group 2: Ostracism on node 5B1a</strong>).",
         "suite_tab_tables": "📊 Methodological Tables (Steps 1 to 6)",
         "suite_tab_planes": "📈 Factorial Planes & Vertical Axes",
         "suite_tab_dashboards": "📑 Dashboards & Interactive Reports",
-        "suite_tab_journal": "🏛️ Official Figures & Tables (Psicothema)",
+        "suite_tab_journal": "🏛️ Canonical Projections & Tables (300 DPI)",
         "suite_sub_paso12": "Step 1 & 2: BREVE Input & Moreno",
         "suite_sub_paso34": "Step 3 & 4: SMIb and SMIa Matrices (Q81)",
         "suite_sub_paso5": "Step 5: 10 Relational Densities D(n,10)",
@@ -134,7 +134,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "EMPIRICAL CASE G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "GENERAL DOSSIER G2T1C1 (N=10) • VISORD ECOSYSTEM",
         "vis_btn_suite": "📊 Diagnostic Suite",
         "vis_btn_reset": "🔄 Reset Camera",
         "vis_btn_top": "📐 Top View (2D)",
@@ -185,14 +185,14 @@ const NEXORD_I18N_DICTS = {
 
         // Suite Diagnostique G2T1C1
         "suite_brand_title": "NEXORD <span>Suite Diagnostique</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Écosystème Socio-Thermodynamique VISORD (2026)",
         "suite_hero_badge": "🔬 ÉTUDE EMPIRIQUE INTERGROUPE G2T1C1 (N=10)",
         "suite_heading": "Diagnostic Socio-Thermodynamique et Topologie de Grassmann",
         "suite_desc": "Démonstration empirique de la plateforme <strong>NEXORD / VISORD</strong> opposant un collectif structuré et harmonique (<strong>Groupe 1: Cohésion</strong>) à un collectif en tension avec exclusion invisible (<strong>Groupe 2: Ostracisme du nœud 5B1a</strong>).",
         "suite_tab_tables": "📊 Tableaux Méthodologiques (Étapes 1 à 6)",
         "suite_tab_planes": "📈 Plans Factoriels et Axes Verticaux",
         "suite_tab_dashboards": "📑 Tableaux de Bord & Rapports Interactifs",
-        "suite_tab_journal": "🏛️ Figures et Tableaux Officiels (Psicothema)",
+        "suite_tab_journal": "🏛️ Projections et Tableaux Canoniques (300 DPI)",
         "suite_sub_paso12": "Étape 1 & 2: Données BREVE & Moreno",
         "suite_sub_paso34": "Étape 3 & 4: Matrices SMIb et SMIa (Q81)",
         "suite_sub_paso5": "Étape 5: 10 Densités Relationnelles D(n,10)",
@@ -201,7 +201,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "CAS EMPIRIQUE G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "DOSSIER GÉNÉRAL G2T1C1 (N=10) • ÉCOSYSTÈME VISORD",
         "vis_btn_suite": "📊 Suite Diagnostique",
         "vis_btn_reset": "🔄 Réinitialiser Caméra",
         "vis_btn_top": "📐 Vue Zénithale (2D)",
@@ -252,14 +252,14 @@ const NEXORD_I18N_DICTS = {
 
         // Suite Diagnostica G2T1C1
         "suite_brand_title": "NEXORD <span>Suite Diagnostica</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Ecosistema Socio-Termodinamico VISORD (2026)",
         "suite_hero_badge": "🔬 STUDIO EMPIRICO INTERGRUPPO G2T1C1 (N=10)",
         "suite_heading": "Diagnosi Socio-Termodinamica e Topologia di Grassmann",
         "suite_desc": "Dimostrazione empirica della piattaforma <strong>NEXORD / VISORD</strong> che confronta un collettivo strutturato e armonico (<strong>Gruppo 1: Coesione</strong>) con uno in tensione con esclusione invisibile (<strong>Gruppo 2: Ostracismo sul nodo 5B1a</strong>).",
         "suite_tab_tables": "📊 Tabelle Metodologiche (Passi 1 a 6)",
         "suite_tab_planes": "📈 Piani Fattoriali e Assi Verticali",
         "suite_tab_dashboards": "📑 Dashboard e Report Interattivi",
-        "suite_tab_journal": "🏛️ Figure e Tabelle Ufficiali (Psicothema)",
+        "suite_tab_journal": "🏛️ Proiezioni e Tabelle Canoniche (300 DPI)",
         "suite_sub_paso12": "Passo 1 & 2: Dati BREVE & Moreno",
         "suite_sub_paso34": "Passo 3 & 4: Matrici SMIb e SMIa (Q81)",
         "suite_sub_paso5": "Passo 5: 10 Densità Relazionali D(n,10)",
@@ -268,7 +268,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "CASO EMPIRICO G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "DOSSIER GENERALE G2T1C1 (N=10) • ECOSISTEMA VISORD",
         "vis_btn_suite": "📊 Suite Diagnostica",
         "vis_btn_reset": "🔄 Ripristina Camera",
         "vis_btn_top": "📐 Vista dall'alto (2D)",
@@ -319,14 +319,14 @@ const NEXORD_I18N_DICTS = {
 
         // Diagnose-Suite G2T1C1
         "suite_brand_title": "NEXORD <span>Diagnose-Suite</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | VISORD-Soziothermodynamik (2026)",
         "suite_hero_badge": "🔬 INTERGRUPPEN-EMPIRISCHE STUDIE G2T1C1 (N=10)",
         "suite_heading": "Soziothermodynamische Diagnostik und Grassmann-Topologie",
         "suite_desc": "Empirische Demonstration der <strong>NEXORD / VISORD</strong>-Plattform im Vergleich zwischen einem strukturierten Kollektiv (<strong>Gruppe 1: Kohäsion</strong>) und einem Spannungskollektiv mit unsichtbarer Ausgrenzung (<strong>Gruppe 2: Ostrazismus an Knoten 5B1a</strong>).",
         "suite_tab_tables": "📊 Methodische Tabellen (Schritte 1 bis 6)",
         "suite_tab_planes": "📈 Faktorielle Ebenen & Vertikale Achsen",
         "suite_tab_dashboards": "📑 Dashboards & Interaktive Berichte",
-        "suite_tab_journal": "🏛️ Offizielle Abbildungen & Tabellen (Psicothema)",
+        "suite_tab_journal": "🏛️ Kanonische Projektionen & Tabellen (300 DPI)",
         "suite_sub_paso12": "Schritt 1 & 2: BREVE-Eingabe & Moreno",
         "suite_sub_paso34": "Schritt 3 & 4: SMIb- und SMIa-Matrizen (Q81)",
         "suite_sub_paso5": "Schritt 5: 10 Relationale Dichten D(n,10)",
@@ -335,7 +335,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "EMPIRISCHER FALL G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "GENERAL-DOSSIER G2T1C1 (N=10) • VISORD-ÖKOSYSTEM",
         "vis_btn_suite": "📊 Diagnose-Suite",
         "vis_btn_reset": "🔄 Kamera zurücksetzen",
         "vis_btn_top": "📐 Draufsicht (2D)",
@@ -386,14 +386,14 @@ const NEXORD_I18N_DICTS = {
 
         // Suite Diagnóstica G2T1C1
         "suite_brand_title": "NEXORD <span>Suite Diagnóstica</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Ecossistema Sócio-Termodinâmico VISORD (2026)",
         "suite_hero_badge": "🔬 ESTUDO EMPÍRICO INTERGRUPAL G2T1C1 (N=10)",
         "suite_heading": "Diagnóstico Socio-Termodinâmico e Topologia em Grassmann",
         "suite_desc": "Demonstração empírica da plataforma <strong>NEXORD / VISORD</strong> contrastando um coletivo estruturado e harmônico (<strong>Grupo 1: Coesão</strong>) com um coletivo sob tensão com exclusão invisível (<strong>Grupo 2: Ostracismo no nó 5B1a</strong>).",
         "suite_tab_tables": "📊 Tabelas Metodológicas (Passos 1 a 6)",
         "suite_tab_planes": "📈 Planos Fatoriais e Eixos Verticais",
         "suite_tab_dashboards": "📑 Painéis e Relatórios Interativos",
-        "suite_tab_journal": "🏛️ Figuras e Tabelas Oficiais (Psicothema)",
+        "suite_tab_journal": "🏛️ Projeções e Tabelas Canônicas (300 DPI)",
         "suite_sub_paso12": "Passos 1 & 2: Entrada BREVE & Moreno",
         "suite_sub_paso34": "Passos 3 & 4: Matrizes SMIb e SMIa (Q81)",
         "suite_sub_paso5": "Passo 5: 10 Densidades Relacionais D(n,10)",
@@ -402,7 +402,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "CASO EMPÍRICO G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "DOSSIÊ GERAL G2T1C1 (N=10) • ECOSSISTEMA VISORD",
         "vis_btn_suite": "📊 Suite Diagnóstica",
         "vis_btn_reset": "🔄 Redefinir Câmera",
         "vis_btn_top": "📐 Vista Zenital (2D)",
@@ -453,14 +453,14 @@ const NEXORD_I18N_DICTS = {
 
         // Диагностическая сюита G2T1C1
         "suite_brand_title": "NEXORD <span>Диагностическая Сюита</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Социотермодинамика VISORD (2026)",
         "suite_hero_badge": "🔬 МЕЖГРУППОВОЕ ЭМПИРИЧЕСКОЕ ИССЛЕДОВАНИЕ G2T1C1 (N=10)",
         "suite_heading": "Социотермодинамическая диагностика и топология Грассмана",
         "suite_desc": "Эмпирическая демонстрация платформы <strong>NEXORD / VISORD</strong>, сопоставляющая гармоничный коллектив (<strong>Группа 1: Сплоченность</strong>) и группу под скрытым напряжением (<strong>Группа 2: Остракизм узла 5B1a</strong>).",
         "suite_tab_tables": "📊 Методологические таблицы (Шаги 1–6)",
         "suite_tab_planes": "📈 Факторные плоскости и вертикальные оси",
         "suite_tab_dashboards": "📑 Панели управления и отчеты",
-        "suite_tab_journal": "🏛️ Официальные рисунки и таблицы (Psicothema)",
+        "suite_tab_journal": "🏛️ Канонические проекции и таблицы (300 DPI)",
         "suite_sub_paso12": "Шаги 1 и 2: Вход BREVE и Морено",
         "suite_sub_paso34": "Шаги 3 и 4: Матрицы SMIb и SMIa (Q81)",
         "suite_sub_paso5": "Шаг 5: 10 реляционных плотностей D(n,10)",
@@ -469,7 +469,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "ЭМПИРИЧЕСКИЙ СЛУЧАЙ G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "ОБЩЕЕ ДОСЬЕ G2T1C1 (N=10) • ЭКОСИСТЕМА VISORD",
         "vis_btn_suite": "📊 Диагностическая сюита",
         "vis_btn_reset": "🔄 Сброс камеры",
         "vis_btn_top": "📐 Вид сверху (2D)",
@@ -520,14 +520,14 @@ const NEXORD_I18N_DICTS = {
 
         // G2T1C1 诊断套件
         "suite_brand_title": "NEXORD <span>诊断套件</span>",
-        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026",
+        "suite_brand_sub": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | VISORD 社会热力学 (2026)",
         "suite_hero_badge": "🔬 经验群体对照研究 G2T1C1 (N=10)",
         "suite_heading": "社会热力学诊断与格拉斯曼拓扑分析",
         "suite_desc": "基于 <strong>NEXORD / VISORD</strong> 的经验对照实证：对比高度和谐对称的群体（<strong>组1：凝聚态</strong>）与存在隐性排斥张力的群体（<strong>组2：节点 5B1a 的排斥孤立</strong>）。",
         "suite_tab_tables": "📊 方法论表格（第1至第6步）",
         "suite_tab_planes": "📈 因子投影平面与垂直轴",
         "suite_tab_dashboards": "📑 仪表盘与交互式诊断报告",
-        "suite_tab_journal": "🏛️ 期刊官方图表（Psicothema 2026）",
+        "suite_tab_journal": "🏛️ 规范高分辨率投影与图表（300 DPI）",
         "suite_sub_paso12": "步骤 1 & 2: 原始 BREVE 输入与莫雷诺转换",
         "suite_sub_paso34": "步骤 3 & 4: SMIb 与 SMIa (Q81) 矩阵",
         "suite_sub_paso5": "步骤 5: 10 种关系密度 D(n,10)",
@@ -536,7 +536,7 @@ const NEXORD_I18N_DICTS = {
 
         // VISORD 3D HUD
         "vis_brand_title": "VISORD <span>3D</span>",
-        "vis_brand_sub": "经验案例 G2T1C1 (N=10) • PSICOTHEMA 2026",
+        "vis_brand_sub": "通用档案 G2T1C1 (N=10) • VISORD 生态系统",
         "vis_btn_suite": "📊 诊断套件",
         "vis_btn_reset": "🔄 重置视角",
         "vis_btn_top": "📐 顶视图 (2D)",

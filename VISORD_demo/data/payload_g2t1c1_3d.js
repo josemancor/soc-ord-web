@@ -1,7 +1,7 @@
 window.VISORD_PAYLOAD_G2T1C1 = {
   "metadata": {
-    "version": "NEX_ORD 2026 - Estudio Emp\u00edrico Psicothema",
-    "study_title": "Estudio Emp\u00edrico G2T1C1 (Psicothema 2026)",
+    "version": "NEX_ORD 2026 - Dossier General G2T1C1",
+    "study_title": "Dossier General del Caso Empírico G2T1C1",
     "clave": "PROPIO-AA-G2-T1-C1-V10-A16-ES-5",
     "contexto": "Dise\u00f1o Intergrupal Transversal G2T1C1 (N=10; G1 Cohesi\u00f3n vs G2 Ostracismo)",
     "n_subjects": 10,

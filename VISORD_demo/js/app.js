@@ -21,7 +21,7 @@ class VisordApp {
 
             if (studyKey === 'G2T1C1' && window.VISORD_PAYLOAD_G2T1C1) {
                 activePayload = window.VISORD_PAYLOAD_G2T1C1;
-                titleText = 'PROYECCIÓN ACTIVA: Estudio Empírico G2T1C1 (Psicothema)';
+                titleText = 'PROYECCIÓN ACTIVA: Dossier General del Caso Empírico G2T1C1';
                 subText = 'Código: PROPIO-AA-G2-T1-C1-V10-A16-ES-5 &bull; N=10 &bull; G1 Cohesión vs G2 Ostracismo';
             } else if (studyKey === 'LCBA' && window.VISORD_PAYLOAD_BERNARDA_ALBA) {
                 activePayload = window.VISORD_PAYLOAD_BERNARDA_ALBA;

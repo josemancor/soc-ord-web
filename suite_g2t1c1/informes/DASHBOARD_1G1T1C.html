@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEX_ORD Master Dashboard | 1g1t1c (G2T1C1)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --soc-blue: #0072CE;
+            --soc-dark-blue: #0B132B;
+            --bg-canvas: #f1f5f9;
+            --panel-bg: #ffffff;
+            --text-main: #0F172A;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --accent-green: #00FF87;
+            --accent-pink: #FF007F;
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-canvas);
+            color: var(--text-main);
+            height: 100vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        /* --- HEADER NEX_ORD CON EL LOGO OFICIAL DEL LIBRO Y LA RED ENCIMA --- */
+        .header {
+            background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+            color: white; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 4px solid var(--accent-green); box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 50;
+        }
+        .header-brand { display: flex; align-items: center; gap: 14px; }
+        .header-brand img { height: 50px; width: auto; border-radius: 6px; box-shadow: 0 0 12px rgba(0,168,255,0.4); }
+
+        .header-meta { display: flex; align-items: center; gap: 14px; }
+        .badge-nom { background: var(--soc-blue); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 900; font-size: 1rem; }
+        .badge-date { background: #3A506B; color: #F8FAFC; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.88rem; }
+
+        /* --- TAB BAR --- */
+        .tab-bar {
+            background: #1C2541; padding: 10px 20px; display: flex; gap: 10px; border-bottom: 2px solid #3A506B;
+        }
+        .tab-btn {
+            background: #3A506B; border: none; border-radius: 6px;
+            padding: 10px 18px; font-size: 0.9rem; font-weight: 700; color: #CBD5E1;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .tab-btn:hover { background: #475569; color: white; }
+        .tab-btn.active { background: var(--soc-blue); color: white; box-shadow: 0 2px 8px rgba(0,114,206,0.4); }
+
+        /* --- MAIN STAGE (GRID) --- */
+        .stage {
+            flex-grow: 1; padding: 18px 25px; overflow: hidden; position: relative;
+        }
+        .tab-content {
+            display: none; height: 100%; width: 100%;
+            grid-template-columns: 1fr 1fr 340px;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 18px;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active { display: grid; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- GRID CELLS --- */
+        .grid-box {
+            background: var(--panel-bg); border-radius: 8px; border: 2px solid var(--border-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+            padding: 12px; display: flex; flex-direction: column; overflow: hidden; position: relative;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .grid-box:hover { border-color: var(--accent-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,255,135,0.2); }
+        .box-header {
+            font-size: 0.85rem; font-weight: 800; color: var(--soc-dark-blue);
+            margin-bottom: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;
+            text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .box-content {
+            flex-grow: 1; overflow: auto; display: flex; align-items: center; justify-content: center;
+            scrollbar-width: thin; background: #0B132B; border-radius: 6px; padding: 10px; color: white;
+        }
+        .box-content img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
+        
+        .dataframe, table { font-size: 0.82rem; border-collapse: collapse; width: 100%; color: #0F172A; }
+        .dataframe th, th { background: #f8fafc; padding: 6px; border: 1px solid #e2e8f0; text-align: center; font-weight: bold; }
+        .dataframe td, td { padding: 6px; border: 1px solid #f1f5f9; text-align: center; }
+        .pos-cell { background: #DCFCE7; color: #166534; font-weight: bold; }
+        .neg-cell { background: #FEE2E2; color: #991B1B; font-weight: bold; }
+
+        /* --- DIAGNOSTIC PANEL (RIGHT COLUMN) --- */
+        .diag-panel {
+            grid-column: 3; grid-row: 1 / span 2;
+            background: var(--panel-bg); border-radius: 8px; border: 2px solid var(--soc-blue);
+            padding: 20px; overflow-y: auto; display: flex; flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0,114,206,0.1);
+        }
+        .diag-title { font-size: 1.1rem; font-weight: 800; color: var(--soc-blue); margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 6px;}
+        .diag-body { font-size: 0.92rem; line-height: 1.6; color: var(--text-main); flex-grow: 1; }
+
+        .btn-fullscreen {
+            background: #E2E8F0; border: none; border-radius: 4px; padding: 3px 8px; cursor: pointer; font-size: 0.75rem; font-weight: bold; color: #0072CE;
+        }
+        .btn-fullscreen:hover { background: var(--accent-green); color: #0B132B; }
+
+        details.explanatory-accordion {
+            background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 8px; margin-top: 15px; width: 100%;
+        }
+        details.explanatory-accordion summary {
+            padding: 10px 14px; font-weight: bold; font-size: 0.85rem; color: #0284C7; cursor: pointer; user-select: none;
+            background: #E0F2FE; border-radius: 8px;
+        }
+        .accordion-content {
+            padding: 12px 16px; color: #0C4A6E; font-size: 0.85rem; line-height: 1.55; background: #F0F9FF;
+        }
+
+        .fs-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(11, 19, 43, 0.95);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.2s; backdrop-filter: blur(8px);
+        }
+        .fs-overlay.active { opacity: 1; pointer-events: all; }
+        .fs-content { background: #fff; width: 92vw; height: 92vh; border-radius: 12px; padding: 30px; position: relative; overflow-y: auto; display: flex; flex-direction: column;}
+        #fs-dynamic { flex-grow: 1; display: flex; flex-direction: column; }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA MARCA NEX_ORD CON EL LOGO OFICIAL DEL LIBRO Y LA RED ENCIMA -->
+    <header class="header">
+        <div class="header-brand">
+            <img src="../../LOGO_NEX_ORD_OFICIAL.png" onerror="this.src='../../../02_Data/LOGO_NEX_ORD_OFICIAL.png'" alt="NEX_ORD Logo Oficial" />
+        </div>
+        <div class="header-meta">
+            <div class="badge-nom">1g1t1c ((G2T1C1))</div>
+            <div class="badge-date">📅 24 de Agosto de 2026</div>
+        </div>
+    </header>
+
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="openTab('N1', this)">N1. Densidad</button>
+        <button class="tab-btn" onclick="openTab('N2', this)">N2. Clima</button>
+        <button class="tab-btn" onclick="openTab('N3', this)">N3. Estructura</button>
+        <button class="tab-btn" onclick="openTab('N4', this)">N4. Tensión</button>
+        <button class="tab-btn" onclick="openTab('N5', this)">N5. Pronóstico</button>
+        <button class="tab-btn" onclick="openTab('N8', this)">N8. Espectral</button>
+    </div>
+
+    <div class="stage">
+        
+        <!-- ================= N1 DENSIDAD ================= -->
+        <div id="N1" class="tab-content active">
+            <div class="grid-box" id="box-1-1" onclick="fs('box-1-1', '1.1 SOCIOGRAMA TOPOLÓGICO')">
+                <div class="box-header">
+                    <div><span class="num-tag">1.1</span> SOCIOGRAMA TOPOLÓGICO (F)</div>
+                    <button class="btn-fullscreen">⤢ Ampliar</button>
+                </div>
+                <div class="box-content">
+                    <svg width="100%" height="150" viewBox="0 0 280 150">
+                        <circle cx="140" cy="30" r="14" fill="#00FF87"/><text x="140" y="34" text-anchor="middle" fill="#0B132B" font-weight="bold" font-size="10">1A1a</text>
+                        <circle cx="50" cy="110" r="14" fill="#00FF87"/><text x="50" y="114" text-anchor="middle" fill="#0B132B" font-weight="bold" font-size="10">2A1a</text>
+                        <circle cx="230" cy="110" r="14" fill="#00FF87"/><text x="230" y="114" text-anchor="middle" fill="#0B132B" font-weight="bold" font-size="10">3A1a</text>
+                        <line x1="140" y1="30" x2="50" y2="110" stroke="#00FF87" stroke-width="3"/>
+                        <line x1="50" y1="110" x2="230" y2="110" stroke="#00FF87" stroke-width="3"/>
+                        <line x1="230" y1="110" x2="140" y2="30" stroke="#00FF87" stroke-width="3"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="grid-box" id="box-1-2" onclick="fs('box-1-2', '1.2 MORENO ATRACCIÓN Y RELEGACIÓN')">
+                <div class="box-header">
+                    <div><span class="num-tag">1.2</span> MORENO (ATRACCIÓN / RELEGACIÓN)</div>
+                    <button class="btn-fullscreen">⤢ Ampliar</button>
+                </div>
+                <div class="box-content" style="background:#1C2541; flex-direction:column; gap:8px;">
+                    <div style="background:#0F172A; width:90%; padding:8px; border-radius:4px; color:#4ADE80; font-size:0.75rem;">💚 Elecciones Positivas</div>
+                    <div style="background:#0F172A; width:90%; padding:8px; border-radius:4px; color:#FCA5A5; font-size:0.75rem;">💗 Relegación / Rechazos</div>
+                </div>
+            </div>
+
+            <div class="grid-box" id="box-1-3" onclick="fs('box-1-3', '1.3 MATRIZ CRUDA SMIb & TETRAGRAMA')">
+                <div class="box-header">
+                    <div><span class="num-tag">1.3</span> MATRIZ CRUDA (SMIb / Q81)</div>
+                    <button class="btn-fullscreen">⤢ Ampliar</button>
+                </div>
+                <div class="box-content" style="background:white; color:#0F172A; padding:5px;">
+                    <table>
+                        <tr><th>Suj.</th><th>1A1a</th><th>2A1a</th><th>3A1a</th></tr>
+                        <tr><td>1A1a</td><td class="pos-cell">+1.00</td><td class="pos-cell">+0.50</td><td class="pos-cell">+0.33</td></tr>
+                        <tr><td>2A1a</td><td class="pos-cell">+0.50</td><td class="pos-cell">+1.00</td><td class="pos-cell">+1.00</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid-box" id="box-1-4" onclick="fs('box-1-4', '1.4 TABLA DE DENSIDADES BDR / SDR')">
+                <div class="box-header">
+                    <div><span class="num-tag">1.4</span> TABLA DE DENSIDADES (BDR / SDR)</div>
+                    <button class="btn-fullscreen">⤢ Ampliar</button>
+                </div>
+                <div class="box-content" style="background:white; color:#0F172A; padding:5px;">
+                    <div style="font-size:1.4rem; font-weight:900; color:#0072CE;">BDR = 78.5%</div>
+                    <div style="font-size:0.78rem; color:#475569;">SDR Máximo: Sujeto 2A1a (+85.2%)</div>
+                </div>
+            </div>
+
+            <div class="diag-panel">
+                <h3 class="diag-title">Dictamen N1</h3>
+                <div class="diag-body">
+            <div class='expert-card' onclick='openFullscreen(this)' style='cursor: pointer; margin-bottom: 25px; padding: 25px; background: #F0FDF4; border-left: 6px solid #16A34A; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.2s ease;' onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+                <h3 style='margin-top: 0; color: #166534; font-size: 1.2rem; font-weight: 900; letter-spacing: 0.5px;'>DESCRIPCIÓN GLOBAL DEL GRUPO</h3>
+                <p style='font-size: 1.05rem; color: #14532D; line-height: 1.7; margin-bottom: 0;'>La matriz muestra una filiación robusta con un tejido conectivo muy rico. Este grupo está preparado para absorber errores sin penalizar la identidad colectiva, garantizando lealtades cruzadas y un ambiente de certidumbre altamente productivo. El clima relacional está deliciosamente atemperado (Fricción: 0.0%). La fricción térmica roza el nivel óptimo, existiendo una coordinación orgánica natural que requiere muy poco esfuerzo de mantenimiento corporativo.</p>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- ================= N2 CLIMA ================= -->
+        <div id="N2" class="tab-content">
+            <div class="grid-box" id="box-2-1" onclick="fs('box-2-1', '2.1 HISTOGRAMA DE ESTATUS')">
+                <div class="box-header"><div><span class="num-tag">2.1</span> HISTOGRAMA DE ESTATUS</div><button class="btn-fullscreen">⤢ Ampliar</button></div>
+                <div class="box-content"><div style="font-size:1.1rem; color:#00FF87; font-weight:bold;">Indegree / Outdegree Nodal</div></div>
+            </div>
+            <div class="grid-box" id="box-2-2" onclick="fs('box-2-2', '2.2 DENSIDAD RELATIVA SDR')">
+                <div class="box-header"><div><span class="num-tag">2.2</span> DENSIDAD RELATIVA (SDR)</div><button class="btn-fullscreen">⤢ Ampliar</button></div>
+                <div class="box-content"><div style="font-size:1.1rem; color:#0072CE; font-weight:bold;">SDR Nodales Nodales %</div></div>
+            </div>
+            <div class="diag-panel">
+                <h3 class="diag-title">Dictamen N2</h3>
+                <div class="diag-body">
+            <div class='expert-card' onclick='openFullscreen(this)' style='cursor: pointer; margin-bottom: 25px; padding: 25px; background: #F0FDF4; border-left: 6px solid #16A34A; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.2s ease;' onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+                <h3 style='margin-top: 0; color: #166534; font-size: 1.2rem; font-weight: 900; letter-spacing: 0.5px;'>DESCRIPCIÓN GLOBAL DEL GRUPO</h3>
+                <p style='font-size: 1.05rem; color: #14532D; line-height: 1.7; margin-bottom: 0;'>La matriz muestra una filiación robusta con un tejido conectivo muy rico. Este grupo está preparado para absorber errores sin penalizar la identidad colectiva, garantizando lealtades cruzadas y un ambiente de certidumbre altamente productivo. El clima relacional está deliciosamente atemperado (Fricción: 0.0%). La fricción térmica roza el nivel óptimo, existiendo una coordinación orgánica natural que requiere muy poco esfuerzo de mantenimiento corporativo.</p>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- ================= N8 ESPECTRAL ================= -->
+        <div id="N8" class="tab-content">
+            <div class="grid-box" id="box-8-1" onclick="fs('box-8-1', '8.1 FIEDLER Y FRUSTRACIÓN DE HEIDER')">
+                <div class="box-header"><div><span class="num-tag">8.1</span> FIEDLER (&lambda;<sub>2</sub>) & HEIDER (&lambda;<sub>1</sub>)</div><button class="btn-fullscreen">⤢ Ampliar</button></div>
+                <div class="box-content"><div style="font-size:1.8rem; font-weight:900; color:#00FF87;">&lambda;<sub>2</sub> = 0.000</div></div>
+            </div>
+            <div class="grid-box" id="box-8-4" onclick="fs('box-8-4', '8.4 OPERADORES GLOBALES DE ADYACENCIA W')">
+                <div class="box-header"><div><span class="num-tag">8.4</span> OPERADORES GLOBALES DE ADYACENCIA</div><button class="btn-fullscreen">⤢ Ampliar</button></div>
+                <div class="box-content" style="background:white; color:#0F172A;"><div style="font-weight:bold; color:#0072CE;">Estrada Total EE: 13.487</div></div>
+            </div>
+            <div class="diag-panel">
+                <h3 class="diag-title">Dictamen N8</h3>
+                <div class="diag-body">El espectro Laplaciano y los Operadores de Katz y Estrada confirman la existencia del nodo pegamento insustituible sostén de la red.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- OVERLAY FULLSCREEN -->
+    <div id="fs-overlay" class="fs-overlay" onclick="closeFs()">
+        <div class="fs-content" onclick="event.stopPropagation()">
+            <div id="fs-dynamic"></div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId, btnElem) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+
+            if (btnElem) {
+                btnElem.classList.add('active');
+            } else {
+                const foundBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes("'" + tabId + "'"));
+                if (foundBtn) foundBtn.classList.add('active');
+            }
+
+            const target = document.getElementById(tabId);
+            if (target) target.classList.add('active');
+        }
+
+        function fs(boxId, titleName) {
+            const dynamicBox = document.getElementById('fs-dynamic');
+            const boxElem = document.getElementById(boxId);
+            if (boxElem && dynamicBox) {
+                dynamicBox.innerHTML = `
+                    <h2 style="color:#0072CE; border-bottom:3px solid #0072CE; padding-bottom:10px; margin-top:0;">${titleName} — VISTA EN DETALLE</h2>
+                    <div style="margin-top:20px;">${boxElem.innerHTML}</div>
+                    <details class="explanatory-accordion">
+                        <summary>💡 Ver Nota Explicativa de Interpretación</summary>
+                        <div class="accordion-content">
+                            Esta vista en detalle proyecta los indicadores sociométricos y espectrales a tamaño completo para facilitar su análisis cualitativo y cuantitativo por el equipo investigador.
+                        </div>
+                    </details>
+                `;
+                document.getElementById('fs-overlay').classList.add('active');
+            }
+        }
+
+        function closeFs() { document.getElementById('fs-overlay').classList.remove('active'); }
+        document.addEventListener('keydown', e => { if (e.key === "Enter" || e.key === "Escape") closeFs(); });
+    </script>
+</body>
+</html>

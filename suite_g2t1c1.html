@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suite Diagnóstica G2T1C1 — NEXORD / VISORD Platform</title>
-    <meta name="description" content="Suite Diagnóstica y Selección Analítica del Caso Empírico G2T1C1 (Psicothema 2026). Tablas Canónicas, Planos Factoriales, Ejes Verticales y Dashboards.">
+    <meta name="description" content="Suite Diagnóstica y Selección Analítica del Caso Empírico G2T1C1. Tablas Canónicas, Planos Factoriales, Ejes Verticales, Dashboards y Dossier General.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
@@ -630,11 +630,11 @@
             <img src="assets/logo_nexord_base.png" onerror="this.src='assets/logo_nexord_demo.png'" alt="NEXORD Logo">
             <div>
                 <div class="brand-title" data-i18n="suite_brand_title">NEXORD <span>Suite Diagnóstica</span></div>
-                <div class="brand-subtitle" data-i18n="suite_brand_sub">PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Psicothema 2026</div>
+                <div class="brand-subtitle" data-i18n="suite_brand_sub">PROPIO-AA-G2-T1-C1-V10-A16-ES-5 | Ecosistema Socio-Termodinámico VISORD (2026)</div>
             </div>
         </div>
         <nav class="header-nav">
-            <a href="visord/index.html" data-i18n="suite_nav_3d" class="btn-nav btn-nav-primary">👁️ Lanzar VISORD 3D</a>
+            <a href="visord_g2t1c1.html" data-i18n="suite_nav_3d" class="btn-nav btn-nav-primary">👁️ Lanzar VISORD 3D</a>
             <a href="index.html" data-i18n="suite_nav_home" class="btn-nav">🌐 Web Principal</a>
             <a href="https://github.com/josemancor/nex-ord-web" target="_blank" data-i18n="suite_nav_github" class="btn-nav">📂 GitHub</a>
             <!-- SELECTOR INTERNACIONAL DE 8 IDIOMAS -->
@@ -703,7 +703,7 @@
             <button class="tab-btn active" data-i18n="suite_tab_tables" onclick="openMainTab('tab-tablas', this)">📊 Tablas Metodológicas (Pasos 1 al 6)</button>
             <button class="tab-btn" data-i18n="suite_tab_planes" onclick="openMainTab('tab-planos', this)">📈 Planos Factoriales y Ejes Verticales</button>
             <button class="tab-btn" data-i18n="suite_tab_dashboards" onclick="openMainTab('tab-dashboards', this)">📑 Dashboards e Informes Interactivos</button>
-            <button class="tab-btn" data-i18n="suite_tab_journal" onclick="openMainTab('tab-revista', this)">🏛️ Figuras y Tablas Oficiales (Psicothema)</button>
+            <button class="tab-btn" data-i18n="suite_tab_journal" onclick="openMainTab('tab-revista', this)">🏛️ Proyecciones y Tablas Canónicas (300 DPI)</button>
         </div>
 
         <!-- ===================================================================
@@ -1307,16 +1307,14 @@
                 </div>
             </div>
 
-            <!-- Barra de Descargas de Libros Excel -->
+            <!-- Barra de Exploración Interactiva Institucional -->
             <div class="download-bar">
                 <div class="download-info">
-                    <h4>📦 Descarga de Datos Abiertos y Libros Consolidados (Excel .xlsx)</h4>
-                    <p>Accede a las matrices cuadradas completas, tablas de difracción y análisis factorial primario de Psicothema.</p>
+                    <h4>🏛️ Plataforma Interactiva de Diagnóstico y Evidencia Factual • Caso G2T1C1</h4>
+                    <p>Accede a la totalidad de las matrices ordinales SMIb, descomposiciones socio-termodinámicas y modelos topológicos directamente a través del ecosistema interactivo VISORD.</p>
                 </div>
                 <div class="download-actions">
-                    <a href="suite_g2t1c1/datos/FULL_TABLES_G2T1C1_ACTUALIZADO.xlsx" class="btn-download" download>📥 FULL_TABLES_G2T1C1 (Global)</a>
-                    <a href="suite_g2t1c1/datos/FULL_TABLES_1G1T1C_revista.xlsx" class="btn-download" download>📥 1g1t1c (Grupo 1)</a>
-                    <a href="suite_g2t1c1/datos/FULL_TABLES_2G1T1C_revista.xlsx" class="btn-download" download>📥 2g1t1c (Grupo 2)</a>
+                    <a href="visord_g2t1c1.html" class="btn-download" style="background:linear-gradient(135deg,#00FF87,#38BDF8); color:#0B132B; font-weight:800; border:none; box-shadow:0 0 14px rgba(0,255,135,0.4);">🌌 Visualizador 3D Dinámico VISORD</a>
                 </div>
             </div>
 
@@ -1381,14 +1379,14 @@
                 </div>
 
                 <!-- 4. Ejes Verticales 1D Duales G1 -->
-                <div class="graphic-card">
-                    <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/graficos/pca_vertical_ejes_dual_1g1t1c.png', 'Ejes Verticales 1D Duales G1 (1g1t1c)', 'Proyección unidimensional desacoplada de Dadores (DA) frente a Receptores (REC).')">
+                <div class="graphic-card" style="border:1px solid #00FF87;">
+                    <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/graficos/pca_vertical_ejes_dual_1g1t1c.png', 'INTER-PROXIMIDADES DA frente a RECIBE &bull; Ejes Verticales 1D Duales G1 (1g1t1c)', 'Proyección unidimensional desacoplada de Dadores (DA) frente a Receptores (REC) en el colectivo armónico.')">
                         <img src="suite_g2t1c1/graficos/pca_vertical_ejes_dual_1g1t1c.png" alt="Ejes Verticales G1" loading="lazy">
                         <div class="graphic-overlay-btn">⤢ Ampliar</div>
                     </div>
                     <div class="graphic-info">
                         <div>
-                            <div class="graphic-title">Ejes Verticales 1D Duales (1g1t1c)</div>
+                            <div class="graphic-title" style="color:#00FF87;">⭐ INTER-PROXIMIDADES DA / RECIBE &bull; Ejes 1D (1g1t1c)</div>
                             <div class="graphic-desc">Alineación simétrica de roles dadores y receptores en el grupo cohesionado.</div>
                         </div>
                         <div class="interpretation-note">
@@ -1398,14 +1396,14 @@
                 </div>
 
                 <!-- 5. Ejes Verticales 1D Duales G2 -->
-                <div class="graphic-card">
-                    <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/graficos/pca_vertical_ejes_dual_2g1t1c.png', 'Ejes Verticales 1D Duales G2 (2g1t1c)', 'Ruptura de simetría y desplazamiento basal del sujeto 5B1a en la escala de recepción.')">
+                <div class="graphic-card" style="border:1px solid #FF007F;">
+                    <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/graficos/pca_vertical_ejes_dual_2g1t1c.png', 'INTER-PROXIMIDADES DA frente a RECIBE &bull; Ejes Verticales 1D Duales G2 (2g1t1c)', 'Ruptura de simetría y desplazamiento basal del sujeto 5B1a en la escala de recepción.')">
                         <img src="suite_g2t1c1/graficos/pca_vertical_ejes_dual_2g1t1c.png" alt="Ejes Verticales G2" loading="lazy">
                         <div class="graphic-overlay-btn">⤢ Ampliar</div>
                     </div>
                     <div class="graphic-info">
                         <div>
-                            <div class="graphic-title">Ejes Verticales 1D Duales (2g1t1c)</div>
+                            <div class="graphic-title" style="color:#FF007F;">⭐ INTER-PROXIMIDADES DA / RECIBE &bull; Ejes 1D (2g1t1c)</div>
                             <div class="graphic-desc">Divergencia entre expectativa y recepción efectiva en el grupo con fricción.</div>
                         </div>
                         <div class="interpretation-note">
@@ -1474,6 +1472,46 @@
                             <a href="suite_g2t1c1/dashboards/dashboard_2g1t1c.html" target="_blank" class="btn-nav">↗️ Abrir en Nueva Ventana</a>
                         </div>
                     </div>
+
+                    <!-- Card Síntesis Intergrupal Global -->
+                    <div class="dash-card" style="grid-column: 1 / -1; border: 1px solid var(--accent-cyan); background: rgba(14, 165, 233, 0.08);">
+                        <div>
+                            <h3 style="color:var(--accent-cyan);">⚖️ Informe Maestro de Síntesis Intergrupal Global (G1 vs G2)</h3>
+                            <p>
+                                Macro-síntesis comparativa de ambos colectivos. Formaliza la invarianza absoluta de la masa relacional (BDR̄ = 8,00), la distancia geodésica en Grassmann Gr(2,5) de d_G = 1,455 rad (83,37°), y el espectrograma Laplaciano cruzado.
+                            </p>
+                        </div>
+                        <div style="display:flex; gap:10px; margin-top:8px;">
+                            <button class="btn-nav btn-nav-primary" onclick="loadDashboard('suite_g2t1c1/informes/SINTESIS.html', 'Síntesis Intergrupal Global')">👁️ Desplegar Síntesis Aquí</button>
+                            <a href="suite_g2t1c1/informes/SINTESIS.html" target="_blank" class="btn-nav">↗️ Abrir en Nueva Ventana</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Informes Sociométricos Individuales (10 Sujetos) -->
+                <div style="margin-top:28px; background:rgba(11,19,43,0.7); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:18px;">
+                    <h3 style="color:#FFFFFF; font-size:1.05rem; margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+                        <span>👤</span> Informes Sociométricos Forenses Individuales (10 Sujetos &bull; Chart.js)
+                    </h3>
+                    <p style="font-size:0.80rem; color:var(--text-muted); margin-bottom:14px;">
+                        Selecciona a cualquier participante para desplegar en el visor interactivo su balance diádico, radar socio-afectivo, matrices de expectativa (SMIb) e índices individuales (SDA, SREC, Dif-DR, IAS).
+                    </p>
+                    
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <span style="font-size:0.75rem; color:#00FF87; font-weight:800; display:flex; align-items:center; margin-right:4px;">G1 (Cohesión):</span>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_1A.html', 'Sujeto 1A (G1)')">1A</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem; border-color:#00FF87; color:#00FF87; font-weight:800;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_2A.html', 'Sujeto 2A1a (🌟 Líder G1)')">2A (🌟 Líder)</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_3A.html', 'Sujeto 3A (G1)')">3A</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_4A.html', 'Sujeto 4A (G1)')">4A</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_5A.html', 'Sujeto 5A (G1)')">5A</button>
+                        
+                        <span style="font-size:0.75rem; color:#FF007F; font-weight:800; display:flex; align-items:center; margin-left:14px; margin-right:4px;">G2 (Fricción):</span>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_1B.html', 'Sujeto 1B (G2)')">1B</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_2B.html', 'Sujeto 2B (G2)')">2B</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_3B.html', 'Sujeto 3B (G2)')">3B</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_4B.html', 'Sujeto 4B (G2)')">4B</button>
+                        <button class="btn-nav" style="padding:5px 12px; font-size:0.75rem; background:rgba(255,0,127,0.25); border-color:#FF007F; color:#FF007F; font-weight:900;" onclick="loadDashboard('suite_g2t1c1/informes/individuales/Dossier_5B.html', 'Sujeto 5B1a (🚨 Ostracismo)')">🚨 5B1a (Ostracismo)</button>
+                    </div>
                 </div>
 
                 <!-- Visor Embebido Iframe -->
@@ -1492,57 +1530,57 @@
         </section>
 
         <!-- ===================================================================
-             TAB 4: FIGURAS Y TABLAS OFICIALES (PSICOTHEMA)
+             TAB 4: PROYECCIONES Y TABLAS CANÓNICAS (300 DPI)
              =================================================================== -->
         <section id="tab-revista" class="tab-panel">
             
             <div class="content-card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">🏛️ Paquete Fotográfico y Tabular Oficial (300 DPI — Psicothema 2026)</div>
-                        <div class="card-subtitle">Material canónico en alta resolución según directrices APA 7 y estándares editoriales internacionales</div>
+                        <div class="card-title">🏛️ Paquete Fotográfico y Tabular Canónico (300 DPI)</div>
+                        <div class="card-subtitle">Material canónico en alta resolución según directrices analíticas y estándares periciales de VISORD</div>
                     </div>
                 </div>
 
-                <h3 style="color:var(--accent-cyan); margin-bottom:14px; font-size:1.1rem;">🖼️ Figuras en Alta Resolución (Formato Revista)</h3>
+                <h3 style="color:var(--accent-cyan); margin-bottom:14px; font-size:1.1rem;">🖼️ Proyecciones en Alta Resolución (Canónicas)</h3>
                 <div class="graphics-grid" style="margin-bottom:32px;">
                     
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_1.png', 'Figura 1 (Psicothema)', 'Plano Factorial de Proyección Dual y Espacio de Fases Q81.')">
-                            <img src="suite_g2t1c1/figuras_revista/Figura_1.png" alt="Figura 1 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_1.png', 'Figura 1 (Canónica)', 'Plano Factorial de Proyección Dual y Espacio de Fases Q81.')">
+                            <img src="suite_g2t1c1/figuras_revista/Figura_1.png" alt="Figura 1 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
                             <div class="graphic-title">Figura 1. Plano Factorial y Espacio de Fases Q81</div>
-                            <div class="graphic-desc">Proyección dual en el ecosistema socio-termodinámico (APA 7).</div>
+                            <div class="graphic-desc">Proyección dual en el ecosistema socio-termodinámico.</div>
                         </div>
                     </div>
 
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_2.png', 'Figura 2 (Psicothema)', 'Sociograma Geométrico de Campos de Interacción Dual.')">
-                            <img src="suite_g2t1c1/figuras_revista/Figura_2.png" alt="Figura 2 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_2.png', 'Figura 2 (Canónica)', 'Sociograma Geométrico de Campos de Interacción Dual.')">
+                            <img src="suite_g2t1c1/figuras_revista/Figura_2.png" alt="Figura 2 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
                             <div class="graphic-title">Figura 2. Sociograma de Interacción Dual</div>
-                            <div class="graphic-desc">Atracción, fricción y expectativa cruzada (APA 7).</div>
+                            <div class="graphic-desc">Atracción, fricción y expectativa cruzada.</div>
                         </div>
                     </div>
 
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_3.png', 'Figura 3 (Psicothema)', 'Tríptico Factorial y Topográfico: Plano Global, Ejes 1D y Carte de Tendre.')">
-                            <img src="suite_g2t1c1/figuras_revista/Figura_3.png" alt="Figura 3 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_3.png', 'Figura 3 (Canónica)', 'Tríptico Factorial y Topográfico: Plano Global, Ejes 1D y Carte de Tendre.')">
+                            <img src="suite_g2t1c1/figuras_revista/Figura_3.png" alt="Figura 3 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
                             <div class="graphic-title">Figura 3. Tríptico Factorial y Topográfico</div>
-                            <div class="graphic-desc">Plano AFC/PCA, Ejes 1D y Carte de Tendre (APA 7).</div>
+                            <div class="graphic-desc">Plano AFC/PCA, Ejes 1D y Carte de Tendre.</div>
                         </div>
                     </div>
 
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_4.png', 'Figura 4 (Psicothema)', 'Tríptico de Síntesis Dinámica: FFT, Markov y Grassmann.')">
-                            <img src="suite_g2t1c1/figuras_revista/Figura_4.png" alt="Figura 4 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/figuras_revista/Figura_4.png', 'Figura 4 (Canónica)', 'Tríptico de Síntesis Dinámica: FFT, Markov y Grassmann.')">
+                            <img src="suite_g2t1c1/figuras_revista/Figura_4.png" alt="Figura 4 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
@@ -1553,12 +1591,12 @@
 
                 </div>
 
-                <h3 style="color:var(--accent-gold); margin-bottom:14px; font-size:1.1rem;">📋 Tablas Tipográficas Oficiales (Formato Revista)</h3>
+                <h3 style="color:var(--accent-gold); margin-bottom:14px; font-size:1.1rem;">📋 Tablas Tipográficas Oficiales (300 DPI)</h3>
                 <div class="graphics-grid">
                     
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_1.png', 'Tabla 1 (Psicothema)', 'Formatos SMIb y SMIa en Grupos G1 y G2.')">
-                            <img src="suite_g2t1c1/tablas_img/Tabla_1.png" alt="Tabla 1 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_1.png', 'Tabla 1 (Canónica)', 'Formatos SMIb y SMIa en Grupos G1 y G2.')">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_1.png" alt="Tabla 1 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
@@ -1568,8 +1606,8 @@
                     </div>
 
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_2.png', 'Tabla 2 (Psicothema)', 'Gramática Relacional Diádica Q81.')">
-                            <img src="suite_g2t1c1/tablas_img/Tabla_2.png" alt="Tabla 2 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_2.png', 'Tabla 2 (Canónica)', 'Gramática Relacional Diádica Q81.')">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_2.png" alt="Tabla 2 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
@@ -1579,8 +1617,8 @@
                     </div>
 
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_3.png', 'Tabla 3 (Psicothema)', 'Descomposición Algorítmica del Tetragrama D1 a D4.')">
-                            <img src="suite_g2t1c1/tablas_img/Tabla_3.png" alt="Tabla 3 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_3.png', 'Tabla 3 (Canónica)', 'Descomposición Algorítmica del Tetragrama D1 a D4.')">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_3.png" alt="Tabla 3 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
@@ -1590,8 +1628,8 @@
                     </div>
 
                     <div class="graphic-card">
-                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_4.png', 'Tabla 4 (Psicothema)', 'Diagnóstico Nodal y Métricas Socio-Termodinámicas.')">
-                            <img src="suite_g2t1c1/tablas_img/Tabla_4.png" alt="Tabla 4 Psicothema" loading="lazy">
+                        <div class="graphic-preview" onclick="openLightbox('suite_g2t1c1/tablas_img/Tabla_4.png', 'Tabla 4 (Canónica)', 'Diagnóstico Nodal y Métricas Socio-Termodinámicas.')">
+                            <img src="suite_g2t1c1/tablas_img/Tabla_4.png" alt="Tabla 4 Canónica" loading="lazy">
                             <div class="graphic-overlay-btn">⤢ 300 DPI</div>
                         </div>
                         <div class="graphic-info">
@@ -1626,7 +1664,7 @@
 
     <!-- 📜 Footer Institucional -->
     <footer class="suite-footer">
-        <p><strong>NEX_ORD / VISORD Engine</strong> &bull; Sociometría Ordinal Computacional &bull; Caso Empírico G2T1C1 (Psicothema 2026)</p>
+        <p><strong>NEX_ORD / VISORD Engine</strong> &bull; Sociometría Ordinal Computacional &bull; Dossier General del Caso Empírico G2T1C1</p>
         <p style="margin-top:4px;">Repositorio Oficial: <a href="https://github.com/josemancor/nex-ord-web" target="_blank">josemancor/nex-ord-web</a> &bull; DOI: 10.5281/zenodo.18941691</p>
     </footer>
 

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario Oficial &bull; NEX_ORD Platinum & VISORD</title>
+    <meta name="description" content="Glosario Integral y Avanzado de Sociometría Ordinal Computacional, Socio-Termodinámica, Matrices SMIb, Variedad de Grassmann y Tensor Q81. Plataforma Oficial NEX_ORD / VISORD.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0B132B;
+            color: #F8FAFC;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Cabecera HUD Superior Fija */
+        header.glossary-header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(11, 19, 43, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 135, 0.3);
+            padding: 12px 24px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+            display: flex; justify-content: space-between; align-items: center; gap: 16px;
+            flex-wrap: wrap;
+        }
+        .brand-container {
+            display: flex; align-items: center; gap: 14px;
+        }
+        .brand-logo {
+            max-height: 38px; border-radius: 6px;
+        }
+        .brand-titles {
+            display: flex; flex-direction: column;
+        }
+        .brand-main {
+            font-size: 1.15rem; font-weight: 900; letter-spacing: 0.8px; color: #FFFFFF;
+        }
+        .brand-main span { color: #00FF87; }
+        .brand-sub {
+            font-size: 0.70rem; color: #38BDF8; font-family: 'Roboto Mono', monospace; letter-spacing: 0.5px;
+        }
+
+        .header-nav-btns {
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .btn-nav-action {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+            text-decoration: none; cursor: pointer; transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #F1F5F9; background: rgba(255, 255, 255, 0.06);
+        }
+        .btn-nav-action:hover {
+            background: rgba(255, 255, 255, 0.15); transform: translateY(-1px);
+        }
+        .btn-home-stellar {
+            background: linear-gradient(135deg, rgba(0, 255, 135, 0.25), rgba(0, 162, 255, 0.35));
+            border: 1px solid #00FF87; color: #00FF87;
+            box-shadow: 0 0 12px rgba(0, 255, 135, 0.3);
+        }
+        .btn-home-stellar:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 135, 0.45), rgba(0, 162, 255, 0.55));
+            color: #FFFFFF; box-shadow: 0 0 18px rgba(0, 255, 135, 0.5);
+        }
+        .btn-visord {
+            background: linear-gradient(135deg, #00A2FF, #0055FF);
+            border: 1px solid rgba(0, 162, 255, 0.5); color: #FFF;
+        }
+
+        /* Hero / Buscador */
+        .search-hero {
+            padding: 40px 24px 20px;
+            max-width: 1200px; margin: 0 auto;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 2.1rem; font-weight: 900; margin-bottom: 10px;
+            background: linear-gradient(135deg, #FFFFFF 30%, #38BDF8 70%, #00FF87 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 0.95rem; color: #94A3B8; max-width: 800px; margin: 0 auto 24px;
+        }
+
+        .search-box-wrapper {
+            position: relative; max-width: 760px; margin: 0 auto 20px;
+        }
+        .search-input {
+            width: 100%; padding: 14px 20px 14px 48px;
+            font-size: 1rem; border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            background: rgba(15, 23, 42, 0.85); color: #F8FAFC;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            outline: none; transition: all 0.2s ease;
+        }
+        .search-input:focus {
+            border-color: #00FF87; box-shadow: 0 0 20px rgba(0, 255, 135, 0.35);
+        }
+        .search-icon {
+            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+            font-size: 1.1rem; color: #94A3B8; pointer-events: none;
+        }
+
+        /* Píldoras de Filtro por Categoría */
+        .category-pills {
+            display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .pill-btn {
+            padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;
+            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #94A3B8; cursor: pointer; transition: all 0.2s ease;
+        }
+        .pill-btn:hover {
+            color: #FFFFFF; border-color: rgba(56, 189, 248, 0.5); background: rgba(56, 189, 248, 0.15);
+        }
+        .pill-btn.active {
+            background: rgba(0, 255, 135, 0.2); border-color: #00FF87; color: #00FF87;
+            box-shadow: 0 0 10px rgba(0, 255, 135, 0.25);
+        }
+
+        /* Contenedor Principal */
+        .glossary-main {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px 80px;
+        }
+
+        /* Secciones del Glosario */
+        .glossary-section {
+            margin-bottom: 45px;
+        }
+        .section-header {
+            display: flex; align-items: center; gap: 12px;
+            padding-bottom: 12px; border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            font-size: 1.45rem; font-weight: 800; color: #FFFFFF;
+        }
+        .section-header span.sec-badge {
+            font-size: 0.75rem; padding: 3px 8px; border-radius: 6px;
+            background: rgba(56, 189, 248, 0.18); color: #38BDF8; font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Tabla de Siglas */
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 24px;
+            background: rgba(15, 23, 42, 0.7); border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        table.siglas-table {
+            width: 100%; border-collapse: collapse; font-size: 0.88rem;
+        }
+        table.siglas-table th {
+            background: rgba(30, 41, 59, 0.85); color: #38BDF8; font-weight: 800;
+            padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        table.siglas-table td {
+            padding: 10px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: #E2E8F0; vertical-align: top;
+        }
+        table.siglas-table tr:hover td {
+            background: rgba(56, 189, 248, 0.05);
+        }
+        table.siglas-table .sigla-code {
+            font-family: 'Roboto Mono', monospace; font-weight: 800; color: #00FF87;
+            font-size: 0.95rem;
+        }
+
+        /* Tarjetas de Términos */
+        .term-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 16px; margin-bottom: 24px;
+        }
+        .term-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 12px; padding: 18px 20px;
+            transition: all 0.2s ease; display: flex; flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+        }
+        .term-card:hover {
+            border-color: #38BDF8; transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        .term-title {
+            font-size: 1.05rem; font-weight: 800; color: #00FF87;
+            margin-bottom: 6px; display: flex; justify-content: space-between; align-items: baseline;
+        }
+        .term-author {
+            font-size: 0.72rem; color: #94A3B8; font-style: italic; font-weight: 400;
+        }
+        .term-body {
+            font-size: 0.86rem; color: #CBD5E1; line-height: 1.55;
+            flex-grow: 1;
+        }
+        .term-formula {
+            margin-top: 10px; padding: 8px 12px; border-radius: 6px;
+            background: rgba(3, 7, 18, 0.6); border-left: 3px solid #38BDF8;
+            font-size: 0.85rem; overflow-x: auto;
+        }
+        .term-note {
+            margin-top: 10px; padding: 6px 10px; border-radius: 6px;
+            background: rgba(255, 230, 0, 0.08); border-left: 3px solid #FFE600;
+            font-size: 0.78rem; color: #FEF08A;
+        }
+
+        /* Regla 5 Alert Banner */
+        .rule5-banner {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.5), rgba(15, 23, 42, 0.9));
+            border: 1px solid #38BDF8; border-radius: 12px;
+            padding: 16px 20px; margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
+        }
+        .rule5-title {
+            font-size: 0.92rem; font-weight: 800; color: #38BDF8; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .rule5-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;
+        }
+        .rule5-item {
+            background: rgba(11, 19, 43, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px; padding: 10px 14px;
+        }
+        .rule5-tag { font-family: 'Roboto Mono', monospace; font-weight: 800; color: #00FF87; }
+
+        /* Botón flotante para volver arriba y al inicio */
+        .floating-action-dock {
+            position: fixed; bottom: 24px; right: 24px; z-index: 900;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .btn-float {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(11, 19, 43, 0.9); backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 255, 135, 0.4);
+            color: #00FF87; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; cursor: pointer; transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+        .btn-float:hover {
+            background: #00FF87; color: #0B132B; transform: scale(1.1);
+            box-shadow: 0 0 15px #00FF87;
+        }
+        .btn-float.home {
+            border-color: rgba(56, 189, 248, 0.5); color: #38BDF8;
+        }
+        .btn-float.home:hover {
+            background: #38BDF8; color: #0B132B; box-shadow: 0 0 15px #38BDF8;
+        }
+
+        /* Footer */
+        footer.glossary-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 24px; text-align: center;
+            background: rgba(3, 7, 18, 0.95);
+            color: #94A3B8; font-size: 0.82rem;
+        }
+        footer.glossary-footer a { color: #38BDF8; text-decoration: none; }
+        footer.glossary-footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA FIJA SUPERIOR CON NAVEGACIÓN Y RETORNO -->
+    <header class="glossary-header">
+        <div class="brand-container">
+            <img src="assets/logo_nexord_base.png" alt="NEX_ORD Logo" onerror="this.src='assets/logo_nexord_base.png'" class="brand-logo">
+            <div class="brand-titles">
+                <div class="brand-main">NEX_ORD <span>GLOSARIO</span></div>
+                <div class="brand-sub">DOCUMENTACIÓN CIENTÍFICA OFICIAL &bull; PLATINUM v6.0</div>
+            </div>
+        </div>
+        <div class="header-nav-btns">
+            <a href="index.html" class="btn-nav-action btn-home-stellar" title="Regresar a la página principal de la plataforma">
+                🏠 ← Volver al Inicio
+            </a>
+            <a href="VISORD_demo/index_demo.html" class="btn-nav-action" style="color:#38BDF8;" title="Demo Promocional 12 Hombres sin Piedad">
+                🌐 Demo (12 Hombres)
+            </a>
+            <a href="visord_literario.html" class="btn-nav-action" style="color:#FF9F1C;" title="Sociometría Teatral y Literaria 3D">
+                🎭 Literario
+            </a>
+            <a href="visord_g2t1c1.html" class="btn-nav-action btn-visord" title="Visualizador 3D Integral del Caso Empírico G2T1C1">
+                🔬 G2T1C1 3D
+            </a>
+            <a href="visord_gxtycz.html" class="btn-nav-action" style="color:#C084FC;" title="Hipercubo Multidimensional Universal GxTyCz">
+                🌌 GxTyCz
+            </a>
+            <a href="recursos.html" class="btn-nav-action" title="Consultar módulos, datasets y manuales">
+                📚 Recursos
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO & BUSCADOR INTERACTIVO EN TIEMPO REAL -->
+    <div class="search-hero">
+        <h1 class="hero-title">Glosario Integral y Avanzado de Sociometría Ordinal</h1>
+        <p class="hero-desc">
+            Fundamentación epistemológica, algorítmica y socio-termodinámica de la plataforma <strong>NEX_ORD</strong> y del visualizador <strong>VISORD</strong>.
+            CERN Zenodo DOI: <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank" style="color:#00FF87; text-decoration:none; font-family:'Roboto Mono';">10.5281/zenodo.18941691</a>.
+        </p>
+
+        <!-- Buscador -->
+        <div class="search-box-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="glossary-search" class="search-input" placeholder="Buscar término, sigla o concepto (ej. SDR, BDR, Q81, Grassmann, Entropía, Moreno, Lewin)..." autocomplete="off">
+        </div>
+
+        <!-- Píldoras de Filtrado -->
+        <div class="category-pills">
+            <button class="pill-btn active" data-cat="all">Todos los Términos</button>
+            <button class="pill-btn" data-cat="siglas">📋 Siglas y Abreviaturas</button>
+            <button class="pill-btn" data-cat="fundamentos">🧲 Moreno y Lewin</button>
+            <button class="pill-btn" data-cat="termodinamica">🔥 Socio-Termodinámica</button>
+            <button class="pill-btn" data-cat="topologia">💎 Topología y Q81</button>
+            <button class="pill-btn" data-cat="grassmann">📐 Geometría Grassmann</button>
+            <button class="pill-btn" data-cat="prismas">👥 Prismas e Indicadores</button>
+            <button class="pill-btn" data-cat="caso">📊 Caso Práctico (N=4)</button>
+            <button class="pill-btn" data-cat="biblio">📚 Bibliografía</button>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL DEL GLOSARIO -->
+    <main class="glossary-main">
+
+        <!-- BANNER NORMATIVO CANÓNICO REGLA 5: DEFINICIÓN DE LAS 4 POSICIONES -->
+        <div class="rule5-banner" data-category="termodinamica topologia siglas">
+            <div class="rule5-title">
+                ⚖️ Definición Inviolable de las 4 Posiciones del Tetragrama SMIb (A1, A2, A3, A4) &bull; Regla Canónica 5
+            </div>
+            <p style="font-size: 0.82rem; color: #CBD5E1; margin-bottom: 10px;">
+                Queda formalmente blindada la interpretación conceptual matemática de las cuatro componentes en cada celda \((i, j)\):
+            </p>
+            <div class="rule5-grid">
+                <div class="rule5-item">
+                    <div class="rule5-tag">A1 (p_DA)</div>
+                    <div style="font-size:0.80rem; color:#E2E8F0; margin-top:3px;">
+                        La <strong>expectativa que el emisor (\(S_i\)) tiene de lo que hará el partner (\(S_j\))</strong>. Marcas angulares: <code>&lt;</code>, <code>¡</code>, <code>[</code>.
+                    </div>
+                </div>
+                <div class="rule5-item">
+                    <div class="rule5-tag">A2 (DA)</div>
+                    <div style="font-size:0.80rem; color:#E2E8F0; margin-top:3px;">
+                        La <strong>preferencia efectiva que el emisor (\(S_i\)) otorga al partner (\(S_j\))</strong>. Símbolos mayúsculas: <code>E</code>, <code>¿</code>, <code>R</code>.
+                    </div>
+                </div>
+                <div class="rule5-item">
+                    <div class="rule5-tag">A3 (RECIBE)</div>
+                    <div style="font-size:0.80rem; color:#E2E8F0; margin-top:3px;">
+                        La <strong>preferencia efectiva que el partner (\(S_j\)) otorga al emisor (\(S_i\))</strong>. Símbolos minúsculas: <code>e</code>, <code>?</code>, <code>r</code>.
+                    </div>
+                </div>
+                <div class="rule5-item">
+                    <div class="rule5-tag">A4 (p_RECIBE)</div>
+                    <div style="font-size:0.80rem; color:#E2E8F0; margin-top:3px;">
+                        La <strong>expectativa que el partner (\(S_j\)) tiene de lo que hará el emisor (\(S_i\))</strong>. Marcas angulares: <code>&gt;</code>, <code>!</code>, <code>]</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: SIGLAS Y ABREVIATURAS -->
+        <section class="glossary-section" id="sec-siglas" data-category="siglas">
+            <div class="section-header">
+                <h2>📋 Tabla de Siglas y Abreviaturas Teóricas</h2>
+                <span class="sec-badge">NEX_ORD 2026</span>
+            </div>
+            <div class="table-responsive">
+                <table class="siglas-table" id="table-siglas">
+                    <thead>
+                        <tr>
+                            <th style="width: 14%;">Sigla</th>
+                            <th style="width: 32%;">Nombre Canónico Completo</th>
+                            <th style="width: 54%;">Definición Conceptual y Procedimental</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sigla-code">TAG</td>
+                            <td>Técnicas de Análisis Grupal</td>
+                            <td>Conjunto integrado de instrumentos psicométricos, estadísticos y socio-espaciales de evaluación de dinámicas en colectivos humanos (Cornejo, 1988).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">SMIa</td>
+                            <td>Sociomatriz Integrada Abstraída / Ampliada</td>
+                            <td>Reflejo categórico sin ponderación de ranking de la matriz SMIb, donde cada vínculo se traduce en una de las 81 figuras relacionales del tensor \(Q_{81}\).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">SMIb</td>
+                            <td>Sociomatriz Integrada Bipolar (4 Vías)</td>
+                            <td>Estructura matricial \(N 	imes N\) fundamental de NEX_ORD que reúne en cada casilla el orden de elección jerárquico y las 4 posiciones (\(A_1, A_2, A_3, A_4\)).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">BDR</td>
+                            <td>Densidad Relacional Absoluta (Inercia Total)</td>
+                            <td>Inercia o carga bruta de actividad consumida en el sistema: \(BDR_i = \sum_{j 
+e i} (|A_1| + |A_2| + |A_3| + |A_4|)\), en rango \([0.0, 4(N-1)]\).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">SDR</td>
+                            <td>Densidad Relacional Relativa Neta</td>
+                            <td>Tensión estructural neta normalizada: \(SDR_i = rac{SDA_i + SRC_i}{	ext{Máximo Teórico}} \in [-1.0, +1.0]\). Mide el saldo neto entre atracción y marginación.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">SDA</td>
+                            <td>Densidad Relacional Emitida (Dada)</td>
+                            <td>Volumen total de energía relacional relativa que el emisor declara hacia el colectivo (\(A_1 + A_2\)) modulado por los pesos jerárquicos de rango.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">SRC</td>
+                            <td>Densidad Relacional Recibida</td>
+                            <td>Volumen total de energía relacional que el sujeto recibe del grupo (\(A_3 + A_4\)) modulado por el estatus de los electores.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">BDA / BRC</td>
+                            <td>Densidades Absolutas Emitida y Recibida</td>
+                            <td>Magnitudes escalares brutas de actividad emitida (\(BDA = |A_1| + |A_2|\)) y recibida (\(BRC = |A_3| + |A_4|\)), independientes del signo.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">$\mathcal{S}_i$</td>
+                            <td>Entropía Socio-Termodinámica</td>
+                            <td>Métrica de fricción y disipación por fuerzas cruzadas contrapuestas: \(\mathcal{S}_i = rac{BDR_i - |SDA_i + SRC_i|}{BDR_i} \in [0.0, 1.0]\).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">IEE</td>
+                            <td>Índice de Energía Estructural</td>
+                            <td>Densidad relacional ponderada tensorial que combina el estatus del emisor, el rango jerárquico y la figura diádica \(Q_{81}\).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">$Q_{81}$</td>
+                            <td>Tensor Canónico de 81 Figuras Diádicas</td>
+                            <td>Espacio producto cartesiano \(3 	imes 3 	imes 3 	imes 3\) que clasifica exhaustivamente todas las posibles configuraciones relacionales de 4 vías.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">$aE / oE$</td>
+                            <td>Aceptación y Ostracismo Esperado</td>
+                            <td>Umbrales sintéticos de frontera en formato BREVE que fijan el límite de atracción esperada (\(1^\circ \dots aE\)) y de marginación esperada (\((N-oE)^\circ \dots N-1\)).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">ISV</td>
+                            <td>Índice de Silencio e Invisibilidad</td>
+                            <td>Disonancia agencial y tasa de omisión/silencio sufrido: proporción de respuestas neutras o nulas (\('0'\)) recibidas en relación con las emitidas.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">IIR</td>
+                            <td>Inconsistencia Relacional</td>
+                            <td>Varianza poblacional de las nominaciones recibidas por un sujeto, indicativa de liderazgos disputados o ambivalencia grupal.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">$Gr(k, N)$</td>
+                            <td>Variedad de Grassmann (Grassmannian)</td>
+                            <td>Variedad diferencial donde cada punto representa un subespacio de dimensión \(k\) inmerso en un espacio euclídeo de dimensión \(N\).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">$d_G$</td>
+                            <td>Distancia Geodésica de Grassmann</td>
+                            <td>Medida topológica del ángulo geodésico \(	heta = rccos(\langle U_{T1}, U_{T2} 
+angle)\) entre los subespacios de poder de dos colectivos o tiempos.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">AFC / PCA</td>
+                            <td>Análisis Factorial de Correspondencias / Componentes</td>
+                            <td>Métodos multivariantes de compresión espacial (Benzécri, 1973; Pearson, 1901) que proyectan las distancias chi-cuadrado y euclídeas de la red.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">AAG</td>
+                            <td>Análisis de la Actividad Grupal</td>
+                            <td>Diferencial semántico de 16 adjetivos bipolares en 4 factores: Temático, Funcional, Cognitivo y Afectivo (Munné; Vicente & Cornejo, 1998).</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">VAR</td>
+                            <td>Variables Socio-Demográficas / Disposicionales</td>
+                            <td>10 variables de caracterización cualitativa/ordinal de los sujetos: edad, estatus, rigidez, respeto normativo, empatía, racionalidad, etc.</td>
+                        </tr>
+                        <tr>
+                            <td class="sigla-code">IPA / SYMLOG</td>
+                            <td>Observación Sistemática de Bales</td>
+                            <td>Sistemas clásicos de codificación del proceso interactivo (Bales, 1950) y campo tridimensional Up-Down, Positive-Negative, Forward-Backward (1979).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: MORENO Y LEWIN (FUNDAMENTOS) -->
+        <section class="glossary-section" id="sec-fundamentos" data-category="fundamentos">
+            <div class="section-header">
+                <h2>🧲 Fundamentos de Sociometría y Teoría de Campo</h2>
+                <span class="sec-badge">Moreno & Lewin</span>
+            </div>
+            <div class="term-grid">
+                <div class="term-card">
+                    <div class="term-title">Sociometría Clásica <span class="term-author">J. L. Moreno (1934)</span></div>
+                    <div class="term-body">
+                        Investigación matemática de la evolución y estructura interna de los grupos humanos a través de la cuantificación de las fuerzas de atracción y repulsión afectiva. Moreno postuló que los grupos no son meros agregados de individuos, sino redes socioafectivas interdependientes estructuradas por corrientes de simpatía y rechazo.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Sociatría <span class="term-author">J. L. Moreno (1934)</span></div>
+                    <div class="term-body">
+                        La vertiente terapéutica y reparadora de la sociometría («la medicina de la sociedad»). Mientras la sociometría mide y diagnostica el tejido social, la sociatría constituye la praxis clínica orientada a reorganizar, sanar y dinamizar los vínculos hacia estructuras más funcionales y satisfactorias.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Tele y Átomo Social <span class="term-author">J. L. Moreno (1934)</span></div>
+                    <div class="term-body">
+                        El <strong>Tele</strong> es la unidad elemental de empatía y reciprocidad afectiva bidireccional (positiva o negativa) que une a dos personas. El <strong>Átomo Social</strong> es la constelación sociométrica mínima: el individuo junto con el núcleo de todas las personas significativas con quienes sostiene intercambios de tele.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Teoría del Campo <span class="term-author">Kurt Lewin (1936, 1951)</span></div>
+                    <div class="term-body">
+                        Principio paradigmático que sostiene que la conducta (\(C\)) es función del campo dinámico total que opera en el instante presente: \(C = f(P, A)\), donde \(P\) es la persona y \(A\) es su ambiente psicológico. Todo comportamiento obedece a un equilibrio dinámico de vectores en tensión.
+                    </div>
+                    <div class="term-formula">\(C = f(P, A)\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Espacio Vital y Locomoción <span class="term-author">Kurt Lewin (1936)</span></div>
+                    <div class="term-body">
+                        El <strong>Espacio Vital</strong> es la totalidad de factores psicológicos, físicos y sociales que determinan la conducta en un momento dado. La <strong>Locomoción</strong> es el desplazamiento que efectúa el individuo o el grupo a través de las regiones de su espacio vital para acercarse a valencias positivas o huir de valencias negativas.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Equilibrio Cuasi-Estacionario <span class="term-author">Kurt Lewin (1947)</span></div>
+                    <div class="term-body">
+                        Concepción de los hábitos y normas del grupo como un estado estacionario dinámico, comparable al flujo de un río donde las fuerzas impulsoras (atracción) y las fuerzas restrictivas (fricción, barreras) se cancelan mutuamente. La intervención requiere tres fases: <em>Descongelar</em>, <em>Mover</em> y <em>Recongelar</em>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: SOCIO-TERMODINÁMICA -->
+        <section class="glossary-section" id="sec-termodinamica" data-category="termodinamica">
+            <div class="section-header">
+                <h2>🔥 Socio-Termodinámica Grupal (BDR, SDR, Entropía)</h2>
+                <span class="sec-badge">NEX_ORD Engine</span>
+            </div>
+            <div class="term-grid">
+                <div class="term-card">
+                    <div class="term-title">Densidad Relacional Absoluta (BDR) <span class="term-author">NEX_ORD Platinum</span></div>
+                    <div class="term-body">
+                        Energía o masa escalar total invertida en el sistema relacional, sumando los módulos de todos los vectores sin considerar el signo:
+                        \(BDR_i = \sum_{j 
+e i} (|A_{1,ij}| + |A_{2,ij}| + |A_{3,ij}| + |A_{4,ij}|)\).
+                        Constituye la inercia del nodo o del grupo, en rango teórico \([0, 4(N-1)]\).
+                    </div>
+                    <div class="term-formula">\(BDR_i \in [0.0, 4(N-1)]\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Densidad Relacional Relativa Neta (SDR) <span class="term-author">NEX_ORD Platinum</span></div>
+                    <div class="term-body">
+                        Tensión estructural neta del nodo calculada como la diferencia entre la suma neta de densidades emitidas y recibidas (\(SDA_i + SRC_i\)) dividida por el máximo teórico del grupo. Varía estrictamente en \([-1.0, +1.0]\). Valores positivos denotan integración armónica; negativos indican marginación acumulada.
+                    </div>
+                    <div class="term-formula">\(SDR_i = rac{SDA_i + SRC_i}{	ext{Máximo Teórico}} \in [-1.0, +1.0]\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Entropía Socio-Termodinámica (\(\mathcal{S}_i\)) <span class="term-author">NEX_ORD Platinum</span></div>
+                    <div class="term-body">
+                        Métrica de disipación de energía y fricción relacional producida por la presencia simultánea de vectores contrapuestos (ambivalencia de atracción y marginación cruzada).
+                        Varía entre 0.0 (entropía nula, consenso armónico) y 1.0 (caos disipativo total, neutralización de vectores).
+                    </div>
+                    <div class="term-formula">\(\mathcal{S}_i = rac{BDR_i - |SDA_i + SRC_i|}{BDR_i} \in [0.0, 1.0]\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Ley de Conservación de Masa Relacional <span class="term-author">NEX_ORD Doctrinal</span></div>
+                    <div class="term-body">
+                        Principio termodinámico demostrado empíricamente en diseños ordinales canónicos: cuando dos grupos operan bajo idéntico protocolo de saturación ordinal, la densidad absoluta media (\(ar{BDR}\)) se conserva invariante (ej. \(ar{BDR} = 8.00\)), mientras que la densidad relativa (\(ar{SDR}\)) y la entropía (\(\mathcal{S}\)) reflejan las divergencias estructurales.
+                    </div>
+                    <div class="term-note">💡 Verificado empíricamente en el Dossier G2T1C1 (\(ar{BDR}_{G1} = 8.00 = ar{BDR}_{G2}\)).</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Cismogénesis Relacional <span class="term-author">G. Bateson / NEX_ORD</span></div>
+                    <div class="term-body">
+                        Proceso de fisura estructural y polarización en subgrupos o facciones disjuntas debido al incremento de la frustración sistémica y la ruptura de los lazos de sintonía diádica, observable mediante la reducción del segundo valor propio laplaciano (\(\lambda_2\), conectividad algebraica de Fiedler).
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Frustración Estructural de Heider (\(\lambda_1\)) <span class="term-author">F. Heider / NEX_ORD</span></div>
+                    <div class="term-body">
+                        Medida espectral de la disonancia cognitiva triádica basada en el primer autovalor del Laplaciano con signo (\(L_{	ext{signed}}\)). Cuantifica la desviación del colectivo respecto a la teoría del equilibrio estructural («el amigo de mi amigo es mi amigo; el enemigo de mi enemigo es mi amigo»).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: TOPOLOGÍA Y TENSOR Q81 -->
+        <section class="glossary-section" id="sec-topologia" data-category="topologia">
+            <div class="section-header">
+                <h2>💎 Topología Relacional y Tensor Canónico Q81</h2>
+                <span class="sec-badge">Tensor Quatuor</span>
+            </div>
+            <div class="term-grid">
+                <div class="term-card">
+                    <div class="term-title">Tensor de 81 Figuras (Q81) <span class="term-author">NEX_ORD Quatuor</span></div>
+                    <div class="term-body">
+                        Matriz cartesiana tetradimensional \(3 	imes 3 	imes 3 	imes 3\) que agota formalmente las 81 combinaciones de interacción sociométrica posible para cada par diádico (\(S_i \leftrightarrow S_j\)). Cada figura describe la convergencia de la expectativa emitida, preferencia emitida, preferencia recibida y expectativa recibida.
+                    </div>
+                    <div class="term-formula">\(Q_{81} \in \{1, 2, \dots, 81\} \equiv \{-, 0, +\}^4\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Las 9 Macro-Zonas Afectivas <span class="term-author">NEX_ORD Platinum</span></div>
+                    <div class="term-body">
+                        Agrupación de las 81 especies en 9 cuadrantes diádicos según la preferencia emitida (\(A_2\)) y recibida (\(A_3\)):
+                        <strong>Ee</strong> (Elección mutua), <strong>E?</strong> (Elección hacia indiferencia), <strong>Er</strong> (Oposición/conflicto), <strong>¿e</strong> (Indiferencia hacia elección), <strong>¿?</strong> (Indiferencia mutua), <strong>¿r</strong> (Indiferencia hacia rechazo), <strong>Re</strong> (Rechazo hacia elección), <strong>R?</strong> (Rechazo hacia indiferencia) y <strong>Rr</strong> (Rechazo mutuo).
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">SMIb frente a SMIa <span class="term-author">Arquitectura NEX_ORD</span></div>
+                    <div class="term-body">
+                        La <strong>SMIb</strong> conserva el orden jerárquico fino (\(1^\circ, 2^\circ, 3^\circ\)) de elección/rechazo en formato textual tetragrámico (ej. <code>&lt;E1e2&gt;</code>). La <strong>SMIa</strong> es la abstracción categórica pura que prescinde de los números de orden para proyectar directamente la figura en \(Q_{81}\) (ej. <code>&lt;Ee&gt;</code>, Figura 81).
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Formato MORENO vs Formato BREVE <span class="term-author">NEX_ORD Metodología</span></div>
+                    <div class="term-body">
+                        <strong>MORENO:</strong> Preguntas acotadas de nominación (\(k\) elecciones, \(m\) marginaciones) basadas en meta-percepción dual.
+                        <strong>BREVE:</strong> Un único ítem de ordenamiento continuo completo de todo el grupo (\(1^\circ \dots N-1\)) sin citar marginaciones, preservando la ética del clima grupal mediante deducción matemática de colas inferiores.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: GEOMETRÍA DE GRASSMANN -->
+        <section class="glossary-section" id="sec-grassmann" data-category="grassmann">
+            <div class="section-header">
+                <h2>📐 Geometría Diferencial de Grassmann Gr(k, N)</h2>
+                <span class="sec-badge">Hermann Grassmann (1844)</span>
+            </div>
+            <div class="term-grid">
+                <div class="term-card">
+                    <div class="term-title">Variedad de Grassmann Gr(k, N) <span class="term-author">H. Grassmann (1844)</span></div>
+                    <div class="term-body">
+                        Espacio topológico suave en el que cada punto no es una coordenada escalar o vectorial, sino un <em>subespacio lineal completo de dimensión \(k\)</em> inmerso en \(\mathbb{R}^N\). En NEX_ORD, la estructura factorial de un colectivo (\(G_1\) o \(G_2\)) se modela como un plano bidimensional en \(Gr(2, 5)\).
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Distancia Geodésica de Grassmann ($d_G$) <span class="term-author">Geometría Diferencial</span></div>
+                    <div class="term-body">
+                        Métrica invariante del ángulo geodésico mínimo entre dos subespacios relacionales:
+                        \(d_G(U, V) = \sqrt{\sum_{i=1}^k 	heta_i^2}\), donde \(	heta_i\) son los ángulos principales. En el Dossier G2T1C1, \(d_G = 1.455	ext{ rad } (83.37^\circ)\), evidenciando la cuasi-ortogonalidad entre el plano armónico de G1 y el plano fracturado de G2.
+                    </div>
+                    <div class="term-formula">\(d_G(U, V) = \sqrt{	heta_1^2 + 	heta_2^2} = 1.455	ext{ rad } (83.37^\circ)\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Difracción Espectral <span class="term-author">NEX_ORD Platinum</span></div>
+                    <div class="term-body">
+                        Descomposición del tensor sociométrico bruto al proyectarlo ortogonalmente a través de diferentes subespacios o prismas relacionales, revelando la estructura de armónicos, la conectividad y las zonas de sombra vincular.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: LOS 6 PRISMAS E INDICADORES DE RED -->
+        <section class="glossary-section" id="sec-prismas" data-category="prismas">
+            <div class="section-header">
+                <h2>👥 Los 6 Prismas Relacionales y Métricas de Red</h2>
+                <span class="sec-badge">Ópticas Especializadas</span>
+            </div>
+            <div class="term-grid">
+                <div class="term-card">
+                    <div class="term-title">Prisma 1 ($P_1 = A_1 	imes A_4$) <span class="term-author">Cámaras de Eco</span></div>
+                    <div class="term-body">
+                        Cruza las expectativas emitidas (\(A_1\)) con las expectativas recibidas (\(A_4\)). Evalúa el universo de meta-percepciones cognitivas y las idealizaciones subjetivas del emisor sobre el grupo.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Prisma 2 ($P_2 = A_2 	imes A_3$) <span class="term-author">Preferencias de la Díada</span></div>
+                    <div class="term-body">
+                        Cruza la preferencia efectiva emitida (\(A_2\)) con la respuesta efectiva recibida (\(A_3\)). Revela la realidad factual: colaboración genuina (\(Ee\)), oposición abierta (\(Er, Re\)) o rechazo mutuo (\(Rr\)).
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Prisma 3 ($P_3 = A_1 	imes A_3$) <span class="term-author">Realismo Perceptivo</span></div>
+                    <div class="term-body">
+                        Cruza la expectativa del emisor (\(A_1\)) con la respuesta efectiva recibida del partner (\(A_3\)). Evalúa el ajuste entre lo que se esperaba y lo que realmente ocurrió.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Prisma 4 ($P_4 = A_4 	imes A_2$) <span class="term-author">Espejo Invertido</span></div>
+                    <div class="term-body">
+                        Cruza lo que el partner presupone que el emisor responderá (\(A_4\)) frente a la preferencia real declarada (\(A_2\)). Mide la precisión de la auto-percepción frente a terceros.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Prisma 5 ($P_5 = A_1 	imes A_2$) <span class="term-author">Sinceridad Operativa</span></div>
+                    <div class="term-body">
+                        Evalúa si las expectativas del emisor (\(A_1\)) concuerdan con su declaración efectiva (\(A_2\)). Mide la autenticidad entre el deseo ideal y la acción real.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Prisma 6 ($P_6 = A_4 	imes A_3$) <span class="term-author">Ceguera al Rechazo</span></div>
+                    <div class="term-body">
+                        Cruza lo que el receptor supone que recibirá (\(A_4\)) con la respuesta real del emisor (\(A_3\)). Detecta distorsiones en las que un miembro ignora el rechazo o el aprecio que genera.
+                    </div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Índice Bonacich de Estatus ($K_{	ext{INF}}$) <span class="term-author">P. Bonacich (1987)</span></div>
+                    <div class="term-body">
+                        Centralidad de autovector recursiva donde el prestigio de un nodo no depende sólo de la cantidad de elecciones recibidas, sino del estatus de quienes lo eligen («ser elegido por los elegidos»).
+                    </div>
+                    <div class="term-formula">\(c(lpha, eta) = lpha (I - eta A)^{-1} A \mathbf{1}\)</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Significación Binomial ($SIG\_B$) <span class="term-author">U. Bronfenbrenner (1943)</span></div>
+                    <div class="term-body">
+                        Contraste probabilístico exacto basado en la distribución binomial/Poisson para verificar si la condición de «estrella sociométrica» o «sujeto rechazado» excede el azar (\(p < 0.05\)).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: CASO PRÁCTICO PASO A PASO (N=4) -->
+        <section class="glossary-section" id="sec-caso" data-category="caso">
+            <div class="section-header">
+                <h2>📊 Caso Práctico Demostrativo Paso a Paso (N=4)</h2>
+                <span class="sec-badge">Auditoría Numérica</span>
+            </div>
+            <p style="color:#CBD5E1; font-size:0.90rem; margin-bottom: 16px;">
+                Para ilustrar con total nitidez matemática la trazabilidad de NEX_ORD, consideremos una sociomatriz de 4 sujetos anónimos (\(S_1, S_2, S_3, S_4\)) con pesos \(w(1^\circ) = 1.0, w(2^\circ) = 0.8\):
+            </p>
+            <div class="table-responsive">
+                <table class="siglas-table">
+                    <thead>
+                        <tr>
+                            <th>Miembro ($S_i$)</th>
+                            <th>$SDA_i$ ($A_1+A_2$)</th>
+                            <th>$SRC_i$ ($A_3+A_4$)</th>
+                            <th>$SDR_i$ (Neta Normalizada)</th>
+                            <th>$BDR_i$ (Inercia Absoluta)</th>
+                            <th>Diagnóstico Forense de Campo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:bold; color:#00FF87;">$S_1$</td>
+                            <td>$+3.60$</td>
+                            <td>$+2.80$</td>
+                            <td style="color:#00FF87; font-weight:bold;">$+0.53$</td>
+                            <td>$6.40$</td>
+                            <td><strong>Centroide Afectivo Integrador</strong> (Sinergia recíproca con $S_2$ y $S_4$).</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:#38BDF8;">$S_2$</td>
+                            <td>$0.00$</td>
+                            <td>$+1.00$</td>
+                            <td style="color:#38BDF8; font-weight:bold;">$+0.08$</td>
+                            <td>$4.60$</td>
+                            <td><strong>Nodo Estable de Sostén</strong> (Posición neutral-positiva de moderación).</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:#FF007F;">$S_3$</td>
+                            <td>$-1.60$</td>
+                            <td>$-1.80$</td>
+                            <td style="color:#FF007F; font-weight:bold;">$-0.28$</td>
+                            <td>$5.60$</td>
+                            <td><strong>Sujeto en Riesgo de Marginación</strong> (Rechazo mutuo activo con $S_2$).</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:#FFE600;">$S_4$</td>
+                            <td>$+3.60$</td>
+                            <td>$+3.60$</td>
+                            <td style="color:#FFE600; font-weight:bold;">$+0.60$</td>
+                            <td>$7.20$</td>
+                            <td><strong>Líder Sociométrico de Campo</strong> (Máxima tracción y gravedad del sistema).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8: BIBLIOGRAFÍA FUNDAMENTAL -->
+        <section class="glossary-section" id="sec-biblio" data-category="biblio">
+            <div class="section-header">
+                <h2>📚 Referencias Bibliográficas Fundamentales</h2>
+                <span class="sec-badge">Corpus Teórico Homologado</span>
+            </div>
+            <div class="term-grid">
+                <div class="term-card">
+                    <div class="term-title">Moreno, J. L. (1934)</div>
+                    <div class="term-body"><em>Who Shall Survive? A New Approach to the Problem of Human Interrelations</em>. Washington, DC: Nervous and Mental Disease Publishing Co.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Lewin, K. (1936, 1951)</div>
+                    <div class="term-body"><em>Principles of Topological Psychology</em> (1936) / <em>Field Theory in Social Science</em> (1951, Ed. D. Cartwright). New York: Harper & Row.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Benzécri, J.-P. (1973)</div>
+                    <div class="term-body"><em>L'Analyse des Données: Tome 1, La Taxinomie; Tome 2, L'Analyse des Correspondances</em>. Paris: Dunod.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Cornejo, J. M. (1988)</div>
+                    <div class="term-body"><em>Técnicas de Análisis Grupal (TAG)</em>. Barcelona: Publicacions de la Universitat de Barcelona.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Grassmann, H. (1844)</div>
+                    <div class="term-body"><em>Die Lineale Ausdehnungslehre, ein neuer Zweig der Mathematik</em>. Leipzig: Otto Wigand.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Escofier, B. & Pagès, J. (1994)</div>
+                    <div class="term-body"><em>Análisis factoriales simples y múltiples: Teoría y aplicaciones</em>. Bilbao: Universidad del País Vasco.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Munné, F. (1985, 2008)</div>
+                    <div class="term-body"><em>La interacción social: Teoría y método en psicología social</em> / <em>La complejidad en los grupos y en la sociedad</em>. Barcelona: UOC.</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Bales, R. F. & Cohen, S. P. (1979)</div>
+                    <div class="term-body"><em>SYMLOG: A System for the Multiple Level Observation of Groups</em>. New York: Free Press.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTONES FLOTANTES DE NAVEGACIÓN Y RETORNO -->
+    <div class="floating-action-dock">
+        <a href="#top" class="btn-float" title="Volver al inicio de la página">⬆️</a>
+        <a href="index.html" class="btn-float home" title="Regresar a la Web Principal">🏠</a>
+    </div>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="glossary-footer">
+        <div style="margin-bottom: 8px;">
+            <strong>NEX_ORD Platinum & VISORD Platform</strong> &bull; Ecosistema de Diagnóstico Socio-Termodinámico y Sociometría Ordinal Computacional.
+        </div>
+        <div>
+            Registro Científico CERN Zenodo DOI: <a href="https://doi.org/10.5281/zenodo.18941691" target="_blank">10.5281/zenodo.18941691</a> &bull;
+            Diseño homologado según Estándar Canónico 2026.
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE BÚSQUEDA Y FILTRADO INTERACTIVO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('glossary-search');
+            const pillBtns = document.querySelectorAll('.pill-btn');
+            const sections = document.querySelectorAll('.glossary-section, .rule5-banner');
+            const termCards = document.querySelectorAll('.term-card');
+            const tableRows = document.querySelectorAll('#table-siglas tbody tr');
+
+            let activeCategory = 'all';
+
+            // Filtrado por categoría
+            pillBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    pillBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeCategory = btn.dataset.cat;
+                    applyFilters();
+                });
+            });
+
+            // Búsqueda en tiempo real
+            searchInput.addEventListener('input', () => {
+                applyFilters();
+            });
+
+            function applyFilters() {
+                const query = searchInput.value.toLowerCase().trim();
+
+                // 1. Filtrar filas de la tabla de siglas
+                tableRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    const matchesSearch = query === '' || text.includes(query);
+                    const matchesCategory = activeCategory === 'all' || activeCategory === 'siglas';
+                    row.style.display = (matchesSearch && matchesCategory) ? '' : 'none';
+                });
+
+                // 2. Filtrar tarjetas de términos
+                termCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    const parentSec = card.closest('.glossary-section');
+                    const secCat = parentSec ? parentSec.dataset.category : '';
+                    
+                    const matchesSearch = query === '' || text.includes(query);
+                    const matchesCategory = activeCategory === 'all' || (secCat && secCat.includes(activeCategory));
+                    
+                    card.style.display = (matchesSearch && matchesCategory) ? 'flex' : 'none';
+                });
+
+                // 3. Ocultar o mostrar secciones enteras si no tienen elementos visibles
+                sections.forEach(sec => {
+                    const secCat = sec.dataset.category || '';
+                    const matchesCategory = activeCategory === 'all' || (secCat && secCat.includes(activeCategory));
+                    
+                    if (!matchesCategory) {
+                        sec.style.display = 'none';
+                        return;
+                    }
+
+                    if (query === '') {
+                        sec.style.display = '';
+                    } else {
+                        const hasVisibleCards = sec.querySelectorAll('.term-card[style*="display: flex"]').length > 0;
+                        const hasVisibleRows = sec.querySelectorAll('tbody tr:not([style*="display: none"])').length > 0;
+                        const hasTextMatch = sec.textContent.toLowerCase().includes(query);
+                        
+                        if (hasVisibleCards || hasVisibleRows || hasTextMatch) {
+                            sec.style.display = '';
+                        } else {
+                            sec.style.display = 'none';
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
